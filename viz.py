@@ -228,6 +228,43 @@ def rollout_gif(model, decoder, frames, actions, path, k=6, seed=0):
     return path
 
 
+def demo_gif(model, decoder, frames, actions, path, k=4, seed=0, first=0):
+    """Ground truth beside the imagined rollout: 8 real priming frames, then 16 imagined ones."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import imageio.v2 as imageio
+    import matplotlib.pyplot as plt
+
+    real = frames[first:first + k]
+    _, pred, _ = rollouts(model, real, actions[first:first + k], jax.random.PRNGKey(seed))
+    imagined = np.asarray(decode(decoder, pred, horizon=HOR))
+    images = []
+    for t in range(CTX + HOR):
+        dreaming = t >= CTX
+        figure, axes = plt.subplots(k, 2, figsize=(3.1, 1.52 * k), dpi=130, squeeze=False)
+        for i in range(k):
+            panels = (real[i, t], imagined[i, t - CTX] if dreaming else real[i, t])
+            for j, (ax, image) in enumerate(zip(axes[i], panels)):
+                ax.imshow(image)
+                ax.set_xticks([])
+                ax.set_yticks([])
+                for spine in ax.spines.values():
+                    spine.set_edgecolor("#d1495b" if dreaming and j else "#cccccc")
+                    spine.set_linewidth(2.0 if dreaming and j else 0.8)
+                if i == 0:
+                    ax.set_title(("ground truth", "LeWM imagined")[j], fontsize=8)
+        figure.suptitle(f"imagined step {t - CTX + 1} / {HOR}" if dreaming
+                        else f"priming frame {t + 1} / {CTX}", fontsize=9, y=0.995)
+        figure.tight_layout(rect=(0, 0, 1, 0.97))
+        figure.canvas.draw()
+        images.append(np.asarray(figure.canvas.buffer_rgba())[..., :3].copy())
+        plt.close(figure)
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    imageio.mimsave(path, images + images[-1:] * 3, duration=1000 / 3, loop=0)
+    return path
+
+
 def heatmap_gif(model, frames, actions, path, index=0, seed=0):
     """Latent heat maps: encoder latent, JEPA prediction and their difference, frame by frame."""
     import matplotlib
@@ -313,6 +350,7 @@ def main():
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--gif", action="store_true")
     parser.add_argument("--pixels", action="store_true", help="gFVD of the rollout and of the decoder ceiling")
+    parser.add_argument("--demo", type=int, default=0, help="episodes in the side-by-side demo gif")
     args = parser.parse_args()
 
     (model, decoder), meta = T.load_model(args.model)
@@ -333,6 +371,8 @@ def main():
         heatmap_gif(model, frames, actions, out / f"{tag}_latents.gif", seed=args.seed)
         if decoder is not None:
             rollout_gif(model, decoder, frames, actions, out / f"{tag}_rollout.gif", seed=args.seed)
+    if args.demo:
+        demo_gif(model, decoder, frames, actions, out / f"{tag}_demo.gif", k=args.demo, seed=args.seed)
     print(f"[viz] wrote {out}/{tag}_*", flush=True)
 
 

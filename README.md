@@ -123,9 +123,11 @@ Per-step diagnostics ([drift plot](artifacts/s0_lr1e-3_drift.png),
   frame-to-frame latent change by step 16, so rollouts are driven by the actions rather than
   drifting on their own.
 
-![rollout](artifacts/s0_grid_rollout.gif)
+![ground truth beside the imagined rollout](artifacts/s0_grid_demo.gif)
 
-*real | decode of the encoder latent | decode of the imagined latent | error, for the grid model.*
+*Grid model: eight real priming frames, then sixteen imagined ones from the same actions
+(`viz.py --demo 4`). The class-token version is [here](artifacts/s0_lr1e-3_demo.gif), and
+[this gif](artifacts/s0_grid_rollout.gif) adds the decoded-latent and error columns.*
 
 ### Can we plan in it?
 

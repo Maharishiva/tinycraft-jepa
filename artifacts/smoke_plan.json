@@ -1,0 +1,33 @@
+{
+ "tag": "smoke",
+ "offline": {
+  "windows": 64,
+  "horizon": 4,
+  "first_action_accuracy": 0.21875,
+  "sequence_accuracy": 0.19140625,
+  "chance": 0.058823529411764705,
+  "true_sequence_percentile_among_random": 0.3201904296875,
+  "cost_plan": 0.05899439752101898,
+  "cost_true": 0.07363267242908478,
+  "cost_random": 0.14621949195861816
+ },
+ "craftax": {
+  "planned": {
+   "position_l1": 1.1875,
+   "reached": 0.4375,
+   "pixel_mse": 1337.953369140625
+  },
+  "random": {
+   "position_l1": 1.375,
+   "reached": 0.25,
+   "pixel_mse": 1373.8741455078125
+  },
+  "oracle": {
+   "position_l1": 0.0,
+   "reached": 1.0,
+   "pixel_mse": 0.0
+  },
+  "envs": 16,
+  "horizon": 4
+ }
+}
