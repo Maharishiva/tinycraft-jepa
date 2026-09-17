@@ -56,7 +56,11 @@ class Config:
     pred_heads: int = 16
     pred_dim_head: int = 64
     pred_mlp: int = 2048
+    pred_width: int = 0
     mlp_hidden: int = 2048
+    tokens: int = 1
+    token_dim: int = 32
+    token_hidden: int = 512
     history: int = 3
     num_preds: int = 1
     dropout: float = 0.1
@@ -193,30 +197,47 @@ class Embedder(nnx.Module):
 
 
 class Predictor(nnx.Module):
-    """Causal AdaLN-zero transformer over embeddings (LeWM `module.ARPredictor`)."""
+    """Causal AdaLN-zero transformer over embeddings (LeWM `module.ARPredictor`).
 
-    def __init__(self, cfg, rngs):
-        dim = cfg.emb_dim
-        self.pos = nnx.Param(jax.random.normal(rngs.params(), (1, cfg.history, dim), PDT))
-        self.blocks = nnx.List([ConditionalBlock(dim, cfg.pred_heads, cfg.pred_dim_head,
+    `Transformer` in the reference projects input/condition/output whenever the latent width
+    differs from the transformer width; the grid read-out below uses exactly that path.
+    """
+
+    def __init__(self, cfg, latent_dim, rngs):
+        width = cfg.pred_width or latent_dim
+        self.input_proj = nnx.Linear(latent_dim, width, rngs=rngs, **MP) if width != latent_dim else None
+        self.cond_proj = nnx.Linear(cfg.emb_dim, width, rngs=rngs, **MP) if width != cfg.emb_dim else None
+        self.output_proj = nnx.Linear(width, latent_dim, rngs=rngs, **MP) if width != latent_dim else None
+        self.pos = nnx.Param(jax.random.normal(rngs.params(), (1, cfg.history, latent_dim), PDT))
+        self.blocks = nnx.List([ConditionalBlock(width, cfg.pred_heads, cfg.pred_dim_head,
                                                  cfg.pred_mlp, rngs, cfg.dropout)
                                 for _ in range(cfg.pred_depth)])
-        self.norm = nnx.LayerNorm(dim, rngs=rngs, **NRM)
+        self.norm = nnx.LayerNorm(width, rngs=rngs, **NRM)
 
     def __call__(self, x, cond, train=False):
         h = x + self.pos[...][:, :x.shape[1]].astype(x.dtype)
+        if self.input_proj is not None:
+            h = self.input_proj(h)
+            cond = self.cond_proj(cond)
         for block in self.blocks:
             h = block(h, cond, train)
-        return self.norm(h)
+        h = self.norm(h)
+        return self.output_proj(h) if self.output_proj is not None else h
 
 
 class LeWM(nnx.Module):
+    """LeWM with either the reference class-token read-out or a patch-grid read-out."""
+
     def __init__(self, cfg, rngs):
+        self.grid = cfg.tokens > 1
+        self.latent_dim = cfg.tokens * cfg.token_dim if self.grid else cfg.emb_dim
+        head = cfg.token_dim if self.grid else cfg.emb_dim
+        hidden = cfg.token_hidden if self.grid else cfg.mlp_hidden
         self.encoder = ViT(cfg, rngs)
-        self.projector = MLP(cfg.emb_dim, cfg.mlp_hidden, cfg.emb_dim, rngs)
-        self.pred_proj = MLP(cfg.emb_dim, cfg.mlp_hidden, cfg.emb_dim, rngs)
+        self.projector = MLP(cfg.emb_dim, hidden, head, rngs)
+        self.pred_proj = MLP(head, hidden, head, rngs)
         self.action_encoder = Embedder(N_ACTIONS, cfg.action_bottleneck, cfg.emb_dim, rngs)
-        self.predictor = Predictor(cfg, rngs)
+        self.predictor = Predictor(cfg, self.latent_dim, rngs)
         self.history = cfg.history
 
     def tokens(self, frames_u8, train=False):
@@ -225,8 +246,9 @@ class LeWM(nnx.Module):
 
     def encode(self, frames_u8, train=False):
         b, t = frames_u8.shape[:2]
-        cls = self.tokens(frames_u8, train)[:, 0]
-        return self.projector(cls, train).reshape(b, t, -1).astype(PDT)
+        tokens = self.tokens(frames_u8, train)
+        read = tokens[:, 1:].reshape(-1, tokens.shape[-1]) if self.grid else tokens[:, 0]
+        return self.projector(read, train).reshape(b, t, self.latent_dim).astype(PDT)
 
     def act_embed(self, actions):
         onehot = jax.nn.one_hot(actions, N_ACTIONS, dtype=CDT)
@@ -234,7 +256,8 @@ class LeWM(nnx.Module):
 
     def predict(self, emb, act_emb, train=False):
         h = self.predictor(emb, act_emb, train)
-        flat = self.pred_proj(h.reshape(-1, h.shape[-1]), train)
+        head = self.pred_proj.fc1.in_features
+        flat = self.pred_proj(h.reshape(-1, head), train)
         return flat.reshape(emb.shape).astype(PDT)
 
 
@@ -352,7 +375,7 @@ def _restore(module, archive, prefix):
 def load_model(path=None):
     """Return (model, checkpoint metadata), with measured training seconds in 'train_s'."""
     if path is None:
-        raise ValueError("LeWM has no untrained baseline path; pass --model <checkpoint>")
+        return (None, None), {"train_s": 0.0}
     archive = np.load(path)
     meta = json.loads(str(archive["meta"]))
     cfg = Config(**{f.name: meta["cfg"][f.name] for f in fields(Config) if f.name in meta["cfg"]})
@@ -362,7 +385,8 @@ def load_model(path=None):
         from probe import Decoder
 
         spec = meta["decoder"]
-        decoder = _restore(Decoder(cfg.emb_dim, spec["hidden"], spec["depth"], rngs()), archive, "decoder")
+        decoder = _restore(Decoder(model.latent_dim, spec["hidden"], spec["depth"], rngs(),
+                                   spec.get("tokens", 1)), archive, "decoder")
     return (model, decoder), meta
 
 
@@ -394,8 +418,10 @@ def outgoing_actions(context_actions, actions):
 def rollout(model, context_frames, context_actions, actions, seed):
     """Return uint8 frames [B, T, ...], where T = actions.shape[1]."""
     model, decoder = model
+    if model is None:
+        return np.repeat(context_frames[:, -1:], actions.shape[1], axis=1)
     if decoder is None:
-        raise RuntimeError("this checkpoint has no pixel decoder; run probe.py --decoder first")
+        raise RuntimeError("this checkpoint has no pixel decoder; run probe.py on it first")
     horizon = actions.shape[1]
     _, preds = _rollout_latents(model, jnp.asarray(context_frames),
                                 outgoing_actions(context_actions, actions), horizon=horizon)

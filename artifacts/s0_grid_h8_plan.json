@@ -1,0 +1,33 @@
+{
+ "tag": "s0_grid_h8",
+ "offline": {
+  "windows": 256,
+  "horizon": 8,
+  "first_action_accuracy": 0.16796875,
+  "sequence_accuracy": 0.16552734375,
+  "chance": 0.058823529411764705,
+  "true_sequence_percentile_among_random": 0.20236968994140625,
+  "cost_plan": 0.22183403372764587,
+  "cost_true": 0.5266974568367004,
+  "cost_random": 1.1196954250335693
+ },
+ "craftax": {
+  "planned": {
+   "position_l1": 0.58984375,
+   "reached": 0.671875,
+   "pixel_mse": 473.8988952636719
+  },
+  "random": {
+   "position_l1": 1.85546875,
+   "reached": 0.12890625,
+   "pixel_mse": 1797.762939453125
+  },
+  "oracle": {
+   "position_l1": 0.0,
+   "reached": 1.0,
+   "pixel_mse": 0.0
+  },
+  "envs": 256,
+  "horizon": 8
+ }
+}

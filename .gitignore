@@ -11,3 +11,4 @@ gifs/
 *.pt
 *.pth
 *.safetensors
+!artifacts/

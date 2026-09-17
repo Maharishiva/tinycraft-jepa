@@ -1,0 +1,33 @@
+{
+ "tag": "s0_lr1e-3_h4",
+ "offline": {
+  "windows": 256,
+  "horizon": 4,
+  "first_action_accuracy": 0.1953125,
+  "sequence_accuracy": 0.201171875,
+  "chance": 0.058823529411764705,
+  "true_sequence_percentile_among_random": 0.3500518798828125,
+  "cost_plan": 0.0643809363245964,
+  "cost_true": 0.08592285960912704,
+  "cost_random": 0.16515225172042847
+ },
+ "craftax": {
+  "planned": {
+   "position_l1": 1.22265625,
+   "reached": 0.375,
+   "pixel_mse": 1182.1663818359375
+  },
+  "random": {
+   "position_l1": 1.1953125,
+   "reached": 0.25390625,
+   "pixel_mse": 1253.2728271484375
+  },
+  "oracle": {
+   "position_l1": 0.0,
+   "reached": 1.0,
+   "pixel_mse": 0.0
+  },
+  "envs": 256,
+  "horizon": 4
+ }
+}

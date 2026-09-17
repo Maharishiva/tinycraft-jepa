@@ -1,0 +1,33 @@
+{
+ "tag": "s0_lr1e-3_h8",
+ "offline": {
+  "windows": 256,
+  "horizon": 8,
+  "first_action_accuracy": 0.15625,
+  "sequence_accuracy": 0.15966796875,
+  "chance": 0.058823529411764705,
+  "true_sequence_percentile_among_random": 0.33681488037109375,
+  "cost_plan": 0.16537724435329437,
+  "cost_true": 0.22513119876384735,
+  "cost_random": 0.3356170952320099
+ },
+ "craftax": {
+  "planned": {
+   "position_l1": 1.79296875,
+   "reached": 0.21875,
+   "pixel_mse": 1681.6961669921875
+  },
+  "random": {
+   "position_l1": 1.85546875,
+   "reached": 0.12890625,
+   "pixel_mse": 1797.762939453125
+  },
+  "oracle": {
+   "position_l1": 0.0,
+   "reached": 1.0,
+   "pixel_mse": 0.0
+  },
+  "envs": 256,
+  "horizon": 8
+ }
+}
