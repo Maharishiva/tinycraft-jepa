@@ -22,6 +22,41 @@
   {
     "name": "flow_p1",
     "start_unix": 1789866336.1541507,
-    "status": "training"
+    "status": "complete",
+    "train_returncode": 0,
+    "final_policy_sha256": "ccaacbee5636ad76ecffe1859138280e641fb3950b2b4a42d196ddc4c4fa3259",
+    "eval_returncode": 0,
+    "native_summary_sha256": "5622427723d420cccae7bcfdc162cd9e9014a7ef249d703d336ead585806cb72",
+    "finish_unix": 1789868920.8160596
+  },
+  {
+    "name": "jepa_p1",
+    "start_unix": 1789868920.8178062,
+    "status": "complete",
+    "train_returncode": 0,
+    "final_policy_sha256": "9b4eb0b0eff617294ecd1a4db5a1da8e46dd457f758e358717cb36c7b20233c6",
+    "eval_returncode": 0,
+    "native_summary_sha256": "19a552f6678fbe6f6a591a4fa5206d9662070f3d9cb17e8689dd9327f6d084f6",
+    "finish_unix": 1789870564.3025615
+  },
+  {
+    "name": "flow_p2",
+    "start_unix": 1789870564.3041234,
+    "status": "complete",
+    "train_returncode": 0,
+    "final_policy_sha256": "732eee52e8343a8ee891c5ee152230e9809accec376f8548181da9be97ee1539",
+    "eval_returncode": 0,
+    "native_summary_sha256": "c992189ace992a35504fd79511c157d940777d168dcb1c9378e094ffa165a127",
+    "finish_unix": 1789873145.0970814
+  },
+  {
+    "name": "jepa_p2",
+    "start_unix": 1789873145.098601,
+    "status": "complete",
+    "train_returncode": 0,
+    "final_policy_sha256": "6ecd653df740ad219fc4c57d2d0389e6b046aedac36bf5fae241aeaa4a377aa7",
+    "eval_returncode": 0,
+    "native_summary_sha256": "9cba53167aebab7f6fa2d306fb30fd0a85811a39cbc5973c6250f2482c0329de",
+    "finish_unix": 1789874792.9236007
   }
 ]

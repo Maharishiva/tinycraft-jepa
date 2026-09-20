@@ -15,8 +15,9 @@ correct one-step mean need not compose into a multi-step mean. In a gate world w
 is revealed late, the JEPA's frozen latent supports $0.97$ survival when a policy is trained on
 real transitions through its own decoder, yet the same policy trained inside its imagination
 survives $0.02$ of the paired episodes, against $0.97$ inside a flow-matching model trained on the
-same data. In Craftax under matched data and training budgets, \pendingresult{tool-acquisition
-outcome, from the inventory campaign}.
+same data. In Craftax under matched data and training budgets, the same policy crafts a wooden
+pickaxe in 242 of 256 episodes for two of three seeds inside the flow model and in none inside the
+JEPA, whose reward head pays it thirty times what the game does.
 These results establish that avoiding representation collapse and accurately predicting latent
 states are insufficient for successful stochastic control: distributional dynamics repair the
 second mechanism only when the representation has survived the first.

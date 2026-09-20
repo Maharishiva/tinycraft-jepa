@@ -2,29 +2,23 @@
 \label{sec:worlds}
 
 \paragraph{The red-cube worlds.}
-A red $6\times6$ cube moves in a $63\times63$ RGB frame. Four actions move it three pixels left,
-up, right or down. Touching the border ends the episode with reward $-1$; all other rewards are
-zero and episodes are capped at 128 steps. The background is gray noise, either redrawn every frame
-(\emph{per-frame}) or drawn once per episode (\emph{persistent}). Optional \emph{wind} is a hidden
-two-dimensional random walk: each coordinate moves by $-1,0,+1$ with probabilities $0.1,0.8,0.1$,
-is clipped to $[-2,2]$ and is added to the action displacement. Wind is never observed, so even a
-perfect history leaves fresh uncertainty about the next position. Crossing the four gray conditions
-with deterministic or wind dynamics gives the matched study of Section~\ref{sec:representation}.
-
-The \emph{gate} world adds a wall that approaches the cube with a single opening at the top or the
-bottom, sampled at spawn and revealed only after a fixed delay. Surviving requires retreating,
-observing the opening and then committing. The solid part of the wall is common to both futures,
-so a model that keeps state but averages over the two openings should still show the wall; a model
-that loses the wall has lost state, not just resolved uncertainty in the wrong way.
+A red $6\times6$ cube moves in a $63\times63$ RGB frame; four actions move it three pixels.
+Touching the border ends the episode with reward $-1$; all other rewards are zero and episodes are
+capped at 128 steps. The background is gray noise, either redrawn every frame (\emph{per-frame})
+or drawn once per episode (\emph{persistent}). Optional \emph{wind} is a hidden two-dimensional
+random walk (each coordinate moves by $-1,0,+1$ with probabilities $0.1,0.8,0.1$, clipped to
+$[-2,2]$) added to the action displacement; it is never observed, so even a perfect history leaves
+fresh uncertainty about the next position. The \emph{gate} world adds a wall that approaches the
+cube with a single opening at the top or the bottom, sampled at spawn and revealed only after a
+fixed delay; surviving requires retreating, observing the opening and committing.
 
 \paragraph{The JEPA.}
 The encoder produces $z_t\in\R^{512}$ arranged as a $4\times4\times32$ grid; a factored
 spatial-temporal predictor conditions on eight past latents and actions. Encoder and predictor are
-trained jointly with Equation~\ref{eq:lewm}, $\lambda=0.09$, and nothing else. Each model sees
-500,000 uniformly random transitions for 8,500 updates, about ten minutes on one A100. Three
-independent model seeds are fitted in the matched nuisance study. Pixel decoders, position
-read-outs and reward or termination heads are fitted \emph{afterwards} on the frozen latent; their
-labels and compute are additional and are reported as such.
+trained jointly with Equation~\ref{eq:lewm}, $\lambda=0.09$, and nothing else, on 500,000
+uniformly random transitions for 8,500 updates, about ten minutes on one A100. Pixel decoders,
+position read-outs and reward or termination heads are fitted \emph{afterwards} on the frozen
+latent; their labels and compute are additional and reported as such.
 
 \paragraph{The distributional reference.}
 The flow recipe uses a reconstruction-trained tokenizer with the same $4\times4\times32$ latent
@@ -33,8 +27,7 @@ shape and a causal flow-matching predictor that \emph{samples} the next latent
 wall-clock budget with jointly fitted reward and termination heads. The recipes differ in more than
 deterministic versus sampled prediction: the flow tokenizer is supervised by reconstruction and its
 task heads send gradients into its dynamics trunk, whereas the JEPA is reward-free with post-hoc
-heads. Every JEPA-versus-flow gap in this paper is therefore a \emph{recipe} gap; we narrow it by
-refitting the JEPA heads on all 500,000 training labels and say so where we cannot.
+heads. Every JEPA-versus-flow gap in this paper is therefore a \emph{recipe} gap.
 
 \paragraph{Behavioral comparison contract.}
 Policies are compared through one interface: each family's frozen decoder renders its latents as
@@ -44,5 +37,4 @@ are shared across families and seeds; an episode is admitted by surviving a seve
 prefix, never by policy outcome. Before any imagination result is read, the same policy is trained
 on \emph{real} transitions seen through each decoder, so an interface failure cannot be mistaken
 for an imagination failure. Rewards and terminations in imagination come from each model's own
-heads; no simulator quantity enters training (Appendix~\ref{app:shared-cnn}). Complete settings
-for every world, including Craftax, are in Appendix~\ref{app:hparams}.
+heads; no simulator quantity enters training (Appendices~\ref{app:hparams} and~\ref{app:shared-cnn}).

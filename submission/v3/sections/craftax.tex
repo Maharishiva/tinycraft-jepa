@@ -3,21 +3,37 @@
 
 Craftax-Classic asks the same question at the scale of a game. Both world models are trained on
 the same 500,000-transition archive of uniformly random play under the same ten-minute budget, with
-the same $4\times4\times32$ latent shape. The same pixel CNN and GRU policy is then trained by PPO
-inside each model for five million imagined steps, from the same bank of real episode-start
-contexts, with rewards and terminations from each model's own heads and no behavior cloning,
-action masking or reward shaping. Each policy is evaluated in the real game on 256 episodes from a
-fixed seed. The primary endpoint is acquisition of a wooden pickaxe, a goal that needs a
-multi-step plan (collect wood, place a table, craft) and cannot be reached by staying alive or
-wandering; all 22 achievements, return and episode length are retained
-(Appendix~\ref{app:craftax}).
+the same $4\times4\times32$ latent shape; the same pixel CNN and GRU policy is trained by PPO
+inside each for five million imagined steps from the same bank of real episode starts, with
+rewards and terminations from each model's own heads and no behavior cloning, action masking or
+reward shaping, and evaluated in the real game on 256 episodes. The primary
+endpoint is a wooden pickaxe, which needs a multi-step plan (collect wood, place a table, craft) and
+cannot be reached by staying alive or wandering (Appendix~\ref{app:inventory}).
 
-\pendingresult{Insert the paired inventory-campaign outcomes: wood-pickaxe rate per policy seed for
-JEPA and flow, achievement count, return and length. Flow seed 0 so far: 242/256 pickaxes,
-6.04 achievements per episode. Then read the result against the two mechanisms: does the JEPA's
-imagination support the crafting sequence at all, and where does it fall short?}
+\begin{table}[t]
+\centering
+\caption{\textbf{Craftax-Classic, one pixel policy trained for five million imagined steps inside
+each model, 256 native episodes per policy.} Wood and table: fraction of episodes with the
+achievement; pickaxe: episodes ending with a wooden pickaxe. ``Imagined $r$'': mean reward per
+imagined step paid by the model's reward head at the last update; real play collects at most
+$0.03$ per step. State-blind rows use the identical evaluator.}
+\label{tab:inventory}
+\small
+\inputtable{inventory.tex}
+\end{table}
 
-The same 512-dimensional JEPA supports short-horizon goal-directed movement in Craftax when the
-goal is an image a few actions away (open-loop latent planning reaches $93\%$ of nearby targets
-against $17\%$ for random actions; Appendix~\ref{app:craftax}). Local state is there. What the
-inventory task measures is whether imagination from that state can carry a plan.
+Inside the flow model the policy learns the crafting chain: every seed collects wood in every
+episode and places a table in over $90\%$, and two of three seeds craft the pickaxe in 242 of 256
+episodes; the third, with the seed spread seen in the cube worlds, crafts it in 15
+(Table~\ref{tab:inventory}). Inside the JEPA no seed crafts a pickaxe or places a table, wood is
+collected in $22\%$, $4\%$ and $2\%$ of episodes, and the achievement count ($0.27$, $0.07$,
+$0.02$) falls below uniformly random play ($2.34$) to the level of the no-op policy. These
+policies learned what their training environment paid for: the JEPA's reward head paid $0.90$ to
+$1.00$ per imagined step, thirty times what the best real policy collects, for behavior the game
+rewards at $-0.005$ per step, while the flow's heads paid $0.03$ to $0.06$, the rate of real play.
+The cube worlds showed two routes to such a decoupling, a predictor whose outputs leave the region
+where the heads were fitted and a mean rollout that averages away the state; this campaign does not
+separate them. The same JEPA supports short-horizon goal-directed movement when the goal is an
+image a few actions away ($93\%$ of nearby targets reached by open-loop latent planning against
+$17\%$ for random actions; Appendix~\ref{app:craftax}). Local state is there; a plan imagined from
+it is not.

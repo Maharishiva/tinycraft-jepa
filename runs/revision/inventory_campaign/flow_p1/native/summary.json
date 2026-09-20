@@ -1,0 +1,352 @@
+{
+  "episodes": 256,
+  "primary_endpoint": "MAKE_WOOD_PICKAXE",
+  "primary": {
+    "n": 256,
+    "successes": 15,
+    "rate": 0.05859375,
+    "wilson_95": [
+      0.03582660763317509,
+      0.09441226561778955
+    ]
+  },
+  "four_tool_success": {
+    "MAKE_WOOD_PICKAXE": {
+      "n": 256,
+      "successes": 15,
+      "rate": 0.05859375,
+      "wilson_95": [
+        0.03582660763317509,
+        0.09441226561778955
+      ]
+    },
+    "MAKE_STONE_PICKAXE": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    },
+    "MAKE_WOOD_SWORD": {
+      "n": 256,
+      "successes": 12,
+      "rate": 0.046875,
+      "wilson_95": [
+        0.027014851001628076,
+        0.0801330188843179
+      ]
+    },
+    "MAKE_STONE_SWORD": {
+      "n": 256,
+      "successes": 1,
+      "rate": 0.00390625,
+      "wilson_95": [
+        0.0006898821669617927,
+        0.021790975380582514
+      ]
+    }
+  },
+  "four_tool_count": {
+    "n": 256,
+    "mean": 0.109375,
+    "sd": 0.3805955086131083,
+    "sem": 0.02378721928831927
+  },
+  "all_four_tools": {
+    "n": 256,
+    "successes": 0,
+    "rate": 0.0,
+    "wilson_95": [
+      0.0,
+      0.01478385642587143
+    ]
+  },
+  "all_22_achievement_rates": {
+    "COLLECT_WOOD": {
+      "n": 256,
+      "successes": 255,
+      "rate": 0.99609375,
+      "wilson_95": [
+        0.9782090246194175,
+        0.9993101178330381
+      ]
+    },
+    "PLACE_TABLE": {
+      "n": 256,
+      "successes": 232,
+      "rate": 0.90625,
+      "wilson_95": [
+        0.8642979648370562,
+        0.9361901518169232
+      ]
+    },
+    "EAT_COW": {
+      "n": 256,
+      "successes": 41,
+      "rate": 0.16015625,
+      "wilson_95": [
+        0.12030547683153675,
+        0.21005542558292273
+      ]
+    },
+    "COLLECT_SAPLING": {
+      "n": 256,
+      "successes": 141,
+      "rate": 0.55078125,
+      "wilson_95": [
+        0.4895457648520954,
+        0.6105152497296519
+      ]
+    },
+    "COLLECT_DRINK": {
+      "n": 256,
+      "successes": 213,
+      "rate": 0.83203125,
+      "wilson_95": [
+        0.7814036577580846,
+        0.8728414375841101
+      ]
+    },
+    "MAKE_WOOD_PICKAXE": {
+      "n": 256,
+      "successes": 15,
+      "rate": 0.05859375,
+      "wilson_95": [
+        0.03582660763317509,
+        0.09441226561778955
+      ]
+    },
+    "MAKE_WOOD_SWORD": {
+      "n": 256,
+      "successes": 12,
+      "rate": 0.046875,
+      "wilson_95": [
+        0.027014851001628076,
+        0.0801330188843179
+      ]
+    },
+    "PLACE_PLANT": {
+      "n": 256,
+      "successes": 102,
+      "rate": 0.3984375,
+      "wilson_95": [
+        0.3403930035879241,
+        0.459484967248581
+      ]
+    },
+    "DEFEAT_ZOMBIE": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    },
+    "COLLECT_STONE": {
+      "n": 256,
+      "successes": 2,
+      "rate": 0.0078125,
+      "wilson_95": [
+        0.002145090367681419,
+        0.028032768301535768
+      ]
+    },
+    "PLACE_STONE": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    },
+    "EAT_PLANT": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    },
+    "DEFEAT_SKELETON": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    },
+    "MAKE_STONE_PICKAXE": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    },
+    "MAKE_STONE_SWORD": {
+      "n": 256,
+      "successes": 1,
+      "rate": 0.00390625,
+      "wilson_95": [
+        0.0006898821669617927,
+        0.021790975380582514
+      ]
+    },
+    "WAKE_UP": {
+      "n": 256,
+      "successes": 2,
+      "rate": 0.0078125,
+      "wilson_95": [
+        0.002145090367681419,
+        0.028032768301535768
+      ]
+    },
+    "PLACE_FURNACE": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    },
+    "COLLECT_COAL": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    },
+    "COLLECT_IRON": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    },
+    "COLLECT_DIAMOND": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    },
+    "MAKE_IRON_PICKAXE": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    },
+    "MAKE_IRON_SWORD": {
+      "n": 256,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        0.0,
+        0.01478385642587143
+      ]
+    }
+  },
+  "native_return": {
+    "n": 256,
+    "mean": 3.0332031113503035,
+    "sd": 1.248069526307668,
+    "sem": 0.07800434539422925
+  },
+  "executed_steps": {
+    "n": 256,
+    "mean": 167.109375,
+    "sd": 66.25876005717075,
+    "sem": 4.141172503573172
+  },
+  "achievement_count": {
+    "n": 256,
+    "mean": 3.96875,
+    "sd": 1.2645234706572819,
+    "sem": 0.07903271691608012
+  },
+  "survived_endpoint": {
+    "n": 256,
+    "successes": 0,
+    "rate": 0.0,
+    "wilson_95": [
+      0.0,
+      0.01478385642587143
+    ]
+  },
+  "native_done": {
+    "n": 256,
+    "successes": 256,
+    "rate": 1.0,
+    "wilson_95": [
+      0.9852161435741286,
+      0.9999999999999999
+    ]
+  },
+  "native_time_limit": {
+    "n": 256,
+    "successes": 0,
+    "rate": 0.0,
+    "wilson_95": [
+      0.0,
+      0.01478385642587143
+    ]
+  },
+  "evaluator_truncated": {
+    "n": 256,
+    "successes": 0,
+    "rate": 0.0,
+    "wilson_95": [
+      0.0,
+      0.01478385642587143
+    ]
+  },
+  "achievement_rate_geometric_aggregate": 2.7846688125406254,
+  "achievement_rate_geometric_aggregate_formula": "exp(mean_j(log(1+100*mean_episode(A_j))))-1",
+  "mean_native_terminal_info_score": 1.3819645643234253,
+  "native_return_identity_max_abs_error": 3.576278650996301e-08,
+  "uncertainty_scope": "Across evaluation episodes for one fixed trained policy; not model-seed replication",
+  "status": "complete",
+  "reportable": true,
+  "policy_checkpoint_sha256": "ccaacbee5636ad76ecffe1859138280e641fb3950b2b4a42d196ddc4c4fa3259",
+  "checkpoint_meta": {
+    "cond": "none",
+    "arm": "inventory_wm_ppo",
+    "family": "flow",
+    "model_seed": 0,
+    "policy_seed": 1,
+    "iter": 781,
+    "env_steps": 4998400,
+    "budget_complete": true,
+    "smoke": false,
+    "world_model_sha256": "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+    "reset_bank_sha256": "f0d20ddb488a21a309a01db72efbd99360d304e38d98c972fc843571fd3073f5",
+    "model_sha256": "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+    "initial_actor_sha256": "441689f209380868fb4aba53ed41d70ba6d70cb65a022dfb536662de5125be3c"
+  },
+  "eval_seed": 123,
+  "horizon": 10000,
+  "elapsed_seconds": 41.72145438194275,
+  "artifacts_sha256": {
+    "provenance.json": "b92539872607370d2aa0e76bd2a004cb10835d51f0aeef3d1ec6581c3d4a3d68",
+    "episodes_raw.npz": "37c7a36939ebb8a59a7a73a72fd85ad589337378e92b888874fec77bc690cca5",
+    "episodes.jsonl": "51ed41237a6a2bbc0433ae5c25ca6c22aa8a464a74fbb99bb69543f199d66bd5",
+    "first_acquisition_steps.npy": "a284b3e825d2a08e142864fd6b6d5735ba113f37861b1d91f1cccbd60f22a635"
+  }
+}

@@ -1,33 +1,24 @@
 \section{Discussion}
 \label{sec:discussion}
 
-\paragraph{Two mechanisms, two places to look.}
-The representation mechanism shows up before any rollout: a position read-out on \emph{real}
-encodings fails, decoded real frames lose the cube, and no change to the predictor or planner can
-bring it back. The planning mechanism shows up only after the state has been kept: the gate latent
-supports control from real transitions but its imagination does not. A failed imagination policy
-should first be assigned to one of the two, because the remedies are disjoint: changing what the
-encoder is asked to keep addresses the first; distributional or value-aware prediction addresses the
-second.
-
-\paragraph{What the flow reference does and does not show.}
-The flow model differs from the JEPA in supervision stage as well as in sampling, so its advantage
-is a recipe-level result. The ordering claim survives the caveat: a sampled predictor cannot restore
-a state the encoder never kept, and where the JEPA held the state the remaining gap is the kind
-sampling addresses. Generative modeling is not claimed to be necessary; for a quadratic goal cost a
-mean and a variance suffice, and value-equivalent models can carry the needed expectations directly.
+\paragraph{Two mechanisms, two remedies.}
+The representation mechanism shows up before any rollout, in a read-out on \emph{real} encodings,
+and no change to the predictor or planner can bring the state back; the planning mechanism shows up
+only after the state has been kept. Changing what the encoder is asked to keep addresses the first;
+distributional or value-aware prediction addresses the second, and generative modeling is not
+claimed to be necessary: for a quadratic goal cost a mean and a variance suffice.
 
 \paragraph{Boundaries.}
-The per-frame-noise-plus-wind failure has high prediction loss and is not the zero-loss nuisance
-optimum of Proposition~\ref{prop:representation}, which explains why non-collapse cannot protect
-the state, not which finite-budget model drops it. Every behavioral result rests on one fitted model
-per family and world, the gate JEPA on a preselected seed, and every decoded-latent result on a
-supervised decoder. The worlds are small by design; Craftax shows the consequence at the scale of a
-game under a fixed ten-minute budget, not at scale.
+The flow model differs from the JEPA in supervision stage as well as in sampling, so its advantage
+is a recipe-level result; the ordering claim survives, since a sampled predictor cannot restore a
+state the encoder never kept. The per-frame-noise-plus-wind failure has high prediction loss and is
+not the zero-loss optimum of Proposition~\ref{prop:representation}, which explains why non-collapse
+cannot protect the state, not which finite-budget model drops it. Every behavioral result rests on
+one fitted model per family and world, the gate JEPA on a preselected seed, and every decoded-latent
+result on a supervised decoder.
 
 \paragraph{Outlook.}
 General world models need a principle for choosing what to keep, and predictability is not it.
-The results here argue for objectives that price the controlled state's innovations as
-information to model rather than as loss to avoid, and for evaluating a learned world model at
-three separate points: what its representation retains, what its predictions preserve, and what a
-policy trained inside it can do.
+The results argue for objectives that price the controlled state's innovations as information to
+model rather than loss to avoid, and for evaluating a world model at three points: what its
+representation retains, what its predictions preserve, and what a policy trained inside it can do.

@@ -25,17 +25,14 @@ the \emph{easier} background: $0.115\pm0.012$ pixels against $0.764\pm0.068$ for
 (Table~\ref{tab:cube-main}, Figure~\ref{fig:cube-readout}). Adding wind flips the ordering and
 breaks one cell outright. Under persistent noise the read-out still localizes the cube to
 $0.668\pm0.049$ pixels; under per-frame noise it fails at $21.33\pm0.06$ pixels, an error larger
-than the cube is wide in every seed, with almost no seed-to-seed spread. The failure is already
-present in the encodings of real frames, before any prediction is made: decoded real encodings from
-a failing model show a gray field with at most a faint trace of the cube, and its predicted future
-is not a scene at all, while the flow model trained on the same data keeps the cube in both
-(Figure~\ref{fig:wind-filmstrip}). The eight-step prediction column tells the same story one step
-later: where the state was kept, prediction error grows with the horizon as the wind's uncertainty
-accumulates; where it was dropped, prediction has nothing left to lose.
+than the cube is wide in every seed. The failure is already present in the encodings of real
+frames, before any prediction is made: decoded real encodings from a failing model show a gray
+field with at most a faint trace of the cube, and its predicted future is not a scene at all, while
+the flow model trained on the same data keeps the cube in both (Figure~\ref{fig:wind-filmstrip}).
 
 \begin{figure}[t]
 \centering
-\paperfig{gray_frame_wind_filmstrip.png}{0.76}
+\paperfig{gray_frame_wind_filmstrip.png}{0.7}
 \caption{\textbf{Per-frame noise plus wind: the JEPA no longer encodes the cube.} Recorded future
 under the recorded actions; the JEPA's decoded encodings of those real frames; the JEPA's decoded
 rollout; the flow model's decoded encodings and one sampled future. First eligible episode of the
@@ -47,7 +44,7 @@ is recoverable from the frozen latent, not what the model was trained to produce
 
 \begin{figure}[t]
 \centering
-\paperfig{imagined_termination.pdf}{1.0}
+\paperfig{imagined_termination.pdf}{0.92}
 \caption{\textbf{What each model's imagination tells a policy about dying.} Each frozen model is
 rolled forward from 256 real contexts under the recorded (uniformly random) actions and its own
 termination head is read on its own predicted latents; the curve is the implied probability that the
@@ -70,7 +67,7 @@ prediction loss stays high, about $0.733$ per coordinate, SIGReg is satisfied an
 from degenerate. The objective found no cheap substitute for the state; it stopped paying for the
 state once paying no longer bought predictability. Why persistent noise protects the cube under the
 same wind the theory does not decide; the matched design establishes that it does, in all three
-seeds, and that the protection is an interaction between nuisance and dynamics.
+seeds.
 
 \paragraph{The state is encoded through the target.}
 A second intervention isolates where the incentive acts. In the per-frame conditions we refit
@@ -86,12 +83,11 @@ effect of that gradient path. Detaching the target, the natural first repair, do
 \begin{table}[t]
 \centering
 \caption{\textbf{One pixel policy, four worlds, two imaginations.} Survival and control length
-(of 121 possible steps) of the stock Impala-CNN and GRU policy over 256 paired evaluation
-episodes, mean $\pm$ sample standard deviation over three policy seeds. ``Imagined $r$'' is the
-reward per step that the model paid the policy at its last training update; the true reward is
-never positive. ``Real'' rows train on real transitions seen through each model's decoder. Two
-state-blind rules run through the same evaluator give the scale: left--right alternation survives
-the still world in every episode, and both rules survive no episode of the wind worlds or the gate,
+(of 121 possible steps) over 256 paired evaluation episodes, mean $\pm$ sample standard deviation
+over three policy seeds. ``Imagined $r$'': reward per step paid by the model at the last training
+update; the true reward is never positive. ``Real'' rows train on real transitions seen through
+each model's decoder. State-blind rules through the same evaluator: left--right alternation survives
+the still world in every episode; both rules survive no episode of the wind worlds or the gate,
 lasting 17--18 and 24 control steps (Appendix~\ref{app:shared-cnn}).}
 \label{tab:shared-cnn}
 \small
@@ -117,7 +113,6 @@ the cube and the failure changes character: JEPA policies outlast the blind rule
 steps) but survive only $0.02\pm0.01$ of episodes, against $0.891$, $0.207$ and $0.137$ for the
 flow, and the deterministic rollout that trained them is optimistic rather than dead, keeping $0.40$
 of imagined episodes alive at 48 steps where $0.008$ of recorded ones are: the hidden wind averaged
-away, the subject of the next section. One column deserves notice: in the still world the JEPA's
-imagined reward climbs to $+0.15$ per step although the true reward is never positive. The policy
-is farming the refitted reward head while it survives; the signature returns, much larger, in
-Craftax.
+away, the subject of the next section. In the still world the JEPA's imagined reward reaches
+$+0.15$ per step though the true reward is never positive: the policy farms the refitted reward
+head, a signature that returns, much larger, in Craftax.

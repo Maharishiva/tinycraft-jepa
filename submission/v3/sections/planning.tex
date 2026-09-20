@@ -1,19 +1,18 @@
 \section{Mechanism 2 in the gate world: a kept state that imagination cannot use}
 \label{sec:planning}
 
-The gate world is built so that mechanism 1 is off the table. The background is black, the wall is
-large and slow, and the only uncertainty is which opening will be revealed. A model that keeps the
-state must show the approaching wall; a model that averages over the two openings should still show
-the shared solid part. Figure~\ref{fig:gate-filmstrip} shows what the grid JEPA does with a pre-reveal
-context: decoded encodings of the \emph{real} future keep the wall and its opening at every step,
-and the predictor's own rollout deletes the wall from the first predicted step, in all three
-encoder seeds (Appendix~\ref{app:historical-gate}). The flow model's sampled rollout keeps the wall
-and commits to one opening. This is the visible signature of the second mechanism: the state was
-there, and the mean-trained predictor did not carry it forward.
+The gate world is built so that mechanism 1 is off the table: the background is black, the wall is
+large and slow, and the only uncertainty is which opening will be revealed. A model that averages
+over the two openings should still show the shared solid part. Figure~\ref{fig:gate-filmstrip}
+shows what the grid JEPA does with a pre-reveal context: decoded encodings of the \emph{real}
+future keep the wall and its opening at every step, and the predictor's own rollout deletes the
+wall from the first predicted step, in all three encoder seeds; the flow model's sampled rollout
+keeps the wall and commits to one opening. The state was there, and the mean-trained predictor did
+not carry it forward.
 
 \begin{figure}[t]
 \centering
-\paperfig{gate_s1_filmstrip.png}{0.76}
+\paperfig{gate_s1_filmstrip.png}{0.65}
 \caption{\textbf{The wall survives encoding and dies in prediction.} From one pre-reveal context
 and the recorded actions: the simulator; the JEPA's decoded encodings of the real future; the
 JEPA's decoded rollout; the flow model's decoded encodings and one sampled future. JEPA model
@@ -33,16 +32,15 @@ model's own decoder, with the same PPO, 150 updates of 512 rollouts of 48 steps,
 seeds, final checkpoints and 256 evaluation episodes on shared keys (Section~\ref{sec:worlds}).
 The JEPA encoder is model seed 1, the seed on which decoded-latent control had succeeded during
 development, and the flow model is one dynamics checkpoint; both facts limit the claim to these
-fitted models. The JEPA's reward and termination heads are refitted on all 500,000 training labels
-so that head supervision is count-matched to the flow recipe.
+fitted models. The JEPA's heads are refitted on all 500,000 training labels, count-matched to the
+flow recipe.
 
 \paragraph{Interface qualification.}
 Trained on real transitions seen through the JEPA's decoder, all three policy seeds solve the gate:
 survival $0.977$, $0.980$ and $0.945$, passing $3.9$ of a possible four walls per episode
-(Table~\ref{tab:shared-cnn}, ``real'' rows). The JEPA latent, read by a supervised decoder, carries
-everything the task needs, and the policy and optimizer can learn the wait-and-commit strategy from
-it. Through the flow decoder two seeds solve it ($0.957$, $0.953$) and one does not ($0.516$): the
-flow interface qualifies but is less stable.
+(Table~\ref{tab:shared-cnn}, ``real'' rows): the latent carries what the task needs, and the policy
+can learn the wait-and-commit strategy from it. Through the flow decoder two seeds solve it
+($0.957$, $0.953$) and one does not ($0.516$): the flow interface qualifies but is less stable.
 
 \paragraph{Imagination.}
 The same policy trained inside the JEPA's imagination, with the same budget and evaluated on the
@@ -57,13 +55,6 @@ episodes and passes $3.92\pm0.06$ walls, matching its decoded-real controls. Two
 reading: the latent fed to the policy in imagination is the one that supported $0.97$ survival from
 real transitions, so the deficit is in the predictor's rollout, not the encoder or the interface;
 and the flow recipe differs in supervision stage as well as in sampling, so the gap is a recipe gap.
-What the comparison establishes is the ordering the paper is about: the state was kept, and a
-mean-trained predictor applied to its own outputs did not carry it forward.
-
-\paragraph{What the historical record adds.}
-Across the earlier, unmatched protocols, none of 27 policies trained inside the JEPA's imagination
-discovered the gate strategy, including nine that used a sampling head fitted on the predictor's
-residual and nine that averaged eight of its samples, while policies trained on real transitions
-through the same frozen encoders did; the flow reference's historical success was a single policy
-of six (Appendix~\ref{app:historical-gate}). Both facts are why this section rests on the matched
-comparison rather than on those tables.
+The earlier, unmatched protocols agree: none of 27 policies trained inside the JEPA's imagination discovered the gate
+strategy, including nine that used a sampling head fitted on the predictor's residual and nine that
+averaged eight of its samples (Appendix~\ref{app:historical-gate}).

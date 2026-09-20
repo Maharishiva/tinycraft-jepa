@@ -56,7 +56,7 @@ this; the omitted variance is exactly the missing quantity.
 
 \begin{figure}[t]
 \centering
-\paperfig{redcube_concepts_paper.pdf}{1.0}
+\paperfig{redcube_concepts_paper.pdf}{0.86}
 \caption{\textbf{A correct one-step mean can still give a wrong decision and a wrong rollout.}
 Left: the mean of action A sits on the goal although every outcome of A is farther from it than
 B's deterministic outcome. Right: for $X_{t+1}=X_t^2+\xi_t$ with fair $\xi_t\in\{-1,+1\}$ and
@@ -82,8 +82,6 @@ A model that predicts expected costs or values directly can keep the needed expe
 samples \citep{wan2019expectation,grimm2021proper}; for the quadratic cost in
 Equation~\ref{eq:variance-cost} a mean plus one scalar variance per action suffices. A
 distributional world model, such as a flow-matching predictor that samples $Z'$, is the more general
-repair: it keeps distinct outcomes and averages their costs. Neither repair touches mechanism 1. If
+repair: it keeps distinct outcomes and averages their costs. Neither repair touches mechanism 1: if
 the encoder has already dropped the state, a perfect distribution over the remaining features is a
-perfect distribution over nothing useful. This ordering is the paper's central prediction, and
-Sections~\ref{sec:planning} and~\ref{sec:craftax} test it with a flow model trained on the same
-data and budget as the JEPA.
+perfect distribution over nothing useful. This ordering is the paper's central prediction.

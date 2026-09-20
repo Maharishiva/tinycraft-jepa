@@ -5,38 +5,31 @@
 Joint-embedding prediction avoids reconstructing observable detail
 \citep{assran2023ijepa,bardes2024vjepa}. LeWorldModel jointly learns encoder and action-conditioned
 predictor with a squared loss and a Gaussian regularizer \citep{maes2026lewm,balestriero2025lejepa}
-and is the recipe we study. DINO-WM and V-JEPA~2 predict on frozen pretrained features
-\citep{zhou2024dinowm,assran2025vjepa2}; PLDM learns the representation jointly with additional
-regularizers \citep{sobal2025pldm}. \citet{sobal2022slow} study action-conditioned moving objects with
-fixed or changing distractors and identify the predictable-nuisance failure that our
-Proposition~\ref{prop:representation} specializes to the Gaussian-regularized objective. Our matched
-study adds fresh, unobservable innovations in the controlled state and finds that the effect of
-nuisance persistence reverses under them; this is a boundary in a different recipe, not a
-contradiction of their findings. \citet{gulati2026contrast} examine slow-noise bias in contrastive
-learning.
-
-\paragraph{Prediction versus planning geometry.}
-LeWorldModel itself reports accurate probes alongside weaker planning. Temporal-Distance JEPA and
-RC-aux add temporal or reachability structure, and physically grounded variants add task-state
-supervision \citep{bai2026temporal,li2026rcaux,yan2026psgjepa,liu2026physicallygrounded};
-\citet{terver2026planning} study planner and architecture choices and note multimodal conditional
-means. Our exact examples isolate the decision consequences of scoring at a mean and of composing
-mean transitions, independent of any architecture.
+and is the recipe we study; DINO-WM and V-JEPA~2 predict on frozen pretrained features
+\citep{zhou2024dinowm,assran2025vjepa2}, and PLDM learns the representation jointly with additional
+regularizers \citep{sobal2025pldm}. \citet{sobal2022slow} identify the predictable-nuisance failure
+that Proposition~\ref{prop:representation} specializes to the Gaussian-regularized objective; our
+matched study adds fresh innovations in the controlled state and finds that the effect of nuisance
+persistence reverses under them, a boundary in a different recipe rather than a contradiction.
+LeWorldModel itself reports accurate probes alongside weaker planning; Temporal-Distance JEPA,
+RC-aux and physically grounded variants add temporal, reachability or task-state structure
+\citep{bai2026temporal,li2026rcaux,yan2026psgjepa,liu2026physicallygrounded}, and
+\citet{terver2026planning} note multimodal conditional means. Our exact examples isolate the
+decision consequences of scoring at a mean and of composing mean transitions.
 
 \paragraph{Generative and distributional imagination.}
 Generative world models have supported control in imagination
 \citep{hafner2020dreamer,alonso2024diamond,hafner2025dreamer4} and also exhibit perception,
-action-conditioning and rollout failures \citep{hansen2026hallucination}. FlowWM learns stochastic
-feature-space futures without actions and reports no control \citep{porcher2026flowwm}. Our flow
-reference is action-conditioned, trained on the JEPA's data and budget, and compared through a
-shared policy so that behavior, not video quality, is the endpoint.
+action-conditioning and rollout failures \citep{hansen2026hallucination}; FlowWM learns stochastic
+feature-space futures without actions \citep{porcher2026flowwm}. Our flow reference is
+action-conditioned, trained on the JEPA's data and budget, and compared through a shared policy so
+that behavior, not video quality, is the endpoint.
 
 \paragraph{Objective mismatch and value equivalence.}
 That a model good for prediction need not be good for control is longstanding
 \citep{lambert2020objective}. Value-aware model learning, expectation models and (proper) value
 equivalence fit the quantities a decision class needs
 \citep{farahmand2017vaml,wan2019expectation,grimm2020value,grimm2021proper}; TD-JEPA predicts
-policy-conditioned successor features \citep{bagatella2026tdjepa}. These are the reason our
-mean-state examples are not impossibility results for deterministic world models: a model can keep
-expectations without keeping samples, provided the representation still carries the state those
-expectations depend on.
+policy-conditioned successor features \citep{bagatella2026tdjepa}. They are why our mean-state
+examples are not impossibility results for deterministic world models, provided the representation
+still carries the state.

@@ -4,26 +4,25 @@
 A world model is supposed to discard what does not matter. Joint-embedding predictive architectures
 (JEPAs) make this a learning problem: an encoder and a predictor are trained together so that the
 predictor forecasts the encoder's own next output, and nothing in the objective asks for pixels
-back \citep{lecun2022path,assran2023ijepa,bardes2024vjepa,maes2026lewm}. The promise for physical
-intelligence is a compact, reusable description of the world, free of texture and lighting. The
-difficulty is that the same objective decides two things at once: \emph{what} to encode and
-\emph{how} to predict it. We show that in stochastic worlds it can decide both against the
-controller, for two reasons that are independent of each other and fail in different places.
+back \citep{lecun2022path,assran2023ijepa,bardes2024vjepa,maes2026lewm}. The promise is a compact,
+reusable description of the world, free of texture and lighting. The difficulty is that the same
+objective decides two things at once: \emph{what} to encode and \emph{how} to predict it. We show
+that in stochastic worlds it can decide both against the controller, for two independent reasons
+that fail in different places.
 
 The first reason is representational. Squared next-embedding error is minimized by keeping
 predictable features and dropping unpredictable ones. A background fixed for an episode is
-perfectly predictable even if the object that the agent controls is ignored
-\citep{sobal2022slow}. Less obviously, the controlled object itself becomes the unpredictable part
-as soon as its dynamics carry fresh innovations that no history reveals. The objective then has a
-reason to \emph{learn to ignore what matters}, and it does so without collapsing: the latent stays
-non-degenerate, the Gaussian regularizer is satisfied and the prediction loss is low.
+perfectly predictable even if the object the agent controls is ignored \citep{sobal2022slow}; less
+obviously, the controlled object itself becomes the unpredictable part as soon as its dynamics
+carry fresh innovations that no history reveals. The objective then has a reason to \emph{learn to
+ignore what matters}, and it does so without collapsing.
 
-The second reason is predictive. A squared loss produces the conditional mean of the next latent.
-Two exact calculations show what a planner loses by working with that mean even when it is correct.
-An action whose outcomes straddle the goal has its mean exactly on the goal, so a planner scoring
-the mean prefers it to an action that reliably lands close. And an exact one-step mean, applied
-recursively, need not equal the multi-step mean whenever the dynamics are nonlinear. Neither
-failure is an optimization failure, and no better estimate of the same mean repairs it.
+The second reason is predictive. A squared loss produces the conditional mean of the next latent,
+and two exact calculations show what a planner loses by working with that mean even when it is
+correct: an action whose outcomes straddle the goal has its mean exactly on the goal, so a planner
+scoring means prefers it to an action that reliably lands close; and an exact one-step mean,
+applied recursively, need not equal the multi-step mean when the dynamics are nonlinear. Neither
+is an optimization failure, and no better estimate of the same mean repairs it.
 
 We make both mechanisms measurable in a deliberately small visual world: one red cube, four
 movement actions, a background redrawn every frame or held for the episode, and optional hidden
@@ -43,12 +42,13 @@ frozen JEPA latent, read through its own decoder, supports $0.97$ survival when 
 trained on real transitions; the same network, budget and evaluation keys inside the JEPA's
 imagination give $0.02$, and inside a flow-matching model trained on the same data $0.97$
 (Section~\ref{sec:planning}).
-\item \textbf{The consequence survives outside the toy.} In Craftax, under matched data and
-training budgets and a shared pixel policy, \pendingresult{state the inventory-campaign outcome}
+\item \textbf{The consequence survives outside the toy.} In Craftax, under matched data, budget
+and policy, imagination inside the flow model yields a policy that crafts a wooden pickaxe in 242
+of 256 episodes for two of three seeds; imagination inside the JEPA yields policies below uniformly
+random play, paid $0.9$ to $1.0$ reward per imagined step by a head the game contradicts
 (Section~\ref{sec:craftax}).
 \end{enumerate}
-Section~\ref{sec:mechanisms} gives the two mechanisms with their exact examples and the Gaussian
-nuisance construction that makes the first one precise. The conclusion is not that JEPAs cannot
-model stochastic worlds; it is that avoiding representation collapse and predicting latents
-accurately are insufficient for stochastic control, and that fixing the predictor helps only if the
-representation has kept the state in the first place.
+The conclusion is not that JEPAs cannot model stochastic worlds; it is that avoiding
+representation collapse and predicting latents accurately are insufficient for stochastic control,
+and that fixing the predictor helps only if the representation has kept the state in the first
+place.
