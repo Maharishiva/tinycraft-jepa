@@ -131,6 +131,14 @@ def matrix(a):
     return jobs
 
 
+def validate_config(job, cfg, manifest):
+    for name, value in cfg["source_sha256"].items():
+        if manifest["source_sha256"].get(name) != value:
+            raise ValueError(f"external job used different frozen source: {name}")
+    if cfg["data_sha256"] != manifest["input_sha256"][job["data"]]:
+        raise ValueError("external job used different training data")
+
+
 def validate_external(job, argv, config, manifest):
     argv = [v.decode() for v in argv if v]
     if "--smoke" in argv:
@@ -148,12 +156,28 @@ def validate_external(job, argv, config, manifest):
         if not equal:
             raise ValueError(f"adopted process differs from registered {flag}: {actual}")
     if config.exists():
-        cfg = read(config)
-        for name, value in cfg["source_sha256"].items():
-            if manifest["source_sha256"].get(name) != value:
-                raise ValueError(f"external job used different frozen source: {name}")
-        if cfg["data_sha256"] != manifest["input_sha256"][job["data"]]:
-            raise ValueError("external job used different training data")
+        validate_config(job, read(config), manifest)
+
+
+def validate_completed(job, out, manifest):
+    """A job finished by hand before registration is adopted only if its own records match the registered job."""
+    good, result = final_result(job)
+    if not good:
+        raise FileExistsError(f"undeclared existing job output: {out}")
+    cfg = read(out / "config.json")
+    args = cfg["args"]
+    if args["smoke"]:
+        raise ValueError("cannot adopt a timing smoke as a scientific job")
+    expected = {"config": job["world"], "family": job["family"], "train_source": job["train_source"],
+                "policy_seed": job["policy_seed"], "updates": job["updates"], "batch": 512, "hor": 48}
+    for key, value in expected.items():
+        if args[key] != value:
+            raise ValueError(f"completed job differs from registered {key}: {args[key]}")
+    for key, value in {"model": job["model"], "data": job["data"], "out": job["out"], "eval_packet": job["packet"]}.items():
+        if Path(args[key]).resolve() != Path(value).resolve():
+            raise ValueError(f"completed job differs from registered {key}: {args[key]}")
+    validate_config(job, cfg, manifest)
+    return result
 
 
 def prepare(a):
@@ -181,7 +205,11 @@ def prepare(a):
         for j in jobs:
             out = Path(j["out"])
             if out.exists() and any(out.iterdir()) and j["id"] not in external:
-                raise FileExistsError(f"undeclared existing job output: {out}")
+                result = validate_completed(j, out, dict(source_sha256=fixed_sources, input_sha256=inputs))
+                states[j["id"]] = dict(status="complete", adopted_completed_utc=now(), final=result,
+                                        log=str(out.with_suffix(".log")), returncode=None,
+                                        exit_observation="completed by hand before registration; adopted from its own final.json and config.json")
+                continue
             if j["id"] in external:
                 # Adoption must precede its final scientific outcome.
                 if (out / "final.json").exists():
