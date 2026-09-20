@@ -84,6 +84,15 @@ Every training script in `studies/revision/` refuses budgets other than the regi
 `--smoke` is passed, writes `config.json` with model, data and source hashes, and evaluates only the
 final checkpoint.
 
+### Tests
+
+CPU only, no data needed (commands and coverage in `AUDIT.md`, section 7):
+
+```bash
+JAX_PLATFORMS=cpu python -m unittest studies.revision.test_inventory_eval studies.revision.test_warm_context_eval studies.revision.test_inventory_jepa studies.revision.test_inventory_queue
+JAX_PLATFORMS=cpu python -m pytest tests/ studies/revision/test_target_gradient.py
+```
+
 ### Machine-specific defaults
 
 These are defaults, all overridable:

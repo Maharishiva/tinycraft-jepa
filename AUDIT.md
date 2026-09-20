@@ -144,3 +144,25 @@ python -m studies.revision.analyze_matched --root runs/revision/matched
 ```
 
 Retraining anything means using the budgets above; the scripts refuse other values without `--smoke`.
+
+## 7. Tests
+
+The harness ships CPU-only tests in two styles. Run on 2026-09-20 on the e2e VM with
+`JAX_PLATFORMS=cpu`: 30 unittest cases passed with 1 skipped, and all 14 function-style tests
+passed, once the mirror had every file the provenance hashes refer to (the target-gradient test
+hashes `studies/stoch/train_arms.sh` and fails with a missing-file error otherwise).
+
+```bash
+export JAX_PLATFORMS=cpu
+python -m unittest studies.revision.test_inventory_eval studies.revision.test_inventory_queue \
+    studies.revision.test_inventory_flow_numpy studies.revision.test_inventory_numerical_review \
+    studies.revision.test_warm_context_eval studies.revision.test_inventory_jepa
+python -m pytest tests/test_port.py studies/revision/test_target_gradient.py tests/test_target_gradient_probe.py
+```
+
+What the tests cover: the paired evaluation packet and its admission rule; the native Craftax
+aggregation invariants (monotone achievements, telescoping reward identity, no post-terminal
+updates); the JEPA and flow inventory adapters; the fixed policy-training matrix; SIGReg against the
+reference implementation and predictor causality; and that the detached-target trainer reproduces
+the original trainer bit for bit in joint mode. They do not cover the original `studies/stoch`
+drivers.
