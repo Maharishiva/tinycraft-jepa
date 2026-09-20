@@ -35,7 +35,10 @@ leaning on an aggregate game score. The main empirical findings are:
 per-frame background noise gives the more accurate position read-out ($0.115$ versus $0.764$
 pixels). With hidden wind the ordering flips and the per-frame model loses the cube altogether
 ($21.33$ versus $0.668$ pixels). Architecture, latent dimension, data, updates and three model
-seeds are matched (Section~\ref{sec:representation}).
+seeds are matched. A pixel policy trained inside the failing model's imagination dies in every
+evaluation episode, sooner than a blind random walk, because the model's own termination head
+reads death on every latent its predictor produces; the same policy inside a flow model trained on
+the same data survives $0.13$ to $0.95$ of the episodes (Section~\ref{sec:representation}).
 \item \textbf{A latent that holds the state can still fail imagination.} In the gate world the
 frozen JEPA latent, read through its own decoder, supports survival when the policy is trained on
 real transitions; policies trained inside the JEPA's imagination with the same network, budget and

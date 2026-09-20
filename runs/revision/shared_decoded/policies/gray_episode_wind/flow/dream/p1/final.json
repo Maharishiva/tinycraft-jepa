@@ -1,0 +1,26 @@
+{
+  "family": "flow",
+  "world": "gray_episode_wind",
+  "train_source": "dream",
+  "policy_seed": 1,
+  "smoke": false,
+  "updates": 50,
+  "budget_complete": true,
+  "nominal_positions": 1228800,
+  "optimizer_steps": 2400,
+  "training_seconds": 419.0774862766266,
+  "total_seconds": 453.4804136753082,
+  "metrics": {
+    "return": -0.79296875,
+    "survival": 0.20703125,
+    "total_length": 76.18359375,
+    "control_length": 69.18359375,
+    "walls_passed": 0.0,
+    "n_ep": 256
+  },
+  "eval_packet_fingerprint": "0a24fb7642c59273237bb3c4d03521e05744656f381582603f5bc3237294ceb9",
+  "model_sha256": {
+    "model": "761e7d539cba00a0bb423320da1d8e212eda3e279b5b572e6a0d318f98e4be15"
+  },
+  "policy_sha256": "b134c475b212572e9014cc2f98b8244a6b99cb95d273d0284840e98ff75251ac"
+}

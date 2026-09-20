@@ -94,9 +94,40 @@ standard deviation over three model seeds; each seed pair shares initialization 
 \inputtable{target_gradient.tex}
 \end{table}
 
+\begin{table}[t]
+\centering
+\caption{\textbf{One pixel policy, four worlds, two imaginations.} Survival and control length
+(of 121 possible steps) of the stock Impala-CNN and GRU policy over 256 paired evaluation
+episodes, mean $\pm$ sample standard deviation over three policy seeds. ``Imagined $r$'' is the
+reward per step that the model paid the policy at its last training update; the true reward is
+never positive. ``Real'' rows train on real transitions seen through each model's decoder. Two
+state-blind rules run through the same evaluator give the scale
+(Appendix~\ref{app:shared-cnn}).}
+\label{tab:shared-cnn}
+\small
+\inputtable{shared_cnn.tex}
+\end{table}
+
 \paragraph{Behavioral consequence.}
-A policy that cannot see the cube cannot steer it. \pendingresult{Insert the shared-CNN outcomes
-for the three cube worlds (per-frame still, per-frame wind, persistent wind) from the running
-campaign: survival and control length for JEPA and flow imagination, three policy seeds each,
-paired keys. State the interface qualification. Appendix~\ref{app:cubes} keeps the single-run
-survival audit across all six cube worlds.}
+A policy that cannot see the cube cannot steer it, and a policy trained inside a model that cannot
+see the cube fares worse than one that does not look. Table~\ref{tab:shared-cnn} trains one stock
+pixel policy by PPO inside each model's imagination, fed by the model's own decoder, for 50 updates
+and three policy seeds, and evaluates it on 256 paired episodes (protocol in
+Section~\ref{sec:worlds}). In the per-frame still world both imaginations produce policies near
+the ceiling set by blind alternation, so survival there certifies nothing. In the per-frame wind
+world every JEPA policy dies in every episode after $12.5\pm3.1$ steps of control, fewer than a
+uniformly random walk (17.4) or blind alternation (18.2) last; the flow policies trained on the same
+data survive $0.945$, $0.129$ and $0.652$ of the episodes, better than their paired JEPA seed each
+time, with a seed spread that the 50-update budget does not close. Figure~\ref{fig:imagined-termination}
+shows what the JEPA policy was trained on: its termination head, which tracks the recorded rate on
+encoder latents, reads $0.91$ on every latent the predictor produces, so an imagined episode ends
+within two steps whatever the policy does and the gradient carries no information about actions.
+The trained policy is arbitrary, and an arbitrary but consistent action bias reaches the boundary
+faster than chance. Under persistent noise the encoder keeps the cube and the failure changes
+character: JEPA policies now outlast the blind rules ($26.8\pm8.7$ steps) but still survive only
+$0.02\pm0.01$ of episodes, against $0.891$, $0.207$ and $0.137$ for the flow, and the deterministic
+rollout that trained them is optimistic rather than dead, keeping $0.40$ of imagined episodes alive at
+48 steps where $0.008$ of recorded ones are. That is the averaging of the hidden wind, the subject
+of the next section. One more column deserves notice: in the still world the JEPA's imagined reward
+climbs to $+0.15$ per step although the true reward is never positive. The policy is farming the
+refitted reward head while it survives; the same signature returns, much larger, in Craftax.
