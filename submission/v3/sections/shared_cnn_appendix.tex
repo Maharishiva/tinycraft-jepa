@@ -56,3 +56,23 @@ imagination path and the evaluation path for every checkpoint (context versus si
 encoding, 256- and 512-frame batches, head-cache encoding); unchanged frozen-state hashes; exact
 gate-state reconstruction; shared initial-context and evaluation-packet fingerprints. Two-update
 smokes per family and path supplied wall-clock estimates used only for scheduling.
+
+\paragraph{State-blind reference rows.}
+Two rules that never read an observation are run through the same paired evaluator on the same
+packets: uniform random actions, and strict left--right alternation, which is the trivial survival
+strategy of the still worlds. They calibrate the survival numbers of Table~\ref{tab:shared-cnn}.
+Alternation survives the per-frame still world in every episode; both rules survive no episode of
+either wind world or of the gate, with control lengths of 17--18 steps in the wind worlds and about
+24 in the gate. A trained policy whose control length falls below these values is steering into the
+boundary faster than chance.
+
+\paragraph{Imagined termination probe.}
+To separate what the policy learns from what its training environment shows it, each frozen model
+is rolled forward for 48 steps from 256 uniformly sampled real eight-frame contexts under the
+recorded actions (the data policy is uniform random), and its own termination head is read on two
+inputs: the model's predicted latent, exactly as in imagination, and the encoder latent of the real
+frame at the same step. The recorded termination labels give the ground truth. Nothing is trained
+and the adapters are byte-identical to those of the campaign. Figure~\ref{fig:imagined-termination}
+plots the implied probability that an imagined episode is still alive after $k$ steps against the
+recorded survival. Per-step outputs, including latent distances between predicted and encoder
+latents, are stored with the campaign results.

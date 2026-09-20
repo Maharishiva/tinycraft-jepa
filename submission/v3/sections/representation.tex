@@ -49,12 +49,18 @@ is recoverable from the frozen latent, not what the model was trained to produce
 
 \begin{figure}[t]
 \centering
-\paperfig{readout_by_seed.pdf}{1.0}
-\caption{\textbf{Same objective, same architecture, same data: the cube is kept or lost depending
-on how the nuisance and the dynamics interact.} Each marker is one fitted model; bars are
-three-model means. A failed read-out does not prove that no decoder could recover the position;
-it shows that the fixed diagnostic that succeeds in three cells fails in the fourth.}
-\label{fig:cube-readout}
+\paperfig{imagined_termination.pdf}{1.0}
+\caption{\textbf{What each model's imagination tells a policy about dying.} Each frozen model is
+rolled forward from 256 real contexts under the recorded (uniformly random) actions and its own
+termination head is read on its own predicted latents; the curve is the implied probability that the
+imagined episode is still alive after $k$ steps, against the recorded survival of the same episodes
+(dashed). In the per-frame-noise wind world the JEPA head reads a $0.91$ termination probability on
+every predicted latent from the first imagined step, while on encoder latents of the real frames it
+tracks the recorded rate ($0.03$--$0.06$); the model has no state left for the head to read, so
+imagination ends in two steps whatever the action. Under persistent noise the JEPA keeps the cube
+and its deterministic rollout is optimistic instead: the hidden wind's excursions are averaged away
+(Appendix~\ref{app:shared-cnn}).}
+\label{fig:imagined-termination}
 \end{figure}
 
 \paragraph{Why this is mechanism 1.}

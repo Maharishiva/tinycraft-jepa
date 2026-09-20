@@ -209,7 +209,15 @@ and the first 512 for position diagnostics; exact sampled indices were not retai
 result files. Surviving windows are a selected subset of wind trajectories, so these errors do not
 establish death prediction or closed-loop control.
 
-
+\begin{figure}[t]
+\centering
+\paperfig{readout_by_seed.pdf}{1.0}
+\caption{\textbf{Same objective, same architecture, same data: the cube is kept or lost depending
+on how the nuisance and the dynamics interact.} Each marker is one fitted model; bars are
+three-model means. A failed read-out does not prove that no decoder could recover the position;
+it shows that the fixed diagnostic that succeeds in three cells fails in the fourth.}
+\label{fig:cube-readout}
+\end{figure}
 
 \begin{table}[t]
 \centering
