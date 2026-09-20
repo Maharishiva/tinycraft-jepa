@@ -1,0 +1,302 @@
+\section{Proofs}
+\label{app:proofs}
+
+Proposition~\ref{prop:representation} is proved in Section~\ref{sec:theory}.
+
+\paragraph{Corollary~\ref{cor:strict}.}
+\begin{proof}
+Put $Z=f(x_{t+1})$ and $\mathcal C_t=\sigma(z_{\le t},a_{\le t})$.
+Because observations and latents are measurable functions of state and nuisance, $\mathcal C_t\subseteq\mathcal H_t$.
+Any predictor using a shorter window is also $\mathcal C_t$-measurable.
+Conditional least squares and the tower property give
+\begin{align*}
+\E\|g-Z\|^2
+&\ge\E\|Z-\E[Z\mid\mathcal C_t]\|^2\\
+&=\E\|Z-\E[Z\mid\mathcal H_t]\|^2
+ +\E\|\E[Z\mid\mathcal H_t]-\E[Z\mid\mathcal C_t]\|^2\\
+&\ge\E\tr\Cov(Z\mid\mathcal H_t).
+\end{align*}
+The cross term vanishes because its first factor has conditional mean zero given $\mathcal H_t$.
+Take conditionally independent copies $P,P'$ of $p_{t+1}$ given $\mathcal H_t$.
+Such copies exist for Euclidean state spaces, using their regular conditional distributions.
+The nuisance $b$ and current state $p_t$ are fixed under this conditioning.
+The conditional independent-copy variance identity yields
+\begin{align*}
+\tr\Cov(Z\mid\mathcal H_t)
+&=\tfrac12\E[\|f(R(P,b))-f(R(P',b))\|^2\mid\mathcal H_t]\\
+&\ge\tfrac{\kappa^2}{2}\E[\|P-P'\|^2\mid\mathcal H_t]\\
+&=\kappa^2\tr\Cov(p_{t+1}\mid\mathcal H_t)
+=\kappa^2\tr\Sigma_t.
+\end{align*}
+The final equality follows because $p_t+\mu(a_t)$ is $\mathcal H_t$-measurable.
+Taking expectations proves Equation~\ref{eq:innovation}.
+Averaging these inequalities gives the corresponding bound for a multi-time prediction objective.
+Proposition~\ref{prop:representation} supplies the zero-loss comparator when its assumptions also hold.
+\end{proof}
+
+\paragraph{Lemma~\ref{lem:mean}.}
+\begin{proof}
+Let $m=\E[z'\mid c,a]$.
+For every square-integrable measurable $g(c,a)$, expand $g-z'=(g-m)+(m-z')$.
+The cross term has expectation zero since $\E[m-z'\mid c,a]=0$.
+Hence
+\[
+\E\|g-z'\|^2=\E\|g-m\|^2+\E\tr\Cov(z'\mid c,a).
+\]
+The second term does not depend on $g$.
+The first is nonnegative and vanishes exactly when $g=m$ almost surely.
+\end{proof}
+
+\paragraph{The innovation bound.} Corollary~\ref{cor:strict} states
+\begin{equation}
+\label{eq:innovation}
+\E\|g(z_{\le t},a_{\le t})-f(x_{t+1})\|^2
+\ge \kappa^2\E\tr\Sigma_t .
+\end{equation}
+
+\paragraph{The finite-sample regularizer.}
+The finite-sample regularizer differs from Equation~\ref{eq:popsigreg}.
+For independent identically distributed samples with characteristic function $\phi$ and empirical estimate $\widehat\phi_n$,
+\begin{equation}
+\E|\widehat\phi_n(t)-w(t)|^2
+=|\phi(t)-w(t)|^2+\frac{1-|\phi(t)|^2}{n}.
+\end{equation}
+Indeed, $\E\widehat\phi_n=\phi$ and $\E|\widehat\phi_n-\phi|^2=(1-|\phi|^2)/n$, since each complex exponential has modulus one; expanding around $\phi$ gives the identity.
+At a Gaussian law, the residual equals $(1-e^{-t^2})/n$.
+This is estimator bias, not an optimization floor.
+Changing the law changes both terms; dependent temporal samples introduce additional covariance terms.
+Finite projections and knots also do not characterize Gaussianity.
+
+
+\paragraph{Proposition~\ref{prop:amplitude}.}
+\begin{proof}
+Partition $\R$ into $I_j=[2\varepsilon j,2\varepsilon(j+1))$, $j\in\mathbb Z$.
+Let $q_j=\Pr(G\in I_j)$ for $G\sim\Nrm(0,1)$.
+Every $q_j$ is positive and their sum is one.
+Let $F_j$ be the conditional Gaussian distribution function on $I_j$, with inverse quantile function $Q_j$ on $(0,1)$.
+The conditional CDF is continuous and strictly increasing on the interval interior, so its inverse is measurable and takes values in that interior.
+
+Draw $J$ with probabilities $q_j$, $U\sim\mathrm{Uniform}(0,1)$, and $V\sim\Nrm(0,I_{D-1})$, independently.
+Set $b=(J,U,V)$; for $D=1$, omit $V$.
+Take $R(p,b)=(p,b)$ and define
+\begin{equation}
+f_\varepsilon(R(p,b))=\big(Q_J((U+p)/2),V\big).
+\end{equation}
+The mixture $(U+p_t)/2$ is uniform on $(0,1)$, since $p_t$ is an independent fair bit.
+Conditional on $J=j$, the first coordinate therefore has the Gaussian law restricted to $I_j$.
+Mixing with weights $q_j$ recovers $\Nrm(0,1)$.
+Independence of $V$ gives the joint law $\Nrm(0,I_D)$ and zero population regularizer.
+
+Given the first coordinate $y$, its interval determines $J$ almost surely.
+Write $v=F_J(y)$.
+Then $p_t=\mathbf1\{v>1/2\}$ and $U=2v-p_t$ almost surely; the other coordinates recover $V$.
+Thus the latent recovers both state and nuisance.
+For fixed $b$, the two first coordinates are distinct and lie inside the same interval of width $2\varepsilon$.
+All remaining coordinates agree, proving the distance bound.
+
+Latent history reveals $b$, while the next bit remains independent and fair.
+The next latent consequently has two equiprobable values, say $z^{(0)}(b)$ and $z^{(1)}(b)$.
+Lemma~\ref{lem:mean} gives $m(b)=(z^{(0)}(b)+z^{(1)}(b))/2$.
+Its conditional squared error is $\|z^{(1)}(b)-z^{(0)}(b)\|^2/4$, strictly positive and bounded by $\varepsilon^2$.
+The midpoint is square-integrable by Jensen's inequality, since both state encodings have finite second moments.
+Taking expectations proves the loss bound, including strict positivity since the conditional error is positive almost surely.
+The midpoint depends only on $b$, so it is independent of $p_{t+1}$.
+Finally, decoding the current bit permits $a_t=p_t$.
+A state-blind action is independent of the current fair bit, giving success probability $1/2$.
+\end{proof}
+
+
+\section{The cube worlds}
+\label{app:cubes}
+
+The cube worlds remove the gate wall and cross black, per-frame random and per-episode random
+backgrounds with still or hidden-wind dynamics. The class-token JEPA's near-zero prediction loss
+on per-episode texture is consistent with retaining predictable nuisance rather than controlled
+state, as in Proposition~\ref{prop:representation}; finite textures do not meet its exact Gaussian
+realizability assumption. Table~\ref{tab:cube} retains the original survival outcomes for context.
+Still-world survival need not require state feedback. These supplementary worlds do not extend the
+scope of the gate comparison or identify its failure mechanism.
+
+\begin{table}[ht]
+\centering
+\caption{Survival (percent) in the supplementary cube worlds. ``LeWM'' denotes the class-token JEPA;
+``grid'' denotes the grid JEPA; ``goal'' and ``heads'' use latent-goal and learned-return search,
+respectively. PPO columns use the final saved policies; ``px'' and ``z'' identify pixel and latent
+observations. Still-world survival does not certify state feedback.}
+\label{tab:cube}
+\inputtable{cube.tex}
+\end{table}
+
+\section{Hyperparameters and compute}
+\label{app:hparams}
+
+Each world supplies $500{,}000$ uniform-random transitions. Model training uses bfloat16 compute,
+float32 parameters, and one A100. A $500$-step calibration estimates the training length fitting
+$575$ seconds including compilation; the grid gate model trains for $8{,}500$ steps ($17{,}000$ and $34{,}000$ in the budget sentence of Section~\ref{sec:results}), the class-token cube models for $23{,}750$--$24{,}000$.
+Model seeds $0$, $1$, $2$ of the grid JEPA differ only in the initialisation and data-order seed.
+
+\paragraph{JEPA settings.}
+Both arms use batch $128$ and AdamW with learning rate and weight decay $10^{-3}$, $10\%$ warm-up
+followed by cosine decay to zero, and gradient clipping at $1.0$. SIGReg uses weight $0.09$, $17$
+knots on $[0,3]$, and $1024$ random projections. Neither arm uses a stop-gradient, teacher, decoder, or
+reward during world-model fitting.
+
+\begin{center}
+{\small
+\begin{tabular}{lll}
+\toprule
+& class-token JEPA (\texttt{lewm6}) & grid JEPA (\texttt{tile\_factored}) \\
+\midrule
+encoder            & ViT, $7\times7$ patches           & tile transformer $+$ strided conv \\
+width / depth / heads & $192$ / $6$ / $3$              & $128$ / $6$ / $8$ \\
+encoder MLP        & $768$                              & $4\times$ width \\
+read-out           & class token                        & $4\times4$ grid, $32$ channels \\
+latent dimension   & $192$                              & $512$ \\
+projector          & linear-BN-GELU-linear, $2048$      & same, hidden $512$ \\
+predictor          & AdaLN-zero autoregressive          & spatial then causal temporal \\
+predictor depth / heads / head dim & $6$ / $16$ / $64$  & $6$ / $8$ / $32$ \\
+predictor MLP / width & $2048$ / latent                 & $2\times$ width / $256$ \\
+history            & $3$ frames                         & $8$ frames \\
+dropout            & $0.1$                              & $0$ \\
+parameters         & $15.3$M                            & $2.6$M $+$ $8.3$M \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\paragraph{Flow settings.}
+The tokenizer uses $9{,}000$ steps, batch $256$, and learning rate $9\times10^{-4}$; dynamics
+$16{,}000$ steps, batch $64$, the same learning rate, width $256$, six layers, eight spatial and
+temporal attention heads, a $32$-frame context, independent per-frame noise levels, a shortcut loss of
+weight $0.25$ every fourth step after the first quarter of training, history dropout $0.25$, two
+history frames resampled every eight steps after half of training, and a temporal loss weight of
+$0.25$. The symlog reward head has $255$ bins over $[-20,20]$; reward and termination losses have
+weight $0.1$ and enter the trunk at full strength for half of training, then at factor $0.1$.
+Inference uses four function evaluations per frame. We corrected terminal-transition masking in the
+recipe's reward loss (Appendix~\ref{app:rewardbug}).
+
+\paragraph{JEPA read-outs.}
+Post-hoc heads use the frozen encoder and $80{,}000$ frames from a different behaviour-policy seed,
+with the last $200$ time rows held out. The pixel decoder uses $8{,}000$ steps, batch $256$, learning
+rate $10^{-3}$, width $256$, six residual blocks; it supports the figures and the decoded-latent control, in which its frozen output, clipped to $[0,255]$, replaces the pixels of the real-gate PPO; no true pixel enters that policy after the encoder. Reward,
+termination, and behaviour-value heads are two-layer perceptrons of width $512$ on the latent and the
+one-hot action, $6{,}000$ steps, batch $1024$, learning rate $10^{-3}$, Monte Carlo value targets at
+discount $0.99$, value loss weight $0.1$. The residual predictor models $z_{t+1}-m$ with
+$m=g(z_{t-7:t},a_{t-7:t})$ the original grid prediction, conditioned on $m$, $z_t$, and the action:
+three residual blocks of width $1024$, $8{,}000$ steps, batch $2048$, $74$ seconds, four function
+evaluations per sample. On $20{,}000$ held-out windows the original predictor's squared error is
+$3.07\times10^{-4}$, one residual sample $2.05\times10^{-4}$, the mean of eight $1.32\times10^{-4}$.
+
+\paragraph{Policy optimisation.}
+PPO uses discount $0.99$, GAE parameter $0.9$, clipping $0.2$, value coefficient $0.5$, entropy
+coefficient $0.01$, AdamW at $2.5\times10^{-4}$ with weight decay $0.01$, four epochs per batch, and
+gradient clipping at $1.0$. Pixels pass through a three-block Impala torso, latents through a two-layer
+perceptron; a GRU receives that embedding and the previous action; the critic uses $64$ categorical
+bins with histogram-Gaussian targets. Real-environment PPO uses $128$ environments and $64$ steps per
+iteration with four minibatch groups, truncated backpropagation over $16$ steps, and $1.5$M
+environment steps. In-model PPO uses $150$ updates of $512$ trajectories of $16$ steps ($1.2$M
+imagined steps) with minibatch size $128$; half of the starts are resets, half dataset states with
+their real eight-frame context. All reported policy rows use final checkpoints.
+
+\paragraph{Compute.} Logged training times on a shared A100: grid JEPA training $573$ s ($8{,}500$
+steps; $1{,}074$ and $3{,}802$ s for the $17{,}000$- and $34{,}000$-step fits); probe and heads $3$
+min; residual predictor $74$ s; PPO inside the JEPA $2.0$--$4.3$ min per run; PPO inside the flow model
+$5$--$6$ min per run at four function evaluations, $20$--$26$ min with the mean of eight; PPO in the real environment $3.7$--$7.7$ min on pixels with the convolutional torso and $51$--$70$ s with the MLP torso, $76$--$78$ s on the frozen latent, $4.7$--$4.8$ min on the decoded latent with the convolutional torso and $1.8$--$2.9$ min with the MLP torso; the latent diagnostic of Figure~\ref{fig:geometry}: $2$ min.
+
+\section{Evaluation protocol}
+\label{app:protocol}
+
+Every gate-policy endpoint uses the final checkpoint and $256$ real episodes from reset, with the
+$128$-step cap. Survival is the fraction reaching the cap. Walls passed counts walls leaving the
+frame while the agent remains alive. Discovery is final survival strictly above $50\%$.
+The same evaluation harness shares environment random keys across arms. Policy seeds are separate
+runs conditional on a fitted model; independently fitted encoders provide a different replication
+level. The flow model has only one checkpoint. Reported means weight policy runs equally;
+standard deviations describe variation across those runs, not uncertainty across model families.
+
+\paragraph{Latent diagnostic.} For each encoder, the diagnostic uses $64$ real contexts with the
+wall still solid at $x\in\{42,45\}$. Reconstructed simulator states generate recorded futures and
+matched wall-free futures under the recorded actions. The recorded branch survives the diagnostic
+horizon by construction. At each step, wall amplitude is the squared Euclidean distance between
+encodings of the wall-present and wall-absent frames. The teacher-forced residual uses real encoded
+history and is a total squared error, summed over latent coordinates.
+The wall coordinate of a prediction is its projection onto the wall-present minus wall-absent
+latent difference, with endpoints $0$ and $1$. Decoded wall intensity averages the minimum colour
+channel on shared wall pixels, excluding either possible gap band. These measurements compare
+features within one encoder; raw distances across models are not an information metric.
+
+\section{Latent-policy torso controls}
+\label{app:latentctl}
+
+The MLP on decoded latents passes $0.92$ walls per episode with no discoveries in six runs
+(Table~\ref{tab:latentctl}), using encoders $0$ and $1$. The decoded CNN control instead uses all
+three encoders, with three policies per encoder. Both of its discoveries use encoder $1$.
+The decoder is frozen and reconstruction-supervised; success therefore establishes useful encoded
+information under this added read-out, not sufficiency of the unsupervised training objective.
+Failure of the true-pixel MLP recipe establishes no upper bound on MLP capacity.
+
+\begin{table}[ht]
+\centering
+\caption{Real-gate observation and torso controls: final walls per episode and survival, mean
+$\pm$ standard deviation over policies; discovery means final survival above $50\%$.
+All policies use $1{,}499{,}136$ real transitions.}
+\label{tab:latentctl}
+\inputtable{latentctl.tex}
+\end{table}
+
+\setcounter{topnumber}{4}
+\setcounter{totalnumber}{5}
+\section{Control outcomes and latent diagnostics}
+\label{app:round2}
+
+Table~\ref{tab:paired} gives aggregate final outcomes; Table~\ref{tab:seeds} lists every
+imagined JEPA policy. The pooled imagined JEPA mean weights all original, sampled-residual and
+mean-residual runs equally. The flow rows distinguish six sampled policies from three policies
+using a mean of eight, all sharing the same model fit. They do not estimate variation across
+independent flow-model fits. Tables~\ref{tab:seeddiag} and \ref{tab:latent} retain the encoder
+and geometry diagnostics supporting the gate observations.
+
+\begin{table}[ht]
+\centering
+\caption{Final control outcomes in the real gate, mean $\pm$ standard deviation over policy runs.
+Imagined training uses $1{,}228{,}800$ transitions per policy; real training uses $1{,}499{,}136$.
+Model-fit counts and policy-run counts identify distinct replication levels.}
+\label{tab:paired}
+\inputtable{paired.tex}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Every imagined JEPA policy at its final checkpoint: survival (percent) and walls per
+episode by encoder seed, predictor variant and PPO seed. Each cell uses $256$ real episodes.}
+\label{tab:seeds}
+\inputtable{seeds.tex}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Grid-JEPA diagnostics by encoder seed. Wall amplitude and total teacher-forced residual
+are squared distances at future steps $1$ and $8$; decoded intensity uses steps $1$ and $2$.
+The wall coordinate has endpoints $0$ (wall absent) and $1$ (true encoding).
+Head AUC compares each death cause with alive transitions; PPO wall counts pool predictor variants.}
+\label{tab:seeddiag}
+\inputtable{seeddiag.tex}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{JEPA geometry and decoded wall intensity for model seed $0$, averaged over $64$
+pre-reveal contexts. Distances use matched actions and the same encoder; total residuals include
+all latent coordinates. Wall intensity is measured on shared wall pixels.}
+\label{tab:latent}
+\inputtable{latent.tex}
+\end{table}
+
+\section{Terminal rewards in the flow recipe}
+\label{app:rewardbug}
+
+The original recipe masks transitions entering reset frames out of reward training. Here the only
+nonzero reward occurs on terminal transitions, so that mask removes the reward signal.
+The corrected head predicts the next reward from the current frame summary and action with
+terminal transitions retained in its loss. The reported flow-policy outcomes use this corrected
+convention. The single-checkpoint reference therefore denotes the complete tokenizer, dynamics,
+reward and termination package, rather than an isolated change in transition stochasticity.

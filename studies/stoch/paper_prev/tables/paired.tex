@@ -1,0 +1,20 @@
+\begin{tabular}{lrrrrr}
+\toprule
+controller & model seeds & policies & walls passed & survival (\%) & discovered \\
+\midrule
+grid JEPA, original predictor & 3 & 9 & 0.27$\pm$0.22 & 0$\pm$1 & 0/9 \\
+grid JEPA, residual head, mean of 8 & 3 & 9 & 0.26$\pm$0.30 & 1$\pm$1 & 0/9 \\
+grid JEPA, residual head, one sample & 3 & 9 & 0.26$\pm$0.32 & 1$\pm$1 & 0/9 \\
+flow model, mean of 8 samples & 1 & 3 & 0.88$\pm$0.14 & 3$\pm$1 & 0/3 \\
+flow model, one sample & 1 & 6 & 1.45$\pm$1.23 & 19$\pm$39 & 1/6 \\
+simulator, exhaustive search $h=5$ (no terminal value) & -- & -- & 0.69 & 1 & -- \\
+simulator, exhaustive search $h=8$ (no terminal value) & -- & -- & 1.03 & 1 & -- \\
+random & -- & -- & 0.06 & 0 & -- \\
+state-blind alternating & -- & -- & 0.02 & 0 & -- \\
+centre controller (true state) & -- & -- & 0.00 & 0 & -- \\
+PPO in the real gate, pixels, CNN torso & -- & 3 & 2.91$\pm$1.65 & 65$\pm$52 & 2/3 \\
+PPO in the real gate, pixels, MLP torso (latent policy class) & -- & 3 & 0.91$\pm$0.08 & 4$\pm$2 & 0/3 \\
+PPO in the real gate, frozen JEPA latent, MLP torso & 3 & 9 & 0.94$\pm$0.04 & 4$\pm$1 & 0/9 \\
+PPO in the real gate, decoded JEPA latent, CNN torso & 3 & 9 & 1.57$\pm$1.26 & 22$\pm$37 & 2/9 \\
+\bottomrule
+\end{tabular}

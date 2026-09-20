@@ -1,0 +1,94 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Real-transition training outperforms the imagination pipeline}
+\label{sec:results-ppo}
+
+With MLP torsos, real-transition training on the frozen JEPA encoders passes $0.94$ walls per episode
+across nine runs, against $0.27$ across the $27$ imagined-training runs
+(Figure~\ref{fig:contrast}; Appendix~\ref{app:round2}). This $0.67$-wall deficit belongs to the tested
+imagination-and-training pipeline: dynamics, fitted heads and PPO protocol change together.
+None of the imagined policies discovers the strategy; their maximum final survival is $3.1\%$.
+The real frozen-latent policies also do not discover it, and their wall counts do not establish that
+they use wall information.
+
+True-pixel MLP policies pass $0.91$ walls per episode in three runs without discovery. This control
+prevents attributing the frozen-latent MLP outcome to missing encoded information; it establishes
+neither a representational ceiling nor a capacity ceiling for the MLP class. In the flow reference,
+eight of nine policies pass $0.72$--$1.18$ walls and one passes $3.95$.
+All share one dynamics checkpoint, so policy replication does not establish family-level superiority.
+Training the gate JEPA for twice and four times the steps, $17{,}000$ and $34{,}000$, leaves in-model
+PPO at $0$--$3\%$ survival (model seed $0$, policy seed $0$, each predictor variant).
+
+\begin{figure}[t]
+\centering
+\renewcommand{\figureheight}{1.50in}
+\paperfig{contrast.pdf}{1.0}
+\caption{\textbf{The primary control contrast.} Final walls passed per real episode, with one dot per
+policy and a horizontal mean marker. All groups use MLP torsos: imagined JEPA ($27$ policies),
+real frozen latent ($9$), real pixels ($3$), and imagined flow ($9$, one checkpoint).
+Marker shape identifies the JEPA encoder seed; the JEPA group pools its three predictor variants (original, residual sample, residual mean of eight) and the flow group its two sampling modes.
+The real-transition advantage measures the complete pipeline contrast, including the PPO protocol.}
+\label{fig:contrast}
+\end{figure}
+
+\subsection{Encoded information can support discovery}
+\label{sec:results-wall}
+
+A CNN trained in the real gate on decoded frozen latents discovers the strategy in $2/9$ runs,
+both with encoder $1$ (Figure~\ref{fig:discovery}). The corresponding true-pixel CNN discovers it in
+$2/3$ runs. Decoder fitting adds reconstruction supervision outside the world-model budget.
+The result establishes useful information in at least one encoder under this read-out and learning
+recipe, without asserting that every encoder preserves all task-relevant information.
+
+Decoded real encodings retain the wall, but the original predicted rollouts lose it across all
+three encoder seeds: by the second predicted step, decoded wall intensity is at most $0.02$
+(Appendix~\ref{app:round2}). Figure~\ref{fig:hero} shows the contrast with a flow sample that retains
+the wall and commits to a gap. A pixelwise mixture of the two gap futures would preserve shared
+wall pixels; the observation differs from that explanation, but does not exclude averaging effects
+in the learned latent model.
+
+The fitted heads are a named competing explanation: on encoder $0$, termination AUC is $0.96$
+for border deaths and $0.65$ for wall deaths, while predicted rewards are $-0.89$ and $-0.05$,
+respectively, against the true $-1$; these are the signals on which the in-model policy trains.
+
+\begin{figure}[t]
+\centering
+\renewcommand{\figureheight}{1.40in}
+\paperfig{discovery.pdf}{1.0}
+\caption{\textbf{Useful information remains encoded.} Final survival for true-pixel CNN policies and
+CNN policies acting on decoded frozen latents, with marker shape identifying the encoder seed. Each dot is a policy run;
+the dashed line marks the discovery criterion, survival above $50\%$. The decoded policies discover
+the strategy in $2/9$ runs, both on encoder $1$, versus $2/3$ true-pixel runs. Decoder supervision is
+off-budget. These are final endpoints, not training curves.}
+\label{fig:discovery}
+\end{figure}
+
+\subsection{Scale and sampling bound the interpretation}
+\label{sec:results-mean}
+
+Counterfactual wall distance is smaller than total teacher-forced prediction error
+(Figure~\ref{fig:geometry}). On $64$ pre-reveal contexts for encoder $0$, the first-step squared
+distance between wall-present and wall-absent encodings is $0.035$, against a one-step residual
+of $0.145$. The distance measures sensitivity to wall removal, whereas the residual includes all
+predicted features. Their ordering is descriptive evidence, not a test that small amplitude causes
+wall deletion or control failure. Raw distances across independently learned latent spaces are not
+comparable information scales.
+
+Sampling the fitted residual predictor does not rescue control: one sample and the mean of eight
+each give $0.26$ walls per episode, against $0.27$ for the original predictor, with no discoveries.
+The residual fitting protocol is described in Appendix~\ref{app:hparams}.
+These tests neither implicate nor acquit the mean. They test a fitted distribution with shared
+heads and training protocol, not an exact conditional mean or every distributional predictor.
+
+\begin{figure}[t]
+\centering
+\renewcommand{\figureheight}{1.40in}
+\paperfig{geometry.pdf}{1.0}
+\caption{\textbf{A descriptive scale comparison.} Squared latent wall distance and total
+teacher-forced one-step residual versus future step, averaged over the $64$ pre-reveal contexts
+for JEPA model seed $0$. Wall distance compares real encoded futures with and without the wall,
+under matched actions. Its position below total prediction error does not identify a cause of
+wall deletion. No cross-model scale comparison is implied.}
+\label{fig:geometry}
+\end{figure}

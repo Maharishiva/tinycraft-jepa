@@ -1,0 +1,44 @@
+\section{Introduction}
+\label{sec:intro}
+
+A world model can retain observable state without supporting a policy trained in imagination.
+We study this distinction in a JEPA trained with squared next-latent prediction and a Gaussian
+marginal regularizer, without reconstruction or reward supervision during representation learning
+\citep{maes2026lewm,balestriero2025lejepa}. Non-collapse constrains the distribution of features;
+it does not specify which features matter for control or how accurately imagination must preserve them.
+
+Our gate task makes this distinction observable. A moving wall approaches a controlled cube,
+but reveals its gap too late for an agent waiting at the centre to respond. Survival requires
+retreating before the reveal and then moving toward the gap. Real frames encoded and decoded through
+the frozen JEPA retain the wall; decoded predicted rollouts lose it (Figure~\ref{fig:hero}).
+
+
+The primary comparison holds the frozen encoders and MLP torso design fixed. Policies trained on
+real transitions pass $0.94$ walls per episode, versus $0.27$ for policies trained inside the JEPA.
+The latter use learned transitions, rewards and terminations, and a different PPO collection and
+update protocol. The contrast measures the resulting pipeline deficit; it does not locate its cause.
+The same MLP design on true pixels also fails to discover the strategy.
+
+A convolutional policy on decoded frozen latents discovers the strategy in $2/9$ runs, both on
+encoder $1$. At least one fitted representation thus supports successful control with decoder supervision.
+A single flow-model checkpoint supplies a feasibility reference under the same data and model-training
+budget, without establishing a ranking between model families.
+
+\paragraph{Contributions.} We establish a measured deficit of the tested imagination-and-training
+pipeline, an existence result for useful information in its frozen representation, and population
+counterexamples to control sufficiency under its objective. The counterexamples separate Gaussian
+non-collapse from state information, and exact decodability from prediction-loss scale. They do not
+explain the empirical failure: neither the geometric diagnostic nor residual sampling identifies a cause.
+
+\begin{figure}[t]
+\centering
+\renewcommand{\figureheight}{1.85in}
+\paperfig{hero.pdf}{1.0}
+\caption{\textbf{Encoded walls and imagined walls.} \textbf{A}: the true future, decoded real encodings,
+the original JEPA rollout, and one flow sample at matched future steps from a pre-reveal context
+(JEPA model seed $0$). The decoder renders the wall from real encodings but loses it from predicted
+encodings; the flow sample retains a wall and commits to a gap. \textbf{B}: the gate decision:
+retreat creates time to respond when the initially hidden gap is revealed. The flow row is a
+single-checkpoint feasibility reference.}
+\label{fig:hero}
+\end{figure}

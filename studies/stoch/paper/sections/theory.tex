@@ -1,0 +1,110 @@
+\section{Theory}
+\label{sec:theory}
+
+The objective does not guarantee useful state or a fixed loss scale for decodable state.
+These population statements assume explicit function classes and do not describe optimization trajectories.
+
+\subsection{A non-collapsed, control-insufficient global optimum}
+\label{sec:theory-rep}
+
+For a latent law on $\R^D$, define the population regularizer
+\begin{equation}
+\label{eq:popsigreg}
+\mathrm{SIGReg}_\infty(\mathcal L(z))=
+\int_{\mathbb S^{D-1}}\!\int_0^3 w(t)
+\left[\big(\E\cos(t\langle z,u\rangle)-w(t)\big)^2
++\big(\E\sin(t\langle z,u\rangle)\big)^2\right]dt\,d\sigma(u),
+\end{equation}
+where $w(t)=e^{-t^2/2}$ and $\sigma$ is uniform on the sphere.
+This nonnegative functional vanishes for $z\sim\Nrm(0,I_D)$; we use only this direction, and the
+finite-sample regularizer differs from it by an estimator bias (Appendix~\ref{app:proofs}).
+
+Assume \textbf{(A1)} observations have form $x_t=R(p_t,b)$, and a measurable map $\beta$ recovers the episode-constant nuisance $b$.
+Under the training distribution, $b$ is independent of the controlled trajectory and actions.
+For deployment, assume $b$ is independent of the initial controlled state and all exogenous transition randomness.
+Controlled dynamics and rewards do not otherwise depend on $b$.
+Assume \textbf{(A2)} a measurable map $\varphi$ satisfies $\varphi(b)\sim\Nrm(0,I_D)$.
+Assume \textbf{(A3)} the encoder class contains $\varphi\circ\beta$, and the predictor class contains the last-latent copy map.
+These realizability assumptions are substantive; finite pixel textures need not satisfy them exactly.
+
+\begin{proposition}[Texture trap]
+\label{prop:representation}
+Under (A1)--(A3), an encoder and predictor attain zero population prediction loss and zero $\mathrm{SIGReg}_\infty$.
+Their latent has covariance $I_D$ and satisfies $I(z_t;p_{1:T})=0$ under the training distribution.
+Any deployed controller observing only these latents, time, and its own actions has the value of a randomized state-blind policy, at most the supremum over such policies.
+\end{proposition}
+\begin{proof}
+Set $f^\star=\varphi\circ\beta$ and let $g^\star$ copy its last latent.
+Then $z_t=\varphi(b)=z_{t+1}$, so every prediction residual vanishes.
+The Gaussian marginal gives covariance $I_D$ and zero population regularizer.
+Both objective terms are nonnegative, so their sum is globally minimized at zero.
+Training-distribution independence gives $I(\varphi(b);p_{1:T})=0$.
+
+For deployment, draw the nuisance $B$ and the controller's random seed $U$ at reset, independently of
+the initial state and of the transition randomness; run the original controller in the environment
+with nuisance $B$, and let the state-blind policy, with private seed $(B,U)$, feed the constant history
+$\varphi(B)$ to a copy of that controller and reproduce its actions with $U$. Coupled to the same
+initial state and transition randomness, the two policies choose the same first action, and if their actions agree through step $t$ their states,
+latent histories and seeds agree, so their next actions agree; by induction trajectories, returns and
+terminations coincide. Nothing here assumes independence between $b$ and states influenced by its
+induced actions.
+\end{proof}
+
+\begin{corollary}[An innovation cost for state-resolving encoders]
+\label{cor:strict}
+Let $p_{t+1}=p_t+\mu(a_t)+w_t$ and $\mathcal H_t=\sigma(p_{\le t},b,a_{\le t})$.
+Write $\Sigma_t=\Cov(w_t\mid\mathcal H_t)$ and assume finite second moments for states and encoded observations.
+Assume observations have the same form $x_t=R(p_t,b)$ with fixed nuisance $b$.
+Suppose $\|f(R(p,b))-f(R(p',b))\|\ge\kappa\|p-p'\|$ for all admissible $p,p',b$, with $\kappa>0$.
+For every predictor using latent and action history,
+$\E\|g(z_{\le t},a_{\le t})-f(x_{t+1})\|^2 \ge \kappa^2\E\tr\Sigma_t$ (Equation~\ref{eq:innovation}
+in Appendix~\ref{app:proofs}). If $\E\tr\Sigma_t>0$, this exceeds the texture encoder's zero prediction loss under (A1)--(A3).
+\end{corollary}
+
+The bound is the innovation after conditioning on state history and nuisance, so a persistent wind is
+not automatically innovation, and it covers encoders that preserve every state distance at a uniform
+scale; Appendix~\ref{app:proofs} proves it without a conditional-independence assumption on the wind.
+
+The per-episode-texture cube world illustrates the nuisance mechanism of
+Proposition~\ref{prop:representation}: the class-token JEPA reaches near-zero prediction loss
+by encoding texture, while its reward-driven controllers attain $0$--$2\%$ survival
+(Appendix~\ref{app:cubes}); this finite experiment is not an exact realization of the Gaussian construction.
+
+\subsection{The squared-loss target}
+\begin{lemma}[Conditional mean]
+\label{lem:mean}
+For a fixed encoder and data law with $\E\|z'\|^2<\infty$, the unique squared-error minimizer
+over measurable square-integrable predictors from history $c$ and action $a$ is
+$m(c,a)=\E[z'\mid c,a]$, up to null sets.
+\end{lemma}
+The orthogonal-decomposition proof is in Appendix~\ref{app:proofs}. This unrestricted optimum
+need not equal a fitted network or an average of finitely many learned samples.
+
+\subsection{Decodable information can have arbitrarily small amplitude}
+\label{sec:amplitude}
+
+\begin{proposition}[Small amplitude under an exactly Gaussian marginal]
+\label{prop:amplitude}
+For every $\varepsilon>0$ and integer $D\ge1$, there is an observation process $x_t=R(p_t,b)$ with episode-constant nuisance $b$.
+Its state $p_t\in\{0,1\}$ is a fresh fair bit, drawn independently of $b$, previous states, and previous actions.
+There is a measurable encoder $f_\varepsilon$ with $z_t\sim\Nrm(0,I_D)$ from which $p_t$ and $b$ are exactly recoverable almost surely.
+For the same nuisance, the two state encodings satisfy
+$0<\|f_\varepsilon(R(1,b))-f_\varepsilon(R(0,b))\|<2\varepsilon$.
+Over all square-integrable measurable predictors of latent and action history through $t$, the optimal
+next-latent prediction is their midpoint $m(b)$, with $0<\Lcal_{\mathrm{pred}}(f_\varepsilon,m)\le\varepsilon^2$,
+$I(m(b);p_{t+1})=0$ and $\mathrm{SIGReg}_\infty(\mathcal L(z_t))=0$.
+The state is control-relevant: with actions $a_t\in\{0,1\}$ and reward $\mathbf1\{a_t=p_t\}$, latent
+feedback earns $1$ per step and every state-blind policy $1/2$.
+\end{proposition}
+\begin{proof}[Proof idea]
+Cut $\R$ into intervals of width $2\varepsilon$ and let the nuisance pick an interval with its Gaussian
+mass and a uniform position inside it; let the fair bit decide whether that position lands in the lower
+or the upper half of the interval's conditional Gaussian mass. The first latent coordinate is
+then exactly $\Nrm(0,1)$, the bit is read off from the half, the two encodings of the bit lie in one
+interval, and the optimal predictor is their midpoint, which depends on the nuisance only and costs at
+most $\varepsilon^2$. Appendix~\ref{app:proofs} gives the construction in full.
+\end{proof}
+
+The construction is measurable, with no finite-network or robust-decoding guarantee; it averages a
+fresh innovation and does not by itself explain the deletion of a predictable wall.
+

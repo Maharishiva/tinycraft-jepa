@@ -1,0 +1,24 @@
+\section{Related work}
+\label{sec:related}
+
+Joint-embedding prediction learns targets in representation space
+\citep{lecun2022path,assran2023ijepa,bardes2024vjepa}. LeWM jointly trains an encoder and an
+action-conditioned predictor with squared loss and SIGReg
+\citep{maes2026lewm,balestriero2025lejepa}; other systems plan on frozen features
+\citep{assran2025vjepa2,zhou2024dinowm,sobal2025pldm}.
+Anti-collapse methods constrain learning dynamics or latent statistics
+\citep{grill2020byol,chen2021simsiam,zbontar2021barlow,bardes2022vicreg,jing2022dimensional}.
+Our population counterexample has full covariance rank yet no controlled-state information.
+
+Predictable backgrounds can displace moving objects in joint embeddings \citep{sobal2022slow}.
+Analyses of self-predictive abstractions \citep{tang2023selfpredictive,ni2024bridging} and
+prediction--control mismatch \citep{lambert2020objective} motivate stronger criteria than prediction
+accuracy. Reward-, transition- and value-based abstractions supply such criteria
+\citep{ferns2004bisimulation,zhang2021dbc,grimm2020value,farahmand2017vaml}.
+Our contribution is an exactly Gaussian nuisance-only optimum, a decodable small-amplitude
+construction, and a measured pipeline deficit alongside successful control from decoded latents.
+
+Imagination-based policy learning \citep{sutton1991dyna,ha2018worldmodels,hafner2020dreamer}
+can use stochastic dynamics \citep{hafner2019planet,hafner2023dreamerv3,alonso2024diamond,hafner2025dreamer4}.
+Our flow reference demonstrates feasibility for this task and budget; it does not isolate stochasticity
+or compare model families. Likewise, the residual-sampling null is specific to the fitted predictor.

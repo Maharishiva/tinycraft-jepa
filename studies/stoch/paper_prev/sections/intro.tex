@@ -1,0 +1,56 @@
+\section{Introduction}
+\label{sec:intro}
+
+\begin{figure}[t]
+\centering
+\paperfig{hero.pdf}{1.0}
+\caption{\textbf{One context, two possible futures, and the policies trained from each model.} A red
+cube must pass a white wall that scrolls left three pixels per step; the wall is solid until it passes
+$x=40$, then a gap opens at the top or at the bottom with equal probability (B). \textbf{A}: eight
+imagined steps from one pre-reveal context (model seed $0$, context $0$ of Figure~\ref{fig:geometry}). The true future and its counterfactual differ only in the gap. The grid JEPA's latent of the true future decodes to the wall (gray label), but its rollout deletes the wall at step one and keeps the cube; a residual predictor on the frozen latent, sampled or averaged over eight, deletes it too. The flow model keeps the wall and commits to one gap,
+whether it samples or averages. \textbf{C}: PPO trained inside each model or in the real gate (pixels with convolutional or MLP torso, the frozen JEPA latent, or that latent decoded to pixels), graded in the real gate: walls passed per episode (bars: mean over runs, dots: runs; survival to the cap and the number of runs above; dashed: simulator search at horizons 5 and 8).}
+\label{fig:hero}
+\end{figure}
+
+A world model is only as useful as the state it keeps. Joint-embedding predictive architectures
+(JEPAs) learn that state without a decoder: an encoder maps frames to latents, a predictor maps latent
+history and actions to the next latent, and both are trained on the squared prediction error plus a
+term that keeps the latent marginal Gaussian
+\citep{lecun2022path,assran2023ijepa,balestriero2025lejepa,maes2026lewm}. Nothing forces such a model
+to render what it does not need. Nothing forces it to keep what it does need either. We build a
+world in which one feature decides survival and measure what a JEPA does with it.
+
+The world is a gate (Figure~\ref{fig:hero}B). A wall scrolls toward a cube that the agent moves;
+touching the wall or the frame border ends the episode with reward $-1$. The gap is drawn only once
+the wall is past $x=40$: from the centre the cube sees it two steps before contact and needs five
+moves to reach it, so the strategy that survives is to retreat, wait for the reveal, then move. The world
+has a predictable part (the cube, the wall's approach) and one unpredictable bit (the gap side).
+
+We train a grid JEPA with LeWM's objective \citep{maes2026lewm} and a latent flow-matching model
+\citep{lipman2023flowmatching,hafner2025dreamer4} on the same 500{,}000 random-action transitions under
+the same ten-minute budget, use each as a simulator for a recurrent PPO agent, and grade the agent in the real gate (Figure~\ref{fig:hero}). The JEPA imagines a cube in an empty room, and none of its $27$ agents (three model seeds, three predictor variants, three PPO seeds) ends training above $3.1\%$ survival. The flow model imagines the wall with one gap or the other; its agents pass at least $0.72$ walls per episode in every run and find the retreat-and-wait strategy in $1$ of $9$, as PPO in the real environment does in $2$ of $3$.
+
+The obvious suspect is the mean. For a fixed encoder the unrestricted squared-error optimum is the conditional mean (Lemma~\ref{lem:mean}), the mean of two futures is not a future, and planning through a mean can incur
+maximal regret (Proposition~\ref{prop:regret}). We tested the suspect inside each model, with a residual predictor fitted on the frozen JEPA latent and with the flow model, each used as one sample and as the mean of eight. Inside the JEPA the three predictors are indistinguishable: $0.27$, $0.26$ and $0.26$ walls per episode, at most $3.1\%$ survival. Inside the flow model the mean of eight keeps the wall and passes $0.9$ walls per
+episode, three times the JEPA's, as the sampled model does in the runs that do not find the strategy.
+Certainty-equivalent planning is a real failure mode; these tests neither implicate it nor rule out failures caused by averaging.
+
+The deficit is in imagination, not in the encoder alone. For model seed $0$ the wall's amplitude in the JEPA latent, the squared distance between the latents of the true future with and without the wall, grows from $0.04$ to $0.12$ over
+eight steps, while the predictor's own one-step residual is $0.15$ at the first step and $0.25$ at the
+last, and the one-step prediction sits $0.4$ of the way from the wall-free latent to the true one along
+the wall's own direction. The predictor rolls the wall away (Figure~\ref{fig:geometry}). Heads fitted
+with the death labels read border deaths off the latent at AUC $0.96$ and wall deaths at $0.65$. Two real-gate controls show a deficit relative to training on real transitions. The same MLP torso design passes $0.94$ walls per episode on the frozen JEPA latent (nine runs, three encoders) and $0.91$ on true pixels, against $0.27$ inside the JEPA; real-gate training also replaces the fitted heads by the true reward, so the deficit is the imagination pipeline's, not the predictor's alone. And the wall is decodable: a convolutional policy trained on the frozen latent decoded back to pixels learns the retreat-and-wait strategy in $2$ of $9$ runs, both on encoder $1$, as it does on true pixels in $2$ of $3$; the MLP policy learns it in none of the real-gate controls, amplified wall signal included, and once in nine runs inside the flow model (Appendix~\ref{app:latentctl}). Doubling and quadrupling the JEPA's training budget leaves its agents at $0$--$3\%$ survival, and a
+hundred-fold sweep of the regularizer's weight on the per-episode-texture cube world leaves the cube
+position unreadable.
+
+The theory says the objective is allowed to do this. A non-collapsed global optimum of the joint
+objective can carry no controlled state at all, and any controller reading it is a state-blind policy
+(Proposition~\ref{prop:representation}); an encoder that preserves state distances at a uniform scale
+pays the innovation of the dynamics in prediction loss (Corollary~\ref{cor:strict}); and an exactly Gaussian, fully decodable latent can
+hold a control-relevant feature at arbitrarily small amplitude, which makes the error of averaging away a fresh unpredictable bit arbitrarily cheap (Proposition~\ref{prop:amplitude}; proofs in the text and Appendix~\ref{app:proofs}).
+
+\paragraph{Contributions.} (i) A controlled world in which one late-revealed bit decides survival,
+with a simulator reference and a state-blind baseline. (ii) The
+measurement that a JEPA trained with the published objective keeps the cube and loses the wall:
+amplitude below the predictor residual, deleted rollouts, blind heads, agents that never learn, over
+three model seeds, with longer fits on model seed $0$. (iii) The same-model test in which sampled and averaged transitions fail alike, and the real-gate controls: policies trained on the JEPA's frozen latent pass $0.94$ walls and, through a decoder, find the strategy, while policies trained on its rollouts average $0.27$. (iv) Three main-text propositions on representation and planning, with proofs, that show the objective permits the failure, and an exact-ranking boundary result in the appendix. We study one JEPA instance in small worlds at a small budget; the cube worlds and a Craftax transfer in the appendix are exploratory.

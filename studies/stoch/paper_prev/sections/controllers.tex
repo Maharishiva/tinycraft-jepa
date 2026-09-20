@@ -1,0 +1,19 @@
+\section{Controllers and protocol}
+\label{sec:controllers}
+
+\paragraph{PPO inside a model.} A recurrent actor-critic \citep{schulman2017ppo,espeholt2018impala,
+farebrother2024stopregressing} is trained entirely on imagined rollouts: the model is reset from real
+eight-frame contexts, the policy acts on the model's latent, the model's reward and termination heads
+supply the return, and the trained policy is graded on $256$ real episodes from reset. The policy
+class, horizon, optimiser and the number of imagined steps ($1.2$M) are identical across models. For
+the grid JEPA the transition is its original deterministic predictor, or the residual predictor used as
+one sample or as the mean of eight samples; for the flow model it is one sample or the mean of eight.
+The mean of eight has conditional covariance $\Sigma/8$: a mean-like transition, not the exact mean.
+
+\paragraph{Planners.} Goal-image MPC, LeWM's controller, minimises the predicted latent distance to a
+wall-free centre image; heads-MPC maximises the imagined return through the fitted heads; both search
+all $4^h$ action sequences ($h=5$ on the gate) and replan every step. ``Simulator search'' is the same
+search on the true simulator with the true reward, no terminal value, and the unrevealed gap resampled per imagined copy.
+
+\paragraph{References.} Random actions; a centre controller that reads the true state; a state-blind
+policy that alternates left and right; PPO in the real environment for $1.5$M steps (Table~\ref{tab:paired} lists its observations and torsos); and the simulator search. Planning runs use $128$ episodes with seven warm-up steps, policy runs $256$ from reset, with shared random keys across arms (Appendix~\ref{app:protocol}); we report survival to the cap and walls passed per episode. Training seeds are the unit of replication: three JEPA model seeds with three PPO seeds per model and predictor variant; on the one flow checkpoint, six PPO seeds sampled and three for the mean of eight.

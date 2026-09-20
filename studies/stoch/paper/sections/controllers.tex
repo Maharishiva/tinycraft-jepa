@@ -1,0 +1,18 @@
+\section{Control comparison}
+\label{sec:controllers}
+
+Recurrent PPO \citep{schulman2017ppo,espeholt2018impala,farebrother2024stopregressing} learns either
+inside a frozen model or in the real gate. In imagination it observes predicted latents and uses
+learned reward and termination heads; evaluation always uses real episodes from reset.
+Real-transition PPO observes the same frozen encoder's latents and receives true rewards and
+terminations. Both use the same MLP torso design, but real training changes the step budget,
+rollout starts, collection length and update organization (Appendix~\ref{app:hparams}).
+The true-pixel MLP control shares that torso design, not its input width.
+
+Each JEPA predictor variant has three policy seeds for each of three encoder seeds.
+The original predictor and a fitted residual predictor, sampled once or averaged over eight samples,
+give $27$ policies in total. The flow reference has six sampled and three mean-of-eight policies
+on its single checkpoint. Real frozen-latent and decoded-latent CNN controls each have nine runs;
+true-pixel controls have three per torso. Every policy is evaluated on $256$ episodes at its
+\emph{final} checkpoint. Walls passed per episode is the primary endpoint; discovery means final
+survival above $50\%$. Model fits and policy seeds are distinct replication levels.

@@ -1,0 +1,20 @@
+\begin{tabular}{lrrrr}
+\toprule
+controller & survival (\%) & length & walls passed & deaths / 100 steps \\
+\midrule
+random & 0$\pm$0 & 30.4 & 0.06 & 3.29 \\
+centre controller (true state) & 0$\pm$0 & 31.2 & 0.00 & 3.21 \\
+LeWM (class token): goal-image MPC & 0$\pm$0 & 32.8 & 0.10 & 3.05 \\
+LeWM (class token): heads MPC & 0$\pm$0 & 35.5 & 0.09 & 2.82 \\
+LeWM (class token): PPO inside the JEPA & 0$\pm$0 & 27.9 & 0.00 & 3.59 \\
+grid JEPA: goal-image MPC & 0$\pm$0 & 32.0 & 0.04 & 3.13 \\
+grid JEPA: heads MPC & 0$\pm$0 & 36.5 & 0.16 & 2.74 \\
+grid JEPA: PPO inside the JEPA & 0$\pm$0 & 23.5 & 0.04 & 4.26 \\
+grid JEPA + sampling predictor: heads MPC (4 samples) & 0$\pm$0 & 31.5 & 0.07 & 3.18 \\
+grid JEPA + sampling predictor: PPO inside & 2$\pm$1 & 50.5 & 0.66 & 1.93 \\
+flow model: PPO inside, pixels & 56$\pm$3 & 100.9 & 2.81 & 0.44 \\
+flow model: PPO inside, latent & 98$\pm$1 & 126.8 & 3.95 & 0.02 \\
+PPO in the real environment, 1.5M steps & 91$\pm$2 & 122.3 & 3.75 & 0.07 \\
+PPO in the real environment, 30 min (6.9M steps) & 100$\pm$0 & 127.9 & 4.00 & 0.00 \\
+\bottomrule
+\end{tabular}

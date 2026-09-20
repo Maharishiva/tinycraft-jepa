@@ -20,6 +20,7 @@ import os
 import time
 from dataclasses import asdict, dataclass, fields
 from pathlib import Path
+from typing import NamedTuple
 
 os.environ.setdefault("XLA_PYTHON_CLIENT_PREALLOCATE", "false")
 
@@ -31,6 +32,7 @@ import optax
 
 H = W = 63
 PATCH, GRID = 7, 9
+TILE_TOKENS = 16
 N_ACTIONS = 17
 CTX, HOR = 8, 16
 CDT, PDT = jnp.bfloat16, jnp.float32
@@ -48,10 +50,13 @@ class Config:
     lr: float = 3e-4
     weight_decay: float = 1e-3
     warmup: float = 0.1
+    encoder: str = "vit"
+    predictor: str = "ar"
     emb_dim: int = 192
     enc_depth: int = 12
     enc_heads: int = 3
     enc_mlp: int = 768
+    enc_res: int = 4
     pred_depth: int = 6
     pred_heads: int = 16
     pred_dim_head: int = 64
@@ -61,6 +66,7 @@ class Config:
     tokens: int = 1
     token_dim: int = 32
     token_hidden: int = 512
+    latent_dim: int = 0
     history: int = 3
     num_preds: int = 1
     dropout: float = 0.1
@@ -68,6 +74,7 @@ class Config:
     sigreg_knots: int = 17
     sigreg_proj: int = 1024
     action_bottleneck: int = 10
+    n_actions: int = N_ACTIONS
     data_budget: int = 500_000
     chunk: int = 250
 
@@ -172,6 +179,84 @@ class ViT(nnx.Module):
         return self.norm(h)
 
 
+class ResBlock(nnx.Module):
+    def __init__(self, ch, rngs):
+        self.n1 = nnx.RMSNorm(ch, rngs=rngs, **NRM)
+        self.c1 = nnx.Conv(ch, ch, (3, 3), padding="SAME", rngs=rngs, **MP)
+        self.n2 = nnx.RMSNorm(ch, rngs=rngs, **NRM)
+        self.c2 = nnx.Conv(ch, ch, (3, 3), padding="SAME", rngs=rngs, **MP)
+
+    def __call__(self, h):
+        return h + self.c2(nnx.gelu(self.n2(self.c1(nnx.gelu(self.n1(h))))))
+
+
+class TileBlock(nnx.Module):
+    """Pre-norm transformer block over the 9x9 tile grid (the flow tokenizer's `TBlock`)."""
+
+    def __init__(self, ch, heads, rngs):
+        self.heads = heads
+        self.n1 = nnx.RMSNorm(ch, rngs=rngs, **NRM)
+        self.qkv = nnx.Linear(ch, 3 * ch, rngs=rngs, **MP)
+        self.o = nnx.Linear(ch, ch, rngs=rngs, **MP)
+        self.n2 = nnx.RMSNorm(ch, rngs=rngs, **NRM)
+        self.m1 = nnx.Linear(ch, 4 * ch, rngs=rngs, **MP)
+        self.m2 = nnx.Linear(4 * ch, ch, rngs=rngs, **MP)
+        self.pos = nnx.Param(0.02 * jax.random.normal(rngs.params(), (1, GRID, GRID, ch), PDT))
+
+    def __call__(self, h, extra=None):
+        """h (n, GRID, GRID, ch); `extra` (n, k, ch) tokens without a grid position ride along in the attention."""
+        n, ch = h.shape[0], h.shape[-1]
+        h = (h + self.pos[...].astype(h.dtype)).reshape(n, GRID * GRID, ch)
+        if extra is not None:
+            h = jnp.concatenate([extra, h], 1)
+        qkv = self.qkv(self.n1(h)).reshape(n, h.shape[1], 3, self.heads, ch // self.heads)
+        att = jax.nn.dot_product_attention(qkv[:, :, 0], qkv[:, :, 1], qkv[:, :, 2])
+        h = h + self.o(att.reshape(n, h.shape[1], ch))
+        h = h + self.m2(nnx.gelu(self.m1(self.n2(h))))
+        if extra is None:
+            return h.reshape(n, GRID, GRID, ch)
+        k = extra.shape[1]
+        return h[:, k:].reshape(n, GRID, GRID, ch), h[:, :k]
+
+
+class TileEncoder(nnx.Module):
+    """The flow tokenizer's encoder trunk on one frame (tinywmcraft `Encoder` without its 32-channel
+    output map, which the LeWM projector takes over): 7x7 tiles, transformer blocks over the 9x9
+    grid, a stride-2 convolution to 4x4, residual blocks -> 16 tokens of `emb_dim`.
+
+    `tile_cls`: a learned class token rides through the transformer blocks with the 81 grid tokens
+    (LeWM's read-out) and is the single output token; the strided convolution and residual blocks are dropped."""
+
+    def __init__(self, cfg, rngs):
+        dim = cfg.emb_dim
+        self.stem = nnx.Linear(PATCH * PATCH * 3, 64, rngs=rngs, **MP)
+        self.proj = nnx.Conv(64, dim, (1, 1), rngs=rngs, **MP)
+        self.hi = nnx.List([TileBlock(dim, cfg.enc_heads, rngs) for _ in range(cfg.enc_depth)])
+        if cfg.encoder == "tile_cls":
+            self.cls = nnx.Param(0.02 * jax.random.normal(rngs.params(), (1, 1, dim), PDT))
+            self.down, self.lo = None, None
+        else:
+            self.cls = None
+            self.down = nnx.Conv(dim, dim, (3, 3), strides=(2, 2), padding="VALID", rngs=rngs, **MP)
+            self.lo = nnx.List([ResBlock(dim, rngs) for _ in range(cfg.enc_res)])
+
+    def __call__(self, x, train=False):
+        n = x.shape[0]
+        tiles = x.reshape(n, GRID, PATCH, GRID, PATCH, 3).transpose(0, 1, 3, 2, 4, 5).reshape(n, GRID, GRID, -1)
+        h = self.proj(nnx.gelu(self.stem(tiles.astype(CDT))))
+        if self.cls is not None:
+            cls = jnp.broadcast_to(self.cls[...].astype(h.dtype), (n, 1, h.shape[-1]))
+            for block in self.hi:
+                h, cls = block(h, cls)
+            return cls
+        for block in self.hi:
+            h = block(h)
+        h = nnx.gelu(self.down(h))
+        for block in self.lo:
+            h = block(h)
+        return h.reshape(n, TILE_TOKENS, -1)
+
+
 class MLP(nnx.Module):
     """Linear - BatchNorm - GELU - Linear (LeWM `module.MLP` with BatchNorm1d)."""
 
@@ -218,6 +303,7 @@ class Predictor(nnx.Module):
         h = x + self.pos[...][:, :x.shape[1]].astype(x.dtype)
         if self.input_proj is not None:
             h = self.input_proj(h)
+        if self.cond_proj is not None:
             cond = self.cond_proj(cond)
         for block in self.blocks:
             h = block(h, cond, train)
@@ -225,19 +311,79 @@ class Predictor(nnx.Module):
         return self.output_proj(h) if self.output_proj is not None else h
 
 
+def rms(x, eps=1e-6):
+    x32 = x.astype(jnp.float32)
+    return (x32 * jax.lax.rsqrt(jnp.mean(jnp.square(x32), -1, keepdims=True) + eps)).astype(x.dtype)
+
+
+class FactoredBlock(nnx.Module):
+    """AdaLN block with attention over the frame's tokens, then causal attention over frames
+    (the flow dynamics' `Block`, in plain JAX)."""
+
+    def __init__(self, d, heads, rngs):
+        self.heads = heads
+        self.mod = nnx.Linear(d, 9 * d, kernel_init=nnx.initializers.zeros, bias_init=nnx.initializers.zeros,
+                              rngs=rngs, **MP)
+        self.sqkv = nnx.Linear(d, 3 * d, use_bias=False, rngs=rngs, **MP)
+        self.so = nnx.Linear(d, d, rngs=rngs, **MP)
+        self.tqkv = nnx.Linear(d, 3 * d, use_bias=False, rngs=rngs, **MP)
+        self.to = nnx.Linear(d, d, rngs=rngs, **MP)
+        self.m1 = nnx.Linear(d, 2 * d, rngs=rngs, **MP)
+        self.m2 = nnx.Linear(2 * d, d, rngs=rngs, **MP)
+
+    def attend(self, qkv, causal):
+        *lead, s, _ = qkv.shape
+        qkv = qkv.reshape(-1, s, 3, self.heads, qkv.shape[-1] // (3 * self.heads))
+        out = jax.nn.dot_product_attention(qkv[:, :, 0], qkv[:, :, 1], qkv[:, :, 2], is_causal=causal)
+        return out.reshape(*lead, s, -1)
+
+    def __call__(self, h, cond):
+        ss, sh, sg, ts, th, tg, ms, mh, mg = jnp.split(self.mod(cond)[:, :, None, :], 9, -1)
+        h = h + sg * self.so(self.attend(self.sqkv(rms(h) * (1 + ss) + sh), False))
+        z = (rms(h) * (1 + ts) + th).transpose(0, 2, 1, 3)
+        h = h + tg * self.to(self.attend(self.tqkv(z), True).transpose(0, 2, 1, 3))
+        return h + mg * self.m2(nnx.gelu(self.m1(rms(h) * (1 + ms) + mh)))
+
+
+class FactoredPredictor(nnx.Module):
+    """The flow dynamics' transformer (tinywmcraft `DF` without noise level, heads or caches) used as
+    the LeWM predictor: token grid of every frame in, the next frame's token grid out."""
+
+    def __init__(self, cfg, rngs):
+        d = cfg.pred_width
+        self.tokens = cfg.tokens
+        self.inp = nnx.Linear(cfg.token_dim, d, rngs=rngs, **MP)
+        self.spos = nnx.Param(0.02 * jax.random.normal(rngs.params(), (1, 1, cfg.tokens, d), PDT))
+        self.tpos = nnx.Param(0.02 * jax.random.normal(rngs.params(), (1, cfg.history, 1, d), PDT))
+        self.cond = nnx.Linear(cfg.emb_dim, d, rngs=rngs, **MP)
+        self.blocks = nnx.List([FactoredBlock(d, cfg.pred_heads, rngs) for _ in range(cfg.pred_depth)])
+        self.out = nnx.Linear(d, cfg.token_dim, rngs=rngs, **MP)
+
+    def __call__(self, x, cond, train=False):
+        b, l = x.shape[:2]
+        a = self.cond(cond)
+        h = self.inp(x.reshape(b, l, self.tokens, -1)) + self.spos[...].astype(CDT) + self.tpos[...][:, :l].astype(CDT) + a[:, :, None, :]
+        for block in self.blocks:
+            h = block(h, a)
+        return self.out(rms(h)).reshape(b, l, -1)
+
+
 class LeWM(nnx.Module):
     """LeWM with either the reference class-token read-out or a patch-grid read-out."""
 
     def __init__(self, cfg, rngs):
         self.grid = cfg.tokens > 1
-        self.latent_dim = cfg.tokens * cfg.token_dim if self.grid else cfg.emb_dim
-        head = cfg.token_dim if self.grid else cfg.emb_dim
+        self.n_tokens = cfg.tokens if self.grid else 1
+        self.latent_dim = cfg.tokens * cfg.token_dim if self.grid else (cfg.latent_dim or cfg.emb_dim)
+        head = cfg.token_dim if self.grid else self.latent_dim
         hidden = cfg.token_hidden if self.grid else cfg.mlp_hidden
-        self.encoder = ViT(cfg, rngs)
+        self.cls = cfg.encoder == "vit"
+        self.encoder = ViT(cfg, rngs) if self.cls else TileEncoder(cfg, rngs)
         self.projector = MLP(cfg.emb_dim, hidden, head, rngs)
         self.pred_proj = MLP(head, hidden, head, rngs)
-        self.action_encoder = Embedder(N_ACTIONS, cfg.action_bottleneck, cfg.emb_dim, rngs)
-        self.predictor = Predictor(cfg, self.latent_dim, rngs)
+        self.n_actions = cfg.n_actions
+        self.action_encoder = Embedder(cfg.n_actions, cfg.action_bottleneck, cfg.emb_dim, rngs)
+        self.predictor = FactoredPredictor(cfg, rngs) if cfg.predictor == "factored" else Predictor(cfg, self.latent_dim, rngs)
         self.history = cfg.history
 
     def tokens(self, frames_u8, train=False):
@@ -247,11 +393,12 @@ class LeWM(nnx.Module):
     def encode(self, frames_u8, train=False):
         b, t = frames_u8.shape[:2]
         tokens = self.tokens(frames_u8, train)
-        read = tokens[:, 1:].reshape(-1, tokens.shape[-1]) if self.grid else tokens[:, 0]
+        patches = tokens[:, 1:] if self.cls else tokens
+        read = patches.reshape(-1, tokens.shape[-1]) if self.grid else tokens[:, 0]
         return self.projector(read, train).reshape(b, t, self.latent_dim).astype(PDT)
 
     def act_embed(self, actions):
-        onehot = jax.nn.one_hot(actions, N_ACTIONS, dtype=CDT)
+        onehot = jax.nn.one_hot(actions, self.n_actions, dtype=CDT)
         return self.action_encoder(onehot).astype(PDT)
 
     def predict(self, emb, act_emb, train=False):
@@ -352,9 +499,17 @@ def _weights(module):
     return params, stats
 
 
-def save(path, model, meta, decoder=None):
+class Bundle(NamedTuple):
+    """A checkpoint: the world model plus whatever off-budget probes were fitted on it."""
+
+    model: object = None
+    decoder: object = None
+    heads: object = None
+
+
+def save(path, model, meta, decoder=None, heads=None):
     arrays = {}
-    for name, module in (("model", model), ("decoder", decoder)):
+    for name, module in (("model", model), ("decoder", decoder), ("heads", heads)):
         if module is None:
             continue
         for kind, state in zip(("p", "b"), _weights(module)):
@@ -375,19 +530,25 @@ def _restore(module, archive, prefix):
 def load_model(path=None):
     """Return (model, checkpoint metadata), with measured training seconds in 'train_s'."""
     if path is None:
-        return (None, None), {"train_s": 0.0}
+        return Bundle(), {"train_s": 0.0}
     archive = np.load(path)
     meta = json.loads(str(archive["meta"]))
     cfg = Config(**{f.name: meta["cfg"][f.name] for f in fields(Config) if f.name in meta["cfg"]})
     model = _restore(LeWM(cfg, rngs()), archive, "model")
-    decoder = None
+    decoder, heads = None, None
     if "decoder.p.0" in archive.files:
         from probe import Decoder
 
         spec = meta["decoder"]
         decoder = _restore(Decoder(model.latent_dim, spec["hidden"], spec["depth"], rngs(),
                                    spec.get("tokens", 1)), archive, "decoder")
-    return (model, decoder), meta
+    if "heads.p.0" in archive.files:
+        from probe import Heads
+
+        spec = meta["heads"]
+        heads = _restore(Heads(model.latent_dim, spec["hidden"], rngs(), spec["members"], model.n_actions),
+                         archive, "heads")
+    return Bundle(model, decoder, heads), meta
 
 
 @functools.partial(nnx.jit, static_argnames="horizon")
@@ -415,9 +576,9 @@ def outgoing_actions(context_actions, actions):
     return jnp.concatenate([jnp.asarray(context_actions[:, 1:], jnp.int32), jnp.asarray(actions, jnp.int32), tail], 1)
 
 
-def rollout(model, context_frames, context_actions, actions, seed):
+def rollout(bundle, context_frames, context_actions, actions, seed):
     """Return uint8 frames [B, T, ...], where T = actions.shape[1]."""
-    model, decoder = model
+    model, decoder = bundle.model, bundle.decoder
     if model is None:
         return np.repeat(context_frames[:, -1:], actions.shape[1], axis=1)
     if decoder is None:

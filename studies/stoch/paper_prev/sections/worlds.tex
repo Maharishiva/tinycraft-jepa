@@ -1,0 +1,44 @@
+\section{The objective, the world, and the models}
+\label{sec:worlds}
+
+\paragraph{The objective.} LeWM \citep{maes2026lewm} jointly trains a pixel encoder
+$z_t=f_\theta(x_t)\in\R^D$ and a causal predictor of the next latent from $H$ latents and actions:
+
+\begin{equation}
+\label{eq:lewm}
+\Lcal(\theta) \;=\; \frac{1}{H}\sum_{t} \big\| g_\theta(z_{t-H+1:t}, a_{t-H+1:t}) - z_{t+1} \big\|_2^2
+\;+\; \lambda \,\mathrm{SIGReg}\big(\{z_t\}\big),\qquad \lambda = 0.09 .
+\end{equation}
+Gradients reach the encoder through predictions and targets, without a stop-gradient, teacher, decoder
+or reward term. SIGReg, the test of \citet{balestriero2025lejepa}, uses $P$
+random unit directions $u_p$, $K$ knots $t_k\in[0,3]$, trapezoidal weights $\omega_k$ and window
+$w(t)=e^{-t^2/2}$,
+\begin{equation}
+\label{eq:sigreg}
+\mathrm{SIGReg} = \frac{1}{P}\sum_{p,k} \omega_k \, w(t_k)
+  \Big[\big(\widehat{\E}\cos(t_k \langle z, u_p\rangle) - w(t_k)\big)^2
+     + \big(\widehat{\E}\sin(t_k \langle z, u_p\rangle)\big)^2\Big],
+\end{equation}
+with $K=17$ and $P=1024$. It compares projected empirical characteristic functions to a standard
+normal, constraining only the \emph{marginal law} of $z$.
+
+\paragraph{The gate.} A red $6\times6$ cube moves in $63\times63$ RGB frames. Four actions move it
+three pixels left, up, right or down. Contact with a red ring one pixel inside the frame or with the
+wall ends the episode at reward $-1$. Other rewards are zero; the cap is $128$ steps.
+A white wall three pixels wide enters at $x=60$ every $22$ steps and moves left three pixels per step.
+Its $16$-pixel gap occupies rows $4$--$19$ or $42$--$57$ with probability $1/2$ each.
+The wall stays solid until $x\le40$. Either gap is five moves from the vertical centre; a cube at $x=28$ sees the gap at wall position $x=39$ and is hit two steps later, while retreat to $x\le16$ leaves six steps after the reveal. Random play has mean length $30.4$ and never reaches the cap.
+Training uses $500{,}000$ uniform-random transitions from $100$ environments, evaluation $25{,}000$; Appendix~\ref{app:cubes} describes six cube worlds (three backgrounds, still or hidden wind).
+
+\paragraph{Three models, one budget.} All models in the base comparison train on the same data for ten minutes on one A100, compilation included; the budget and regularizer sweeps use fixed step counts. The \emph{grid JEPA} is Equation~\ref{eq:lewm} with a
+$2.6$M tile-transformer encoder, $4\times4\times32$ latent (512 numbers), and $8.3$M factored
+spatial-temporal predictor with eight-frame history (Figure~\ref{fig:hero}). The \emph{class-token JEPA} is LeWM's six-layer width-192 ViT with a 192-number class-token read-out and AdaLN autoregressive predictor ($15.3$M parameters); it also fails the gate (Appendix~\ref{app:round1tables}).
+The \emph{flow model} is a latent flow-matching dynamics model
+\citep{lipman2023flowmatching,chen2024diffusionforcing,hafner2025dreamer4}: a reconstruction-trained
+tokenizer to the same $4\times4\times32$ latent, a causal transformer with factored attention over a
+32-frame window, per-frame noise levels, four function evaluations per imagined frame, and reward and
+termination heads at loss weight $0.1$. After JEPA training we freeze the encoder and fit reward,
+termination and behaviour-value heads on $80{,}000$ latents, a pixel decoder for the figures and the decoded-latent control, and a
+\emph{residual predictor}, a small flow-matching head on the residual $z_{t+1}-g_\theta(\cdot)$ given
+the original prediction, the current latent and the action; none touches the JEPA's weights
+(Appendix~\ref{app:hparams}). Within-model comparisons isolate sampling; cross-family ones change several components.

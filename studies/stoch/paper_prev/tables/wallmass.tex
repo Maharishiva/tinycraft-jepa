@@ -1,0 +1,12 @@
+\begin{tabular}{lrrrr}
+\toprule
+model & wall mass kept, step 1 & step 4 & step 8 & gap in the last frame \\
+\midrule
+LeWM (class token): latent of the real future, decoded & 49\% & 30\% & 58\% & -- \\
+LeWM (class token): mean rollout & 50\% & 31\% & 59\% & undecided in 73\% \\
+grid JEPA: latent of the real future, decoded & 100\% & 100\% & 99\% & -- \\
+grid JEPA: mean rollout & 1\% & 0\% & 4\% & undecided in 100\% \\
+grid JEPA + sampling predictor: sampled rollout (4 samples) & 22\% & 34\% & 33\% & top in 11\% of samples; both sides seen in 9\% of contexts \\
+flow model: sampled rollout (4 samples) & 100\% & 100\% & 97\% & top in 50\% of samples; both sides seen in 83\% of contexts \\
+\bottomrule
+\end{tabular}

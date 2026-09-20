@@ -1,0 +1,99 @@
+\section{Results}
+\label{sec:results}
+
+\begin{figure}[t]
+\centering
+\paperfig{geometry.pdf}{1.0}
+\caption{\textbf{Where the wall goes.} Left: squared latent distances in the grid JEPA (model seed $0$) over $64$ pre-reveal contexts; the wall's amplitude (latent of the true future with the wall against without it)
+lies below the predictor's one-step residual at every step, and the rollouts drift far from the true
+future. Middle: the flow model's latent on the axis between the two gap futures ($40$ contexts in which both branches survive); a sample commits at once, the mean of eight starts half-way and approaches a branch in three steps. Right: termination head fitted on the frozen JEPA latent, AUC of each death cause against alive transitions.}
+\label{fig:geometry}
+\end{figure}
+
+\subsection{The wall is decodable but lost in prediction}
+\label{sec:results-wall}
+
+The wall's signal in the JEPA latent is smaller than the predictor's error
+(Figure~\ref{fig:geometry}, left). From $64$ contexts in which the wall is solid at $x\in\{42,45\}$ the
+true simulator renders three futures under the recorded actions: the recorded one, its counterfactual
+with the other gap, and the same trajectory with the wall removed. The encoder separates
+the true future from the wall-free one by a squared distance of $0.035$ at step one and $0.12$ at
+step eight, in a $512$-dimensional latent of about unit variance per coordinate. The predictor's own teacher-forced one-step residual is
+$0.145$ at step one and $0.25$ at step eight. Write $d$ for the difference between the latents of the
+true future with and without the wall, and the wall coordinate of a prediction for its projection on
+$d$, $0$ at the wall-free latent and $1$ at the true one: the teacher-forced one-step prediction has
+mean wall coordinate $0.39$ at step one and $0.21$ at step eight. The deterministic rollout is as close to the
+wall-free future as to the true one at every step, and its decoded frames contain no wall at any step,
+while the decoded latent of the true future contains the full wall (intensity $1.00$ on the wall
+pixels; Table~\ref{tab:latent}). Averaging cannot explain this: the wall is dropped before the gap is
+drawn, and the two possible futures share the wall. These are model seed $0$; seeds $1$ and $2$ repeat
+it with wall amplitude $0.03$ and $0.09$ against a residual of $0.13$ and $0.16$ at step one, wall
+coordinate $0.45$ and $0.66$, termination heads at AUC $0.65$ and $0.76$ on wall deaths and agents at
+$0.17$ and $0.33$ walls; seed $2$ keeps $0.68$ of the wall's decoded intensity at step one and at most $0.02$ after (Table~\ref{tab:seeddiag}).
+
+The flow model keeps the wall in both modes. In its latent the same distance is $344$ to $554$; on
+the $40$ contexts in which both branches survive the recorded actions, a sample sits at
+$\lvert\text{gap coordinate}\rvert = 0.89$ at step one and $0.99$--$1.00$ after, the mean of eight at
+$0.28$, $0.47$, $0.83$ and $0.98$ (Figure~\ref{fig:geometry}, middle; Table~\ref{tab:latent}). Its decoded frames show one gap or the other, never a half-open wall: a latent average need not decode to a pixel average.
+
+The heads fitted on the latent see border deaths and barely see wall deaths
+(Figure~\ref{fig:geometry}, right; Table~\ref{tab:heads}). Fitted on $80{,}000$ real latents with the
+death labels, the termination head separates the $159$ border deaths from alive transitions at AUC
+$0.963$ and the $610$ wall deaths at $0.649$ (model seed $0$; $0.88$--$0.96$ and $0.65$--$0.76$ over
+seeds); the reward head predicts $-0.89$ on border deaths and $-0.05$ on wall deaths, against $-1$ at every death. These are the heads the planners and in-model agents use, not a bound on any read-out.
+
+\subsection{Nothing trained inside the JEPA learns to survive}
+\label{sec:results-ppo}
+
+\begin{table}[t]
+\centering
+\caption{\textbf{Gate controllers, graded in the real environment.} Walls per episode and survival to the cap, mean $\pm$ s.d.\ over runs; ``discovered'' counts runs with final survival above $50\%$. Simulator search uses the true reward, no terminal value; real-gate PPO uses $1.5$M steps.}
+\label{tab:paired}
+\inputtable{paired.tex}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\paperfig{discovery.pdf}{1.0}
+\caption{\textbf{Survival in the real gate over policy training}, one line per run; discovery is final survival above $50\%$ (dashed line). Inside the grid JEPA no run leaves the floor. Inside the flow model and on true pixels with the convolutional torso some runs discover the retreat-and-wait strategy (dotted: the MLP torso on pixels, which does not in three runs). On the frozen JEPA latent no run discovers it; on the latent decoded back to pixels with the convolutional torso (dotted), $2$ of $9$ do. Walls passed, the quantity of the main comparison, are in Figure~\ref{fig:hero}C and Table~\ref{tab:paired}.}
+\label{fig:discovery}
+\end{figure}
+
+Table~\ref{tab:paired} and Figure~\ref{fig:discovery} give the control result. PPO inside the grid
+JEPA ends at or below $3.1\%$ survival ($8$ of $256$ episodes) at the final checkpoint in every one of its $27$ runs: $0.27\pm0.22$ walls per episode with
+the original predictor, $0.26\pm0.30$ with the residual predictor as the mean of eight and
+$0.26\pm0.32$ as one sample (Table~\ref{tab:seeds} lists every cell). The best cells, $0.9$ walls at $3\%$ survival, sit between horizon-5 and horizon-8 simulator search, and no run leaves the floor of Figure~\ref{fig:discovery}. Inside the flow model the eight runs without discovery pass $0.72$ to $1.18$ walls per episode, and one of the six sampled runs discovers the
+retreat-and-wait strategy and reaches $98\%$ survival and $3.95$ walls; PPO in the real environment
+discovers it in $2$ of $3$ runs ($91$, $5.5$ and $99\%$). Discovery is a lottery in both. Discovery counts are $1$ of $9$ for the flow model and $0$ of $27$ for the JEPA (Fisher $p=0.25$); all nine flow runs exceed the JEPA's mean of $0.27$ walls and six exceed its best run (Mann--Whitney $p<10^{-4}$). These run-level tests are conditional on the fitted models, and none of the $27$ JEPA policies discovers the strategy.
+
+Two controls in the real gate, with the true dynamics and the true reward, show a deficit relative to training on real transitions. PPO on the frozen JEPA latent (Figure~\ref{fig:discovery}, right) ends at $0.88$--$0.99$ walls per episode and $2.3$--$5.5\%$ survival in nine runs over three encoders, $0.94$ against $0.27$ inside the JEPA, and never the strategy. The same MLP torso design passes $0.84$--$1.00$ walls on the flattened true frame in three runs, so the one-wall result is not specific to the JEPA latent. In the real gate the convolutional policy discovers the strategy in $2$ of $3$ pixel runs and, fed the frozen latent decoded back to pixels by the off-budget decoder, in $2$ of $9$; both decoded successes use encoder $1$ ($3.6$--$3.9$ walls, $79$--$96\%$; $0.80$--$1.39$ walls and $2$--$7\%$ in the other seven), so the frozen latent supports discovery on at least one encoder. None of $42$ transformed-latent runs discovers it; they pass $0.50$--$1.01$ walls and test wall-signal gains of $4$ and $16$, four-fold scaling of probe, wall-difference and matched random subspaces, and decoded frames for the MLP torso (Appendix~\ref{app:latentctl}). The comparison that carries our claim is within one policy class, $0.94$ walls on the frozen latent in the real gate against $0.27$ inside the JEPA; real-gate training also replaces the fitted heads by the true reward and changes the collection protocol (Appendix~\ref{app:hparams}), so it measures the imagination pipeline, predictor and heads together, and does not separate transition error from head error.
+
+Two references bound what the planners can say. Simulator search with the wall known, the gap hidden
+until the reveal and no terminal value passes $0.69$ walls at horizon $5$ and $1.03$ at horizon $8$;
+revealing the gap to horizon-5 search moves it only to $0.70$: the horizon binds, not the gap.
+LeWM's goal-image and heads planners on the JEPA pass $0.04$ to $0.16$ walls
+(Appendix~\ref{app:round1tables}); in a horizon-$3$ audit the heads-MPC's selected return, $-0.46$, is a maximum over $64$ noisy plans with mean $-0.84$ (Table~\ref{tab:heads}).
+
+\subsection{Sampling the fitted residual predictor does not rescue control}
+\label{sec:results-mean}
+
+The comparison is inside one model. In the grid JEPA the residual predictor has lower held-out one-step error than the original ($1.3\times10^{-4}$ per coordinate as the mean of eight, $2.1\times10^{-4}$ as one sample, against $3.1\times10^{-4}$) and is a distribution rather than a point; neither moves the agent: $0.26$ and $0.26$ walls against $0.27$, the same $0$--$3\%$ survival (Table~\ref{tab:paired}).
+No distributional predictor is ruled out; this one does not help. In the flow model the mean of eight passes $0.88\pm0.14$ walls in three runs, against $0.96\pm0.16$ for the five sampled runs without discovery and $3.95$ for the one with it; $0$ against $1$ discoveries in three against six runs says nothing
+about the mode. Proposition~\ref{prop:regret} remains true and Figure~\ref{fig:geometry} (middle) shows the half-way latent it warns about, but the averaged transition approaches a branch within three steps (gap coordinate $0.83$) and keeps the wall; inside the JEPA it is gone in either mode. These tests neither identify the mean as the cause nor rule out failures caused by averaging.
+
+\subsection{Budget, regularizer, and the cube worlds}
+\label{sec:results-rest}
+
+\paragraph{Training budget.} Training the grid JEPA for twice and four times the steps ($17{,}000$
+and $34{,}000$) lowers the prediction loss from $0.0006$ to $0.0003$ and leaves the heads' held-out reward correlation at $0.31$--$0.33$ and PPO inside the model at $0$--$3\%$ survival in all three predictor variants (model seed $0$, PPO seed $0$; Table~\ref{tab:budget}).
+
+\paragraph{Regularizer dose.} On the cube world with a random texture fixed within each episode,
+where the class-token JEPA behaves like the texture optimum of Proposition~\ref{prop:representation},
+sweeping the SIGReg weight over $0$, $0.009$, $0.09$ and $0.9$ and the latent width over $32$ and $192$ (five arms) does not recover the cube position: the held-out reward correlation of the fitted heads stays between $-0.01$ and $0.00$ and the decoder's error at $0.0028$--$0.0029$ in every regularized arm; at weight $0$ the latent collapses (decoder error $0.055$; Table~\ref{tab:sigreg}). The weight sets how Gaussian the latent is, not what it is a function of.
+
+\paragraph{Cube worlds and a state-blind caveat.} The six cube worlds (Appendix~\ref{app:cubes}) show
+the two representation failures the theory predicts: with a per-episode random background the class-token JEPA reaches near-zero prediction loss by encoding the background and its reward-driven controllers fall to $0$--$2\%$; with a hidden wind the grid JEPA stays in the noise basin. A policy
+that alternates left and right without looking survives the still cube worlds in $100\%$ of episodes (Table~\ref{tab:edge}); still-world survival is not evidence.
+
+\paragraph{Craftax, exploratory.} A grid JEPA trained on Craftax-Classic pixels reaches six-action goal
+positions in $94.5\%$ of trials against $18.8\%$ for random plans, while its reward head's correlation with the true reward falls from $0.92$ on training transitions to $0.35$ held out and reward-MPC returns $0.47$ over $100$ steps against $1.45$ for random actions (Appendix~\ref{app:craftax}): what it keeps steers the agent and does not say what is worth reaching.

@@ -1,0 +1,17 @@
+\begin{tabular}{lrrr}
+\toprule
+read-out on real latents & wall deaths & border deaths & alive \\
+\midrule
+transitions & 610 & 159 & 24231 \\
+reward head, mean prediction & -0.05 & -0.89 & -0.03 \\
+termination head, mean $p(\text{done})$ & 0.06 & 0.67 & 0.03 \\
+termination head, AUC against alive & 0.65 & 0.96 & \\
+\midrule
+imagined return, horizon 8 & mean & fraction $>0$ & \\
+original predictor & -0.78 & 1\% & \\
+residual head, one sample & -0.86 & 1\% & \\
+residual head, mean of 8 & -0.86 & 0\% & \\
+\midrule
+planner's view, horizon 3, 64 plans & mean over plans -0.84 & best plan -0.46 & best plan $>0$ in 5\% \\
+\bottomrule
+\end{tabular}

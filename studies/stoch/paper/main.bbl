@@ -1,0 +1,363 @@
+\begin{thebibliography}{52}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Alonso et~al.(2024)Alonso, Jelley, Micheli, Kanervisto, Storkey,
+  Pearce, and Fleuret]{alonso2024diamond}
+Eloi Alonso, Adam Jelley, Vincent Micheli, Anssi Kanervisto, Amos Storkey, Tim
+  Pearce, and Fran{\c c}ois Fleuret.
+\newblock Diffusion for world modeling: Visual details matter in atari.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2024.
+
+\bibitem[Assran et~al.(2023)Assran, Duval, Misra, Bojanowski, Vincent, Rabbat,
+  LeCun, and Ballas]{assran2023ijepa}
+Mahmoud Assran, Quentin Duval, Ishan Misra, Piotr Bojanowski, Pascal Vincent,
+  Michael Rabbat, Yann LeCun, and Nicolas Ballas.
+\newblock Self-supervised learning from images with a joint-embedding
+  predictive architecture.
+\newblock In \emph{IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, 2023.
+
+\bibitem[Assran et~al.(2025)Assran, Bardes, Fan, Garrido, Howes, Komeili,
+  Muckley, Rizvi, Roberts, Sinha, Zholus, and Ballas]{assran2025vjepa2}
+Mahmoud Assran, Adrien Bardes, David Fan, Quentin Garrido, Russell Howes,
+  Mojtaba Komeili, Matthew Muckley, Ammar Rizvi, Claire Roberts, Koustuv Sinha,
+  Artem Zholus, and Nicolas Ballas.
+\newblock {V-JEPA} 2: Self-supervised video models enable understanding,
+  prediction and planning, 2025.
+
+\bibitem[Babaeizadeh et~al.(2018)Babaeizadeh, Finn, Erhan, Campbell, and
+  Levine]{babaeizadeh2018sv2p}
+Mohammad Babaeizadeh, Chelsea Finn, Dumitru Erhan, Roy~H. Campbell, and Sergey
+  Levine.
+\newblock Stochastic variational video prediction.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2018.
+
+\bibitem[Balestriero \& LeCun(2025)Balestriero and
+  LeCun]{balestriero2025lejepa}
+Randall Balestriero and Yann LeCun.
+\newblock {LeJEPA}: Provable and scalable self-supervised learning without the
+  heuristics, 2025.
+
+\bibitem[Bar-Shalom \& Tse(1974)Bar-Shalom and Tse]{barshalom1974dual}
+Yaakov Bar-Shalom and Edison Tse.
+\newblock Dual effect, certainty equivalence, and separation in stochastic
+  control.
+\newblock \emph{IEEE Transactions on Automatic Control}, 19\penalty0
+  (5):\penalty0 494--500, 1974.
+
+\bibitem[Bardes et~al.(2022)Bardes, Ponce, and LeCun]{bardes2022vicreg}
+Adrien Bardes, Jean Ponce, and Yann LeCun.
+\newblock {VICReg}: Variance-invariance-covariance regularization for
+  self-supervised learning.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2022.
+
+\bibitem[Bardes et~al.(2024)Bardes, Garrido, Ponce, Chen, Rabbat, LeCun,
+  Assran, and Ballas]{bardes2024vjepa}
+Adrien Bardes, Quentin Garrido, Jean Ponce, Xinlei Chen, Michael Rabbat, Yann
+  LeCun, Mahmoud Assran, and Nicolas Ballas.
+\newblock Revisiting feature prediction for learning visual representations
+  from video, 2024.
+
+\bibitem[Bellemare et~al.(2017)Bellemare, Dabney, and
+  Munos]{bellemare2017distributional}
+Marc~G. Bellemare, Will Dabney, and R{\'e}mi Munos.
+\newblock A distributional perspective on reinforcement learning.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2017.
+
+\bibitem[Bellemare et~al.(2023)Bellemare, Dabney, and Rowland]{bdr2023}
+Marc~G. Bellemare, Will Dabney, and Mark Rowland.
+\newblock \emph{Distributional Reinforcement Learning}.
+\newblock MIT Press, 2023.
+
+\bibitem[Bruce et~al.(2024)Bruce, Dennis, Edwards, Parker-Holder, Shi, Hughes,
+  Lai, Mavalankar, Steigerwald, Apps, Aytar, Bechtle, Behbahani, Chan, Heess,
+  Gonzalez, Osindero, Ozair, Reed, Zhang, Zolna, Clune, de~Freitas, Singh, and
+  Rockt{\"a}schel]{bruce2024genie}
+Jake Bruce, Michael Dennis, Ashley Edwards, Jack Parker-Holder, Yuge Shi,
+  Edward Hughes, Matthew Lai, Aditi Mavalankar, Richie Steigerwald, Chris Apps,
+  Yusuf Aytar, Sarah Bechtle, Feryal Behbahani, Stephanie Chan, Nicolas Heess,
+  Lucy Gonzalez, Simon Osindero, Sherjil Ozair, Scott Reed, Jingwei Zhang,
+  Konrad Zolna, Jeff Clune, Nando de~Freitas, Satinder Singh, and Tim
+  Rockt{\"a}schel.
+\newblock Genie: Generative interactive environments.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
+
+\bibitem[Chen et~al.(2024)Chen, Mons{\'o}, Du, Simchowitz, Tedrake, and
+  Sitzmann]{chen2024diffusionforcing}
+Boyuan Chen, Diego~Mart{\'i} Mons{\'o}, Yilun Du, Max Simchowitz, Russ Tedrake,
+  and Vincent Sitzmann.
+\newblock Diffusion forcing: Next-token prediction meets full-sequence
+  diffusion.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2024.
+
+\bibitem[Chen \& He(2021)Chen and He]{chen2021simsiam}
+Xinlei Chen and Kaiming He.
+\newblock Exploring simple siamese representation learning.
+\newblock In \emph{IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, 2021.
+
+\bibitem[Chua et~al.(2018)Chua, Calandra, McAllister, and Levine]{chua2018pets}
+Kurtland Chua, Roberto Calandra, Rowan McAllister, and Sergey Levine.
+\newblock Deep reinforcement learning in a handful of trials using
+  probabilistic dynamics models.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2018.
+
+\bibitem[Denton \& Fergus(2018)Denton and Fergus]{denton2018svg}
+Emily Denton and Rob Fergus.
+\newblock Stochastic video generation with a learned prior.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2018.
+
+\bibitem[Espeholt et~al.(2018)Espeholt, Soyer, Munos, Simonyan, Mnih, Ward,
+  Doron, Firoiu, Harley, Dunning, Legg, and Kavukcuoglu]{espeholt2018impala}
+Lasse Espeholt, Hubert Soyer, Remi Munos, Karen Simonyan, Volodymyr Mnih, Tom
+  Ward, Yotam Doron, Vlad Firoiu, Tim Harley, Iain Dunning, Shane Legg, and
+  Koray Kavukcuoglu.
+\newblock {IMPALA}: Scalable distributed deep-{RL} with importance weighted
+  actor-learner architectures.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2018.
+
+\bibitem[Farahmand et~al.(2017)Farahmand, Barreto, and
+  Nikovski]{farahmand2017vaml}
+Amir-massoud Farahmand, Andre Barreto, and Daniel Nikovski.
+\newblock Value-aware loss function for model-based reinforcement learning.
+\newblock In \emph{Proceedings of the 20th International Conference on
+  Artificial Intelligence and Statistics (AISTATS)}, pp.\  1486--1494, 2017.
+
+\bibitem[Farebrother et~al.(2024)Farebrother, Orbay, Vuong, Taiga, Chebotar,
+  Xiao, Irpan, Levine, Castro, Faust, Kumar, and
+  Agarwal]{farebrother2024stopregressing}
+Jesse Farebrother, Jordi Orbay, Quan Vuong, Adrien~Ali Taiga, Yevgen Chebotar,
+  Ted Xiao, Alexander Irpan, Sergey Levine, Pablo~Samuel Castro, Aleksandra
+  Faust, Aviral Kumar, and Rishabh Agarwal.
+\newblock Stop regressing: Training value functions via classification for
+  scalable deep reinforcement learning.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
+
+\bibitem[Ferns et~al.(2004)Ferns, Panangaden, and
+  Precup]{ferns2004bisimulation}
+Norm Ferns, Prakash Panangaden, and Doina Precup.
+\newblock Metrics for finite markov decision processes.
+\newblock In \emph{Conference on Uncertainty in Artificial Intelligence (UAI)},
+  2004.
+
+\bibitem[Grill et~al.(2020)Grill, Strub, Altch{\'e}, Tallec, Richemond,
+  Buchatskaya, Doersch, Pires, Guo, Azar, Piot, Kavukcuoglu, Munos, and
+  Valko]{grill2020byol}
+Jean-Bastien Grill, Florian Strub, Florent Altch{\'e}, Corentin Tallec,
+  Pierre~H. Richemond, Elena Buchatskaya, Carl Doersch, Bernardo~Avila Pires,
+  Zhaohan~Daniel Guo, Mohammad~Gheshlaghi Azar, Bilal Piot, Koray Kavukcuoglu,
+  R{\'e}mi Munos, and Michal Valko.
+\newblock Bootstrap your own latent: A new approach to self-supervised
+  learning.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2020.
+
+\bibitem[Grimm et~al.(2020)Grimm, Barreto, Singh, and Silver]{grimm2020value}
+Christopher Grimm, Andr{\'e} Barreto, Satinder Singh, and David Silver.
+\newblock The value equivalence principle for model-based reinforcement
+  learning.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2020.
+
+\bibitem[Ha \& Schmidhuber(2018)Ha and Schmidhuber]{ha2018worldmodels}
+David Ha and J{\"u}rgen Schmidhuber.
+\newblock World models, 2018.
+
+\bibitem[Hafner(2022)]{hafner2022crafter}
+Danijar Hafner.
+\newblock Benchmarking the spectrum of agent capabilities.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2022.
+
+\bibitem[Hafner et~al.(2019)Hafner, Lillicrap, Fischer, Villegas, Ha, Lee, and
+  Davidson]{hafner2019planet}
+Danijar Hafner, Timothy Lillicrap, Ian Fischer, Ruben Villegas, David Ha,
+  Honglak Lee, and James Davidson.
+\newblock Learning latent dynamics for planning from pixels.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2019.
+
+\bibitem[Hafner et~al.(2020)Hafner, Lillicrap, Ba, and
+  Norouzi]{hafner2020dreamer}
+Danijar Hafner, Timothy Lillicrap, Jimmy Ba, and Mohammad Norouzi.
+\newblock Dream to control: Learning behaviors by latent imagination.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2020.
+
+\bibitem[Hafner et~al.(2021)Hafner, Lillicrap, Norouzi, and
+  Ba]{hafner2021dreamerv2}
+Danijar Hafner, Timothy Lillicrap, Mohammad Norouzi, and Jimmy Ba.
+\newblock Mastering atari with discrete world models.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2021.
+
+\bibitem[Hafner et~al.(2023)Hafner, Pasukonis, Ba, and
+  Lillicrap]{hafner2023dreamerv3}
+Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, and Timothy Lillicrap.
+\newblock Mastering diverse domains through world models, 2023.
+
+\bibitem[Hafner et~al.(2025)Hafner, Yan, and Lillicrap]{hafner2025dreamer4}
+Danijar Hafner, Wilson Yan, and Timothy Lillicrap.
+\newblock Training agents inside of scalable world models, 2025.
+
+\bibitem[Hansen et~al.(2024)Hansen, Su, and Wang]{hansen2024tdmpc2}
+Nicklas Hansen, Hao Su, and Xiaolong Wang.
+\newblock {TD-MPC2}: Scalable, robust world models for continuous control.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+
+\bibitem[Howard(1966)]{howard1966information}
+Ronald~A. Howard.
+\newblock Information value theory.
+\newblock \emph{IEEE Transactions on Systems Science and Cybernetics},
+  2\penalty0 (1):\penalty0 22--26, 1966.
+
+\bibitem[Jing et~al.(2022)Jing, Vincent, LeCun, and Tian]{jing2022dimensional}
+Li~Jing, Pascal Vincent, Yann LeCun, and Yuandong Tian.
+\newblock Understanding dimensional collapse in contrastive self-supervised
+  learning.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2022.
+
+\bibitem[Lambert et~al.(2020)Lambert, Amos, Yadan, and
+  Calandra]{lambert2020objective}
+Nathan Lambert, Brandon Amos, Omry Yadan, and Roberto Calandra.
+\newblock Objective mismatch in model-based reinforcement learning.
+\newblock In \emph{Conference on Learning for Dynamics and Control (L4DC)},
+  2020.
+
+\bibitem[LeCun(2022)]{lecun2022path}
+Yann LeCun.
+\newblock A path towards autonomous machine intelligence, 2022.
+\newblock Version 0.9.2, OpenReview.
+
+\bibitem[Lee et~al.(2018)Lee, Zhang, Ebert, Abbeel, Finn, and
+  Levine]{lee2018savp}
+Alex~X. Lee, Richard Zhang, Frederik Ebert, Pieter Abbeel, Chelsea Finn, and
+  Sergey Levine.
+\newblock Stochastic adversarial video prediction, 2018.
+
+\bibitem[Lipman et~al.(2023)Lipman, Chen, Ben-Hamu, Nickel, and
+  Le]{lipman2023flowmatching}
+Yaron Lipman, Ricky T.~Q. Chen, Heli Ben-Hamu, Maximilian Nickel, and Matt Le.
+\newblock Flow matching for generative modeling.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2023.
+
+\bibitem[Maes et~al.(2026)Maes, Le~Lidec, Scieur, LeCun, and
+  Balestriero]{maes2026lewm}
+Lucas Maes, Quentin Le~Lidec, Damien Scieur, Yann LeCun, and Randall
+  Balestriero.
+\newblock {LeWorldModel}: Stable end-to-end joint-embedding predictive
+  architecture from pixels, 2026.
+
+\bibitem[Mathieu et~al.(2016)Mathieu, Couprie, and LeCun]{mathieu2016beyond}
+Michael Mathieu, Camille Couprie, and Yann LeCun.
+\newblock Deep multi-scale video prediction beyond mean square error.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2016.
+
+\bibitem[Matthews et~al.(2024)Matthews, Beukman, Ellis, Samvelyan, Jackson,
+  Coward, and Foerster]{matthews2024craftax}
+Michael Matthews, Michael Beukman, Benjamin Ellis, Mikayel Samvelyan, Matthew
+  Jackson, Samuel Coward, and Jakob Foerster.
+\newblock Craftax: A lightning-fast benchmark for open-ended reinforcement
+  learning.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
+
+\bibitem[Schrittwieser et~al.(2020)Schrittwieser, Antonoglou, Hubert, Simonyan,
+  Sifre, Schmitt, Guez, Lockhart, Hassabis, Graepel, Lillicrap, and
+  Silver]{schrittwieser2020muzero}
+Julian Schrittwieser, Ioannis Antonoglou, Thomas Hubert, Karen Simonyan,
+  Laurent Sifre, Simon Schmitt, Arthur Guez, Edward Lockhart, Demis Hassabis,
+  Thore Graepel, Timothy Lillicrap, and David Silver.
+\newblock Mastering atari, go, chess and shogi by planning with a learned
+  model.
+\newblock \emph{Nature}, 588:\penalty0 604--609, 2020.
+
+\bibitem[Schulman et~al.(2017)Schulman, Wolski, Dhariwal, Radford, and
+  Klimov]{schulman2017ppo}
+John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
+\newblock Proximal policy optimization algorithms, 2017.
+
+\bibitem[Simon(1956)]{simon1956dynamic}
+Herbert~A. Simon.
+\newblock Dynamic programming under uncertainty with a quadratic criterion
+  function.
+\newblock \emph{Econometrica}, 24\penalty0 (1):\penalty0 74--81, 1956.
+
+\bibitem[Sobal et~al.(2025)Sobal, Zhang, Cho, Balestriero, Rudner, and
+  LeCun]{sobal2025pldm}
+Vlad Sobal, Wancong Zhang, Kyunghyun Cho, Randall Balestriero, Tim G.~J.
+  Rudner, and Yann LeCun.
+\newblock Learning from reward-free offline data: A case for planning with
+  latent dynamics models, 2025.
+
+\bibitem[Sutton(1991)]{sutton1991dyna}
+Richard~S. Sutton.
+\newblock Dyna, an integrated architecture for learning, planning, and
+  reacting.
+\newblock \emph{ACM SIGART Bulletin}, 2\penalty0 (4):\penalty0 160--163, 1991.
+
+\bibitem[Theil(1957)]{theil1957note}
+Henri Theil.
+\newblock A note on certainty equivalence in dynamic planning.
+\newblock \emph{Econometrica}, 25\penalty0 (2):\penalty0 346--349, 1957.
+
+\bibitem[Tishby et~al.(2000)Tishby, Pereira, and Bialek]{tishby2000ib}
+Naftali Tishby, Fernando~C. Pereira, and William Bialek.
+\newblock The information bottleneck method, 2000.
+
+\bibitem[Unterthiner et~al.(2018)Unterthiner, van Steenkiste, Kurach, Marinier,
+  Michalski, and Gelly]{unterthiner2018fvd}
+Thomas Unterthiner, Sjoerd van Steenkiste, Karol Kurach, Rapha{\"e}l Marinier,
+  Marcin Michalski, and Sylvain Gelly.
+\newblock Towards accurate generative models of video: A new metric and
+  challenges, 2018.
+
+\bibitem[Wan et~al.(2019)Wan, Zaheer, White, White, and
+  Sutton]{wan2019expectation}
+Yi~Wan, Muhammad Zaheer, Adam White, Martha White, and Richard~S. Sutton.
+\newblock Planning with expectation models.
+\newblock In \emph{Proceedings of the Twenty-Eighth International Joint
+  Conference on Artificial Intelligence (IJCAI)}, pp.\  3649--3655, 2019.
+
+\bibitem[Wan et~al.(2021)Wan, Rahimi-Kalahroudi, Rajendran, Momennejad,
+  Chandar, and van Seijen]{wan2021expectationcontrol}
+Yi~Wan, Ali Rahimi-Kalahroudi, Janarthanan Rajendran, Ida Momennejad, Sarath
+  Chandar, and Harm van Seijen.
+\newblock Planning with expectation models for control, 2021.
+
+\bibitem[Wiskott \& Sejnowski(2002)Wiskott and Sejnowski]{wiskott2002slow}
+Laurenz Wiskott and Terrence~J. Sejnowski.
+\newblock Slow feature analysis: Unsupervised learning of invariances.
+\newblock \emph{Neural Computation}, 14\penalty0 (4):\penalty0 715--770, 2002.
+
+\bibitem[Zbontar et~al.(2021)Zbontar, Jing, Misra, LeCun, and
+  Deny]{zbontar2021barlow}
+Jure Zbontar, Li~Jing, Ishan Misra, Yann LeCun, and St{\'e}phane Deny.
+\newblock Barlow twins: Self-supervised learning via redundancy reduction.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2021.
+
+\bibitem[Zhang et~al.(2021)Zhang, McAllister, Calandra, Gal, and
+  Levine]{zhang2021dbc}
+Amy Zhang, Rowan McAllister, Roberto Calandra, Yarin Gal, and Sergey Levine.
+\newblock Learning invariant representations for reinforcement learning without
+  reconstruction.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2021.
+
+\bibitem[Zhou et~al.(2024)Zhou, Pan, LeCun, and Pinto]{zhou2024dinowm}
+Gaoyue Zhou, Hengkai Pan, Yann LeCun, and Lerrel Pinto.
+\newblock {DINO-WM}: World models on pre-trained visual features enable
+  zero-shot planning, 2024.
+
+\end{thebibliography}

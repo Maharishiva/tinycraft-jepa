@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage{iclr2027_conference,times}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{multirow}
+
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.8}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{0pt}
+
+\newcommand{\todo}[1]{\textcolor{red!70!black}{\textbf{[#1]}}}
+
+\newsavebox{\ttblbox}
+\newcommand{\inputtable}[1]{%
+  \sbox{\ttblbox}{\small\input{tables/#1}}%
+  \ifdim\wd\ttblbox>\linewidth
+    \resizebox{\linewidth}{!}{\usebox{\ttblbox}}%
+  \else
+    \usebox{\ttblbox}%
+  \fi}
+\newcommand{\paperfig}[2]{\includegraphics[width=#2\linewidth]{figures/#1}}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Nrm}{\mathcal{N}}
+\newcommand{\Lcal}{\mathcal{L}}
+
+\title{Learning to Ignore What Matters:\\ A JEPA World Model Keeps the Cube and Loses the Wall}
+
+\author{Anonymous authors\\Paper under double-blind review}
+
+\renewcommand{\paragraph}[1]{\par\addvspace{1.1ex plus 0.4ex minus 0.2ex}\noindent\textbf{#1}\hspace{1em}}
+\setlength{\textfloatsep}{10pt plus 2pt minus 4pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{3pt}
+\begin{document}
+
+\maketitle
+
+\lhead{Under review as a conference paper at ICLR 2027}
+
+\begin{abstract}
+We study a joint-embedding predictive world model (JEPA) trained with LeWM's objective, squared
+next-latent prediction plus a Gaussian marginal regularizer, no decoder and no reward, in a world where
+survival depends on one thing: a moving wall whose gap is revealed late. On the same data and ten-minute
+budget a generative flow model imagines the wall and commits to a gap; the grid JEPA imagines an empty
+room: the wall's latent signal is below the predictor's one-step residual, decoded rollouts lose the wall
+within two steps in all three model seeds, and termination heads barely read wall deaths. PPO with an
+MLP torso passes $0.27$ walls per episode after training inside the JEPA ($27$ runs), against $0.94$
+after training in the real gate on the JEPA's own frozen encoders (nine runs) and $0.91$ on true pixels;
+eight of nine runs inside the flow model pass $0.72$--$1.18$ walls, the ninth $3.95$. The real-gate
+comparison changes dynamics, reward and termination at once: it shows a deficit of the imagination
+pipeline, predictor and fitted heads together, and does not isolate the predictor. The wall the pipeline
+loses is decodable: a convolutional policy trained on the frozen latent decoded back to pixels learns the
+retreat-and-wait strategy in two of nine runs, as it does on true pixels in two of three. Sampling the
+fitted residual predictor does not improve control, and amplifying the wall's latent signal for the MLP
+policy produces no discovery. We prove that the objective allows this: a non-collapsed global optimum
+can carry no state at all, and an exactly Gaussian, fully decodable latent can hold a control-relevant
+feature at arbitrarily small amplitude. Non-collapse does not guarantee control-relevant state, and
+decodable state does not guarantee that imagination uses it.
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/worlds}
+\input{sections/theory}
+\input{sections/controllers}
+\input{sections/results}
+\input{sections/related}
+\input{sections/discussion}
+
+\subsubsection*{Reproducibility statement}
+The worlds, models, controllers and every diagnostic are JAX programs; the base world-model comparison uses a ten-minute budget on one A100 including compilation, the fixed-step sweeps report their times, and the off-budget heads, decoders and policies have the budgets given in Appendix~\ref{app:hparams}. Section~\ref{sec:controllers} states the evaluation protocol; Appendix~\ref{app:protocol}
+the metrics. All numbers in the text are produced by one script from the run ledgers. Code, data generation and
+the run ledgers will be released as an anonymous artifact.
+
+\subsubsection*{Statement on the use of AI}
+Language models were used to draft and edit prose, to check the proofs for gaps, to write analysis and plotting
+scripts, and to act as an adversarial reviewer of the manuscript. Every experiment, number, proof and claim was
+specified, run and verified by the authors.
+
+\clearpage
+\bibliography{references}
+\bibliographystyle{iclr2027_conference}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}

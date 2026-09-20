@@ -1,0 +1,14 @@
+\begin{tabular}{lrrrr}
+\toprule
+squared latent distance, rollout step & 1 & 3 & 5 & 8 \\
+\midrule
+wall present vs absent (encoded true futures) & 0.035 & 0.041 & 0.071 & 0.124 \\
+predictor's one-step residual (teacher forced, total) & 0.145 & 0.152 & 0.200 & 0.249 \\
+one-step residual along the wall direction & 0.015 & 0.021 & 0.048 & 0.104 \\
+one-step residual orthogonal to it & 0.130 & 0.132 & 0.152 & 0.145 \\
+one-step prediction: mean wall coordinate ($0$ = no wall, $1$ = true latent) & 0.39 & 0.33 & 0.29 & 0.21 \\
+\midrule
+grid JEPA, encoded true future & 1.00 & 1.00 & 1.00 & 1.00 \\
+grid JEPA, original rollout & 0.00 & 0.00 & 0.00 & 0.00 \\
+\bottomrule
+\end{tabular}

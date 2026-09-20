@@ -1,0 +1,37 @@
+\section{Objective, task and models}
+\label{sec:worlds}
+
+\paragraph{Objective.} The encoder $z_t=f_\theta(x_t)\in\R^D$ and causal predictor are trained jointly
+with latent history $c_t=z_{t-H+1:t}$ and matching action history $a_{t-H+1:t}$:
+\begin{equation}
+\label{eq:lewm}
+\Lcal(\theta)=\widehat{\E}_t\|g_\theta(c_t,a_{t-H+1:t})-z_{t+1}\|^2
++\lambda\,\mathrm{SIGReg}(\{z_t\}).
+\end{equation}
+Gradients reach both predictions and targets, without a stop-gradient or teacher.
+For random unit directions $u_p$, knots $t_k\in[0,3]$, quadrature weights $\omega_k$ and
+$w(t)=e^{-t^2/2}$, the empirical regularizer is
+\begin{equation}
+\label{eq:sigreg}
+\mathrm{SIGReg}=\frac1P\sum_{p,k}\omega_k w(t_k)
+\left[(\widehat{\E}\cos(t_k\langle z,u_p\rangle)-w(t_k))^2
++(\widehat{\E}\sin(t_k\langle z,u_p\rangle))^2\right].
+\end{equation}
+It compares projected characteristic functions with a standard Gaussian, constraining the marginal law.
+
+\paragraph{Gate and data.} A red $6\times6$ cube moves in $63\times63$ RGB frames; four actions move it
+three pixels left, up, right or down. A white wall three pixels wide enters at $x=60$ every $22$ steps and
+moves left three pixels per step; its $16$-pixel gap is at the top or the bottom with probability $1/2$ and is
+drawn only once the wall is past $x=40$. Either gap is five moves from the vertical centre, from which the cube
+sees the gap two steps before contact, so the surviving strategy is to retreat, wait for the reveal, then move
+(Figure~\ref{fig:hero}B). Contact with the wall or the frame border ends the episode at reward $-1$; other
+rewards are zero and the cap is $128$ steps. Training uses $500{,}000$ uniform-random transitions, evaluation
+$25{,}000$. Random and state-blind alternating actions pass $0.06$ and $0.02$ walls per episode.
+
+\paragraph{Models.} The grid JEPA is Equation~\ref{eq:lewm} with a $2.6$M tile-transformer encoder, a
+$4\times4\times32$ latent grid ($D=512$) and an $8.3$M factored spatial--temporal predictor with an eight-frame
+history; its encoder is frozen for all later head, decoder and policy fitting. The flow reference
+\citep{lipman2023flowmatching,chen2024diffusionforcing,hafner2025dreamer4} is a reconstruction-trained tokenizer to
+the same latent shape, a causal latent flow-matching predictor over a $32$-frame window, and reward and
+termination heads trained with it. It is one checkpoint trained on the same data and ten-minute budget, and it
+differs from the JEPA in architecture, supervision and history length at once.

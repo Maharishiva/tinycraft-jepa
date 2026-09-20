@@ -1,0 +1,14 @@
+\section{Discussion and limitations}
+\label{sec:limitations}
+
+\paragraph{What the objective guarantees.} Equation~\ref{eq:lewm} asks the latent to be predictable
+and Gaussian. Predictability rewards features whose future is a function of the past; Corollary~\ref{cor:strict} prices the rest for encoders that keep state at a uniform scale, while the constructed nuisance encoder pays nothing. Gaussianity guarantees nothing: Proposition~\ref{prop:representation} has an exactly Gaussian latent with no
+state, and Proposition~\ref{prop:amplitude} an exactly Gaussian, fully decodable latent whose one useful
+bit has arbitrarily small amplitude. The gate JEPA shares with the second case the split between decodability and weight in the loss, and does not measure it: the wall is decodable, its amplitude is below the predictor's residual, and the predictor drops it; raising that amplitude for the policy produced no discovery. The constructions say the objective permits this, not why training lands there: the wall the model drops is predictable, not an innovation.
+
+\paragraph{What we did not find.} We expected the mean predictor to be the failure, and the theory
+still says it can be (Proposition~\ref{prop:regret}; Proposition~\ref{prop:exact} gives one sufficient condition for exact open-loop ranking). Our tests do not identify it as the cause here: inside the JEPA, samples and eight-sample means give the same agents, and the flow model's mean keeps the wall and approaches a branch within three steps.
+
+\paragraph{Remedies.} The deficit sits in the imagination pipeline: policies trained on the frozen latent pass $0.94$ walls and, through a decoder, sometimes find the strategy; policies trained on the JEPA's rollouts with its heads average $0.27$ (Section~\ref{sec:results-ppo}). The flow model is a feasibility reference, not an isolated test: it keeps the wall in decoded frames and differs in tokenizer supervision, history and reward supervision at once. Sampling the residual predictor, longer gate fits, the regularizer sweep on the fixed-background cube world (Section~\ref{sec:results-rest}) and an amplified wall signal for the policy produce no discovery. Which change would make the pipeline carry the wall is beyond this paper; the diagnostic targets for this system are not: rollouts whose decoded frames keep the wall, and a head that reads wall deaths.
+
+\paragraph{Limitations.} One JEPA objective, two encoders, small worlds, ten-minute budgets, a four-fold budget sweep; no published LeWM benchmark is reproduced, and a larger encoder or budget could keep the wall. The MLP torso does not find the strategy on true pixels in three runs either, so discovery is compared across torsos and walls passed within one class. Discovery is a lottery ($2$ of $3$ on pixels): the flow model's $1$ of $9$ is a count, not a rate.

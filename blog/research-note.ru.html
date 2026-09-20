@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Независимый разбор экспериментов Tinycraft: что JEPA сохраняет, что предсказывает и достаточно ли этого для управления.">
+  <title>Что Tinycraft говорит о JEPA и LeWM</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root{color-scheme:light;--ink:#18283b;--muted:#536176;--line:#dce3ec;--blue:#154fa0;--red:#bb3343;--paper:#fff;--wash:#f3f6fa}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.68 Georgia,"Times New Roman",serif}
+    main{max-width:840px;margin:auto;padding:56px 28px 72px}a{color:var(--blue);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}
+    .meta,figcaption,table,.scope,summary,footer,.label{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .meta{font-size:13px;letter-spacing:.075em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;align-items:center}
+    .cube{width:12px;height:12px;background:var(--red);flex:none}h1{font-size:clamp(35px,6vw,51px);line-height:1.12;letter-spacing:-.025em;margin:22px 0}
+    .lead{font-size:22px;line-height:1.5;margin-bottom:26px}.verdict{border-left:3px solid var(--blue);padding:14px 20px;background:var(--wash)}
+    .verdict p{margin:0}.scope{font-size:14px;line-height:1.6;color:var(--muted);margin:20px 0 32px}
+    section{margin-top:34px}h2{font-size:27px;line-height:1.27;margin:0 0 14px;letter-spacing:-.015em}h2 .num{font:13px/1 system-ui,sans-serif;color:var(--red);vertical-align:middle;margin-right:11px}
+    p{margin:12px 0}strong{font-weight:700}sup{font:12px system-ui,sans-serif;margin-left:2px}
+    figure{margin:24px 0}.table-scroll{overflow:auto;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+    figure img{display:block;width:100%;height:auto}figure a.media{display:block;background:var(--wash);border:1px solid var(--line);border-radius:5px;overflow:hidden}figure a.media:focus-visible{outline:3px solid var(--blue);outline-offset:4px}.scene-label{font:600 14px/1.4 system-ui,sans-serif;display:block;margin-bottom:8px}.scene-columns{font:14px/1.5 system-ui,sans-serif;color:var(--muted);margin:7px 0}.plot a.media{background:white;border:0}.visual-note{font:14px/1.55 system-ui,sans-serif;color:var(--muted);padding-left:12px;border-left:2px solid var(--line)}.numbers{margin:20px 0}.numbers figure{margin:12px 0}.numbers summary{font-weight:400}
+    table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.45;font-variant-numeric:tabular-nums}th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:right}th:first-child,td:first-child{text-align:left;min-width:170px}th{font-weight:600}tr:last-child td{border-bottom:0}td:not(:first-child){white-space:nowrap}figcaption{font-size:14px;line-height:1.5;color:var(--muted);margin-top:10px}
+    .equation{font:17px/1.6 system-ui,sans-serif;background:var(--wash);padding:15px 18px;border-radius:3px;text-align:center}
+    ul,ol{padding-left:23px}li{margin:10px 0}.caveats{font-size:17px}.ending{border-top:2px solid var(--ink);padding-top:22px;margin-top:32px}
+    details{margin-top:24px;border-top:1px solid var(--line);padding-top:16px}summary{cursor:pointer;font-size:16px;font-weight:600}details p{font-size:16px}footer{font-size:14px;line-height:1.65;color:var(--muted);margin-top:34px;padding-top:20px;border-top:1px solid var(--line)}footer ol{padding-left:22px}footer li{margin:6px 0}code{font-size:.87em;overflow-wrap:anywhere}::selection{background:#dbe9ff}
+    @media(max-width:540px){main{padding:30px 20px 48px}body{font-size:17px}.lead{font-size:20px}h2{font-size:24px}.meta{font-size:12px;letter-spacing:.035em}.verdict{padding:12px 16px}th,td{padding:10px 8px}.equation{text-align:left;font-size:16px}}
+    @media print{main{max-width:none;padding:0}body{font-size:11pt}h1{font-size:26pt}h2{font-size:16pt}section,figure{break-inside:avoid}details{display:none}a{color:inherit}}
+  </style>
+</head>
+<body><main>
+  <header>
+    <div class="meta"><span class="cube" aria-hidden="true"></span>Исследовательская заметка · 18 сентября 2026</div>
+    <h1>Что Tinycraft говорит<br>о JEPA и LeWM</h1>
+    <p class="lead">От движения одного кубика до планирования в Craftax: где модель теряет мир и что из этого действительно следует.</p>
+    <div class="verdict"><p><strong>Мой вывод:</strong> работа Claude убедительно показывает уязвимость конкретного рецепта LeWM. Но она ещё не доказывает, что JEPA в принципе непригодна для случайного мира или что генеративная модель уже лучше управляет агентом.</p></div>
+    <p class="scope">Независимый разбор кода, журналов и сохранённых результатов. Проверены 10 конфигураций кубика, дополнительные архитектуры и эксперименты Craftax. Исходные энкодеры и динамика заново не обучались. Подробности проверки вынесены в <a href="research-note-audit.md">техническое приложение</a>.</p>
+    <div class="verdict"><p><strong>Дополнение, 19 сентября.</strong> Проверили замену декодеров на замороженных моделях: LeWM действительно теряла информацию и при декодировании, а случай flow с цветным шумом этим не исправился. <a href="decoder-results.ru.html">Новые результаты и гифки с полупрозрачной жёлтой пробой</a>.</p></div>
+  </header>
+
+  <section>
+    <h2><span class="num">01</span>Сначала уберём всю случайность</h2>
+    <p>Красный кубик движется по чёрному фону. Действия известны, ветер выключен. Flow matching через восемь шагов ошибается примерно на <strong>0,24 пикселя</strong>. LeWM с одним общим вектором кадра ошибается на <strong>45,3</strong>, хотя из представления настоящего кадра позиция читается почти точно. Значит, прогноз уже имеет проблему без стохастики. Дополнительная проверка показала и отдельный дефект старого декодера: на настоящих латентах его замена улучшает восстановление, но прогноз этим не исправляется.</p>
+    <figure>
+      <span class="scene-label">Кубик на чёрном фоне, без ветра</span>
+      <a class="media" href="redcube/assets/off_still_scene0.gif" target="_blank" rel="noopener"><img src="redcube/assets/off_still_scene0.gif" width="804" height="322" alt="Реальная траектория кубика, прогноз основной пространственной JEPA и прогноз flow matching на чёрном фоне"></a>
+      <div class="scene-columns">Слева направо: реальная среда → JEPA с решёткой → flow matching.</div>
+      <figcaption>Первые 8 кадров задают контекст; красная рамка отмечает 16 шагов прогноза. Контекст моделей тоже пропущен через энкодер и декодер. На этой гифке показана основная JEPA; общий вектор LeWM и успешная альтернатива сравниваются на графике ниже. Гифки можно открыть крупнее нажатием.</figcaption>
+    </figure>
+    <p>Однако другая JEPA с пространственным представлением и авторегрессионным предиктором даёт <strong>0,27 пикселя</strong>. Та же функция потерь может работать. Этот дополнительный опыт существенно меняет историю: плохой результат основного варианта нельзя целиком приписать принципу JEPA.<sup><a href="#s1">1</a></sup></p>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span>Добавим ненужную картинку</h2>
+    <p>Теперь за кубиком шум. Если фон сохраняется весь эпизод, его удобно запомнить: он предсказуем, хотя для движения бесполезен. У LeWM ошибка предсказания латента падает почти до нуля, но позицию кубика проверенные считывающие модели извлекают плохо. Это наиболее убедительный сигнал против обещания, что полезное представление само получится из предсказуемости и защиты от коллапса.</p>
+    <p>При новом шуме в каждом кадре механизм иной: ошибка LeWM остаётся около <strong>0,74</strong>, а не около нуля. Пространственная JEPA без ветра обычно сохраняет кубик, но накапливает ошибку движения. Flow matching чаще точнее; впрочем, на постоянном цветном фоне без ветра проваливается уже она: <strong>22,4 против 6,6 пикселя</strong> у основной JEPA. Универсального победителя даже здесь нет.<sup><a href="#s1">1</a></sup></p>
+    <figure>
+      <span class="scene-label">Постоянный цветной фон: неудачный случай для flow matching</span>
+      <a class="media" href="redcube/assets/color_episode_still_scene0.gif" target="_blank" rel="noopener"><img src="redcube/assets/color_episode_still_scene0.gif" width="804" height="322" loading="lazy" alt="Кубик на постоянном цветном шуме: реальная среда, JEPA с решёткой, flow matching"></a>
+      <div class="scene-columns">Реальная среда → JEPA с решёткой → flow matching.</div>
+      <figcaption>Ветер выключен. Здесь полезно следить за положением кубика, а не за сходством фоновой текстуры. Пример сохраняет в истории и тот случай, в котором генеративный рецепт проигрывает.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span>Сделаем случайным само движение</h2>
+    <p>Скрытый ветер превращает будущую позицию в распределение. На чёрном фоне LeWM теперь оказывается лучшей из трёх основных моделей: <strong>9,0 пикселя</strong> против примерно 12. Более сложная среда помогла той же архитектуре. Поэтому её прежний провал больше похож на неудачное представление или обучение, чем на универсальный предел детерминированного прогноза.</p>
+    <p>Но сочетание ветра и свежего серого шума ломает пространственную JEPA в трёх проверенных seed: даже из настоящих латентов позиция читается плохо. Flow matching здесь заметно лучше. Это серьёзный результат об устойчивости рецепта, хотя три запуска одной конфигурации ещё не дают общего закона.<sup><a href="#s1">1</a></sup></p>
+    <figure>
+      <span class="scene-label">Свежий серый шум и скрытый ветер</span>
+      <a class="media" href="redcube/assets/gray_frame_wind_scene0.gif" target="_blank" rel="noopener"><img src="redcube/assets/gray_frame_wind_scene0.gif" width="804" height="322" loading="lazy" alt="Реальный кубик со скрытым ветром на сером шуме и декодированные прогнозы JEPA и flow matching"></a>
+      <div class="scene-columns">Реальная среда → JEPA с решёткой → flow matching.</div>
+      <figcaption>Это иллюстрация одного окна. Сами цифры получены по 512 окнам; плохой декодированный кадр отдельно не доказывает, что информация отсутствует в латенте.</figcaption>
+    </figure>
+    <figure class="plot">
+      <span class="scene-label">Как ошибка растёт от одного шага к шестнадцати</span>
+      <a class="media" href="assets/research-note/cube-horizons.svg" target="_blank" rel="noopener"><picture><source media="(max-width:540px)" srcset="assets/research-note/cube-horizons-mobile.svg"><img src="assets/research-note/cube-horizons.svg" loading="lazy" alt="Четыре графика ошибки позиции: чёрный фон и свежий серый шум, каждый без ветра и с ветром. Пунктир показывает успешный альтернативный предиктор JEPA на чёрном фоне."></picture></a>
+      <figcaption>Средняя L1-ошибка, seed 0, 512 одинаковых окон для моделей каждого графика. В верхнем левом графике синий пунктир показывает <code>tile_ar</code>: его ошибка близка к flow. JEPA и LeWM измерены через latent probe, flow через pixel CNN. Серый шум обучался на 500 тыс. переходов, чёрный фон на 100 тыс.; интервалы неопределённости здесь не оценены.</figcaption>
+    </figure>
+    <details class="numbers"><summary>Точные числа на восьмом шаге и условия сравнения</summary>
+    <figure>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Ошибка позиции через восемь шагов, таблица прокручивается">
+        <table>
+          <thead><tr><th scope="col">Среда</th><th scope="col">LeWM<br>общий вектор</th><th scope="col">JEPA<br>решётка</th><th scope="col">Flow<br>matching</th></tr></thead>
+          <tbody>
+            <tr><td>Чёрный фон</td><td>45,3</td><td>3,9</td><td>0,24</td></tr>
+            <tr><td>Свежий цветной шум</td><td>19,4</td><td>5,6</td><td>0,40</td></tr>
+            <tr><td>Чёрный фон + ветер</td><td>9,0</td><td>11,7</td><td>11,6</td></tr>
+            <tr><td>Свежий серый шум + ветер</td><td>19,6</td><td>19,7</td><td>12,3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption>Средняя L1-ошибка позиции в пикселях, шаг 8, seed 0, 512 одинаковых окон внутри каждой строки. JEPA здесь означает основной вариант <code>tile_factored</code>; результат 0,27 выше относится к <code>tile_ar</code>. LeWM использует ViT из 6 слоёв. Позиция читается из латента у JEPA/LeWM и из декодированного кадра у flow: это разные измерительные тракты. Между строками различается и объём обучения: 100 тыс. переходов, для серого шума 500 тыс.</figcaption>
+    </figure>
+    </details>
+    <p class="visual-note">Сцены кубика взяты из существующего отчёта: автоматически выбраны окна с наибольшим движением по реальной траектории. Они не являются случайной выборкой и не заменяют усреднённые графики.</p>
+    <p>Есть принципиальная граница: расстояние от среднего будущего до цели не равно средней стоимости возможных исходов.</p>
+    <div class="equation">Ожидаемая квадратичная стоимость = стоимость среднего + разброс исходов.</div>
+    <p>LeWM с точечным прогнозом не учитывает второй член. Но ветер в этой игрушке не зависит от действия; отдельного опыта с выбором между безопасной и рискованной веткой нет. И сравнение одного сэмпла flow с одним реальным будущим не проверяет правильность распределения. Теоретическое возражение верно, его причинная связь с этими провалами пока не установлена.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span>Перейдём к настоящей игре</h2>
+    <p>В Craftax генеративный рецепт гораздо лучше по gFVD: около <strong>0,00125</strong> против <strong>0,031–0,037</strong> у декодированных прогнозов LeWM. Это расстояние в признаках случайной CNN, а не процент ошибки мира. Из него нельзя заключить, что управление стало в 25 раз лучше.<sup><a href="#s2">2</a></sup></p>
+    <figure>
+      <span class="scene-label">Craftax: один контекст, одинаковые действия</span>
+      <a class="media" href="assets/scene0.gif" target="_blank" rel="noopener"><img src="assets/scene0.gif" width="1001" height="393" loading="lazy" alt="Craftax: реальное продолжение игры, декодированный прогноз LeWM и прогноз flow-matching модели"></a>
+      <div class="scene-columns">Реальная среда → LeWM из исходного сравнения → flow matching.</div>
+      <figcaption>8 кадров контекста и 16 шагов прогноза; красная рамка отмечает прогноз. Сцена выбрана по движению среди ярких окон. Это исходная гифка Claude: JSON сцены не содержит хешей checkpoint, поэтому её точное соответствие модели в скалярном бенчмарке не подтверждено. <a href="assets/scene0.mp4" target="_blank" rel="noopener">Видео с паузой и перемоткой</a>.</figcaption>
+    </figure>
+    <figure class="plot">
+      <a class="media" href="assets/research-note/craftax-quality.svg" target="_blank" rel="noopener"><picture><source media="(max-width:540px)" srcset="assets/research-note/craftax-quality-mobile.svg"><img src="assets/research-note/craftax-quality.svg" loading="lazy" alt="gFVD Craftax: LeWM с общим вектором 0,03707, LeWM с решёткой 0,03098, копия кадра 0,01333, flow matching 0,00125"></picture></a>
+      <figcaption>2048 окон, seed 0. Все значения извлечены из журналов; flow соответствует <code>normuon_head_bridge_s0</code>. По этой метрике обе версии LeWM хуже копии последнего кадра. Это сравнение декодированных видео, не качества политики.</figcaption>
+    </figure>
+    <p>Пространственная LeWM достигает близкой цели за четыре действия в <strong>85% случаев против 25%</strong> у случайного плана. Но это один план, исполненный без перепланирования. Более трудная проверка, накопление награды за 150 шагов, пока не удалась: CEM даёт <strong>1,20 против 1,49</strong> у случайной политики; ансамбль голов ситуацию не исправляет. Это провал связки представления, динамики, голов и поиска. Аналогичного сравнения с flow-политикой здесь нет.<sup><a href="#s3">3</a></sup></p>
+    <figure class="plot">
+      <a class="media" href="assets/research-note/craftax-control.svg" target="_blank" rel="noopener"><picture><source media="(max-width:540px)" srcset="assets/research-note/craftax-control-mobile.svg"><img src="assets/research-note/craftax-control.svg" loading="lazy" alt="Планирование Craftax: успех до близкой цели 25%, 38%, 85%; награда случайной политики 1,49, одношаговой 0,92, с value 1,42, CEM 1,20"></picture></a>
+      <figcaption>Слева: 256 эпизодов, цель через четыре действия, один план без перепланирования. Справа: 128 сред по 150 шагов, головы на замороженной пространственной LeWM; усы показывают ±1 стандартную ошибку среднего по средам. Это один запуск обучения, не интервалы по seed. Несопоставимая линия награды политики из обучающего датасета сюда не перенесена.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span>Что это значит для LeWM и Dreamer 4</h2>
+    <p>Я вижу у LeWM две разные обязанности, которые её цель обучения не гарантирует: <strong>сохранить важное для решения</strong> и <strong>правильно учитывать неопределённость</strong>. SIGReg борется с вырожденным представлением, но сам по себе не выбирает полезные признаки. Детерминированное продолжение среднего может также потерять существенные развилки будущего.</p>
+    <p>AE с генеративной динамикой делает другой выбор: реконструкция заставляет сохранять наблюдаемые детали, а сэмплирование позволяет представить несколько будущих. Это направление действительно ближе к Dreamer 4, где есть токенизатор, shortcut forcing в латентах и обучение политики в воображении. Но Tinycraft проверяет собственный небольшой рецепт, не воспроизведение всего Dreamer 4. Ни реконструкция, ни диффузия автоматически не гарантируют правильных вероятностей и хорошей политики.<sup><a href="#s4">4</a>, <a href="#s5">5</a></sup></p>
+  </section>
+
+  <section class="caveats">
+    <h2>Насколько строг этот результат</h2>
+    <p><strong>Как диагностика работа сильна.</strong> Совпадают хеши данных у моделей внутри конфигураций, отделены ошибки представления и прогноза, исследованы дополнительные архитектуры. Восемь существующих тестов порта проходят. <strong>Как причинное сравнение методов работа пока недостаточна.</strong></p>
+    <ul>
+      <li><strong>Меняется больше, чем loss.</strong> У flow есть временной токенизатор, другие длина обучения последовательностей и оптимизатор, дополнительные потери и обработка истории. Бюджет тоже не всегда равен: встречаются 710 секунд у flow и 609 у JEPA вместо заявленных 600.</li>
+      <li><strong>Проверяется ограниченная выборка.</strong> Основная оценка исключает окна со смертью; окна перекрываются. Повторы seed неполны, отдельного финального теста после подбора решений не предъявлено.</li>
+      <li><strong>Есть конкретный дефект для следующего этапа.</strong> В flow-рецепте награда смертельного перехода исключена маской обучения. Для кубика это вся ненулевая награда. До исправления и проверки голов делать выводы об обучении политики внутри этой модели нельзя.</li>
+      <li><strong>Часть формулировок слишком сильна.</strong> Неудачный probe не доказывает отсутствия информации; простая экстраполяция ветра не является нижней границей ошибки; сохранение разброса между разными сценами не исключает усреднения будущих внутри одной сцены.<sup><a href="#s6">6</a></sup></li>
+    </ul>
+  </section>
+
+  <section class="ending">
+    <h2>Следующий решающий опыт</h2>
+    <p>Нужны одинаковая архитектура энкодера и бюджет, несколько seed и три варианта: детерминированная динамика на AE-латентах, JEPA и генеративная динамика. Затем отдельный тест рискованного выбора с известными вероятностями и проверка реального управления, включая смерти. Так можно отделить пользу реконструкции от пользы моделирования распределения.</p>
+    <p><strong>Пока я бы выбрал генеративный AE-рецепт как более убедительную основу симулятора, а результаты LeWM считал предупреждением о её ненадёжных предпосылках.</strong> Отказ от реконструкции остаётся разумной идеей; автоматическое появление достаточной для управления модели мира из MSE и SIGReg эти опыты не подтверждают.</p>
+  </section>
+
+  <details>
+    <summary>Что именно проверено и что осталось за пределами обзора</summary>
+    <p>Прочитаны код обучения, оценки, probes, планировщиков, диагностик, генерации отчётов и заготовка PPO. Сопоставлены 109 строк оценки кубика и метаданные 117 checkpoint; обучение повторно не проводилось. Код <code>train.py</code> и <code>bench.py</code> локально совпал с текущей копией на сервере. В результатах кубика не найдено завершённых <code>control</code>, <code>baselines</code> и PPO <code>final.json</code>; наличие соответствующих скриптов не считается результатом. Тесты проверяют отдельные свойства порта, а не полное численное совпадение с PyTorch.</p>
+    <p>На шуме, постоянном внутри эпизода, гипотеза о сохранении фона согласуется с малыми predictive loss. На покадровом шуме большой loss указывает на другую проблему. Для доказательства причин нужны вмешательства: менять фон при неизменной позиции, менять позицию при неизменном фоне, сравнивать несколько будущих из одного состояния. Наблюдение «ветер помог LeWM на чёрном фоне» само по себе не объясняет, почему это произошло.</p>
+  </details>
+
+  <footer>
+    <strong>Источники и проверка</strong>
+    <ol>
+      <li id="s1"><a href="redcube/index.html">Исходный отчёт по кубику</a>; числа повторно извлечены из <a href="../output/research-review/evidence.json">JSON результатов и метаданных</a>, включая дополнительные варианты.</li>
+      <li id="s2"><a href="../ledger.jsonl">Craftax: журнал JEPA</a>; flow: <code>normuon_head_bridge_s0</code>, рецепт <code>51ffe8df</code>, gFVD 0,00124592, AF 0,92017, 566,6 с. Запись исходного журнала сохранена в файле проверки выше. Метрика: <a href="../eval.py">eval.py</a>.</li>
+      <li id="s3"><a href="../artifacts/s0_grid_h4_plan.json">План к цели</a>; <a href="../artifacts/s0_grid_reward.json">планирование на награду</a>; <a href="../plan.py">код исполнения</a>.</li>
+      <li id="s4"><a href="https://arxiv.org/html/2603.19312v1">LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels</a>, §§3–4. Выводы этой заметки относятся к проверенному порту и режиму обучения.</li>
+      <li id="s5"><a href="https://arxiv.org/html/2509.24527v1">Training Agents Inside of Scalable World Models (Dreamer 4)</a>, §3. Связь с Tinycraft является архитектурной аналогией.</li>
+      <li id="s6"><a href="research-note-audit.md">Технический аудит с привязкой к коду</a>, <a href="../output/research-review/port-tests.log">результаты тестов</a>. Исходные статьи и код экспериментов сохранены без изменений.</li>
+    </ol>
+  </footer>
+</main></body></html>

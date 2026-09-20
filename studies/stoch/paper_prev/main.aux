@@ -1,0 +1,221 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand*\HyPL@Entry[1]{}
+\citation{lecun2022path,assran2023ijepa,bardes2024vjepa}
+\citation{maes2026lewm}
+\citation{assran2025vjepa2}
+\citation{zhou2024dinowm,sobal2025pldm}
+\HyPL@Entry{0<</S/D>>}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Mechanism 1: the representation.}{1}{section*.1}\protected@file@percent }
+\citation{maes2026lewm}
+\citation{balestriero2025lejepa}
+\@writefile{toc}{\contentsline {paragraph}{Mechanism 2: the planner.}{2}{section*.2}\protected@file@percent }
+\newlabel{eq:decomposition}{{1}{2}{Mechanism 2: the planner}{equation.1.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Contributions.}{2}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}{section.2}\protected@file@percent }
+\newlabel{sec:background}{{2}{2}{Background}{section.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{The objective.}{2}{section*.4}\protected@file@percent }
+\newlabel{eq:lewm}{{2}{2}{The objective}{equation.2.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{The regulariser.}{2}{section*.5}\protected@file@percent }
+\newlabel{eq:sigreg}{{3}{2}{The regulariser}{equation.2.3}{}}
+\citation{lipman2023flowmatching,chen2024diffusionforcing,hafner2025dreamer4}
+\@writefile{toc}{\contentsline {paragraph}{The planner.}{3}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The generative reference.}{3}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What a reward-free model still needs.}{3}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Theory}{3}{section.3}\protected@file@percent }
+\newlabel{sec:theory}{{3}{3}{Theory}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}A non-collapsed, control-insufficient global optimum}{3}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:theory-rep}{{3.1}{3}{A non-collapsed, control-insufficient global optimum}{subsection.3.1}{}}
+\newlabel{eq:popsigreg}{{4}{3}{A non-collapsed, control-insufficient global optimum}{equation.3.4}{}}
+\newlabel{prop:representation}{{1}{3}{Texture trap}{proposition.1}{}}
+\citation{simon1956dynamic,theil1957note}
+\citation{wan2019expectation,wan2021expectationcontrol}
+\citation{howard1966information,barshalom1974dual}
+\newlabel{cor:strict}{{1}{4}{Stochastic dynamics penalise state-resolving encoders}{corollary.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Planning with a mean}{4}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:theory-plan}{{3.2}{4}{Planning with a mean}{subsection.3.2}{}}
+\newlabel{lem:mean}{{1}{4}{The population-optimal predictor is the conditional mean}{lemma.1}{}}
+\newlabel{prop:regret}{{2}{4}{Certainty-equivalent planning can incur maximal regret}{proposition.2}{}}
+\newlabel{prop:exact}{{3}{4}{Mean planning ranks open-loop plans correctly for quadratic costs}{proposition.3}{}}
+\newlabel{eq:exact}{{5}{4}{Mean planning ranks open-loop plans correctly for quadratic costs}{equation.3.5}{}}
+\newlabel{rem:voi}{{1}{4}{A mean rollout cannot credit waiting}{remark.1}{}}
+\citation{schulman2017ppo}
+\citation{espeholt2018impala,farebrother2024stopregressing}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Worlds and models}{5}{section.4}\protected@file@percent }
+\newlabel{sec:worlds}{{4}{5}{Worlds and models}{section.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{The common body.}{5}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Six cube worlds.}{5}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The gate world.}{5}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Three models, one budget.}{5}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Controllers and protocol}{5}{section.5}\protected@file@percent }
+\newlabel{sec:controllers}{{5}{5}{Controllers and protocol}{section.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces The gate world, $128$ paired episodes for planning controllers and $256$ for policies; lengths count from reset and survival means reaching the $128$-step cap (Section\nobreakspace  {}\ref  {sec:controllers}). The \texttt  {random} and \texttt  {centre} rows use the policy protocol; the planning harness's own random reference survives $0\%$, lives $32.2$ steps, passes $0.09$ walls and dies at $3.11$ per $100$ steps. Standard errors are over episodes at one training seed and are degenerate at $0\%$ and $100\%$; dashes are cells still in the run queue.}}{6}{table.1}\protected@file@percent }
+\newlabel{tab:gate}{{1}{6}{The gate world, $128$ paired episodes for planning controllers and $256$ for policies; lengths count from reset and survival means reaching the $128$-step cap (Section~\ref {sec:controllers}). The \texttt {random} and \texttt {centre} rows use the policy protocol; the planning harness's own random reference survives $0\%$, lives $32.2$ steps, passes $0.09$ walls and dies at $3.11$ per $100$ steps. Standard errors are over episodes at one training seed and are degenerate at $0\%$ and $100\%$; dashes are cells still in the run queue}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Results}{6}{section.6}\protected@file@percent }
+\newlabel{sec:results}{{6}{6}{Results}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}The gate world}{6}{subsection.6.1}\protected@file@percent }
+\newlabel{sec:results-gate}{{6.1}{6}{The gate world}{subsection.6.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Survival to the $128$-step cap (\%) in the six cube worlds, one row per world and one column per controller; \texttt  {centre} is the true-state reference and dashes are cells still in the run queue. The black rows are the controls, noise per episode is the setting of Proposition\nobreakspace  {}\ref  {prop:representation}, noise per frame is the noise basin, and the wind rows are read as empirical comparisons in the regime of Proposition\nobreakspace  {}\ref  {prop:exact}.}}{7}{table.2}\protected@file@percent }
+\newlabel{tab:cube}{{2}{7}{Survival to the $128$-step cap (\%) in the six cube worlds, one row per world and one column per controller; \texttt {centre} is the true-state reference and dashes are cells still in the run queue. The black rows are the controls, noise per episode is the setting of Proposition~\ref {prop:representation}, noise per frame is the noise basin, and the wind rows are read as empirical comparisons in the regime of Proposition~\ref {prop:exact}}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}The six cube worlds}{7}{subsection.6.2}\protected@file@percent }
+\newlabel{sec:results-cube}{{6.2}{7}{The six cube worlds}{subsection.6.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{The two JEPAs fail in complementary worlds.}{7}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The texture trap is real and it is not collapse.}{7}{section*.14}\protected@file@percent }
+\citation{matthews2024craftax}
+\citation{lecun2022path}
+\citation{assran2023ijepa}
+\citation{bardes2024vjepa}
+\citation{assran2025vjepa2}
+\citation{maes2026lewm}
+\citation{zhou2024dinowm,sobal2025pldm}
+\citation{balestriero2025lejepa}
+\citation{grill2020byol}
+\citation{chen2021simsiam}
+\citation{zbontar2021barlow}
+\citation{bardes2022vicreg}
+\citation{jing2022dimensional}
+\citation{wiskott2002slow}
+\citation{tishby2000ib}
+\citation{ferns2004bisimulation,zhang2021dbc}
+\citation{grimm2020value}
+\citation{farahmand2017vaml}
+\citation{lambert2020objective}
+\@writefile{toc}{\contentsline {paragraph}{The noise basin is a different failure with the same consequence.}{8}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The wind is predicted accurately and still breaks the grid planner.}{8}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Craftax, and where the JEPA is fine}{8}{subsection.6.3}\protected@file@percent }
+\newlabel{sec:results-craftax}{{6.3}{8}{Craftax, and where the JEPA is fine}{subsection.6.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Related work}{8}{section.7}\protected@file@percent }
+\newlabel{sec:related}{{7}{8}{Related work}{section.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Joint-embedding predictive architectures.}{8}{section*.17}\protected@file@percent }
+\citation{mathieu2016beyond}
+\citation{babaeizadeh2018sv2p,denton2018svg}
+\citation{lee2018savp}
+\citation{hafner2019planet,hafner2020dreamer,hafner2021dreamerv2,hafner2023dreamerv3,alonso2024diamond,bruce2024genie,lipman2023flowmatching,chen2024diffusionforcing,hafner2025dreamer4}
+\citation{hansen2024tdmpc2}
+\citation{schrittwieser2020muzero}
+\citation{sutton1991dyna,ha2018worldmodels}
+\citation{simon1956dynamic,theil1957note}
+\citation{barshalom1974dual}
+\citation{wan2019expectation,wan2021expectationcontrol}
+\citation{chua2018pets}
+\citation{howard1966information}
+\citation{bellemare2017distributional,bdr2023}
+\citation{matthews2024craftax,hafner2022crafter}
+\citation{unterthiner2018fvd}
+\@writefile{toc}{\contentsline {paragraph}{Predictable features are not sufficient features.}{9}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Deterministic prediction, stochastic futures, certainty equivalence.}{9}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Limitations and discussion}{9}{section.8}\protected@file@percent }
+\newlabel{sec:limitations}{{8}{9}{Limitations and discussion}{section.8}{}}
+\@writefile{toc}{\contentsline {paragraph}{What this does not show.}{9}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Two conclusions that do not depend on the toys.}{9}{section*.21}\protected@file@percent }
+\bibdata{references}
+\bibcite{alonso2024diamond}{{1}{2024}{{Alonso et~al.}}{{Alonso, Jelley, Micheli, Kanervisto, Storkey, Pearce, and Fleuret}}}
+\bibcite{assran2023ijepa}{{2}{2023}{{Assran et~al.}}{{Assran, Duval, Misra, Bojanowski, Vincent, Rabbat, LeCun, and Ballas}}}
+\bibcite{assran2025vjepa2}{{3}{2025}{{Assran et~al.}}{{Assran, Bardes, Fan, Garrido, Howes, Komeili, Muckley, Rizvi, Roberts, Sinha, Zholus, and Ballas}}}
+\bibcite{babaeizadeh2018sv2p}{{4}{2018}{{Babaeizadeh et~al.}}{{Babaeizadeh, Finn, Erhan, Campbell, and Levine}}}
+\bibcite{balestriero2025lejepa}{{5}{2025}{{Balestriero \& LeCun}}{{Balestriero and LeCun}}}
+\bibcite{barshalom1974dual}{{6}{1974}{{Bar-Shalom \& Tse}}{{Bar-Shalom and Tse}}}
+\bibcite{bardes2022vicreg}{{7}{2022}{{Bardes et~al.}}{{Bardes, Ponce, and LeCun}}}
+\bibcite{bardes2024vjepa}{{8}{2024}{{Bardes et~al.}}{{Bardes, Garrido, Ponce, Chen, Rabbat, LeCun, Assran, and Ballas}}}
+\bibcite{bellemare2017distributional}{{9}{2017}{{Bellemare et~al.}}{{Bellemare, Dabney, and Munos}}}
+\bibcite{bdr2023}{{10}{2023}{{Bellemare et~al.}}{{Bellemare, Dabney, and Rowland}}}
+\bibcite{bruce2024genie}{{11}{2024}{{Bruce et~al.}}{{Bruce, Dennis, Edwards, Parker-Holder, Shi, Hughes, Lai, Mavalankar, Steigerwald, Apps, Aytar, Bechtle, Behbahani, Chan, Heess, Gonzalez, Osindero, Ozair, Reed, Zhang, Zolna, Clune, de~Freitas, Singh, and Rockt{\"a}schel}}}
+\bibcite{chen2024diffusionforcing}{{12}{2024}{{Chen et~al.}}{{Chen, Mons{\'o}, Du, Simchowitz, Tedrake, and Sitzmann}}}
+\bibcite{chen2021simsiam}{{13}{2021}{{Chen \& He}}{{Chen and He}}}
+\bibcite{chua2018pets}{{14}{2018}{{Chua et~al.}}{{Chua, Calandra, McAllister, and Levine}}}
+\bibcite{denton2018svg}{{15}{2018}{{Denton \& Fergus}}{{Denton and Fergus}}}
+\bibcite{espeholt2018impala}{{16}{2018}{{Espeholt et~al.}}{{Espeholt, Soyer, Munos, Simonyan, Mnih, Ward, Doron, Firoiu, Harley, Dunning, Legg, and Kavukcuoglu}}}
+\bibcite{farahmand2017vaml}{{17}{2017}{{Farahmand et~al.}}{{Farahmand, Barreto, and Nikovski}}}
+\bibcite{farebrother2024stopregressing}{{18}{2024}{{Farebrother et~al.}}{{Farebrother, Orbay, Vuong, Taiga, Chebotar, Xiao, Irpan, Levine, Castro, Faust, Kumar, and Agarwal}}}
+\bibcite{ferns2004bisimulation}{{19}{2004}{{Ferns et~al.}}{{Ferns, Panangaden, and Precup}}}
+\bibcite{grill2020byol}{{20}{2020}{{Grill et~al.}}{{Grill, Strub, Altch{\'e}, Tallec, Richemond, Buchatskaya, Doersch, Pires, Guo, Azar, Piot, Kavukcuoglu, Munos, and Valko}}}
+\bibcite{grimm2020value}{{21}{2020}{{Grimm et~al.}}{{Grimm, Barreto, Singh, and Silver}}}
+\bibcite{ha2018worldmodels}{{22}{2018}{{Ha \& Schmidhuber}}{{Ha and Schmidhuber}}}
+\bibcite{hafner2022crafter}{{23}{2022}{{Hafner}}{{}}}
+\bibcite{hafner2019planet}{{24}{2019}{{Hafner et~al.}}{{Hafner, Lillicrap, Fischer, Villegas, Ha, Lee, and Davidson}}}
+\bibcite{hafner2020dreamer}{{25}{2020}{{Hafner et~al.}}{{Hafner, Lillicrap, Ba, and Norouzi}}}
+\bibcite{hafner2021dreamerv2}{{26}{2021}{{Hafner et~al.}}{{Hafner, Lillicrap, Norouzi, and Ba}}}
+\bibcite{hafner2023dreamerv3}{{27}{2023}{{Hafner et~al.}}{{Hafner, Pasukonis, Ba, and Lillicrap}}}
+\bibcite{hafner2025dreamer4}{{28}{2025}{{Hafner et~al.}}{{Hafner, Yan, and Lillicrap}}}
+\bibcite{hansen2024tdmpc2}{{29}{2024}{{Hansen et~al.}}{{Hansen, Su, and Wang}}}
+\bibcite{howard1966information}{{30}{1966}{{Howard}}{{}}}
+\bibcite{jing2022dimensional}{{31}{2022}{{Jing et~al.}}{{Jing, Vincent, LeCun, and Tian}}}
+\bibcite{lambert2020objective}{{32}{2020}{{Lambert et~al.}}{{Lambert, Amos, Yadan, and Calandra}}}
+\bibcite{lecun2022path}{{33}{2022}{{LeCun}}{{}}}
+\bibcite{lee2018savp}{{34}{2018}{{Lee et~al.}}{{Lee, Zhang, Ebert, Abbeel, Finn, and Levine}}}
+\bibcite{lipman2023flowmatching}{{35}{2023}{{Lipman et~al.}}{{Lipman, Chen, Ben-Hamu, Nickel, and Le}}}
+\bibcite{maes2026lewm}{{36}{2026}{{Maes et~al.}}{{Maes, Le~Lidec, Scieur, LeCun, and Balestriero}}}
+\bibcite{mathieu2016beyond}{{37}{2016}{{Mathieu et~al.}}{{Mathieu, Couprie, and LeCun}}}
+\bibcite{matthews2024craftax}{{38}{2024}{{Matthews et~al.}}{{Matthews, Beukman, Ellis, Samvelyan, Jackson, Coward, and Foerster}}}
+\bibcite{schrittwieser2020muzero}{{39}{2020}{{Schrittwieser et~al.}}{{Schrittwieser, Antonoglou, Hubert, Simonyan, Sifre, Schmitt, Guez, Lockhart, Hassabis, Graepel, Lillicrap, and Silver}}}
+\bibcite{schulman2017ppo}{{40}{2017}{{Schulman et~al.}}{{Schulman, Wolski, Dhariwal, Radford, and Klimov}}}
+\bibcite{simon1956dynamic}{{41}{1956}{{Simon}}{{}}}
+\bibcite{sobal2025pldm}{{42}{2025}{{Sobal et~al.}}{{Sobal, Zhang, Cho, Balestriero, Rudner, and LeCun}}}
+\bibcite{sutton1991dyna}{{43}{1991}{{Sutton}}{{}}}
+\bibcite{theil1957note}{{44}{1957}{{Theil}}{{}}}
+\bibcite{tishby2000ib}{{45}{2000}{{Tishby et~al.}}{{Tishby, Pereira, and Bialek}}}
+\bibcite{unterthiner2018fvd}{{46}{2018}{{Unterthiner et~al.}}{{Unterthiner, van Steenkiste, Kurach, Marinier, Michalski, and Gelly}}}
+\bibcite{wan2019expectation}{{47}{2019}{{Wan et~al.}}{{Wan, Zaheer, White, White, and Sutton}}}
+\bibcite{wan2021expectationcontrol}{{48}{2021}{{Wan et~al.}}{{Wan, Rahimi-Kalahroudi, Rajendran, Momennejad, Chandar, and van Seijen}}}
+\bibcite{wiskott2002slow}{{49}{2002}{{Wiskott \& Sejnowski}}{{Wiskott and Sejnowski}}}
+\bibcite{zbontar2021barlow}{{50}{2021}{{Zbontar et~al.}}{{Zbontar, Jing, Misra, LeCun, and Deny}}}
+\bibcite{zhang2021dbc}{{51}{2021}{{Zhang et~al.}}{{Zhang, McAllister, Calandra, Gal, and Levine}}}
+\bibcite{zhou2024dinowm}{{52}{2024}{{Zhou et~al.}}{{Zhou, Pan, LeCun, and Pinto}}}
+\bibstyle{iclr2027_conference}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Proofs}{13}{appendix.A}\protected@file@percent }
+\newlabel{app:proofs}{{A}{13}{Proofs}{appendix.A}{}}
+\@writefile{toc}{\contentsline {paragraph}{Proposition\nobreakspace  {}\ref  {prop:representation}.}{13}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Corollary\nobreakspace  {}\ref  {cor:strict}.}{13}{section*.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Lemma\nobreakspace  {}\ref  {lem:mean}.}{13}{section*.26}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The one-step witness of Proposition\nobreakspace  {}\ref  {prop:regret}. Safe pads are $S = [-2,-1]\cup [1,2]$ and everything else is death. Action $A$ lands in a pad with probability one but its mean, $0$, is in the wall; action $B$ dies with probability one but its mean, $3/2$, is in a pad. Solid arrows are the two equally likely outcomes, the dashed arrow is the squared-error-optimal prediction, and the predictor is correct about both means. This is the gate world in miniature.}}{13}{figure.1}\protected@file@percent }
+\newlabel{fig:theory}{{1}{13}{The one-step witness of Proposition~\ref {prop:regret}. Safe pads are $S = [-2,-1]\cup [1,2]$ and everything else is death. Action $A$ lands in a pad with probability one but its mean, $0$, is in the wall; action $B$ dies with probability one but its mean, $3/2$, is in a pad. Solid arrows are the two equally likely outcomes, the dashed arrow is the squared-error-optimal prediction, and the predictor is correct about both means. This is the gate world in miniature}{figure.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Proposition\nobreakspace  {}\ref  {prop:regret}.}{13}{section*.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Proposition\nobreakspace  {}\ref  {prop:exact}.}{13}{section*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Hyperparameters}{14}{appendix.B}\protected@file@percent }
+\newlabel{app:hparams}{{B}{14}{Hyperparameters}{appendix.B}{}}
+\@writefile{toc}{\contentsline {paragraph}{The two JEPA arms.}{14}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The flow model.}{14}{section*.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Off-budget read-outs (JEPA arms only).}{14}{section*.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Policy optimisation.}{14}{section*.32}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The seven worlds, one frame each: three backgrounds (black, gray noise redrawn every frame, gray noise frozen for the episode) crossed with the hidden wind, which is not rendered, so \texttt  {still} and \texttt  {wind} frames come from the same distribution. The gate world is shown before and after the reveal, solid at $t=26$ and with the gap at $t=30$.}}{15}{figure.2}\protected@file@percent }
+\newlabel{fig:worlds}{{2}{15}{The seven worlds, one frame each: three backgrounds (black, gray noise redrawn every frame, gray noise frozen for the episode) crossed with the hidden wind, which is not rendered, so \texttt {still} and \texttt {wind} frames come from the same distribution. The gate world is shown before and after the reveal, solid at $t=26$ and with the gap at $t=30$}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Why the gate world is a decision problem, three true episodes under the same wall, which enters solid at $t=22$ and has its gap drawn in at $t=29$ when it reaches $x=39$. Top: an agent holding its start column at $x=20$ has five steps left at the reveal and needs five moves to reach either gap, so it is caught and dies at $t=34$. Middle and bottom: an agent that has retreated further left reacts after the reveal and lives, for a gap on top and for a gap at the bottom. Nothing in the frame before $t=29$ distinguishes the two cases, so the information has to be waited for.}}{15}{figure.3}\protected@file@percent }
+\newlabel{fig:gate}{{3}{15}{Why the gate world is a decision problem, three true episodes under the same wall, which enters solid at $t=22$ and has its gap drawn in at $t=29$ when it reaches $x=39$. Top: an agent holding its start column at $x=20$ has five steps left at the reveal and needs five moves to reach either gap, so it is caught and dies at $t=34$. Middle and bottom: an agent that has retreated further left reacts after the reveal and lives, for a gap on top and for a gap at the bottom. Nothing in the frame before $t=29$ distinguishes the two cases, so the information has to be waited for}{figure.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces What each model learned. For the JEPA arms, the final prediction term of Equation\nobreakspace  {}\ref  {eq:lewm} and the held-out correlation $r$ between the off-budget reward head on the frozen latent and the true reward; for the flow model, gFVD, action faithfulness, and the area under the curve of its termination head on real and on imagined rollouts. A low prediction loss beside a reward correlation near zero is the pattern Proposition\nobreakspace  {}\ref  {prop:representation} constructs: the two \emph  {noise per episode} rows have the lowest losses in the table and the worst read-outs. On the four noise worlds the flow model's gFVD is dominated by the unpredictable texture, so action faithfulness is the informative rollout number there. The flow model's reward correlation is not reported: the only non-zero reward is the terminal one and our evaluation windows contain no episode end, which leaves the correlation undefined. Its termination read-outs are unaffected.}}{15}{table.3}\protected@file@percent }
+\newlabel{tab:models}{{3}{15}{What each model learned. For the JEPA arms, the final prediction term of Equation~\ref {eq:lewm} and the held-out correlation $r$ between the off-budget reward head on the frozen latent and the true reward; for the flow model, gFVD, action faithfulness, and the area under the curve of its termination head on real and on imagined rollouts. A low prediction loss beside a reward correlation near zero is the pattern Proposition~\ref {prop:representation} constructs: the two \emph {noise per episode} rows have the lowest losses in the table and the worst read-outs. On the four noise worlds the flow model's gFVD is dominated by the unpredictable texture, so action faithfulness is the informative rollout number there. The flow model's reward correlation is not reported: the only non-zero reward is the terminal one and our evaluation windows contain no episode end, which leaves the correlation undefined. Its termination read-outs are unaffected}{table.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Evaluation protocol}{16}{appendix.C}\protected@file@percent }
+\newlabel{app:protocol}{{C}{16}{Evaluation protocol}{appendix.C}{}}
+\@writefile{toc}{\contentsline {paragraph}{The sampling predictor.}{16}{section*.33}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Survival by controller in the six cube worlds, the same numbers as Table\nobreakspace  {}\ref  {tab:cube}. The two JEPAs fail in complementary worlds: the class-token arm holds up under a per-episode wallpaper and collapses under per-frame noise, the grid arm does the reverse and collapses whenever the wind is on. PPO inside the flow model clears every world.}}{17}{figure.4}\protected@file@percent }
+\newlabel{fig:cube-results}{{4}{17}{Survival by controller in the six cube worlds, the same numbers as Table~\ref {tab:cube}. The two JEPAs fail in complementary worlds: the class-token arm holds up under a per-episode wallpaper and collapses under per-frame noise, the grid arm does the reverse and collapses whenever the wind is on. PPO inside the flow model clears every world}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces What the models believe about the wall in the gate world, measured on the decoded rollout as the fraction of the true wall's pixel mass that is present, over the same contexts as Figure\nobreakspace  {}\ref  {fig:predictions}. Decoding the latent of the \emph  {real} future separates the representation from the predictor: the grid JEPA keeps the wall almost perfectly when told what actually happened and loses it under its own mean rollout. This is a pixel measurement in line with Lemma\nobreakspace  {}\ref  {lem:mean}, not an instance of it, since the decoder is nonlinear. The sampling-predictor row uses the same encoder and heads and differs only in drawing $z_{t+1}$ instead of returning its mean. The last column asks whether the final frame commits to a side.}}{17}{table.4}\protected@file@percent }
+\newlabel{tab:wallmass}{{4}{17}{What the models believe about the wall in the gate world, measured on the decoded rollout as the fraction of the true wall's pixel mass that is present, over the same contexts as Figure~\ref {fig:predictions}. Decoding the latent of the \emph {real} future separates the representation from the predictor: the grid JEPA keeps the wall almost perfectly when told what actually happened and loses it under its own mean rollout. This is a pixel measurement in line with Lemma~\ref {lem:mean}, not an instance of it, since the decoder is nonlinear. The sampling-predictor row uses the same encoder and heads and differs only in drawing $z_{t+1}$ instead of returning its mean. The last column asks whether the final frame commits to a side}{table.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces One gate context, wall still solid, and what each model believes will happen. Rows $1$ and $2$ are the two real futures. Rows $3$ and $5$ decode the encoder's latent of the \emph  {true} future and so measure the representation alone: the grid JEPA holds the wall and the gap sharply, the class token does not hold them at all. Rows $4$ and $6$ decode each model's own mean rollout and so measure the predictor: the grid JEPA's wall is absent rather than blurred across both positions. Rows $7$ to $9$ are three samples from the flow model, which keep the wall and disagree about the side. The two failures appear in separate rows, which is the point of the row layout.}}{18}{figure.5}\protected@file@percent }
+\newlabel{fig:predictions}{{5}{18}{One gate context, wall still solid, and what each model believes will happen. Rows $1$ and $2$ are the two real futures. Rows $3$ and $5$ decode the encoder's latent of the \emph {true} future and so measure the representation alone: the grid JEPA holds the wall and the gap sharply, the class token does not hold them at all. Rows $4$ and $6$ decode each model's own mean rollout and so measure the predictor: the grid JEPA's wall is absent rather than blurred across both positions. Rows $7$ to $9$ are three samples from the flow model, which keep the wall and disagree about the side. The two failures appear in separate rows, which is the point of the row layout}{figure.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Latent diagnostics from the preliminary study}{18}{appendix.D}\protected@file@percent }
+\newlabel{app:diagnostics}{{D}{18}{Latent diagnostics from the preliminary study}{appendix.D}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The gate world by all thirteen controllers. \emph  {Left:} walls passed per episode, labelled with survival to the $128$-step cap. \emph  {Right:} deaths per $100$ steps, labelled with mean episode length. The six deterministic JEPA bars, four planning and two PPO inside the model, sit at the random bar on walls passed; the sampling predictor (purple) leaves it slightly and the two flow-model bars and the real-environment bar leave it entirely. The one empty bar is the sampled heads-MPC, which had not finished.}}{19}{figure.6}\protected@file@percent }
+\newlabel{fig:gate-results}{{6}{19}{The gate world by all thirteen controllers. \emph {Left:} walls passed per episode, labelled with survival to the $128$-step cap. \emph {Right:} deaths per $100$ steps, labelled with mean episode length. The six deterministic JEPA bars, four planning and two PPO inside the model, sit at the random bar on walls passed; the sampling predictor (purple) leaves it slightly and the two flow-model bars and the real-environment bar leave it entirely. The one empty bar is the sampled heads-MPC, which had not finished}{figure.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Craftax-Classic with the grid JEPA under the same budget and off-budget heads, in closed loop: plan towards the latent of a state four actions away and execute, scored by whether the goal position is reached and by the $L_1$ position error at the end of the plan, against a random plan and against an oracle executing the true action sequence. Dashes are cells still in the run queue; the open-loop numbers quoted in Section\nobreakspace  {}\ref  {sec:results-craftax} come from the preliminary study.}}{19}{table.5}\protected@file@percent }
+\newlabel{tab:craftax}{{5}{19}{Craftax-Classic with the grid JEPA under the same budget and off-budget heads, in closed loop: plan towards the latent of a state four actions away and execute, scored by whether the goal position is reached and by the $L_1$ position error at the end of the plan, against a random plan and against an oracle executing the true action sequence. Dashes are cells still in the run queue; the open-loop numbers quoted in Section~\ref {sec:results-craftax} come from the preliminary study}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Class-token latent diagnostics, preliminary study. No world shows collapse by any marginal criterion; on a black background the position is recoverable, and with a per-episode nuisance background it is not. The whitening column matters: on a black background the position lives in low-variance directions, so whitening finds it ($0.71$ px); with the nuisance background whitening does not help, because the information is absent rather than small.}}{19}{table.6}\protected@file@percent }
+\newlabel{tab:diag}{{6}{19}{Class-token latent diagnostics, preliminary study. No world shows collapse by any marginal criterion; on a black background the position is recoverable, and with a per-episode nuisance background it is not. The whitening column matters: on a black background the position lives in low-variance directions, so whitening finds it ($0.71$ px); with the nuisance background whitening does not help, because the information is absent rather than small}{table.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {E}The reward-head correction in the flow recipe}{19}{appendix.E}\protected@file@percent }
+\newlabel{app:rewardbug}{{E}{19}{The reward-head correction in the flow recipe}{appendix.E}{}}
+\gdef \@abspage@last{20}

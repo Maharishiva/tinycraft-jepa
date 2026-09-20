@@ -45,7 +45,7 @@ def decode(decoder, latents, horizon):
 def rollouts(model, frames, actions, key):
     """True-action and random-action latent rollouts from the same 8-frame context."""
     context, future = actions[:, :CTX], actions[:, CTX:]
-    random_future = np.asarray(jax.random.randint(key, future.shape, 0, T.N_ACTIONS))
+    random_future = np.asarray(jax.random.randint(key, future.shape, 0, model.n_actions))
     _, predicted = T._rollout_latents(model, jnp.asarray(frames[:, :CTX]),
                                       T.outgoing_actions(context, future), horizon=HOR)
     _, randomized = T._rollout_latents(model, jnp.asarray(frames[:, :CTX]),
@@ -59,10 +59,10 @@ def action_identification(model, frames, actions, emb):
     emb_hist = emb[:, CTX - hist:CTX]
     past = jnp.asarray(actions[:, CTX - hist + 1:CTX], jnp.int32)
     batch = emb.shape[0]
-    tiled = jnp.repeat(emb_hist, T.N_ACTIONS, axis=0)
-    candidates = jnp.tile(jnp.arange(T.N_ACTIONS, dtype=jnp.int32), batch)[:, None]
-    action_hist = jnp.concatenate([jnp.repeat(past, T.N_ACTIONS, axis=0), candidates], 1)
-    pred = predict_from(model, tiled, action_hist).reshape(batch, T.N_ACTIONS, -1)
+    tiled = jnp.repeat(emb_hist, model.n_actions, axis=0)
+    candidates = jnp.tile(jnp.arange(model.n_actions, dtype=jnp.int32), batch)[:, None]
+    action_hist = jnp.concatenate([jnp.repeat(past, model.n_actions, axis=0), candidates], 1)
+    pred = predict_from(model, tiled, action_hist).reshape(batch, model.n_actions, -1)
     cost = jnp.mean(jnp.square(pred - emb[:, CTX][:, None]), -1)
     truth = jnp.asarray(actions[:, CTX], jnp.int32)
     order = jnp.argsort(cost, axis=1)
@@ -353,7 +353,8 @@ def main():
     parser.add_argument("--demo", type=int, default=0, help="episodes in the side-by-side demo gif")
     args = parser.parse_args()
 
-    (model, decoder), meta = T.load_model(args.model)
+    bundle, meta = T.load_model(args.model)
+    model, decoder = bundle.model, bundle.decoder
     tag = args.tag or args.model.parent.name
     frames, actions = windows(args.data, args.windows)
     curves, stats, _ = measure(model, frames, actions, args.batch, args.seed)

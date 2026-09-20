@@ -1,0 +1,53 @@
+\section{Background}
+\label{sec:background}
+
+\paragraph{The objective.} We take LeWM \citep{maes2026lewm} as the concrete instance: trained end to
+end from pixels, stabilised without a stop-gradient or a teacher, and shipped with its own
+controller. An encoder produces $z_t=f_\theta(x_t)\in\R^D$.
+A causal predictor maps $H$ latents and their actions to the next latent.
+On each window, the training objective is
+\begin{equation}
+\label{eq:lewm}
+\Lcal(\theta) \;=\; \frac{1}{H}\sum_{t} \big\| g_\theta(z_{t-H+1:t}, a_{t-H+1:t}) - z_{t+1} \big\|_2^2
+\;+\; \lambda \,\mathrm{SIGReg}\big(\{z_t\}\big),
+\qquad \lambda = 0.09 ,
+\end{equation}
+There is no stop-gradient, decoder, or reward term.
+Gradients enter the encoder through both prediction and target.
+
+
+\paragraph{The regulariser.} SIGReg is the sketched isotropic Gaussian test of
+\citep{balestriero2025lejepa}. It compares projected empirical characteristic functions with a standard normal at $K$ knots $t_k\in[0,3]$.
+There are $P$ random unit directions, window $w(t)=e^{-t^2/2}$, and trapezoidal weights $\omega_k$:
+\begin{equation}
+\label{eq:sigreg}
+\mathrm{SIGReg} = \frac{1}{P}\sum_{p,k} \omega_k \, w(t_k)
+  \Big[\big(\widehat{\E}\cos(t_k \langle z, u_p\rangle) - w(t_k)\big)^2
+     + \big(\widehat{\E}\sin(t_k \langle z, u_p\rangle)\big)^2\Big].
+\end{equation}
+We use the reference settings ($K=17$, $P=1024$, $\lambda = 0.09$). The structural fact we need is
+that Equation~\ref{eq:sigreg} constrains only the \emph{marginal law} of $z$ and is blind to what $z$
+is a function of. Equation~\ref{eq:sigreg} is an estimator, and Section~\ref{sec:theory-rep} states
+the property for the population functional it estimates.
+
+\paragraph{The planner.} LeWM's controller uses no reward. With a goal image of latent $z_\star$, the
+cost of an action sequence is $C(a_{1:h}) = \| \hat z_{h}(a_{1:h}) - z_\star \|_2^2$, where $\hat z_h$
+iterates the predictor on its own output. The published search uses the cross-entropy method.
+With four actions, exhaustive search evaluates all $4^h$ sequences and finds the optimum of the same finite-horizon score.
+We replan every step.
+
+\paragraph{The generative reference.}
+Our reference is a latent flow-matching dynamics model \citep{lipman2023flowmatching,chen2024diffusionforcing,hafner2025dreamer4}.
+A reconstruction-trained tokenizer produces a $4\times4\times32$ latent.
+A causal transformer uses factorized spatial and temporal attention over a $32$-frame window.
+Flow matching uses independent per-frame noise levels; inference uses four function evaluations per frame.
+Reward and termination heads have loss weight $0.1$.
+This model differs from the JEPA in representation learning, prediction, heads, and context.
+It is a reference package, not a sampling ablation.
+We corrected terminal-transition masking in its reward loss (Appendix~\ref{app:rewardbug}).
+Without that correction, its training targets omit every nonzero reward in these worlds.
+
+\paragraph{Post-hoc heads.}
+After JEPA training, we freeze its encoder and fit reward, termination, and behavior-value heads on $80{,}000$ frames.
+A separate pixel decoder supports analysis and never supplies a planning objective.
+These components use additional compute outside the nominal world-model budget.

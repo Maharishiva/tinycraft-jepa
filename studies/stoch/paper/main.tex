@@ -1,0 +1,115 @@
+\documentclass{article}
+
+\usepackage{iclr2027_conference,times}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{multirow}
+
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.8}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{0pt}
+
+\newcommand{\todo}[1]{\textcolor{red!70!black}{\textbf{[#1]}}}
+
+\newsavebox{\ttblbox}
+\newcommand{\inputtable}[1]{%
+  \sbox{\ttblbox}{\small\input{tables/#1}}%
+  \ifdim\wd\ttblbox>\linewidth
+    \resizebox{\linewidth}{!}{\usebox{\ttblbox}}%
+  \else
+    \usebox{\ttblbox}%
+  \fi}
+% Regenerated figures must use the slots specified in FIGURES.md.
+% Set false only after replacing all four figure files.
+\newif\ifdraftfigures
+\draftfiguresfalse
+\newcommand{\figureheight}{1.2in}
+\newcommand{\paperfig}[2]{\includegraphics[width=#2\linewidth]{figures/#1}}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Nrm}{\mathcal{N}}
+\newcommand{\Lcal}{\mathcal{L}}
+
+\title{Learning to Ignore What Matters:\\ A JEPA World Model Keeps the Cube and Loses the Wall}
+
+\author{Anonymous authors\\Paper under double-blind review}
+
+\renewcommand{\paragraph}[1]{\par\addvspace{1.1ex plus 0.4ex minus 0.2ex}\noindent\textbf{#1}\hspace{1em}}
+\setlength{\textfloatsep}{10pt plus 2pt minus 4pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{3pt}
+\begin{document}
+
+\maketitle
+
+\lhead{Under review as a conference paper at ICLR 2027}
+
+\begin{abstract}
+A joint-embedding predictive world model (JEPA) learns its latent by predicting its own next latent and
+keeping the latent marginal Gaussian, with no decoder and no reward. We ask what such a model keeps when
+survival depends on one thing: a moving wall whose gap is revealed late. The JEPA imagines a cube in an
+empty room. Its encoder keeps the wall: an off-budget decoder renders it from real encodings, and a
+convolutional policy trained on those decoded frames learns the retreat-and-wait strategy in two of nine
+runs, as it does on true pixels in two of three. Its imagination loses it: with the same MLP torso, PPO
+trained inside the JEPA passes $0.27$ walls per episode over $27$ runs, against $0.94$ when trained in the
+real gate on the JEPA's own frozen encoders. The deficit belongs to the imagination pipeline as a whole,
+predictor, fitted reward and termination heads and PPO protocol together; sampling the fitted residual
+predictor does not remove it. A flow model trained on the same data and budget keeps the wall. We prove
+that the objective permits this: a non-collapsed global optimum can carry no state at all, and an exactly
+Gaussian, fully decodable latent can hold a control-relevant feature at arbitrarily small amplitude.
+Non-collapse does not guarantee control-relevant state, and decodable state does not guarantee that
+imagination uses it.
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/worlds}
+\input{sections/controllers}
+\input{sections/theory}
+\input{sections/results}
+\input{sections/related}
+\clearpage
+\input{sections/discussion}
+
+\subsubsection*{Reproducibility statement}
+Appendices~\ref{app:hparams}--\ref{app:round2} document fitting, evaluation and final-checkpoint
+outcomes, distinguishing model and policy replication. The supplied ledger supports the reported
+aggregates. Complete configurations, code and data generation will accompany an anonymous artifact;
+the ledger alone does not specify every fitting setting.
+
+\subsubsection*{Statement on the use of AI}
+Language models were used to draft and edit prose, to check the proofs for gaps, to write analysis and plotting
+scripts, and to act as an adversarial reviewer of the manuscript. The authors are responsible for the experiments, numerical checks, proofs and claims.
+
+\clearpage
+\bibliography{references}
+\bibliographystyle{iclr2027_conference}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}

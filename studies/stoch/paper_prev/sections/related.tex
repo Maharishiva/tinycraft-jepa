@@ -1,0 +1,26 @@
+\section{Related work}
+\label{sec:related}
+
+Joint-embedding prediction learns its targets in representation space
+\citep{lecun2022path,assran2023ijepa,bardes2024vjepa}; LeWM trains encoder and action-conditioned
+predictor jointly under squared loss and SIGReg \citep{maes2026lewm,balestriero2025lejepa}; other
+systems plan on frozen features \citep{assran2025vjepa2,zhou2024dinowm,sobal2025pldm}. Anti-collapse
+methods constrain the learning dynamics or the latent statistics
+\citep{grill2020byol,chen2021simsiam,zbontar2021barlow,bardes2022vicreg,jing2022dimensional}; our
+counterexample keeps full marginal rank and loses control-relevant information.
+
+\citet{sobal2022slow} showed that joint-embedding objectives prefer a fixed background to a moving
+object while tolerating distractors redrawn each frame; \citet{tang2023selfpredictive} and \citet{ni2024bridging} analyse self-predictive learning and its state abstractions. We add the exactly Gaussian nuisance-only optimum of the population objective, the innovation cost of keeping state, the amplitude construction that separates decodability from weight in the loss, and diagnostics of counterfactual wall distances in a trained model. Control-oriented alternatives define relevance through reward, transitions or value
+\citep{ferns2004bisimulation,zhang2021dbc,grimm2020value,farahmand2017vaml,tishby2000ib}, and
+\citet{lambert2020objective} document the mismatch between prediction and control quality that our
+worlds instantiate.
+
+Stochastic video prediction has a long history
+\citep{mathieu2016beyond,babaeizadeh2018sv2p,denton2018svg,lee2018savp}; recent world models keep
+stochastic predictions for imagination and control
+\citep{hafner2019planet,hafner2023dreamerv3,alonso2024diamond,bruce2024genie,hafner2025dreamer4}, our
+reference uses flow matching \citep{lipman2023flowmatching,chen2024diffusionforcing}, and policy
+learning inside a model follows \citet{sutton1991dyna,ha2018worldmodels,hafner2020dreamer}.
+Certainty equivalence and the value of information are classical
+\citep{simon1956dynamic,theil1957note,howard1966information,barshalom1974dual};
+Propositions~\ref{prop:regret} and \ref{prop:exact} restate their consequences for latent planning; sampling-based MPC propagates model uncertainty \citep{chua2018pets}.
