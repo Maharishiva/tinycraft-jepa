@@ -310,7 +310,10 @@ residual sample, and $1.32\times10^{-4}$ for the mean of eight. This quality che
 evaluations per sample; the reported PPO runs instead use four. Averaging eight learned samples is
 a random Monte Carlo average, not an exact conditional mean.
 
-\paragraph{Policy optimisation.}
+\paragraph{Policy optimisation (historical protocols).}
+The settings in this paragraph are those of the earlier gate and cube studies of
+Appendices~\ref{app:historical-gate} and~\ref{app:matched}; the shared-policy comparison of the main
+text uses Appendix~\ref{app:shared-cnn} and the Craftax comparison Appendix~\ref{app:inventory}.
 PPO uses discount $0.99$, GAE parameter $0.9$, clipping $0.2$, value coefficient $0.5$, entropy
 coefficient $0.01$, AdamW at $2.5\times10^{-4}$ with weight decay $0.01$, four epochs per batch, and
 gradient clipping at $1.0$. Pixels pass through a three-block Impala torso \citep{espeholt2018impala}, latents through a two-layer

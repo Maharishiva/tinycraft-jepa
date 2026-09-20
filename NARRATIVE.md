@@ -40,6 +40,12 @@ every sentence. Do not write "this does not prove" more than the evidence requir
 - Craftax under matched data and budget, as the consequence outside a toy.
 - The sampling-predictor control cell: a distributional head on the *same* latent. This is what
   separates "the mean was the problem" from "the representation was the problem".
+- The imagined-reward diagnostic (added 2026-09-20 after the shared-CNN and Craftax campaigns):
+  in worlds whose true reward is never positive, PPO inside the JEPA drives the imagined reward per
+  step to +0.06..+0.21 (cube worlds) and to +0.90 in Craftax, while inside the flow model it stays at
+  or below the data rate. The JEPA's imagination is exploitable: the policy finds latent
+  trajectories the heads mis-score. Report it next to every imagination result; it is the visible
+  form of mechanism 2 in a learned system.
 
 ## What stays out of the main text
 
