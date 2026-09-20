@@ -77,7 +77,10 @@ GPU=1 TRAIN_STEPS=5000 bash studies/redcube/train_config.sh gray_frame_wind
 | filmstrips (real, decoded-real, predicted, flow) | `studies/revision/export_redcube_story.py` | packets and manifests in `artifacts/revision/redcube_story/<world>/` |
 | matched latent-MLP PPO (appendix) | `studies/revision/matched_ppo.py`, `run_matched_queue.py`, `analyze_matched.py` | exact-simulator arms require byte-exact re-rendering first |
 | shared-CNN comparison (gate + cube worlds) | `studies/revision/prep_shared_decoded.sh` -> `queue_shared_decoded.py` -> `analyze_shared_decoded.py` | protocol `research/shared_decoded_cnn_protocol.md`; budgets are enforced by `shared_decoded_ppo.py` |
-| Craftax inventory | `studies/revision/run_inventory_queue.py` (wraps `inventory_ppo.py` and `inventory_eval.py`) | protocol `research/craftax_native_inventory_protocol.md`; evaluation contract frozen at 256 episodes, seed 123 |
+| state-blind reference rows (shared-CNN table) | `studies/revision/reference_policies_eval.py` | uniform random and left-right alternation through the exact paired evaluator; CPU, seconds |
+| imagined-termination probe (Figure 3) | `studies/revision/imagined_termination_probe.py` | frozen model rolled under recorded actions; its own termination head on predicted versus encoder latents; CPU, ~1 min (JEPA) / ~4 min (flow) per world |
+| Craftax inventory | `studies/revision/run_inventory_queue.py` (wraps `inventory_ppo.py` and `inventory_eval.py`); reference rows `inventory_random_baseline.py` | protocol `research/craftax_native_inventory_protocol.md`; evaluation contract frozen at 256 episodes, seed 123 |
+| paper tables and figures | `studies/revision/figures_v3.py --shared runs/revision/shared_decoded --inventory runs/revision/inventory_campaign --out submission/v3` | reads only `final.json` / `summary.json` / probe outputs; needs matplotlib |
 | historical gate study (appendix) | `studies/stoch/rl.py`, tables from `studies/stoch/summarize.py` | use the last ledger row, not `final.json` (see AUDIT.md) |
 
 Every training script in `studies/revision/` refuses budgets other than the registered ones unless

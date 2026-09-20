@@ -44,3 +44,17 @@ native return, executed steps, survival, termination causes, first-acquisition s
 inventory, and the terminal native score where a native termination occurred. Uncertainty
 intervals are across evaluation episodes for one fixed policy and do not estimate variation
 across model fits.
+
+\paragraph{Reference rows.}
+Two state-blind policies are run through the identical evaluator, keys and aggregation: uniform
+random actions and the no-op action. Uniform random play reaches one wooden pickaxe in 256
+episodes, collects wood in $43\%$ of episodes, places a table in $9\%$ and averages $2.34$
+achievements per episode; the no-op policy earns no achievement and a return of $-0.92$ from
+health loss. A trained policy below the random row has learned something that hurts.
+
+\paragraph{Imagined reward.}
+The training logs record the mean reward per imagined step paid by each model's reward head. In
+the real game uniformly random play collects about $0.01$ per step and the best policy of this
+campaign $0.03$ (return over executed steps). Both readings are reported in
+Table~\ref{tab:inventory}; a policy whose imagined reward exceeds what any real policy collects is
+exploiting its reward head rather than the game.
