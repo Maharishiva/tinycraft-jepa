@@ -1,0 +1,113 @@
+{
+  "date": "2026-09-19",
+  "selection": "Two Outstanding Papers, one Honorable Mention, seven relevant official orals; no official ranking claimed.",
+  "papers": [
+    {
+      "id": "01_lost",
+      "pdf": "01_lost/paper.pdf",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/file/59f6421e64707225fdf5b28840679a07-Paper-Conference.pdf",
+      "sha256": "d2b5f711528c08ecf44e4112b2b490de3c2ad84148a904ecb6377e913a2cee42",
+      "size_bytes": 1876351,
+      "inspected_renders": [
+        "01_lost/lost-conference-p1.png",
+        "01_lost/lost-conference-p7.png"
+      ]
+    },
+    {
+      "id": "02_succinct",
+      "pdf": "02_succinct/paper.pdf",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/file/5f7804e8855efe5554025217abc49315-Paper-Conference.pdf",
+      "sha256": "368b8ceffd698d2a05ae60bc88746c385b5422294e794d2e9a81bff548de6f3a",
+      "size_bytes": 502082,
+      "inspected_renders": [
+        "02_succinct/succinct-conference-p2.png"
+      ]
+    },
+    {
+      "id": "03_polar",
+      "pdf": "03_polar/paper.pdf",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/file/df88b275bef31ac96c85f0c4013734fc-Paper-Conference.pdf",
+      "sha256": "ecf4837ee6846a8dbb3435cbd679a8f219ddfdfa20c409ec92234ca416509e75",
+      "size_bytes": 1095706,
+      "inspected_renders": [
+        "03_polar/polar-conference-p2.png"
+      ]
+    },
+    {
+      "id": "04_world_in_world",
+      "pdf": "04_world_in_world/paper.pdf",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/file/5b4263be85820683d78675cc18d2efc7-Paper-Conference.pdf",
+      "sha256": "b1270828c96094cd1c7a16ccfdedddc470def295148cf3c41af7e2ea1fb1c9cf",
+      "size_bytes": 11134191,
+      "inspected_renders": [
+        "04_world_in_world/wiw-conference-p8.png",
+        "04_world_in_world/wiw-p9.png"
+      ]
+    },
+    {
+      "id": "05_lpwm",
+      "pdf": "05_lpwm/paper.pdf",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/file/cf7ba4b2d14e0f6a0e8247af77745094-Paper-Conference.pdf",
+      "sha256": "1d800b2ace4a789791ff0d866c0deb9c2b869620a50c821068e3d5d1ac1a8403",
+      "size_bytes": 26309772,
+      "inspected_renders": [
+        "05_lpwm/lpwm-p7.png"
+      ]
+    },
+    {
+      "id": "06_td_jepa",
+      "pdf": "06_td_jepa/paper.pdf",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/file/3d158f054ff0cb83397367234899db07-Paper-Conference.pdf",
+      "sha256": "8153e49f01785ed0834475e2aa2f6cae72b8bfdf801e43fa49c2a62dc46d7264",
+      "size_bytes": 2674831,
+      "inspected_renders": [
+        "06_td_jepa/td-jepa-conference-figure2.png",
+        "06_td_jepa/td-jepa-figure2.png"
+      ]
+    },
+    {
+      "id": "07_koopman",
+      "pdf": "07_koopman/paper.pdf",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/file/f57ffe47d0b528fbb97901d16bd4eba2-Paper-Conference.pdf",
+      "sha256": "a535aa8bd1c06b37f7bd8cc1c50bf0aa719b59677cf25590b3b346a2f76dcaca",
+      "size_bytes": 16603801,
+      "inspected_renders": [
+        "07_koopman/koopman-figure1.png",
+        "07_koopman/koopman-figure6.png"
+      ]
+    },
+    {
+      "id": "08_difficult_examples",
+      "pdf": "08_difficult_examples/paper.pdf",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/file/a559a5a8aa5ae6682ced009ad97cdb16-Paper-Conference.pdf",
+      "sha256": "d63fe7d3ea905e180108de70505467885202d34b86ba145623fea5c9f95ea9af",
+      "size_bytes": 1206783,
+      "inspected_renders": [
+        "08_difficult_examples/difficult-page1.png",
+        "08_difficult_examples/difficult-page4.png"
+      ]
+    },
+    {
+      "id": "09_train_before_test",
+      "pdf": "09_train_before_test/paper.pdf",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/file/79a97ba70ee6aff126f3090b10ad6702-Paper-Conference.pdf",
+      "sha256": "f7f7f443aa418938327b8acdf5a5ff5e447f09b57c0ba05452def41a4d9e3b1c",
+      "size_bytes": 783230,
+      "inspected_renders": [
+        "09_train_before_test/trainbefore-page2.png",
+        "09_train_before_test/trainbefore-page6.png"
+      ]
+    },
+    {
+      "id": "10_realpdebench",
+      "pdf": "10_realpdebench/paper.pdf",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/file/aed13d8a5ee83a9c6880285b69d0ba81-Paper-Conference.pdf",
+      "sha256": "0f668ad597f554b23fce9affbc12d56926314ff84f1ffbd69f8d17c045156171",
+      "size_bytes": 23994307,
+      "inspected_renders": [
+        "10_realpdebench/realpde-page1.png",
+        "10_realpdebench/realpde-page8.png"
+      ]
+    }
+  ]
+}

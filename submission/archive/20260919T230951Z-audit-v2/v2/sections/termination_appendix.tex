@@ -1,0 +1,40 @@
+\section{Triggered termination sensitivity}
+\label{app:termination}
+
+This follow-up was triggered by the primary experiment's monitored post-terminal weights. It adds
+one condition: exact transitions, true termination, and the original learned reward evaluated on
+the current latent and outgoing action. It reuses every corresponding reference arm's saved start
+indices, checkpoint and data identity, policy initialization, update budget, and evaluation keys.
+The MLP stratum adds five policy seeds for each of three models; the native-grid stratum adds three,
+for 24 additional runs. The original 72 policies are neither retrained nor relabeled.
+
+All added runs complete 150 updates. All 3,600 recorded training updates have finite required
+diagnostics and exactly zero continuation-weighted post-terminal mass and reward. Every final
+policy binary hash and per-episode endpoint is checked. Table~\ref{tab:termination-outcomes} gives
+the new condition's outcomes. None of the added policies exceeds $50\%$ survival.
+
+\begin{table}[ht]
+\centering
+\caption{Exact transitions, true termination, and fitted reward: the added termination-sensitivity
+condition. Mean $\pm$ sample standard deviation over paired policy seeds within one fixed model and
+torso. The two torso strata remain separate.}
+\label{tab:termination-outcomes}
+\inputtable{termination_outcomes.tex}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Wall-count changes in the triggered sensitivity. ``True termination'' compares the new
+condition with exact transitions and fitted reward/termination. ``True reward'' compares exact
+transitions and true reward/termination with the new condition. Each entry gives the paired mean
+and its conditional 95\% policy-seed bootstrap interval.}
+\label{tab:termination-contrasts}
+\inputtable{termination_contrasts.tex}
+\end{table}
+
+The termination contrast changes continuation weighting and removes the learned after-death
+extension. The reward contrast holds exact transitions and true termination fixed; policies trained
+under different rewards can then visit different states. The latter increases the mean wall count
+in all six cells, while survival changes have mixed signs. Both comparisons condition on the saved
+encoder/head checkpoint and the given policy/training procedure. The 10,000-resample intervals are
+unadjusted and descriptive; three model fits do not establish a model-family effect.

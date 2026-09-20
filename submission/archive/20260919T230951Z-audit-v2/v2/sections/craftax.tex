@@ -1,0 +1,34 @@
+\section{Craftax: local planning works beyond staying still}
+\label{sec:craftax}
+
+The same question has a positive boundary in Craftax-Classic \citep{matthews2024craftax}:
+a compact JEPA can guide some real actions reliably. We evaluate the existing 512-dimensional
+checkpoint on 384 fresh starts across three evaluation seeds. After seven warm-up actions, six
+random actions generate a nearby target image. Goal generation and execution use independent
+simulator randomness. The planner uses terminal latent distance, without a decoder, reward head,
+privileged position input, or access to the generating actions. Success requires the target's player
+position after six real actions and survival throughout execution.
+
+One-shot open-loop planning reaches $358/384$ targets ($93.2\%$), and receding-horizon planning
+reaches $369/384$ ($96.1\%$), against $16.9\%$ for random actions and $35.7\%$ for no-op
+(Figure~\ref{fig:craftax}). Because 137 targets share the starting position, displaced goals are
+reported separately: success remains $89.9\%$ open loop and $93.9\%$ with replanning. The goals are
+local, with displacements of zero to three grid cells. This establishes useful six-step position
+planning for one fitted model; evaluation seeds quantify fresh episodes, not independent model fits.
+
+\begin{figure}[t]
+\centering
+\paperfig{craftax_goal_v2.pdf}{1.0}
+\caption{\textbf{Local Craftax planning under fresh execution noise.} One existing model is tested
+on 384 fresh episodes; 247 have a target different from the starting position. Whiskers are Wilson
+95\% intervals over evaluation episodes, conditional on this checkpoint. Receding-horizon planning
+uses more search compute than one-shot planning. The genuine start/goal pair is the first stored
+example with displacement at least two cells, selected without inspecting model outcomes.}
+\label{fig:craftax}
+\end{figure}
+
+Replanning solves horizons $6,5,4,3,2,1$, requiring $3.5$ times the latent transition evaluations
+of the open-loop search. Its improvement therefore combines feedback and additional computation.
+These results concern local goal matching, not Craftax achievements or reward optimization. The
+earlier short reward-control experiment, including its weakly generalizing fitted heads, is retained
+separately in Appendix~\ref{app:craftax}.

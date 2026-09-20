@@ -1,0 +1,232 @@
+{
+  "case_id": "gray_frame_still",
+  "history": 8,
+  "horizon": 16,
+  "created_utc": "2026-09-19T23:06:38Z",
+  "selection_rule": "First lexicographic (start_time, environment_index) window from each distinct (environment_index, episode_id), with no reset across its 24 frames.",
+  "selection_caveat": "Continuity conditions on future survival. These are illustrations, not an unbiased estimate of model or policy quality. No image, movement amount, or model output is used for selection.",
+  "eligible_windows": 16287,
+  "scene_ids": [
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ]
+  ],
+  "data_metadata": {
+    "env": "redcube",
+    "spec": {
+      "noise": "gray",
+      "per_episode": false,
+      "wind": false
+    },
+    "config": "gray_frame_still",
+    "num_actions": 4,
+    "envs": 100,
+    "steps": 250,
+    "split": "eval",
+    "seed": 1000,
+    "policy": "uniform random",
+    "max_steps": 128,
+    "reward": "-1 on touching the border, else 0"
+  },
+  "source_files": {
+    "eval": {
+      "path": "/dev/shm/redcube/gray_frame_still/eval.npz",
+      "sha256": "397c96e130f662e52f8be537eac09b0a32ce014e10ba9454432ba34bedb25e3d"
+    },
+    "jepa_checkpoint": {
+      "path": "/dev/shm/redcube/gray_frame_still/tile_factored/model_probe.npz",
+      "sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd"
+    },
+    "flow_checkpoint": {
+      "path": "/home/rldoeswork/personal/stoch/gray_frame_still/flow/model.npz",
+      "sha256": "c831e5d68fe0a2201495133ea318acea9db0ec5c5a7239771aeeb10b60cffbee"
+    }
+  },
+  "input_packet_sha256": "735c8ba113eb60c5c9dfa9a9dd9c291fcc8a63040b89f6773ca965c13e3dd343",
+  "array_sha256": {
+    "context": "503f96b5892a05160386f03d3eaa8d673ccd1406498a1dc32aaa6335570d2f76",
+    "real_future": "77fe2bd7df16da129167cf6726a563bb6dd136d724ba245f97aff985b408abba",
+    "jepa_context": "827ae0d7f94f360aa7290a34b3593f17961f82daef7c9f696b26ba644ad25b2a",
+    "jepa_encoded_real": "d8503868c654e76299d3a6a9de5816764f21c621f424d9c8fc6076818d3f1e33",
+    "jepa_future": "2a7c11861f28e2584f4ecdede4ea1a1df234d541764aad2efd83632270db547d",
+    "flow_context": "9c58977ae3a72f3c31fb08ff37c4ea689f28d45c2cad267f411fba4ebcfa86ea",
+    "flow_encoded_real": "2022d1059dbe4c1b02078f8b4df9676f8bdb8552fdb9f14874a1e85660ee05e6",
+    "flow_future": "fbf2f27e7b55bbfec7888d220d53fc54f6a1abc721c011af86e57f3424c6f881",
+    "jepa_real_latents": "bd63ee80198ed06e262353186b4eb1eae6c273eef8daecf6698b00a3ceb6ce7f",
+    "jepa_predicted_latents": "7d2e1e046a5aa232cdb595c77c02fe0327846c759221daf6b682a32697f0dfc3",
+    "flow_real_latents": "b87a0c9a5683175d4d7cc51051c7c64926978480364be994de09803db9f5f567",
+    "flow_predicted_latents": "029095432bd7cb2d92aca731f906c8d65eed29fe1bba803f317a2ca1e9858324",
+    "flow_sample_key": "d2e0cb9342529cd701f59f016085b2c3e69cb270a1a9a11fba36b2cd0c8abc0b",
+    "flow_rollout_key": "955ba306755f4567152d9eca7d5f3df8145715dec60890288e6bd37e49c12dcf",
+    "ids": "e30500d47c97c403e6685a4e0d782befbb403076eae445ddf7580b663390d229",
+    "frame_times": "223cf11c14e67df3a7ee5a07cc876a29596e80ca4545ab97d561ab0e90b893e9",
+    "outgoing_actions": "a39e91f09fef0dc21cdb1d686119a5d3379563215d46fcd1f091b58307f04080",
+    "incoming_actions": "99b24f7052d31c9efd691123f265013179918a61a7dbf0901fc1aa8ad56b32a7",
+    "future_actions": "516433625e8e4e5f12926b642bb38e20c1067cedd613c2bf4fda0be696be3894",
+    "reset_before_frame": "834a709ba2534ebe3ee1397fd4f7bd288b2acc1d20a08d6c862dcd99b6f04400",
+    "reset_after_frame": "cd05c2283f62b7c74911008df6a66101d51ed5cb23e6b4b5c84af4bc60db0f3a",
+    "valid_mask": "5bf90435cd45d0475cbb0ace7e7e3a672ed2a3a4984ad3e8624d8878725a9c2e",
+    "pos": "7ffbc558f2b7eae09f6c54b2cc20db2bce5f68244f70ad7a47680b4b31468731",
+    "wind": "81c611f35bff79491538b2f7cf201c7597a661a5c549633541c62bdc8af1613f",
+    "episode": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597"
+  },
+  "flow_sample_seed": 20260920,
+  "flow_nfe": 8,
+  "action_convention": "outgoing_actions[s,t] moves frames[s,t] to frames[s,t+1]. future_actions starts at t=7 and has 16 actions. incoming_actions is retained for the original flow API.",
+  "ground_truth_randomness": "The archive does not store every transition PRNG key. Its collection seed/metadata, archive hash, exact indices, actions, observations and state labels are retained. Flow sampling keys are stored separately; flow is not expected to reproduce the archive's particular noise realization.",
+  "source_sha256": "ef8134fb92cb7d23a853332ea7a12b974ffca7ffde9b9cc803bda023df4222b1",
+  "claim_status": "illustration_only",
+  "claim_text": "Recorded-action futures and reconstructions from fixed checkpoints; these images do not by themselves establish missing information or planning performance.",
+  "jepa_metadata": {
+    "cfg": {
+      "seed": 0,
+      "steps": 8500,
+      "batch": 128,
+      "lr": 0.001,
+      "weight_decay": 0.001,
+      "warmup": 0.1,
+      "encoder": "tile",
+      "predictor": "factored",
+      "emb_dim": 128,
+      "enc_depth": 6,
+      "enc_heads": 8,
+      "enc_mlp": 768,
+      "enc_res": 4,
+      "pred_depth": 6,
+      "pred_heads": 8,
+      "pred_dim_head": 64,
+      "pred_mlp": 2048,
+      "pred_width": 256,
+      "mlp_hidden": 2048,
+      "tokens": 16,
+      "token_dim": 32,
+      "token_hidden": 512,
+      "latent_dim": 0,
+      "history": 8,
+      "num_preds": 1,
+      "dropout": 0.1,
+      "sigreg_weight": 0.09,
+      "sigreg_knots": 17,
+      "sigreg_proj": 1024,
+      "action_bottleneck": 10,
+      "n_actions": 4,
+      "data_budget": 500000,
+      "chunk": 250
+    },
+    "params": 11121426,
+    "train_s": 609.1,
+    "loop_s": 599.8,
+    "data_sha256": "fceb10cbcdd8710c29d687b34475f119889709a6f3eb94a2cf1d6079f27aa882",
+    "source_sha256": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b",
+    "final_pred_loss": 0.000702009885571897,
+    "final_sigreg": 1.2611490488052368,
+    "decoder": {
+      "hidden": 256,
+      "depth": 6,
+      "steps": 8000,
+      "tokens": 16,
+      "batch": 256,
+      "lr": 0.001,
+      "frames": 80000,
+      "decoder_s": 95.2,
+      "final_mse": 0.07559545338153839
+    },
+    "heads": {
+      "hidden": 512,
+      "members": 1,
+      "steps": 6000,
+      "batch": 1024,
+      "lr": 0.001,
+      "gamma": 0.99,
+      "transitions": 80000,
+      "value_tail": 400,
+      "heads_s": 32.6,
+      "final": [
+        2.3470215637644287e-06,
+        0.008754377253353596,
+        0.10030073672533035
+      ],
+      "reward_corr": 0.9998388010425517,
+      "value_corr": 0.5162995515106823,
+      "reward_rmse": 0.0018352058250457048,
+      "reward_event_recall": 1.0,
+      "value_mean": -0.46995609998703003,
+      "return_mean": -0.4700188934803009,
+      "heldout_reward_corr": 0.9808284167000065,
+      "heldout_value_corr": 0.28359029265196745,
+      "heldout_reward_rmse": 0.019914770498871803,
+      "heldout_reward_event_recall": 1.0,
+      "heldout_value_mean": -0.47154971957206726,
+      "heldout_return_mean": -0.43030819296836853
+    }
+  },
+  "flow_metadata": {
+    "cfg": {
+      "seed": 0,
+      "tok_steps": 9000,
+      "tok_batch": 256,
+      "wm_steps": 16000,
+      "wm_batch": 64,
+      "rollout": 32,
+      "lr": 0.0009,
+      "tok_lr": 0.0009,
+      "decay": 0.2,
+      "hardmine": 0.5,
+      "startsamp": 0.5,
+      "reward_weight": 0.1,
+      "done_weight": 0.1,
+      "data_budget": 500000,
+      "temporal_codec": 1,
+      "history_dropout": 0.25,
+      "shortcut_weight": 0.25,
+      "shortcut_every": 4,
+      "shortcut_warm": 0.25,
+      "resample_frames": 2,
+      "resample_every": 8,
+      "resample_warm": 0.5,
+      "resample_signal": 0.5,
+      "temporal_weight": 0.25,
+      "head_trunk": 0.1,
+      "head_warm": 0.5,
+      "num_actions": 4
+    },
+    "train_s": 556.8,
+    "tokenizer_train_s": 167.5,
+    "data_sha256": "fceb10cbcdd8710c29d687b34475f119889709a6f3eb94a2cf1d6079f27aa882",
+    "source_sha256": "86b7e687ab557ce1a8d7c9259b997d8a3489d9d004e324377f4949e01e5781e0"
+  },
+  "decoder_budget_note": "JEPA decoder fitted after world-model training on frozen real-frame latents; its stored configuration and frame/update count are in jepa_metadata.decoder. This diagnostic decoder is not a claim of an optimal inverse. Flow reconstruction uses the checkpoint's jointly trained codec.",
+  "encoder_context_batch": 64,
+  "encoder_history": 8,
+  "jepa_decoder_frame_batch": 512,
+  "encoder_context_max_abs_difference": 0.0,
+  "latent_units": "Unmodified checkpoint values, saved losslessly in float32 (BF16 values embed exactly). No normalization, amplification, subspace scaling, probe overlay, or manual recoloring.",
+  "flow_codec_real_frame_semantics": "Temporal codec sees the actual previous/current RGB pair; each displayed real future is encoded as the last frame of an 8-frame rolling history at batch64. No future frame enters a forecast.",
+  "flow_sampling": "One seed fixed before export, no selection among samples; batch64 padded with repeated last selected input; original flow rollout key split and one key per future step.",
+  "export_source_sha256": "7b33126b957b1ffc7ae213285b4649880bb17ece9bbec488326ac4a39cf20f2d",
+  "source_modules": {
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/train.py": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/redcube/flow.py": "37bb32813656893bf5f2bc083c3fa2dcac9207d4d4b9aac722681d4d570be8b5",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/train.py": "86b7e687ab557ce1a8d7c9259b997d8a3489d9d004e324377f4949e01e5781e0",
+    "studies/stoch/flow_recipe/eval.py": "fef2e14cf31d49ad7e71b9b73146813e3f789519861af9dbb01ff57fb1e8ae0a",
+    "probe.py": "110eff77f3dfb5fb3c7222caa58d85773b9bc8675cd95859d4f9705c171ea424"
+  },
+  "packet_sha256": "853ef31c946524d2026c6261472e7f3dce8aa7ba3fff9fae444d9b9b4964189b",
+  "versions": {
+    "jax": "0.10.1",
+    "numpy": "2.4.6",
+    "devices": [
+      "cuda:0"
+    ]
+  },
+  "seconds": 87.49
+}

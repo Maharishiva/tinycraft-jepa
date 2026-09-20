@@ -1,0 +1,26 @@
+{
+  "updated_utc": "2026-09-19T23:11:59.060291+00:00",
+  "owner": "/root/craftax_audit",
+  "deadline_utc": "2026-09-20T07:41:00Z",
+  "source_copy_and_run_authorization": "user explicitly approved all copying/running after interruption; root admitted final last-only matrix prospectively",
+  "current_remote_queue": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/craftax_seed_replication",
+  "remote_queue_log": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/artifacts/revision/craftax_seed_replication.log",
+  "exec_session_id": 58289,
+  "phase": "original seed1/2 fit+goal queue completed during interruption; no active owned process; GPU freed; last-only never launched",
+  "gpu": "exclusive e2e GPU0",
+  "python": "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+  "data": "/home/rldoeswork/personal/tinywmcraft-e2e/starter/data/tinywmcraft_500k/train.npz",
+  "reference_report": "artifacts/revision/craftax_goal_v2.json",
+  "reference_model_sha256": "59cc282c9bd7a49ab1c272342220bc8e0d8ca0f1aa77bbcb4c23ae31dfd6835d",
+  "seed1_model_sha256": "c2d06a42b6504ef37c42f0cee2e422f1728eb837b4578ec2176a2f961bc30ddb",
+  "last_only_status": "root admitted3fits seed0/1/2 conditionedonlycorrectness/runtime; implementations delegated, no last-onlytraining yet",
+  "trainer_agent": "/root/craftax_audit/craftax_last_only_impl",
+  "queue_analyzer_agent": "/root/craftax_audit/craftax_last_only_queue",
+  "reviewer": "/root/craftax_audit/replication_review",
+  "pending": [
+    "meaningful native inventory PPO comparison implementation, independent source review and smoke; exact6final policies withpairedseeds"
+  ],
+  "latest_user_steering": "Nearby Craftax goals rejected as paper story; stop additional local-goal and last-only work. Pivot to native inventory tools through WM-trained RL.",
+  "status": "superseded_preserved_not_for_main_story",
+  "last_only_production_launched": false
+}

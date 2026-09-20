@@ -1,0 +1,71 @@
+\section{What the objective does not guarantee}
+\label{sec:theory}
+
+The experiments concern fitted finite networks. The following population statements ask a narrower
+question: which guarantees follow from prediction error and a Gaussian latent marginal alone?
+They do not characterize optimization or identify the cause of the empirical failures.
+
+\subsection{Non-collapse does not select the controlled state}
+\label{sec:theory-rep}
+
+Write observations as $x_t=R(p_t,b)$, where $p_t$ is controlled state and $b$ is an episode-constant
+nuisance recoverable from the image. Assume that $b$ is independent of states and actions in the
+training data. At deployment, assume it is independent of the initial state and transition randomness,
+and does not directly affect dynamics or reward. Let $\mathrm{SIGReg}_\infty$ be the nonnegative
+population characteristic-function discrepancy, which vanishes for $\Nrm(0,I_D)$
+(Appendix~\ref{app:proofs}).
+
+\begin{proposition}[Gaussian nuisance optimum; extending \citet{sobal2022slow}]
+\label{prop:representation}
+If the encoder class contains a map $f(R(p,b))=\varphi(b)$ with
+$\varphi(b)\sim\Nrm(0,I_D)$ and the predictor class contains the last-latent copy map, their population
+prediction loss and $\mathrm{SIGReg}_\infty$ are both zero. This is a global optimum with covariance
+$I_D$ and $I(z_t;p_{1:T})=0$ under the training distribution. A deployed controller observing only
+these latents, time, and its own actions has the value of a randomized state-blind policy.
+\end{proposition}
+
+The argument is simple: nuisance changes across episodes, satisfying the marginal constraint, but
+is constant within each episode, making prediction exact. Its deployment value follows by giving a
+state-blind policy the same private nuisance draw and controller randomness. The Gaussianization
+assumption requires a rich nuisance and a realizable measurable map; a finite texture does not
+literally instantiate it. The finite-batch regularizer also differs from the population functional.
+A complementary innovation bound in Appendix~\ref{app:proofs} shows that an encoder preserving all
+state distances at a fixed scale must incur prediction error for unpredictable state innovations.
+
+\subsection{Decodability does not set a useful prediction scale}
+\label{sec:amplitude}
+
+Even preserving all state information leaves its geometry unconstrained. For any $\varepsilon>0$,
+we can place the two values of a relevant bit less than $2\varepsilon$ apart while keeping the
+\emph{entire} latent distribution exactly standard Gaussian.
+
+\begin{proposition}[Exact information at arbitrarily small scale]
+\label{prop:amplitude}
+For every $\varepsilon>0$ and $D\ge1$, there is a measurable observation process with episode-constant
+nuisance $b$ and a fresh independent fair state bit $p_t$, and an encoder $f_\varepsilon$, such that
+$z_t\sim\Nrm(0,I_D)$ and both $p_t$ and $b$ are exactly recoverable almost surely. For fixed $b$,
+$0<\|f_\varepsilon(R(1,b))-f_\varepsilon(R(0,b))\|<2\varepsilon$.
+The optimal next-latent predictor is independent of the next bit and has coordinate-mean squared
+error in $(0,\varepsilon^2/D]$. With reward $\mathbf1\{a_t=p_t\}$, latent feedback attains value $1$
+per step, while every state-blind policy attains $1/2$.
+\end{proposition}
+
+The construction partitions one Gaussian coordinate into narrow intervals and uses the bit to
+select the lower or upper half of each interval's conditional probability mass. The nuisance fixes
+the interval and the within-half quantile. This preserves the Gaussian marginal and exact decoding
+while making the two states arbitrarily close. The full proof is in Appendix~\ref{app:proofs}.
+It uses infinite-precision measurable coding; the next bit is intrinsically unpredictable. It therefore
+separates information from scale, without proving avoidable prediction error or explaining deletion
+of the predictable gate wall.
+
+\paragraph{Why scale matters for a downstream read-out.}
+For a fixed $L$-Lipschitz value read-out $V$ and any coupled real and predicted next latents,
+\begin{equation}
+\label{eq:readout}
+\left|\E V(Z')-\E V(\widehat Z')\right|
+\le L\sqrt{\E\|Z'-\widehat Z'\|^2}.
+\end{equation}
+This standard bound follows from Lipschitz continuity and Cauchy--Schwarz. Prediction error controls
+value error only relative to the read-out's sensitivity. Exact decodability alone supplies no bound
+on that sensitivity. We do not estimate $L$ or claim a control guarantee for the fitted networks;
+the inequality makes explicit the missing bridge between a geometric loss and a decision.

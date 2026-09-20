@@ -1,0 +1,64 @@
+{
+  "case_id": "gate_s1",
+  "export_source": "artifacts/revision/redcube_story/gate_s1",
+  "raw_frames_npz_sha256": "856139a0492aa3aa273370f3822246fd0d5b2dc3acb8e5bb4c40215e791235fa",
+  "selection_rule": "First lexicographic (start_time, environment_index) window from each distinct (environment_index, episode_id), with no reset across its 24 frames and a wall already present in the last context frame.",
+  "selection_caveat": "Continuity conditions on future survival. These are illustrations, not an unbiased estimate of model or policy quality. No image, movement amount, or model output is used for selection.",
+  "scene_ids": [
+    [
+      15,
+      12
+    ],
+    [
+      15,
+      21
+    ],
+    [
+      15,
+      24
+    ]
+  ],
+  "checkpoint_and_data_sha256": {
+    "eval": "0c7ea5ac34008ce690faf5b85d9becd7cd72fbe47095d862c79d53ad0ddc956e",
+    "jepa_checkpoint": "7190a8c231596043b62b6750f807e1c9fa542287dc161b7ca72182f2e68e625a",
+    "flow_checkpoint": "72b829ea8cfb5f4bf21f3b8c0ce8ffe53f34dd5aa67bad001bb8d4cd0bab27e9"
+  },
+  "array_sha256": {
+    "context": "8649dd43792bedbb80211a6d885b53dac98c3748ccc05079d63edd2e6e8e25de",
+    "real_future": "34f491a1b455cd5c6b21413f5dc6cf1150efd67ade15a9bab9582a2bc441df13",
+    "jepa_context": "b6f013d7a8a123340c5ab4719e7b9a32dc69c720433ef3ccc1dcf61cf6ef8619",
+    "jepa_encoded_real": "fbe0cd4d47da256a0b75419319a8b903c23c5347c0f2e2d2ed1f75bd52c9241c",
+    "jepa_future": "f09a853d1d1403cf6e6935df0b77a9e770806ba29fbfb03ceb957471bbaab2ce",
+    "flow_context": "85944507088554fab50a3dc2b73b336daf3443f4a40cc2b346936958090b44da",
+    "flow_encoded_real": "bff51a860e08c0ef8a9aa2563f15aa29f068ffd4667f329d5ccd5f5393196796",
+    "flow_future": "97394eb4e1b4dbd3c038f74988708ac51ed817b246abdfd9a2c88de405b5f765",
+    "jepa_real_latents": "93934947af9186d227031b1d591a60f4e73ae1de8e94e63877afbed829cc13b8",
+    "jepa_predicted_latents": "79a1304948ce582a5b62f14aa837cf20bfb27bf2810e3089e6c60c79ee290669",
+    "flow_real_latents": "4ba3344dbe77cfdd052063b52ec9cd1cad22621d5395552dfc84aca9ba502dba",
+    "flow_predicted_latents": "62accc339c3a8c7da82492134764c4d29256060c2dec11f357573143821c202c",
+    "flow_sample_key": "d2e0cb9342529cd701f59f016085b2c3e69cb270a1a9a11fba36b2cd0c8abc0b",
+    "flow_rollout_key": "955ba306755f4567152d9eca7d5f3df8145715dec60890288e6bd37e49c12dcf",
+    "ids": "b3a3f7dab669d7bddc26f3198fcfeea6f546e711e55b029c79f5386f10d08182",
+    "frame_times": "de43e681e449e25668cfa193a90560b59e766d632e4c4e18ca6cbd61d673f836",
+    "outgoing_actions": "315a7f7998af9332cb4cffc2794159364cf2985c9b20605392d44c4084eb2e68",
+    "incoming_actions": "17ee3f108482c1f8fcd8895ab6058567c196098f5a3f4c8d144e728c3245d9d5",
+    "future_actions": "a22bb47e40dfde7aa02f4e053136545f073cb561cfbd5a5bf999adfe559b2bd1",
+    "reset_before_frame": "834a709ba2534ebe3ee1397fd4f7bd288b2acc1d20a08d6c862dcd99b6f04400",
+    "reset_after_frame": "cd05c2283f62b7c74911008df6a66101d51ed5cb23e6b4b5c84af4bc60db0f3a",
+    "valid_mask": "5bf90435cd45d0475cbb0ace7e7e3a672ed2a3a4984ad3e8624d8878725a9c2e",
+    "pos": "c1946db87c5a6f68c04ab1fcb4bce7e0e892136945b340255e92641fef9e270c",
+    "wind": "81c611f35bff79491538b2f7cf201c7597a661a5c549633541c62bdc8af1613f",
+    "episode": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+    "wall_x": "7d596599d45fdbac407284a5ca57899ebc7f4c4cb9779c8354b1df6bcda1d370",
+    "gap": "42221c395cf1b991b96f447701b1ffd44638d331d815cbf7cdb8ac14de87fcc1"
+  },
+  "display_sprite_sha256": {
+    "gt": "b376370a1af1c1444905fd8d1a98cc71c975c917aca1a20ef24aafe3ca27095f",
+    "real_encoded": "8186f9b2c76b9c5d95cb995fcc5d75b582edba5390e8f045492ab6a2a9f152a0",
+    "jepa": "26cec1c206485473e49abd15af0cf82727e7cce430bce696e6931991e9fc0a8c",
+    "flow": "c2994c01275b854328d927f710003d39b1ffeb76d98f2581307accc5c6de4eea",
+    "flow_encoded": "9acb24ab99e21c25e3c092c19308d50ba68ec1f3b1888092632ff803db70f180"
+  },
+  "display_transform": "none; concatenation only; native uint8 RGB preserved",
+  "note": "Flow uses the corrected PPO recipe checkpoint, not the older redcube benchmark flow checkpoint."
+}

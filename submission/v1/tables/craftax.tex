@@ -1,0 +1,17 @@
+\begin{tabular}{llr}
+\toprule
+\rowcolor{Navy!8}
+Test & Controller & Result \\
+\midrule
+\rowcolor{JEPA!7}
+Goals & JEPA latent-goal planner & $121/128$ reached \\
+ & Random actions & $24/128$ reached \\
+\midrule
+\rowcolor{Real!7}
+Return & Random actions & $1.45\pm1.09$ \\
+ & Myopic fitted reward & $0.78\pm1.11$ \\
+ & One-step prediction + value & $0.94\pm1.20$ \\
+\rowcolor{JEPA!7}
+ & Six-step CEM + value & $0.47\pm1.10$ \\
+\bottomrule
+\end{tabular}

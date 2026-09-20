@@ -1,0 +1,30 @@
+{
+  "out": "runs/wmgym_5m_nogru",
+  "seed": 0,
+  "budget": 5000000,
+  "save_at": [
+    500000,
+    1000000,
+    2000000
+  ],
+  "ac_from": null,
+  "start_steps": 0,
+  "envs": 64,
+  "collect": 100,
+  "chunk": 25,
+  "groups": 4,
+  "epochs": 4,
+  "lr": 0.00025,
+  "gamma": 0.99,
+  "lam": 0.8,
+  "clip": 0.2,
+  "vf": 0.5,
+  "ent": 0.01,
+  "eval_every": 8,
+  "eval_episodes": 128,
+  "wm": "/home/rldoeswork/personal/codex-wm-push-20260916/checkpoints/normuon_head_bridge_s0/model.npz",
+  "wm_data": "/home/rldoeswork/personal/tinywmcraft-research/data/train.npz",
+  "wm_nfe": 4,
+  "wm_max_steps": 1024,
+  "no_gru": true
+}

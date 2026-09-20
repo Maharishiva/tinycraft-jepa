@@ -1,0 +1,66 @@
+% V2 METHOD MODULES. Not yet included in main.tex.
+% These describe fixed protocols only. Add results solely from validated completed artifacts.
+
+\subsection{Matched control interventions}
+\label{sec:matched-method}
+The control comparison fixes the fitted encoder, policy architecture, rollout-start mixture,
+context burn-in, optimizer, and update schedule. It changes the source of transitions and task
+signals in three conditions: learned latent transitions with fitted reward/termination heads;
+exact simulator transitions re-encoded by the same frozen encoder with the same fitted heads;
+and exact re-encoded transitions with true rewards and terminations. The actor receives no simulator
+state. The primary design crosses three model checkpoints with five policy seeds and all three
+conditions. Each policy uses 150 updates of 512 trajectories of length 16, then is evaluated at its
+final checkpoint on the same 256 real-episode keys. Intermediate peaks are not selected.
+
+The transition substitution is conditional on terminal semantics: exact simulator trajectories
+become absorbing after true termination, while the fitted-head condition can continue to assign
+weight and reward to those states. We retain its post-terminal weight and return diagnostics.
+Replacing fitted signals under exact transitions is a separate intervention; the effects need not
+add independently. A policy interface that fails even with exact transitions and true signals
+cannot establish a model-specific control failure. A separate native-grid CNN sensitivity changes
+only the policy's inductive bias and is reported without pooling it into the primary MLP results.
+
+\subsection{Read-out transfer between encoded and forecast states}
+\label{sec:forecast-method}
+We freeze each of the three gate encoders and predictors and fit identical affine ridge read-outs
+at horizons 1, 2, 4, and 8. Each read-out is trained on real future encodings, predicted future
+latents, or a copied current latent, then evaluated on all three domains. Training and evaluation
+contexts come from independently collected archives. The copied-current condition is action
+independent and tests how much future-state accuracy can be achieved without predicting a transition.
+The targets are cube position, wall presence, and wall position conditioned on true presence.
+Simulator labels supervise the diagnostic alone.
+
+We report both predeclared normalization analyses: one common scaler fitted on current training
+latents, and separate scalers fitted on each source domain's training latents. A transfer always
+uses its source-trained scaler. These transformations affect the diagnostic, not the world model
+or policy. Physical-state metrics use a horizon-specific no-reset mask; their sample counts and
+selection fractions remain visible. A separate hidden-gap negative control uses all pre-reveal
+contexts without future-survival selection, avoiding leakage through selection on the unknown gap.
+
+\subsection{A target-gradient intervention under stochastic dynamics}
+\label{sec:target-method}
+The objective intervention detaches only the next-latent target in the prediction MSE. It leaves
+predictor-input and SIGReg gradients intact, with no teacher network. Thus its forward scalar loss
+matches the jointly differentiated condition, while its gradient path differs. The fixed factorial
+design crosses these two modes with deterministic or stochastic-wind dynamics under per-frame gray
+noise and three model seeds. Both modes in a world/seed pair use identical initialization, sampled
+windows, projection directions, optimizer schedule, architecture, and 8,500 updates. Neither reward
+nor simulator-state labels enter training, and the latent stays $4\times4\times32$.
+
+The primary endpoint is final-checkpoint position MAE per coordinate from a fixed generic nonlinear
+read-out of raw latents. A ridge read-out, prediction loss, variance, and effective rank are secondary.
+For each seed, the predeclared interaction is the stop-target benefit in the wind condition minus
+its benefit in the deterministic condition. It measures the intervention's dependence on these two
+data-generating conditions; wind also changes visitation and episode lengths, so the interaction
+alone does not isolate innovation variance. Every admitted final fit is retained, including null
+or adverse outcomes.
+
+\subsection{A task-supervised value-aware continuation}
+\label{sec:pve-method}
+The value-aware experiment keeps the existing encoder, latent dimension, and task heads fixed and
+continues only the action encoder and predictor. One arm uses four-step latent MSE; the other adds
+a prospectively weighted value-regression term through a frozen teacher trained on realized returns.
+An independently fitted auditor is excluded from predictor gradients. Both probes must first pass
+a held-out-episode adequacy gate against a constant-return baseline. Failure of this gate ends the
+experiment without weakening its threshold. This is a PVE-inspired value-aware continuation
+\citep{grimm2021proper}, not exact proper value equivalence or reward-free learning.

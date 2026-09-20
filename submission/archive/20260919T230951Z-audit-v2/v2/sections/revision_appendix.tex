@@ -1,0 +1,151 @@
+% V2 DETAILED PROTOCOL MODULE. Not yet included in main.tex.
+% Admission/completion counts and numerical outcomes must come from final validated manifests.
+
+\section{Prospective matched-control protocol}
+\label{app:matched}
+The primary matrix contains three fixed gate model checkpoints, five policy seeds (0--4), and
+three transition/signal conditions. Within each model/policy block, initialization, sampled starts,
+source identities, checkpoint hash, data hash, requested updates, policy parameter count, evaluation
+seed, and episode count must match. Start arrays are compared by semantic content hashes. Only
+complete three-condition blocks with 150 finished updates, finite required training diagnostics,
+and scalar outcomes reproduced from saved episode arrays enter the complete analysis. Missing,
+partial, or invalid runs retain their place in the planned denominator.
+
+The primary endpoints are walls passed and survival to the 128-step cap. A death on step 128 is
+counted as death, using episode return rather than duration. Survival above $50\%$ is a secondary
+operational threshold, not independent evidence of a specific learned maneuver. Each saved
+final policy is evaluated on 256 real episodes with a common key schedule. Outcomes are paired
+within model and policy seed. Raw hidden state is used only to reconstruct the simulator transition
+source and must reproduce sampled current pixels exactly before training proceeds.
+
+Within a fixed model, policy-seed effects are equally weighted. The main descriptive interval uses
+10,000 paired-policy bootstrap resamples with analysis seed 7341, conditional on the evaluation set.
+A separate interval resamples evaluation slots jointly across policies while holding fitted policies
+fixed. It measures evaluation variation, not policy-training uncertainty. Across model fits, we
+show all three effects, their equal-model mean, and range; we do not treat 15 policy pairs as 15
+independent models or report a model-family interval. All intervals are unadjusted and descriptive.
+
+Native-grid CNN sensitivity uses three policy seeds, the same three models and conditions, and the
+same final-budget and pairing rules. Its outcomes and bootstrap samples are separate from the MLP
+primary analysis. Exact-simulator states become absorbing after true termination. When fitted
+signals are used, their learned continuation can remain positive there; post-terminal alive mass
+and weighted reward are reported as part of the intervention's support change.
+
+\subsection{Completed primary outcomes}
+All 45 prescribed MLP runs passed full-budget, pairing, checkpoint-identity, and per-episode outcome
+checks. Their primary outcomes appear in Table~\ref{tab:matched-gate}. Table~\ref{tab:matched-contrasts}
+retains every predeclared wall-count contrast with its within-model policy-seed interval. No confidence
+interval here estimates variation over a model family.
+
+\begin{table}[ht]
+\centering
+\caption{Matched primary wall-count differences. Intervals are 95\% percentile bootstraps over
+five paired policy seeds within one fixed model, conditional on its evaluation set. They are
+unadjusted descriptive intervals; all three prespecified contrasts are retained.}
+\label{tab:matched-contrasts}
+\inputtable{matched_contrasts.tex}
+\end{table}
+
+\section{Prospective forecast-readout protocol}
+\label{app:forecast}
+The three gate models stay frozen. Up to 16,384 training contexts and 8,192 evaluation contexts are
+sampled without replacement with seeds 20260919 and 20260920, using matching context IDs across
+models. Past context may not cross a reset. Forecasts use the original recorded outgoing actions,
+with horizons 1, 2, 4, and 8. Parameters and BatchNorm statistics must remain unchanged during
+extraction, and cached encodings are checked against the public rollout implementation.
+
+The three feature domains are real future encoding, autoregressive forecast, and copied current
+encoding. Each domain has 512 coordinates. An affine ridge read-out uses mean squared error plus
+$10^{-3}\|W\|^2$, with unpenalized intercept and no hyperparameter search. Both declared scaler
+analyses are retained: current-training-latent mean/standard deviation shared across domains; and
+source-domain training mean/standard deviation for each horizon. Both use a fixed $10^{-6}$ scale
+floor, and every transfer applies its source-fitted scaler. No evaluation data determine a scaler,
+regularizer, checkpoint, or reporting condition.
+
+Cube coordinates are divided by 63 for fitting and reported in pixels. Wall position is fitted and
+evaluated only on truth-present rows; the absent-wall sentinel is never regressed as a coordinate.
+Presence reports class prevalence, AUROC, average precision, and threshold accuracy/balanced
+accuracy, with undefined one-class metrics omitted. Every task includes a constant training-label-mean
+baseline and sample counts. A task with fewer than 64 fitting rows is marked insufficient.
+
+The archive stores reset frames after terminal transitions, so physical-state read-outs use a
+horizon-specific continuing-episode mask. In particular, one-step evaluation does not select for
+eight-step survival. The hidden-gap negative control instead retains every pre-reveal context,
+including later resets, because future-survival selection could reveal the gap through the recorded
+actions. The gap label refers to the original current wall. Chance forecasting of this unavailable
+bit is compatible with correct treatment of uncertainty.
+
+All fitted weights, scalers, selected IDs, labels, masks, per-example predictions, and provenance
+hashes are saved. Overlapping windows are not independent samples; any uncertainty uses evaluation
+stream or episode clusters. A weak read-out remains consistent with information loss, poor
+conditioning, limited support, or insufficient probe capacity.
+
+\section{Prospective target-gradient protocol}
+\label{app:target}
+The 12-fit design uses the existing deterministic and stochastic-wind per-frame-gray datasets,
+500,000 training transitions each, with three seeds and two target-gradient modes. Every fit uses
+8,500 updates, batch 128, AdamW learning rate and weight decay $10^{-3}$, 10\% warm-up followed by
+cosine decay, gradient clipping at 1, and the unchanged grid model. SIGReg has weight 0.09,
+17 knots, and 1,024 projections. Detachment applies only to targets inside prediction MSE. Frames
+shared with predictor inputs retain those input gradients, and BatchNorm/overlapping history can
+couple frame contributions. There is no EMA teacher, latent expansion, reward objective, or
+privileged training signal.
+
+Paired modes share initialization, sampled windows, and SIGReg projection keys. Checkpoints are
+saved at updates 0, 500, 1000, 2000, 4000, 4250, and 8500; only 8500 is the primary endpoint.
+Read-outs use fixed samples of 50,000 training frames and 10,000 independently collected evaluation
+frames, selected with seed 19417 without outcome filtering. A raw-latent MLP has two width-256 GELU
+hidden layers and two position outputs, fitted for 4,000 updates, batch 1,024, AdamW learning rate
+$10^{-3}$, with the same probe initialization and minibatch seed for every model. The primary metric
+is mean absolute error per coordinate, in pixels. This differs from the earlier spatial read-out
+and its summed-coordinate L1 metric; those experiments are not pooled.
+
+The secondary ridge probe centers raw features, uses an unpenalized intercept, and fixes its penalty
+to $10^{-3}\operatorname{tr}(\operatorname{Cov}(z))/512$. This is a scalar regularizer convention,
+not a transformation of latent coordinates. Constant training-position predictions, RMSE, $R^2$,
+latent variance, effective rank, and individual seed effects are retained. The optional 4250-update
+probe is admitted for all 12 models or none according to a timing-only gate fixed before outcomes.
+Intermediate checkpoints cannot select a favorable final model.
+
+\section{Prospective value-aware continuation protocol}
+\label{app:pve}
+Complete episodes from the gate training archive are split 40/40/20 into folds A, B, and validation
+with seed 417, excluding unfinished suffixes. Probe A is a frozen training teacher; independently
+initialized probe B is an auditor never used for predictor gradients. Both are two-layer width-256
+GELU MLPs on raw fixed latents, fitted for 4,000 updates with batch 1,024, learning rate $10^{-3}$,
+AdamW decay $10^{-4}$, clipping at 1, and 5\% warm-up plus cosine decay. Each must improve validation
+MSE by more than 10\% over its own training-fold mean-return constant and have correlation above
+0.2. If either fails, no continuation or control claim is made.
+
+The continuation arms start at the same existing seed-0 checkpoint and share initialization,
+optimizer, windows, and sampling keys. Both use autoregressive latent MSE at horizons one through
+four. The value-aware arm adds
+\[
+0.1\,\E\left[\left(\frac{V_A(\widehat z_{t+h})-G_{t+h}}{\sigma_G}\right)^2\right],
+\]
+where $G_{t+h}$ is the unmodified realized return from the future target frame to observed episode
+termination, discount 0.99, and $\sigma_G$ is the training-return standard deviation. It is a scalar
+loss normalization, not latent scaling or modified environmental reward. Continuation sees A and B
+only and uses 3,000 updates, batch 128, AdamW learning rate $10^{-4}$, weight decay $10^{-3}$,
+clipping at 1, and 5\% warm-up plus cosine decay. Both arms calculate the teacher loss, including the
+zero-weight arm; actual runtimes are reported because compiler elimination can still change compute.
+
+Only the action encoder, predictor, and prediction projector are updated. Encoder, representation
+projector, decoder, and original task heads remain fixed, with parameter and BatchNorm hashes checked.
+The teacher and auditor are also fixed. Test data are an independent archive and never determine
+normalization, early stopping, hyperparameters, or checkpoint choice. Up to 8,192 shared test windows
+from complete episodes are evaluated, conditioned on no reset before their last target frame.
+
+Primary offline comparison is the paired change in the independent auditor's Monte Carlo value
+error, alongside its real-latent error. Teacher error, latent MSE, predicted/real latent RMS, and
+model-only action sensitivity are supporting diagnostics. Episode-cluster bootstrap intervals use
+2,000 resamples and do not quantify training-seed uncertainty. Increased action sensitivity alone
+is not evidence of correct action ranking. Agreement between teacher and auditor cannot exclude
+shared extrapolation error or off-manifold exploitation.
+
+If the adequacy gate passes, both continuations require the predeclared downstream learned-model
+control test: original MLP policy, unchanged original task heads, five policy seeds, 150 updates,
+512 starts, horizon 16, and the common 256-episode evaluation keys. The corresponding original-model
+policies supply the base comparator. Offline regression improvement does not permit dropping a
+continuation arm or claiming control improvement without this test. This is one-checkpoint,
+one-continuation-seed, task-supervised evidence rather than a proper-value-equivalence guarantee.

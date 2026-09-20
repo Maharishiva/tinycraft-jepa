@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "status": "PASS_WITH_PRESERVED_FLOW_REPLAY_DIFFERENCE",
+  "scope": "Separate independent audit of gate_s1; extends original four-packet audit without changing it.",
+  "created_utc": "2026-09-19T23:37:06.924651+00:00",
+  "directory": "/private/tmp/tinycraft-jepa-iclr-20260919/artifacts/revision/redcube_story/gate_s1",
+  "packet_sha256": "856139a0492aa3aa273370f3822246fd0d5b2dc3acb8e5bb4c40215e791235fa",
+  "model_seeds": {
+    "jepa": 1,
+    "flow": 0
+  },
+  "checkpoint_remote_identity_check": {
+    "verification_utc": "2026-09-19T23:36:23.872633+00:00",
+    "host": "multigpu-vm",
+    "path": "/home/rldoeswork/personal/stoch/gate/tile_factored_s1/model_probe.npz",
+    "sha256": "7190a8c231596043b62b6750f807e1c9fa542287dc161b7ca72182f2e68e625a",
+    "metadata_seed": 1,
+    "encoder": "tile",
+    "predictor": "factored",
+    "tokens": 16,
+    "token_dim": 32,
+    "history": 8,
+    "method": "read-only SHA256 and NPZ metadata; no model loading"
+  },
+  "comparison_to_gate_seed0": {
+    "input_packet_byte_identical": true,
+    "input_packet_sha256": "8ce0a4f5c0397617a7832d5a4a0db79ee656d64787485cc12dd51f5a582a6d89",
+    "scene_ids": [
+      [
+        15,
+        12
+      ],
+      [
+        15,
+        21
+      ],
+      [
+        15,
+        24
+      ]
+    ],
+    "all_source_module_hashes_identical": true,
+    "flow_checkpoint_identical": true,
+    "flow_sample_seed": 20260920,
+    "flow_visual_nfe": 8,
+    "non_jepa_arrays_identical": [
+      "context",
+      "real_future",
+      "flow_context",
+      "flow_encoded_real",
+      "flow_real_latents",
+      "flow_sample_key",
+      "flow_rollout_key",
+      "ids",
+      "frame_times",
+      "outgoing_actions",
+      "incoming_actions",
+      "future_actions",
+      "reset_before_frame",
+      "reset_after_frame",
+      "valid_mask",
+      "pos",
+      "wind",
+      "episode",
+      "wall_x",
+      "gap"
+    ],
+    "numerical_differences": {
+      "flow_future": {
+        "shape": [
+          3,
+          16,
+          63,
+          63,
+          3
+        ],
+        "different_values": 4,
+        "total_values": 571536,
+        "max_abs_difference": 1.0,
+        "mean_abs_difference": 6.9986842473614964e-06
+      },
+      "flow_predicted_latents": {
+        "shape": [
+          3,
+          16,
+          4,
+          4,
+          32
+        ],
+        "different_values": 6040,
+        "total_values": 24576,
+        "max_abs_difference": 0.03125,
+        "mean_abs_difference": 0.0009988103767758123
+      }
+    }
+  },
+  "byte_verification": {
+    "output_array_hashes": 27,
+    "native_pngs_exact": 264,
+    "filmstrips_pixel_exact": 3,
+    "filmstrip_image_cells_exact": 75,
+    "scene_metadata_comparisons": 15,
+    "missing_extra_duplicate_image_references": 0,
+    "five_row_identities_correct": true
+  },
+  "source_identity": {
+    "prepare_and_export_frozen_snapshot_sha256": "7b33126b957b1ffc7ae213285b4649880bb17ece9bbec488326ac4a39cf20f2d",
+    "current_annotation_renderer_sha256": "9c4e3ad2ee367640d58632f5160e31e193f3c2891a2feb323e72dcd4e87f143e",
+    "candidate_start_lower_bound_explicit": true
+  },
+  "context_encoder_max_abs_difference_recorded": 0.0,
+  "interpretation": "Four of 571536 flow RGB channels differ by one; latent replay differences are preserved and reported. Identical checkpoint/input/keys are not proof of bitwise GPU replay. No causal source of the numerical difference is established.",
+  "unchanged_artifacts": "Audit wrote only separate research reports. No array, image, source, selection, manifest, or checkpoint was changed; no inference or GPU job was run.",
+  "related_dependency_receipt": "research/redcube_visual_dependency_receipt.json"
+}

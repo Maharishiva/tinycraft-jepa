@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="396pt" height="194.4pt" viewBox="0 0 396 194.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-19T21:58:24.445083</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 194.4 
+L 396 194.4 
+L 396 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.048 116.0568 
+L 119.592 116.0568 
+Q 125.532 116.0568 125.532 113.1408 
+L 125.532 44.3232 
+Q 125.532 41.4072 119.592 41.4072 
+L 15.048 41.4072 
+Q 9.108 41.4072 9.108 44.3232 
+L 9.108 113.1408 
+Q 9.108 116.0568 15.048 116.0568 
+z
+" clip-path="url(#p89f1669ac6)" style="fill: #f2f5f6; stroke: #dce4e8; stroke-width: 0.65; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 145.728 140.3568 
+L 250.272 140.3568 
+Q 256.212 140.3568 256.212 137.4408 
+L 256.212 68.6232 
+Q 256.212 65.7072 250.272 65.7072 
+L 145.728 65.7072 
+Q 139.788 65.7072 139.788 68.6232 
+L 139.788 137.4408 
+Q 139.788 140.3568 145.728 140.3568 
+z
+" clip-path="url(#p89f1669ac6)" style="fill: #f2f5f6; stroke: #dce4e8; stroke-width: 0.65; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 276.408 164.6568 
+L 380.952 164.6568 
+Q 386.892 164.6568 386.892 161.7408 
+L 386.892 92.9232 
+Q 386.892 90.0072 380.952 90.0072 
+L 276.408 90.0072 
+Q 270.468 90.0072 270.468 92.9232 
+L 270.468 161.7408 
+Q 270.468 164.6568 276.408 164.6568 
+z
+" clip-path="url(#p89f1669ac6)" style="fill: #f2f5f6; stroke: #dce4e8; stroke-width: 0.65; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 126.37437 88.626182 
+Q 131.667865 92.338503 136.045989 95.408876 
+" clip-path="url(#p89f1669ac6)" style="fill: none; stroke: #637583; stroke-linecap: round"/>
+    <path d="M 133.919413 91.474709 
+L 136.045989 95.408876 
+L 131.62271 94.749637 
+z
+" clip-path="url(#p89f1669ac6)" style="fill: #637583; stroke: #637583; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 257.05437 112.926182 
+Q 262.347865 116.638503 266.725989 119.708876 
+" clip-path="url(#p89f1669ac6)" style="fill: none; stroke: #637583; stroke-linecap: round"/>
+    <path d="M 264.599413 115.774709 
+L 266.725989 119.708876 
+L 262.30271 119.049637 
+z
+" clip-path="url(#p89f1669ac6)" style="fill: #637583; stroke: #637583; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17324d" x="13.86" y="16.346438" transform="rotate(-0 13.86 16.346438)">Reduce complexity; sharpen the diagnosis</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7.3px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #637583" x="13.86" y="24.3" transform="rotate(-0 13.86 24.3)">Three complementary tests, from a rich environment to controlled nuisance factors</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #7860a5" x="19.8" y="54.432" transform="rotate(-0 19.8 54.432)">01</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #7860a5" x="19.8" y="69.984" transform="rotate(-0 19.8 69.984)">Craftax</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 6.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17324d" x="19.8" y="83.0088" transform="rotate(-0 19.8 83.0088)">Goal reaching / reward control</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #637583" transform="translate(19.8 98.527763)">Does goal matching support</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #637583" transform="translate(19.8 109.355888)">reward-based control?</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #cd663e" x="150.48" y="78.732" transform="rotate(-0 150.48 78.732)">02</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #cd663e" x="150.48" y="94.284" transform="rotate(-0 150.48 94.284)">Gate</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 6.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17324d" x="150.48" y="107.3088" transform="rotate(-0 150.48 107.3088)">Retain / predict / control</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #637583" transform="translate(150.48 123.505888)">Is a visible wall retained</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #637583" transform="translate(150.48 132.977763)">before its gap is revealed?</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #087e83" x="281.16" y="103.032" transform="rotate(-0 281.16 103.032)">03</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #087e83" x="281.16" y="118.584" transform="rotate(-0 281.16 118.584)">Nuisance cube</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 6.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17324d" x="281.16" y="131.6088" transform="rotate(-0 281.16 131.6088)">3 backgrounds x 2 dynamics</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #637583" transform="translate(281.16 147.127763)">How do noise and dynamics</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #637583" transform="translate(281.16 157.277762)">affect position readout?</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #637583" x="13.86" y="184.0968" transform="rotate(-0 13.86 184.0968)">Protocol schematic. Ordering denotes experimental scope, not measured difficulty.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p89f1669ac6">
+   <rect x="0" y="0" width="396" height="194.4"/>
+  </clipPath>
+ </defs>
+</svg>

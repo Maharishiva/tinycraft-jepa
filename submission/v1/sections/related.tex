@@ -1,0 +1,32 @@
+\section{Related work}
+\label{sec:related}
+
+\paragraph{Which JEPA setting?}
+Image and video JEPAs learn by predicting representations
+\citep{assran2023ijepa,bardes2024vjepa}. DINO-WM fits dynamics on frozen visual features, and V-JEPA~2
+freezes its encoder for action-conditioned prediction with an L1 objective
+\citep{zhou2024dinowm,assran2025vjepa2}. PLDM instead jointly learns its encoder and dynamics with
+multiple regularizers \citep{sobal2025pldm}. Our direct setting is LeWorldModel's jointly trained
+squared-loss predictor with SIGReg \citep{maes2026lewm,balestriero2025lejepa}; the population statements
+do not automatically transfer to these other objectives.
+
+\paragraph{Predictability, geometry, and planning.}
+Predictable nuisance is an established limitation of joint embeddings \citep{sobal2022slow}.
+Recent work studies how contrastive sampling changes slow-noise bias
+\citep{gulati2026contrast}, and how temporal-distance objectives improve planning-relevant geometry
+\citep{bai2026temporal}. LeWorldModel already reports accurate probes alongside weaker planning,
+while \citet{terver2026planning} examine architecture and planner choices and discuss multimodal
+conditional means. Self-predictive abstraction analyses similarly distinguish predictive structure
+from task sufficiency \citep{tang2023selfpredictive,ni2024bridging}. Our contribution is a controlled
+set of representation, rollout, and policy diagnostics with explicit replication, together with a
+narrow separation between Gaussianity, exact decodability, and loss scale.
+
+\paragraph{Models for decisions.}
+Prediction--control mismatch predates JEPAs \citep{lambert2020objective}. Value-aware model learning,
+value equivalence, and proper value equivalence ask which errors affect downstream Bellman
+computations and policy values \citep{farahmand2017vaml,grimm2020value,grimm2021proper}.
+Expectation models can suffice for suitable value-function classes \citep{wan2019expectation};
+conditional-mean prediction is therefore not inherently incompatible with control. Stochastic
+imagination models provide another route \citep{hafner2020dreamer,alonso2024diamond,hafner2025dreamer4},
+but they too can fail at encoding, action conditioning, or rollout stages
+\citep{hansen2026hallucination}. The same interface-level scrutiny should apply to both families.

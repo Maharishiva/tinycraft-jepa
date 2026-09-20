@@ -1,0 +1,56 @@
+{
+  "checked_utc": "2026-09-19T23:34:15.377725+00:00",
+  "status": "mechanical_preflight_passed_not_final",
+  "v2_readiness_asserted": false,
+  "real_bundle_built": false,
+  "selected_payload_files": 406,
+  "recorded_source_files": 405,
+  "sanitized_files": 15,
+  "checked_links": 278,
+  "link_kinds": {
+    "markdown:link": 11,
+    "saved_rollout_sprite": 26,
+    "html:link:href": 5,
+    "html:script:src": 10,
+    "html:a:href": 83,
+    "html:img:src": 13,
+    "redcube_frame_manifest": 3,
+    "redcube_frame_sprite": 24,
+    "redcube_frame_poster": 18,
+    "craftax_dynamic_frame": 9,
+    "tex:input": 24,
+    "tex:bibliography": 2,
+    "tex:bibliographystyle": 2,
+    "tex:inputtable": 31,
+    "tex:paperfig": 17
+  },
+  "missing_required": [],
+  "packaging_cpu_fixtures": {
+    "passed": 21,
+    "failed": 0
+  },
+  "portable_inventory_cpu_fixtures": {
+    "passed": 16,
+    "failed": 0
+  },
+  "actual_prepared_payload_portability_fixture": {
+    "status": "passed",
+    "verified_source_records": 405,
+    "generated_artifacts": 2,
+    "private_source_location_manifest_present": false,
+    "experiments_run": false,
+    "fixture_removed_on_exit": true
+  },
+  "source_sha256": {
+    "studies/revision/package_submission.py": "3820b0d146f5bcbb28801f9c63954e41827004e4da271bf9ff62ed6039046cb0",
+    "studies/revision/portable_inventory.py": "4caf149fbbaa1f2def1f0e51276fd62ce181e9bbcfc815e6e0315f46e4a4c22c",
+    "research/packaging_protocol.md": "fd9a4a4177311fa798f85555505ef726226c9965caf73b412b1da4e10df5e404"
+  },
+  "boundaries": [
+    "Manuscript, HTML and pending study artifacts are still changing; rerun preflight after finalization.",
+    "No scientific source or frozen validator was edited.",
+    "Generic /dev/shm and ~/personal runtime conventions preserved; identifying nested strings still checked.",
+    "Historical exact-runtime replay remains in the internal worktree; public fresh-run plan requires original input hashes and new readout/policy attestations.",
+    "Portable planner fixtures validate static dependencies and commands, not GPU training quality or installed scientific runtime."
+  ]
+}

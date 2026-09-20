@@ -1,0 +1,170 @@
+{
+  "purpose": "actual environment illustration, not additional quantitative evaluation",
+  "eval_report": "artifacts/revision/craftax_goal_v2.json",
+  "eval_report_sha256": "44dc765a690037e8cc1b618be01f1348f4f8a54ad02c1d9424a230e02a13f867",
+  "script_sha256": "f9ab22f11527f46fb0c1de232fc8d9c0e1c84685b0bfa881c89b85b6c030c721",
+  "selection": "first episode indices with goal displacement >= threshold, no model outcomes used",
+  "seed": 101,
+  "min_displacement": 2,
+  "selected_episodes": [
+    5,
+    9,
+    10
+  ],
+  "warmup_frames": 8,
+  "horizon": 6,
+  "device": [
+    "cpu:0"
+  ],
+  "craftax_version": "1.5.0",
+  "coordinate_and_action_regeneration": "exact match to completed GPU evaluation",
+  "scenes": [
+    {
+      "episode": 5,
+      "start_position": [
+        32,
+        33
+      ],
+      "goal_position": [
+        31,
+        34
+      ],
+      "displacement_l1": 2,
+      "goal_generating_actions": [
+        13,
+        11,
+        14,
+        15,
+        3,
+        2
+      ],
+      "frames": {
+        "reset": {
+          "path": "seed101_episode005_reset.png",
+          "shape": [
+            63,
+            63,
+            3
+          ],
+          "sha256": "d610394340590161a9f9d3186ca9fa9746beb7641d872dc97956e7d199535c2d"
+        },
+        "start": {
+          "path": "seed101_episode005_start.png",
+          "shape": [
+            63,
+            63,
+            3
+          ],
+          "sha256": "d4f6b8aefcf24927c62ef7b402cce8079eb6e466ac39aa368a7fbb2f5c69bf3d"
+        },
+        "goal": {
+          "path": "seed101_episode005_goal.png",
+          "shape": [
+            63,
+            63,
+            3
+          ],
+          "sha256": "ac41b268b7503a3112d70716ec46ace56f16b5b6a00e93a2e3b6c0cbe79ca96e"
+        }
+      }
+    },
+    {
+      "episode": 9,
+      "start_position": [
+        33,
+        32
+      ],
+      "goal_position": [
+        32,
+        31
+      ],
+      "displacement_l1": 2,
+      "goal_generating_actions": [
+        3,
+        3,
+        12,
+        1,
+        6,
+        0
+      ],
+      "frames": {
+        "reset": {
+          "path": "seed101_episode009_reset.png",
+          "shape": [
+            63,
+            63,
+            3
+          ],
+          "sha256": "dc7242d90741c154af5c5f13aba76b5ff575ae47377be243c5bff21d6b8c4709"
+        },
+        "start": {
+          "path": "seed101_episode009_start.png",
+          "shape": [
+            63,
+            63,
+            3
+          ],
+          "sha256": "c4ea4bb2375dc4825889177bffe9ba780bf1e7a19b7ec5c553105038b114734e"
+        },
+        "goal": {
+          "path": "seed101_episode009_goal.png",
+          "shape": [
+            63,
+            63,
+            3
+          ],
+          "sha256": "affdaa5deb0fdcc8cc38b4b3bc5073b4343b07a2b1dffe48c265f5a6a665c9f7"
+        }
+      }
+    },
+    {
+      "episode": 10,
+      "start_position": [
+        32,
+        31
+      ],
+      "goal_position": [
+        31,
+        32
+      ],
+      "displacement_l1": 2,
+      "goal_generating_actions": [
+        15,
+        16,
+        9,
+        3,
+        11,
+        2
+      ],
+      "frames": {
+        "reset": {
+          "path": "seed101_episode010_reset.png",
+          "shape": [
+            63,
+            63,
+            3
+          ],
+          "sha256": "8f5a0d2963e1cc73073ce1ed0306fa0553a831aed233353f62842c690d5ec480"
+        },
+        "start": {
+          "path": "seed101_episode010_start.png",
+          "shape": [
+            63,
+            63,
+            3
+          ],
+          "sha256": "bb899b43c2611417728eb6c4c539d9571397295676e1c3737e2fb8a5912da128"
+        },
+        "goal": {
+          "path": "seed101_episode010_goal.png",
+          "shape": [
+            63,
+            63,
+            3
+          ],
+          "sha256": "67344e224d2c99a8ae23c3d1bef05d9fa085e93097bb4ca7b3356f60a92b4b65"
+        }
+      }
+    }
+  ]
+}

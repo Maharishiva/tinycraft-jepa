@@ -1,0 +1,97 @@
+{
+  "schema": "craftax-flow-native-batch-numerical-approval-v1",
+  "decision": "approve_native_batch_numerics",
+  "independent": true,
+  "reviewer": "/root/craftax_audit/replication_review",
+  "reviewed_utc": "2026-09-19T23:46:14.815553+00:00",
+  "production_flow_sha256": "86790ce2dac999e4900c21993d2fcb058209b975559719623a24d065562bd402",
+  "world_model_sha256": "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+  "canonical_receipt_sha256": "afe3e5f20e9a4e38ecdb617765255aa079ffd488665de21eb29886f6d6ca9f3a",
+  "canonical_arrays_sha256": "294abd7495784b09f57b64c34c352ec009132af197ff7cfd0aff32074620ac61",
+  "diagnostic_source_sha256": "d91efa0fe61a580915aed3332b9178f9e97728a2b52748ccc51e4ca7b283ef19",
+  "failed_receipt_sha256": "5a8afe2aba9fb7cd567488a18178f5b43d31cf6fc5d75721fd003e761fab3f63",
+  "explanation": "The unchanged native Flow core itself exhibits batch-versus-scalar differences under identical supplied Gaussian arrays. Against canonical native full-batch execution, vectorized execution has no greater per-row maximum absolute error, MAE, or RMSE than scalar execution in any of the four controlled rows. Prepared state, actions, masks, slots, keys and all Gaussian arrays match exactly. The injected full-batch implementation exactly reproduces the native full-batch helper. Independent source inspection found no indexing, masking, RNG, latent-width, weight or precision intervention. This supports numerical admission as documented batching-sensitive BF16 execution under the root-authorized criterion.",
+  "limitations": [
+    "Strict 1e-5 parity remains false; the original failed receipt is preserved without changing its passed flag.",
+    "This is a bounded implementation diagnostic, not a universal numerical bound over all states, batch sizes, devices or policies.",
+    "The admission does not claim bitwise trajectory equivalence, policy-training success, native tool acquisition, or evaluation outcomes.",
+    "This approval covers only the archived executed d91 diagnostic and its bound result/arrays, not the later unexecuted diagnostic extension.",
+    "No production code, checkpoint, tolerance or GPU execution was changed or performed by this reviewer."
+  ],
+  "strict_parity_passed": false,
+  "failed_receipt_preserved": true,
+  "jax_config": {
+    "jax_default_matmul_precision": "tensorfloat32",
+    "jax_default_prng_impl": "threefry2x32",
+    "jax_enable_x64": false,
+    "jax_threefry_partitionable": true
+  },
+  "canonical_full_batch_vs_scalar": {
+    "per_row_max_abs": [
+      0.015625,
+      0.0625,
+      0.015625,
+      0.015625
+    ],
+    "per_row_mae": [
+      0.0032272972239297815,
+      0.0045418776498991065,
+      0.0029682517051696777,
+      0.003200385715899756
+    ],
+    "per_row_rmse": [
+      0.004670211058152276,
+      0.008904827197590972,
+      0.004394057491713308,
+      0.004650601050518351
+    ],
+    "global_l2": 0.26967728280395153
+  },
+  "canonical_full_batch_vs_vmap": {
+    "per_row_max_abs": [
+      0.015625,
+      0.056640625,
+      0.015625,
+      0.015625
+    ],
+    "per_row_mae": [
+      0.0027980096710962243,
+      0.0042035728765768,
+      0.002448376253596507,
+      0.002639848564285785
+    ],
+    "per_row_rmse": [
+      0.004163854894718786,
+      0.00837835364779649,
+      0.003776493662487253,
+      0.0038842208335379863
+    ],
+    "global_l2": 0.24463112951694724
+  },
+  "all_rows_within_native_batch_scalar": {
+    "per_row_max_abs": true,
+    "per_row_mae": true,
+    "per_row_rmse": true
+  },
+  "exact_checks": {
+    "native_full_batch_equals_injected_full_batch": true,
+    "lax_map_equals_scalar": true,
+    "closed_and_dynamic_transition_equal": true,
+    "prepared_seq_exact": true,
+    "prepared_tau_exact": true,
+    "prepared_aseq_exact": true,
+    "prepared_slot_exact": true,
+    "prepared_keys_exact": true,
+    "prepared_real_exact": true,
+    "noise_0_exact": true,
+    "noise_1_exact": true,
+    "noise_2_exact": true
+  },
+  "artifact_paths": {
+    "canonical_result": "artifacts/revision/inventory_flow_diagnose_canonical/result.json",
+    "canonical_outputs": "artifacts/revision/inventory_flow_diagnose_canonical/outputs.npz",
+    "failed_receipt": "artifacts/revision/inventory_flow_parity_failed/result.json",
+    "diagnostic_source": "artifacts/revision/inventory_flow_diagnose_source_d91.py",
+    "production_flow_source": "studies/revision/inventory_flow.py"
+  }
+}

@@ -1,0 +1,104 @@
+\section{Earlier unmatched gate experiments}
+\label{app:historical-gate}
+\paragraph{Reference model.}
+For the gate, a reconstruction-trained tokenizer and causal flow-matching predictor provide a
+feasibility reference \citep{lipman2023flowmatching,chen2024diffusionforcing,hafner2025dreamer4}.
+It uses the same latent shape, data, and nominal model-training budget, with a 32-frame context and
+jointly fitted reward and termination heads. Architecture, supervision, and history length differ
+from the JEPA. One dynamics checkpoint is evaluated, so its policy runs show variation conditional
+on that fit rather than variation across fitted flow models.
+
+\subsection{Useful wall information remains in the frozen representation}
+\label{app:results-wall}
+
+Decoded real encodings visibly retain the approaching wall (Figure~\ref{fig:rollouts}). To test
+whether that information can support behavior, we train a convolutional policy in the real gate
+on the frozen decoder's output. Two of nine runs discover the survival strategy, both using encoder
+seed 1; the corresponding real-pixel CNN discovers it in two of three runs
+(Figure~\ref{fig:representation}). This establishes useful information in at least one fitted encoder
+under the decoder-and-CNN read-out. The decoder adds reconstruction supervision outside the
+world-model budget, so this is a test of recoverable information rather than unsupervised control
+sufficiency.
+
+The policy interface matters. With an MLP torso, real pixels yield $0.91$ walls per episode and
+frozen latents yield $0.94$, with no discoveries in either group. An MLP on decoded latents similarly
+yields $0.92$ walls. Thus failure of this MLP training recipe is not evidence that the encoder has
+lost the obstacle. These comparisons do not set a capacity limit for all MLP policies; they locate
+a limitation of the tested read-out and optimization procedure.
+
+\begin{figure}[t]
+\centering
+\paperfig{rollouts.pdf}{1.0}
+\caption{\textbf{A wall visible in real encodings disappears in predicted rollouts.} A pre-reveal
+context is followed by futures under recorded actions: the simulator, decoded real JEPA encodings,
+decoded original JEPA predictions, and one flow-model sample. The JEPA rows use encoder seed 0
+and the same fitted decoder. The example is the first stored diagnostic context at wall position
+$x=45$ among 64 contexts whose recorded futures survive the horizon. The flow sample is a single-checkpoint feasibility reference.
+A decoding failure on predicted latents can reflect both prediction error and off-distribution
+read-out; it is not alone proof of information loss.}
+\label{fig:rollouts}
+\end{figure}
+
+\subsection{The tested imagination pipeline does not discover the strategy}
+\label{app:results-ppo}
+\label{app:results}
+
+In the earlier unmatched protocols, all three JEPA predictor variants produce poor downstream control
+(Table~\ref{tab:gate-main}; per-seed outcomes in Appendix~\ref{app:round2}). The original predictor yields $0.27$ walls
+per episode; one residual sample and the mean of eight each yield $0.26$. No policy among these
+27 runs discovers the strategy; the highest final survival is $3.1\%$. Real-transition PPO on the
+same frozen encoders yields $0.94$ walls. The difference measures the combined effect of learned
+transitions, fitted heads, and the changed PPO protocol. Even the stronger real-latent MLP result
+falls far short of reliable survival.
+
+The flow reference supports feasibility at this task and nominal model budget: one of its nine
+policies discovers the strategy. The remaining eight pass $0.72$--$1.18$ walls per episode. Since
+all nine use one dynamics fit with a different architecture and supervision, this reference does
+not establish a model-family ranking. Training the gate JEPA for twice and four times the steps
+also leaves imagined-policy survival at $0$--$3\%$ in the tested extensions (encoder seed 0, policy
+seed 0, each predictor variant).
+
+\begin{table}[t]
+\centering
+\caption{\textbf{Final gate outcomes, with predictor variants kept separate.} Mean $\pm$ sample
+standard deviation across policy runs; discovery is final survival above $50\%$. JEPA imagination variants and real-latent
+conditions each contain $3$ models $\times$ $3$ policies; pixel controls have three policies. Real training changes rewards, terminations, and PPO protocol
+alongside dynamics. Flow is a single-model reference.}
+\label{tab:gate-main}
+\inputtable{gate_main.tex}
+\end{table}
+
+
+
+\subsection{Prediction and fitted heads provide distinct failure signals}
+\label{app:results-mean}
+
+The same decoder that renders real encoded walls removes them from original predicted rollouts.
+Across all three encoder seeds, decoded shared-wall intensity is at most $0.02$ by the second
+predicted step (Appendix~\ref{app:round2}). The shared wall pixels occur in both possible gap futures,
+so a pixelwise mixture of those futures would retain them. This observation rules out that simple
+pixel-space picture; it does not determine what averaging or distribution shift does in the learned
+latent space.
+
+A within-encoder counterfactual diagnostic makes the scale of the feature explicit. On 64 pre-reveal
+contexts for seed 0, the first-step squared distance between wall-present and wall-absent encodings
+is $0.035$, while total teacher-forced prediction error is $0.145$. The same ordering holds for all
+three seeds (Appendix~\ref{app:round2}). This comparison concerns sensitivity to wall removal versus
+error in all features. It neither identifies a causal mechanism nor permits comparing information
+content through raw distances across independently fitted latent spaces.
+
+The fitted heads expose another limitation. For encoder 0, termination AUC is $0.96$ for border
+deaths but $0.65$ for wall deaths. Predicted rewards for the two death causes are $-0.89$ and $-0.05$,
+respectively, against the true $-1$. An imagined policy therefore trains on a weak wall-collision
+signal. The residual-sampling variants retain these heads and the policy protocol. Their poor control
+outcomes therefore test this particular intervention, not distributional prediction in general.
+
+\begin{figure}[t]
+\centering
+\paperfig{representation_by_seed.pdf}{1.0}
+\caption{\textbf{Recoverable information can support successful control.} Final real-gate survival
+for MLP policies on frozen latents or pixels (left), and CNN policies on decoded latents or pixels
+(right). Points are policy runs, grouped by encoder seed; the dashed line is the $50\%$ discovery criterion. Both decoded-latent discoveries
+use encoder 1. Reconstruction supervision and CNN training are additional to representation fitting.}
+\label{fig:representation}
+\end{figure}

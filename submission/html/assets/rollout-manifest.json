@@ -1,0 +1,39 @@
+{
+  "0": {
+    "source": "runs/stoch/gate/latent_check.npz",
+    "sha256": "e452fe6478af4f984ce31ca932650509d1736bcad4d7cdf4888a7f73245ec7bc",
+    "scenes": 16,
+    "steps": 8,
+    "keys": [
+      "recorded",
+      "grid_recorded_future_encoded",
+      "grid_deterministic",
+      "flow_sample",
+      "context"
+    ]
+  },
+  "1": {
+    "source": "runs/stoch/gate/latent_check_s1.npz",
+    "sha256": "c75c53b03f3ebb9075ba421a1dcf654a373f9ac9441c0ccf1569568529b288fc",
+    "scenes": 16,
+    "steps": 8,
+    "keys": [
+      "recorded",
+      "grid_recorded_future_encoded",
+      "grid_deterministic",
+      "context"
+    ]
+  },
+  "2": {
+    "source": "runs/stoch/gate/latent_check_s2.npz",
+    "sha256": "1894378e1eec1d0139d99d2d5e386a76c80db700469be1bdcf9dc34529c3b7ee",
+    "scenes": 16,
+    "steps": 8,
+    "keys": [
+      "recorded",
+      "grid_recorded_future_encoded",
+      "grid_deterministic",
+      "context"
+    ]
+  }
+}

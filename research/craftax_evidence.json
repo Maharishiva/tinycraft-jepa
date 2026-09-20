@@ -1,0 +1,2698 @@
+{
+  "audit_date": "2026-09-19",
+  "source_root": "/Users/rldoeswork/Documents/rl/tinycraft-jepa",
+  "source_git_head": "1fa2853b5f365a8bdd6d732eebfa851e0197400b",
+  "source_dirty": true,
+  "checkpoint_metadata_reverified": true,
+  "dataset_hashes_reverified": true,
+  "protocol": {
+    "goal_control": "one open-loop H-step plan, reachable random-action-generated goal, common simulator randomness, endpoint position metric",
+    "reward_control": "receding-horizon MPC, alive-masked reward until first terminal, no reset, common initial states and simulator noise",
+    "behaviour_policy": "dataset mean reward multiplied by evaluation steps; not online baseline",
+    "sequence_accuracy": "fraction of individual predicted actions matching target actions, not whole-sequence match",
+    "gFVD": "Frechet distance in fixed randomly initialized CNN four-frame features, not standard pretrained-video FVD"
+  },
+  "raw_results": {
+    "artifacts/s0_grid_h4_plan.json": {
+      "tag": "s0_grid_h4",
+      "offline": {
+        "windows": 256,
+        "horizon": 4,
+        "first_action_accuracy": 0.25390625,
+        "sequence_accuracy": 0.271484375,
+        "chance": 0.058823529411764705,
+        "true_sequence_percentile_among_random": 0.2148590087890625,
+        "cost_plan": 0.1381823867559433,
+        "cost_true": 0.24731111526489258,
+        "cost_random": 0.8538320660591125
+      },
+      "craftax": {
+        "planned": {
+          "position_l1": 0.234375,
+          "reached": 0.8515625,
+          "pixel_mse": 170.61854553222656
+        },
+        "random": {
+          "position_l1": 1.1953125,
+          "reached": 0.25390625,
+          "pixel_mse": 1253.2728271484375
+        },
+        "oracle": {
+          "position_l1": 0.0,
+          "reached": 1.0,
+          "pixel_mse": 0.0
+        },
+        "envs": 256,
+        "horizon": 4
+      }
+    },
+    "artifacts/s0_grid_h8_plan.json": {
+      "tag": "s0_grid_h8",
+      "offline": {
+        "windows": 256,
+        "horizon": 8,
+        "first_action_accuracy": 0.16796875,
+        "sequence_accuracy": 0.16552734375,
+        "chance": 0.058823529411764705,
+        "true_sequence_percentile_among_random": 0.20236968994140625,
+        "cost_plan": 0.22183403372764587,
+        "cost_true": 0.5266974568367004,
+        "cost_random": 1.1196954250335693
+      },
+      "craftax": {
+        "planned": {
+          "position_l1": 0.58984375,
+          "reached": 0.671875,
+          "pixel_mse": 473.8988952636719
+        },
+        "random": {
+          "position_l1": 1.85546875,
+          "reached": 0.12890625,
+          "pixel_mse": 1797.762939453125
+        },
+        "oracle": {
+          "position_l1": 0.0,
+          "reached": 1.0,
+          "pixel_mse": 0.0
+        },
+        "envs": 256,
+        "horizon": 8
+      }
+    },
+    "artifacts/s0_lr1e-3_h4_plan.json": {
+      "tag": "s0_lr1e-3_h4",
+      "offline": {
+        "windows": 256,
+        "horizon": 4,
+        "first_action_accuracy": 0.1953125,
+        "sequence_accuracy": 0.201171875,
+        "chance": 0.058823529411764705,
+        "true_sequence_percentile_among_random": 0.3500518798828125,
+        "cost_plan": 0.0643809363245964,
+        "cost_true": 0.08592285960912704,
+        "cost_random": 0.16515225172042847
+      },
+      "craftax": {
+        "planned": {
+          "position_l1": 1.22265625,
+          "reached": 0.375,
+          "pixel_mse": 1182.1663818359375
+        },
+        "random": {
+          "position_l1": 1.1953125,
+          "reached": 0.25390625,
+          "pixel_mse": 1253.2728271484375
+        },
+        "oracle": {
+          "position_l1": 0.0,
+          "reached": 1.0,
+          "pixel_mse": 0.0
+        },
+        "envs": 256,
+        "horizon": 4
+      }
+    },
+    "artifacts/s0_lr1e-3_h8_plan.json": {
+      "tag": "s0_lr1e-3_h8",
+      "offline": {
+        "windows": 256,
+        "horizon": 8,
+        "first_action_accuracy": 0.15625,
+        "sequence_accuracy": 0.15966796875,
+        "chance": 0.058823529411764705,
+        "true_sequence_percentile_among_random": 0.33681488037109375,
+        "cost_plan": 0.16537724435329437,
+        "cost_true": 0.22513119876384735,
+        "cost_random": 0.3356170952320099
+      },
+      "craftax": {
+        "planned": {
+          "position_l1": 1.79296875,
+          "reached": 0.21875,
+          "pixel_mse": 1681.6961669921875
+        },
+        "random": {
+          "position_l1": 1.85546875,
+          "reached": 0.12890625,
+          "pixel_mse": 1797.762939453125
+        },
+        "oracle": {
+          "position_l1": 0.0,
+          "reached": 1.0,
+          "pixel_mse": 0.0
+        },
+        "envs": 256,
+        "horizon": 8
+      }
+    },
+    "artifacts/smoke_plan.json": {
+      "tag": "smoke",
+      "offline": {
+        "windows": 64,
+        "horizon": 4,
+        "first_action_accuracy": 0.21875,
+        "sequence_accuracy": 0.19140625,
+        "chance": 0.058823529411764705,
+        "true_sequence_percentile_among_random": 0.3201904296875,
+        "cost_plan": 0.05899439752101898,
+        "cost_true": 0.07363267242908478,
+        "cost_random": 0.14621949195861816
+      },
+      "craftax": {
+        "planned": {
+          "position_l1": 1.1875,
+          "reached": 0.4375,
+          "pixel_mse": 1337.953369140625
+        },
+        "random": {
+          "position_l1": 1.375,
+          "reached": 0.25,
+          "pixel_mse": 1373.8741455078125
+        },
+        "oracle": {
+          "position_l1": 0.0,
+          "reached": 1.0,
+          "pixel_mse": 0.0
+        },
+        "envs": 16,
+        "horizon": 4
+      }
+    },
+    "artifacts/s0_grid_ens_lam0.0_reward.json": {
+      "tag": "s0_grid_ens_lam0.0",
+      "reward_mpc": {
+        "random": {
+          "return": 1.4859375953674316,
+          "return_std": 1.2137064933776855,
+          "reward_per_step": 0.009906250052154064,
+          "alive_at_end": 0.3984375,
+          "imagined_reward_mean": 0.022868432104587555
+        },
+        "myopic": {
+          "return": 1.1312501430511475,
+          "return_std": 0.894667387008667,
+          "reward_per_step": 0.007541666738688946,
+          "alive_at_end": 0.5390625,
+          "imagined_reward_mean": 0.1986086517572403,
+          "imagined_vs_realized_corr": 0.005219891081003253
+        },
+        "greedy": {
+          "return": 1.2328126430511475,
+          "return_std": 1.3481532335281372,
+          "reward_per_step": 0.008218750357627869,
+          "alive_at_end": 0.53125,
+          "imagined_reward_mean": 0.17235694825649261,
+          "imagined_vs_realized_corr": 0.11673696772703777
+        },
+        "plan": {
+          "return": 1.3187501430511475,
+          "return_std": 1.4208683967590332,
+          "reward_per_step": 0.008791666477918625,
+          "alive_at_end": 0.4375,
+          "imagined_reward_mean": 1.8049142360687256,
+          "imagined_vs_realized_corr": -0.026881798683204457
+        },
+        "envs": 128,
+        "steps": 150,
+        "horizon": 6,
+        "gamma": 0.99,
+        "lam": 0.0,
+        "behaviour_policy": 6.1110595241189,
+        "heads": {
+          "hidden": 512,
+          "members": 5,
+          "steps": 6000,
+          "batch": 1024,
+          "lr": 0.001,
+          "gamma": 0.99,
+          "transitions": 250000,
+          "value_tail": 600,
+          "heads_s": 98.6,
+          "final": [
+            0.015251974575221539,
+            0.005475452169775963,
+            0.21561835706233978
+          ],
+          "reward_corr": 0.8084538190393552,
+          "value_corr": 0.9705002020610337,
+          "reward_rmse": 0.13145840167999268,
+          "reward_event_recall": 0.6143250688705234,
+          "value_mean": 1.6411631107330322,
+          "return_mean": 1.635783314704895,
+          "heldout_reward_corr": 0.5845361615071912,
+          "heldout_value_corr": 0.6516370560507697,
+          "heldout_reward_rmse": 0.17447158694267273,
+          "heldout_reward_event_recall": 0.4763618910487161,
+          "heldout_value_mean": 1.4768929481506348,
+          "heldout_return_mean": 1.362494707107544
+        }
+      }
+    },
+    "artifacts/s0_grid_ens_lam1.0_reward.json": {
+      "tag": "s0_grid_ens_lam1.0",
+      "reward_mpc": {
+        "random": {
+          "return": 1.4859375953674316,
+          "return_std": 1.2137064933776855,
+          "reward_per_step": 0.009906250052154064,
+          "alive_at_end": 0.3984375,
+          "imagined_reward_mean": 0.021079935133457184
+        },
+        "myopic": {
+          "return": 1.1492187976837158,
+          "return_std": 0.8676472902297974,
+          "reward_per_step": 0.007661457639187574,
+          "alive_at_end": 0.546875,
+          "imagined_reward_mean": 0.1955796480178833,
+          "imagined_vs_realized_corr": 0.004313225496651589
+        },
+        "greedy": {
+          "return": 1.2296875715255737,
+          "return_std": 1.3581558465957642,
+          "reward_per_step": 0.00819791667163372,
+          "alive_at_end": 0.5078125,
+          "imagined_reward_mean": 0.16711366176605225,
+          "imagined_vs_realized_corr": 0.11939200232145508
+        },
+        "plan": {
+          "return": 1.0710937976837158,
+          "return_std": 1.3229436874389648,
+          "reward_per_step": 0.0071406252682209015,
+          "alive_at_end": 0.390625,
+          "imagined_reward_mean": 1.8265316486358643,
+          "imagined_vs_realized_corr": -0.016778203699949916
+        },
+        "envs": 128,
+        "steps": 150,
+        "horizon": 6,
+        "gamma": 0.99,
+        "lam": 1.0,
+        "behaviour_policy": 6.1110595241189,
+        "heads": {
+          "hidden": 512,
+          "members": 5,
+          "steps": 6000,
+          "batch": 1024,
+          "lr": 0.001,
+          "gamma": 0.99,
+          "transitions": 250000,
+          "value_tail": 600,
+          "heads_s": 98.6,
+          "final": [
+            0.015251974575221539,
+            0.005475452169775963,
+            0.21561835706233978
+          ],
+          "reward_corr": 0.8084538190393552,
+          "value_corr": 0.9705002020610337,
+          "reward_rmse": 0.13145840167999268,
+          "reward_event_recall": 0.6143250688705234,
+          "value_mean": 1.6411631107330322,
+          "return_mean": 1.635783314704895,
+          "heldout_reward_corr": 0.5845361615071912,
+          "heldout_value_corr": 0.6516370560507697,
+          "heldout_reward_rmse": 0.17447158694267273,
+          "heldout_reward_event_recall": 0.4763618910487161,
+          "heldout_value_mean": 1.4768929481506348,
+          "heldout_return_mean": 1.362494707107544
+        }
+      }
+    },
+    "artifacts/s0_grid_reward.json": {
+      "tag": "s0_grid",
+      "reward_mpc": {
+        "random": {
+          "return": 1.4859375953674316,
+          "return_std": 1.2137064933776855,
+          "reward_per_step": 0.009906250052154064,
+          "alive_at_end": 0.3984375,
+          "imagined_reward_mean": 0.02186770737171173
+        },
+        "myopic": {
+          "return": 0.9195313453674316,
+          "return_std": 1.1346845626831055,
+          "reward_per_step": 0.006130208261311054,
+          "alive_at_end": 0.5390625,
+          "imagined_reward_mean": 0.21809256076812744,
+          "imagined_vs_realized_corr": 0.007466480986519061
+        },
+        "greedy": {
+          "return": 1.4234375953674316,
+          "return_std": 1.2236270904541016,
+          "reward_per_step": 0.009489582851529121,
+          "alive_at_end": 0.4921875,
+          "imagined_reward_mean": 0.17427906394004822,
+          "imagined_vs_realized_corr": 0.10207848500094845
+        },
+        "plan": {
+          "return": 1.2039064168930054,
+          "return_std": 1.2526472806930542,
+          "reward_per_step": 0.008026041090488434,
+          "alive_at_end": 0.4140625,
+          "imagined_reward_mean": 2.0838115215301514,
+          "imagined_vs_realized_corr": -0.05590743551364105
+        },
+        "envs": 128,
+        "steps": 150,
+        "horizon": 6,
+        "gamma": 0.99,
+        "behaviour_policy": 6.1110595241189,
+        "heads": {
+          "hidden": 512,
+          "steps": 6000,
+          "batch": 1024,
+          "lr": 0.001,
+          "gamma": 0.99,
+          "transitions": 250000,
+          "value_tail": 600,
+          "heads_s": 94.6,
+          "final": [
+            0.014459310099482536,
+            0.005553421098738909,
+            0.19852948188781738
+          ],
+          "reward_corr": 0.8313086111077558,
+          "value_corr": 0.9731983657243933,
+          "reward_rmse": 0.12415561825037003,
+          "reward_event_recall": 0.6724158581866092,
+          "value_mean": 1.6366245746612549,
+          "return_mean": 1.635783314704895,
+          "heldout_reward_corr": 0.5746809171104896,
+          "heldout_value_corr": 0.6484637236957308,
+          "heldout_reward_rmse": 0.17676421999931335,
+          "heldout_reward_event_recall": 0.5298776097912167,
+          "heldout_value_mean": 1.4966468811035156,
+          "heldout_return_mean": 1.362494707107544
+        }
+      }
+    },
+    "runs/stoch/craftax/tile_factored_plan.json": {
+      "tag": "tile_factored",
+      "offline": {
+        "windows": 256,
+        "horizon": 6,
+        "first_action_accuracy": 0.203125,
+        "sequence_accuracy": 0.220703125,
+        "chance": 0.058823529411764705,
+        "true_sequence_percentile_among_random": 0.16905975341796875,
+        "cost_plan": 0.11934615671634674,
+        "cost_true": 0.2787560224533081,
+        "cost_random": 0.8810702562332153
+      },
+      "craftax": {
+        "planned": {
+          "position_l1": 0.078125,
+          "reached": 0.9453125,
+          "pixel_mse": 104.00172424316406
+        },
+        "random": {
+          "position_l1": 1.53125,
+          "reached": 0.1875,
+          "pixel_mse": 1477.9150390625
+        },
+        "oracle": {
+          "position_l1": 0.0,
+          "reached": 1.0,
+          "pixel_mse": 0.0
+        },
+        "envs": 128,
+        "horizon": 6
+      },
+      "reward_mpc": {
+        "random": {
+          "return": 1.4453125,
+          "return_std": 1.0897146463394165,
+          "reward_per_step": 0.014453125186264515,
+          "alive_at_end": 0.6328125,
+          "imagined_reward_mean": 0.05056094005703926
+        },
+        "myopic": {
+          "return": 0.78125,
+          "return_std": 1.1108660697937012,
+          "reward_per_step": 0.0078125,
+          "alive_at_end": 0.7265625,
+          "imagined_reward_mean": 0.4629143476486206,
+          "imagined_vs_realized_corr": -0.03450608886690004
+        },
+        "greedy": {
+          "return": 0.9437500238418579,
+          "return_std": 1.201350212097168,
+          "reward_per_step": 0.0094375004991889,
+          "alive_at_end": 0.6328125,
+          "imagined_reward_mean": 0.4371245503425598,
+          "imagined_vs_realized_corr": 0.02635421782650119
+        },
+        "plan": {
+          "return": 0.4734375476837158,
+          "return_std": 1.1038628816604614,
+          "reward_per_step": 0.004734375048428774,
+          "alive_at_end": 0.671875,
+          "imagined_reward_mean": 4.190116882324219,
+          "imagined_vs_realized_corr": -0.09686548974222962
+        },
+        "envs": 128,
+        "steps": 100,
+        "horizon": 6,
+        "gamma": 0.99,
+        "lam": 0.0,
+        "behaviour_policy": 4.0740396827459335,
+        "heads": {
+          "hidden": 512,
+          "members": 1,
+          "steps": 6000,
+          "batch": 1024,
+          "lr": 0.001,
+          "gamma": 0.99,
+          "transitions": 80000,
+          "value_tail": 80,
+          "heads_s": 62.0,
+          "final": [
+            0.010711411945521832,
+            0.001303614117205143,
+            0.031229261308908463
+          ],
+          "reward_corr": 0.9219841442390798,
+          "value_corr": 0.9948720145602848,
+          "reward_rmse": 0.08845729380846024,
+          "reward_event_recall": 0.8566176470588235,
+          "value_mean": 3.0282371044158936,
+          "return_mean": 3.026742696762085,
+          "heldout_reward_corr": 0.3527339584113081,
+          "heldout_value_corr": 0.26646538953732596,
+          "heldout_reward_rmse": 0.22205214202404022,
+          "heldout_reward_event_recall": 0.6239822353811991,
+          "heldout_value_mean": 2.3561604022979736,
+          "heldout_return_mean": 1.3476053476333618
+        }
+      }
+    }
+  },
+  "legacy_prediction_ledger": [
+    {
+      "ts": "2026-09-17T02:02:33+00:00",
+      "tag": "lewm_s0_lr1e-3",
+      "note": "LeWM JEPA (lr 1e-3) + off-budget stop-grad decoder",
+      "gFVD": 0.03707378161957309,
+      "AF": 0.6728515625,
+      "train_seed": 0,
+      "eval_seed": 0,
+      "n_win": 2048,
+      "ctx": 8,
+      "hor": 16,
+      "train_s": 574.2,
+      "eval_s": 56.0192492287606,
+      "commit": null,
+      "checkpoint": "runs/s0_lr1e-3/model_decoder.npz"
+    },
+    {
+      "ts": "2026-09-17T02:29:53+00:00",
+      "tag": "persistence",
+      "note": "copy the last context frame",
+      "gFVD": 0.01333048403250392,
+      "AF": 0.5,
+      "train_seed": 0,
+      "eval_seed": 0,
+      "n_win": 2048,
+      "ctx": 8,
+      "hor": 16,
+      "train_s": 0.0,
+      "eval_s": 41.61178529262543,
+      "commit": null,
+      "checkpoint": null
+    },
+    {
+      "ts": "2026-09-17T02:37:04+00:00",
+      "tag": "lewm_s0_grid",
+      "note": "LeWM grid latent (81x32) + off-budget stop-grad decoder",
+      "gFVD": 0.03097607976203476,
+      "AF": 0.845947265625,
+      "train_seed": 0,
+      "eval_seed": 0,
+      "n_win": 2048,
+      "ctx": 8,
+      "hor": 16,
+      "train_s": 588.6,
+      "eval_s": 60.03064462915063,
+      "commit": null,
+      "checkpoint": "runs/s0_grid/model_decoder.npz"
+    }
+  ],
+  "flow_prediction_ledger": [
+    {
+      "ts": "2026-09-16T19:32:33+00:00",
+      "tag": "normuon_head_bridge_s0",
+      "note": "Combine individually screened NorMuon optimization (all-four seed0.0012425,cold560s) with selected head-gradient warmup/suppression and legal sampler hint. BF16 Polar Express moved to kernels.py without changing training dtype/math; CPU norm/state proof and active updates passed. Matched9000tok16000WM, GPU primitives previously validated, cold600, fixed8Euler.",
+      "gFVD": 0.0012459198559459095,
+      "AF": 0.920166015625,
+      "reward_corr": 0.9322342233455972,
+      "reward_recall": 0.9786780383795309,
+      "reward_precision": 0.8360655737704918,
+      "done_auc": 0.9748176317559336,
+      "imagined_reward_corr": 0.6623097312270202,
+      "imagined_return_corr": 0.8425909105281322,
+      "imagined_done_auc": 0.8142506870919063,
+      "train_seed": 0,
+      "n_win": 2048,
+      "ctx": 8,
+      "hor": 16,
+      "train_s": 566.6,
+      "eval_s": 94.0,
+      "checkpoint": "/dev/shm/codex-wm-push-20260916/normuon_head_bridge_s0/model.npz",
+      "source_hashes": {
+        "train.py": "0cee51a6007fe8b3e732e9cfedf9c241693e2caf5df194da91b78c2e9822f9f9",
+        "kernels.py": "7358061ebaae220616196e8905a912270247a517c5315034e40d538781a511ef",
+        "eval.py": "fef2e14cf31d49ad7e71b9b73146813e3f789519861af9dbb01ff57fb1e8ae0a"
+      },
+      "recipe_commit": "51ffe8dfc1eaa1c659cb33793ec4644852220ab4",
+      "train_process_s": 568.9822552707046,
+      "campaign": "push-20260916"
+    },
+    {
+      "ts": "2026-09-16T19:55:07+00:00",
+      "tag": "normuon_head_bridge_s2",
+      "note": "Fresh seed2 confirmation of legal-source NorMuon+head schedule. Seed0gFVD.00124592 modestlybeats corrected-reference seed0.00125820 and allheadsfit10%; manual curation above the stricter automatic threshold. Exact source/defaults, fixed evaluator/8Euler, cold600.",
+      "gFVD": 0.001271969924468097,
+      "AF": 0.930908203125,
+      "reward_corr": 0.9329331096654248,
+      "reward_recall": 0.9861407249466951,
+      "reward_precision": 0.8207630878438332,
+      "done_auc": 0.9724328378486105,
+      "imagined_reward_corr": 0.6782158700136615,
+      "imagined_return_corr": 0.8382248562356851,
+      "imagined_done_auc": 0.8381881347955653,
+      "train_seed": 2,
+      "n_win": 2048,
+      "ctx": 8,
+      "hor": 16,
+      "train_s": 564.2,
+      "eval_s": 100.8,
+      "checkpoint": "/dev/shm/codex-wm-push-20260916/normuon_head_bridge_s2/model.npz",
+      "source_hashes": {
+        "train.py": "0cee51a6007fe8b3e732e9cfedf9c241693e2caf5df194da91b78c2e9822f9f9",
+        "kernels.py": "7358061ebaae220616196e8905a912270247a517c5315034e40d538781a511ef",
+        "eval.py": "fef2e14cf31d49ad7e71b9b73146813e3f789519861af9dbb01ff57fb1e8ae0a"
+      },
+      "recipe_commit": "51ffe8dfc1eaa1c659cb33793ec4644852220ab4",
+      "train_process_s": 566.3806440941989,
+      "campaign": "push-20260916"
+    },
+    {
+      "ts": "2026-09-16T20:02:24+00:00",
+      "tag": "normuon_head_bridge_s3",
+      "note": "Fresh seed3 confirmation of legal-source NorMuon+head schedule, exactseed0/2sourceanddefaults. Evaluate mean and allAF/reward/done gates before any promotion; modestseed0leadisnotproof. Frozen8Euler,cold600.",
+      "gFVD": 0.001163736523092207,
+      "AF": 0.934326171875,
+      "reward_corr": 0.9339492145939906,
+      "reward_recall": 0.9797441364605544,
+      "reward_precision": 0.837739288969918,
+      "done_auc": 0.9738121783924648,
+      "imagined_reward_corr": 0.643516374124963,
+      "imagined_return_corr": 0.8221356068894361,
+      "imagined_done_auc": 0.8624293366576189,
+      "train_seed": 3,
+      "n_win": 2048,
+      "ctx": 8,
+      "hor": 16,
+      "train_s": 559.3,
+      "eval_s": 94.0,
+      "checkpoint": "/dev/shm/codex-wm-push-20260916/normuon_head_bridge_s3/model.npz",
+      "source_hashes": {
+        "train.py": "0cee51a6007fe8b3e732e9cfedf9c241693e2caf5df194da91b78c2e9822f9f9",
+        "kernels.py": "7358061ebaae220616196e8905a912270247a517c5315034e40d538781a511ef",
+        "eval.py": "fef2e14cf31d49ad7e71b9b73146813e3f789519861af9dbb01ff57fb1e8ae0a"
+      },
+      "recipe_commit": "51ffe8dfc1eaa1c659cb33793ec4644852220ab4",
+      "train_process_s": 561.5460900329053,
+      "campaign": "push-20260916"
+    }
+  ],
+  "flow_aggregate": {
+    "gFVD": {
+      "seeds": [
+        0,
+        2,
+        3
+      ],
+      "mean": 0.0012272087678354044,
+      "sample_sd": 5.649067097369213e-05
+    },
+    "AF": {
+      "seeds": [
+        0,
+        2,
+        3
+      ],
+      "mean": 0.928466796875,
+      "sample_sd": 0.007389036108604276
+    },
+    "train_s": {
+      "seeds": [
+        0,
+        2,
+        3
+      ],
+      "mean": 563.3666666666667,
+      "sample_sd": 3.720663023351299
+    }
+  },
+  "sha256": {
+    "artifacts/s0_grid_h4_plan.json": "61f0b6c6e9f7a411b617777b47ccfcf12322c97538a5b0b024cecffa69f7104b",
+    "artifacts/s0_grid_h8_plan.json": "23add20411c61c48cd7b4a26ac3e8bf1a23418ec53d7c20fc87933f99895095a",
+    "artifacts/s0_lr1e-3_h4_plan.json": "16928d5f6e63a078af34a7cd44f0b332d84a792e4991900002ff4b3d325e9a61",
+    "artifacts/s0_lr1e-3_h8_plan.json": "87e33f4fa65a5491215d8226025a6b0e68779ca1bb4b22da4b7b87cc3e824a45",
+    "artifacts/smoke_plan.json": "cdd2b4b871811414d8e23a35fb2c83788c5892f032903cbdf0ffc3b5f40caa02",
+    "artifacts/s0_grid_ens_lam0.0_reward.json": "232c3eadffa96b84851b345953c5c6adb66bb66609e32f3b430a598c5aa7e4f9",
+    "artifacts/s0_grid_ens_lam1.0_reward.json": "b60b3de9316dbf7a525d1358eeaf53a467c8f0f61cfabbbda3b66a13bcdfe59d",
+    "artifacts/s0_grid_reward.json": "1b7005bdfbe3908ac721385450cd3a4e49936205e1e6e15755104b69a3a816ef",
+    "runs/stoch/craftax/tile_factored_plan.json": "3130a2c9cc46441aad3b90e86a6a027b964675344574b657f75edf612976893f",
+    "train.py": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b",
+    "probe.py": "110eff77f3dfb5fb3c7222caa58d85773b9bc8675cd95859d4f9705c171ea424",
+    "plan.py": "3ef0d48cbe4ba026ac29ef44d189958cbf6e64d9e39f6fb00a1ce4a3804c6969",
+    "eval.py": "05431f3d07b6ca882aaff4c5b3c8bc7f787b0e75f9d6e722ae148fdd00b5c375",
+    "studies/stoch/train_arms.sh": "78af91e4a61d43dc1611d3b8831f8bc43bbf2ec713a322eead9780846d070284",
+    "studies/stoch/lane_b.sh": "38a32d5c346eaa5a3a893edbac050db9d3253b959fb16a56e655f580a5fa4d50",
+    "studies/stoch/lane_b2.sh": "3e554d562d11874e7a259e73e7b63960dcb883defd74a1514bd4e757393a50c7"
+  },
+  "new_tile_factored_identity": {
+    "training_seed": 0,
+    "identity_status": "confirmed from live checkpoint metadata and SHA-256 on user-owned e2e",
+    "latent_shape": [
+      16,
+      32
+    ],
+    "latent_dim": 512,
+    "steps": 8500,
+    "batch": 128,
+    "lr": 0.001,
+    "train_elapsed_s": 604.5,
+    "params_rounded_million": 11.12,
+    "observed_frames_shape": [
+      2001,
+      250,
+      63,
+      63,
+      3
+    ],
+    "train_checkpoint": "/dev/shm/stoch/craftax/tile_factored/model.npz",
+    "probe_checkpoint": "/dev/shm/stoch/craftax/tile_factored/model_probe.npz",
+    "train_data": "~/personal/tinywmcraft-e2e/starter/data/tinywmcraft_500k/train.npz",
+    "head_training_transitions": 80000,
+    "head_heldout_frames_expected": 50000,
+    "head_train_time_rows": 320,
+    "head_heldout_time_rows": [
+      320,
+      519
+    ],
+    "value_fit_first_time_rows": 80,
+    "head_fit_s": 62.0,
+    "decoder_including_embedding_s": 113.4,
+    "all_probes_s": 175.6
+  },
+  "fresh_evaluation": {
+    "status": "completed_goal_evaluation",
+    "script": "studies/revision/craftax_eval.py",
+    "script_sha256": "73db58b84e64b3405a347fe883d0c87cdad31a454b2a138ea4c73233ddb7e197",
+    "default_eval_seeds": [
+      101,
+      202,
+      303
+    ],
+    "default_envs": 128,
+    "default_goal_horizon": 6,
+    "policy_names": [
+      "noop",
+      "random",
+      "reference_replay",
+      "jepa_open_loop",
+      "jepa_receding"
+    ],
+    "goal_execution_noise_independent": true,
+    "native_rewards": true,
+    "latent_transform": null,
+    "local_validation": [
+      "py_compile",
+      "help",
+      "summary and displacement-strata tests"
+    ],
+    "runtime_smoke_required": false,
+    "independent_code_review": "passed with environment caching, stage persistence, native action assertion, alive success and head provenance corrections",
+    "smoke": {
+      "path": "artifacts/revision/craftax_smoke.json",
+      "sha256": "d6259dc26a1b64420baa44ecae46c25c3c70c8a5882c74f99eeac3a65f5e9962",
+      "elapsed_s": 108.09693026542664,
+      "status": "passed",
+      "versions": {
+        "numpy": "2.4.6",
+        "jax": "0.10.1",
+        "flax": "0.12.7",
+        "craftax": "1.5.0"
+      }
+    },
+    "raw_results_path": "artifacts/revision/craftax_goal_v2.json",
+    "raw_results_sha256": "44dc765a690037e8cc1b618be01f1348f4f8a54ad02c1d9424a230e02a13f867",
+    "log_path": "artifacts/revision/craftax_goal_v2.log",
+    "elapsed_s": 796.5737113952637,
+    "goal_summary": {
+      "noop": {
+        "all": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.3567708333333333,
+            "sd": 0.4796713295801997,
+            "sem": 0.024478125035705595,
+            "successes": 137,
+            "wilson_95": [
+              0.31049251808953854,
+              0.40588643651094175
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.3567708333333333,
+            "sd": 0.4796713295801997,
+            "sem": 0.024478125035705595,
+            "successes": 137,
+            "wilson_95": [
+              0.31049251808953854,
+              0.40588643651094175
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.9401041666666666,
+            "sd": 0.8544498723864594,
+            "sem": 0.04360346246110475
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "initially_alive": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.3567708333333333,
+            "sd": 0.4796713295801997,
+            "sem": 0.024478125035705595,
+            "successes": 137,
+            "wilson_95": [
+              0.31049251808953854,
+              0.40588643651094175
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.3567708333333333,
+            "sd": 0.4796713295801997,
+            "sem": 0.024478125035705595,
+            "successes": 137,
+            "wilson_95": [
+              0.31049251808953854,
+              0.40588643651094175
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.9401041666666666,
+            "sd": 0.8544498723864594,
+            "sem": 0.04360346246110475
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "start_and_target_alive": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.3567708333333333,
+            "sd": 0.4796713295801997,
+            "sem": 0.024478125035705595,
+            "successes": 137,
+            "wilson_95": [
+              0.31049251808953854,
+              0.40588643651094175
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.3567708333333333,
+            "sd": 0.4796713295801997,
+            "sem": 0.024478125035705595,
+            "successes": 137,
+            "wilson_95": [
+              0.31049251808953854,
+              0.40588643651094175
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.9401041666666666,
+            "sd": 0.8544498723864594,
+            "sem": 0.04360346246110475
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "stationary_goal": {
+          "reached_position": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          },
+          "reached_position_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          },
+          "position_l1": {
+            "n": 137,
+            "mean": 0.0,
+            "sd": 0.0,
+            "sem": 0.0
+          },
+          "start_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          }
+        },
+        "displaced_goal": {
+          "reached_position": {
+            "n": 247,
+            "mean": 0.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 0,
+            "wilson_95": [
+              0.0,
+              0.015314289905481962
+            ]
+          },
+          "reached_position_alive": {
+            "n": 247,
+            "mean": 0.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 0,
+            "wilson_95": [
+              0.0,
+              0.015314289905481962
+            ]
+          },
+          "position_l1": {
+            "n": 247,
+            "mean": 1.4615384615384615,
+            "sd": 0.6094933767976681,
+            "sem": 0.038781134879101065
+          },
+          "start_alive": {
+            "n": 247,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 247,
+            "wilson_95": [
+              0.984685710094518,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 247,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 247,
+            "wilson_95": [
+              0.984685710094518,
+              0.9999999999999999
+            ]
+          }
+        },
+        "goal_displacement_at_least_2": {
+          "reached_position": {
+            "n": 99,
+            "mean": 0.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 0,
+            "wilson_95": [
+              0.0,
+              0.03735321206782739
+            ]
+          },
+          "reached_position_alive": {
+            "n": 99,
+            "mean": 0.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 0,
+            "wilson_95": [
+              0.0,
+              0.03735321206782739
+            ]
+          },
+          "position_l1": {
+            "n": 99,
+            "mean": 2.1515151515151514,
+            "sd": 0.36037498507822374,
+            "sem": 0.036219048767708914
+          },
+          "start_alive": {
+            "n": 99,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 99,
+            "wilson_95": [
+              0.9626467879321726,
+              1.0
+            ]
+          },
+          "target_alive": {
+            "n": 99,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 99,
+            "wilson_95": [
+              0.9626467879321726,
+              1.0
+            ]
+          }
+        },
+        "paired_success_difference_vs_noop": {
+          "n": 384,
+          "mean": 0.0,
+          "sd": 0.0,
+          "sem": 0.0
+        },
+        "paired_success_difference_vs_random": {
+          "n": 384,
+          "mean": 0.1875,
+          "sd": 0.5019544048447836,
+          "sem": 0.02561525345858609
+        }
+      },
+      "random": {
+        "all": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.16927083333333334,
+            "sd": 0.37548018284731605,
+            "sem": 0.019161142843809438,
+            "successes": 65,
+            "wilson_95": [
+              0.13508310911036922,
+              0.21001011333074007
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.16927083333333334,
+            "sd": 0.37548018284731605,
+            "sem": 0.019161142843809438,
+            "successes": 65,
+            "wilson_95": [
+              0.13508310911036922,
+              0.21001011333074007
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 1.5598958333333333,
+            "sd": 1.0822836264717328,
+            "sem": 0.05523005503801438
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "initially_alive": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.16927083333333334,
+            "sd": 0.37548018284731605,
+            "sem": 0.019161142843809438,
+            "successes": 65,
+            "wilson_95": [
+              0.13508310911036922,
+              0.21001011333074007
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.16927083333333334,
+            "sd": 0.37548018284731605,
+            "sem": 0.019161142843809438,
+            "successes": 65,
+            "wilson_95": [
+              0.13508310911036922,
+              0.21001011333074007
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 1.5598958333333333,
+            "sd": 1.0822836264717328,
+            "sem": 0.05523005503801438
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "start_and_target_alive": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.16927083333333334,
+            "sd": 0.37548018284731605,
+            "sem": 0.019161142843809438,
+            "successes": 65,
+            "wilson_95": [
+              0.13508310911036922,
+              0.21001011333074007
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.16927083333333334,
+            "sd": 0.37548018284731605,
+            "sem": 0.019161142843809438,
+            "successes": 65,
+            "wilson_95": [
+              0.13508310911036922,
+              0.21001011333074007
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 1.5598958333333333,
+            "sd": 1.0822836264717328,
+            "sem": 0.05523005503801438
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "stationary_goal": {
+          "reached_position": {
+            "n": 137,
+            "mean": 0.3357664233576642,
+            "sd": 0.4739907585158566,
+            "sem": 0.04049576342249981,
+            "successes": 46,
+            "wilson_95": [
+              0.26212325028695915,
+              0.4183685567647578
+            ]
+          },
+          "reached_position_alive": {
+            "n": 137,
+            "mean": 0.3357664233576642,
+            "sd": 0.4739907585158566,
+            "sem": 0.04049576342249981,
+            "successes": 46,
+            "wilson_95": [
+              0.26212325028695915,
+              0.4183685567647578
+            ]
+          },
+          "position_l1": {
+            "n": 137,
+            "mean": 0.9562043795620438,
+            "sd": 0.8649091514574214,
+            "sem": 0.07389417567769538
+          },
+          "start_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          }
+        },
+        "displaced_goal": {
+          "reached_position": {
+            "n": 247,
+            "mean": 0.07692307692307693,
+            "sd": 0.26701041009563153,
+            "sem": 0.016989465549976414,
+            "successes": 19,
+            "wilson_95": [
+              0.04979588721100477,
+              0.11700851193978765
+            ]
+          },
+          "reached_position_alive": {
+            "n": 247,
+            "mean": 0.07692307692307693,
+            "sd": 0.26701041009563153,
+            "sem": 0.016989465549976414,
+            "successes": 19,
+            "wilson_95": [
+              0.04979588721100477,
+              0.11700851193978765
+            ]
+          },
+          "position_l1": {
+            "n": 247,
+            "mean": 1.894736842105263,
+            "sd": 1.0462149313114055,
+            "sem": 0.06656906195911973
+          },
+          "start_alive": {
+            "n": 247,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 247,
+            "wilson_95": [
+              0.984685710094518,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 247,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 247,
+            "wilson_95": [
+              0.984685710094518,
+              0.9999999999999999
+            ]
+          }
+        },
+        "goal_displacement_at_least_2": {
+          "reached_position": {
+            "n": 99,
+            "mean": 0.010101010101010102,
+            "sd": 0.10050378152592129,
+            "sem": 0.01010101010101011,
+            "successes": 1,
+            "wilson_95": [
+              0.0017853072791700793,
+              0.055015314645872934
+            ]
+          },
+          "reached_position_alive": {
+            "n": 99,
+            "mean": 0.010101010101010102,
+            "sd": 0.10050378152592129,
+            "sem": 0.01010101010101011,
+            "successes": 1,
+            "wilson_95": [
+              0.0017853072791700793,
+              0.055015314645872934
+            ]
+          },
+          "position_l1": {
+            "n": 99,
+            "mean": 2.3535353535353534,
+            "sd": 0.9929664000843925,
+            "sem": 0.09979687813666226
+          },
+          "start_alive": {
+            "n": 99,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 99,
+            "wilson_95": [
+              0.9626467879321726,
+              1.0
+            ]
+          },
+          "target_alive": {
+            "n": 99,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 99,
+            "wilson_95": [
+              0.9626467879321726,
+              1.0
+            ]
+          }
+        },
+        "paired_success_difference_vs_noop": {
+          "n": 384,
+          "mean": -0.1875,
+          "sd": 0.5019544048447836,
+          "sem": 0.02561525345858609
+        },
+        "paired_success_difference_vs_random": {
+          "n": 384,
+          "mean": 0.0,
+          "sd": 0.0,
+          "sem": 0.0
+        }
+      },
+      "reference_replay": {
+        "all": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.9947916666666666,
+            "sd": 0.07207450694790905,
+            "sem": 0.0036780367809387112,
+            "successes": 382,
+            "wilson_95": [
+              0.9812112699927402,
+              0.9985705232056001
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.9947916666666666,
+            "sd": 0.07207450694790905,
+            "sem": 0.0036780367809387112,
+            "successes": 382,
+            "wilson_95": [
+              0.9812112699927402,
+              0.9985705232056001
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.005208333333333333,
+            "sd": 0.07207450694790905,
+            "sem": 0.0036780367809387112
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "initially_alive": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.9947916666666666,
+            "sd": 0.07207450694790905,
+            "sem": 0.0036780367809387112,
+            "successes": 382,
+            "wilson_95": [
+              0.9812112699927402,
+              0.9985705232056001
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.9947916666666666,
+            "sd": 0.07207450694790905,
+            "sem": 0.0036780367809387112,
+            "successes": 382,
+            "wilson_95": [
+              0.9812112699927402,
+              0.9985705232056001
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.005208333333333333,
+            "sd": 0.07207450694790905,
+            "sem": 0.0036780367809387112
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "start_and_target_alive": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.9947916666666666,
+            "sd": 0.07207450694790905,
+            "sem": 0.0036780367809387112,
+            "successes": 382,
+            "wilson_95": [
+              0.9812112699927402,
+              0.9985705232056001
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.9947916666666666,
+            "sd": 0.07207450694790905,
+            "sem": 0.0036780367809387112,
+            "successes": 382,
+            "wilson_95": [
+              0.9812112699927402,
+              0.9985705232056001
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.005208333333333333,
+            "sd": 0.07207450694790905,
+            "sem": 0.0036780367809387112
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "stationary_goal": {
+          "reached_position": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          },
+          "reached_position_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          },
+          "position_l1": {
+            "n": 137,
+            "mean": 0.0,
+            "sd": 0.0,
+            "sem": 0.0
+          },
+          "start_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          }
+        },
+        "displaced_goal": {
+          "reached_position": {
+            "n": 247,
+            "mean": 0.9919028340080972,
+            "sd": 0.08980117306022596,
+            "sem": 0.005713911811557267,
+            "successes": 245,
+            "wilson_95": [
+              0.970962733607108,
+              0.9977766491984299
+            ]
+          },
+          "reached_position_alive": {
+            "n": 247,
+            "mean": 0.9919028340080972,
+            "sd": 0.08980117306022596,
+            "sem": 0.005713911811557267,
+            "successes": 245,
+            "wilson_95": [
+              0.970962733607108,
+              0.9977766491984299
+            ]
+          },
+          "position_l1": {
+            "n": 247,
+            "mean": 0.008097165991902834,
+            "sd": 0.08980117306022596,
+            "sem": 0.005713911811557267
+          },
+          "start_alive": {
+            "n": 247,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 247,
+            "wilson_95": [
+              0.984685710094518,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 247,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 247,
+            "wilson_95": [
+              0.984685710094518,
+              0.9999999999999999
+            ]
+          }
+        },
+        "goal_displacement_at_least_2": {
+          "reached_position": {
+            "n": 99,
+            "mean": 0.9797979797979798,
+            "sd": 0.1414067789702257,
+            "sem": 0.014211916019907792,
+            "successes": 97,
+            "wilson_95": [
+              0.9293096883284993,
+              0.9944422798892423
+            ]
+          },
+          "reached_position_alive": {
+            "n": 99,
+            "mean": 0.9797979797979798,
+            "sd": 0.1414067789702257,
+            "sem": 0.014211916019907792,
+            "successes": 97,
+            "wilson_95": [
+              0.9293096883284993,
+              0.9944422798892423
+            ]
+          },
+          "position_l1": {
+            "n": 99,
+            "mean": 0.020202020202020204,
+            "sd": 0.1414067789702257,
+            "sem": 0.014211916019907792
+          },
+          "start_alive": {
+            "n": 99,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 99,
+            "wilson_95": [
+              0.9626467879321726,
+              1.0
+            ]
+          },
+          "target_alive": {
+            "n": 99,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 99,
+            "wilson_95": [
+              0.9626467879321726,
+              1.0
+            ]
+          }
+        },
+        "paired_success_difference_vs_noop": {
+          "n": 384,
+          "mean": 0.6380208333333334,
+          "sd": 0.48119980551590674,
+          "sem": 0.02455612474667654
+        },
+        "paired_success_difference_vs_random": {
+          "n": 384,
+          "mean": 0.8255208333333334,
+          "sd": 0.38001613210684104,
+          "sem": 0.019392617035163425
+        }
+      },
+      "jepa_open_loop": {
+        "all": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.9322916666666666,
+            "sd": 0.2515725130650256,
+            "sem": 0.012838006048311819,
+            "successes": 358,
+            "wilson_95": [
+              0.9026415058945665,
+              0.9533783765839834
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.9322916666666666,
+            "sd": 0.2515725130650256,
+            "sem": 0.012838006048311819,
+            "successes": 358,
+            "wilson_95": [
+              0.9026415058945665,
+              0.9533783765839834
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.10677083333333333,
+            "sd": 0.47004914979200857,
+            "sem": 0.023987095229572472
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "initially_alive": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.9322916666666666,
+            "sd": 0.2515725130650256,
+            "sem": 0.012838006048311819,
+            "successes": 358,
+            "wilson_95": [
+              0.9026415058945665,
+              0.9533783765839834
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.9322916666666666,
+            "sd": 0.2515725130650256,
+            "sem": 0.012838006048311819,
+            "successes": 358,
+            "wilson_95": [
+              0.9026415058945665,
+              0.9533783765839834
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.10677083333333333,
+            "sd": 0.47004914979200857,
+            "sem": 0.023987095229572472
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "start_and_target_alive": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.9322916666666666,
+            "sd": 0.2515725130650256,
+            "sem": 0.012838006048311819,
+            "successes": 358,
+            "wilson_95": [
+              0.9026415058945665,
+              0.9533783765839834
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.9322916666666666,
+            "sd": 0.2515725130650256,
+            "sem": 0.012838006048311819,
+            "successes": 358,
+            "wilson_95": [
+              0.9026415058945665,
+              0.9533783765839834
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.10677083333333333,
+            "sd": 0.47004914979200857,
+            "sem": 0.023987095229572472
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "stationary_goal": {
+          "reached_position": {
+            "n": 137,
+            "mean": 0.9927007299270073,
+            "sd": 0.08543576577167585,
+            "sem": 0.007299270072992679,
+            "successes": 136,
+            "wilson_95": [
+              0.9598142434142608,
+              0.9987103354305883
+            ]
+          },
+          "reached_position_alive": {
+            "n": 137,
+            "mean": 0.9927007299270073,
+            "sd": 0.08543576577167585,
+            "sem": 0.007299270072992679,
+            "successes": 136,
+            "wilson_95": [
+              0.9598142434142608,
+              0.9987103354305883
+            ]
+          },
+          "position_l1": {
+            "n": 137,
+            "mean": 0.0072992700729927005,
+            "sd": 0.08543576577167585,
+            "sem": 0.007299270072992679
+          },
+          "start_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          }
+        },
+        "displaced_goal": {
+          "reached_position": {
+            "n": 247,
+            "mean": 0.8987854251012146,
+            "sd": 0.3022250522801391,
+            "sem": 0.019230119575541032,
+            "successes": 222,
+            "wilson_95": [
+              0.8548571428944114,
+              0.930499476087856
+            ]
+          },
+          "reached_position_alive": {
+            "n": 247,
+            "mean": 0.8987854251012146,
+            "sd": 0.3022250522801391,
+            "sem": 0.019230119575541032,
+            "successes": 222,
+            "wilson_95": [
+              0.8548571428944114,
+              0.930499476087856
+            ]
+          },
+          "position_l1": {
+            "n": 247,
+            "mean": 0.16194331983805668,
+            "sd": 0.575665988319298,
+            "sem": 0.03662874969309614
+          },
+          "start_alive": {
+            "n": 247,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 247,
+            "wilson_95": [
+              0.984685710094518,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 247,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 247,
+            "wilson_95": [
+              0.984685710094518,
+              0.9999999999999999
+            ]
+          }
+        },
+        "goal_displacement_at_least_2": {
+          "reached_position": {
+            "n": 99,
+            "mean": 0.8080808080808081,
+            "sd": 0.39581400694934904,
+            "sem": 0.03978080447933684,
+            "successes": 80,
+            "wilson_95": [
+              0.7195963938569909,
+              0.8735496067880852
+            ]
+          },
+          "reached_position_alive": {
+            "n": 99,
+            "mean": 0.8080808080808081,
+            "sd": 0.39581400694934904,
+            "sem": 0.03978080447933684,
+            "successes": 80,
+            "wilson_95": [
+              0.7195963938569909,
+              0.8735496067880852
+            ]
+          },
+          "position_l1": {
+            "n": 99,
+            "mean": 0.3333333333333333,
+            "sd": 0.8329931278350434,
+            "sem": 0.08371895933252696
+          },
+          "start_alive": {
+            "n": 99,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 99,
+            "wilson_95": [
+              0.9626467879321726,
+              1.0
+            ]
+          },
+          "target_alive": {
+            "n": 99,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 99,
+            "wilson_95": [
+              0.9626467879321726,
+              1.0
+            ]
+          }
+        },
+        "paired_success_difference_vs_noop": {
+          "n": 384,
+          "mean": 0.5755208333333334,
+          "sd": 0.5001563615388831,
+          "sem": 0.025523497445359356
+        },
+        "paired_success_difference_vs_random": {
+          "n": 384,
+          "mean": 0.7630208333333334,
+          "sd": 0.43187276869198926,
+          "sem": 0.022038914939549997
+        }
+      },
+      "jepa_receding": {
+        "all": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.9609375,
+            "sd": 0.1939964637237927,
+            "sem": 0.009899840583909148,
+            "successes": 369,
+            "wilson_95": [
+              0.9365570797743691,
+              0.9761870117840848
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.9609375,
+            "sd": 0.1939964637237927,
+            "sem": 0.009899840583909148,
+            "successes": 369,
+            "wilson_95": [
+              0.9365570797743691,
+              0.9761870117840848
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.078125,
+            "sd": 0.43254136975961593,
+            "sem": 0.02207303434490761
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "initially_alive": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.9609375,
+            "sd": 0.1939964637237927,
+            "sem": 0.009899840583909148,
+            "successes": 369,
+            "wilson_95": [
+              0.9365570797743691,
+              0.9761870117840848
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.9609375,
+            "sd": 0.1939964637237927,
+            "sem": 0.009899840583909148,
+            "successes": 369,
+            "wilson_95": [
+              0.9365570797743691,
+              0.9761870117840848
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.078125,
+            "sd": 0.43254136975961593,
+            "sem": 0.02207303434490761
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "start_and_target_alive": {
+          "reached_position": {
+            "n": 384,
+            "mean": 0.9609375,
+            "sd": 0.1939964637237927,
+            "sem": 0.009899840583909148,
+            "successes": 369,
+            "wilson_95": [
+              0.9365570797743691,
+              0.9761870117840848
+            ]
+          },
+          "reached_position_alive": {
+            "n": 384,
+            "mean": 0.9609375,
+            "sd": 0.1939964637237927,
+            "sem": 0.009899840583909148,
+            "successes": 369,
+            "wilson_95": [
+              0.9365570797743691,
+              0.9761870117840848
+            ]
+          },
+          "position_l1": {
+            "n": 384,
+            "mean": 0.078125,
+            "sd": 0.43254136975961593,
+            "sem": 0.02207303434490761
+          },
+          "start_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 384,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 384,
+            "wilson_95": [
+              0.9900952857583228,
+              0.9999999999999999
+            ]
+          }
+        },
+        "stationary_goal": {
+          "reached_position": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          },
+          "reached_position_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          },
+          "position_l1": {
+            "n": 137,
+            "mean": 0.0,
+            "sd": 0.0,
+            "sem": 0.0
+          },
+          "start_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 137,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 137,
+            "wilson_95": [
+              0.9727249429758839,
+              0.9999999999999999
+            ]
+          }
+        },
+        "displaced_goal": {
+          "reached_position": {
+            "n": 247,
+            "mean": 0.9392712550607287,
+            "sd": 0.2393170230127879,
+            "sem": 0.015227377526376049,
+            "successes": 232,
+            "wilson_95": [
+              0.9022325285149025,
+              0.9628557269122652
+            ]
+          },
+          "reached_position_alive": {
+            "n": 247,
+            "mean": 0.9392712550607287,
+            "sd": 0.2393170230127879,
+            "sem": 0.015227377526376049,
+            "successes": 232,
+            "wilson_95": [
+              0.9022325285149025,
+              0.9628557269122652
+            ]
+          },
+          "position_l1": {
+            "n": 247,
+            "mean": 0.1214574898785425,
+            "sd": 0.5347907246021596,
+            "sem": 0.03402791894451296
+          },
+          "start_alive": {
+            "n": 247,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 247,
+            "wilson_95": [
+              0.984685710094518,
+              0.9999999999999999
+            ]
+          },
+          "target_alive": {
+            "n": 247,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 247,
+            "wilson_95": [
+              0.984685710094518,
+              0.9999999999999999
+            ]
+          }
+        },
+        "goal_displacement_at_least_2": {
+          "reached_position": {
+            "n": 99,
+            "mean": 0.8787878787878788,
+            "sd": 0.32803456987831414,
+            "sem": 0.03296871474399962,
+            "successes": 87,
+            "wilson_95": [
+              0.7999933846227947,
+              0.9292844850227906
+            ]
+          },
+          "reached_position_alive": {
+            "n": 99,
+            "mean": 0.8787878787878788,
+            "sd": 0.32803456987831414,
+            "sem": 0.03296871474399962,
+            "successes": 87,
+            "wilson_95": [
+              0.7999933846227947,
+              0.9292844850227906
+            ]
+          },
+          "position_l1": {
+            "n": 99,
+            "mean": 0.26262626262626265,
+            "sd": 0.7900640452708678,
+            "sem": 0.07940442419738883
+          },
+          "start_alive": {
+            "n": 99,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 99,
+            "wilson_95": [
+              0.9626467879321726,
+              1.0
+            ]
+          },
+          "target_alive": {
+            "n": 99,
+            "mean": 1.0,
+            "sd": 0.0,
+            "sem": 0.0,
+            "successes": 99,
+            "wilson_95": [
+              0.9626467879321726,
+              1.0
+            ]
+          }
+        },
+        "paired_success_difference_vs_noop": {
+          "n": 384,
+          "mean": 0.6041666666666666,
+          "sd": 0.4896669442335491,
+          "sem": 0.024988211610001275
+        },
+        "paired_success_difference_vs_random": {
+          "n": 384,
+          "mean": 0.7916666666666666,
+          "sd": 0.40664626352389716,
+          "sem": 0.02075158023839357
+        }
+      }
+    },
+    "eval_seeds": [
+      101,
+      202,
+      303
+    ],
+    "trained_model_seeds": [
+      0
+    ],
+    "total_episodes": 384,
+    "goal_displacement_counts": {
+      "0": 137,
+      "1": 148,
+      "2": 84,
+      "3": 15
+    },
+    "mean_goal_displacement_l1": 0.9401041666666666,
+    "reward_evaluation": "not rerun; preserve original artifacts separately",
+    "gpu_handoff": "e2e GPU0 released to pve_objective after process exit0 and empty compute-app query",
+    "postrun_checks": [
+      "3 unique eval seeds",
+      "128 unique episode IDs per seed and policy",
+      "same frozen checkpoint SHA",
+      "all starts and goals alive",
+      "open-loop and receding first actions exactly paired",
+      "complete raw traces saved"
+    ],
+    "publication_table": {
+      "path": "research/craftax_table_v2.json",
+      "sha256": "52fa9dc1b2becef5deeee8c6b57904bed458b9d6928de00e99d78e37f6c48718",
+      "contains": [
+        "pooled counts and Wilson intervals",
+        "per-evaluation-seed counts",
+        "paired bootstrap 95% differences"
+      ],
+      "training_seed_count": 1
+    }
+  },
+  "live_checkpoint_verification": {
+    "date": "2026-09-19",
+    "host": "e2e.sas.yp-c.yandex.net",
+    "user": "rldoeswork",
+    "path": "/dev/shm/stoch/craftax/tile_factored/model_probe.npz",
+    "sha256": "59cc282c9bd7a49ab1c272342220bc8e0d8ca0f1aa77bbcb4c23ae31dfd6835d",
+    "train_seed": 0,
+    "params": 11121556,
+    "train_s": 604.5,
+    "loop_s": 579.7,
+    "stored_data_sha256": "09f2cb41a38b0f34937a89c4122f6b25bbb3094e34a077b3a572504269d0a1b2",
+    "source_sha256": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b",
+    "full_metadata": {
+      "cfg": {
+        "seed": 0,
+        "steps": 8500,
+        "batch": 128,
+        "lr": 0.001,
+        "weight_decay": 0.001,
+        "warmup": 0.1,
+        "encoder": "tile",
+        "predictor": "factored",
+        "emb_dim": 128,
+        "enc_depth": 6,
+        "enc_heads": 8,
+        "enc_mlp": 768,
+        "enc_res": 4,
+        "pred_depth": 6,
+        "pred_heads": 8,
+        "pred_dim_head": 64,
+        "pred_mlp": 2048,
+        "pred_width": 256,
+        "mlp_hidden": 2048,
+        "tokens": 16,
+        "token_dim": 32,
+        "token_hidden": 512,
+        "latent_dim": 0,
+        "history": 8,
+        "num_preds": 1,
+        "dropout": 0.1,
+        "sigreg_weight": 0.09,
+        "sigreg_knots": 17,
+        "sigreg_proj": 1024,
+        "action_bottleneck": 10,
+        "n_actions": 17,
+        "data_budget": 500000,
+        "chunk": 250
+      },
+      "params": 11121556,
+      "train_s": 604.5,
+      "loop_s": 579.7,
+      "data_sha256": "09f2cb41a38b0f34937a89c4122f6b25bbb3094e34a077b3a572504269d0a1b2",
+      "source_sha256": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b",
+      "final_pred_loss": 0.008598779328167439,
+      "final_sigreg": 1.0980684757232666,
+      "decoder": {
+        "hidden": 256,
+        "depth": 6,
+        "steps": 8000,
+        "tokens": 16,
+        "batch": 256,
+        "lr": 0.001,
+        "frames": 80000,
+        "decoder_s": 113.4,
+        "final_mse": 0.0006458669085986912
+      },
+      "heads": {
+        "hidden": 512,
+        "members": 1,
+        "steps": 6000,
+        "batch": 1024,
+        "lr": 0.001,
+        "gamma": 0.99,
+        "transitions": 80000,
+        "value_tail": 80,
+        "heads_s": 62.0,
+        "final": [
+          0.010711411945521832,
+          0.001303614117205143,
+          0.031229261308908463
+        ],
+        "reward_corr": 0.9219841442390798,
+        "value_corr": 0.9948720145602848,
+        "reward_rmse": 0.08845729380846024,
+        "reward_event_recall": 0.8566176470588235,
+        "value_mean": 3.0282371044158936,
+        "return_mean": 3.026742696762085,
+        "heldout_reward_corr": 0.3527339584113081,
+        "heldout_value_corr": 0.26646538953732596,
+        "heldout_reward_rmse": 0.22205214202404022,
+        "heldout_reward_event_recall": 0.6239822353811991,
+        "heldout_value_mean": 2.3561604022979736,
+        "heldout_return_mean": 1.3476053476333618
+      }
+    },
+    "current_train_data_sha256": "09f2cb41a38b0f34937a89c4122f6b25bbb3094e34a077b3a572504269d0a1b2",
+    "current_eval_data_sha256": "caec5e6a0e73b432740b1a1d40ce6de19ebf83a4bfc3540436d38025386661e7"
+  },
+  "checkpoint_metadata_reverified_scope": "tile_factored model_probe.npz only; historical flow/CLS/grid checkpoint bytes not fetched",
+  "illustrations": {
+    "path": "artifacts/revision/craftax_frames_v2",
+    "metadata_sha256": "548f0ab7cf8691eee0a5f3412c5c6b668408e1643eb43adeac579a3902e25181",
+    "metadata": {
+      "purpose": "actual environment illustration, not additional quantitative evaluation",
+      "eval_report": "artifacts/revision/craftax_goal_v2.json",
+      "eval_report_sha256": "44dc765a690037e8cc1b618be01f1348f4f8a54ad02c1d9424a230e02a13f867",
+      "script_sha256": "f9ab22f11527f46fb0c1de232fc8d9c0e1c84685b0bfa881c89b85b6c030c721",
+      "selection": "first episode indices with goal displacement >= threshold, no model outcomes used",
+      "seed": 101,
+      "min_displacement": 2,
+      "selected_episodes": [
+        5,
+        9,
+        10
+      ],
+      "warmup_frames": 8,
+      "horizon": 6,
+      "device": [
+        "cpu:0"
+      ],
+      "craftax_version": "1.5.0",
+      "coordinate_and_action_regeneration": "exact match to completed GPU evaluation",
+      "scenes": [
+        {
+          "episode": 5,
+          "start_position": [
+            32,
+            33
+          ],
+          "goal_position": [
+            31,
+            34
+          ],
+          "displacement_l1": 2,
+          "goal_generating_actions": [
+            13,
+            11,
+            14,
+            15,
+            3,
+            2
+          ],
+          "frames": {
+            "reset": {
+              "path": "seed101_episode005_reset.png",
+              "shape": [
+                63,
+                63,
+                3
+              ],
+              "sha256": "d610394340590161a9f9d3186ca9fa9746beb7641d872dc97956e7d199535c2d"
+            },
+            "start": {
+              "path": "seed101_episode005_start.png",
+              "shape": [
+                63,
+                63,
+                3
+              ],
+              "sha256": "d4f6b8aefcf24927c62ef7b402cce8079eb6e466ac39aa368a7fbb2f5c69bf3d"
+            },
+            "goal": {
+              "path": "seed101_episode005_goal.png",
+              "shape": [
+                63,
+                63,
+                3
+              ],
+              "sha256": "ac41b268b7503a3112d70716ec46ace56f16b5b6a00e93a2e3b6c0cbe79ca96e"
+            }
+          }
+        },
+        {
+          "episode": 9,
+          "start_position": [
+            33,
+            32
+          ],
+          "goal_position": [
+            32,
+            31
+          ],
+          "displacement_l1": 2,
+          "goal_generating_actions": [
+            3,
+            3,
+            12,
+            1,
+            6,
+            0
+          ],
+          "frames": {
+            "reset": {
+              "path": "seed101_episode009_reset.png",
+              "shape": [
+                63,
+                63,
+                3
+              ],
+              "sha256": "dc7242d90741c154af5c5f13aba76b5ff575ae47377be243c5bff21d6b8c4709"
+            },
+            "start": {
+              "path": "seed101_episode009_start.png",
+              "shape": [
+                63,
+                63,
+                3
+              ],
+              "sha256": "c4ea4bb2375dc4825889177bffe9ba780bf1e7a19b7ec5c553105038b114734e"
+            },
+            "goal": {
+              "path": "seed101_episode009_goal.png",
+              "shape": [
+                63,
+                63,
+                3
+              ],
+              "sha256": "affdaa5deb0fdcc8cc38b4b3bc5073b4343b07a2b1dffe48c265f5a6a665c9f7"
+            }
+          }
+        },
+        {
+          "episode": 10,
+          "start_position": [
+            32,
+            31
+          ],
+          "goal_position": [
+            31,
+            32
+          ],
+          "displacement_l1": 2,
+          "goal_generating_actions": [
+            15,
+            16,
+            9,
+            3,
+            11,
+            2
+          ],
+          "frames": {
+            "reset": {
+              "path": "seed101_episode010_reset.png",
+              "shape": [
+                63,
+                63,
+                3
+              ],
+              "sha256": "8f5a0d2963e1cc73073ce1ed0306fa0553a831aed233353f62842c690d5ec480"
+            },
+            "start": {
+              "path": "seed101_episode010_start.png",
+              "shape": [
+                63,
+                63,
+                3
+              ],
+              "sha256": "bb899b43c2611417728eb6c4c539d9571397295676e1c3737e2fb8a5912da128"
+            },
+            "goal": {
+              "path": "seed101_episode010_goal.png",
+              "shape": [
+                63,
+                63,
+                3
+              ],
+              "sha256": "67344e224d2c99a8ae23c3d1bef05d9fa085e93097bb4ca7b3356f60a92b4b65"
+            }
+          }
+        }
+      ]
+    },
+    "visual_review": "all 3 start/goal pairs viewed and checked as genuine native egocentric Craftax frames"
+  }
+}

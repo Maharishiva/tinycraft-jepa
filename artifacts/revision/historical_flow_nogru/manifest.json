@@ -1,0 +1,145 @@
+{
+  "schema": "historical-flow-nogru-preservation-v1",
+  "status": "preserved_and_rehashed",
+  "captured_utc": "2026-09-19T23:58:47.685183+00:00",
+  "host": "multigpu-vm.sas.yp-c.yandex.net",
+  "purpose": "Historical motivation only; not a reproduction under the corrected genuine-prefix protocol.",
+  "execution_scope": "Read-only remote copying, hashing and local JSON extraction; no policy evaluation, training, GPU use, or source edits.",
+  "artifacts": [
+    {
+      "local_path": "model.pkl",
+      "remote_path": "/home/rldoeswork/personal/wm_rl_eval2/runs/wmgym_5m_nogru/model.pkl",
+      "sha256": "6570703f8b3b244631d28bfd9410f95b56ce3625e39378d5bb0d321431960836",
+      "size_bytes": 24373037
+    },
+    {
+      "local_path": "config.json",
+      "remote_path": "/home/rldoeswork/personal/wm_rl_eval2/runs/wmgym_5m_nogru/config.json",
+      "sha256": "4ed59ff1e2908805b57946f5b978cf0f497c29d9102cd0fb95538f1ae6ba04c2",
+      "size_bytes": 615
+    },
+    {
+      "local_path": "wmgym_5m_nogru.log",
+      "remote_path": "/home/rldoeswork/personal/wm_rl_eval2/runs/wmgym_5m_nogru.log",
+      "sha256": "7382e32be16b11002a62747a6f25edecf3321d74396467737038819b5083e3a3",
+      "size_bytes": 108019
+    },
+    {
+      "local_path": "ledger_wmgym.jsonl",
+      "remote_path": "/home/rldoeswork/personal/wm_rl_eval2/runs/ledger_wmgym.jsonl",
+      "sha256": "5286ad642d17d4cf873a5bbebaac2504b0cfff5794da0ccbc9ce7533d6b417f1",
+      "size_bytes": 9743
+    }
+  ],
+  "selected_native_evaluation": {
+    "path": "historical_native256_row.json",
+    "sha256": "42d46a973a02a76aab5c89d106819a42ba4026ca3a9336acea3173c5745d1b11",
+    "source_ledger": "ledger_wmgym.jsonl",
+    "source_line_1based": 4,
+    "policy_checkpoint_sha256": "6570703f8b3b244631d28bfd9410f95b56ce3625e39378d5bb0d321431960836",
+    "seed": 123,
+    "episodes": 256,
+    "return": 6.22,
+    "return_sem": 0.103,
+    "rates": {
+      "MAKE_WOOD_PICKAXE": 0.945,
+      "MAKE_WOOD_SWORD": 0.031,
+      "MAKE_STONE_PICKAXE": 0.004,
+      "MAKE_STONE_SWORD": 0.0
+    },
+    "rate_precision": "Rates rounded to 3 decimal places in the original ledger; raw per-episode achievement matrix is not present.",
+    "native_measurement": "Historical evaluator returns es.achievements from real Craftax-Classic-Pixels-v1; no result inferred from model frames or videos."
+  },
+  "policy_training": {
+    "initialization": "from scratch per saved ac_from=null config and initialization log",
+    "seed": 0,
+    "actual_imagined_steps": 4998400,
+    "final_iteration": 781,
+    "policy_params": 6092177,
+    "recurrent": false,
+    "conditioning": "none",
+    "source_freeze_limit": "Exact historical source snapshot and module-environment variables were not archived with this policy. Current source hashes below are preservation-time snapshots only.",
+    "reward_intervention_scope": "Historical config and log predate wm_once; no wm_once field is recorded. Task-specific wmonce policies are not included."
+  },
+  "world_model": {
+    "path": "/home/rldoeswork/personal/codex-wm-push-20260916/checkpoints/normuon_head_bridge_s0/model.npz",
+    "sha256": "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+    "identity_basis": "WM checkpoint rehashed during the preceding read-only MG audit; not copied into this policy preservation folder.",
+    "training_data_sha256_recorded_in_wm_metadata": "09f2cb41a38b0f34937a89c4122f6b25bbb3094e34a077b3a572504269d0a1b2",
+    "training_data_budget_recorded_in_wm_metadata": 500000,
+    "training_source_sha256_recorded_in_wm_metadata": "0cee51a6007fe8b3e732e9cfedf9c241693e2caf5df194da91b78c2e9822f9f9"
+  },
+  "current_reset_data": {
+    "path": "/home/rldoeswork/personal/tinywmcraft-research/data/train.npz",
+    "resolved_path": "/home/rldoeswork/personal/tinywmcraft-scratch-claude/data/train_disco_clean200k.npz",
+    "size_bytes": 2375773298,
+    "mtime_ns": 1781981611340819112,
+    "scope": "Current archive at the historical reset-data path; this does not prove immutability since training.",
+    "sha256": "536042593dffb63f2b1e4331de5fc84acbdbf87a954787094e35a8de1d85782e",
+    "verification": "Read-only sha256sum completed within a 45-second bound after initial provenance capture."
+  },
+  "current_sources": [
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/train_ppo_real.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/train_ppo_real.py",
+      "size_bytes": 9861,
+      "mtime_ns": 1789682979714692829,
+      "sha256": "fe11deb02d014a69b8f5a31b6ac025266ed03ac6ff37a44dc568ad50decea9f6"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/wm_gym.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/wm_gym.py",
+      "size_bytes": 4277,
+      "mtime_ns": 1789682979300692781,
+      "sha256": "a9c787d1ca02463e8c7df7ec35cc55e1a7a31e5ce93eedf2184b8bda58623dcd"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/wm_env2.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/wm_env2.py",
+      "size_bytes": 7432,
+      "mtime_ns": 1789663095000000000,
+      "sha256": "ee369385583d7cb3eab49e0899fc791632608c51a709c83df45844ba9017bc63"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/craftax_env.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/craftax_env.py",
+      "size_bytes": 3011,
+      "mtime_ns": 1789335426000000000,
+      "sha256": "38e333992872625a5a1883116ca741e9b2e6cba7761dd0b2c0f50675d2af9e43"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/evaluate.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/evaluate.py",
+      "size_bytes": 2502,
+      "mtime_ns": 1789341635000000000,
+      "sha256": "bcf331b94bea433cea2d287fd7ab47fc5f4b29a957530cc408c245bc9a3ad47b"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/agent.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/agent.py",
+      "size_bytes": 6466,
+      "mtime_ns": 1789667831808922858,
+      "sha256": "1bfeb69f0a6098959a409c4601e8a92219b1967f297b1e35beb96440edceb132"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/tinywm_module.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/tinywm_module.py",
+      "size_bytes": 930,
+      "mtime_ns": 1789607252000000000,
+      "sha256": "522d3d0c48ef80de87cd74409a9d46501edd854d598be1dc70db8bb7821ce0a1"
+    },
+    {
+      "path": "/home/rldoeswork/personal/codex-wm-push-20260916/recipes/model-51ffe8df/train.py",
+      "resolved_path": "/home/rldoeswork/personal/codex-wm-push-20260916/recipes/model-51ffe8df/train.py",
+      "size_bytes": 29568,
+      "mtime_ns": 1789584712000000000,
+      "sha256": "0cee51a6007fe8b3e732e9cfedf9c241693e2caf5df194da91b78c2e9822f9f9"
+    }
+  ],
+  "limits": [
+    "Historical 94.5% wooden-pickaxe success remains historical evidence, not a fresh corrected genuine-prefix result.",
+    "Current reset-data path resolves to a 200k archive with a different hash from the WM training archive; historical symlink immutability is not proven.",
+    "One policy training seed; 256 evaluation episodes do not establish training-seed uncertainty.",
+    "No historical source identity is inferred from current source hashes."
+  ]
+}

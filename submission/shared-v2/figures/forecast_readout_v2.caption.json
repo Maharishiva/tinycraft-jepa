@@ -1,0 +1,1647 @@
+{
+  "title": "Refitting changes forecast readout error across fitted encoders",
+  "caption": "Wall-position MAE at horizon eight in the prespecified current-wall-unrevealed evaluation cohort: 716 contexts (8.7% of 8,192 sampled starts) have a wall already present but its gap unrevealed, and continue without reset to a wall-present future. This is a survival-conditioned descriptive subset, not the full-cohort primary analysis. All three encoder seeds and both predefined train-only normalizations are shown. R\u2192R fits/evaluates a linear readout on real future encodings; R\u2192F transfers that real-feature readout to forecast features; F\u2192F fits/evaluates the same readout class on forecast features. Copy fits/evaluates on the current real latent without future actions. Hollow markers use the common current-training-latent scaler; filled markers use source/horizon-specific training scalers, retained unchanged during transfer. The dashed reference is the original training-mean wall-position predictor evaluated on this cohort, not a mean refit to the subset. The dash-dot line adds a separately labeled post-hoc interpretation check: the constant median wall position computed from the corresponding 1,509 TRAINING-cohort labels, with no model or feature-probe refit. Its evaluation MAE is 4.642 px; the training-cohort mean also achieves 4.769 px. Both outperform the seed-2 adapted forecast readout (6.164 px) and real-feature positive control (6.531 px). This independently verified check supplements rather than replaces the originally declared global-mean baseline. Whiskers use 2,000 evaluation-stream bootstrap draws, conditional on each fitted model and readout; they do not quantify model-training uncertainty. In seed 2, adaptation reduces MAE by 3.85 px [3.48,4.22] under per-source normalization and 3.89 [3.52,4.25] under common normalization. Its F\u2192F-minus-Copy interval includes zero in both analyses (-0.63 [-1.41,0.13] and -0.64 [-1.42,0.12], respectively). This reduction in MAE does not by itself establish wall tracking or information recovery: calibration to the selected subset can reduce error relative to the global training-mean baseline without tracking variation within the subset. It also does not establish superior forecasting relative to Copy. A separately labeled post-hoc interpretation audit finds seed-2 F\u2192F position correlation -0.175 in this slice; in the full wall-present cohort its correlation is +0.246 but RMSE is 18.65 px versus 13.49 px for the fixed training-mean baseline. Thus the displayed MAE reduction cannot certify reliable information recovery. Seeds 0 and 1 have much weaker real-feature positive controls. All other horizons and cohorts remain available in the source analysis. Supervised labels are used only for this frozen-model diagnostic and never enter model training, control inputs or reward.",
+  "source_sha256": {
+    "runs/revision/forecast/analysis/metrics.json": "2d1af3318e390ae3cdf2fd5cfeb9b2b0aa9a3bb2c31cbb9860d8e440f0bdc2c4",
+    "runs/revision/forecast/analysis/paired_contrasts.json": "b3fbb898c3dc1453170d52215019ab4eb65109d2d33ff80cc4c6722312f564e9",
+    "runs/revision/forecast/analysis/manifest.json": "b8419014ceaf1904996bc1133b0e5786bd4cf0562ac35c1cb789fa077eb35304",
+    "runs/revision/forecast/analysis/correlation_audit.json": "ec797910c7103aa21e3c6e99be04c071e124e8d18514c1ec26ba8f67fdf780d2",
+    "research/forecast_constant_baseline_audit.json": "c0cf920c2c7098e9c75a3ac80a6579673d0f370f2bc54530cf144b731f979397",
+    "research/forecast_constant_independent_audit.json": "a464015e770ed1791efdc66ac65251dab12e7ac35884a37012defaca726bd911",
+    "research/forecast_readout_protocol.md": "785beea911d5ed891ff49d7bb42d1403fc42b916ad2c59f93a32e1bb522540ae"
+  },
+  "selection": {
+    "task": "wall_position",
+    "horizon": 8,
+    "cohort": "current_wall_unrevealed",
+    "model_seeds": [
+      0,
+      1,
+      2
+    ],
+    "normalizations": [
+      "common",
+      "per_source"
+    ]
+  },
+  "records": [
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "none",
+      "trained_on": "train_mean",
+      "evaluated_on": "constant",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 14.237523580193418,
+          "ci95": [
+            13.847832657830294,
+            14.624137697387203
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 15.320181950107953,
+          "ci95": [
+            14.891532662210013,
+            15.740309211563243
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "real",
+      "evaluated_on": "real",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 11.655184973353863,
+          "ci95": [
+            11.199404544747038,
+            12.1463915183528
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 13.441756793134449,
+          "ci95": [
+            12.818675974985167,
+            14.119724820788063
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "real",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 13.791172498379256,
+          "ci95": [
+            13.34781780588821,
+            14.265587561622148
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 15.35654907126155,
+          "ci95": [
+            14.80783916942637,
+            15.902867419298762
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "forecast",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 13.989993962183512,
+          "ci95": [
+            13.496532326494838,
+            14.494890303313259
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 15.56279877893817,
+          "ci95": [
+            15.008160473349433,
+            16.124936889030348
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "copy",
+      "evaluated_on": "copy",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 10.770533906868216,
+          "ci95": [
+            10.154407028435509,
+            11.469113176244024
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 13.610835867882374,
+          "ci95": [
+            11.851100646977741,
+            16.098152570814207
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "real",
+      "evaluated_on": "real",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 11.372067651747825,
+          "ci95": [
+            10.90977836804302,
+            11.867972690209603
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 13.227757484105975,
+          "ci95": [
+            12.552837786482693,
+            13.987271687031658
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "real",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 13.768459361296292,
+          "ci95": [
+            13.32707170728289,
+            14.247068527987851
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 15.363711709719599,
+          "ci95": [
+            14.799486634001278,
+            15.94591556284056
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "forecast",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 13.994275065399082,
+          "ci95": [
+            13.500138138432364,
+            14.499592264687346
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 15.568515363739362,
+          "ci95": [
+            15.014716998561857,
+            16.133592976963627
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "copy",
+      "evaluated_on": "copy",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 10.770533906868216,
+          "ci95": [
+            10.154407028435509,
+            11.469113176244024
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 13.610835867882374,
+          "ci95": [
+            11.851100646977741,
+            16.098152570814207
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "none",
+      "trained_on": "train_mean",
+      "evaluated_on": "constant",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 14.237523580193418,
+          "ci95": [
+            13.847832657830294,
+            14.624137697387203
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 15.320181950107953,
+          "ci95": [
+            14.891532662210013,
+            15.740309211563243
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "real",
+      "evaluated_on": "real",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 13.001675209311466,
+          "ci95": [
+            12.40901862531834,
+            13.583020458331527
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 14.860883249205886,
+          "ci95": [
+            14.057579691601934,
+            15.762943069505031
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "real",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 14.213437866648482,
+          "ci95": [
+            13.398145029065718,
+            15.39713907268171
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 19.77221047976358,
+          "ci95": [
+            14.957374936003404,
+            26.910157327995933
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "forecast",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 13.932792703782379,
+          "ci95": [
+            13.475244719171364,
+            14.417478776270574
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 15.632365775979885,
+          "ci95": [
+            15.106172648339578,
+            16.16700646497391
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "copy",
+      "evaluated_on": "copy",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 11.276636825239692,
+          "ci95": [
+            10.666560515205365,
+            11.92209825276042
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 13.430343145727926,
+          "ci95": [
+            12.409742539585212,
+            14.572095731365819
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "real",
+      "evaluated_on": "real",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 12.815637518324,
+          "ci95": [
+            12.219575536834174,
+            13.397644293158413
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 14.700432932773051,
+          "ci95": [
+            13.883399861016061,
+            15.608087872199407
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "real",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 14.436695380125965,
+          "ci95": [
+            13.495475346962749,
+            15.882788659782465
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 22.048775734949178,
+          "ci95": [
+            15.045213574034047,
+            31.885139187564562
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "forecast",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 13.931998074262834,
+          "ci95": [
+            13.473946094123129,
+            14.416947843873107
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 15.632947793431235,
+          "ci95": [
+            15.106192498608074,
+            16.168090286320876
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "copy",
+      "evaluated_on": "copy",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 11.276636825239692,
+          "ci95": [
+            10.666560515205365,
+            11.92209825276042
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 13.430343145727926,
+          "ci95": [
+            12.409742539585212,
+            14.572095731365819
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "none",
+      "trained_on": "train_mean",
+      "evaluated_on": "constant",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 14.237523580193418,
+          "ci95": [
+            13.847832657830294,
+            14.624137697387203
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 15.320181950107953,
+          "ci95": [
+            14.891532662210013,
+            15.740309211563243
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "real",
+      "evaluated_on": "real",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 6.617590418158297,
+          "ci95": [
+            6.2098366479099045,
+            7.023274036716422
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 8.601059473738596,
+          "ci95": [
+            8.117627876237153,
+            9.058090927119993
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "real",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 10.0525150109686,
+          "ci95": [
+            9.476272732244553,
+            10.577635968146012
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 13.078512156145388,
+          "ci95": [
+            12.273159101075214,
+            13.797055192327472
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "forecast",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 6.159496561358761,
+          "ci95": [
+            5.739208194001534,
+            6.608500168912749
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 8.392829357259258,
+          "ci95": [
+            7.803241997846846,
+            8.977544965057563
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "trained_on": "copy",
+      "evaluated_on": "copy",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 6.794720843673668,
+          "ci95": [
+            6.117050167424157,
+            7.6296996548748695
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 12.89031041506252,
+          "ci95": [
+            9.221236317908744,
+            17.608668991450465
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "real",
+      "evaluated_on": "real",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 6.530858361979104,
+          "ci95": [
+            6.1220679032879906,
+            6.935824136578853
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 8.514305727722919,
+          "ci95": [
+            8.022581513913929,
+            8.983833677044702
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "real",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 10.01944600195525,
+          "ci95": [
+            9.44981279423505,
+            10.54349886850124
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 13.04595229905503,
+          "ci95": [
+            12.24577335649716,
+            13.753459291017277
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "forecast",
+      "evaluated_on": "forecast",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 6.164489773024061,
+          "ci95": [
+            5.741969191254248,
+            6.613578285965683
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 8.404281695992426,
+          "ci95": [
+            7.814637455002061,
+            8.988298186521268
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "trained_on": "copy",
+      "evaluated_on": "copy",
+      "nonempty_eval_streams": 100,
+      "metrics": {
+        "mae_px": {
+          "estimate": 6.794720843673668,
+          "ci95": [
+            6.117050167424157,
+            7.6296996548748695
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        },
+        "rmse_px": {
+          "estimate": 12.89031041506252,
+          "ci95": [
+            9.221236317908744,
+            17.608668991450465
+          ],
+          "valid_bootstrap_replicates": 2000,
+          "supporting_eval_streams": 100
+        }
+      }
+    }
+  ],
+  "paired_contrasts": [
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "contrast": "forecast_vs_real",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "real",
+        "real"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 2.334808988829648,
+        "ci95": [
+          2.0314264985760215,
+          2.608360546458865
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "contrast": "transfer_vs_adapted",
+      "metric": "mae_px",
+      "left": [
+        "real",
+        "forecast"
+      ],
+      "right": [
+        "forecast",
+        "forecast"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": -0.19882146380425603,
+        "ci95": [
+          -0.42587527581177786,
+          0.023420045600958082
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "contrast": "forecast_vs_copy",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "copy",
+        "copy"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 3.219460055315295,
+        "ci95": [
+          2.4808098531750606,
+          3.88218094219442
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "contrast": "forecast_vs_real",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "real",
+        "real"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 2.6222074136512568,
+        "ci95": [
+          2.3017770181889676,
+          2.9079932037830707
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "contrast": "transfer_vs_adapted",
+      "metric": "mae_px",
+      "left": [
+        "real",
+        "forecast"
+      ],
+      "right": [
+        "forecast",
+        "forecast"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": -0.22581570410278928,
+        "ci95": [
+          -0.45831164700763705,
+          0.003461517401047864
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 0,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "contrast": "forecast_vs_copy",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "copy",
+        "copy"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 3.2237411585308653,
+        "ci95": [
+          2.4874167915690175,
+          3.885293854024759
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "contrast": "forecast_vs_real",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "real",
+        "real"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 0.9311174944709126,
+        "ci95": [
+          0.47538668643256965,
+          1.2910177095241613
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "contrast": "transfer_vs_adapted",
+      "metric": "mae_px",
+      "left": [
+        "real",
+        "forecast"
+      ],
+      "right": [
+        "forecast",
+        "forecast"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 0.28064516286610264,
+        "ci95": [
+          -0.3980200210855072,
+          1.3905128020199091
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "contrast": "forecast_vs_copy",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "copy",
+        "copy"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 2.6561558785426875,
+        "ci95": [
+          2.086114087702512,
+          3.20594360731708
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "contrast": "forecast_vs_real",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "real",
+        "real"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 1.1163605559388348,
+        "ci95": [
+          0.6601847407524131,
+          1.4762736530076137
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "contrast": "transfer_vs_adapted",
+      "metric": "mae_px",
+      "left": [
+        "real",
+        "forecast"
+      ],
+      "right": [
+        "forecast",
+        "forecast"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 0.5046973058631306,
+        "ci95": [
+          -0.29553260144201077,
+          1.863087813823517
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 1,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "contrast": "forecast_vs_copy",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "copy",
+        "copy"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 2.6553612490231426,
+        "ci95": [
+          2.0863394116923666,
+          3.204827497793705
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "contrast": "forecast_vs_real",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "real",
+        "real"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": -0.45809385679953607,
+        "ci95": [
+          -0.7261121693108527,
+          -0.18308481513154137
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "contrast": "transfer_vs_adapted",
+      "metric": "mae_px",
+      "left": [
+        "real",
+        "forecast"
+      ],
+      "right": [
+        "forecast",
+        "forecast"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 3.893018449609839,
+        "ci95": [
+          3.5220181629371616,
+          4.254588472714601
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "common",
+      "contrast": "forecast_vs_copy",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "copy",
+        "copy"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": -0.6352242823149066,
+        "ci95": [
+          -1.4200215516059895,
+          0.11922723723141135
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "contrast": "forecast_vs_real",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "real",
+        "real"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": -0.36636858895504254,
+        "ci95": [
+          -0.6317684413403755,
+          -0.09489498241527626
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "contrast": "transfer_vs_adapted",
+      "metric": "mae_px",
+      "left": [
+        "real",
+        "forecast"
+      ],
+      "right": [
+        "forecast",
+        "forecast"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": 3.854956228931189,
+        "ci95": [
+          3.484291985175897,
+          4.216497609378365
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "model_seed": 2,
+      "horizon": 8,
+      "task": "wall_position",
+      "cohort": "current_wall_unrevealed",
+      "train_n": 6459,
+      "eval_n": 716,
+      "fraction_of_all_contexts": 0.08740234375,
+      "eval_streams_total": 100,
+      "normalization": "per_source",
+      "contrast": "forecast_vs_copy",
+      "metric": "mae_px",
+      "left": [
+        "forecast",
+        "forecast"
+      ],
+      "right": [
+        "copy",
+        "copy"
+      ],
+      "definition": "left minus right",
+      "lower_metric_is_better": true,
+      "difference": {
+        "estimate": -0.6302310706496064,
+        "ci95": [
+          -1.4148371723834934,
+          0.12615014161690036
+        ],
+        "valid_bootstrap_replicates": 2000
+      }
+    }
+  ],
+  "post_hoc_tracking_audit_source": "runs/revision/forecast/analysis/correlation_audit.json",
+  "post_hoc_training_cohort_constants": [
+    {
+      "model_seed": 0,
+      "train_n": 1509,
+      "eval_n": 716,
+      "train_mean": 29.433399602385688,
+      "train_median": 30.0,
+      "constant_mean_mae": 4.769072714550684,
+      "constant_median_mae": 4.64245810055866,
+      "probe_results": {
+        "common_h8_wall_position_real_to_real": {
+          "mae_px": 11.655184973353863,
+          "corr": 0.11118800830729178
+        },
+        "common_h8_wall_position_real_to_forecast": {
+          "mae_px": 13.791172498379256,
+          "corr": 0.10681507401252806
+        },
+        "common_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 13.989993962183512,
+          "corr": 0.07476043535248272
+        },
+        "common_h8_wall_position_copy_to_copy": {
+          "mae_px": 10.770533906868216,
+          "corr": 0.16458089794078837
+        },
+        "per_source_h8_wall_position_real_to_real": {
+          "mae_px": 11.372067651747825,
+          "corr": 0.11087357666907989
+        },
+        "per_source_h8_wall_position_real_to_forecast": {
+          "mae_px": 13.768459361296292,
+          "corr": 0.1060969050377715
+        },
+        "per_source_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 13.994275065399082,
+          "corr": 0.07435255564396462
+        },
+        "per_source_h8_wall_position_copy_to_copy": {
+          "mae_px": 10.770533906868216,
+          "corr": 0.16458089794078837
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "train_n": 1509,
+      "eval_n": 716,
+      "train_mean": 29.433399602385688,
+      "train_median": 30.0,
+      "constant_mean_mae": 4.769072714550684,
+      "constant_median_mae": 4.64245810055866,
+      "probe_results": {
+        "common_h8_wall_position_real_to_real": {
+          "mae_px": 13.001675209311466,
+          "corr": 0.07844143152742447
+        },
+        "common_h8_wall_position_real_to_forecast": {
+          "mae_px": 14.213437866648482,
+          "corr": 0.04372896348824154
+        },
+        "common_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 13.932792703782379,
+          "corr": 0.0228022421179222
+        },
+        "common_h8_wall_position_copy_to_copy": {
+          "mae_px": 11.276636825239692,
+          "corr": 0.1751733917857148
+        },
+        "per_source_h8_wall_position_real_to_real": {
+          "mae_px": 12.815637518324,
+          "corr": 0.07652440417938712
+        },
+        "per_source_h8_wall_position_real_to_forecast": {
+          "mae_px": 14.436695380125965,
+          "corr": 0.03988440992543253
+        },
+        "per_source_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 13.931998074262834,
+          "corr": 0.02279544765033039
+        },
+        "per_source_h8_wall_position_copy_to_copy": {
+          "mae_px": 11.276636825239692,
+          "corr": 0.1751733917857148
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "train_n": 1509,
+      "eval_n": 716,
+      "train_mean": 29.433399602385688,
+      "train_median": 30.0,
+      "constant_mean_mae": 4.769072714550684,
+      "constant_median_mae": 4.64245810055866,
+      "probe_results": {
+        "common_h8_wall_position_real_to_real": {
+          "mae_px": 6.617590418158297,
+          "corr": 0.10384326106366376
+        },
+        "common_h8_wall_position_real_to_forecast": {
+          "mae_px": 10.0525150109686,
+          "corr": -0.27415209136682545
+        },
+        "common_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 6.159496561358761,
+          "corr": -0.17785528744863977
+        },
+        "common_h8_wall_position_copy_to_copy": {
+          "mae_px": 6.794720843673668,
+          "corr": 0.2993170929607286
+        },
+        "per_source_h8_wall_position_real_to_real": {
+          "mae_px": 6.530858361979104,
+          "corr": 0.10377283278813924
+        },
+        "per_source_h8_wall_position_real_to_forecast": {
+          "mae_px": 10.01944600195525,
+          "corr": -0.2746309168363574
+        },
+        "per_source_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 6.164489773024061,
+          "corr": -0.1746435231844008
+        },
+        "per_source_h8_wall_position_copy_to_copy": {
+          "mae_px": 6.794720843673668,
+          "corr": 0.2993170929607286
+        }
+      }
+    }
+  ],
+  "uncertainty_scope": "evaluation streams conditional on each fitted model and readout",
+  "width_inches": 5.5,
+  "height_inches": 2.4,
+  "files": {
+    "svg": "forecast_readout_v2.svg",
+    "pdf": "forecast_readout_v2.pdf",
+    "png": "forecast_readout_v2.png"
+  }
+}

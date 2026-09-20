@@ -1,0 +1,17 @@
+# Six-fit last-only execution record
+
+The frozen scientific protocol is `research/last_only_protocol.md`. The separate queue `studies/revision/run_last_only_queue.py` executes only those six fits and their final readouts. It does not modify the original twelve-fit campaign. Campaign completion means six completed last-only fits and readouts; publication of an eighteen-model comparison additionally requires the independently implemented pairing and common-history audit.
+
+## Fixed scheduling decisions
+
+- Run worlds `gray_frame_still`, then `gray_frame_wind`, each with model seeds 0, 1, 2. Every fit uses the unchanged production CLI, 8,500 updates, native 512-coordinate representation, joint target gradients, and the last-position prediction loss. Save all seven registered checkpoints; read out only update 8,500.
+- Run on one exclusive available GPU (index 0 or 1) on the original archive host. Use `/home/rldoeswork/personal/tinywmcraft-slim/.venv/bin/python`, the exact interpreter used by the original target-gradient campaign; compare its recorded package and precision signatures after fitting. All gray archives stay in `/dev/shm/redcube`; no inter-VM data copy is part of this execution plan.
+- Create the shared full-history window pin before the first last-only timing fixture or scientific fit. Record its exact SHA-256, creation time, sampler, both evaluation archive identities, all artifact hashes, and all source/protocol hashes. The queue rejects an incomplete pin or mismatching sources.
+- Run one separate 500-update last-only timing fixture plus its fixed readout. Its artifacts are retained under `smoke/` and excluded from scientific endpoints. No evaluation score enters admission.
+- Estimate full fit time from the first and second 250-update timing chunks, preserving measured startup/compilation cost. Reserve `1.5 * (6 * (projected_fit_seconds + measured_readout_seconds) + 18 * 60) + 600` seconds for the campaign and common evaluation/delivery. Admit only if that total is strictly below the time remaining until `2026-09-20T07:41:00+00:00`. The 1,080-second common-audit reserve and 600-second delivery reserve are scheduling estimates, not reductions of scientific scope.
+- The queue refuses an existing output directory, acquires a host-local GPU advisory lock, and checks the selected device has no live compute process before each child. It hashes all four data archives before admission, after each child, and at completion; freezes all sources, protocol and pin artifacts; and verifies checkpoint/readout identities.
+- Every child runs in its own process group. Deadline or interruption terminates and reaps the entire group, including descendants. Any failure or partial result remains on disk and is reported; there is no automatic retry, seed replacement, checkpoint selection, latent scaling or objective search.
+
+## Approval boundary encountered
+
+On 2026-09-19 automatic approval review rejected a direct `scp -3` archive transfer between the two user-specified research VMs. No transfer occurred. The proposed safe fallback keeps the archives on their current host. A subsequent code-only SCP to that existing host was also rejected, because the reviewer requested trusted evidence of destination authorization for this payload. No code was copied by that command, and no alternate or indirect write was attempted. Remote staging/launch remains conditional on resolving that explicit approval block; local implementation and independent CPU review continue.

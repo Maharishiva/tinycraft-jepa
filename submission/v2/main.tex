@@ -1,0 +1,94 @@
+% V2 WORKING DRAFT: only completed evidence may enter results. See research/v2_outline.md.
+\documentclass{article}
+\usepackage{iclr2027_conference,times}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,multirow,array}
+\usepackage{graphicx,placeins}
+\usepackage{xcolor,colortbl}
+\usepackage{url,microtype,hyperref}
+\hypersetup{hidelinks}
+
+% The official ICLR style is unmodified. Color is confined to figures and tables.
+\definecolor{Navy}{HTML}{17324D}
+\definecolor{JEPA}{HTML}{CD663E}
+\definecolor{Real}{HTML}{087E83}
+\definecolor{Flow}{HTML}{7860A5}
+\newcommand{\inputtable}[1]{\input{tables/#1}}
+\newcommand{\paperfig}[2]{\IfFileExists{../shared-v2/figures/#1}{\includegraphics[width=#2\linewidth,clip]{../shared-v2/figures/#1}}{\fbox{\parbox[c][1.4in][c]{0.95\linewidth}{\centering Figure asset: #1}}}}
+\newif\ifpendingresults
+\pendingresultstrue
+\newcommand{\pendingresult}[1]{\ifpendingresults\par\noindent\fcolorbox{Navy!30}{Navy!4}{\parbox{0.94\linewidth}{\textbf{Internal draft: result pending.} #1}}\par\fi}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Nrm}{\mathcal{N}}
+\newcommand{\Lcal}{\mathcal{L}}
+
+\title{What Does a JEPA World Model Preserve?}
+\author{Anonymous authors\\Paper under double-blind review}
+
+\begin{document}
+\maketitle
+\lhead{Under review as a conference paper at ICLR 2027}
+\begin{abstract}
+Joint-embedding world models learn both which variables to retain and how to predict them. These
+choices can fail in different ways: predictable nuisance can displace useful state, and a correct
+mean future can omit information needed for a decision. We study these requirements in minimal
+redcube worlds, moving from deterministic goal-directed motion to noisy observations and stochastic
+dynamics. Two exact examples expose a limitation even under ideal prediction. A planner can rank
+actions incorrectly when it evaluates squared goal distance at the mean rather than averaging
+outcome costs; recursively applying an exact nonlinear conditional mean can also miss the true
+multi-step mean. A known Gaussian nuisance construction gives the corresponding representation-level
+failure. In a matched three-seed study, the ranking of background persistence reverses with dynamics:
+per-frame noise gives lower position error than persistent noise without wind ($0.115$ versus
+$0.764$ pixels), but much higher error with wind ($21.33$ versus $0.668$).
+The same latent model supports nearby goal-directed movement, while the unchanged
+short-horizon controller degrades sharply on distant visual goals. Exact finite-branch calculations demonstrate small
+mean-only action-ranking changes in two frozen encoders, without a demonstrated physical-cost
+benefit. The central distinction
+is between retaining the state a task needs and retaining the predictive information its decisions
+need.
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/mechanisms}
+\input{sections/worlds}
+\input{sections/redcube_cases}
+\input{sections/related}
+\input{sections/discussion}
+
+\subsubsection*{Reproducibility statement}
+The appendices specify model fitting, post-hoc supervision,
+evaluation protocols, and replication levels. The tables retain final-checkpoint outcomes rather
+than selecting intermediate peaks. The accompanying evidence manifest identifies the source
+artifacts used for each result; independent policy seeds are distinguished from independent model
+fits. Claims based on a single checkpoint are labeled throughout.
+
+\subsubsection*{Statement on the use of AI}
+Language models assisted with prose, code, plotting, proof checking, literature review, and
+adversarial manuscript review. The authors are responsible for all claims, experiments, and
+verification of the resulting text and artifacts.
+
+\clearpage
+\bibliography{references}
+\bibliographystyle{iclr2027_conference}
+\clearpage
+\appendix
+\input{sections/theory}
+\input{sections/appendix}
+\input{sections/historical_gate}
+\input{sections/matched_appendix}
+\input{sections/forecast_appendix}
+\input{sections/termination_appendix}
+\input{sections/redcube_goal_appendix}
+\input{sections/oracle_variance_appendix}
+\end{document}

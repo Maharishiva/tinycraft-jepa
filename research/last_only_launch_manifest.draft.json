@@ -1,0 +1,43 @@
+{
+  "protocol": "last_only_objective_v1",
+  "status": "draft_waiting_for_prospective_window_pin_and_remote_approval",
+  "planned_fits": 6,
+  "worlds": [
+    "gray_frame_still",
+    "gray_frame_wind"
+  ],
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "modes": [
+    "last_only"
+  ],
+  "steps": 8500,
+  "deadline_utc": "2026-09-20T07:41:00+00:00",
+  "source_sha256": {
+    "studies/revision/run_last_only_queue.py": "19ea6f5e5a22d9321443cb53dd11a6f51db7f1a818f8ac969deb0d893ed77913",
+    "studies/revision/last_only_objective.py": "b5316f8997cbbae56772520b0232d4f05c35be271a29b8f694d53ad650da64e1",
+    "studies/revision/last_only_probe.py": "868396f01a8b38c792ee3b13693313ba0b58ceb6e98039765f7b6b4d908f78b6",
+    "studies/revision/target_gradient.py": "4dc9280ea077e954096bc7968f3ab19031f82369124b4de62acf5e5e6a14d488",
+    "train.py": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b",
+    "probe.py": "110eff77f3dfb5fb3c7222caa58d85773b9bc8675cd95859d4f9705c171ea424",
+    "studies/redcube/env.py": "468212e57824968bbabb5363c897ea30492ce7dd53099add309af40ffe5e7b4e",
+    "studies/stoch/train_arms.sh": "78af91e4a61d43dc1611d3b8831f8bc43bbf2ec713a322eead9780846d070284",
+    "pyproject.toml": "6935eb8bfbe7fae342e6c18c30924c0dc94411dbef0b005abf708e4ff3b25a1c"
+  },
+  "data_sha256": {
+    "gray_frame_still/train.npz": "fceb10cbcdd8710c29d687b34475f119889709a6f3eb94a2cf1d6079f27aa882",
+    "gray_frame_still/eval.npz": "397c96e130f662e52f8be537eac09b0a32ce014e10ba9454432ba34bedb25e3d",
+    "gray_frame_wind/train.npz": "9aa4b0736a83f27f3da77a4c5c79715fadf57253f41df5d27bf240e6ab3bc8ab",
+    "gray_frame_wind/eval.npz": "0e2670a70285e85d5b32ade26d8a4ee78cf7d740c36d38f3198c55f0694575dc"
+  },
+  "protocol_sha256": "b26adb1c50406d9b9af4f07b9dbb347424800b93435e442b3bada1052c850125",
+  "window_pin_sha256": null,
+  "host": "multigpu-vm",
+  "data_root": "/dev/shm/redcube",
+  "remote_root": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919",
+  "gpu": "first exclusively released GPU after its prior registered jobs complete",
+  "python_executable": "/home/rldoeswork/personal/tinywmcraft-slim/.venv/bin/python"
+}

@@ -1,0 +1,15 @@
+\section{The gate: separate read-out transfer from control}
+\label{sec:controllers}
+
+\paragraph{A task with a delayed observation.}
+A vertical wall approaches a controlled cube in a $63\times63$ image. Its gap is sampled at spawn,
+at the top or bottom with equal probability, and becomes visible at a fixed reveal point. From the
+centre, either gap needs five vertical moves but is revealed only two steps before contact;
+retreating creates time to respond. Wall or border contact terminates with reward $-1$, all other
+rewards are zero, and episodes last at most 128 steps. Three grid JEPAs are independently fitted to
+500,000 uniform-random transitions, with a separate 25,000-transition evaluation archive.
+
+The gate supports two complementary interventions on the same frozen models. First, we refit a
+read-out on forecast latents to test transfer from encoded observations. Second, we replace learned
+training transitions and task signals with exact simulator outcomes under a common PPO protocol.
+These interventions respectively test access to forecast state and the controller-training baseline.

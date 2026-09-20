@@ -1,0 +1,327 @@
+{
+  "title": "Matched latent-policy training with learned and exact gate simulation",
+  "caption": "Final real-gate outcomes for all 45 budget-complete runs: three independently trained frozen encoders, five paired policy seeds per encoder, and three training arms. Learned uses learned latent dynamics and learned reward/continuation heads; Exact + heads uses true simulator transitions with frozen-encoder observations and learned reward/continuation heads; Exact + true uses true transitions and true reward/termination signals with the same frozen-latent MLP interface. Every policy receives 1,228,800 nominal training-transition slots and is evaluated on 256 paired episodes. Lines connect the same policy seed within each fixed encoder; short horizontal bars are within-encoder means. Top: walls passed per episode, the primary endpoint. Bottom: survival at the 128-step cap on an explicitly expanded 0-4% scale. No arm approaches the descriptive 50% discovery threshold; the exact-transition/true-signal arm has zero discoveries among 15 policies. Raw points are shown without confidence bars. In the accompanying analysis, contrast intervals resample the five paired policy seeds within each checkpoint, conditional on the fixed evaluation set; they are not model-family intervals. *The Exact + heads arm freezes true terminal states but retains learned continuation/reward on that absorbing extension, so its comparison is not a clean dynamics-only intervention. The result concerns this fixed latent MLP training pipeline and does not rank model families.",
+  "source_sha256": {
+    "output/revision/matched-analysis/publication.json": "d7675e2a35ce80ee81dedc3d1cb7b610493fba933abc82c6e2ca35c9d53acfe5",
+    "research/matched_final_audit.json": "ed0e290f5d39c19f61ac324c56003c234991ddf90612c9dbeb041dafbc0d5c96"
+  },
+  "artifact_selection": "final budget-complete artifacts only; complete validated three-arm seed blocks; no best-policy selection",
+  "max_survival_percent": 3.125,
+  "records": [
+    {
+      "model_seed": 0,
+      "model_sha256": "f81ef20ab6d6f032a85310fe9233e32749924839eb8bb55e4c0e6b1db2b880d2",
+      "policy_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "arms": {
+        "learned": {
+          "walls_passed": {
+            "mean": 0.28515625,
+            "sample_sd": 0.26509310256463436,
+            "min": 0.0,
+            "max": 0.55078125,
+            "values": [
+              0.0,
+              0.55078125,
+              0.46484375,
+              0.41015625,
+              0.0
+            ]
+          },
+          "survival": {
+            "mean": 0.009375,
+            "sample_sd": 0.01283724744152733,
+            "min": 0.0,
+            "max": 0.0234375,
+            "values": [
+              0.0,
+              0.0234375,
+              0.0,
+              0.0234375,
+              0.0
+            ]
+          }
+        },
+        "oracle_heads": {
+          "walls_passed": {
+            "mean": 0.2296875,
+            "sample_sd": 0.36564044104681065,
+            "min": 0.0,
+            "max": 0.87109375,
+            "values": [
+              0.1640625,
+              0.0,
+              0.11328125,
+              0.87109375,
+              0.0
+            ]
+          },
+          "survival": {
+            "mean": 0.00625,
+            "sample_sd": 0.009804609685946198,
+            "min": 0.0,
+            "max": 0.0234375,
+            "values": [
+              0.00390625,
+              0.0,
+              0.00390625,
+              0.0234375,
+              0.0
+            ]
+          }
+        },
+        "oracle_true": {
+          "walls_passed": {
+            "mean": 0.4515625,
+            "sample_sd": 0.09930637125126338,
+            "min": 0.29296875,
+            "max": 0.5625,
+            "values": [
+              0.29296875,
+              0.453125,
+              0.5625,
+              0.49609375,
+              0.453125
+            ]
+          },
+          "survival": {
+            "mean": 0.0046875,
+            "sample_sd": 0.0032682032286487327,
+            "min": 0.0,
+            "max": 0.0078125,
+            "values": [
+              0.00390625,
+              0.00390625,
+              0.0078125,
+              0.0078125,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "model_sha256": "7190a8c231596043b62b6750f807e1c9fa542287dc161b7ca72182f2e68e625a",
+      "policy_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "arms": {
+        "learned": {
+          "walls_passed": {
+            "mean": 0.2171875,
+            "sample_sd": 0.3562362935959782,
+            "min": 0.0,
+            "max": 0.8203125,
+            "values": [
+              0.8203125,
+              0.265625,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "survival": {
+            "mean": 0.0078125,
+            "sample_sd": 0.013531646934131853,
+            "min": 0.0,
+            "max": 0.03125,
+            "values": [
+              0.03125,
+              0.0078125,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "oracle_heads": {
+          "walls_passed": {
+            "mean": 0.06796875,
+            "sample_sd": 0.15198274534568884,
+            "min": 0.0,
+            "max": 0.33984375,
+            "values": [
+              0.0,
+              0.33984375,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "survival": {
+            "mean": 0.0015625,
+            "sample_sd": 0.003493856214843422,
+            "min": 0.0,
+            "max": 0.0078125,
+            "values": [
+              0.0,
+              0.0078125,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "oracle_true": {
+          "walls_passed": {
+            "mean": 0.340625,
+            "sample_sd": 0.21020198735568904,
+            "min": 0.046875,
+            "max": 0.6015625,
+            "values": [
+              0.4453125,
+              0.046875,
+              0.6015625,
+              0.37109375,
+              0.23828125
+            ]
+          },
+          "survival": {
+            "mean": 0.00390625,
+            "sample_sd": 0.00390625,
+            "min": 0.0,
+            "max": 0.0078125,
+            "values": [
+              0.0078125,
+              0.0,
+              0.0078125,
+              0.0,
+              0.00390625
+            ]
+          }
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "model_sha256": "8ab666aa5838fb81b11af99c5f700f8dd33373f757ef6109a07116df70f9f716",
+      "policy_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "arms": {
+        "learned": {
+          "walls_passed": {
+            "mean": 0.31953125,
+            "sample_sd": 0.19580796530617378,
+            "min": 0.0078125,
+            "max": 0.51953125,
+            "values": [
+              0.51953125,
+              0.32421875,
+              0.4453125,
+              0.30078125,
+              0.0078125
+            ]
+          },
+          "survival": {
+            "mean": 0.00390625,
+            "sample_sd": 0.0027621358640099515,
+            "min": 0.0,
+            "max": 0.0078125,
+            "values": [
+              0.00390625,
+              0.00390625,
+              0.0078125,
+              0.00390625,
+              0.0
+            ]
+          }
+        },
+        "oracle_heads": {
+          "walls_passed": {
+            "mean": 0.09609375,
+            "sample_sd": 0.11907977441942544,
+            "min": 0.0,
+            "max": 0.29296875,
+            "values": [
+              0.04296875,
+              0.0234375,
+              0.0,
+              0.12109375,
+              0.29296875
+            ]
+          },
+          "survival": {
+            "mean": 0.0,
+            "sample_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "oracle_true": {
+          "walls_passed": {
+            "mean": 0.54296875,
+            "sample_sd": 0.11938052179637598,
+            "min": 0.42578125,
+            "max": 0.73828125,
+            "values": [
+              0.42578125,
+              0.48046875,
+              0.73828125,
+              0.51171875,
+              0.55859375
+            ]
+          },
+          "survival": {
+            "mean": 0.0140625,
+            "sample_sd": 0.004453810254293508,
+            "min": 0.0078125,
+            "max": 0.01953125,
+            "values": [
+              0.01953125,
+              0.0078125,
+              0.015625,
+              0.01171875,
+              0.015625
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "arms": {
+    "learned": "Learned",
+    "oracle_heads": "Exact + heads*",
+    "oracle_true": "Exact + true"
+  },
+  "axis_limits": {
+    "walls_passed": [
+      0,
+      1
+    ],
+    "survival_percent": [
+      0,
+      4
+    ]
+  },
+  "pairing": "policy seed within fixed world-model checkpoint",
+  "uncertainty_scope": "paired-policy within-checkpoint contrasts in source; no confidence interval drawn",
+  "width_inches": 5.5,
+  "height_inches": 2.6,
+  "files": {
+    "svg": "matched_control_v2.svg",
+    "pdf": "matched_control_v2.pdf",
+    "png": "matched_control_v2.png"
+  }
+}

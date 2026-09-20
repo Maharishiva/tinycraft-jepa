@@ -1,0 +1,26 @@
+\begin{tabular}{lrrrrr}
+\toprule
+\rowcolor{Navy!8}
+Controller & Models & Policies & Walls & Survival (\%) & Discovery \\
+\midrule
+\rowcolor{JEPA!7}
+JEPA: original & 3 & 9 & $0.27\pm0.22$ & $0\pm1$ & 0/9 \\
+JEPA: mean of 8 & 3 & 9 & $0.26\pm0.30$ & $1\pm1$ & 0/9 \\
+\rowcolor{JEPA!7}
+JEPA: one sample & 3 & 9 & $0.26\pm0.32$ & $1\pm1$ & 0/9 \\
+\midrule
+\rowcolor{Flow!7}
+Flow: mean of 8 & 1 & 3 & $0.88\pm0.14$ & $3\pm1$ & 0/3 \\
+Flow: one sample & 1 & 6 & $1.45\pm1.23$ & $19\pm39$ & 1/6 \\
+\midrule
+Random & -- & -- & 0.06 & 0 & -- \\
+Alternating & -- & -- & 0.02 & 0 & -- \\
+\midrule
+\rowcolor{Real!7}
+Real pixels: CNN & -- & 3 & $2.91\pm1.65$ & $65\pm52$ & 2/3 \\
+Real pixels: MLP & -- & 3 & $0.91\pm0.08$ & $4\pm2$ & 0/3 \\
+\rowcolor{Real!7}
+Real JEPA: MLP & 3 & 9 & $0.94\pm0.04$ & $4\pm1$ & 0/9 \\
+Real decoded: CNN & 3 & 9 & $1.57\pm1.26$ & $22\pm37$ & 2/9 \\
+\bottomrule
+\end{tabular}

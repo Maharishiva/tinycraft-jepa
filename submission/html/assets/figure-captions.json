@@ -1,0 +1,758 @@
+{
+  "generator": "studies/revision/figures.py",
+  "source_sha256": {
+    "runs/stoch/summary.json": "4ea94eced6a969054a998982c21c52577cf3012e08a0f9a0219338a8e85ec72f",
+    "runs/stoch/gate/latent_check.npz": "e452fe6478af4f984ce31ca932650509d1736bcad4d7cdf4888a7f73245ec7bc"
+  },
+  "palette": {
+    "ink": "#17324d",
+    "jepa": "#cd663e",
+    "simulator": "#087e83",
+    "flow": "#7860a5"
+  },
+  "figures": {
+    "rollouts": {
+      "title": "Observation retention and open-loop prediction are distinct tests",
+      "caption": "The same observed pre-reveal context (saved context 2, JEPA model seed 0) and recorded eight-action sequence are used in every row. The context column repeats the last observed RGB frame. Encoded future decodes the JEPA encoding of each true future observation; it is not a prediction. JEPA rollout feeds predicted latents back to the original predictor. Flow shows one stochastic pixel-model rollout. Frames are unmodified RGB arrays with nearest-neighbor display. The frozen decoder is an auxiliary diagnostic and its compute is outside world-model training budgets. This metadata-selected context is an illustration; aggregate evidence uses 64 survival-selected contexts per model seed, with no terminal event in the observed and recorded-future window.",
+      "source": "runs/stoch/gate/latent_check.npz",
+      "context_index": 2,
+      "array_keys": [
+        "context",
+        "recorded",
+        "grid_recorded_future_encoded",
+        "grid_deterministic",
+        "flow_sample"
+      ],
+      "rgb_transform": "none",
+      "interpolation": "nearest",
+      "selection_rule": "first stored context with wall_x=45, selected by environment metadata before inspecting rollout appearance; first predicted frame remains unrevealed",
+      "width_inches": 5.5,
+      "height_inches": 2.555,
+      "files": {
+        "svg": "rollouts.svg",
+        "pdf": "rollouts.pdf",
+        "png": "rollouts.png"
+      }
+    },
+    "rollouts_full": {
+      "title": "Observation retention and open-loop prediction are distinct tests",
+      "caption": "The same observed pre-reveal context (saved context 0, JEPA model seed 0) and recorded eight-action sequence are used in every row. The context column repeats the last observed RGB frame. Encoded future decodes the JEPA encoding of each true future observation; it is not a prediction. JEPA rollout feeds predicted latents back to the original predictor. Flow shows one stochastic pixel-model rollout. Frames are unmodified RGB arrays with nearest-neighbor display. The frozen decoder is an auxiliary diagnostic and its compute is outside world-model training budgets. This metadata-selected context is an illustration; aggregate evidence uses 64 survival-selected contexts per model seed, with no terminal event in the observed and recorded-future window. Counterfactual changes only the gap side; head-sample and mean-of-eight rows are distinct residual-head sampling operators.",
+      "source": "runs/stoch/gate/latent_check.npz",
+      "context_index": 0,
+      "array_keys": [
+        "context",
+        "recorded",
+        "counterfactual",
+        "grid_recorded_future_encoded",
+        "grid_deterministic",
+        "grid_sample",
+        "grid_mean_of_8",
+        "flow_sample",
+        "flow_mean_of_8"
+      ],
+      "rgb_transform": "none",
+      "interpolation": "nearest",
+      "selection_rule": "first stored context, index 0; no outcome-based selection",
+      "width_inches": 5.5,
+      "height_inches": 4.3950000000000005,
+      "files": {
+        "svg": "rollouts_full.svg",
+        "pdf": "rollouts_full.pdf",
+        "png": "rollouts_full.png"
+      }
+    },
+    "control_by_seed": {
+      "title": "Policy outcomes by world-model seed and rollout operator",
+      "caption": "Final walls passed per episode in the real gate. Each orange panel is a separately trained JEPA world-model seed; three policy seeds are shown for each operator. Orig. uses the original deterministic predictor; Draw samples its separately trained residual head; Mean8 averages eight head draws. Flow uses one world-model checkpoint, with six sampled-rollout policies and three mean-of-eight policies. Each dot is a policy's final evaluation over 256 episodes. Horizontal bars summarize policies within a model/operator cell; no pooled standard error or inference over world-model seeds is shown. Dashed line is random actions. All trained-model policies receive 1,228,800 imagined transitions. These comparisons do not isolate dynamics from reward heads, observation interfaces, or optimization.",
+      "source": "runs/stoch/summary.json",
+      "json_paths": [
+        "gate.grid",
+        "gate.flow",
+        "gate.baselines.random"
+      ],
+      "metric": "final.walls_passed",
+      "records": [
+        {
+          "model": "grid_jepa",
+          "model_seed": 0,
+          "operator": "det",
+          "runs": [
+            {
+              "key": "m0_det_p0",
+              "value": 0.04296875
+            },
+            {
+              "key": "m0_det_p1",
+              "value": 0.25
+            },
+            {
+              "key": "m0_det_p2",
+              "value": 0.6015625
+            }
+          ]
+        },
+        {
+          "model": "grid_jepa",
+          "model_seed": 0,
+          "operator": "samp",
+          "runs": [
+            {
+              "key": "m0_samp_p0",
+              "value": 0.66015625
+            },
+            {
+              "key": "m0_samp_p1",
+              "value": 0.171875
+            },
+            {
+              "key": "m0_samp_p2",
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "model": "grid_jepa",
+          "model_seed": 0,
+          "operator": "mean8",
+          "runs": [
+            {
+              "key": "m0_mean8_p0",
+              "value": 0.90625
+            },
+            {
+              "key": "m0_mean8_p1",
+              "value": 0.01953125
+            },
+            {
+              "key": "m0_mean8_p2",
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "model": "grid_jepa",
+          "model_seed": 1,
+          "operator": "det",
+          "runs": [
+            {
+              "key": "m1_det_p0",
+              "value": 0.0
+            },
+            {
+              "key": "m1_det_p1",
+              "value": 0.2578125
+            },
+            {
+              "key": "m1_det_p2",
+              "value": 0.58984375
+            }
+          ]
+        },
+        {
+          "model": "grid_jepa",
+          "model_seed": 1,
+          "operator": "samp",
+          "runs": [
+            {
+              "key": "m1_samp_p0",
+              "value": 0.0234375
+            },
+            {
+              "key": "m1_samp_p1",
+              "value": 0.0234375
+            },
+            {
+              "key": "m1_samp_p2",
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "model": "grid_jepa",
+          "model_seed": 1,
+          "operator": "mean8",
+          "runs": [
+            {
+              "key": "m1_mean8_p0",
+              "value": 0.42578125
+            },
+            {
+              "key": "m1_mean8_p1",
+              "value": 0.24609375
+            },
+            {
+              "key": "m1_mean8_p2",
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "model": "grid_jepa",
+          "model_seed": 2,
+          "operator": "det",
+          "runs": [
+            {
+              "key": "m2_det_p0",
+              "value": 0.1015625
+            },
+            {
+              "key": "m2_det_p1",
+              "value": 0.34375
+            },
+            {
+              "key": "m2_det_p2",
+              "value": 0.265625
+            }
+          ]
+        },
+        {
+          "model": "grid_jepa",
+          "model_seed": 2,
+          "operator": "samp",
+          "runs": [
+            {
+              "key": "m2_samp_p0",
+              "value": 0.19921875
+            },
+            {
+              "key": "m2_samp_p1",
+              "value": 0.890625
+            },
+            {
+              "key": "m2_samp_p2",
+              "value": 0.3828125
+            }
+          ]
+        },
+        {
+          "model": "grid_jepa",
+          "model_seed": 2,
+          "operator": "mean8",
+          "runs": [
+            {
+              "key": "m2_mean8_p0",
+              "value": 0.16796875
+            },
+            {
+              "key": "m2_mean8_p1",
+              "value": 0.12890625
+            },
+            {
+              "key": "m2_mean8_p2",
+              "value": 0.46484375
+            }
+          ]
+        },
+        {
+          "model": "flow",
+          "model_seed": 0,
+          "operator": "samp",
+          "runs": [
+            {
+              "key": "samp_p0",
+              "value": 3.9453125
+            },
+            {
+              "key": "samp_p1",
+              "value": 0.95703125
+            },
+            {
+              "key": "samp_p2",
+              "value": 0.71875
+            },
+            {
+              "key": "samp_p3",
+              "value": 0.96875
+            },
+            {
+              "key": "samp_p4",
+              "value": 1.18359375
+            },
+            {
+              "key": "samp_p5",
+              "value": 0.953125
+            }
+          ]
+        },
+        {
+          "model": "flow",
+          "model_seed": 0,
+          "operator": "mean8",
+          "runs": [
+            {
+              "key": "mean8_p0",
+              "value": 1.01953125
+            },
+            {
+              "key": "mean8_p1",
+              "value": 0.88671875
+            },
+            {
+              "key": "mean8_p2",
+              "value": 0.7421875
+            }
+          ]
+        }
+      ],
+      "width_inches": 5.5,
+      "height_inches": 2.85,
+      "files": {
+        "svg": "control_by_seed.svg",
+        "pdf": "control_by_seed.pdf",
+        "png": "control_by_seed.png"
+      }
+    },
+    "representation_by_seed": {
+      "title": "Direct and decoded latent interfaces under real dynamics",
+      "caption": "Final survival at the 128-step cap, evaluated on 256 episodes per policy after 1,499,136 real environment transitions. Left: MLP policies consume frozen JEPA latents, with a true-pixel MLP reference. Right: CNN policies consume a frozen auxiliary decoder's images, with a true-pixel CNN reference. The three encoder seeds remain separate, with three policy seeds each. Decoder training is outside the world-model budget; decoding tests accessibility through a changed interface, not a compute-matched repair. The dashed 50% threshold is descriptive. No confidence interval is inferred from the policy runs, and the MLP and CNN panels are not an architecture-matched comparison.",
+      "source": "runs/stoch/summary.json",
+      "json_paths": [
+        "gate.real_latent",
+        "gate.real_mlp",
+        "gate.real_decoded",
+        "gate.real_seeds"
+      ],
+      "metric": "100 * final.survival",
+      "records": [
+        {
+          "group": "real_latent",
+          "model_seed": 0,
+          "runs": [
+            {
+              "key": "m0_p0",
+              "value": 3.515625
+            },
+            {
+              "key": "m0_p1",
+              "value": 3.90625
+            },
+            {
+              "key": "m0_p2",
+              "value": 2.34375
+            }
+          ]
+        },
+        {
+          "group": "real_latent",
+          "model_seed": 1,
+          "runs": [
+            {
+              "key": "m1_p0",
+              "value": 5.078125
+            },
+            {
+              "key": "m1_p1",
+              "value": 5.46875
+            },
+            {
+              "key": "m1_p2",
+              "value": 2.34375
+            }
+          ]
+        },
+        {
+          "group": "real_latent",
+          "model_seed": 2,
+          "runs": [
+            {
+              "key": "m2_p0",
+              "value": 5.078125
+            },
+            {
+              "key": "m2_p1",
+              "value": 4.6875
+            },
+            {
+              "key": "m2_p2",
+              "value": 2.34375
+            }
+          ]
+        },
+        {
+          "group": "real_mlp",
+          "model_seed": null,
+          "runs": [
+            {
+              "key": "p0",
+              "value": 3.515625
+            },
+            {
+              "key": "p1",
+              "value": 5.46875
+            },
+            {
+              "key": "p2",
+              "value": 2.34375
+            }
+          ]
+        },
+        {
+          "group": "real_decoded",
+          "model_seed": 0,
+          "runs": [
+            {
+              "key": "m0_p0",
+              "value": 4.296875
+            },
+            {
+              "key": "m0_p1",
+              "value": 1.5625
+            },
+            {
+              "key": "m0_p2",
+              "value": 1.953125
+            }
+          ]
+        },
+        {
+          "group": "real_decoded",
+          "model_seed": 1,
+          "runs": [
+            {
+              "key": "m1_p0",
+              "value": 96.09375
+            },
+            {
+              "key": "m1_p1",
+              "value": 78.90625
+            },
+            {
+              "key": "m1_p2",
+              "value": 2.34375
+            }
+          ]
+        },
+        {
+          "group": "real_decoded",
+          "model_seed": 2,
+          "runs": [
+            {
+              "key": "m2_p0",
+              "value": 3.515625
+            },
+            {
+              "key": "m2_p1",
+              "value": 6.640625
+            },
+            {
+              "key": "m2_p2",
+              "value": 2.34375
+            }
+          ]
+        },
+        {
+          "group": "real_seeds",
+          "model_seed": null,
+          "runs": [
+            {
+              "key": "real",
+              "value": 91.015625
+            },
+            {
+              "key": "real_s1",
+              "value": 5.46875
+            },
+            {
+              "key": "real_s2",
+              "value": 99.21875
+            }
+          ]
+        }
+      ],
+      "width_inches": 5.5,
+      "height_inches": 3.0,
+      "files": {
+        "svg": "representation_by_seed.svg",
+        "pdf": "representation_by_seed.pdf",
+        "png": "representation_by_seed.png"
+      }
+    },
+    "geometry_by_seed": {
+      "title": "One-step prediction residual versus encoded obstacle contrast",
+      "caption": "For each of three independently trained JEPA model seeds, means across 64 reconstructed pre-reveal, survival-selected contexts compare total teacher-forced one-step prediction error with the squared latent distance between the recorded future and a matched future with the wall removed. Distances sum over latent coordinates. Each later one-step prediction is supplied the true context history, so these curves are not open-loop rollout errors. The wall-removal contrast is not a causal attribution of the total residual. Only 40 of the 64 contexts remain unrevealed at the first future step; selection requires no terminal in the observed and recorded-future window. Context-level errors were not retained in the aggregate summary, so no uncertainty band is fabricated. All eight discrete steps are shown; lines connect measurements without smoothing.",
+      "source": "runs/stoch/summary.json",
+      "json_paths": [
+        "gate.latent_checks.s0.grid",
+        "gate.latent_checks.s1.grid",
+        "gate.latent_checks.s2.grid"
+      ],
+      "records": [
+        {
+          "model_seed": 0,
+          "one_step_residual_sq": [
+            0.14476522034939426,
+            0.14807118044217168,
+            0.15228420145790378,
+            0.1668136093473216,
+            0.20004728472538952,
+            0.256986738843413,
+            0.19767949108631616,
+            0.24854104714790196
+          ],
+          "wall_amplitude_sq": [
+            0.035278494801990634,
+            0.03722624008491067,
+            0.04101855682434581,
+            0.05810534290321012,
+            0.0714458155749447,
+            0.09842026917925373,
+            0.0670504219916602,
+            0.12376559742460302
+          ]
+        },
+        {
+          "model_seed": 1,
+          "one_step_residual_sq": [
+            0.12957629838557325,
+            0.14035455546718142,
+            0.1509643907937838,
+            0.16780243024307023,
+            0.2440507123916484,
+            0.2747667592582367,
+            0.24240024109621788,
+            0.22774819614779826
+          ],
+          "wall_amplitude_sq": [
+            0.028494893427545864,
+            0.04066627816993043,
+            0.03397330410869742,
+            0.05343369532608598,
+            0.12903029790268786,
+            0.13286913852953394,
+            0.09904146248968307,
+            0.082123505277288
+          ]
+        },
+        {
+          "model_seed": 2,
+          "one_step_residual_sq": [
+            0.1561280092165312,
+            0.14261807909393537,
+            0.16526468641660672,
+            0.19744944485898658,
+            0.3266322263255809,
+            0.3560047090378535,
+            0.2761720108555066,
+            0.2793793909363895
+          ],
+          "wall_amplitude_sq": [
+            0.08750730574559198,
+            0.09017168300269589,
+            0.1197328826257949,
+            0.13365626373577275,
+            0.26271137746278755,
+            0.28522142489532604,
+            0.19991486892620666,
+            0.19307080771493007
+          ]
+        }
+      ],
+      "width_inches": 5.5,
+      "height_inches": 2.65,
+      "files": {
+        "svg": "geometry_by_seed.svg",
+        "pdf": "geometry_by_seed.pdf",
+        "png": "geometry_by_seed.png"
+      }
+    },
+    "evidence_staircase": {
+      "title": "Experimental scope: rich environment, diagnostic obstacle, controlled nuisances",
+      "caption": "Protocol schematic, not a measured performance plot or difficulty ranking. Craftax separates visual goal reaching from reward-based planning; the gate separates information retention, prediction and control around a late-revealed gap; the cube crosses absent, frame-wise and episode-fixed visual noise with still or wind dynamics under survival reward. The current gate uses a white wall, black background and no wind. The six nuisance-cube conditions have no wall. The diagram does not imply that the full nuisance grid was evaluated in the gate.",
+      "source": [
+        "studies/stoch/env.py",
+        "studies/redcube/env.py",
+        "runs/stoch/summary.json"
+      ],
+      "semantic_schematic": true,
+      "width_inches": 5.5,
+      "height_inches": 2.7,
+      "files": {
+        "svg": "evidence_staircase.svg",
+        "pdf": "evidence_staircase.pdf",
+        "png": "evidence_staircase.png"
+      }
+    },
+    "craftax_summary": {
+      "title": "Craftax visual goal reaching versus reward planning",
+      "caption": "Left: fraction matching the goal position in a single six-step open-loop action plan across 128 saved states, with goals generated by random six-action sequences; the simulator reference executes the known recorded action sequence. Right: mean 100-step real-environment return across 128 states with a six-step planning horizon. Random, myopic, greedy and MPC are distinct action-selection procedures. Both panels use one JEPA model checkpoint and are descriptive, without model-seed confidence intervals. They test different objectives and should not be interpreted as a single success metric. The goal result is local recorded-goal reaching, not full-game success.",
+      "source": "runs/stoch/summary.json",
+      "json_paths": [
+        "craftax.craftax",
+        "craftax.reward_mpc"
+      ],
+      "data": {
+        "goal_reached_percent": {
+          "Random": 18.75,
+          "JEPA plan": 94.53125,
+          "Ref. replay": 100.0
+        },
+        "real_return": {
+          "Random": 1.4453125,
+          "Myopic": 0.78125,
+          "Greedy": 0.9437500238418579,
+          "MPC": 0.4734375476837158
+        }
+      },
+      "width_inches": 5.5,
+      "height_inches": 2.85,
+      "files": {
+        "svg": "craftax_summary.svg",
+        "pdf": "craftax_summary.pdf",
+        "png": "craftax_summary.png"
+      }
+    },
+    "nuisance_cube": {
+      "title": "Single-run survival across the six nuisance-cube conditions",
+      "caption": "Descriptive final survival percentages over 256 evaluation episodes per cell, with one learned-model/policy run per condition. Global and Grid JEPA policies train in their latent models; Flow pixels and Flow latent denote different policy observation interfaces inside the pixel-generative model. Real CNN trains in the simulator. Center rule is a nonlearned position-feedback baseline, not a learned world model. Imagined-policy training uses 1,228,800 transitions; the real CNN uses 1,499,136 real transitions. The no-wall cube crosses no noise, frame-wise gray noise and episode-fixed gray noise with still or wind dynamics. A state-blind alternating policy achieves 100% survival in the archived edge-start checks of all three still conditions (runs/stoch/*still/baselines_edge.json). Thus survival alone cannot certify use of visual feedback. These single-run cells support a sensitivity audit, not model-family rankings with training-seed uncertainty. The color scale is fixed from 0% to 100%.",
+      "source": "runs/stoch/summary.json",
+      "worlds": [
+        "off_still",
+        "off_wind",
+        "gray_frame_still",
+        "gray_frame_wind",
+        "gray_episode_still",
+        "gray_episode_wind"
+      ],
+      "columns": [
+        "Global\nJEPA",
+        "Grid\nJEPA",
+        "Flow\npixels",
+        "Flow\nlatent",
+        "Real\nCNN",
+        "Center\nrule"
+      ],
+      "values_percent": [
+        [
+          100.0,
+          100.0,
+          100.0,
+          100.0,
+          100.0,
+          100.0
+        ],
+        [
+          99.21875,
+          93.75,
+          93.75,
+          96.484375,
+          98.4375,
+          99.21875
+        ],
+        [
+          0.0,
+          100.0,
+          98.046875,
+          98.828125,
+          100.0,
+          100.0
+        ],
+        [
+          0.0,
+          0.0,
+          97.265625,
+          0.78125,
+          95.703125,
+          99.21875
+        ],
+        [
+          0.0,
+          1.953125,
+          98.046875,
+          51.171875,
+          100.0,
+          100.0
+        ],
+        [
+          0.0,
+          0.0,
+          94.53125,
+          0.78125,
+          78.125,
+          99.21875
+        ]
+      ],
+      "json_paths": [
+        "off_still.ppo",
+        "off_wind.ppo",
+        "gray_frame_still.ppo",
+        "gray_frame_wind.ppo",
+        "gray_episode_still.ppo",
+        "gray_episode_wind.ppo",
+        "off_still.baselines.centre",
+        "off_wind.baselines.centre",
+        "gray_frame_still.baselines.centre",
+        "gray_frame_wind.baselines.centre",
+        "gray_episode_still.baselines.centre",
+        "gray_episode_wind.baselines.centre"
+      ],
+      "width_inches": 5.5,
+      "height_inches": 3.35,
+      "files": {
+        "svg": "nuisance_cube.svg",
+        "pdf": "nuisance_cube.pdf",
+        "png": "nuisance_cube.png"
+      }
+    },
+    "readout_by_seed": {
+      "title": "Frozen-latent position readout under gray visual noise and wind",
+      "caption": "Held-out L1 position error of the trained probe on true-observation latents for three independently trained 512-dimensional grid JEPA seeds per condition. Every model uses the same 500,000-transition data-size and 8,500-update training schedule. Gray noise is redrawn per frame or fixed within each episode, crossed with still or hidden-wind dynamics. Each point is a model-seed result; horizontal bars and labels show the three-model means. Results are taken only from the allarms/bench.json benchmark family. This is a failure of the tested readout, not proof of information-theoretic loss. The failing frame-noise plus wind condition does not have near-zero prediction loss, so it must not be presented as an empirical zero-loss optimum.",
+      "source": [
+        "runs/redcube/gray_frame_still/allarms/bench.json",
+        "runs/redcube/gray_frame_wind/allarms/bench.json",
+        "runs/redcube/gray_episode_still/allarms/bench.json",
+        "runs/redcube/gray_episode_wind/allarms/bench.json"
+      ],
+      "source_sha256": {
+        "runs/redcube/gray_frame_still/allarms/bench.json": "f76d71c75f7d164db1c16f0faacdc0bbced90f216ab1e02ed5f1b9e333a3ecc4",
+        "runs/redcube/gray_frame_wind/allarms/bench.json": "5eb51c600790a2f7e66d609d3038267229ef9005c1e044af63f46b6bf6f78e8d",
+        "runs/redcube/gray_episode_still/allarms/bench.json": "4a93e75e471b30a75be04179b421dd5280c457edc7970dd5bb1cecda200a575c",
+        "runs/redcube/gray_episode_wind/allarms/bench.json": "2979e57ff03c1e6d19160746525e58342546e619b5120bcc2f0beb982b17362d"
+      },
+      "json_paths": [
+        "probe_error.tile_factored.heldout",
+        "probe_error.tile_factored_s1.heldout",
+        "probe_error.tile_factored_s2.heldout"
+      ],
+      "worlds": [
+        "gray_frame_still",
+        "gray_frame_wind",
+        "gray_episode_still",
+        "gray_episode_wind"
+      ],
+      "model_arms": [
+        "tile_factored",
+        "tile_factored_s1",
+        "tile_factored_s2"
+      ],
+      "values_l1_pixels": [
+        [
+          0.11490543931722641,
+          0.12676583230495453,
+          0.10372959077358246
+        ],
+        [
+          21.353500366210938,
+          21.37063217163086,
+          21.26430320739746
+        ],
+        [
+          0.7147667407989502,
+          0.8413898944854736,
+          0.7348926663398743
+        ],
+        [
+          0.7165982723236084,
+          0.6670109629631042,
+          0.6193151473999023
+        ]
+      ],
+      "width_inches": 5.5,
+      "height_inches": 2.9,
+      "files": {
+        "svg": "readout_by_seed.svg",
+        "pdf": "readout_by_seed.pdf",
+        "png": "readout_by_seed.png"
+      }
+    }
+  }
+}

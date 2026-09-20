@@ -1,0 +1,52 @@
+{
+  "status": "PASS_WITH_RECORDED_FLOW_NUMERICAL_DIFFERENCES",
+  "case": "gate_s1",
+  "seconds": 84.4,
+  "packet_sha256": "856139a0492aa3aa273370f3822246fd0d5b2dc3acb8e5bb4c40215e791235fa",
+  "jepa_checkpoint_sha256": "7190a8c231596043b62b6750f807e1c9fa542287dc161b7ca72182f2e68e625a",
+  "flow_checkpoint_sha256": "72b829ea8cfb5f4bf21f3b8c0ce8ffe53f34dd5aa67bad001bb8d4cd0bab27e9",
+  "input_packet_identical_to_gate_seed0": true,
+  "non_jepa_arrays_identical_to_gate_seed0": [
+    "context",
+    "real_future",
+    "flow_context",
+    "flow_encoded_real",
+    "flow_real_latents",
+    "flow_sample_key",
+    "flow_rollout_key",
+    "ids",
+    "frame_times",
+    "outgoing_actions",
+    "incoming_actions",
+    "future_actions",
+    "reset_before_frame",
+    "reset_after_frame",
+    "valid_mask",
+    "pos",
+    "wind",
+    "episode",
+    "wall_x",
+    "gap"
+  ],
+  "numerical_differences_against_gate_seed0": {
+    "flow_future": {
+      "max_abs_difference": 1.0,
+      "mean_abs_difference": 6.9986842473614964e-06,
+      "different_values": 4,
+      "total_values": 571536
+    },
+    "flow_predicted_latents": {
+      "max_abs_difference": 0.03125,
+      "mean_abs_difference": 0.0009988103767758123,
+      "different_values": 6040,
+      "total_values": 24576
+    }
+  },
+  "array_hashes_verified": 27,
+  "exact_pngs": 264,
+  "context_parity": 0.0,
+  "jepa_seed": 1,
+  "flow_seed": 0,
+  "flow_visual_nfe": 8,
+  "interpretation": "Flow model/input/PRNG identity matches. Two independent GPU executions are not bitwise identical; no causal source of the small numerical variation was established. No output arrays were replaced or modified."
+}

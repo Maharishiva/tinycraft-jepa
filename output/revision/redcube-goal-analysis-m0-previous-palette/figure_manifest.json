@@ -1,0 +1,1356 @@
+{
+  "contract": {
+    "protocol": "redcube_goal_control_v1",
+    "required_files": [
+      "summary.json",
+      "manifest.json",
+      "cohort.npz",
+      "episodes.npz",
+      "visual_packet.npz"
+    ],
+    "visual_episode_indices": [
+      0,
+      1,
+      2
+    ],
+    "display_policies": [
+      "random",
+      "jepa_h3",
+      "oracle"
+    ],
+    "success_policies": [
+      "random",
+      "fixed_cycle",
+      "jepa_h1",
+      "jepa_h3",
+      "oracle"
+    ],
+    "stopping_rule": "first exact goal hit or native death; otherwise 24 controlled actions",
+    "rgb_transform": "none for strips and raw assets; faded initial frame only in explicitly annotated path diagrams",
+    "forecast_rule": "first decision only, and only if forecast_valid is true; decoder visualization is not observation",
+    "uncertainty": "Wilson 95% interval across 128 evaluation starts, separately per world-model checkpoint",
+    "coordinate_annotation": "simulator cube upper-left position plus 2.5 pixels; diagnostic only",
+    "selection_rule": "episodes 0, 1, 2 declared by evaluation protocol before policy outcomes"
+  },
+  "renderer_sha256": "514f7599f215b9664af748913a96b520569ddcfa51fde3bdd628ca440cc33f12",
+  "runs": [
+    {
+      "label": "Model seed 0",
+      "directory": "runs/revision/redcube_goal/gray_frame_still/m0",
+      "model_sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd",
+      "source_hashes": {
+        "summary.json": "23dbe46da7cfbea1b835615f99cd2c656a030fa7e5983622182a569e720407bc",
+        "manifest.json": "46d8ce31fd6842a680b3a0a5c4c7b3d0794c7ff842550e1f48b045d554efa110",
+        "cohort.npz": "b125d48895c7052ce4991ee73821a859ed79bb6482c8d5b4ce38fba13a7f46fb",
+        "episodes.npz": "0f16b340d379c7ec4dadc30b3481b866e8acb351c8d1f8386079d2c1fb17274c",
+        "visual_packet.npz": "ef901a4623630d5fc3008b62ab28d3ab85d4b77ba77c104bc5e9dde2a1bcb1d6"
+      }
+    }
+  ],
+  "figures": [
+    {
+      "caption": "A frozen JEPA model chooses actions from RGB history and an RGB goal by exhaustive one- or three-step latent-distance search. The three-step cost sums all predicted stage distances. Random and fixed-cycle policies use the same 128 starts and goals; the state oracle is a privileged reference with physical-position access. Goals are 6\u201312 cardinal actions away. Bars show exact goal hits before native death or the 24-action limit; whiskers are Wilson 95% intervals across starts, separately for each checkpoint. Model-seed results are not pooled into a larger binomial sample. This is empty-arena navigation, not strategic planning.",
+      "files": {
+        "svg": {
+          "path": "goal_success.svg",
+          "sha256": "cb7f640866854aab93ad32386c0c0383dff5226aa9d9f3d1900945ba9b7de415"
+        },
+        "pdf": {
+          "path": "goal_success.pdf",
+          "sha256": "410f78606e1f4403bcc09ba0b793c5e03946360b33dab4d66ba6241d6e5789fb"
+        },
+        "png": {
+          "path": "goal_success.png",
+          "sha256": "bc68560c65a847e3854e3664a9dc428a47b74e2bff2197c08de1edb52200b35e"
+        }
+      },
+      "size_inches": [
+        5.5,
+        3.0
+      ],
+      "results": [
+        {
+          "checkpoint": "Model seed 0",
+          "model_sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd",
+          "policy": "random",
+          "count": 3,
+          "n": 128,
+          "fraction": 0.0234375,
+          "wilson_95": [
+            0.008002416396755481,
+            0.06664374505143222
+          ]
+        },
+        {
+          "checkpoint": "Model seed 0",
+          "model_sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd",
+          "policy": "fixed_cycle",
+          "count": 0,
+          "n": 128,
+          "fraction": 0.0,
+          "wilson_95": [
+            0.0,
+            0.029136956273508416
+          ]
+        },
+        {
+          "checkpoint": "Model seed 0",
+          "model_sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd",
+          "policy": "jepa_h1",
+          "count": 0,
+          "n": 128,
+          "fraction": 0.0,
+          "wilson_95": [
+            0.0,
+            0.029136956273508416
+          ]
+        },
+        {
+          "checkpoint": "Model seed 0",
+          "model_sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd",
+          "policy": "jepa_h3",
+          "count": 5,
+          "n": 128,
+          "fraction": 0.0390625,
+          "wilson_95": [
+            0.016798610797803704,
+            0.08818702076683686
+          ]
+        },
+        {
+          "checkpoint": "Model seed 0",
+          "model_sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd",
+          "policy": "oracle",
+          "count": 128,
+          "n": 128,
+          "fraction": 1.0,
+          "wilson_95": [
+            0.9708630437264916,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "caption": "Paired actual simulator paths for predeclared episodes 0, 1 and 2. The background is the initial RGB frame displayed at reduced opacity only to make the diagnostic coordinate overlays legible. Each path stops at its first exact goal hit, native death, or action limit. Open white circle marks the common start; a dashed square marks the target cube position. Colored endpoint circles denote hits and crosses denote other endings. Coordinates are evaluation annotations and are not provided to JEPA; the state oracle is privileged.",
+      "files": {
+        "svg": {
+          "path": "goal_paths_checkpoint0.svg",
+          "sha256": "592993ddb7cc9696dc9eae1fd697f66deeeb62746e3e1c59e8081b8abec82f64"
+        },
+        "pdf": {
+          "path": "goal_paths_checkpoint0.pdf",
+          "sha256": "f448b1fae7fc60387542cd19d48782eb41afd9b60b3fccdccaaf4321fada789c"
+        },
+        "png": {
+          "path": "goal_paths_checkpoint0.png",
+          "sha256": "5cbc9d662e06695769d153c17913e68c5313f709ce5eb29670618d3594359b0b"
+        }
+      },
+      "size_inches": [
+        5.5,
+        2.75
+      ],
+      "checkpoint": "Model seed 0",
+      "episodes": [
+        {
+          "episode": 0,
+          "policy": "random",
+          "stop_step": 24,
+          "event": "Time limit"
+        },
+        {
+          "episode": 0,
+          "policy": "oracle",
+          "stop_step": 8,
+          "event": "Goal hit"
+        },
+        {
+          "episode": 0,
+          "policy": "jepa_h3",
+          "stop_step": 24,
+          "event": "Time limit"
+        },
+        {
+          "episode": 1,
+          "policy": "random",
+          "stop_step": 24,
+          "event": "Time limit"
+        },
+        {
+          "episode": 1,
+          "policy": "oracle",
+          "stop_step": 10,
+          "event": "Goal hit"
+        },
+        {
+          "episode": 1,
+          "policy": "jepa_h3",
+          "stop_step": 24,
+          "event": "Time limit"
+        },
+        {
+          "episode": 2,
+          "policy": "random",
+          "stop_step": 24,
+          "event": "Time limit"
+        },
+        {
+          "episode": 2,
+          "policy": "oracle",
+          "stop_step": 11,
+          "event": "Goal hit"
+        },
+        {
+          "episode": 2,
+          "policy": "jepa_h3",
+          "stop_step": 24,
+          "event": "Time limit"
+        }
+      ],
+      "rgb_transform": "alpha .24, path diagram only"
+    },
+    {
+      "caption": "Unmodified RGB observations for predeclared episode 0; no success-based selection. The goal tile is the actual RGB image supplied to JEPA. Observed frames are sampled every four actions through each policy's terminal event, with the exact final frame included. Time labels show controlled actions since the common eight-frame prefix; parenthesized arrows show the action entering that frame. The complete executed action sequence is printed below each row. No padded frames after goal hit or death are displayed. Frame noise is the stored simulator RGB and is not smoothed or recolored. The state oracle is a privileged reference.",
+      "files": {
+        "svg": {
+          "path": "goal_rgb_checkpoint0_episode0.svg",
+          "sha256": "5605d42a7718b376ee69e40b862dac97382826b7524d4361a2d05e3305c0c5c3"
+        },
+        "pdf": {
+          "path": "goal_rgb_checkpoint0_episode0.pdf",
+          "sha256": "df5c156f513a545649be802b694fbe0e813bfd591d19e5605fcc758effc930d4"
+        },
+        "png": {
+          "path": "goal_rgb_checkpoint0_episode0.png",
+          "sha256": "c841d50b537fa5543ae08a387869b6b000ca08d28b7bf03ad059fceb85e2b766"
+        }
+      },
+      "size_inches": [
+        5.5,
+        3.4
+      ],
+      "checkpoint": "Model seed 0",
+      "records": [
+        {
+          "episode": 0,
+          "candidate_id": 0,
+          "policy": "random",
+          "frame_times": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24
+          ],
+          "stop_step": 24,
+          "event": "Time limit",
+          "action_indices": [
+            1,
+            3,
+            2,
+            1,
+            0,
+            3,
+            2,
+            0,
+            2,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            3,
+            0,
+            0,
+            2,
+            3,
+            3,
+            1,
+            3,
+            1
+          ],
+          "action_names": [
+            "up",
+            "down",
+            "right",
+            "up",
+            "left",
+            "down",
+            "right",
+            "left",
+            "right",
+            "up",
+            "up",
+            "left",
+            "up",
+            "left",
+            "up",
+            "down",
+            "left",
+            "left",
+            "right",
+            "down",
+            "down",
+            "up",
+            "down",
+            "up"
+          ]
+        },
+        {
+          "episode": 0,
+          "candidate_id": 0,
+          "policy": "jepa_h3",
+          "frame_times": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24
+          ],
+          "stop_step": 24,
+          "event": "Time limit",
+          "action_indices": [
+            0,
+            1,
+            2,
+            2,
+            0,
+            2,
+            0,
+            0,
+            2,
+            2,
+            0,
+            2,
+            0,
+            0,
+            2,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            0,
+            2,
+            2
+          ],
+          "action_names": [
+            "left",
+            "up",
+            "right",
+            "right",
+            "left",
+            "right",
+            "left",
+            "left",
+            "right",
+            "right",
+            "left",
+            "right",
+            "left",
+            "left",
+            "right",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "left",
+            "right",
+            "right"
+          ]
+        },
+        {
+          "episode": 0,
+          "candidate_id": 0,
+          "policy": "oracle",
+          "frame_times": [
+            0,
+            4,
+            8
+          ],
+          "stop_step": 8,
+          "event": "Goal hit",
+          "action_indices": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1
+          ],
+          "action_names": [
+            "up",
+            "up",
+            "up",
+            "up",
+            "left",
+            "up",
+            "left",
+            "up"
+          ]
+        }
+      ],
+      "rgb_transform": "none"
+    },
+    {
+      "caption": "The selected three-step JEPA prediction at the first valid decision of a predeclared episode, decoded with the frozen auxiliary decoder. These are imagined latents under a candidate action sequence, not recorded future observations. Only its first action is executed before replanning. No forecast from a terminal/padded decision is displayed.",
+      "files": {
+        "svg": {
+          "path": "goal_forecast_checkpoint0_episode0.svg",
+          "sha256": "45192582e899284ebae3224b7454cabf070afae4896cefb238b1bf61fcf0cf12"
+        },
+        "pdf": {
+          "path": "goal_forecast_checkpoint0_episode0.pdf",
+          "sha256": "9015d6ca2085db308fa10d156b6f7741a7e84213cb1271c2476a2f2b719bea79"
+        },
+        "png": {
+          "path": "goal_forecast_checkpoint0_episode0.png",
+          "sha256": "c142c78d2c056f9aa4694b014d4a95c35a537c11483dca7008a89db4440320ee"
+        }
+      },
+      "size_inches": [
+        5.5,
+        1.85
+      ],
+      "checkpoint": "Model seed 0",
+      "episode": 0,
+      "decision": 0,
+      "forecast_valid": true,
+      "selected_plan": [
+        0,
+        2,
+        3
+      ],
+      "rgb_transform": "none"
+    },
+    {
+      "caption": "Unmodified RGB observations for predeclared episode 1; no success-based selection. The goal tile is the actual RGB image supplied to JEPA. Observed frames are sampled every four actions through each policy's terminal event, with the exact final frame included. Time labels show controlled actions since the common eight-frame prefix; parenthesized arrows show the action entering that frame. The complete executed action sequence is printed below each row. No padded frames after goal hit or death are displayed. Frame noise is the stored simulator RGB and is not smoothed or recolored. The state oracle is a privileged reference.",
+      "files": {
+        "svg": {
+          "path": "goal_rgb_checkpoint0_episode1.svg",
+          "sha256": "53c38c47011bce9629f1c6956d82a3d562e66031b2a4f939291421f006baa2c0"
+        },
+        "pdf": {
+          "path": "goal_rgb_checkpoint0_episode1.pdf",
+          "sha256": "36d0354a507293646e3892a2bf5645a7e5602c1edc35e360602a981f82c63d6d"
+        },
+        "png": {
+          "path": "goal_rgb_checkpoint0_episode1.png",
+          "sha256": "7e6af3a68d6cafe5e6aa9ef8916a7fe54d50db05cb0611db1b2d4554af39698e"
+        }
+      },
+      "size_inches": [
+        5.5,
+        3.4
+      ],
+      "checkpoint": "Model seed 0",
+      "records": [
+        {
+          "episode": 1,
+          "candidate_id": 1,
+          "policy": "random",
+          "frame_times": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24
+          ],
+          "stop_step": 24,
+          "event": "Time limit",
+          "action_indices": [
+            2,
+            2,
+            1,
+            1,
+            3,
+            0,
+            0,
+            0,
+            1,
+            1,
+            3,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            1,
+            2,
+            1,
+            2,
+            0,
+            3,
+            0
+          ],
+          "action_names": [
+            "right",
+            "right",
+            "up",
+            "up",
+            "down",
+            "left",
+            "left",
+            "left",
+            "up",
+            "up",
+            "down",
+            "left",
+            "down",
+            "left",
+            "left",
+            "left",
+            "left",
+            "up",
+            "right",
+            "up",
+            "right",
+            "left",
+            "down",
+            "left"
+          ]
+        },
+        {
+          "episode": 1,
+          "candidate_id": 1,
+          "policy": "jepa_h3",
+          "frame_times": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24
+          ],
+          "stop_step": 24,
+          "event": "Time limit",
+          "action_indices": [
+            2,
+            2,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0
+          ],
+          "action_names": [
+            "right",
+            "right",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left"
+          ]
+        },
+        {
+          "episode": 1,
+          "candidate_id": 1,
+          "policy": "oracle",
+          "frame_times": [
+            0,
+            4,
+            8,
+            10
+          ],
+          "stop_step": 10,
+          "event": "Goal hit",
+          "action_indices": [
+            2,
+            2,
+            2,
+            3,
+            2,
+            3,
+            2,
+            3,
+            2,
+            3
+          ],
+          "action_names": [
+            "right",
+            "right",
+            "right",
+            "down",
+            "right",
+            "down",
+            "right",
+            "down",
+            "right",
+            "down"
+          ]
+        }
+      ],
+      "rgb_transform": "none"
+    },
+    {
+      "caption": "The selected three-step JEPA prediction at the first valid decision of a predeclared episode, decoded with the frozen auxiliary decoder. These are imagined latents under a candidate action sequence, not recorded future observations. Only its first action is executed before replanning. No forecast from a terminal/padded decision is displayed.",
+      "files": {
+        "svg": {
+          "path": "goal_forecast_checkpoint0_episode1.svg",
+          "sha256": "b2a9d0b6469f588570decfc3474d96deead3d785db82994bc1701b8b28f46e75"
+        },
+        "pdf": {
+          "path": "goal_forecast_checkpoint0_episode1.pdf",
+          "sha256": "435cd7166d06dde3340d90ecb3c8fd7d54ce9e0777ea56bc87533d759cd6554b"
+        },
+        "png": {
+          "path": "goal_forecast_checkpoint0_episode1.png",
+          "sha256": "6b5c89b7f580df6f078f8287ab515dec4ab6280c13ce4f720a1444496afd6d22"
+        }
+      },
+      "size_inches": [
+        5.5,
+        1.85
+      ],
+      "checkpoint": "Model seed 0",
+      "episode": 1,
+      "decision": 0,
+      "forecast_valid": true,
+      "selected_plan": [
+        2,
+        2,
+        3
+      ],
+      "rgb_transform": "none"
+    },
+    {
+      "caption": "Unmodified RGB observations for predeclared episode 2; no success-based selection. The goal tile is the actual RGB image supplied to JEPA. Observed frames are sampled every four actions through each policy's terminal event, with the exact final frame included. Time labels show controlled actions since the common eight-frame prefix; parenthesized arrows show the action entering that frame. The complete executed action sequence is printed below each row. No padded frames after goal hit or death are displayed. Frame noise is the stored simulator RGB and is not smoothed or recolored. The state oracle is a privileged reference.",
+      "files": {
+        "svg": {
+          "path": "goal_rgb_checkpoint0_episode2.svg",
+          "sha256": "7c05f29f73b23af25238439d69727634be20c9036f1936cb7f5653785044e516"
+        },
+        "pdf": {
+          "path": "goal_rgb_checkpoint0_episode2.pdf",
+          "sha256": "fbde28b9790b386e89802e763f51b6a2168b78ff1c3bbbf78aa51baa66b783a9"
+        },
+        "png": {
+          "path": "goal_rgb_checkpoint0_episode2.png",
+          "sha256": "f00b4e77ca7cb72b63c9d3e98d4e11b55e4a5325a5040c1fa6adee454e0eeac0"
+        }
+      },
+      "size_inches": [
+        5.5,
+        3.4
+      ],
+      "checkpoint": "Model seed 0",
+      "records": [
+        {
+          "episode": 2,
+          "candidate_id": 2,
+          "policy": "random",
+          "frame_times": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24
+          ],
+          "stop_step": 24,
+          "event": "Time limit",
+          "action_indices": [
+            0,
+            2,
+            2,
+            0,
+            3,
+            0,
+            3,
+            1,
+            2,
+            1,
+            3,
+            1,
+            3,
+            2,
+            2,
+            1,
+            0,
+            1,
+            1,
+            1,
+            3,
+            2,
+            2,
+            0
+          ],
+          "action_names": [
+            "left",
+            "right",
+            "right",
+            "left",
+            "down",
+            "left",
+            "down",
+            "up",
+            "right",
+            "up",
+            "down",
+            "up",
+            "down",
+            "right",
+            "right",
+            "up",
+            "left",
+            "up",
+            "up",
+            "up",
+            "down",
+            "right",
+            "right",
+            "left"
+          ]
+        },
+        {
+          "episode": 2,
+          "candidate_id": 2,
+          "policy": "jepa_h3",
+          "frame_times": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24
+          ],
+          "stop_step": 24,
+          "event": "Time limit",
+          "action_indices": [
+            3,
+            3,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2
+          ],
+          "action_names": [
+            "down",
+            "down",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right",
+            "left",
+            "right"
+          ]
+        },
+        {
+          "episode": 2,
+          "candidate_id": 2,
+          "policy": "oracle",
+          "frame_times": [
+            0,
+            4,
+            8,
+            11
+          ],
+          "stop_step": 11,
+          "event": "Goal hit",
+          "action_indices": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1
+          ],
+          "action_names": [
+            "left",
+            "left",
+            "left",
+            "left",
+            "left",
+            "left",
+            "up",
+            "left",
+            "up",
+            "left",
+            "up"
+          ]
+        }
+      ],
+      "rgb_transform": "none"
+    },
+    {
+      "caption": "The selected three-step JEPA prediction at the first valid decision of a predeclared episode, decoded with the frozen auxiliary decoder. These are imagined latents under a candidate action sequence, not recorded future observations. Only its first action is executed before replanning. No forecast from a terminal/padded decision is displayed.",
+      "files": {
+        "svg": {
+          "path": "goal_forecast_checkpoint0_episode2.svg",
+          "sha256": "7a10ed0bb30330e817a83068c22ba592eba260668df3747ec3e475568bad2362"
+        },
+        "pdf": {
+          "path": "goal_forecast_checkpoint0_episode2.pdf",
+          "sha256": "4e6f08ea4b166400c4dc235c68822ad10f56ef430a633fa73a0981d35727db40"
+        },
+        "png": {
+          "path": "goal_forecast_checkpoint0_episode2.png",
+          "sha256": "2595987674db15d66e9b649db14c26c743862b5e8d8a1aa5073b034d78ca33de"
+        }
+      },
+      "size_inches": [
+        5.5,
+        1.85
+      ],
+      "checkpoint": "Model seed 0",
+      "episode": 2,
+      "decision": 0,
+      "forecast_valid": true,
+      "selected_plan": [
+        3,
+        3,
+        3
+      ],
+      "rgb_transform": "none"
+    }
+  ],
+  "raw_assets": {
+    "checkpoint0": [
+      {
+        "episode": 0,
+        "policy": "random",
+        "goal": "raw/checkpoint0/episode0_goal.png",
+        "frames": [
+          "raw/checkpoint0/episode0_random_t00.png",
+          "raw/checkpoint0/episode0_random_t01.png",
+          "raw/checkpoint0/episode0_random_t02.png",
+          "raw/checkpoint0/episode0_random_t03.png",
+          "raw/checkpoint0/episode0_random_t04.png",
+          "raw/checkpoint0/episode0_random_t05.png",
+          "raw/checkpoint0/episode0_random_t06.png",
+          "raw/checkpoint0/episode0_random_t07.png",
+          "raw/checkpoint0/episode0_random_t08.png",
+          "raw/checkpoint0/episode0_random_t09.png",
+          "raw/checkpoint0/episode0_random_t10.png",
+          "raw/checkpoint0/episode0_random_t11.png",
+          "raw/checkpoint0/episode0_random_t12.png",
+          "raw/checkpoint0/episode0_random_t13.png",
+          "raw/checkpoint0/episode0_random_t14.png",
+          "raw/checkpoint0/episode0_random_t15.png",
+          "raw/checkpoint0/episode0_random_t16.png",
+          "raw/checkpoint0/episode0_random_t17.png",
+          "raw/checkpoint0/episode0_random_t18.png",
+          "raw/checkpoint0/episode0_random_t19.png",
+          "raw/checkpoint0/episode0_random_t20.png",
+          "raw/checkpoint0/episode0_random_t21.png",
+          "raw/checkpoint0/episode0_random_t22.png",
+          "raw/checkpoint0/episode0_random_t23.png",
+          "raw/checkpoint0/episode0_random_t24.png"
+        ],
+        "stop_step": 24,
+        "event": "Time limit",
+        "actions": [
+          1,
+          3,
+          2,
+          1,
+          0,
+          3,
+          2,
+          0,
+          2,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          3,
+          0,
+          0,
+          2,
+          3,
+          3,
+          1,
+          3,
+          1
+        ]
+      },
+      {
+        "episode": 0,
+        "policy": "jepa_h3",
+        "goal": "raw/checkpoint0/episode0_goal.png",
+        "frames": [
+          "raw/checkpoint0/episode0_jepa_h3_t00.png",
+          "raw/checkpoint0/episode0_jepa_h3_t01.png",
+          "raw/checkpoint0/episode0_jepa_h3_t02.png",
+          "raw/checkpoint0/episode0_jepa_h3_t03.png",
+          "raw/checkpoint0/episode0_jepa_h3_t04.png",
+          "raw/checkpoint0/episode0_jepa_h3_t05.png",
+          "raw/checkpoint0/episode0_jepa_h3_t06.png",
+          "raw/checkpoint0/episode0_jepa_h3_t07.png",
+          "raw/checkpoint0/episode0_jepa_h3_t08.png",
+          "raw/checkpoint0/episode0_jepa_h3_t09.png",
+          "raw/checkpoint0/episode0_jepa_h3_t10.png",
+          "raw/checkpoint0/episode0_jepa_h3_t11.png",
+          "raw/checkpoint0/episode0_jepa_h3_t12.png",
+          "raw/checkpoint0/episode0_jepa_h3_t13.png",
+          "raw/checkpoint0/episode0_jepa_h3_t14.png",
+          "raw/checkpoint0/episode0_jepa_h3_t15.png",
+          "raw/checkpoint0/episode0_jepa_h3_t16.png",
+          "raw/checkpoint0/episode0_jepa_h3_t17.png",
+          "raw/checkpoint0/episode0_jepa_h3_t18.png",
+          "raw/checkpoint0/episode0_jepa_h3_t19.png",
+          "raw/checkpoint0/episode0_jepa_h3_t20.png",
+          "raw/checkpoint0/episode0_jepa_h3_t21.png",
+          "raw/checkpoint0/episode0_jepa_h3_t22.png",
+          "raw/checkpoint0/episode0_jepa_h3_t23.png",
+          "raw/checkpoint0/episode0_jepa_h3_t24.png"
+        ],
+        "stop_step": 24,
+        "event": "Time limit",
+        "actions": [
+          0,
+          1,
+          2,
+          2,
+          0,
+          2,
+          0,
+          0,
+          2,
+          2,
+          0,
+          2,
+          0,
+          0,
+          2,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "episode": 0,
+        "policy": "oracle",
+        "goal": "raw/checkpoint0/episode0_goal.png",
+        "frames": [
+          "raw/checkpoint0/episode0_oracle_t00.png",
+          "raw/checkpoint0/episode0_oracle_t01.png",
+          "raw/checkpoint0/episode0_oracle_t02.png",
+          "raw/checkpoint0/episode0_oracle_t03.png",
+          "raw/checkpoint0/episode0_oracle_t04.png",
+          "raw/checkpoint0/episode0_oracle_t05.png",
+          "raw/checkpoint0/episode0_oracle_t06.png",
+          "raw/checkpoint0/episode0_oracle_t07.png",
+          "raw/checkpoint0/episode0_oracle_t08.png"
+        ],
+        "stop_step": 8,
+        "event": "Goal hit",
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "episode": 1,
+        "policy": "random",
+        "goal": "raw/checkpoint0/episode1_goal.png",
+        "frames": [
+          "raw/checkpoint0/episode1_random_t00.png",
+          "raw/checkpoint0/episode1_random_t01.png",
+          "raw/checkpoint0/episode1_random_t02.png",
+          "raw/checkpoint0/episode1_random_t03.png",
+          "raw/checkpoint0/episode1_random_t04.png",
+          "raw/checkpoint0/episode1_random_t05.png",
+          "raw/checkpoint0/episode1_random_t06.png",
+          "raw/checkpoint0/episode1_random_t07.png",
+          "raw/checkpoint0/episode1_random_t08.png",
+          "raw/checkpoint0/episode1_random_t09.png",
+          "raw/checkpoint0/episode1_random_t10.png",
+          "raw/checkpoint0/episode1_random_t11.png",
+          "raw/checkpoint0/episode1_random_t12.png",
+          "raw/checkpoint0/episode1_random_t13.png",
+          "raw/checkpoint0/episode1_random_t14.png",
+          "raw/checkpoint0/episode1_random_t15.png",
+          "raw/checkpoint0/episode1_random_t16.png",
+          "raw/checkpoint0/episode1_random_t17.png",
+          "raw/checkpoint0/episode1_random_t18.png",
+          "raw/checkpoint0/episode1_random_t19.png",
+          "raw/checkpoint0/episode1_random_t20.png",
+          "raw/checkpoint0/episode1_random_t21.png",
+          "raw/checkpoint0/episode1_random_t22.png",
+          "raw/checkpoint0/episode1_random_t23.png",
+          "raw/checkpoint0/episode1_random_t24.png"
+        ],
+        "stop_step": 24,
+        "event": "Time limit",
+        "actions": [
+          2,
+          2,
+          1,
+          1,
+          3,
+          0,
+          0,
+          0,
+          1,
+          1,
+          3,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          1,
+          2,
+          0,
+          3,
+          0
+        ]
+      },
+      {
+        "episode": 1,
+        "policy": "jepa_h3",
+        "goal": "raw/checkpoint0/episode1_goal.png",
+        "frames": [
+          "raw/checkpoint0/episode1_jepa_h3_t00.png",
+          "raw/checkpoint0/episode1_jepa_h3_t01.png",
+          "raw/checkpoint0/episode1_jepa_h3_t02.png",
+          "raw/checkpoint0/episode1_jepa_h3_t03.png",
+          "raw/checkpoint0/episode1_jepa_h3_t04.png",
+          "raw/checkpoint0/episode1_jepa_h3_t05.png",
+          "raw/checkpoint0/episode1_jepa_h3_t06.png",
+          "raw/checkpoint0/episode1_jepa_h3_t07.png",
+          "raw/checkpoint0/episode1_jepa_h3_t08.png",
+          "raw/checkpoint0/episode1_jepa_h3_t09.png",
+          "raw/checkpoint0/episode1_jepa_h3_t10.png",
+          "raw/checkpoint0/episode1_jepa_h3_t11.png",
+          "raw/checkpoint0/episode1_jepa_h3_t12.png",
+          "raw/checkpoint0/episode1_jepa_h3_t13.png",
+          "raw/checkpoint0/episode1_jepa_h3_t14.png",
+          "raw/checkpoint0/episode1_jepa_h3_t15.png",
+          "raw/checkpoint0/episode1_jepa_h3_t16.png",
+          "raw/checkpoint0/episode1_jepa_h3_t17.png",
+          "raw/checkpoint0/episode1_jepa_h3_t18.png",
+          "raw/checkpoint0/episode1_jepa_h3_t19.png",
+          "raw/checkpoint0/episode1_jepa_h3_t20.png",
+          "raw/checkpoint0/episode1_jepa_h3_t21.png",
+          "raw/checkpoint0/episode1_jepa_h3_t22.png",
+          "raw/checkpoint0/episode1_jepa_h3_t23.png",
+          "raw/checkpoint0/episode1_jepa_h3_t24.png"
+        ],
+        "stop_step": 24,
+        "event": "Time limit",
+        "actions": [
+          2,
+          2,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "episode": 1,
+        "policy": "oracle",
+        "goal": "raw/checkpoint0/episode1_goal.png",
+        "frames": [
+          "raw/checkpoint0/episode1_oracle_t00.png",
+          "raw/checkpoint0/episode1_oracle_t01.png",
+          "raw/checkpoint0/episode1_oracle_t02.png",
+          "raw/checkpoint0/episode1_oracle_t03.png",
+          "raw/checkpoint0/episode1_oracle_t04.png",
+          "raw/checkpoint0/episode1_oracle_t05.png",
+          "raw/checkpoint0/episode1_oracle_t06.png",
+          "raw/checkpoint0/episode1_oracle_t07.png",
+          "raw/checkpoint0/episode1_oracle_t08.png",
+          "raw/checkpoint0/episode1_oracle_t09.png",
+          "raw/checkpoint0/episode1_oracle_t10.png"
+        ],
+        "stop_step": 10,
+        "event": "Goal hit",
+        "actions": [
+          2,
+          2,
+          2,
+          3,
+          2,
+          3,
+          2,
+          3,
+          2,
+          3
+        ]
+      },
+      {
+        "episode": 2,
+        "policy": "random",
+        "goal": "raw/checkpoint0/episode2_goal.png",
+        "frames": [
+          "raw/checkpoint0/episode2_random_t00.png",
+          "raw/checkpoint0/episode2_random_t01.png",
+          "raw/checkpoint0/episode2_random_t02.png",
+          "raw/checkpoint0/episode2_random_t03.png",
+          "raw/checkpoint0/episode2_random_t04.png",
+          "raw/checkpoint0/episode2_random_t05.png",
+          "raw/checkpoint0/episode2_random_t06.png",
+          "raw/checkpoint0/episode2_random_t07.png",
+          "raw/checkpoint0/episode2_random_t08.png",
+          "raw/checkpoint0/episode2_random_t09.png",
+          "raw/checkpoint0/episode2_random_t10.png",
+          "raw/checkpoint0/episode2_random_t11.png",
+          "raw/checkpoint0/episode2_random_t12.png",
+          "raw/checkpoint0/episode2_random_t13.png",
+          "raw/checkpoint0/episode2_random_t14.png",
+          "raw/checkpoint0/episode2_random_t15.png",
+          "raw/checkpoint0/episode2_random_t16.png",
+          "raw/checkpoint0/episode2_random_t17.png",
+          "raw/checkpoint0/episode2_random_t18.png",
+          "raw/checkpoint0/episode2_random_t19.png",
+          "raw/checkpoint0/episode2_random_t20.png",
+          "raw/checkpoint0/episode2_random_t21.png",
+          "raw/checkpoint0/episode2_random_t22.png",
+          "raw/checkpoint0/episode2_random_t23.png",
+          "raw/checkpoint0/episode2_random_t24.png"
+        ],
+        "stop_step": 24,
+        "event": "Time limit",
+        "actions": [
+          0,
+          2,
+          2,
+          0,
+          3,
+          0,
+          3,
+          1,
+          2,
+          1,
+          3,
+          1,
+          3,
+          2,
+          2,
+          1,
+          0,
+          1,
+          1,
+          1,
+          3,
+          2,
+          2,
+          0
+        ]
+      },
+      {
+        "episode": 2,
+        "policy": "jepa_h3",
+        "goal": "raw/checkpoint0/episode2_goal.png",
+        "frames": [
+          "raw/checkpoint0/episode2_jepa_h3_t00.png",
+          "raw/checkpoint0/episode2_jepa_h3_t01.png",
+          "raw/checkpoint0/episode2_jepa_h3_t02.png",
+          "raw/checkpoint0/episode2_jepa_h3_t03.png",
+          "raw/checkpoint0/episode2_jepa_h3_t04.png",
+          "raw/checkpoint0/episode2_jepa_h3_t05.png",
+          "raw/checkpoint0/episode2_jepa_h3_t06.png",
+          "raw/checkpoint0/episode2_jepa_h3_t07.png",
+          "raw/checkpoint0/episode2_jepa_h3_t08.png",
+          "raw/checkpoint0/episode2_jepa_h3_t09.png",
+          "raw/checkpoint0/episode2_jepa_h3_t10.png",
+          "raw/checkpoint0/episode2_jepa_h3_t11.png",
+          "raw/checkpoint0/episode2_jepa_h3_t12.png",
+          "raw/checkpoint0/episode2_jepa_h3_t13.png",
+          "raw/checkpoint0/episode2_jepa_h3_t14.png",
+          "raw/checkpoint0/episode2_jepa_h3_t15.png",
+          "raw/checkpoint0/episode2_jepa_h3_t16.png",
+          "raw/checkpoint0/episode2_jepa_h3_t17.png",
+          "raw/checkpoint0/episode2_jepa_h3_t18.png",
+          "raw/checkpoint0/episode2_jepa_h3_t19.png",
+          "raw/checkpoint0/episode2_jepa_h3_t20.png",
+          "raw/checkpoint0/episode2_jepa_h3_t21.png",
+          "raw/checkpoint0/episode2_jepa_h3_t22.png",
+          "raw/checkpoint0/episode2_jepa_h3_t23.png",
+          "raw/checkpoint0/episode2_jepa_h3_t24.png"
+        ],
+        "stop_step": 24,
+        "event": "Time limit",
+        "actions": [
+          3,
+          3,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2
+        ]
+      },
+      {
+        "episode": 2,
+        "policy": "oracle",
+        "goal": "raw/checkpoint0/episode2_goal.png",
+        "frames": [
+          "raw/checkpoint0/episode2_oracle_t00.png",
+          "raw/checkpoint0/episode2_oracle_t01.png",
+          "raw/checkpoint0/episode2_oracle_t02.png",
+          "raw/checkpoint0/episode2_oracle_t03.png",
+          "raw/checkpoint0/episode2_oracle_t04.png",
+          "raw/checkpoint0/episode2_oracle_t05.png",
+          "raw/checkpoint0/episode2_oracle_t06.png",
+          "raw/checkpoint0/episode2_oracle_t07.png",
+          "raw/checkpoint0/episode2_oracle_t08.png",
+          "raw/checkpoint0/episode2_oracle_t09.png",
+          "raw/checkpoint0/episode2_oracle_t10.png",
+          "raw/checkpoint0/episode2_oracle_t11.png"
+        ],
+        "stop_step": 11,
+        "event": "Goal hit",
+        "actions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ]
+      }
+    ]
+  }
+}

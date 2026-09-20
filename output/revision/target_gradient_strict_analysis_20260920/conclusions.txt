@@ -1,0 +1,15 @@
+Analysis status: complete; 12/12 individually validated fits.
+The fixed final MLP interaction is +10.547170 pixels (paired model-seed SD 4.865036; range +4.937294 to +13.608112).
+Paired seed interactions: m0=+13.096106, m1=+13.608112, m2=+4.937294.
+Still joint-minus-stop-target MAE: mean -10.555748 pixels; paired seed values -13.279085, -13.438238, -4.949921.
+Wind joint-minus-stop-target MAE: mean -0.008577 pixels; paired seed values -0.182979, +0.169874, -0.012627.
+The positive relative interaction does not show a wind-world improvement: stop-target has equal or higher mean wind MAE. Do not describe this as rescue.
+The interaction is a relative effect, never an automatic rescue or control claim.
+The replication units are three fixed model initialization/data-order seeds, conditional on one training and one evaluation archive per world.
+The 50,000 readout-training frames and 10,000 evaluation frames are not independent model fits; no frame-based model-family confidence interval or p-value is reported.
+Wind changes visitation, temporal complexity and episode lengths as well as innovation variance; the interaction is not unique causal identification of an innovation-variance mechanism.
+The MLP is the sole primary readout. Ridge, representation rank, training loss and state/nuisance sensitivity are separate descriptive diagnostics, without winner selection.
+Readout failure is not proof of information absence; readout success is not proof of successful control.
+All saved checkpoints belong to the 8,500-update schedule. The final checkpoint is fixed prospectively; intermediate losses or readouts never select it.
+A positive interaction is a relative effect. It can result from worse still-world errors without any wind-world improvement; both within-world benefits and all twelve raw errors must accompany it.
+This NumPy audit verifies saved predictions and their metrics, not a fresh encoder/readout execution. Raw-feature hashes cannot be independently recomputed because features are not saved; independent re-encoding is a separate check.

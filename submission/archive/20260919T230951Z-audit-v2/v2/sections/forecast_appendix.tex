@@ -1,0 +1,91 @@
+\section{Forecast-readout protocol and outcomes}
+\label{app:forecast}
+The three gate models stay frozen. Up to 16,384 training contexts and 8,192 evaluation contexts are
+sampled without replacement with seeds 20260919 and 20260920, using matching context IDs across
+models. Past context may not cross a reset. Forecasts use the original recorded outgoing actions,
+with horizons 1, 2, 4, and 8. Parameters and BatchNorm statistics must remain unchanged during
+extraction, and cached encodings are checked against the public rollout implementation.
+
+The three feature domains are real future encoding, autoregressive forecast, and copied current
+encoding. Each domain has 512 coordinates. An affine ridge read-out uses mean squared error plus
+$10^{-3}\|W\|^2$, with unpenalized intercept and no hyperparameter search. Both declared scaler
+analyses are retained: current-training-latent mean/standard deviation shared across domains; and
+source-domain training mean/standard deviation for each horizon. Both use a fixed $10^{-6}$ scale
+floor, and every transfer applies its source-fitted scaler. No evaluation data determine a scaler,
+regularizer, checkpoint, or reporting condition.
+
+Cube coordinates are divided by 63 for fitting and reported in pixels. Wall position is fitted and
+evaluated only on truth-present rows; the absent-wall sentinel is never regressed as a coordinate.
+Presence reports class prevalence, AUROC, average precision, and threshold accuracy/balanced
+accuracy, with undefined one-class metrics omitted. Every task includes a constant training-label-mean
+baseline and sample counts. A task with fewer than 64 fitting rows is marked insufficient.
+
+The archive stores reset frames after terminal transitions, so physical-state read-outs use a
+horizon-specific continuing-episode mask. In particular, one-step evaluation does not select for
+eight-step survival. The hidden-gap negative control instead retains every pre-reveal context,
+including later resets, because future-survival selection could reveal the gap through the recorded
+actions. The gap label refers to the original current wall. Chance forecasting of this unavailable
+bit is compatible with correct treatment of uncertainty.
+
+All fitted weights, scalers, selected IDs, labels, masks, per-example predictions, and provenance
+hashes are saved. Overlapping windows are not independent samples; any uncertainty uses evaluation
+stream or episode clusters. A weak read-out remains consistent with information loss, poor
+conditioning, limited support, or insufficient probe capacity.
+
+
+\paragraph{Execution and uncertainty.}
+All three models use the same canonical padded frame batch and predictor batch. A strict parity
+check against the public rollout function is bit-exact at the production shape, and model parameters
+and BatchNorm statistics remain unchanged. This canonicalization was fixed after an initial smoke
+parity failure and before any successful read-out fit; no tolerance, model weight, or metric was
+changed. The analysis recomputes 1,080 metric rows and 720 paired contrasts from saved float32
+predictions without refitting. Intervals resample the 100 evaluation environment streams jointly
+across compared read-outs, with 2,000 replicates and seed 20260921. They condition on the fitted
+model and probe. AUROC and average precision are reported as point estimates.
+
+For the model-2, horizon-eight pre-reveal cohort, the forecast-versus-copy MAE difference is
+$-0.63$ pixels with interval $[-1.41,0.13]$ under source-specific scaling. The transfer-versus-adapted
+difference is $3.85$ pixels with interval $[3.48,4.22]$. Common scaling gives $-0.64$
+$[-1.42,0.12]$ and $3.89$ $[3.52,4.25]$, respectively. These are descriptive conditional comparisons;
+the strong adaptation result occurs in one of the three fitted models.
+
+
+\subsection{Read-out errors and a post-hoc tracking audit}
+The predeclared absolute-error table is retained below for every fitted model and both scaling
+analyses. Its global training-mean baseline is evaluated on the selected pre-reveal slice; it is
+not a slice-specific optimal constant. A separate audit of saved predictions examined correlations
+and RMSE without refitting or modifying any prediction. The model-2 forecast-fitted probe has
+Pearson correlation $0.246$ on the full wall-present cohort and $-0.175$ within the pre-reveal slice.
+Its full-cohort RMSE is $18.65$ pixels versus $13.49$ for the global training-mean constant. Thus the
+MAE improvement should not be described as reliable tracking or successful recovery of wall position.
+A subsequent train-only constant-baseline audit uses the same horizon and cohort masks, with 1,509
+training and 716 evaluation rows in the pre-reveal slice. The training-cohort mean position is
+$29.433$ pixels and the median is $30$. Their evaluation MAEs are $4.769$ and $4.642$ pixels,
+respectively, improving on every highlighted model-2 feature read-out in that slice. The full-cohort
+training median has MAE $10.560$, compared with $9.112$ for the forecast-fitted probe, while the
+latter's RMSE remains worse than the mean constant. This is an explicitly post-hoc interpretation
+check, with no feature-probe refitting, clipping, latent rescaling, or alteration of the declared
+metric outputs.
+
+\begin{table}[ht]
+\centering
+\caption{\textbf{Read-out fitting changes measured forecast error.}
+Eight-step wall-position MAE in pixels on 716 pre-reveal continuing contexts. R, F, and C denote
+real future, forecast, and copied-current latents; arrows indicate fitting and evaluation domains.
+Both train-only scaling analyses are shown. The global training-mean baseline has MAE $14.24$;
+the post-hoc training-cohort mean and median have MAE $4.77$ and $4.64$.
+The larger refitting gain occurs in model 2; all three models are retained.}
+\label{tab:forecast-transfer}
+\inputtable{forecast_transfer.tex}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\paperfig{forecast_readout_v2.pdf}{1.0}
+\caption{\textbf{Refitting changes forecast read-out error.} All three model seeds and both
+predeclared normalization schemes are retained. The original baseline is the global training-label
+mean evaluated on the selected slice; the added cohort-median constant is a post-hoc train-only
+check. Lower slice MAE can reflect calibration as well as tracking;
+the model-2 correlation audit and full-cohort RMSE prevent a reliable-position-recovery claim.}
+\label{fig:forecast-transfer}
+\end{figure}

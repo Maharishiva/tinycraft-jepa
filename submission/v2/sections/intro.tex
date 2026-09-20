@@ -1,0 +1,49 @@
+\section{Introduction}
+\label{sec:intro}
+
+In the tasks studied here, background texture changes neither the requested goal nor the object's
+dynamics or reward. A useful abstraction can ignore that texture while preserving where the object
+is and what an action can do to it. Joint-embedding predictive architectures (JEPAs) learn this
+abstraction by predicting future representations rather than reconstructing every future pixel
+\citep{lecun2022path,assran2023ijepa,bardes2024vjepa,maes2026lewm}. The promise is attractive for
+physical intelligence: learn a compact description of the world that can be reused across goals.
+The difficulty is that predictive learning must decide both \emph{what to represent} and
+\emph{what kind of prediction a decision needs}.
+
+These are separate requirements. First, an easy-to-predict feature need not be useful for control.
+A background fixed within an episode is perfectly predictable even if the controlled object is
+ignored \citep{sobal2022slow}. Second, retaining the right state does not make its mean future a
+sufficient description of uncertain outcomes. An action that lands equally often on either side
+of a target has its mean exactly on the target. A planner that scores that mean can prefer it to
+an action that reliably lands close by. The mean prediction can be correct and the decision wrong.
+
+We study both requirements in a minimal visual world: one red cube, four movement actions, a
+background, and optional stochastic wind or a moving wall. The simplicity is deliberate. Cube
+position, the requested goal, and the executed path are directly visible, so we can distinguish
+three cases without relying on a large game's aggregate score:
+\begin{enumerate}
+\item \textbf{Readable state and goal-directed movement.} Deterministic movement with changing
+visual noise is the initial control condition. Requested visual goals and actual trajectories test
+planning beyond merely staying alive.
+\item \textbf{Failing to expose the controlled state.} Varying background persistence and wind tests
+whether the same predictive-learning recipe retains an accessible description of the cube.
+\item \textbf{Retaining state while predicting an uncertain future.} Stochastic movement and a
+late-revealed opening test the decisions made from a learned imagination model. Exact finite-branch
+calculations separately isolate the effect of replacing a distribution by its mean.
+\end{enumerate}
+
+Two elementary calculations make the third case precise. The first separates the cost of a mean
+from the expected cost of an outcome. The second shows that recursively applying an exact one-step
+conditional mean need not predict a later mean. Both hold under ideal prediction, without an
+optimization failure. A Gaussian nuisance construction supplies the corresponding limit on the
+representation-learning objective. These mechanisms motivate the experiments; the experiments
+determine which failure is actually observed in each learned model.
+
+The distinctive empirical result is a reversal in the effect of nuisance persistence. Under
+predictable motion, changing gray noise yields more accurate position read-out than persistent noise;
+with fresh wind innovations, changing noise fails while persistent noise preserves subpixel read-out.
+The architecture, latent dimension, training data size, updates, and three-model replication are
+matched across this comparison. We use actual goal-directed paths and a shared-policy JEPA/flow
+comparison to determine what this representation boundary means for behavior. The point is not to
+rediscover that prediction and control differ, but to identify when the same predictive-learning
+recipe changes which physical state it exposes.

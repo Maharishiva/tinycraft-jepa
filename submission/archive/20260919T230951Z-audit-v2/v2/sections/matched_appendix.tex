@@ -1,0 +1,81 @@
+% V2 DETAILED PROTOCOL MODULE. Not yet included in main.tex.
+% Admission/completion counts and numerical outcomes must come from final validated manifests.
+
+\section{Matched-control protocol and outcomes}
+\label{app:matched}
+The primary matrix contains three fixed gate model checkpoints, five policy seeds (0--4), and
+three transition/signal conditions. Within each model/policy block, initialization, sampled starts,
+source identities, checkpoint hash, data hash, requested updates, policy parameter count, evaluation
+seed, and episode count must match. Start arrays are compared by semantic content hashes. Only
+complete three-condition blocks with 150 finished updates, finite required training diagnostics,
+and scalar outcomes reproduced from saved episode arrays enter the complete analysis. Missing,
+partial, or invalid runs retain their place in the planned denominator.
+
+The primary endpoints are wall exits before or on the terminal transition and survival
+through the 128-step cap. A same-step wall exit counts even if that transition is terminal. A death on step 128 is
+counted as death, using episode return rather than duration. Survival above $50\%$ is a secondary
+operational threshold, not independent evidence of a specific learned maneuver. Each saved
+final policy is evaluated on 256 real episodes with a common key schedule. Outcomes are paired
+within model and policy seed. Raw hidden state is used only to reconstruct the simulator transition
+source and must reproduce sampled current pixels exactly before training proceeds.
+
+Within a fixed model, policy-seed effects are equally weighted. The main descriptive interval uses
+10,000 paired-policy bootstrap resamples with analysis seed 7341, conditional on the evaluation set.
+A separate interval resamples evaluation slots jointly across policies while holding fitted policies
+fixed. It measures evaluation variation, not policy-training uncertainty. Across model fits, we
+show all three effects, their equal-model mean, and range; we do not treat 15 policy pairs as 15
+independent models or report a model-family interval. All intervals are unadjusted and descriptive.
+
+Exact-simulator states become absorbing after true termination. When fitted
+signals are used, their learned continuation can remain positive there; post-terminal alive mass
+and weighted reward are reported as part of the intervention's support change.
+
+\subsection{Completed primary outcomes}
+All 45 prescribed MLP runs passed full-budget, pairing, checkpoint-identity, and per-episode outcome
+checks. Their primary outcomes appear in Table~\ref{tab:matched-gate}. Table~\ref{tab:matched-contrasts}
+retains every predeclared wall-count contrast with its within-model policy-seed interval. No confidence
+interval here estimates variation over a model family.
+
+\begin{table}[ht]
+\centering
+\caption{\textbf{The exact training environment does not make this PPO recipe solve the gate.}
+Final real-environment outcomes, mean $\pm$ sample standard deviation across five policy seeds
+per row. Each of three fitted models receives all three matched conditions. None of the 45 policies
+exceeds $50\%$ survival. ``Fitted'' means the unchanged learned reward and termination heads;
+``true'' means simulator signals.}
+\label{tab:matched-gate}
+\inputtable{matched_gate.tex}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Matched primary wall-count differences. Intervals are 95\% percentile bootstraps over
+five paired policy seeds within one fixed model, conditional on its evaluation set. They are
+unadjusted descriptive intervals; all three prespecified contrasts are retained.}
+\label{tab:matched-contrasts}
+\inputtable{matched_contrasts.tex}
+\end{table}
+
+
+
+\section{Native-grid policy sensitivity}
+\label{app:native-grid}
+The sensitivity uses the same frozen models, rollout protocol, and three transition/signal
+conditions, with three policy seeds per model. The policy applies a CNN to the existing
+$4\times4\times32$ topology and has 583,236 parameters. All 27 runs complete 150 updates and
+1,228,800 requested transitions. Nine three-arm start-array pairs, model identities, frozen source
+and policy hashes, and every scalar endpoint are verified from saved artifacts.
+
+\begin{table}[ht]
+\centering
+\caption{Native-grid CNN sensitivity, kept separate from the primary MLP campaign. Each cell is
+mean $\pm$ sample standard deviation across three policies from one fixed model. None of the
+27 policies exceeds $50\%$ survival.}
+\label{tab:native-gate}
+\inputtable{native_gate.tex}
+\end{table}
+
+Within-model exact/true minus learned/fitted wall-count effects are $0.616$, $0.083$, and $0.250$;
+the corresponding paired-policy bootstrap intervals are $[0.516,0.691]$, $[-0.312,0.395]$, and
+$[-0.148,0.477]$. These coarse intervals use only three paired policy seeds and condition on each
+checkpoint and its fixed evaluation set. They are not pooled with primary MLP intervals.

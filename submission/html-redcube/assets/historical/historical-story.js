@@ -1,0 +1,888 @@
+window.HISTORICAL_STORY = {
+  "schemaVersion": 1,
+  "artifactKind": "historical GIF panel export; no new evaluation",
+  "conditions": {
+    "gray_frame_still": {
+      "scenes": 3,
+      "context": 8,
+      "horizon": 16,
+      "keys": {
+        "gt": "assets/historical/gray_frame_still-gt.png",
+        "jepa": "assets/historical/gray_frame_still-jepa.png",
+        "flow": "assets/historical/gray_frame_still-flow.png"
+      },
+      "posters": {
+        "gt": {
+          "context": {
+            "path": "assets/historical/gray_frame_still-gt-context.png",
+            "sha256": "724274f1b202aa8b7f49e946fd35b1f47795329d8c9761cea4a2c72de7e64847",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 7,
+            "label": "Context 8/8"
+          },
+          "future4": {
+            "path": "assets/historical/gray_frame_still-gt-future4.png",
+            "sha256": "183e4d014276a658abcd195bacb6dd2efbe1cbd3b985c9b0fd2714f69c2083c6",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 11,
+            "label": "Future +4"
+          }
+        },
+        "jepa": {
+          "context": {
+            "path": "assets/historical/gray_frame_still-jepa-context.png",
+            "sha256": "23f214b9987abada57966f5b9bf86b93405fda4ae602b1a8cbb55d47ae3c119f",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 7,
+            "label": "Context 8/8"
+          },
+          "future4": {
+            "path": "assets/historical/gray_frame_still-jepa-future4.png",
+            "sha256": "983278cbdc574f764b337495f130766cff9e4219083828591fa0e54e175a362a",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 11,
+            "label": "Future +4"
+          }
+        },
+        "flow": {
+          "context": {
+            "path": "assets/historical/gray_frame_still-flow-context.png",
+            "sha256": "592173d5d2a966a34ce3c7e89c0450e34a48d14a03f5546d9b3412bc61d03cd0",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 7,
+            "label": "Context 8/8"
+          },
+          "future4": {
+            "path": "assets/historical/gray_frame_still-flow-future4.png",
+            "sha256": "0a80a7bd3f24f1959488fc1fea4afa6046bf89f9c527dcaaf06b44b849724db1",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 11,
+            "label": "Future +4"
+          }
+        }
+      },
+      "selectedWindows": [
+        0,
+        1,
+        2
+      ],
+      "source": {
+        "gifs": [
+          {
+            "path": "runs/redcube/gray_frame_still/scene0.gif",
+            "sha256": "7a1d92f405869979897507765debbc0a20b74baf15b8d54d8cf35be53199b628",
+            "canvas": [
+              804,
+              322
+            ],
+            "encodedFrames": 24,
+            "sourceDurationsMs": [
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              1250
+            ],
+            "timelineFramesExported": 24,
+            "timelineDurationMs": 250,
+            "endHoldOmittedMs": 1000,
+            "exact4xBlockValidation": "passed for all three panels at all 24 steps",
+            "sceneIndex": 0,
+            "selectedWindow": 0
+          },
+          {
+            "path": "runs/redcube/gray_frame_still/scene1.gif",
+            "sha256": "d7434c5fbddf1d843f752bcad6ee6b475a35c0abb3aa89e9cead19cbc1baaea3",
+            "canvas": [
+              804,
+              322
+            ],
+            "encodedFrames": 24,
+            "sourceDurationsMs": [
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              1250
+            ],
+            "timelineFramesExported": 24,
+            "timelineDurationMs": 250,
+            "endHoldOmittedMs": 1000,
+            "exact4xBlockValidation": "passed for all three panels at all 24 steps",
+            "sceneIndex": 1,
+            "selectedWindow": 1
+          },
+          {
+            "path": "runs/redcube/gray_frame_still/scene2.gif",
+            "sha256": "ead62d743b4cce46c525b3691da21a30972dfa938cdca457d250c5e7c623e8b9",
+            "canvas": [
+              804,
+              322
+            ],
+            "encodedFrames": 24,
+            "sourceDurationsMs": [
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              1250
+            ],
+            "timelineFramesExported": 24,
+            "timelineDurationMs": 250,
+            "endHoldOmittedMs": 1000,
+            "exact4xBlockValidation": "passed for all three panels at all 24 steps",
+            "sceneIndex": 2,
+            "selectedWindow": 2
+          }
+        ],
+        "benchmark": {
+          "path": "runs/redcube/gray_frame_still/bench.json",
+          "sha256": "685da163640b334b65109271c751a829e7e33d8745ee9ddd07d1bb8a78588f51"
+        },
+        "jepaArm": "tile_factored",
+        "flowArm": "flow",
+        "selectionRule": "Highest cumulative GT position L1 travel between the 16 future frames, among the benchmark metric-window subset; not random examples.",
+        "selectionCode": "studies/redcube/bench.py:501-518",
+        "selectionFormula": "argsort(-abs(diff(pos[:,8:],axis=1)).sum((1,2)))[:3]",
+        "selectionScopeCaveat": "Current code defaults to the first 512 sampled valid evaluation windows. Exact original CLI and sampled (time,stream) indices are not embedded in these legacy files. selectedWindows are row indices into that sampled window batch, not episode IDs."
+      },
+      "assets": {
+        "gt": {
+          "path": "assets/historical/gray_frame_still-gt.png",
+          "sha256": "ac1e2c66dc6a26e0a2715ad71fa7d1d44af58a2685955e16f31cc347bea3fe27",
+          "width": 1512,
+          "height": 189
+        },
+        "jepa": {
+          "path": "assets/historical/gray_frame_still-jepa.png",
+          "sha256": "b5e51dfbec997ca702b73ea4866a1e0116f111ff003632c9522592f94988e784",
+          "width": 1512,
+          "height": 189
+        },
+        "flow": {
+          "path": "assets/historical/gray_frame_still-flow.png",
+          "sha256": "7066dec913cb5fdd1a1af08dbd7b55b657600a0743e86c5b355c600a612ce095",
+          "width": 1512,
+          "height": 189
+        }
+      }
+    },
+    "gray_frame_wind": {
+      "scenes": 3,
+      "context": 8,
+      "horizon": 16,
+      "keys": {
+        "gt": "assets/historical/gray_frame_wind-gt.png",
+        "jepa": "assets/historical/gray_frame_wind-jepa.png",
+        "flow": "assets/historical/gray_frame_wind-flow.png"
+      },
+      "posters": {
+        "gt": {
+          "context": {
+            "path": "assets/historical/gray_frame_wind-gt-context.png",
+            "sha256": "925334dc82e78cc36be08cc3bfbb97779775261c7d2f5b8323f74794d4d304e3",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 7,
+            "label": "Context 8/8"
+          },
+          "future4": {
+            "path": "assets/historical/gray_frame_wind-gt-future4.png",
+            "sha256": "263f2a094bfd315705a1e8cf26c053faf7609fa6aff3cd400490e33988095456",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 11,
+            "label": "Future +4"
+          }
+        },
+        "jepa": {
+          "context": {
+            "path": "assets/historical/gray_frame_wind-jepa-context.png",
+            "sha256": "becd3434048e84230ad34bab0ffd5d0ecbc79afbcd6718dd44ed01cc79ec4e11",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 7,
+            "label": "Context 8/8"
+          },
+          "future4": {
+            "path": "assets/historical/gray_frame_wind-jepa-future4.png",
+            "sha256": "bf50f6280ee2064fb15fa3db6aa0450a6289da980f10102a72124830fc534c11",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 11,
+            "label": "Future +4"
+          }
+        },
+        "flow": {
+          "context": {
+            "path": "assets/historical/gray_frame_wind-flow-context.png",
+            "sha256": "8b5941c555959e2b81d8d23a865f2964448723c267c824fd3bbfbaca8c1031b2",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 7,
+            "label": "Context 8/8"
+          },
+          "future4": {
+            "path": "assets/historical/gray_frame_wind-flow-future4.png",
+            "sha256": "0be191c322b4bfe6e5d69bcf07da12563077ba9a964250607ae899d1071c6f2f",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 11,
+            "label": "Future +4"
+          }
+        }
+      },
+      "selectedWindows": [
+        446,
+        410,
+        174
+      ],
+      "source": {
+        "gifs": [
+          {
+            "path": "runs/redcube/gray_frame_wind/scene0.gif",
+            "sha256": "14e7622e0d1801948a5654130e01543a60cec1dd4fa808535098cd5913308141",
+            "canvas": [
+              804,
+              322
+            ],
+            "encodedFrames": 24,
+            "sourceDurationsMs": [
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              1250
+            ],
+            "timelineFramesExported": 24,
+            "timelineDurationMs": 250,
+            "endHoldOmittedMs": 1000,
+            "exact4xBlockValidation": "passed for all three panels at all 24 steps",
+            "sceneIndex": 0,
+            "selectedWindow": 446
+          },
+          {
+            "path": "runs/redcube/gray_frame_wind/scene1.gif",
+            "sha256": "a977f424b97f59a8bad61a0a6ac117e1515a4745f766e55061ac4a9d01b63b0b",
+            "canvas": [
+              804,
+              322
+            ],
+            "encodedFrames": 24,
+            "sourceDurationsMs": [
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              1250
+            ],
+            "timelineFramesExported": 24,
+            "timelineDurationMs": 250,
+            "endHoldOmittedMs": 1000,
+            "exact4xBlockValidation": "passed for all three panels at all 24 steps",
+            "sceneIndex": 1,
+            "selectedWindow": 410
+          },
+          {
+            "path": "runs/redcube/gray_frame_wind/scene2.gif",
+            "sha256": "fdf0d41adab8d458ac035c3f78d5ac2014f720ee438a9ff6db4225c4d48251f4",
+            "canvas": [
+              804,
+              322
+            ],
+            "encodedFrames": 24,
+            "sourceDurationsMs": [
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              1250
+            ],
+            "timelineFramesExported": 24,
+            "timelineDurationMs": 250,
+            "endHoldOmittedMs": 1000,
+            "exact4xBlockValidation": "passed for all three panels at all 24 steps",
+            "sceneIndex": 2,
+            "selectedWindow": 174
+          }
+        ],
+        "benchmark": {
+          "path": "runs/redcube/gray_frame_wind/bench.json",
+          "sha256": "41813782eda7c6b9e7c91a642d1854ef34d0f23336c819ceda7fe71228a77160"
+        },
+        "jepaArm": "tile_factored",
+        "flowArm": "flow",
+        "selectionRule": "Highest cumulative GT position L1 travel between the 16 future frames, among the benchmark metric-window subset; not random examples.",
+        "selectionCode": "studies/redcube/bench.py:501-518",
+        "selectionFormula": "argsort(-abs(diff(pos[:,8:],axis=1)).sum((1,2)))[:3]",
+        "selectionScopeCaveat": "Current code defaults to the first 512 sampled valid evaluation windows. Exact original CLI and sampled (time,stream) indices are not embedded in these legacy files. selectedWindows are row indices into that sampled window batch, not episode IDs."
+      },
+      "assets": {
+        "gt": {
+          "path": "assets/historical/gray_frame_wind-gt.png",
+          "sha256": "ec34eb405ac722c163467379debb30d593f3985fb1ef96fcf31551a0cfc3f2b1",
+          "width": 1512,
+          "height": 189
+        },
+        "jepa": {
+          "path": "assets/historical/gray_frame_wind-jepa.png",
+          "sha256": "e20d442dc9c3269275d1272bb0a7af4ed7adc4063f00301df5b3f7fa6a25ef75",
+          "width": 1512,
+          "height": 189
+        },
+        "flow": {
+          "path": "assets/historical/gray_frame_wind-flow.png",
+          "sha256": "d24beee93c9b6ebe8ccbc26f40f30889ac12d225615fd83df4537f16a0e58515",
+          "width": 1512,
+          "height": 189
+        }
+      }
+    },
+    "gray_episode_wind": {
+      "scenes": 3,
+      "context": 8,
+      "horizon": 16,
+      "keys": {
+        "gt": "assets/historical/gray_episode_wind-gt.png",
+        "jepa": "assets/historical/gray_episode_wind-jepa.png",
+        "flow": "assets/historical/gray_episode_wind-flow.png"
+      },
+      "posters": {
+        "gt": {
+          "context": {
+            "path": "assets/historical/gray_episode_wind-gt-context.png",
+            "sha256": "909575db65a25926ba01acfa8a2e31bddf68a3a91881d42015924caf6356759d",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 7,
+            "label": "Context 8/8"
+          },
+          "future4": {
+            "path": "assets/historical/gray_episode_wind-gt-future4.png",
+            "sha256": "dc4ac0b22e48cbb3280aef589789de5a952e0358ead90589973993a6b1914576",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 11,
+            "label": "Future +4"
+          }
+        },
+        "jepa": {
+          "context": {
+            "path": "assets/historical/gray_episode_wind-jepa-context.png",
+            "sha256": "c56b121ddc060f7b719c416e07aa04d41c76bb506f64a823e3cbecbc9b393dcc",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 7,
+            "label": "Context 8/8"
+          },
+          "future4": {
+            "path": "assets/historical/gray_episode_wind-jepa-future4.png",
+            "sha256": "f89c785da2f8205abd415e3c3bbc50067fd1556b4a13f827ab7726a377889969",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 11,
+            "label": "Future +4"
+          }
+        },
+        "flow": {
+          "context": {
+            "path": "assets/historical/gray_episode_wind-flow-context.png",
+            "sha256": "33fd5c46d83060dea22c3be937540b397add202301b7017a25a2bf573e8b591a",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 7,
+            "label": "Context 8/8"
+          },
+          "future4": {
+            "path": "assets/historical/gray_episode_wind-flow-future4.png",
+            "sha256": "abb70f2ab71985b6a2858db9db97d85615ae10db6bd3ce304a818e0f4b9252fb",
+            "width": 63,
+            "height": 63,
+            "sceneIndex": 0,
+            "timelineIndex": 11,
+            "label": "Future +4"
+          }
+        }
+      },
+      "selectedWindows": [
+        446,
+        410,
+        174
+      ],
+      "source": {
+        "gifs": [
+          {
+            "path": "runs/redcube/gray_episode_wind/scene0.gif",
+            "sha256": "b28ecacc50c41ecf4ca7894c8a6a24a41fad1550c43664255749cdf4d07408f5",
+            "canvas": [
+              804,
+              322
+            ],
+            "encodedFrames": 24,
+            "sourceDurationsMs": [
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              1250
+            ],
+            "timelineFramesExported": 24,
+            "timelineDurationMs": 250,
+            "endHoldOmittedMs": 1000,
+            "exact4xBlockValidation": "passed for all three panels at all 24 steps",
+            "sceneIndex": 0,
+            "selectedWindow": 446
+          },
+          {
+            "path": "runs/redcube/gray_episode_wind/scene1.gif",
+            "sha256": "8d605909e2140e96d42cd5830fe3c75d8a042e53b204ef51a36d86997fded5fa",
+            "canvas": [
+              804,
+              322
+            ],
+            "encodedFrames": 24,
+            "sourceDurationsMs": [
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              1250
+            ],
+            "timelineFramesExported": 24,
+            "timelineDurationMs": 250,
+            "endHoldOmittedMs": 1000,
+            "exact4xBlockValidation": "passed for all three panels at all 24 steps",
+            "sceneIndex": 1,
+            "selectedWindow": 410
+          },
+          {
+            "path": "runs/redcube/gray_episode_wind/scene2.gif",
+            "sha256": "f333dec0dab2fbb0cc208a5faec9a1644e49a3649e10f71190dbdfff2bc0e104",
+            "canvas": [
+              804,
+              322
+            ],
+            "encodedFrames": 24,
+            "sourceDurationsMs": [
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              250,
+              1250
+            ],
+            "timelineFramesExported": 24,
+            "timelineDurationMs": 250,
+            "endHoldOmittedMs": 1000,
+            "exact4xBlockValidation": "passed for all three panels at all 24 steps",
+            "sceneIndex": 2,
+            "selectedWindow": 174
+          }
+        ],
+        "benchmark": {
+          "path": "runs/redcube/gray_episode_wind/bench.json",
+          "sha256": "f5f7b6360ea99d0136edbe9dcaa5d9bb528bc71631d1bf2ac53f786c2e136c1b"
+        },
+        "jepaArm": "tile_factored",
+        "flowArm": "flow",
+        "selectionRule": "Highest cumulative GT position L1 travel between the 16 future frames, among the benchmark metric-window subset; not random examples.",
+        "selectionCode": "studies/redcube/bench.py:501-518",
+        "selectionFormula": "argsort(-abs(diff(pos[:,8:],axis=1)).sum((1,2)))[:3]",
+        "selectionScopeCaveat": "Current code defaults to the first 512 sampled valid evaluation windows. Exact original CLI and sampled (time,stream) indices are not embedded in these legacy files. selectedWindows are row indices into that sampled window batch, not episode IDs."
+      },
+      "assets": {
+        "gt": {
+          "path": "assets/historical/gray_episode_wind-gt.png",
+          "sha256": "d6ee2f41cbb30deaaea3756f996e572271cf0ba4e8484b1fdf660754c546bb84",
+          "width": 1512,
+          "height": 189
+        },
+        "jepa": {
+          "path": "assets/historical/gray_episode_wind-jepa.png",
+          "sha256": "49a886be4c27301be518161a1d2d704da1ef9ad79365d5ec068e2e7dc235898e",
+          "width": 1512,
+          "height": 189
+        },
+        "flow": {
+          "path": "assets/historical/gray_episode_wind-flow.png",
+          "sha256": "d2cdcf45c30c1a3aa190f97ac57e3274308fa7bede2ce28dc2d163c05ea1efd8",
+          "width": 1512,
+          "height": 189
+        }
+      }
+    }
+  },
+  "contract": {
+    "nativeSize": [
+      63,
+      63
+    ],
+    "spriteSize": [
+      1512,
+      189
+    ],
+    "spriteLayout": "24 timeline frames horizontally, 3 scenes vertically",
+    "spriteCrop": "x=timelineIndex*63, y=sceneIndex*63, width=63, height=63",
+    "contextIndices": [
+      0,
+      7
+    ],
+    "forecastIndices": [
+      8,
+      23
+    ],
+    "timeline": [
+      {
+        "index": 0,
+        "phase": "context",
+        "label": "Context 1/8",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 1,
+        "phase": "context",
+        "label": "Context 2/8",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 2,
+        "phase": "context",
+        "label": "Context 3/8",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 3,
+        "phase": "context",
+        "label": "Context 4/8",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 4,
+        "phase": "context",
+        "label": "Context 5/8",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 5,
+        "phase": "context",
+        "label": "Context 6/8",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 6,
+        "phase": "context",
+        "label": "Context 7/8",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 7,
+        "phase": "context",
+        "label": "Context 8/8",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 8,
+        "phase": "forecast",
+        "label": "Future +1",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 9,
+        "phase": "forecast",
+        "label": "Future +2",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 10,
+        "phase": "forecast",
+        "label": "Future +3",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 11,
+        "phase": "forecast",
+        "label": "Future +4",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 12,
+        "phase": "forecast",
+        "label": "Future +5",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 13,
+        "phase": "forecast",
+        "label": "Future +6",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 14,
+        "phase": "forecast",
+        "label": "Future +7",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 15,
+        "phase": "forecast",
+        "label": "Future +8",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 16,
+        "phase": "forecast",
+        "label": "Future +9",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 17,
+        "phase": "forecast",
+        "label": "Future +10",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 18,
+        "phase": "forecast",
+        "label": "Future +11",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 19,
+        "phase": "forecast",
+        "label": "Future +12",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 20,
+        "phase": "forecast",
+        "label": "Future +13",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 21,
+        "phase": "forecast",
+        "label": "Future +14",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 22,
+        "phase": "forecast",
+        "label": "Future +15",
+        "displayDurationMs": 250
+      },
+      {
+        "index": 23,
+        "phase": "forecast",
+        "label": "Future +16",
+        "displayDurationMs": 250
+      }
+    ],
+    "modelStreams": {
+      "gt": "Recorded real frames throughout all 24 steps",
+      "jepa": "Decoded real context (indices 0-7), then decoded JEPA predictions (8-23)",
+      "flow": "Decoded real context (indices 0-7), then sampled decoded flow predictions (8-23)"
+    },
+    "decodedRealFutureAvailable": false,
+    "actionsAvailable": false,
+    "extraction": "Crop 252x252 at (12+264*column,40), then select each 4th pixel; every source crop is verified to consist of identical 4x4 RGB blocks",
+    "pixelCaveat": "Source GIFs already have palette quantization. PNGs exactly preserve the RGB pixels decoded from those GIFs, not original model float outputs. Do not use this export to recompute quantitative image metrics.",
+    "timingCaveat": "The source GIF's extra 1000ms final hold is omitted. No content-based deduplication of the 24 timeline steps is performed."
+  },
+  "exporter": {
+    "path": "submission/html-redcube/export_historical.py",
+    "sha256": "5ff7b898bd662ba7a3614525fe399c887d57ae1c1cf2ff393e6322f78b87673f"
+  }
+};

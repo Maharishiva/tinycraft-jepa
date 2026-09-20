@@ -1,0 +1,24 @@
+{
+  "title": "Stopping only the direct target-side prediction-loss gradient",
+  "caption": "Prospective paired intervention: joint and stop-target training have the same forward squared latent prediction loss, SIGReg coefficient, architecture, 512-dimensional latent size, initialization and data/update schedule. Stop-target blocks the direct target-embedding branch of the MSE derivative; target values in the forward pass are unchanged. The shared encoder continues to receive predictor-input gradients and gradients of SIGReg over all embeddings. Frames appearing in overlapping predictor histories retain their input-path gradients, and batch normalization may couple frame contributions. Solid dark arrows show the prediction forward pass; the dashed orange return arrow marks the single gradient path changed by the intervention. The teal connection indicates that regularization remains differentiable in both modes. This schematic specifies the experimental comparison and makes no claim about its empirical benefit.",
+  "source_sha256": {
+    "research/target_gradient_protocol.md": "fac3fdb7fb514904570adfc22378a1f04b73d1671664a7a18553bd2efded5711",
+    "studies/revision/target_gradient.py": "4dc9280ea077e954096bc7968f3ab19031f82369124b4de62acf5e5e6a14d488"
+  },
+  "semantic_schematic": true,
+  "reports_outcomes": false,
+  "changed_path": "direct target-side MSE gradient",
+  "unchanged_paths": [
+    "MSE predictor/input branch",
+    "SIGReg all embeddings",
+    "overlapping-history input paths",
+    "BatchNorm couplings"
+  ],
+  "width_inches": 5.5,
+  "height_inches": 2.15,
+  "files": {
+    "svg": "target_gradient_method.svg",
+    "pdf": "target_gradient_method.pdf",
+    "png": "target_gradient_method.png"
+  }
+}

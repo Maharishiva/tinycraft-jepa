@@ -1,0 +1,30 @@
+{
+  "agent.py": {
+    "source": "/Users/rldoeswork/Documents/rl/tinywmcraft-oss/.claude/worktrees/rl-eval-plan/studies/rl_eval/agent.py",
+    "sha256": "1bfeb69f0a6098959a409c4601e8a92219b1967f297b1e35beb96440edceb132"
+  },
+  "train_ppo_real.py": {
+    "source": "/Users/rldoeswork/Documents/rl/tinywmcraft-oss/.claude/worktrees/rl-eval-plan/studies/rl_eval/train_ppo_real.py",
+    "sha256": "fe11deb02d014a69b8f5a31b6ac025266ed03ac6ff37a44dc568ad50decea9f6"
+  },
+  "wm_gym.py": {
+    "source": "/Users/rldoeswork/Documents/rl/tinywmcraft-oss/.claude/worktrees/rl-eval-plan/studies/rl_eval/wm_gym.py",
+    "sha256": "a9c787d1ca02463e8c7df7ec35cc55e1a7a31e5ce93eedf2184b8bda58623dcd"
+  },
+  "wm_env2.py": {
+    "source": "/Users/rldoeswork/Documents/rl/tinywmcraft-oss/.claude/worktrees/rl-eval-plan/studies/rl_eval/wm_env2.py",
+    "sha256": "ee369385583d7cb3eab49e0899fc791632608c51a709c83df45844ba9017bc63"
+  },
+  "tinywm_module.py": {
+    "source": "/Users/rldoeswork/Documents/rl/tinywmcraft-oss/.claude/worktrees/rl-eval-plan/studies/rl_eval/tinywm_module.py",
+    "sha256": "522d3d0c48ef80de87cd74409a9d46501edd854d598be1dc70db8bb7821ce0a1"
+  },
+  "wm_generic.py": {
+    "source": "/Users/rldoeswork/Documents/rl/tinywmcraft-oss/train.py",
+    "sha256": "0cee51a6007fe8b3e732e9cfedf9c241693e2caf5df194da91b78c2e9822f9f9"
+  },
+  "kernels.py": {
+    "source": "/Users/rldoeswork/Documents/rl/tinywmcraft-oss/kernels.py",
+    "sha256": "7358061ebaae220616196e8905a912270247a517c5315034e40d538781a511ef"
+  }
+}

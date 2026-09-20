@@ -1,0 +1,37 @@
+[data] frames (2001, 250, 63, 63, 3) windows 479970 in 18.9s
+[model] 11.12M parameters
+[train] 250/8500 pred 0.1075 sigreg 1.9608  85.7s
+[train] 500/8500 pred 0.0679 sigreg 1.6821  100.2s
+[train] 750/8500 pred 0.0537 sigreg 1.5905  114.8s
+[train] 1000/8500 pred 0.0531 sigreg 1.4559  129.5s
+[train] 1250/8500 pred 0.0411 sigreg 1.3565  144.1s
+[train] 1500/8500 pred 0.0411 sigreg 1.3707  158.8s
+[train] 1750/8500 pred 0.0326 sigreg 1.4340  173.5s
+[train] 2000/8500 pred 0.0336 sigreg 1.2361  188.2s
+[train] 2250/8500 pred 0.0365 sigreg 1.3276  202.9s
+[train] 2500/8500 pred 0.0250 sigreg 1.2198  217.6s
+[train] 2750/8500 pred 0.0291 sigreg 1.2809  232.3s
+[train] 3000/8500 pred 0.0266 sigreg 1.3054  247.0s
+[train] 3250/8500 pred 0.0264 sigreg 1.1252  261.7s
+[train] 3500/8500 pred 0.0292 sigreg 1.2711  276.4s
+[train] 3750/8500 pred 0.0198 sigreg 1.1874  291.2s
+[train] 4000/8500 pred 0.0189 sigreg 1.2405  305.9s
+[train] 4250/8500 pred 0.0167 sigreg 1.1691  320.7s
+[train] 4500/8500 pred 0.0166 sigreg 1.1637  335.4s
+[train] 4750/8500 pred 0.0160 sigreg 1.1277  350.1s
+[train] 5000/8500 pred 0.0154 sigreg 1.1119  364.9s
+[train] 5250/8500 pred 0.0147 sigreg 1.1941  379.6s
+[train] 5500/8500 pred 0.0123 sigreg 1.2391  394.3s
+[train] 5750/8500 pred 0.0134 sigreg 1.1330  409.0s
+[train] 6000/8500 pred 0.0103 sigreg 1.1210  423.7s
+[train] 6250/8500 pred 0.0120 sigreg 1.1323  438.5s
+[train] 6500/8500 pred 0.0084 sigreg 1.0837  453.2s
+[train] 6750/8500 pred 0.0092 sigreg 1.0923  467.9s
+[train] 7000/8500 pred 0.0086 sigreg 1.0952  482.6s
+[train] 7250/8500 pred 0.0080 sigreg 1.1490  497.4s
+[train] 7500/8500 pred 0.0106 sigreg 1.1496  512.1s
+[train] 7750/8500 pred 0.0093 sigreg 1.1591  526.8s
+[train] 8000/8500 pred 0.0084 sigreg 1.1449  541.5s
+[train] 8250/8500 pred 0.0078 sigreg 1.2037  556.3s
+[train] 8500/8500 pred 0.0086 sigreg 1.0283  571.0s
+[done] 597.4s -> /home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/craftax_seed_replication/seed1/model.npz

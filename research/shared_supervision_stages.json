@@ -1,0 +1,51 @@
+{
+  "verified": "2026-09-19 live checkpoint metadata and current native flow training source",
+  "worlds": {
+    "gray_frame_still": {
+      "reward_weight": 0.1,
+      "done_weight": 0.1,
+      "head_trunk": 0.1,
+      "head_warm": 0.5,
+      "wm_steps": 16000,
+      "tok_steps": 9000,
+      "data_budget": 500000,
+      "temporal_codec": 1,
+      "temporal_weight": 0.25
+    },
+    "gray_frame_wind": {
+      "reward_weight": 0.1,
+      "done_weight": 0.1,
+      "head_trunk": 0.1,
+      "head_warm": 0.5,
+      "wm_steps": 16000,
+      "tok_steps": 9000,
+      "data_budget": 500000,
+      "temporal_codec": 1,
+      "temporal_weight": 0.25
+    },
+    "gray_episode_wind": {
+      "reward_weight": 0.1,
+      "done_weight": 0.1,
+      "head_trunk": 0.1,
+      "head_warm": 0.5,
+      "wm_steps": 16000,
+      "tok_steps": 9000,
+      "data_budget": 500000,
+      "temporal_codec": 1,
+      "temporal_weight": 0.25
+    },
+    "gate": {
+      "reward_weight": 0.1,
+      "done_weight": 0.1,
+      "head_trunk": 0.1,
+      "head_warm": 0.5,
+      "wm_steps": 16000,
+      "tok_steps": 9000,
+      "data_budget": 500000,
+      "temporal_codec": 1,
+      "temporal_weight": 0.25
+    }
+  },
+  "mechanism": "reward/done losses train dynamics trunk and action embeddings at gradient scale1 through first8000 steps, then.1; tokenizer/decoder are frozen after pixel-reconstruction stage",
+  "comparison": "JEPA reward-free model fit followed by frozen-representation supervised heads; equal500k labels is not equal supervision stage or loss isolation"
+}

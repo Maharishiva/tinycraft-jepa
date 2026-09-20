@@ -1,0 +1,344 @@
+{
+  "review_date": "2026-09-20",
+  "reviewer": "independent review_matched_analysis agent plus independently delegated packet-byte audit",
+  "status": "PASS_WITH_DOCUMENTATION_CAVEATS",
+  "scope": "Four original seed-0 packets only; gate_s1 appeared during audit and is excluded. No model inference or GPU job run. No production files changed.",
+  "cases": [
+    {
+      "case": "gray_frame_still",
+      "packet_sha256": "853ef31c946524d2026c6261472e7f3dce8aa7ba3fff9fae444d9b9b4964189b",
+      "original_source_files_independently_rehashed_on_multigpu_vm": {
+        "eval": {
+          "path": "/dev/shm/redcube/gray_frame_still/eval.npz",
+          "sha256": "397c96e130f662e52f8be537eac09b0a32ce014e10ba9454432ba34bedb25e3d"
+        },
+        "jepa_checkpoint": {
+          "path": "/dev/shm/redcube/gray_frame_still/tile_factored/model_probe.npz",
+          "sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd"
+        },
+        "flow_checkpoint": {
+          "path": "/home/rldoeswork/personal/stoch/gray_frame_still/flow/model.npz",
+          "sha256": "c831e5d68fe0a2201495133ea318acea9db0ec5c5a7239771aeeb10b60cffbee"
+        }
+      },
+      "source_file_hashes_match": true,
+      "source_input_array_hashes_recomputed_from_original_archive": 12,
+      "source_input_array_hash_mismatches": [],
+      "first_eligible_t_ge1": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "first_eligible_t_ge0": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "eligible_t_ge1": 16287,
+      "frame_action_checks": {
+        "case": "gray_frame_still",
+        "first_frame_times": [
+          1,
+          1,
+          1
+        ],
+        "outgoing_incoming_alignment": true,
+        "future_actions_start_at_last_context": true,
+        "consecutive_frame_times": true,
+        "reset_free": true,
+        "all_future_valid": true,
+        "positions_match_outgoing_actions_and_next_wind": true,
+        "distinct_episode_keys": true
+      },
+      "model_seeds": {
+        "jepa": 0,
+        "flow": 0
+      },
+      "flow_visual_nfe": 8,
+      "context_parity_recorded": 0.0
+    },
+    {
+      "case": "gray_frame_wind",
+      "packet_sha256": "d7f7724a9ce166f3f305b2dd2f1f89aaeaebbf374fc6ba49f2ed58217d50c46a",
+      "original_source_files_independently_rehashed_on_multigpu_vm": {
+        "eval": {
+          "path": "/dev/shm/redcube/gray_frame_wind/eval.npz",
+          "sha256": "0e2670a70285e85d5b32ade26d8a4ee78cf7d740c36d38f3198c55f0694575dc"
+        },
+        "jepa_checkpoint": {
+          "path": "/dev/shm/redcube/gray_frame_wind/tile_factored/model_probe.npz",
+          "sha256": "07e38c69afb6c5581685053043154ec029a5eae8b6e0365878c45728161cff2a"
+        },
+        "flow_checkpoint": {
+          "path": "/home/rldoeswork/personal/stoch/gray_frame_wind/flow/model.npz",
+          "sha256": "511f57bec9478ebbf664ff3e9b030bf4c3fed027b215938f2778e3fbf179023f"
+        }
+      },
+      "source_file_hashes_match": true,
+      "source_input_array_hashes_recomputed_from_original_archive": 12,
+      "source_input_array_hash_mismatches": [],
+      "first_eligible_t_ge1": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          6
+        ]
+      ],
+      "first_eligible_t_ge0": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "eligible_t_ge1": 4827,
+      "frame_action_checks": {
+        "case": "gray_frame_wind",
+        "first_frame_times": [
+          1,
+          1,
+          1
+        ],
+        "outgoing_incoming_alignment": true,
+        "future_actions_start_at_last_context": true,
+        "consecutive_frame_times": true,
+        "reset_free": true,
+        "all_future_valid": true,
+        "positions_match_outgoing_actions_and_next_wind": true,
+        "distinct_episode_keys": true
+      },
+      "model_seeds": {
+        "jepa": 0,
+        "flow": 0
+      },
+      "flow_visual_nfe": 8,
+      "context_parity_recorded": 0.0
+    },
+    {
+      "case": "gray_episode_wind",
+      "packet_sha256": "f7281531e8bb4ccccf833efa419ea5b0fc5d55adcba317c27cec9970afa0ee4c",
+      "original_source_files_independently_rehashed_on_multigpu_vm": {
+        "eval": {
+          "path": "/dev/shm/redcube/gray_episode_wind/eval.npz",
+          "sha256": "9c546741c1f875fbbb42f25bcccb919c88f28a31530dfc6aa5e2a9cf203cdddd"
+        },
+        "jepa_checkpoint": {
+          "path": "/dev/shm/redcube/gray_episode_wind/tile_factored/model_probe.npz",
+          "sha256": "55dbaa39693fbcfc5af0fe95f200949de954084c070496fc83f12e6b16a07798"
+        },
+        "flow_checkpoint": {
+          "path": "/home/rldoeswork/personal/stoch/gray_episode_wind/flow/model.npz",
+          "sha256": "761e7d539cba00a0bb423320da1d8e212eda3e279b5b572e6a0d318f98e4be15"
+        }
+      },
+      "source_file_hashes_match": true,
+      "source_input_array_hashes_recomputed_from_original_archive": 12,
+      "source_input_array_hash_mismatches": [],
+      "first_eligible_t_ge1": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          6
+        ]
+      ],
+      "first_eligible_t_ge0": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "eligible_t_ge1": 4827,
+      "frame_action_checks": {
+        "case": "gray_episode_wind",
+        "first_frame_times": [
+          1,
+          1,
+          1
+        ],
+        "outgoing_incoming_alignment": true,
+        "future_actions_start_at_last_context": true,
+        "consecutive_frame_times": true,
+        "reset_free": true,
+        "all_future_valid": true,
+        "positions_match_outgoing_actions_and_next_wind": true,
+        "distinct_episode_keys": true
+      },
+      "model_seeds": {
+        "jepa": 0,
+        "flow": 0
+      },
+      "flow_visual_nfe": 8,
+      "context_parity_recorded": 0.0
+    },
+    {
+      "case": "gate",
+      "packet_sha256": "c03661048a6a1d107a6c1c02faf05fcf6ce78536d45e4ac8d56d642330eb01d1",
+      "original_source_files_independently_rehashed_on_multigpu_vm": {
+        "eval": {
+          "path": "/home/rldoeswork/personal/stoch/gate/eval.npz",
+          "sha256": "0c7ea5ac34008ce690faf5b85d9becd7cd72fbe47095d862c79d53ad0ddc956e"
+        },
+        "jepa_checkpoint": {
+          "path": "/home/rldoeswork/personal/stoch/gate/tile_factored/model_probe.npz",
+          "sha256": "f81ef20ab6d6f032a85310fe9233e32749924839eb8bb55e4c0e6b1db2b880d2"
+        },
+        "flow_checkpoint": {
+          "path": "/home/rldoeswork/personal/stoch/gate/flow/model.npz",
+          "sha256": "72b829ea8cfb5f4bf21f3b8c0ce8ffe53f34dd5aa67bad001bb8d4cd0bab27e9"
+        }
+      },
+      "source_file_hashes_match": true,
+      "source_input_array_hashes_recomputed_from_original_archive": 14,
+      "source_input_array_hash_mismatches": [],
+      "first_eligible_t_ge1": [
+        [
+          15,
+          12
+        ],
+        [
+          15,
+          21
+        ],
+        [
+          15,
+          24
+        ]
+      ],
+      "first_eligible_t_ge0": [
+        [
+          15,
+          12
+        ],
+        [
+          15,
+          21
+        ],
+        [
+          15,
+          24
+        ]
+      ],
+      "eligible_t_ge1": 738,
+      "frame_action_checks": {
+        "case": "gate",
+        "first_frame_times": [
+          15,
+          15,
+          15
+        ],
+        "outgoing_incoming_alignment": true,
+        "future_actions_start_at_last_context": true,
+        "consecutive_frame_times": true,
+        "reset_free": true,
+        "all_future_valid": true,
+        "positions_match_outgoing_actions_and_next_wind": true,
+        "distinct_episode_keys": true,
+        "gate_walls_present_last_context": [
+          true,
+          true,
+          true
+        ]
+      },
+      "model_seeds": {
+        "jepa": 0,
+        "flow": 0
+      },
+      "flow_visual_nfe": 8,
+      "context_parity_recorded": 0.0
+    }
+  ],
+  "verification_totals": {
+    "remote_original_eval_and_checkpoint_file_hashes": 12,
+    "remote_selected_source_array_hashes": 50,
+    "local_frame_array_hashes": 102,
+    "local_input_array_hashes": 50,
+    "local_packet_hash_comparisons": 16,
+    "mirrored_input_array_equalities": 46,
+    "scene_metadata_comparisons": 60,
+    "native_png_exact_pixel_comparisons": 1056,
+    "filmstrips_reconstructed_pixel_exactly": 12,
+    "filmstrip_image_cells_exact": 300
+  },
+  "source_hashes": {
+    "prepare_source.py": "ef8134fb92cb7d23a853332ea7a12b974ffca7ffde9b9cc803bda023df4222b1",
+    "export_source.py": "7b33126b957b1ffc7ae213285b4649880bb17ece9bbec488326ac4a39cf20f2d",
+    "current_annotation_renderer": "99142bad9732fcac18f3ec702006fa6b168feed556b36d07d4ebaf4edfe36ab9"
+  },
+  "semantic_review": {
+    "five_rows_correct": true,
+    "outgoing_incoming_actions_and_horizon_correct": true,
+    "forecasts_use_context_only_plus_recorded_future_actions": true,
+    "rolling_real_flow_codec_uses_actual_previous_current_pair": true,
+    "canonical_encoder_shape": "64 x 8; repeated last selected scene padding",
+    "canonical_jepa_decoder_shape": "512 native latent vectors per call",
+    "latent_scaling_or_recoloring_found": false,
+    "corrected_stoch_flow_checkpoints_confirmed": true,
+    "future_survival_conditioning_explicit_in_selection_manifest_browser_protocol": true
+  },
+  "findings": [
+    {
+      "severity": "documentation",
+      "finding": "Selection source enumerates t >= 1, while prose says first lexicographic window without that lower bound. Original archive enumeration confirms t >= 0 selects different first windows in the three noisy worlds.",
+      "impact": "No evidence of model-output selection; state the candidate range explicitly. Preserve frozen packets."
+    },
+    {
+      "severity": "provenance_limitation",
+      "finding": "Flow source_modules omits studies/stoch/flow_recipe/kernels.py, which implements inference attention, normalization and activation operations.",
+      "impact": "The listed module hashes are not complete dependency closure. No numerical or source mismatch was observed; GPU inference was not rerun."
+    }
+  ],
+  "interpretation_limits": [
+    "These future-survival-conditioned illustrations are not unbiased evaluation estimates.",
+    "JEPA decoder behavior does not establish information-theoretic state erasure.",
+    "One sampled flow future need not match the archived wind realization.",
+    "Gate figures use JEPA seed 0 and cannot be labeled as the new seed-1 controller model.",
+    "The audit establishes artifact integrity and source-level inference conformance, not independent reproduction of model forward passes."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "timestamp_utc": "2026-09-19T20:02:24.786844+00:00",
+  "note": "Empirical review input hashes, during concurrent copyedit; no experiments rerun.",
+  "files": {
+    "main.tex": "9145c526d5028e608a8aa4953719a48d9b24e554d5ee132aec0d9d7d795b61f1",
+    "sections/appendix.tex": "9f67cbd1ffe957b94a78cefff006d94ee9bb3a02559e4845794539c5ea3ed657",
+    "sections/controllers.tex": "a960e1578956389167b00b2e19483cb5cb7101f2d2e3e843e3131a7d305f525b",
+    "sections/craftax.tex": "c770e753709c0752a3f6945808b6a896a86e655f055ec420bdb7fd36360c6363",
+    "sections/cubes.tex": "26abf570978a776e48f568cb490008aa7176945171325ae81dc339b1535dd8c6",
+    "sections/discussion.tex": "893be87a91c6c8d30ecbf79cff13b0286b3707a690d5531af015a138131c64ce",
+    "sections/intro.tex": "d04169d7acbfd808d6623f1a8a99b3099f2a79ee8c7ae525e13c0bb797e99809",
+    "sections/related.tex": "4f34662c412c9c8ef4cf627868ca4d4fa80ad5f47e22597638e291160562237b",
+    "sections/results.tex": "ca47c576b9c2cef9d6cba0fb3d72cd4fecd400858c97ca42c934778e7db55c2b",
+    "sections/theory.tex": "de0bf532e7060754daad6ee5a77dbef74b7ffad76c186bb62c3b3e8f71afac38",
+    "sections/worlds.tex": "c3bb34b55981e461d9f2734006e33b2bed170db7209afecc74397f530a20dc79"
+  }
+}

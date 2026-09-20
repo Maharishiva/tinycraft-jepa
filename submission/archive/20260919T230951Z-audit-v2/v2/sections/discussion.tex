@@ -1,0 +1,22 @@
+\section{Discussion}
+\label{sec:limitations}
+
+The most consequential gate result is the unsuccessful exact-environment control. Removing learned
+transition and task-signal errors improves wall counts, yet every fitted model remains below $1.5\%$
+mean survival with the common MLP-PPO recipe. An explanation based only on poor world-model dynamics
+is therefore incomplete. The earlier decoder/CNN result establishes that at least one frozen encoder
+contains useful task information under a different read-out and training procedure; it does not
+supply the missing successful baseline for this matched controller.
+
+Craftax and the nuisance cubes define complementary boundaries. The existing JEPA guides local
+position-reaching actions beyond a no-op baseline under independent execution noise. The same model
+family has a reproducible position-readout failure in the gray-frame/wind cube condition. Together,
+these observations support evaluating a proposed model improvement at the interface it actually
+changes: representation accessibility, forecast read-out, fitted task signals, or policy training.
+
+The main limitations are model replication and identification. Craftax uses one checkpoint; the
+gate and replicated cube comparison use three. The exact-transition/fitted-head intervention changes
+terminal support, and none of the primary gate conditions learns reliable survival. The population
+theory addresses non-collapse and geometric scale under explicit measurable-function assumptions,
+with no finite-network or optimization guarantee. It does not identify the mechanism of the empirical
+cube failure. These boundaries determine which conclusions can be drawn from the completed results.

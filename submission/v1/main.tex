@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage{iclr2027_conference,times}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,multirow,array}
+\usepackage{graphicx,placeins}
+\usepackage{xcolor,colortbl}
+\usepackage{url,microtype,hyperref}
+\hypersetup{hidelinks}
+
+% The official ICLR style is unmodified. Color is confined to figures and tables.
+\definecolor{Navy}{HTML}{17324D}
+\definecolor{JEPA}{HTML}{CD663E}
+\definecolor{Real}{HTML}{087E83}
+\definecolor{Flow}{HTML}{7860A5}
+\newcommand{\inputtable}[1]{\input{tables/#1}}
+\newcommand{\paperfig}[2]{\IfFileExists{../shared/figures/#1}{\includegraphics[width=#2\linewidth,clip]{../shared/figures/#1}}{\fbox{\parbox[c][1.4in][c]{0.95\linewidth}{\centering Figure asset: #1}}}}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Nrm}{\mathcal{N}}
+\newcommand{\Lcal}{\mathcal{L}}
+
+\title{Learning to Ignore What Matters:\\Representation, Prediction, and Control\\in JEPA World Models}
+\author{Anonymous authors\\Paper under double-blind review}
+
+\begin{document}
+\maketitle
+\lhead{Under review as a conference paper at ICLR 2027}
+\begin{abstract}
+A world model should discard visual detail without discarding the distinctions an agent needs to act.
+Joint-embedding prediction makes this trade-off implicit: it learns both the representation and the
+prediction target. We examine three separate questions: what information remains encoded, what
+survives prediction, and what supports control. We begin with Craftax, where one 512-dimensional
+joint-embedding model reaches 121 of 128 nearby goals in a six-action open-loop test, yet its tested
+reward-planning pipeline underperforms random actions. A controlled moving-wall task then separates
+representation from imagination: decoded real encodings retain the wall, and policies using them
+exceed $50\%$ survival in two of nine runs; decoded predicted rollouts lose the wall, and none of 27 policies
+trained in the tested imagination pipeline reaches that threshold. These pipeline outcomes include fitted heads
+and policy optimization and do not isolate dynamics as the cause. Finally, nuisance-texture worlds
+connect the observations to the objective. We formalize a known predictable-nuisance failure under
+Gaussian non-collapse, and construct an exactly Gaussian, fully decodable representation in which
+a control-relevant bit has arbitrarily small prediction-loss scale. The resulting lesson is a concrete
+evaluation requirement: retention, prediction, and control must be checked separately.
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/worlds}
+\input{sections/craftax}
+\input{sections/controllers}
+\input{sections/results}
+\FloatBarrier
+\input{sections/cubes}
+\input{sections/theory}
+\input{sections/related}
+\input{sections/discussion}
+
+\subsubsection*{Reproducibility statement}
+Appendices~\ref{app:hparams}--\ref{app:craftax} specify model fitting, post-hoc supervision,
+evaluation protocols, and replication levels. The tables retain final-checkpoint outcomes rather
+than selecting intermediate peaks. The accompanying evidence manifest identifies the source
+artifacts used for each result; independent policy seeds are distinguished from independent model
+fits. Claims based on a single checkpoint are labeled throughout.
+
+\subsubsection*{Statement on the use of AI}
+Language models assisted with prose, code, plotting, proof checking, literature review, and
+adversarial manuscript review. The authors are responsible for all claims, experiments, and
+verification of the resulting text and artifacts.
+
+\clearpage
+\bibliography{references}
+\bibliographystyle{iclr2027_conference}
+\clearpage
+\appendix
+\input{sections/appendix}
+\end{document}

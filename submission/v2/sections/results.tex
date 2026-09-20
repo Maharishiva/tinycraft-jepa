@@ -1,0 +1,96 @@
+\subsection{The exact-environment baseline fails to solve the gate}
+\label{sec:results-ppo}
+\label{sec:results}
+
+None of the 15 policies trained with exact transitions and true task signals reaches $50\%$ survival.
+Their mean survival is $0.47\%$, $0.39\%$, and $1.41\%$ for model seeds 0, 1, and 2
+(Figure~\ref{fig:matched-control}; Table~\ref{tab:matched-gate} in the appendix). The same controller is therefore unsuccessful even when transition,
+reward, and termination prediction errors are removed from its training environment. The poor policy performance in imagination therefore cannot be attributed to the learned transition
+model alone.
+
+\paragraph{A fixed training protocol.}
+For every frozen model, we train five recurrent MLP-PPO policies \citep{schulman2017ppo} in each of
+three conditions: learned transitions with fitted reward/termination heads; exact simulator
+transitions re-encoded by the same encoder with the same fitted heads; and exact re-encoded
+transitions with true rewards and terminations. Actor inputs contain no simulator state. The 45 runs
+share their start-state mixture, context burn-in, rollout length, optimizer, updates, and evaluation
+keys within model/policy-seed pairs. Each completes 150 updates of $512\times16$ transitions and is
+evaluated at its final checkpoint on 256 real episodes. Walls passed counts exits before or on
+the terminal transition, including an exit on the same step as death. Survival requires remaining
+alive through step 128; these are the two primary outcomes;
+survival above $50\%$ is a secondary operational threshold.
+
+Exact-simulator trajectories become absorbing after true termination. With fitted heads, learned
+continuation may still weight those terminal states. We report this support change alongside the
+transition intervention. Policy-seed intervals are conditional on a fixed model and its evaluation
+set; the three model effects remain separate. Appendix~\ref{app:matched} records the pairing checks,
+uncertainty estimands, and all contrasts.
+
+Exact transitions and true signals nevertheless improve walls passed from $0.285$ to $0.452$,
+$0.217$ to $0.341$, and $0.320$ to $0.543$ in the three models. The paired gains are $0.166$,
+$0.123$, and $0.223$ walls per episode. Survival changes are $-0.47$, $-0.39$, and $+1.02$
+percentage points. Thus the substitution changes partial progress, while leaving task-level control
+poor in every fitted model. All 45 policies complete the prescribed budget; no intermediate policy
+or favorable model seed is selected.
+
+\begin{figure}[t]
+\centering
+\paperfig{matched_control_v2.pdf}{1.0}
+\caption{\textbf{The exact-environment control is itself unsuccessful.} All 45 final policies,
+with five paired policy seeds per model and training condition. Lines connect matched policy seeds;
+model fits remain separate. The survival panels use a $0$--$4\%$ detail scale, far below the $50\%$
+operational threshold. Exact+heads$^*$ uses absorbing true terminal states while retaining fitted
+reward and continuation, so this transition substitution also changes terminal support.}
+\label{fig:matched-control}
+\end{figure}
+
+\subsection{Transition and task-signal substitutions have different effects}
+\label{sec:results-mean}
+
+Keeping the fitted heads while substituting exact transitions lowers mean walls passed to $0.230$,
+$0.068$, and $0.096$. Replacing those heads with true signals then raises the means to $0.452$,
+$0.341$, and $0.543$. These contrasts expose sensitivity to how transitions and task signals are
+combined. They do not establish that less accurate dynamics are intrinsically better: the fitted-head
+condition applies its learned continuation after the simulator has entered an absorbing terminal state.
+Its logged post-terminal weight fraction averages $12.3\%$, $11.2\%$, and $9.4\%$ across updates and
+policy seeds in the three models.
+
+Real-transition head diagnostics already show a weak wall-collision signal. For model 0, fitted
+reward is about $-0.05$ on wall deaths and $-0.89$ on border deaths, against the true $-1$;
+termination AUC is $0.65$ versus $0.96$. Yet correcting both dynamics and signals still leaves the
+common MLP-PPO recipe unsuccessful. The exact condition leaves the actor's access to encoded state and its training procedure as
+unresolved limitations.
+
+\subsection{A native spatial policy also leaves the task unsolved}
+\label{sec:native-grid}
+A separate sensitivity replaces the MLP with a CNN on the native $4\times4\times32$ latent grid,
+without a decoder, extra latent coordinates, or privileged inputs. It repeats all three training
+conditions for three policy seeds per model, adding 27 complete runs. None exceeds $50\%$ survival.
+With exact transitions and true signals, mean survival is $1.17\%$, $0.52\%$, and $0.65\%$;
+wall counts are $0.616$, $0.367$, and $0.452$ (Appendix~\ref{app:native-grid}). Thus changing this
+policy inductive bias does not qualify the short-rollout recipe as a successful control test.
+
+The transition substitution has a different sign under this torso: exact transitions with fitted
+heads increase mean wall counts in all three models, whereas they decrease them in the primary MLP
+study. We retain the two campaigns separately. Across both, none of 72 policies crosses the threshold,
+including all 24 trained with exact transitions and true signals. Earlier real-environment CNNs on
+supervised decoded encodings do cross it in two of nine runs, using a different training protocol;
+those results establish a separate useful read-out, not a successful common baseline
+(Appendix~\ref{app:historical-gate}).
+
+
+\subsection{Correct termination removes the extension but does not resolve control}
+\label{sec:termination}
+The observed post-terminal weights trigger a separate sensitivity with exact transitions, true
+termination, and the original learned reward head. All 24 additional policies complete the fixed
+budget and have exactly zero continuation-weighted post-terminal mass. None exceeds $50\%$ survival.
+Changing termination alone has mixed effects on walls passed and lowers the mean in all three
+native-grid cells (Appendix~\ref{app:termination}).
+
+With exact transitions and true termination held fixed, replacing the fitted reward with the true
+reward increases mean wall counts in all six model/torso cells: $0.287$, $0.124$, and $0.465$ walls
+for the MLP, and $0.514$, $0.367$, and $0.271$ for the native-grid CNN. Survival changes remain small
+and mixed. This identifies a contribution from the fitted reward interface within these training
+conditions, while the unsuccessful exact-condition controls leave encoder accessibility, policy
+interface, and training procedure unresolved. The separate horizon-16 campaigns total 96 policies
+with no threshold crossings, all conditioned on only three fitted world models.

@@ -1,0 +1,241 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand*\HyPL@Entry[1]{}
+\citation{lecun2022path,assran2023ijepa,bardes2024vjepa}
+\citation{assran2025vjepa2,sobal2025pldm,maes2026lewm}
+\HyPL@Entry{0<</S/D>>}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\citation{sobal2022slow}
+\citation{balestriero2025lejepa}
+\citation{matthews2024craftax}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Model and study design}{2}{section.2}\protected@file@percent }
+\newlabel{sec:worlds}{{2}{2}{Model and study design}{section.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Joint representation and prediction.}{2}{section*.1}\protected@file@percent }
+\newlabel{eq:lewm}{{1}{2}{Joint representation and prediction}{equation.2.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Three tests.}{2}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Craftax: local planning works beyond staying still}{2}{section.3}\protected@file@percent }
+\newlabel{sec:craftax}{{3}{2}{Craftax: local planning works beyond staying still}{section.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {Local Craftax planning under fresh execution noise.} One existing model is tested on 384 fresh episodes; 247 have a target different from the starting position. Whiskers are Wilson 95\% intervals over evaluation episodes, conditional on this checkpoint. Receding-horizon planning uses more search compute than one-shot planning. The genuine start/goal pair is the first stored example with displacement at least two cells, selected without inspecting model outcomes.}}{3}{figure.1}\protected@file@percent }
+\newlabel{fig:craftax}{{1}{3}{\textbf {Local Craftax planning under fresh execution noise.} One existing model is tested on 384 fresh episodes; 247 have a target different from the starting position. Whiskers are Wilson 95\% intervals over evaluation episodes, conditional on this checkpoint. Receding-horizon planning uses more search compute than one-shot planning. The genuine start/goal pair is the first stored example with displacement at least two cells, selected without inspecting model outcomes}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}The gate: separate read-out transfer from control}{3}{section.4}\protected@file@percent }
+\newlabel{sec:controllers}{{4}{3}{The gate: separate read-out transfer from control}{section.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{A task with a delayed observation.}{3}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Read-out adaptation lowers MAE without reliable position tracking}{3}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:forecast-result}{{4.1}{3}{Read-out adaptation lowers MAE without reliable position tracking}{subsection.4.1}{}}
+\citation{schulman2017ppo}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The exact-environment baseline fails to solve the gate}{4}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:results-ppo}{{4.2}{4}{The exact-environment baseline fails to solve the gate}{subsection.4.2}{}}
+\newlabel{sec:results}{{4.2}{4}{The exact-environment baseline fails to solve the gate}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{A fixed training protocol.}{4}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Transition and task-signal substitutions have different effects}{4}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:results-mean}{{4.3}{4}{Transition and task-signal substitutions have different effects}{subsection.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {The exact-environment control is itself unsuccessful.} All 45 final policies, with five paired policy seeds per model and training condition. Lines connect matched policy seeds; model fits remain separate. The survival panels use a $0$--$4\%$ detail scale, far below the $50\%$ operational threshold. Exact+heads$^*$ uses absorbing true terminal states while retaining fitted reward and continuation, so this transition substitution also changes terminal support.}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:matched-control}{{2}{5}{\textbf {The exact-environment control is itself unsuccessful.} All 45 final policies, with five paired policy seeds per model and training condition. Lines connect matched policy seeds; model fits remain separate. The survival panels use a $0$--$4\%$ detail scale, far below the $50\%$ operational threshold. Exact+heads$^*$ uses absorbing true terminal states while retaining fitted reward and continuation, so this transition substitution also changes terminal support}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}A native spatial policy also leaves the task unsolved}{5}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:native-grid}{{4.4}{5}{A native spatial policy also leaves the task unsolved}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Correct termination removes the extension but does not resolve control}{5}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:termination}{{4.5}{5}{Correct termination removes the extension but does not resolve control}{subsection.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {The matched gray-noise cube comparison.} Position read-out from real encodings for three independently initialized grid JEPAs in each condition. Architecture, latent dimension, update count, and training dataset size are fixed. A high probe error is a failure of the tested read-out, not proof of absent information.}}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:cube-readout}{{3}{6}{\textbf {The matched gray-noise cube comparison.} Position read-out from real encodings for three independently initialized grid JEPAs in each condition. Architecture, latent dimension, update count, and training dataset size are fixed. A high probe error is a failure of the tested read-out, not proof of absent information}{figure.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \textbf  {A matched nuisance--dynamics interaction.} Grid-JEPA position L1 error in pixels, mean $\pm $ sample standard deviation across three model fits. The same supervised read-out is applied to real encodings and eight-step predictions; the latter can also reflect read-out extrapolation. Predicted-window evaluation excludes resets and uses overlapping windows.}}{6}{table.1}\protected@file@percent }
+\newlabel{tab:cube-main}{{1}{6}{\textbf {A matched nuisance--dynamics interaction.} Grid-JEPA position L1 error in pixels, mean $\pm $ sample standard deviation across three model fits. The same supervised read-out is applied to real encodings and eight-step predictions; the latter can also reflect read-out extrapolation. Predicted-window evaluation excludes resets and uses overlapping windows}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Remove the wall: nuisance and dynamics interact}{6}{section.5}\protected@file@percent }
+\newlabel{sec:cubes}{{5}{6}{Remove the wall: nuisance and dynamics interact}{section.5}{}}
+\citation{sobal2022slow}
+\citation{assran2023ijepa,bardes2024vjepa}
+\citation{zhou2024dinowm,assran2025vjepa2}
+\citation{sobal2025pldm}
+\citation{maes2026lewm,balestriero2025lejepa}
+\citation{sobal2022slow}
+\citation{gulati2026contrast}
+\citation{bai2026temporal}
+\citation{terver2026planning}
+\citation{tang2023selfpredictive,ni2024bridging}
+\citation{yan2026psgjepa,liu2026physicallygrounded}
+\citation{lambert2020objective}
+\citation{farahmand2017vaml,grimm2020value,grimm2021proper}
+\citation{wan2019expectation}
+\citation{hafner2020dreamer,alonso2024diamond,hafner2025dreamer4}
+\citation{hansen2026hallucination}
+\citation{bagatella2026tdjepa}
+\citation{li2026rcaux}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Non-collapse leaves feature choice open}{7}{section.6}\protected@file@percent }
+\newlabel{sec:theory-summary}{{6}{7}{Non-collapse leaves feature choice open}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Related work}{7}{section.7}\protected@file@percent }
+\newlabel{sec:related}{{7}{7}{Related work}{section.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Which JEPA setting?}{7}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Predictability, geometry, and planning.}{7}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Models for decisions.}{7}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Discussion}{8}{section.8}\protected@file@percent }
+\newlabel{sec:limitations}{{8}{8}{Discussion}{section.8}{}}
+\bibdata{references}
+\bibcite{alonso2024diamond}{{1}{2024}{{Alonso et~al.}}{{Alonso, Jelley, Micheli, Kanervisto, Storkey, Pearce, and Fleuret}}}
+\bibcite{assran2023ijepa}{{2}{2023}{{Assran et~al.}}{{Assran, Duval, Misra, Bojanowski, Vincent, Rabbat, LeCun, and Ballas}}}
+\bibcite{assran2025vjepa2}{{3}{2025}{{Assran et~al.}}{{Assran, Bardes, Fan, Garrido, Howes, Komeili, Muckley, Rizvi, Roberts, Sinha, Zholus, and Ballas}}}
+\bibcite{bagatella2026tdjepa}{{4}{2026}{{Bagatella et~al.}}{{Bagatella, Pirotta, Touati, Lazaric, and Tirinzoni}}}
+\bibcite{bai2026temporal}{{5}{2026}{{Bai \& Xiong}}{{Bai and Xiong}}}
+\bibcite{balestriero2025lejepa}{{6}{2025}{{Balestriero \& LeCun}}{{Balestriero and LeCun}}}
+\bibcite{bardes2024vjepa}{{7}{2024}{{Bardes et~al.}}{{Bardes, Garrido, Ponce, Chen, Rabbat, LeCun, Assran, and Ballas}}}
+\bibcite{chen2024diffusionforcing}{{8}{2024}{{Chen et~al.}}{{Chen, Mons{\'o}, Du, Simchowitz, Tedrake, and Sitzmann}}}
+\bibcite{espeholt2018impala}{{9}{2018}{{Espeholt et~al.}}{{Espeholt, Soyer, Munos, Simonyan, Mnih, Ward, Doron, Firoiu, Harley, Dunning, Legg, and Kavukcuoglu}}}
+\bibcite{farahmand2017vaml}{{10}{2017}{{Farahmand et~al.}}{{Farahmand, Barreto, and Nikovski}}}
+\bibcite{farebrother2024stopregressing}{{11}{2024}{{Farebrother et~al.}}{{Farebrother, Orbay, Vuong, Taiga, Chebotar, Xiao, Irpan, Levine, Castro, Faust, Kumar, and Agarwal}}}
+\bibcite{grimm2020value}{{12}{2020}{{Grimm et~al.}}{{Grimm, Barreto, Singh, and Silver}}}
+\bibcite{grimm2021proper}{{13}{2021}{{Grimm et~al.}}{{Grimm, Barreto, Farquhar, Silver, and Singh}}}
+\bibcite{gulati2026contrast}{{14}{2026}{{Gulati \& Nemenman}}{{Gulati and Nemenman}}}
+\bibcite{hafner2020dreamer}{{15}{2020}{{Hafner et~al.}}{{Hafner, Lillicrap, Ba, and Norouzi}}}
+\bibcite{hafner2025dreamer4}{{16}{2025}{{Hafner et~al.}}{{Hafner, Yan, and Lillicrap}}}
+\bibcite{hansen2026hallucination}{{17}{2026}{{Hansen \& Wang}}{{Hansen and Wang}}}
+\bibcite{lambert2020objective}{{18}{2020}{{Lambert et~al.}}{{Lambert, Amos, Yadan, and Calandra}}}
+\bibcite{lecun2022path}{{19}{2022}{{LeCun}}{{}}}
+\bibcite{li2026rcaux}{{20}{2026}{{Li et~al.}}{{Li, Li, Maeda, Ogawa, and Haseyama}}}
+\bibcite{lipman2023flowmatching}{{21}{2023}{{Lipman et~al.}}{{Lipman, Chen, Ben-Hamu, Nickel, and Le}}}
+\bibcite{liu2026physicallygrounded}{{22}{2026}{{Liu et~al.}}{{Liu, Huang, Liang, and Gao}}}
+\bibcite{maes2026lewm}{{23}{2026}{{Maes et~al.}}{{Maes, Le~Lidec, Scieur, LeCun, and Balestriero}}}
+\bibcite{matthews2024craftax}{{24}{2024}{{Matthews et~al.}}{{Matthews, Beukman, Ellis, Samvelyan, Jackson, Coward, and Foerster}}}
+\bibcite{ni2024bridging}{{25}{2024}{{Ni et~al.}}{{Ni, Eysenbach, Seyedsalehi, Ma, Gehring, Mahajan, and Bacon}}}
+\bibcite{schulman2017ppo}{{26}{2017}{{Schulman et~al.}}{{Schulman, Wolski, Dhariwal, Radford, and Klimov}}}
+\bibcite{sobal2022slow}{{27}{2022}{{Sobal et~al.}}{{Sobal, {Jyothir S V}, Jalagam, Carion, Cho, and LeCun}}}
+\bibcite{sobal2025pldm}{{28}{2025}{{Sobal et~al.}}{{Sobal, Zhang, Cho, Balestriero, Rudner, and LeCun}}}
+\bibcite{tang2023selfpredictive}{{29}{2023}{{Tang et~al.}}{{Tang, Guo, Richemond, Avila~Pires, Chandak, Munos, Rowland, Gheshlaghi~Azar, Le~Lan, Lyle, Gy{\"o}rgy, Thakoor, Dabney, Piot, Calandriello, and Valko}}}
+\bibcite{terver2026planning}{{30}{2026}{{Terver et~al.}}{{Terver, Yang, Ponce, Bardes, and LeCun}}}
+\bibcite{wan2019expectation}{{31}{2019}{{Wan et~al.}}{{Wan, Zaheer, White, White, and Sutton}}}
+\bibcite{yan2026psgjepa}{{32}{2026}{{Yan et~al.}}{{Yan, Zhu, Jia, Yin, He, Zhong, Li, Lu, Li, Zhang, Chen, Song, Chen, Gao, and Li}}}
+\bibcite{zhou2024dinowm}{{33}{2024}{{Zhou et~al.}}{{Zhou, Pan, LeCun, and Pinto}}}
+\bibstyle{iclr2027_conference}
+\citation{sobal2022slow}
+\@writefile{toc}{\contentsline {section}{\numberline {A}What the objective does not guarantee}{12}{appendix.A}\protected@file@percent }
+\newlabel{sec:theory}{{A}{12}{What the objective does not guarantee}{appendix.A}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Non-collapse does not select the controlled state}{12}{subsection.A.1}\protected@file@percent }
+\newlabel{sec:theory-rep}{{A.1}{12}{Non-collapse does not select the controlled state}{subsection.A.1}{}}
+\newlabel{prop:representation}{{1}{12}{Gaussian nuisance optimum; extending \citet {sobal2022slow}}{proposition.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Decodability does not set a useful prediction scale}{12}{subsection.A.2}\protected@file@percent }
+\newlabel{sec:amplitude}{{A.2}{12}{Decodability does not set a useful prediction scale}{subsection.A.2}{}}
+\newlabel{prop:amplitude}{{2}{12}{Exact information at arbitrarily small scale}{proposition.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Why scale matters for a downstream read-out.}{12}{section*.11}\protected@file@percent }
+\newlabel{eq:readout}{{2}{12}{Why scale matters for a downstream read-out}{equation.A.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Proofs}{13}{appendix.B}\protected@file@percent }
+\newlabel{app:proofs}{{B}{13}{Proofs}{appendix.B}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Empirical objective and population idealization}{13}{subsection.B.1}\protected@file@percent }
+\newlabel{eq:sigreg}{{4}{13}{Empirical objective and population idealization}{equation.B.4}{}}
+\newlabel{eq:popsigreg}{{5}{13}{Empirical objective and population idealization}{equation.B.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Nuisance optimum and the cost of innovations}{13}{subsection.B.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Proposition\nobreakspace  {}\ref  {prop:representation}.}{13}{section*.12}\protected@file@percent }
+\newlabel{cor:strict}{{1}{13}{Innovation cost for uniformly state-resolving encoders}{corollary.1}{}}
+\newlabel{eq:innovation}{{6}{13}{Innovation cost for uniformly state-resolving encoders}{equation.B.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Corollary\nobreakspace  {}\ref  {cor:strict}.}{14}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Conditional prediction and geometric scale}{14}{subsection.B.3}\protected@file@percent }
+\newlabel{lem:mean}{{1}{14}{Conditional mean}{lemma.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{The finite-sample regularizer.}{14}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Proposition\nobreakspace  {}\ref  {prop:amplitude}.}{14}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}The cube worlds}{15}{appendix.C}\protected@file@percent }
+\newlabel{app:cubes}{{C}{15}{The cube worlds}{appendix.C}{}}
+\@writefile{toc}{\contentsline {paragraph}{Environment.}{15}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Read-out fitting.}{15}{section*.17}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Seed-0 cube position L1 error (pixels) for the grid and class-token JEPAs. ``Real'' evaluates held-out encoded frames; ``Pred. 8'' evaluates the same read-out on eight-step predicted latents. Gray conditions use more training transitions than black and color conditions.}}{16}{table.2}\protected@file@percent }
+\newlabel{tab:cube-readouts}{{2}{16}{Seed-0 cube position L1 error (pixels) for the grid and class-token JEPAs. ``Real'' evaluates held-out encoded frames; ``Pred. 8'' evaluates the same read-out on eight-step predicted latents. Gray conditions use more training transitions than black and color conditions}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Seed-0 flow cube position L1 error (pixels). Latent and pixel columns use different supervised read-outs. The persistent-color failure is visible before dynamics: real encoded position has large error. These are model-recipe references rather than objective-only comparisons.}}{16}{table.3}\protected@file@percent }
+\newlabel{tab:cube-flow}{{3}{16}{Seed-0 flow cube position L1 error (pixels). Latent and pixel columns use different supervised read-outs. The persistent-color failure is visible before dynamics: real encoded position has large error. These are model-recipe references rather than objective-only comparisons}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Survival (percent) in the supplementary cube worlds. ``LeWM'' denotes the class-token JEPA; ``grid'' denotes the grid JEPA; ``goal'' and ``heads'' use latent-goal and learned-return search, respectively. PPO columns use the final saved policies; ``px'' and ``z'' identify pixel and latent observations. Still-world survival does not certify state feedback.}}{16}{table.4}\protected@file@percent }
+\newlabel{tab:cube}{{4}{16}{Survival (percent) in the supplementary cube worlds. ``LeWM'' denotes the class-token JEPA; ``grid'' denotes the grid JEPA; ``goal'' and ``heads'' use latent-goal and learned-return search, respectively. PPO columns use the final saved policies; ``px'' and ``z'' identify pixel and latent observations. Still-world survival does not certify state feedback}{table.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Hyperparameters and compute}{17}{appendix.D}\protected@file@percent }
+\newlabel{app:hparams}{{D}{17}{Hyperparameters and compute}{appendix.D}{}}
+\@writefile{toc}{\contentsline {paragraph}{JEPA settings.}{17}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Flow settings.}{17}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{JEPA read-outs.}{17}{section*.20}\protected@file@percent }
+\citation{espeholt2018impala}
+\citation{farebrother2024stopregressing}
+\@writefile{toc}{\contentsline {paragraph}{Policy optimisation.}{18}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Compute.}{18}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {E}Evaluation protocol}{18}{appendix.E}\protected@file@percent }
+\newlabel{app:protocol}{{E}{18}{Evaluation protocol}{appendix.E}{}}
+\@writefile{toc}{\contentsline {paragraph}{Gate specification.}{18}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Latent diagnostic.}{18}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {F}Latent-policy torso controls}{18}{appendix.F}\protected@file@percent }
+\newlabel{app:latentctl}{{F}{18}{Latent-policy torso controls}{appendix.F}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textbf  {Control outcomes by model fit and predictor variant.} Each point is a final policy evaluated on 256 real episodes. Original prediction, residual sampling, and residual means are separate conditions; model and policy replication are distinct. Horizontal bars show within-model means, and the dashed line marks random actions. The flow reference uses one checkpoint.}}{19}{figure.4}\protected@file@percent }
+\newlabel{fig:control}{{4}{19}{\textbf {Control outcomes by model fit and predictor variant.} Each point is a final policy evaluated on 256 real episodes. Original prediction, residual sampling, and residual means are separate conditions; model and policy replication are distinct. Horizontal bars show within-model means, and the dashed line marks random actions. The flow reference uses one checkpoint}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Real-gate observation and torso controls: final walls per episode and survival, mean $\pm $ standard deviation over policies; discovery means final survival above $50\%$. All policies use $1{,}499{,}136$ real transitions.}}{19}{table.5}\protected@file@percent }
+\newlabel{tab:latentctl}{{5}{19}{Real-gate observation and torso controls: final walls per episode and survival, mean $\pm $ standard deviation over policies; discovery means final survival above $50\%$. All policies use $1{,}499{,}136$ real transitions}{table.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {G}Control outcomes and latent diagnostics}{19}{appendix.G}\protected@file@percent }
+\newlabel{app:round2}{{G}{19}{Control outcomes and latent diagnostics}{appendix.G}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Final control outcomes in the real gate, mean $\pm $ standard deviation over policy runs. Imagined training uses $1{,}228{,}800$ transitions per policy; real training uses $1{,}499{,}136$. Model-fit counts and policy-run counts identify distinct replication levels.}}{20}{table.6}\protected@file@percent }
+\newlabel{tab:paired}{{6}{20}{Final control outcomes in the real gate, mean $\pm $ standard deviation over policy runs. Imagined training uses $1{,}228{,}800$ transitions per policy; real training uses $1{,}499{,}136$. Model-fit counts and policy-run counts identify distinct replication levels}{table.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Every imagined JEPA policy at its final checkpoint: survival (percent) and walls per episode by encoder seed, predictor variant and PPO seed. Each cell uses $256$ real episodes.}}{20}{table.7}\protected@file@percent }
+\newlabel{tab:seeds}{{7}{20}{Every imagined JEPA policy at its final checkpoint: survival (percent) and walls per episode by encoder seed, predictor variant and PPO seed. Each cell uses $256$ real episodes}{table.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Grid-JEPA diagnostics by encoder seed. Wall amplitude and total teacher-forced residual are squared distances at future steps $1$ and $8$; decoded intensity uses steps $1$ and $2$. The wall coordinate has endpoints $0$ (wall absent) and $1$ (true encoding). Head AUC compares each death cause with alive transitions; PPO wall counts pool predictor variants.}}{20}{table.8}\protected@file@percent }
+\newlabel{tab:seeddiag}{{8}{20}{Grid-JEPA diagnostics by encoder seed. Wall amplitude and total teacher-forced residual are squared distances at future steps $1$ and $8$; decoded intensity uses steps $1$ and $2$. The wall coordinate has endpoints $0$ (wall absent) and $1$ (true encoding). Head AUC compares each death cause with alive transitions; PPO wall counts pool predictor variants}{table.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces JEPA geometry and decoded wall intensity for model seed $0$, averaged over $64$ pre-reveal contexts. Distances use matched actions and the same encoder; total residuals include all latent coordinates. Wall intensity is measured on shared wall pixels.}}{21}{table.9}\protected@file@percent }
+\newlabel{tab:latent}{{9}{21}{JEPA geometry and decoded wall intensity for model seed $0$, averaged over $64$ pre-reveal contexts. Distances use matched actions and the same encoder; total residuals include all latent coordinates. Wall intensity is measured on shared wall pixels}{table.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textbf  {Within-encoder scale diagnostics.} For each of the three gate encoders, wall-removal distance and teacher-forced total one-step residual are summed squared latent distances. Curves average 64 pre-reveal contexts whose recorded futures survive the diagnostic horizon. These are feature sensitivity and total prediction error, not commensurate measures of information content.}}{21}{figure.5}\protected@file@percent }
+\newlabel{fig:geometry}{{5}{21}{\textbf {Within-encoder scale diagnostics.} For each of the three gate encoders, wall-removal distance and teacher-forced total one-step residual are summed squared latent distances. Curves average 64 pre-reveal contexts whose recorded futures survive the diagnostic horizon. These are feature sensitivity and total prediction error, not commensurate measures of information content}{figure.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {H}Terminal rewards in the flow recipe}{22}{appendix.H}\protected@file@percent }
+\newlabel{app:rewardbug}{{H}{22}{Terminal rewards in the flow recipe}{appendix.H}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Craftax protocols and single-checkpoint results}{22}{appendix.I}\protected@file@percent }
+\newlabel{app:craftax}{{I}{22}{Craftax protocols and single-checkpoint results}{appendix.I}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {I.1}Fresh local-goal evaluation}{22}{subsection.I.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Craftax goal-success counts and Wilson 95\% intervals, conditional on one fitted model. The reference replays the privileged sequence used to generate the goal under independent execution noise; it is a protocol check, not an oracle or a guaranteed upper bound.}}{22}{table.10}\protected@file@percent }
+\newlabel{tab:craftax-counts}{{10}{22}{Craftax goal-success counts and Wilson 95\% intervals, conditional on one fitted model. The reference replays the privileged sequence used to generate the goal under independent execution noise; it is a protocol check, not an oracle or a guaranteed upper bound}{table.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Craftax success by target displacement. The first column includes all 384 starts; the others retain 247 displaced targets and 99 targets at least two grid cells away.}}{22}{table.11}\protected@file@percent }
+\newlabel{tab:craftax}{{11}{22}{Craftax success by target displacement. The first column includes all 384 starts; the others retain 247 displaced targets and 99 targets at least two grid cells away}{table.11}{}}
+\citation{lipman2023flowmatching,chen2024diffusionforcing,hafner2025dreamer4}
+\@writefile{toc}{\contentsline {subsection}{\numberline {I.2}Earlier exploratory goal and reward protocols}{23}{subsection.I.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Goal generation and planning.}{23}{section*.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reward control and head generalization.}{23}{section*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {J}Earlier unmatched gate experiments}{23}{appendix.J}\protected@file@percent }
+\newlabel{app:historical-gate}{{J}{23}{Earlier unmatched gate experiments}{appendix.J}{}}
+\@writefile{toc}{\contentsline {paragraph}{Reference model.}{23}{section*.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {J.1}Useful wall information remains in the frozen representation}{23}{subsection.J.1}\protected@file@percent }
+\newlabel{app:results-wall}{{J.1}{23}{Useful wall information remains in the frozen representation}{subsection.J.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textbf  {A wall visible in real encodings disappears in predicted rollouts.} A pre-reveal context is followed by futures under recorded actions: the simulator, decoded real JEPA encodings, decoded original JEPA predictions, and one flow-model sample. The JEPA rows use encoder seed 0 and the same fitted decoder. The example is the first stored diagnostic context at wall position $x=45$ among 64 contexts whose recorded futures survive the horizon. The flow sample is a single-checkpoint feasibility reference. A decoding failure on predicted latents can reflect both prediction error and off-distribution read-out; it is not alone proof of information loss.}}{24}{figure.6}\protected@file@percent }
+\newlabel{fig:rollouts}{{6}{24}{\textbf {A wall visible in real encodings disappears in predicted rollouts.} A pre-reveal context is followed by futures under recorded actions: the simulator, decoded real JEPA encodings, decoded original JEPA predictions, and one flow-model sample. The JEPA rows use encoder seed 0 and the same fitted decoder. The example is the first stored diagnostic context at wall position $x=45$ among 64 contexts whose recorded futures survive the horizon. The flow sample is a single-checkpoint feasibility reference. A decoding failure on predicted latents can reflect both prediction error and off-distribution read-out; it is not alone proof of information loss}{figure.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {J.2}The tested imagination pipeline does not discover the strategy}{24}{subsection.J.2}\protected@file@percent }
+\newlabel{app:results-ppo}{{J.2}{24}{The tested imagination pipeline does not discover the strategy}{subsection.J.2}{}}
+\newlabel{app:results}{{J.2}{24}{The tested imagination pipeline does not discover the strategy}{subsection.J.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {J.3}Prediction and fitted heads provide distinct failure signals}{24}{subsection.J.3}\protected@file@percent }
+\newlabel{app:results-mean}{{J.3}{24}{Prediction and fitted heads provide distinct failure signals}{subsection.J.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces \textbf  {Final gate outcomes, with predictor variants kept separate.} Mean $\pm $ sample standard deviation across policy runs; discovery is final survival above $50\%$. JEPA imagination variants and real-latent conditions each contain $3$ models $\times $ $3$ policies; pixel controls have three policies. Real training changes rewards, terminations, and PPO protocol alongside dynamics. Flow is a single-model reference.}}{25}{table.12}\protected@file@percent }
+\newlabel{tab:gate-main}{{12}{25}{\textbf {Final gate outcomes, with predictor variants kept separate.} Mean $\pm $ sample standard deviation across policy runs; discovery is final survival above $50\%$. JEPA imagination variants and real-latent conditions each contain $3$ models $\times $ $3$ policies; pixel controls have three policies. Real training changes rewards, terminations, and PPO protocol alongside dynamics. Flow is a single-model reference}{table.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \textbf  {Recoverable information can support successful control.} Final real-gate survival for MLP policies on frozen latents or pixels (left), and CNN policies on decoded latents or pixels (right). Points are policy runs, grouped by encoder seed; the dashed line is the $50\%$ discovery criterion. Both decoded-latent discoveries use encoder 1. Reconstruction supervision and CNN training are additional to representation fitting.}}{25}{figure.7}\protected@file@percent }
+\newlabel{fig:representation}{{7}{25}{\textbf {Recoverable information can support successful control.} Final real-gate survival for MLP policies on frozen latents or pixels (left), and CNN policies on decoded latents or pixels (right). Points are policy runs, grouped by encoder seed; the dashed line is the $50\%$ discovery criterion. Both decoded-latent discoveries use encoder 1. Reconstruction supervision and CNN training are additional to representation fitting}{figure.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {K}Matched-control protocol and outcomes}{26}{appendix.K}\protected@file@percent }
+\newlabel{app:matched}{{K}{26}{Matched-control protocol and outcomes}{appendix.K}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {K.1}Completed primary outcomes}{26}{subsection.K.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces \textbf  {The exact training environment does not make this PPO recipe solve the gate.} Final real-environment outcomes, mean $\pm $ sample standard deviation across five policy seeds per row. Each of three fitted models receives all three matched conditions. None of the 45 policies exceeds $50\%$ survival. ``Fitted'' means the unchanged learned reward and termination heads; ``true'' means simulator signals.}}{26}{table.13}\protected@file@percent }
+\newlabel{tab:matched-gate}{{13}{26}{\textbf {The exact training environment does not make this PPO recipe solve the gate.} Final real-environment outcomes, mean $\pm $ sample standard deviation across five policy seeds per row. Each of three fitted models receives all three matched conditions. None of the 45 policies exceeds $50\%$ survival. ``Fitted'' means the unchanged learned reward and termination heads; ``true'' means simulator signals}{table.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {L}Native-grid policy sensitivity}{26}{appendix.L}\protected@file@percent }
+\newlabel{app:native-grid}{{L}{26}{Native-grid policy sensitivity}{appendix.L}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Matched primary wall-count differences. Intervals are 95\% percentile bootstraps over five paired policy seeds within one fixed model, conditional on its evaluation set. They are unadjusted descriptive intervals; all three prespecified contrasts are retained.}}{27}{table.14}\protected@file@percent }
+\newlabel{tab:matched-contrasts}{{14}{27}{Matched primary wall-count differences. Intervals are 95\% percentile bootstraps over five paired policy seeds within one fixed model, conditional on its evaluation set. They are unadjusted descriptive intervals; all three prespecified contrasts are retained}{table.14}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces Native-grid CNN sensitivity, kept separate from the primary MLP campaign. Each cell is mean $\pm $ sample standard deviation across three policies from one fixed model. None of the 27 policies exceeds $50\%$ survival.}}{27}{table.15}\protected@file@percent }
+\newlabel{tab:native-gate}{{15}{27}{Native-grid CNN sensitivity, kept separate from the primary MLP campaign. Each cell is mean $\pm $ sample standard deviation across three policies from one fixed model. None of the 27 policies exceeds $50\%$ survival}{table.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {M}Forecast-readout protocol and outcomes}{27}{appendix.M}\protected@file@percent }
+\newlabel{app:forecast}{{M}{27}{Forecast-readout protocol and outcomes}{appendix.M}{}}
+\@writefile{toc}{\contentsline {paragraph}{Execution and uncertainty.}{28}{section*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {M.1}Read-out errors and a post-hoc tracking audit}{28}{subsection.M.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {N}Triggered termination sensitivity}{28}{appendix.N}\protected@file@percent }
+\newlabel{app:termination}{{N}{28}{Triggered termination sensitivity}{appendix.N}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces \textbf  {Read-out fitting changes measured forecast error.} Eight-step wall-position MAE in pixels on 716 pre-reveal continuing contexts. R, F, and C denote real future, forecast, and copied-current latents; arrows indicate fitting and evaluation domains. Both train-only scaling analyses are shown. The global training-mean baseline has MAE $14.24$; the post-hoc training-cohort mean and median have MAE $4.77$ and $4.64$. The larger refitting gain occurs in model 2; all three models are retained.}}{29}{table.16}\protected@file@percent }
+\newlabel{tab:forecast-transfer}{{16}{29}{\textbf {Read-out fitting changes measured forecast error.} Eight-step wall-position MAE in pixels on 716 pre-reveal continuing contexts. R, F, and C denote real future, forecast, and copied-current latents; arrows indicate fitting and evaluation domains. Both train-only scaling analyses are shown. The global training-mean baseline has MAE $14.24$; the post-hoc training-cohort mean and median have MAE $4.77$ and $4.64$. The larger refitting gain occurs in model 2; all three models are retained}{table.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \textbf  {Refitting changes forecast read-out error.} All three model seeds and both predeclared normalization schemes are retained. The original baseline is the global training-label mean evaluated on the selected slice; the added cohort-median constant is a post-hoc train-only check. Lower slice MAE can reflect calibration as well as tracking; the model-2 correlation audit and full-cohort RMSE prevent a reliable-position-recovery claim.}}{29}{figure.8}\protected@file@percent }
+\newlabel{fig:forecast-transfer}{{8}{29}{\textbf {Refitting changes forecast read-out error.} All three model seeds and both predeclared normalization schemes are retained. The original baseline is the global training-label mean evaluated on the selected slice; the added cohort-median constant is a post-hoc train-only check. Lower slice MAE can reflect calibration as well as tracking; the model-2 correlation audit and full-cohort RMSE prevent a reliable-position-recovery claim}{figure.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces Exact transitions, true termination, and fitted reward: the added termination-sensitivity condition. Mean $\pm $ sample standard deviation over paired policy seeds within one fixed model and torso. The two torso strata remain separate.}}{29}{table.17}\protected@file@percent }
+\newlabel{tab:termination-outcomes}{{17}{29}{Exact transitions, true termination, and fitted reward: the added termination-sensitivity condition. Mean $\pm $ sample standard deviation over paired policy seeds within one fixed model and torso. The two torso strata remain separate}{table.17}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Wall-count changes in the triggered sensitivity. ``True termination'' compares the new condition with exact transitions and fitted reward/termination. ``True reward'' compares exact transitions and true reward/termination with the new condition. Each entry gives the paired mean and its conditional 95\% policy-seed bootstrap interval.}}{30}{table.18}\protected@file@percent }
+\newlabel{tab:termination-contrasts}{{18}{30}{Wall-count changes in the triggered sensitivity. ``True termination'' compares the new condition with exact transitions and fitted reward/termination. ``True reward'' compares exact transitions and true reward/termination with the new condition. Each entry gives the paired mean and its conditional 95\% policy-seed bootstrap interval}{table.18}{}}
+\gdef \@abspage@last{30}

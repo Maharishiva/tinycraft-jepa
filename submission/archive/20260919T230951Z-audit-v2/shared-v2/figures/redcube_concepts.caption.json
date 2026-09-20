@@ -1,0 +1,12 @@
+{
+  "title": "Three gaps between prediction and control",
+  "caption": "Analytical counterexamples, not learned-model outputs. (a) With goal 0, action A yields −1 or +1 with equal probability, while B yields 0.1. Squared distance at the conditional mean ranks A first (0 versus 0.01), but expected squared distance ranks B first (1 versus 0.01). (b) For x_{t+1}=x_t^2+ξ_t with independent equiprobable ξ_t∈{−1,+1} and x_0=0, the exact one-step mean is f(x)=x^2. Its two-step rollout is 0; the true two-step distribution is uniform on {0,2}, with mean 1. (c) Let the observation contain controlled position and an independent episode-static texture parameter B∼N(0,I_d). An encoder retaining only B admits zero prediction error and identity marginal covariance while discarding position. The texture images illustrate this construction and are not frames from a trained decoder.",
+  "scope": [
+    "Panels a and b concern conditional-mean state prediction and squared latent-goal scoring or recursive state rollout; they do not apply to all deterministic value-equivalent models.",
+    "Panel c is an existence counterexample, not evidence that a particular optimizer finds it. Static nuisance counterexamples have prior precedent, including Sobal et al. (2022).",
+    "No experiment results, confidence intervals, probes, fitted decoders, model checkpoints, or selected rollout samples are used in this figure."
+  ],
+  "provenance": "Exact finite-support calculations from the user-supplied motivating examples. Illustrative texture generated with numpy default_rng seed 20260920.",
+  "source": "studies/revision/make_redcube_concepts.py",
+  "alt_text": "Three analytical mechanisms. A mean-only goal score selects the risky action despite higher expected squared loss. Iterating an exact one-step conditional mean gives zero where the true two-step mean is one. A texture-only latent predicts perfectly and has identity covariance but cannot distinguish cube positions."
+}

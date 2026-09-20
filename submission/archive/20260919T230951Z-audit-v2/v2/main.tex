@@ -1,0 +1,91 @@
+% V2 WORKING DRAFT: only completed evidence may enter results. See research/v2_outline.md.
+\documentclass{article}
+\usepackage{iclr2027_conference,times}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,multirow,array}
+\usepackage{graphicx,placeins}
+\usepackage{xcolor,colortbl}
+\usepackage{url,microtype,hyperref}
+\hypersetup{hidelinks}
+
+% The official ICLR style is unmodified. Color is confined to figures and tables.
+\definecolor{Navy}{HTML}{17324D}
+\definecolor{JEPA}{HTML}{CD663E}
+\definecolor{Real}{HTML}{087E83}
+\definecolor{Flow}{HTML}{7860A5}
+\newcommand{\inputtable}[1]{\input{tables/#1}}
+\newcommand{\paperfig}[2]{\IfFileExists{../shared-v2/figures/#1}{\includegraphics[width=#2\linewidth,clip]{../shared-v2/figures/#1}}{\fbox{\parbox[c][1.4in][c]{0.95\linewidth}{\centering Figure asset: #1}}}}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Nrm}{\mathcal{N}}
+\newcommand{\Lcal}{\mathcal{L}}
+
+\title{Learning to Ignore What Matters:\\Representation, Prediction, and Control\\in JEPA World Models}
+\author{Anonymous authors\\Paper under double-blind review}
+
+\begin{document}
+\maketitle
+\lhead{Under review as a conference paper at ICLR 2027}
+\begin{abstract}
+A failed policy trained in a world model can reflect errors in the model, its task heads, or the
+controller-training procedure. We examine these alternatives in a jointly trained, squared-loss
+JEPA with a fixed 512-dimensional representation. In Craftax, one frozen model reaches $93.2\%$ of
+384 nearby goals with six open-loop actions and $96.1\%$ with replanning, versus $35.7\%$ for no-op;
+success remains $89.9\%$ and $93.9\%$ on displaced goals. A controlled moving-wall task then tests
+whether poor imagined control identifies a model failure. Across 45 matched PPO runs, replacing
+learned transitions, rewards, and terminations with exact simulator outcomes improves walls passed
+by $0.12$--$0.22$ per episode across three model fits, but none of the 15 exact-environment policies
+exceeds $50\%$ survival. Their mean survival remains below $1.5\%$ for every model. The common
+controller is itself unsuccessful, so the earlier unmatched real-versus-imagined gap does not
+establish a task-solving deficit caused by learned transitions. A replicated nuisance--dynamics study supplies a
+separate representation-accessibility failure, while population constructions clarify the limits
+of non-collapse guarantees. Together, the measurements distinguish working local planning,
+unsuccessful policy training, and inaccessible state under a stated learning recipe.
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/worlds}
+\input{sections/craftax}
+\input{sections/controllers}
+\input{sections/forecast}
+\input{sections/results}
+\FloatBarrier
+\input{sections/cubes}
+\input{sections/theory_summary}
+\input{sections/related}
+\input{sections/discussion}
+
+\subsubsection*{Reproducibility statement}
+Appendices~\ref{app:hparams}--\ref{app:craftax} specify model fitting, post-hoc supervision,
+evaluation protocols, and replication levels. The tables retain final-checkpoint outcomes rather
+than selecting intermediate peaks. The accompanying evidence manifest identifies the source
+artifacts used for each result; independent policy seeds are distinguished from independent model
+fits. Claims based on a single checkpoint are labeled throughout.
+
+\subsubsection*{Statement on the use of AI}
+Language models assisted with prose, code, plotting, proof checking, literature review, and
+adversarial manuscript review. The authors are responsible for all claims, experiments, and
+verification of the resulting text and artifacts.
+
+\clearpage
+\bibliography{references}
+\bibliographystyle{iclr2027_conference}
+\clearpage
+\appendix
+\input{sections/theory}
+\input{sections/appendix}
+\input{sections/historical_gate}
+\input{sections/matched_appendix}
+\input{sections/forecast_appendix}
+\input{sections/termination_appendix}
+\end{document}

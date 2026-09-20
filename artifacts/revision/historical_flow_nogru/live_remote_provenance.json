@@ -1,0 +1,102 @@
+{
+  "captured_utc": "2026-09-19T23:57:10.344313+00:00",
+  "host": "multigpu-vm.sas.yp-c.yandex.net",
+  "historical_artifact_copies": [
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/runs/wmgym_5m_nogru/model.pkl",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/runs/wmgym_5m_nogru/model.pkl",
+      "size_bytes": 24373037,
+      "mtime_ns": 1789672187944431855,
+      "sha256": "6570703f8b3b244631d28bfd9410f95b56ce3625e39378d5bb0d321431960836"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/runs/wmgym_5m_nogru/config.json",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/runs/wmgym_5m_nogru/config.json",
+      "size_bytes": 615,
+      "mtime_ns": 1789669426432109183,
+      "sha256": "4ed59ff1e2908805b57946f5b978cf0f497c29d9102cd0fb95538f1ae6ba04c2"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/runs/wmgym_5m_nogru.log",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/runs/wmgym_5m_nogru.log",
+      "size_bytes": 108019,
+      "mtime_ns": 1789672187948431855,
+      "sha256": "7382e32be16b11002a62747a6f25edecf3321d74396467737038819b5083e3a3"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/runs/ledger_wmgym.jsonl",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/runs/ledger_wmgym.jsonl",
+      "size_bytes": 9743,
+      "mtime_ns": 1789686025734048744,
+      "sha256": "5286ad642d17d4cf873a5bbebaac2504b0cfff5794da0ccbc9ce7533d6b417f1"
+    }
+  ],
+  "current_sources": [
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/train_ppo_real.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/train_ppo_real.py",
+      "size_bytes": 9861,
+      "mtime_ns": 1789682979714692829,
+      "sha256": "fe11deb02d014a69b8f5a31b6ac025266ed03ac6ff37a44dc568ad50decea9f6"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/wm_gym.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/wm_gym.py",
+      "size_bytes": 4277,
+      "mtime_ns": 1789682979300692781,
+      "sha256": "a9c787d1ca02463e8c7df7ec35cc55e1a7a31e5ce93eedf2184b8bda58623dcd"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/wm_env2.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/wm_env2.py",
+      "size_bytes": 7432,
+      "mtime_ns": 1789663095000000000,
+      "sha256": "ee369385583d7cb3eab49e0899fc791632608c51a709c83df45844ba9017bc63"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/craftax_env.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/craftax_env.py",
+      "size_bytes": 3011,
+      "mtime_ns": 1789335426000000000,
+      "sha256": "38e333992872625a5a1883116ca741e9b2e6cba7761dd0b2c0f50675d2af9e43"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/evaluate.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/evaluate.py",
+      "size_bytes": 2502,
+      "mtime_ns": 1789341635000000000,
+      "sha256": "bcf331b94bea433cea2d287fd7ab47fc5f4b29a957530cc408c245bc9a3ad47b"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/agent.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/agent.py",
+      "size_bytes": 6466,
+      "mtime_ns": 1789667831808922858,
+      "sha256": "1bfeb69f0a6098959a409c4601e8a92219b1967f297b1e35beb96440edceb132"
+    },
+    {
+      "path": "/home/rldoeswork/personal/wm_rl_eval2/tinywm_module.py",
+      "resolved_path": "/home/rldoeswork/personal/wm_rl_eval2/tinywm_module.py",
+      "size_bytes": 930,
+      "mtime_ns": 1789607252000000000,
+      "sha256": "522d3d0c48ef80de87cd74409a9d46501edd854d598be1dc70db8bb7821ce0a1"
+    },
+    {
+      "path": "/home/rldoeswork/personal/codex-wm-push-20260916/recipes/model-51ffe8df/train.py",
+      "resolved_path": "/home/rldoeswork/personal/codex-wm-push-20260916/recipes/model-51ffe8df/train.py",
+      "size_bytes": 29568,
+      "mtime_ns": 1789584712000000000,
+      "sha256": "0cee51a6007fe8b3e732e9cfedf9c241693e2caf5df194da91b78c2e9822f9f9"
+    }
+  ],
+  "source_scope": "Current source snapshot only; historical policy training source hashes and module environment were not archived.",
+  "current_reset_data": {
+    "path": "/home/rldoeswork/personal/tinywmcraft-research/data/train.npz",
+    "resolved_path": "/home/rldoeswork/personal/tinywmcraft-scratch-claude/data/train_disco_clean200k.npz",
+    "size_bytes": 2375773298,
+    "mtime_ns": 1781981611340819112,
+    "scope": "Current archive at the historical reset-data path; this does not prove immutability since training.",
+    "sha256": null,
+    "not_hashed_reason": "Archive exceeds conservative 2 GiB read-only hashing budget."
+  }
+}

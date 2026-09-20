@@ -1,0 +1,2074 @@
+{
+  "runs/stoch/summary.json": {
+    "bytes": 583602,
+    "sha256": "4ea94eced6a969054a998982c21c52577cf3012e08a0f9a0219338a8e85ec72f"
+  },
+  "runs/stoch/gray_frame_still/baselines_edge.json": {
+    "bytes": 541,
+    "sha256": "d117fe12d6e8fa6f32dfb1765698d41c2ec649c629cad0a02e64e1ccf0b007f5"
+  },
+  "runs/stoch/gray_frame_still/control_tile_factored_edge.json": {
+    "bytes": 5782,
+    "sha256": "b5c861e155faede0e3f82a4fa837f92f3c484ee333d207865c3a63999ddeb346"
+  },
+  "runs/stoch/gray_frame_still/control_lewm6_edge.json": {
+    "bytes": 5697,
+    "sha256": "919e15e7973792197d5b476de8f3d300beaac515d2d18d8a16b9734ad09b3f7c"
+  },
+  "runs/stoch/gray_frame_still/config.json": {
+    "bytes": 572,
+    "sha256": "286aa966c808dd220958129ac686085af44e4654754e1f043a5e328567346b34"
+  },
+  "runs/stoch/gray_frame_still/baselines.json": {
+    "bytes": 368,
+    "sha256": "9c8ed82e6e8e40750a8dd37b6152f539066e3df1e471a57fad64e703ed1ebbee"
+  },
+  "runs/stoch/gray_frame_still/ppo_jepa_tile_factored/eval_edge.json": {
+    "bytes": 567,
+    "sha256": "b63e3638757bc8c1040021647488a468cd6891ea71bfc9bcef20f5bc8f1f7d86"
+  },
+  "runs/stoch/gray_frame_still/ppo_jepa_tile_factored/final.json": {
+    "bytes": 353,
+    "sha256": "e70aae47b5261d871998c27d697f8190502657c6a7adeea4fc369652bacd08c2"
+  },
+  "runs/stoch/gray_frame_still/ppo_jepa_tile_factored/config.json": {
+    "bytes": 713,
+    "sha256": "e03c594e964c09fbfbe18e2521d29bb5d9db1af5abbbfe3728ae9206ff0c7241"
+  },
+  "runs/stoch/gray_frame_still/ppo_jepa_tile_factored/ledger.jsonl": {
+    "bytes": 4371,
+    "sha256": "c886dde36e2037b16e14e8ca5f2ad62b13faf78055d3519f0c4b1ba608b27c45"
+  },
+  "runs/stoch/gray_frame_still/ppo_dream_latent/eval_edge.json": {
+    "bytes": 672,
+    "sha256": "188e96803f170e4fbab72d286c3e61c855ee111604dbcdc44357da797f29197a"
+  },
+  "runs/stoch/gray_frame_still/ppo_dream_latent/final.json": {
+    "bytes": 355,
+    "sha256": "d1e1c798b3c2311d7d826e586f73c4c7c6bb9806dffd7bbb5f04ea1a1699283b"
+  },
+  "runs/stoch/gray_frame_still/ppo_dream_latent/config.json": {
+    "bytes": 709,
+    "sha256": "50849830f58bffeb09269d0e7094e9697688b6dc3485544662c8cc34839514fb"
+  },
+  "runs/stoch/gray_frame_still/ppo_dream_latent/ledger.jsonl": {
+    "bytes": 5111,
+    "sha256": "043bb4f30a06b628b2c29083b923d9a981b59665970c3217a1bd100d212568e1"
+  },
+  "runs/stoch/gray_frame_still/ppo_jepa_lewm6/eval_edge.json": {
+    "bytes": 603,
+    "sha256": "23b63f7419a48453e488fc01812f78e38b82c85e3edac29a10e95093aef188a0"
+  },
+  "runs/stoch/gray_frame_still/ppo_jepa_lewm6/final.json": {
+    "bytes": 401,
+    "sha256": "9d1b2b040ae683f24c80497371be54bd003ead656afba55f763b4e01d48a59dc"
+  },
+  "runs/stoch/gray_frame_still/ppo_jepa_lewm6/config.json": {
+    "bytes": 689,
+    "sha256": "48daa4a5172349fc126ac5be7818b5f6224665d2d7b178fdc7da743fd3c2be2e"
+  },
+  "runs/stoch/gray_frame_still/ppo_jepa_lewm6/ledger.jsonl": {
+    "bytes": 4827,
+    "sha256": "a8919715e29e8ba1c02488ebcbc3cf9279977afed30522cfacdc66cc96db3e2e"
+  },
+  "runs/stoch/gray_frame_still/ppo_real/eval_edge.json": {
+    "bytes": 503,
+    "sha256": "58a78b239d2effc199f0082890934bcd5bf1b313a6ed971f2b867f7e9ece3986"
+  },
+  "runs/stoch/gray_frame_still/ppo_real/final.json": {
+    "bytes": 286,
+    "sha256": "86a985ab228d0854590fc66c401af0ec28ef6b0e3e9502d479b0ae671e1641de"
+  },
+  "runs/stoch/gray_frame_still/ppo_real/config.json": {
+    "bytes": 624,
+    "sha256": "b913a3b72392aa602cfb40631d239e24dccc3b6ffd42058b12efbae1541bbba6"
+  },
+  "runs/stoch/gray_frame_still/ppo_real/ledger.jsonl": {
+    "bytes": 4226,
+    "sha256": "c68e3f34822cf97a33db9d2308d82d581ef7f588d63f5b811ccfe10d0047be13"
+  },
+  "runs/stoch/gray_frame_still/ppo_dream_pixels/eval_edge.json": {
+    "bytes": 667,
+    "sha256": "19e70c722fbcc7b696ba719b57c9e125187fe31f37874a5a3de6fca92c72d339"
+  },
+  "runs/stoch/gray_frame_still/ppo_dream_pixels/final.json": {
+    "bytes": 350,
+    "sha256": "9618ac1ba711006e3522a8c64ba382b7785d6381a6d15d73edfb4ac2655b211e"
+  },
+  "runs/stoch/gray_frame_still/ppo_dream_pixels/config.json": {
+    "bytes": 709,
+    "sha256": "68f79a0a8225a57c7b624609a2e7458311bae32e01832ac587fe9f8fd79583c2"
+  },
+  "runs/stoch/gray_frame_still/ppo_dream_pixels/ledger.jsonl": {
+    "bytes": 4629,
+    "sha256": "2e7c67ad79937166c35f7f2af3257fd8753eec971f07264e3714823872ebfd4c"
+  },
+  "runs/stoch/gray_episode_wind/baselines_edge.json": {
+    "bytes": 586,
+    "sha256": "cf933832ff8e281353d7e0dc14f477ef035e594a321787bb25351cd45370c0fd"
+  },
+  "runs/stoch/gray_episode_wind/control_tile_factored_edge.json": {
+    "bytes": 5767,
+    "sha256": "8e96b008053719844e26ac625bcc974130f264bd7c14d5d3c56c700638124577"
+  },
+  "runs/stoch/gray_episode_wind/control_lewm6_edge.json": {
+    "bytes": 5612,
+    "sha256": "15b8acc50903bed5574b855c0fa1f523e084a4a908fdf7ffe080b0380d19a8d1"
+  },
+  "runs/stoch/gray_episode_wind/config.json": {
+    "bytes": 574,
+    "sha256": "32b644ba408eb3de90dfa6ddfecba572f2b3d313ee24dad6e08d99de16cbe500"
+  },
+  "runs/stoch/gray_episode_wind/baselines.json": {
+    "bytes": 393,
+    "sha256": "c92f0bd9dca4766ba3a031a81558290ffb3eaa599ecf577d57891a221b1262dd"
+  },
+  "runs/stoch/gray_episode_wind/ppo_jepa_tile_factored/eval_edge.json": {
+    "bytes": 606,
+    "sha256": "d422e320e670323032fb6425a01c0098371110ff8cbf29b2985bfbe31854c211"
+  },
+  "runs/stoch/gray_episode_wind/ppo_jepa_tile_factored/final.json": {
+    "bytes": 373,
+    "sha256": "45dcb1dc076b15017f7779cd0624ab814498ff349df0eac99154f7a6c964d02e"
+  },
+  "runs/stoch/gray_episode_wind/ppo_jepa_tile_factored/config.json": {
+    "bytes": 717,
+    "sha256": "567df76c723df96074d181362ec76a2d73eca0a7e41f8c56a14a1dd04e513845"
+  },
+  "runs/stoch/gray_episode_wind/ppo_jepa_tile_factored/ledger.jsonl": {
+    "bytes": 4645,
+    "sha256": "488a14a594103719fea484f78200a84aad39376f8508b6c6742369dd7329fe86"
+  },
+  "runs/stoch/gray_episode_wind/ppo_dream_latent/eval_edge.json": {
+    "bytes": 637,
+    "sha256": "dc3fde673d7000716831ffc47a66e8323cf5d523e13c11c3d36c503fd99e1a65"
+  },
+  "runs/stoch/gray_episode_wind/ppo_dream_latent/final.json": {
+    "bytes": 410,
+    "sha256": "80e2985ef11e53d256991587c2edf889c022f6b7d2b97ef6f1da5648dcb93d11"
+  },
+  "runs/stoch/gray_episode_wind/ppo_dream_latent/config.json": {
+    "bytes": 713,
+    "sha256": "2ee0a3f3e718e29490393100909ea26d8e607ba67138bfcb242129ceec53c22b"
+  },
+  "runs/stoch/gray_episode_wind/ppo_dream_latent/ledger.jsonl": {
+    "bytes": 4850,
+    "sha256": "2f3cff5c178c4f1902038ec5b2d54393be0af2fcaa36f5caebf5eff131858885"
+  },
+  "runs/stoch/gray_episode_wind/ppo_jepa_lewm6/eval_edge.json": {
+    "bytes": 602,
+    "sha256": "eb9787f6017fdf451ee6d6d6bb4a870f3c57c6b3b9812286e94ae999c5d65fc8"
+  },
+  "runs/stoch/gray_episode_wind/ppo_jepa_lewm6/final.json": {
+    "bytes": 405,
+    "sha256": "651f018abcf00b053fd94f95933a771f9752d68dd4d5b53e1ac81d7a6a073569"
+  },
+  "runs/stoch/gray_episode_wind/ppo_jepa_lewm6/config.json": {
+    "bytes": 693,
+    "sha256": "adf99609b8e4194640c704867ab5c2930981cdd5eb9c19d0a1fcbc896d100731"
+  },
+  "runs/stoch/gray_episode_wind/ppo_jepa_lewm6/ledger.jsonl": {
+    "bytes": 4675,
+    "sha256": "c59a759eb2611999f98c94be0bf789a20b6f6dd9b1f69609d6a8c943ecd733a5"
+  },
+  "runs/stoch/gray_episode_wind/ppo_real/eval_edge.json": {
+    "bytes": 554,
+    "sha256": "ff357172885f4b61f05cd9c6fb4e4ee18ba48642e5ed4450298be7e87d031171"
+  },
+  "runs/stoch/gray_episode_wind/ppo_real/final.json": {
+    "bytes": 339,
+    "sha256": "726805930191c3a9a33ea8d053fb8c5e320a0356c9a8b3e7a9cfb7ce48f1df45"
+  },
+  "runs/stoch/gray_episode_wind/ppo_real/config.json": {
+    "bytes": 627,
+    "sha256": "faab159d348d971641a6a60325746c558f0e6d3c92dd3be16251654e9f085160"
+  },
+  "runs/stoch/gray_episode_wind/ppo_real/ledger.jsonl": {
+    "bytes": 4505,
+    "sha256": "2d38d2738fc798b1f1e49197d65fb5a97345090d7dd70132d3b612fb37798e5d"
+  },
+  "runs/stoch/gray_episode_wind/ppo_dream_pixels/eval_edge.json": {
+    "bytes": 668,
+    "sha256": "0f7b2f18aab30d7f519f071e25025fcaad8a82d36cc0ecfdbf6ca3044624d7a9"
+  },
+  "runs/stoch/gray_episode_wind/ppo_dream_pixels/final.json": {
+    "bytes": 409,
+    "sha256": "e721b02ed58e1bef412fdf10cce491abf053f388d53200139b6ce35302c2444c"
+  },
+  "runs/stoch/gray_episode_wind/ppo_dream_pixels/config.json": {
+    "bytes": 713,
+    "sha256": "6442a6eea9d63bc44ac3ec0416752be8f5bd50965244fed5e627a016427f0329"
+  },
+  "runs/stoch/gray_episode_wind/ppo_dream_pixels/ledger.jsonl": {
+    "bytes": 5109,
+    "sha256": "0e06a1bf4fd9dd6f48ba9dc0b3e8bd584afe7de232d60e2f02345d7422ce9fac"
+  },
+  "runs/stoch/gray_episode_still/baselines_edge.json": {
+    "bytes": 541,
+    "sha256": "d117fe12d6e8fa6f32dfb1765698d41c2ec649c629cad0a02e64e1ccf0b007f5"
+  },
+  "runs/stoch/gray_episode_still/control_tile_factored_edge.json": {
+    "bytes": 5881,
+    "sha256": "955346d19a20e40a7b31c116f34e5a13ccdc7971efb6ca86cfdb09c396a6ba4c"
+  },
+  "runs/stoch/gray_episode_still/control_lewm6_edge.json": {
+    "bytes": 5741,
+    "sha256": "fbf02f78f0d9f2d85897383f21ca6c2cbaa802bdd13473ddf3c9addb112e9b82"
+  },
+  "runs/stoch/gray_episode_still/config.json": {
+    "bytes": 576,
+    "sha256": "dc07cc7c3dc843fb8cb2883c5fa71dc2072452cad9042da4847cb56ffbf568ca"
+  },
+  "runs/stoch/gray_episode_still/baselines.json": {
+    "bytes": 368,
+    "sha256": "9c8ed82e6e8e40750a8dd37b6152f539066e3df1e471a57fad64e703ed1ebbee"
+  },
+  "runs/stoch/gray_episode_still/ppo_jepa_tile_factored/eval_edge.json": {
+    "bytes": 673,
+    "sha256": "48503765c711e438b37d93d63f94482423e3d7e5b1ebbe59952e83bea8451d77"
+  },
+  "runs/stoch/gray_episode_still/ppo_jepa_tile_factored/final.json": {
+    "bytes": 400,
+    "sha256": "863c55dc3ed701d38d0b098357d3b59bfa15be7e66105dfef5df632cb749e8af"
+  },
+  "runs/stoch/gray_episode_still/ppo_jepa_tile_factored/config.json": {
+    "bytes": 721,
+    "sha256": "9a07415b07d95fd4142e36211ad26805516ba001dfac90f16b029aa540cfc222"
+  },
+  "runs/stoch/gray_episode_still/ppo_jepa_tile_factored/ledger.jsonl": {
+    "bytes": 5111,
+    "sha256": "bb61f94a00db15cc2ee6b5522b59e9f4b156c631ef3aecd6120dd65decd6fa53"
+  },
+  "runs/stoch/gray_episode_still/ppo_dream_latent/eval_edge.json": {
+    "bytes": 667,
+    "sha256": "fd4f68528795ab2bc030e6721db512a3f15694c42863fd092a7fcb1ac1ca83ef"
+  },
+  "runs/stoch/gray_episode_still/ppo_dream_latent/final.json": {
+    "bytes": 406,
+    "sha256": "e0e6d542ece41aa7d03425f1112e8a4c4cb75256c3382215edaa95ea2c8c3873"
+  },
+  "runs/stoch/gray_episode_still/ppo_dream_latent/config.json": {
+    "bytes": 717,
+    "sha256": "bc0047c7919af877e861df75d57487c3598e754706c4978feb8d65e36cbba5b2"
+  },
+  "runs/stoch/gray_episode_still/ppo_dream_latent/ledger.jsonl": {
+    "bytes": 5096,
+    "sha256": "7c716497f6b2c94b99dc19a3a6ee5af70c88526511fc8384ec2a335131f1db4e"
+  },
+  "runs/stoch/gray_episode_still/ppo_jepa_lewm6/eval_edge.json": {
+    "bytes": 603,
+    "sha256": "7d67cda9a5c6ef706220fcfea4607d257998591d5d2363ac69336202ede946a0"
+  },
+  "runs/stoch/gray_episode_still/ppo_jepa_lewm6/final.json": {
+    "bytes": 403,
+    "sha256": "af980946a27fd96f98f554423c6bed0525730581905664ab008e8cc2fa093207"
+  },
+  "runs/stoch/gray_episode_still/ppo_jepa_lewm6/config.json": {
+    "bytes": 697,
+    "sha256": "4d2d4a405686598a6bc02e6fe40a58d413ec9bb94151537856f586b79c3a7b28"
+  },
+  "runs/stoch/gray_episode_still/ppo_jepa_lewm6/ledger.jsonl": {
+    "bytes": 4814,
+    "sha256": "022d4a15cfe65c73f3c07c77553713a3f8be7783f868fc6b1e69ccc983853411"
+  },
+  "runs/stoch/gray_episode_still/ppo_real/eval_edge.json": {
+    "bytes": 508,
+    "sha256": "0605b83c6783174ed409ec0ae17b4e019ca66ccae837578d7c61237e215e205a"
+  },
+  "runs/stoch/gray_episode_still/ppo_real/final.json": {
+    "bytes": 288,
+    "sha256": "95e450947f7be8bdb15d6049a1c157e4918dc1393d3808da567793d6d82719fd"
+  },
+  "runs/stoch/gray_episode_still/ppo_real/config.json": {
+    "bytes": 630,
+    "sha256": "f8398fb3d9338ef4e73f87c5780de6d227324d2f9b9adf46e05780b94b008107"
+  },
+  "runs/stoch/gray_episode_still/ppo_real/ledger.jsonl": {
+    "bytes": 4572,
+    "sha256": "37407b97857246e6fdf56c821b95ed0a86bc65471b2e5066753d2bdea54d458c"
+  },
+  "runs/stoch/gray_episode_still/ppo_dream_pixels/eval_edge.json": {
+    "bytes": 675,
+    "sha256": "480a84040370034cbc4eb2e1b3274b505e201e5709bed03dd2f93b690ee5a6e6"
+  },
+  "runs/stoch/gray_episode_still/ppo_dream_pixels/final.json": {
+    "bytes": 355,
+    "sha256": "b596845447c8b4956f2bca2bd72a177000b104e805c4bbb5d157af0d945494e9"
+  },
+  "runs/stoch/gray_episode_still/ppo_dream_pixels/config.json": {
+    "bytes": 717,
+    "sha256": "a575360925fb996e4dd6af2593f441f0f4d22863ef0a3f72bfe73f54d78580d4"
+  },
+  "runs/stoch/gray_episode_still/ppo_dream_pixels/ledger.jsonl": {
+    "bytes": 4718,
+    "sha256": "ef0d2b7ec9e6d9614b6505449ee7efac49bf08fe281df7116ca482f95ff77438"
+  },
+  "runs/stoch/off_wind/baselines_edge.json": {
+    "bytes": 586,
+    "sha256": "cf933832ff8e281353d7e0dc14f477ef035e594a321787bb25351cd45370c0fd"
+  },
+  "runs/stoch/off_wind/control_tile_factored_edge.json": {
+    "bytes": 5630,
+    "sha256": "ed24282ee9a9906b0f6e25ffa9ae672cfcff53e66cd7f070e86592539a0a703b"
+  },
+  "runs/stoch/off_wind/control_lewm6_edge.json": {
+    "bytes": 5787,
+    "sha256": "5506ac8e8ee1af12c3497381c598ae299852cea4d7716cddf4ba789dcc23526b"
+  },
+  "runs/stoch/off_wind/config.json": {
+    "bytes": 556,
+    "sha256": "2665bb280f2289d606b7cc5db38dade257b2fe53f774fd4060f9a12b893f4559"
+  },
+  "runs/stoch/off_wind/baselines.json": {
+    "bytes": 393,
+    "sha256": "c92f0bd9dca4766ba3a031a81558290ffb3eaa599ecf577d57891a221b1262dd"
+  },
+  "runs/stoch/off_wind/ppo_jepa_tile_factored/eval_edge.json": {
+    "bytes": 652,
+    "sha256": "a7b9b85fd9b97066aae4d8ccffd7687eca322e93ecbd982c8c0865ed8236834f"
+  },
+  "runs/stoch/off_wind/ppo_jepa_tile_factored/final.json": {
+    "bytes": 407,
+    "sha256": "247b421684362416b7ee15178066ff366428cee7031de064c17590bcdad60ad5"
+  },
+  "runs/stoch/off_wind/ppo_jepa_tile_factored/config.json": {
+    "bytes": 681,
+    "sha256": "d1e3f3bc6cbc543ee894f14e41b1efd23552115797e2c4f20b8cddcdc3d0fd7b"
+  },
+  "runs/stoch/off_wind/ppo_jepa_tile_factored/ledger.jsonl": {
+    "bytes": 5000,
+    "sha256": "680512921ea0b1259da5da816ec748043b63dd02a219db9463a45d6e27b80256"
+  },
+  "runs/stoch/off_wind/ppo_dream_latent/eval_edge.json": {
+    "bytes": 659,
+    "sha256": "f04a95071794012419e8a0a2173203de8c607819a0e66849295e6b3cda8a4042"
+  },
+  "runs/stoch/off_wind/ppo_dream_latent/final.json": {
+    "bytes": 410,
+    "sha256": "70e6a5afd96098592aebc68d7adc876b9ed914991028939bea352a0a55eb08bd"
+  },
+  "runs/stoch/off_wind/ppo_dream_latent/config.json": {
+    "bytes": 677,
+    "sha256": "7b41bbc16cb9617afd23fc286306d2b412cf0843c4d990ad9463ef3c7dde1eb0"
+  },
+  "runs/stoch/off_wind/ppo_dream_latent/ledger.jsonl": {
+    "bytes": 5090,
+    "sha256": "8a993431b9eebf239ae3f1755c4a6d28dff1af4ed2570f782d31e093bc8120bd"
+  },
+  "runs/stoch/off_wind/ppo_jepa_lewm6/eval_edge.json": {
+    "bytes": 656,
+    "sha256": "a3ca4b2584e685d1a1b242b565915dc490860e6cb3fdc5e673c7bffb2c9d8c52"
+  },
+  "runs/stoch/off_wind/ppo_jepa_lewm6/final.json": {
+    "bytes": 354,
+    "sha256": "f3d81c035085e0b43010dec070a63dd0f64ce07ce2ba4037066b5f1608b160fe"
+  },
+  "runs/stoch/off_wind/ppo_jepa_lewm6/config.json": {
+    "bytes": 657,
+    "sha256": "d9a105d3327aafc1206661d3b5e3e1931868ad2e89cf35473b1b5fa944ef5d22"
+  },
+  "runs/stoch/off_wind/ppo_jepa_lewm6/ledger.jsonl": {
+    "bytes": 5059,
+    "sha256": "8e2fa5de09e766fcb13ae5e5ee8313c37b81095b269edb6522f2d68cdc9c9592"
+  },
+  "runs/stoch/off_wind/ppo_real/eval_edge.json": {
+    "bytes": 546,
+    "sha256": "05e2b45fe6969d4878d0941a2e5e1981aad0f5d1ebd5e86a954507aa9c602f66"
+  },
+  "runs/stoch/off_wind/ppo_real/final.json": {
+    "bytes": 343,
+    "sha256": "ecd97efe50d48de91d0dd59f86fa031cc258945dea5d3a8ba3dd51fee226ea09"
+  },
+  "runs/stoch/off_wind/ppo_real/config.json": {
+    "bytes": 600,
+    "sha256": "3e80af45852b0f90addb2b39923564263be2760f0402c1e8c7ffa758c7ec3e4c"
+  },
+  "runs/stoch/off_wind/ppo_real/ledger.jsonl": {
+    "bytes": 4704,
+    "sha256": "5f90362eff6a01d341fd9279e3ea4629495c3688bff5af50872d2d04ee319cf5"
+  },
+  "runs/stoch/off_wind/ppo_dream_pixels/eval_edge.json": {
+    "bytes": 654,
+    "sha256": "8039e8d1d98c8d0fc46d723e502a21115bf65798e55be59337736a0c225380ab"
+  },
+  "runs/stoch/off_wind/ppo_dream_pixels/final.json": {
+    "bytes": 412,
+    "sha256": "97bd311903f8d2f6198ad99efff72c96e46685fe20a30b3b69f3425b7872c5cd"
+  },
+  "runs/stoch/off_wind/ppo_dream_pixels/config.json": {
+    "bytes": 677,
+    "sha256": "6f0b5faf48c7be3d5a670fdae909bad4959f48564e9e58f058d1d855d264c90d"
+  },
+  "runs/stoch/off_wind/ppo_dream_pixels/ledger.jsonl": {
+    "bytes": 5122,
+    "sha256": "58ecaffb4efce4406f9ed29870c55e572e93e84d1ae7a9cc0c5ff955ecc6b82f"
+  },
+  "runs/stoch/off_still/baselines_edge.json": {
+    "bytes": 541,
+    "sha256": "d117fe12d6e8fa6f32dfb1765698d41c2ec649c629cad0a02e64e1ccf0b007f5"
+  },
+  "runs/stoch/off_still/control_tile_factored_edge.json": {
+    "bytes": 5802,
+    "sha256": "bdb4f464ca33db6b90bb1ab09700220e63efb0bd48eadc80cb708b46f1a02201"
+  },
+  "runs/stoch/off_still/control_lewm6_edge.json": {
+    "bytes": 5860,
+    "sha256": "159a5c14397b4dc71c75cb797efe0b3f2d17b3bc7065ea78198d2c066fe69264"
+  },
+  "runs/stoch/off_still/config.json": {
+    "bytes": 558,
+    "sha256": "e375e163143c7a1e485bcdf65171836f7391b165a7828e3ccd8dc4d5147fda3a"
+  },
+  "runs/stoch/off_still/baselines.json": {
+    "bytes": 368,
+    "sha256": "9c8ed82e6e8e40750a8dd37b6152f539066e3df1e471a57fad64e703ed1ebbee"
+  },
+  "runs/stoch/off_still/ppo_jepa_tile_factored/eval_edge.json": {
+    "bytes": 614,
+    "sha256": "b7892ff3bf698077e33bc46aa9145d9e453dba1b44d3b50c04131d6645e2db0d"
+  },
+  "runs/stoch/off_still/ppo_jepa_tile_factored/final.json": {
+    "bytes": 354,
+    "sha256": "eaf7ad6fc168f7e9e3e241fd9799c160568e744b2c72028ba22aca3b237ff704"
+  },
+  "runs/stoch/off_still/ppo_jepa_tile_factored/config.json": {
+    "bytes": 685,
+    "sha256": "8f834355ea5c7c5de272e791fbc3b704fa1beaff92a67266425cd721e37bb1df"
+  },
+  "runs/stoch/off_still/ppo_jepa_tile_factored/ledger.jsonl": {
+    "bytes": 4998,
+    "sha256": "5176704f161bb4f25b4ba0f48dd9adf95177436efb4eefba494e7fdc93e7d96f"
+  },
+  "runs/stoch/off_still/ppo_dream_latent/eval_edge.json": {
+    "bytes": 606,
+    "sha256": "42f17c3b6cacd855565f41e00415cde7c3b221a0cb5eba0e3d5bad96bc7b999a"
+  },
+  "runs/stoch/off_still/ppo_dream_latent/final.json": {
+    "bytes": 354,
+    "sha256": "701d8813afa954be21886fc0210294fa1a6c66e2860a4523b15bbf3245a150ca"
+  },
+  "runs/stoch/off_still/ppo_dream_latent/config.json": {
+    "bytes": 681,
+    "sha256": "92c949af19f86e4119335db52d12ec23b365bb22e1182758685b4354ccbf7afc"
+  },
+  "runs/stoch/off_still/ppo_dream_latent/ledger.jsonl": {
+    "bytes": 4373,
+    "sha256": "9200147371c4ba07c3a570a8e3dbdbdc3d624e73f2f1c2cc4b43666359180b72"
+  },
+  "runs/stoch/off_still/ppo_jepa_lewm6/eval_edge.json": {
+    "bytes": 608,
+    "sha256": "0b68e6ee7129d8724fa51ba2da383133d61808957ce3b9466fc1a1c732a9d140"
+  },
+  "runs/stoch/off_still/ppo_jepa_lewm6/final.json": {
+    "bytes": 353,
+    "sha256": "3272b378e2ad321b199daa832a6009dbd480af1f099804cb47132e2a74bcc659"
+  },
+  "runs/stoch/off_still/ppo_jepa_lewm6/config.json": {
+    "bytes": 661,
+    "sha256": "503683c15c1d8a3663e572ed6bc8543036325d914572df95fcff2cdbec261a9a"
+  },
+  "runs/stoch/off_still/ppo_jepa_lewm6/ledger.jsonl": {
+    "bytes": 4391,
+    "sha256": "712a11ad9bbd727c0c7b824e7247307cd4e558c610414fa71818fa0d3d10624d"
+  },
+  "runs/stoch/off_still/ppo_real/eval_edge.json": {
+    "bytes": 500,
+    "sha256": "7ca9ed3b9eeb91c2be8fbd467f11f90cc6d4412f9e206e6a3bc2b4b74c1efaac"
+  },
+  "runs/stoch/off_still/ppo_real/final.json": {
+    "bytes": 287,
+    "sha256": "8c34fef22712fa74160defe992ec17ab530d0da9b73ab2d04002700f9e55a8fb"
+  },
+  "runs/stoch/off_still/ppo_real/config.json": {
+    "bytes": 603,
+    "sha256": "71d3e8ed3ba410d73bbd03a7c41e38a2466168fc4d4ac609c4420c988c34c584"
+  },
+  "runs/stoch/off_still/ppo_real/ledger.jsonl": {
+    "bytes": 4417,
+    "sha256": "5d3cc4dbf56fd84d16fd31145e4ee3bdcff80e6c5c0708a16e2120ac54970546"
+  },
+  "runs/stoch/off_still/ppo_dream_pixels/eval_edge.json": {
+    "bytes": 609,
+    "sha256": "bb8b71c00b33637ca045b36c0b40db420796d012c81a19740ec80bcccd581173"
+  },
+  "runs/stoch/off_still/ppo_dream_pixels/final.json": {
+    "bytes": 350,
+    "sha256": "7142f7b715328c7008d8cfaee8eedd509f70d68478d7926b18c9914995d8ee18"
+  },
+  "runs/stoch/off_still/ppo_dream_pixels/config.json": {
+    "bytes": 681,
+    "sha256": "653d9ed4ff518a58ca275c22202e74e9a320f4425b8860f40bbd5ae3186ef5fb"
+  },
+  "runs/stoch/off_still/ppo_dream_pixels/ledger.jsonl": {
+    "bytes": 4671,
+    "sha256": "3812dc02271e4b0dd54dde55e932292b239c2fad5652ddb34f589a10fb4ba588"
+  },
+  "runs/stoch/gray_frame_wind/baselines_edge.json": {
+    "bytes": 586,
+    "sha256": "cf933832ff8e281353d7e0dc14f477ef035e594a321787bb25351cd45370c0fd"
+  },
+  "runs/stoch/gray_frame_wind/control_tile_factored_edge.json": {
+    "bytes": 5607,
+    "sha256": "bb3b57a876a26b78589d9b726ddbdd2ee38313ac04cf73b6f9b9228c3dd3a2be"
+  },
+  "runs/stoch/gray_frame_wind/control_lewm6_edge.json": {
+    "bytes": 5592,
+    "sha256": "bf366c0a2a8827e021c7f61fe2074c766193480e5e69ed7821388c29ce940e82"
+  },
+  "runs/stoch/gray_frame_wind/config.json": {
+    "bytes": 570,
+    "sha256": "c2b9065a4fea4baf38cda094dd84527844f486c1cc1852e70c21a64456c65ff8"
+  },
+  "runs/stoch/gray_frame_wind/baselines.json": {
+    "bytes": 393,
+    "sha256": "c92f0bd9dca4766ba3a031a81558290ffb3eaa599ecf577d57891a221b1262dd"
+  },
+  "runs/stoch/gray_frame_wind/ppo_jepa_tile_factored/eval_edge.json": {
+    "bytes": 609,
+    "sha256": "acde5aac424fc5f2ff7c8bf4daf468fc89c600c9b7e388577a6e7498ae5defc6"
+  },
+  "runs/stoch/gray_frame_wind/ppo_jepa_tile_factored/final.json": {
+    "bytes": 371,
+    "sha256": "b53df6dd1044c8ca0301ec6f7a02bf8ab56f26018af1868bffeb2c410298e207"
+  },
+  "runs/stoch/gray_frame_wind/ppo_jepa_tile_factored/config.json": {
+    "bytes": 709,
+    "sha256": "2bf6eeb0c53d0b0dcc1abccc9d884a093c524d1827391713fce01ae72c9b70ac"
+  },
+  "runs/stoch/gray_frame_wind/ppo_jepa_tile_factored/ledger.jsonl": {
+    "bytes": 4650,
+    "sha256": "7194966139791049e1a778ef3e1dfd63d0ee8580453554d7c997685ad8375da2"
+  },
+  "runs/stoch/gray_frame_wind/ppo_dream_latent/eval_edge.json": {
+    "bytes": 631,
+    "sha256": "4050b5088e71c455c58e01df56bb2e58a696d27a39457b65459919a0f7f76a52"
+  },
+  "runs/stoch/gray_frame_wind/ppo_dream_latent/final.json": {
+    "bytes": 407,
+    "sha256": "d7a27e32c160bd207906738661629c4b84b253ce46fbd4d180ffc995c7779a9a"
+  },
+  "runs/stoch/gray_frame_wind/ppo_dream_latent/config.json": {
+    "bytes": 705,
+    "sha256": "d6a2ca9a211d4940fb4d5e4b64a629162635a53768548df3a430f2e42e469ca1"
+  },
+  "runs/stoch/gray_frame_wind/ppo_dream_latent/ledger.jsonl": {
+    "bytes": 4828,
+    "sha256": "84103aa0e83b5937868b818c9150b8ba6d95ef04f06a553c625e868d7c3b0009"
+  },
+  "runs/stoch/gray_frame_wind/ppo_jepa_lewm6/eval_edge.json": {
+    "bytes": 599,
+    "sha256": "a40c1a84f554e35f15e9e368911fa1417b49d5f69c88deb7e6932b961fe2426b"
+  },
+  "runs/stoch/gray_frame_wind/ppo_jepa_lewm6/final.json": {
+    "bytes": 405,
+    "sha256": "67df594fa511173b7661e94660159782d4fc7317b1427c4dcf33f97e019518fe"
+  },
+  "runs/stoch/gray_frame_wind/ppo_jepa_lewm6/config.json": {
+    "bytes": 685,
+    "sha256": "8ba94875867fa72dfaf40f1c30163c91083832a415e210be02606907c8c1db91"
+  },
+  "runs/stoch/gray_frame_wind/ppo_jepa_lewm6/ledger.jsonl": {
+    "bytes": 4683,
+    "sha256": "ad16ab57808a96c0abdc282979bf4752603340a5dc7d02eb2be444b8ae9157f6"
+  },
+  "runs/stoch/gray_frame_wind/ppo_real/eval_edge.json": {
+    "bytes": 556,
+    "sha256": "6a6f7296ab4c8c2ffbce4421dd2bd553656e4d121c46c270309557acebcdb4bb"
+  },
+  "runs/stoch/gray_frame_wind/ppo_real/final.json": {
+    "bytes": 337,
+    "sha256": "c747928d7d49f6b5191d85ccf7d9723e5313a1eae5c70eed9f754da9ca97cce0"
+  },
+  "runs/stoch/gray_frame_wind/ppo_real/config.json": {
+    "bytes": 621,
+    "sha256": "01ce9cda3a5870aaf7dff33bce8a3e03329589570eb9a4bb661b857631294363"
+  },
+  "runs/stoch/gray_frame_wind/ppo_real/ledger.jsonl": {
+    "bytes": 4690,
+    "sha256": "9de4fe854fbd3dec91a24f7ebf143f81e7babccffe64a4b43489e648bab9847c"
+  },
+  "runs/stoch/gray_frame_wind/ppo_dream_pixels/eval_edge.json": {
+    "bytes": 675,
+    "sha256": "8b5fcd79d3763631926b489ab3d97a443505ac78f524201776ca243e40ee18ca"
+  },
+  "runs/stoch/gray_frame_wind/ppo_dream_pixels/final.json": {
+    "bytes": 402,
+    "sha256": "fbccc97f8fe4a6d5f07791806beb9d0d2df1111a7f6faaa9fb67bd44df6c921e"
+  },
+  "runs/stoch/gray_frame_wind/ppo_dream_pixels/config.json": {
+    "bytes": 705,
+    "sha256": "8ed08b393498401c9bf791470a031816c36f8043bd8aac761b6d8573a2ea617e"
+  },
+  "runs/stoch/gray_frame_wind/ppo_dream_pixels/ledger.jsonl": {
+    "bytes": 5121,
+    "sha256": "d36a3a84ed70eb631cfa64062eb1592a9992ec7c1335288169f4e99e81509cf5"
+  },
+  "runs/stoch/gate/oracle_h8_k4.json": {
+    "bytes": 2384,
+    "sha256": "a84bf47911cacae737c6d369615f9b6d8102886f2ad4bd3fe00eb8a45c51d956"
+  },
+  "runs/stoch/gate/wallspace_m0.json": {
+    "bytes": 324,
+    "sha256": "952fce31a1427102324dd363e95a266d22932276eed69cd892d0e4db0263a068"
+  },
+  "runs/stoch/gate/latent_check_s2.json": {
+    "bytes": 16351,
+    "sha256": "0cd7adf98ddc6cf012e530a68182c5700ac8e6dc8340d0024d10182963798536"
+  },
+  "runs/stoch/gate/latent_check_s1_train.json": {
+    "bytes": 16409,
+    "sha256": "2f5dbb131679adca66fc67f99b96ae5320ab46d16831e7c525201b8ebb0d469d"
+  },
+  "runs/stoch/gate/oracle_h5_k4.json": {
+    "bytes": 2377,
+    "sha256": "19265b00fa6c9c299a5609c3c3d2c3d686a4e7f7231e98693d6ffb21103a25b2"
+  },
+  "runs/stoch/gate/oracle_h5_k16.json": {
+    "bytes": 2378,
+    "sha256": "8118821ece899edf5c34c7380b1a99f175165c0e295b655d61c9525135ed72f6"
+  },
+  "runs/stoch/gate/latent_check_train.json": {
+    "bytes": 25227,
+    "sha256": "b4158f84826657415749c8894220847f5481afe7a824084b18c24a99b048da30"
+  },
+  "runs/stoch/gate/latent_check_s1.json": {
+    "bytes": 16286,
+    "sha256": "cb57a63b2e7615ed02ecbc321712f40455cc01ebdc17389cc4e6bd941f45f3f3"
+  },
+  "runs/stoch/gate/oracle_h5_leak.json": {
+    "bytes": 2374,
+    "sha256": "0325646473260411ca9f44b102e40ae3f058a517f263e6ae04ac8747a14138cc"
+  },
+  "runs/stoch/gate/dwallspace_m1.json": {
+    "bytes": 488,
+    "sha256": "e44bcf300c0841c33f170f7337bfb447114828badcfe8c56c38ef246a6d7fc6d"
+  },
+  "runs/stoch/gate/latent_check_s2_train.json": {
+    "bytes": 16425,
+    "sha256": "224fd9817d329cf577f3a4784488773837957ce7e40d82ad5303a1f0c63facde"
+  },
+  "runs/stoch/gate/heads_audit_tile_factored_s1.json": {
+    "bytes": 4936,
+    "sha256": "52f863b2fa59c1770dfc21ab0b3bedb17bf893fb9a37511d54431f1dbf0fecd9"
+  },
+  "runs/stoch/gate/dwallspace_m0.json": {
+    "bytes": 488,
+    "sha256": "bbb03f3e250eb2222f9fdf5e46531b06e9f1f4fd06eb5b62c8b5032e463b8e65"
+  },
+  "runs/stoch/gate/wallspace_m1.json": {
+    "bytes": 312,
+    "sha256": "5e18c8d379be76a3e658ddaddac3ab4daefe5ded44d60536e9bcb8416e80d555"
+  },
+  "runs/stoch/gate/latent_check.json": {
+    "bytes": 25174,
+    "sha256": "a37bd3803d84d297011db9ae5efb4180078fc2a0c4a82a08765b7da67e8a512c"
+  },
+  "runs/stoch/gate/control_tile_factored_sampled.json": {
+    "bytes": 5583,
+    "sha256": "2110fc38201a687e7b60def60e1fe17fd140b95c1249d606328dd4d38f7fdad9"
+  },
+  "runs/stoch/gate/heads_audit_tile_factored_s2.json": {
+    "bytes": 4937,
+    "sha256": "69f432462c4bdff3eaac70f81cde85c6c4609b37757e28f90da45e1f160547f7"
+  },
+  "runs/stoch/gate/heads_audit_tile_factored.json": {
+    "bytes": 4932,
+    "sha256": "239aee1526b88ed73a4b0a40287d2a04afc2d8422f2fc8d6dda1c311aa7d3690"
+  },
+  "runs/stoch/gate/config.json": {
+    "bytes": 551,
+    "sha256": "03eb5947ae1c1c9fb0d4ef2fcf90963cbbc4c9d6b3c23937a5d4c86b5498a5c0"
+  },
+  "runs/stoch/gate/baselines.json": {
+    "bytes": 560,
+    "sha256": "19b20ebf173ce5f504a592d1d88c5b76cda7b72298174ec9d43d300e628eb342"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m1_p0/final.json": {
+    "bytes": 345,
+    "sha256": "6631c409f8d07f1c4996aab3b3d51a963fbedb5c8f4e3eeadad96031e87f9a7e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m1_p0/config.json": {
+    "bytes": 712,
+    "sha256": "97382369c992a4d9d1df416a09dc77970e9ab5ab0a52c0a71ff6e1489bb464f8"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m1_p0/ledger.jsonl": {
+    "bytes": 4610,
+    "sha256": "7a50d58b50c71b9521b0eafdd4d4662498f19b538d04677d7cf4656fae17719a"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_det_p2/final.json": {
+    "bytes": 410,
+    "sha256": "f43c7f836b7d2e1f13d1ef922aa2df5370cb9525f524b1181899bd40b646bbf4"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_det_p2/config.json": {
+    "bytes": 676,
+    "sha256": "b7478993c978cb0f0cd19e78053b53b8a3c3a5e4387ca8f6f29d6b230ec8fb16"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_det_p2/ledger.jsonl": {
+    "bytes": 4926,
+    "sha256": "25e9059a0ef4b944869913fbb777b89d5585631f0c46e65295a04e312749f7d8"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m0_p0/final.json": {
+    "bytes": 343,
+    "sha256": "d3286c705fdfbb6dca6c3aa9628c5fb3bd7cbe96a312d2e2a86a0b6dc944c445"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m0_p0/config.json": {
+    "bytes": 719,
+    "sha256": "6434ceddf0aa0f3c7e565d3ce814adecf03903f30c9167fccc0b932417e4aba9"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m0_p0/ledger.jsonl": {
+    "bytes": 4596,
+    "sha256": "e4ba4078737421955432da2d0542eef7358183cac39cf67bed0147820c04772c"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_samp_p0/final.json": {
+    "bytes": 412,
+    "sha256": "3dccc3c3184199c754c2eb01d247c1872b0b768a4918690ae1c3cbcf809f681a"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_samp_p0/config.json": {
+    "bytes": 743,
+    "sha256": "e203ed08432d519c14f5a256b3b1e2eb5b5db5273e5854af2d2dcab6fdf7abd1"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_samp_p0/ledger.jsonl": {
+    "bytes": 4829,
+    "sha256": "f474c60cf7dc2f5ca8a528f0ec0d520309ffac6d75e0e95b6aeb6bd59bb9c010"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p0_12min/config.json": {
+    "bytes": 689,
+    "sha256": "8d20dd07d4344cfa704f7eb0cffdbbdea12551fa47be9a0c4453714253a76bb3"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m1_p2/final.json": {
+    "bytes": 341,
+    "sha256": "ec524a59a8d7552ca9d26099f8938bbc2d5e140bc215e66bc6c4bdead9d9c3a4"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m1_p2/config.json": {
+    "bytes": 722,
+    "sha256": "a184820b0424526f959432ba2dd75ce29f46b013c7f532180e04958bc56a6be7"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m1_p2/ledger.jsonl": {
+    "bytes": 4575,
+    "sha256": "08faa6d224e368b710eed20c923d58d6cdea3dd9fcb844623d01ae3b904ffbbe"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m1_p2/final.json": {
+    "bytes": 345,
+    "sha256": "ad25882abdfd5bdde5783045b358f91bdeb46892910ef0006c3c43ff630ac98e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m1_p2/config.json": {
+    "bytes": 642,
+    "sha256": "5a010508d1f6937ae1174e651a3354ef0a75d0e0af7b5345f7affd287617815e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m1_p2/ledger.jsonl": {
+    "bytes": 4675,
+    "sha256": "865ae3bcf76834607eb70f00ecd693ae525084fbe0141a73f193998e5116e2b9"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_samp_p1/final.json": {
+    "bytes": 412,
+    "sha256": "6c306a9a2afa5c2d4793e6c0cf2079a02c547b706a305a2ed37a5f080d9742cc"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_samp_p1/config.json": {
+    "bytes": 743,
+    "sha256": "c8c69b8b670e844fe5038dc9b536b5c1724215e0967978655ca66b70b017f241"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_samp_p1/ledger.jsonl": {
+    "bytes": 4974,
+    "sha256": "f2c9ff81f3cf292eec72e7267fd90bb20607c6f152832eefbaf019400b012cdb"
+  },
+  "runs/stoch/gate/ppo_jepa_tile_factored_mean8/final.json": {
+    "bytes": 405,
+    "sha256": "179e0cc59cf1825d466a4cb9de60eeee0478b39a4a53b3f93281d40d4fabff7b"
+  },
+  "runs/stoch/gate/ppo_jepa_tile_factored_mean8/config.json": {
+    "bytes": 743,
+    "sha256": "7ef00e6aa368451967f3d500bf4972dee303143e14c804ea10ec1a32b84f06e3"
+  },
+  "runs/stoch/gate/ppo_jepa_tile_factored_mean8/ledger.jsonl": {
+    "bytes": 4900,
+    "sha256": "d5776c9c56ca357271987e048f7315dc9e752ca3fda21ff6a392bbf78bb5fdc7"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m1_p2/final.json": {
+    "bytes": 344,
+    "sha256": "fe72507a40857b94e0747a91c6bd4b4757e0a66f545cf95a0bf9ae12edad57c8"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m1_p2/config.json": {
+    "bytes": 640,
+    "sha256": "26cfadbaca42c73d5c7cb7739720cb3dbe48f6829e08946b388dde9e5afc8e23"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m1_p2/ledger.jsonl": {
+    "bytes": 4535,
+    "sha256": "b596afb4f73194f2966b7e80b77c2aed2463122af53bd135005529ebd368caa7"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m2_p2/final.json": {
+    "bytes": 343,
+    "sha256": "95c1891a4841e73e61b2c20bf4606491c59d6188155b263dce84b725f6b0f074"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m2_p2/config.json": {
+    "bytes": 642,
+    "sha256": "8b3767008c1bbe341a72abb8aac098c57ac6fc1f9ef965316fdbd57b313ccfdf"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m2_p2/ledger.jsonl": {
+    "bytes": 4622,
+    "sha256": "2b38e8efaab9229dc2d3d98d2fb82e4380826a5d30b984e080cbcad4b62f6e79"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m0_p0/final.json": {
+    "bytes": 344,
+    "sha256": "daaef1f47e68a637344d8f9f5829d77cf62d97b9bdc5a04efb87174e9e968867"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m0_p0/config.json": {
+    "bytes": 718,
+    "sha256": "32d560b25d9567f18990726ce348f7ff6e34ee9d3431b08572fb348e87ed8769"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m0_p0/ledger.jsonl": {
+    "bytes": 4725,
+    "sha256": "4cb4b22ce8071d5e85458755d45a99474490c298f3faad6b40575be6945f4135"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m0_p1/final.json": {
+    "bytes": 342,
+    "sha256": "70f5ee5301e6711cac5de87065b25f07eafddb8af2b9c3db831fd8b7ea8857e7"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m0_p1/config.json": {
+    "bytes": 709,
+    "sha256": "889047c1d931bee717ee043b78cabf69627153dacd08d5d931404ce957d96e8e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m0_p1/ledger.jsonl": {
+    "bytes": 4618,
+    "sha256": "c1a741d422d9aada3f613561e67a8643e9a902ad50705554ca17f23a71fdb005"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m1_p1/final.json": {
+    "bytes": 344,
+    "sha256": "3ae980c54957736fa62ffcb7c699173c3482e246895d8c9b5995ed9fac8a279d"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m1_p1/config.json": {
+    "bytes": 721,
+    "sha256": "1a33347e89d8753b71472fd79a97c3f33a54b333d667ae3a53cd8e9a01d92a87"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m1_p1/ledger.jsonl": {
+    "bytes": 4689,
+    "sha256": "2bb7a4a27f35783b691494e3ea8ff1d99df5fc73effb52cf5d555b1f2731f173"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m1_p0/final.json": {
+    "bytes": 343,
+    "sha256": "d458579b33a512a2cc574382364620882809859c0320cdcc0df03ffaf958a2c7"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m1_p0/config.json": {
+    "bytes": 721,
+    "sha256": "39b2aca84fad14b189cad7d40a2d466a1e612573fdaf591cbd6caa7a9f97694e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m1_p0/ledger.jsonl": {
+    "bytes": 4614,
+    "sha256": "47b8c4f337f070b29dfb6ddba9f5332f19d023c0fca05862f01739290d7b65ca"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m1_p0/final.json": {
+    "bytes": 348,
+    "sha256": "621a4cf842b58fc348ceac052549520882093f358d8eb27359b2936cd46de1e8"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m1_p0/config.json": {
+    "bytes": 736,
+    "sha256": "4143e3b031a1d2bc75401758d399874cb0b6627932adc76cc20828517b4da8b2"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m1_p0/ledger.jsonl": {
+    "bytes": 4734,
+    "sha256": "b85e50881f59d1a7b82ad2aa17c8d3d466f0393b351ff792d9c01eacb6ada19f"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m0_p0/final.json": {
+    "bytes": 342,
+    "sha256": "353416952d42c485185cf607a4f3531ff13500bd7eaf1ad9ceee0782fed6cda2"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m0_p0/config.json": {
+    "bytes": 709,
+    "sha256": "cf03aa2cded798dfb66d8c74fb9b4dad43d7602c360b38b4cdf00a00d063f07e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m0_p0/ledger.jsonl": {
+    "bytes": 4581,
+    "sha256": "1900074682e74ff79dfdfab1d40ee93146541c922983cd663a65083b4545fc6f"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m1_p1/final.json": {
+    "bytes": 347,
+    "sha256": "15b7c6193b910733e8311b937b438aeb0a5e65a6e75fbaa4052528942e202bb0"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m1_p1/config.json": {
+    "bytes": 736,
+    "sha256": "251739b5271ef5c6d781c19c72b11824dbb49d4568c1155c82d9b973fea18791"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m1_p1/ledger.jsonl": {
+    "bytes": 4669,
+    "sha256": "54307b8afd3a51875089f4602200001b4dd66edb8a27b24b227849c415e3e2b6"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m1_p1/final.json": {
+    "bytes": 342,
+    "sha256": "261f599cafb0ec94a7d85b8d331bce694cbbe09ab8ffd7cf76988e50b8104f3f"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m1_p1/config.json": {
+    "bytes": 712,
+    "sha256": "b26d2e09142bd492b46d5a4c04fcfe6a1be4cca2b4d77297cdbff4e5449259d5"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m1_p1/ledger.jsonl": {
+    "bytes": 4587,
+    "sha256": "383fb396a30ed0585c7004b7b200f448801a2623e67c7f572ffa084de821ee3a"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m0_p2/final.json": {
+    "bytes": 342,
+    "sha256": "abc8ee53442082097305f92acec9d7cba9bf4e0181032e9966f67bba9306a3fc"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m0_p2/config.json": {
+    "bytes": 639,
+    "sha256": "ee98b49b12c224b42bb435d0bfd6c916df06c6fb6759bd71f8790f527004072f"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m0_p2/ledger.jsonl": {
+    "bytes": 4553,
+    "sha256": "dca82a3657481910d09e6b72aca9a67ac101f85e672bf8e8fa15b4bdf628f7f8"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m2_p0/final.json": {
+    "bytes": 344,
+    "sha256": "f5af7b30b4619f2d35d5f2f301c064092e5c70ea78dfa6bc8de51b0c1346a2f3"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m2_p0/config.json": {
+    "bytes": 642,
+    "sha256": "886a6834d8b4bdca773d0c537d57c5b6c0fa6860f2a837d59b2746ae2c42224d"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m2_p0/ledger.jsonl": {
+    "bytes": 4674,
+    "sha256": "9763ecf78b7f9deb8d74ea5c6421110e8eaa5ec5685c2c658e27755e20de4c6c"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_samp_p2/final.json": {
+    "bytes": 372,
+    "sha256": "eb07d6bc8813267ab5ebcb91626adfd570542187ceb0c5dc3bd6775178a7afe4"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_samp_p2/config.json": {
+    "bytes": 737,
+    "sha256": "0b82b06727bb8f5a1ee255b5e4093f5690e8dbb2533bdbc45acde8abdcff2bef"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_samp_p2/ledger.jsonl": {
+    "bytes": 4653,
+    "sha256": "2ab3053a755f7bcad72655e858158fa8d743b08a3be89855a545aeb8dfcdb4ec"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_mean8_p1/final.json": {
+    "bytes": 408,
+    "sha256": "4e23a075a326aa6c10a1c30cf4436b5f8abdf59b6d9976387ef4814654ea1475"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_mean8_p1/config.json": {
+    "bytes": 744,
+    "sha256": "d2a3512e3081e25e46002a350340985dc9395ab7fd26395cc1b2e0c771e7e4ea"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_mean8_p1/ledger.jsonl": {
+    "bytes": 4928,
+    "sha256": "1b900a2610ab6461f4fae0e305e62840bc02e8f800f0149beaf7ebe25de5baa5"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_mean8_p0/final.json": {
+    "bytes": 409,
+    "sha256": "c06d3358298c795cf9665dc6310559c469e58ab5ff1b167845dc50beadeecddd"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_mean8_p0/config.json": {
+    "bytes": 744,
+    "sha256": "8a4efa1e4481cf01e020d73993dd4478fb94a4ceeb79941644f7bf8784ca2f95"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_mean8_p0/ledger.jsonl": {
+    "bytes": 4802,
+    "sha256": "426429acb71c9d6aa95812df8dcdfd3193ea0ab433759ccde64e6b2dbe7cb9ba"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m1_p0/final.json": {
+    "bytes": 346,
+    "sha256": "f0fe5ab48cb885ae510c040108ff45e418157621ce283882469ec0f809190783"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m1_p0/config.json": {
+    "bytes": 640,
+    "sha256": "56fed7207bdd0af2c081dee764644c35f75c45ec7f0a75a62feb5961fac9a987"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m1_p0/ledger.jsonl": {
+    "bytes": 4518,
+    "sha256": "5eae738fcddbbab2e46ced63a90ec13f99c5ce785ae08b83056ec1b11049bbcf"
+  },
+  "runs/stoch/gate/ppo_real_mlp_p1/final.json": {
+    "bytes": 345,
+    "sha256": "53db0325c4f4563e204856c2c2cd5b8d2da624ed24f3b4a23fb2ecc432dd922b"
+  },
+  "runs/stoch/gate/ppo_real_mlp_p1/config.json": {
+    "bytes": 637,
+    "sha256": "f3164ff472472e6f8ac4c1c91dd6f7e81b6cb17d2c6b0aa274c00201f803da62"
+  },
+  "runs/stoch/gate/ppo_real_mlp_p1/ledger.jsonl": {
+    "bytes": 4695,
+    "sha256": "86d63b7abd3297bdd046a9df0ea6c732da352b174c661c2d39b959396377fab8"
+  },
+  "runs/stoch/gate/ppo_real_mlp_p2/final.json": {
+    "bytes": 343,
+    "sha256": "d1efd8cca3fd8c73514112f2aaa39d3962706fd0d0cad81e96f7d5b8a7f45cf6"
+  },
+  "runs/stoch/gate/ppo_real_mlp_p2/config.json": {
+    "bytes": 637,
+    "sha256": "74cf04cf5dba3cb8a862e527d1512d290c3a82b2c6a688c57dea36bce96cbdb8"
+  },
+  "runs/stoch/gate/ppo_real_mlp_p2/ledger.jsonl": {
+    "bytes": 4571,
+    "sha256": "d080fc147c6283be88114835b27b230fcc2b79f41ac727b859a41898b0773fd5"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_mean8_p1/final.json": {
+    "bytes": 411,
+    "sha256": "d503f1defdd022c7a976d87675d4a52468c09ce85d1be3b77bc5e4e4ac052c4a"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_mean8_p1/config.json": {
+    "bytes": 744,
+    "sha256": "e8fa171f64fe4178202bf517f67277cd9254d3b9485fbe0fa7541c63cdf6bd48"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_mean8_p1/ledger.jsonl": {
+    "bytes": 4781,
+    "sha256": "ab5fab42707d85b3eb8f28a90bc600c75fd3d8789d782610ee0927545989d159"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m2_p1/final.json": {
+    "bytes": 342,
+    "sha256": "db045dbe66c4240d70216aa2b6d64239bdb924c0f3568ea55a47c10dd2b835aa"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m2_p1/config.json": {
+    "bytes": 640,
+    "sha256": "a2ed51d111f30a6386e03cf172f558d8069eef4faa3970f65b7a0f599c5bae91"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m2_p1/ledger.jsonl": {
+    "bytes": 4595,
+    "sha256": "d3708f9da6654bba9a07e78cffd8439e44536b8bed549b2b5ec57bcb0e890180"
+  },
+  "runs/stoch/gate/ppo_real_mlp_p0/final.json": {
+    "bytes": 343,
+    "sha256": "258472497ef18c0ada1fd6f074d073694adcb57f580d7f9d88f7153fb06f196b"
+  },
+  "runs/stoch/gate/ppo_real_mlp_p0/config.json": {
+    "bytes": 637,
+    "sha256": "1a22d3f56f2160f91e568b9ee2fd6afe5faec2164c7a2945d5a6cb32bca414a3"
+  },
+  "runs/stoch/gate/ppo_real_mlp_p0/ledger.jsonl": {
+    "bytes": 4536,
+    "sha256": "96b7dbc6fd493b340e24642a6abb73b251a96984d41095c55c412e4c03d91bd2"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m0_p2/final.json": {
+    "bytes": 340,
+    "sha256": "bdb01176be7d5185a7faa851734e753a180b293ac80a0bdf27559412eed98857"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m0_p2/config.json": {
+    "bytes": 718,
+    "sha256": "2eb363e46c132b29de27b3c0aaaacc86b2770e76867b831eb3e7726ce74ad91a"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m0_p2/ledger.jsonl": {
+    "bytes": 4567,
+    "sha256": "d865264a438487f418f7e8523a2ecb6838be9f2728a045eae193cd0e603f4aa8"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m1_p0/final.json": {
+    "bytes": 345,
+    "sha256": "634db53b2f37daa77714d1c5f78a13ff5a8793a1302428a7804e2f73cfa30974"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m1_p0/config.json": {
+    "bytes": 642,
+    "sha256": "671a10fa45cef97d04b9e9db782b04c9ffb7fcf540b2d30f1bcf93c7b73027fb"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m1_p0/ledger.jsonl": {
+    "bytes": 4713,
+    "sha256": "1245276a2d0ce6d506981d5a5c8a3a69e3f28e082c08698208cd41022dc4ddcc"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m1_p2/final.json": {
+    "bytes": 345,
+    "sha256": "ca650c45eebab861f2ea1ae90429145a51f36f961737c1cc9a94833f1409cf74"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m1_p2/config.json": {
+    "bytes": 712,
+    "sha256": "10c7b40863989285d4a22846059e5d3939d60ce47b4da7d7597a7b02997c7450"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m1_p2/ledger.jsonl": {
+    "bytes": 4640,
+    "sha256": "0e3ae9ec6de4f812ed0a061d3c440295b251680cdf9b0b476185ea79d6a4e4f4"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m0_p0/final.json": {
+    "bytes": 344,
+    "sha256": "f41c5fccd51b9ba432714a1a367e24b586a17a5b0a03bb92c313b23a8000515b"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m0_p0/config.json": {
+    "bytes": 711,
+    "sha256": "75f6dfa8d097f8840f83bab4f222f61bdbf234d572b23fc25007f300e2bdae07"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m0_p0/ledger.jsonl": {
+    "bytes": 4419,
+    "sha256": "184392bc7716dcc5d614c5fa2a7ef34a8ad6e6659e1f16971ba13bb4a04f0073"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_det_p0/final.json": {
+    "bytes": 381,
+    "sha256": "56f5de04cbaeefc474dc722c84e4527ba639eb3faf378a3176caeb9bfa8d6753"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_det_p0/config.json": {
+    "bytes": 679,
+    "sha256": "210eeeadf20ffd6d6878e80d279e8c78c181bbdd0a47452c630a787da5fae3a2"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_det_p0/ledger.jsonl": {
+    "bytes": 4732,
+    "sha256": "bfeb81a17f5756d7be2072ab9b01c99b53d91131f430832890d5f4b50705e38e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m1_p0/final.json": {
+    "bytes": 343,
+    "sha256": "50e29706372d0c5a59946cdb15202d26006f097d844406b5bfb5cae1b5020549"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m1_p0/config.json": {
+    "bytes": 714,
+    "sha256": "70b4280cf50cc97b0972a67c763ca1f32878ecdfbfe3f9cca3a668345f2fb178"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m1_p0/ledger.jsonl": {
+    "bytes": 4635,
+    "sha256": "db6510ada7901b2ec6f3d7b775c3e7e2163114bd7a0973f9b40074baa67c3fe7"
+  },
+  "runs/stoch/gate/ppo_dream_latent/final.json": {
+    "bytes": 418,
+    "sha256": "c0b61d0a7cef4ea8b3a615af7ee373e9b70ce47d50e129353c2c99078cb613cc"
+  },
+  "runs/stoch/gate/ppo_dream_latent/config.json": {
+    "bytes": 599,
+    "sha256": "9411fcd6282f4edaa5ac4a70bc7f92ea54e5617f7514e962cf7b30b172ce7981"
+  },
+  "runs/stoch/gate/ppo_dream_latent/ledger.jsonl": {
+    "bytes": 5176,
+    "sha256": "c6f08a8e4ef7f3731910305ed603ab3d3dc95ca27baeee8744f2c6d0dd4d1efc"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p1/final.json": {
+    "bytes": 414,
+    "sha256": "19bdf2b014c11ffb91bd71834e2ab4fe05e03ec8c9901be4a88aa765ebaf0d49"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p1/config.json": {
+    "bytes": 689,
+    "sha256": "5a5c300a1a4cce61ffb4e640857bb62c8f7230657073d6a8e56a84005502cf2f"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p1/ledger.jsonl": {
+    "bytes": 5010,
+    "sha256": "5b07ece9281e986a688a3fc4f2921064dba010e0ff4d8866febdd17b9af651c8"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_mean8_p2/final.json": {
+    "bytes": 372,
+    "sha256": "68f8bb977ae66494a778df9e3435d369a0b80b905bdb6e5a12a183d147a1a83d"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_mean8_p2/config.json": {
+    "bytes": 744,
+    "sha256": "b2d87e44e5efdd9ccf34fc52d376168579e25f664f21a6d750acafe0473eb4df"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_mean8_p2/ledger.jsonl": {
+    "bytes": 4650,
+    "sha256": "3933064d82fa13fc88fe1ec11e6dd4599c467277514f1df3ee149abe803843d6"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m2_p2/final.json": {
+    "bytes": 343,
+    "sha256": "e21142b9be22c5b6bf3a68f92de8dc47945b7bc16738c3cef7d66b8c4dd499a4"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m2_p2/config.json": {
+    "bytes": 640,
+    "sha256": "7edf9e05a6cd5ff56aee791e01bae062c8af8232c21885ba9cdca9bca5267fa3"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m2_p2/ledger.jsonl": {
+    "bytes": 4652,
+    "sha256": "1897af7018356f424ea1d40f6488a4224a495a41156b32b81a919fa74fd00626"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m0_p2/final.json": {
+    "bytes": 345,
+    "sha256": "b70ec2de25495c6a4fb17a79825418ec4a85e6fdd2ff655a05e1209fc7cdab64"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m0_p2/config.json": {
+    "bytes": 719,
+    "sha256": "c0c43384e6122b0d53a35d36e4b52ad6eff5137dd26b7a520ca39587fc30033d"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m0_p2/ledger.jsonl": {
+    "bytes": 4617,
+    "sha256": "65ba08bae965e90a9e35407e5da92e04873c9576f4b5881579a9b042e3df8eb9"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m1_p2/final.json": {
+    "bytes": 344,
+    "sha256": "995d54dc34e592ff43ce4de317fa454d963aa7cd2d9a18aeb2dc7324556a3aed"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m1_p2/config.json": {
+    "bytes": 734,
+    "sha256": "391b0fdf81622b28713659bc24e3be5bd256ae8c87efe176a0d8419efa54434d"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m1_p2/ledger.jsonl": {
+    "bytes": 4540,
+    "sha256": "188d2ddc535d06a1f2e69ec815b6f56f4b88006b8549dab61764afbff0600fbb"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_samp_p1/final.json": {
+    "bytes": 371,
+    "sha256": "79f9679fdcaad89a46c38eae0aabd7415869d56fc7a3aefaa57c11407334f852"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_samp_p1/config.json": {
+    "bytes": 743,
+    "sha256": "c45047bbcc446b6673da8226e4d2f77eb64e1e98f480cdebe970cb1ebb9a08dd"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_samp_p1/ledger.jsonl": {
+    "bytes": 4676,
+    "sha256": "be5539e9f6bdec86b4a308f88b872d07101f34a6c41fb5fbbca55e913262e6d5"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_p1/final.json": {
+    "bytes": 339,
+    "sha256": "c2239bd84e446f71ed5a7e3fd40f0de2b68f156f338848ef3893fcf48a0ab943"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_p1/config.json": {
+    "bytes": 634,
+    "sha256": "f29e889aa50c51b548a672fc074aff5efabbe425e64b82753c219f052a37d789"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_p1/ledger.jsonl": {
+    "bytes": 4595,
+    "sha256": "68584829dbf4c9dd9117ec7e16ae5874dd929f7fcfe2a91fc47c799e9e8b1b32"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_det_p2/final.json": {
+    "bytes": 409,
+    "sha256": "3a8e5b985234a0e05c61ba2160dc1feffe0fd91f2235101727336d9df9e372c6"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_det_p2/config.json": {
+    "bytes": 679,
+    "sha256": "68877d630bea06b50556d139809805177ff900bbe32e2ff01c008f9b1806a757"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_det_p2/ledger.jsonl": {
+    "bytes": 4906,
+    "sha256": "dcf037bbc93ef0f4e47b780bd596d4cfdaf947bd6cb4f15624d225f17c0bee58"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_samp_p1/final.json": {
+    "bytes": 409,
+    "sha256": "eb16698439ec5a841b40200f4d24fa077bd8a0f224dc7b3ba56107847cca93cf"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_samp_p1/config.json": {
+    "bytes": 737,
+    "sha256": "fd36adc87843e2ff465270830e01b07a57def5b3446fcd7308e1770d0d79dcbb"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_samp_p1/ledger.jsonl": {
+    "bytes": 4753,
+    "sha256": "d7ffb65d5d55aaa99573560f03834dfb60ce22c18c55d9d815bf1519c1acc5e5"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_det_p1/final.json": {
+    "bytes": 407,
+    "sha256": "dd425bb0be0d80198745aa0838b0a7e803fc166a1e25452ff26eb67292f512f7"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_det_p1/config.json": {
+    "bytes": 679,
+    "sha256": "4fc85a8bfbe64ddb980c7159e78dcad0d291f19b372bfe46db8e66e0c9d18ce5"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_det_p1/ledger.jsonl": {
+    "bytes": 4911,
+    "sha256": "54d57d08447afd24ad7d71de0c7521f611711eeefe7ffbeb355171099e6ddf05"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m1_p1/final.json": {
+    "bytes": 341,
+    "sha256": "ce3277ec592dbb26e673be8955d7a1c9f65b1ac6b168d2760d866a17d3a95b74"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m1_p1/config.json": {
+    "bytes": 734,
+    "sha256": "2db5a437623ed223321e4b0ac6fb5cba0137c78938f3f6c9eae8b8a4728ef62e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m1_p1/ledger.jsonl": {
+    "bytes": 4637,
+    "sha256": "ef241eb4965ded022ccbbb3a52736462e5226ab7c798b5b392efc45971cb9833"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_det_p0/final.json": {
+    "bytes": 379,
+    "sha256": "82df04d23c3d4c0fd9a34de7f5aac3099c4ba18bdd4c4d877b4cc3b4eebba823"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_det_p0/config.json": {
+    "bytes": 679,
+    "sha256": "46c923852fbbb826bd570e01ce775f49a6c95a75dbf08bbb4ad82c429451f289"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_det_p0/ledger.jsonl": {
+    "bytes": 4671,
+    "sha256": "a64e9fbe85a81f8f42dbc2127cd2230c56cf202807969fb6a76b1468f5a8bccc"
+  },
+  "runs/stoch/gate/ppo_real/final.json": {
+    "bytes": 343,
+    "sha256": "83c29a689c76b160a8531e3bbfe267cbfda460a16d6668f11b5bec56704dc245"
+  },
+  "runs/stoch/gate/ppo_real/config.json": {
+    "bytes": 474,
+    "sha256": "7186833673d5fae7999bd553e2f5b7b6b697f2d2ac87726325f2806fc1fb2f84"
+  },
+  "runs/stoch/gate/ppo_real/ledger.jsonl": {
+    "bytes": 4725,
+    "sha256": "0bb74fed7c033c6c81d67f84e4cca984adf6ce6edfccf598f7201d71490682e6"
+  },
+  "runs/stoch/gate/ppo_dream_pixels/final.json": {
+    "bytes": 413,
+    "sha256": "043492b3213f6614806a5a9f56ce21a7cf231aeeab97d0f8e61a288905d2663b"
+  },
+  "runs/stoch/gate/ppo_dream_pixels/config.json": {
+    "bytes": 599,
+    "sha256": "3caffc19e5dab96caf985b6943b25d45d1bddeaaa3362e0123c1912cc79dba08"
+  },
+  "runs/stoch/gate/ppo_dream_pixels/ledger.jsonl": {
+    "bytes": 5110,
+    "sha256": "4b04b4f2dde60426fb4d251452e33075d551568b516948aa175b00156becc7f9"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m0_p2/final.json": {
+    "bytes": 343,
+    "sha256": "57cd97f792e903ae260d2fd129b2312b0ad3067aba9f3052c5c936707097e552"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m0_p2/config.json": {
+    "bytes": 731,
+    "sha256": "a337f56fb592a238628f42175bc814f0f2f3a0086292c2fdee03a781061e689f"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m0_p2/ledger.jsonl": {
+    "bytes": 4631,
+    "sha256": "f0b871bae5d24d702118b3107a8b30df0f4a30f95b98e5d98294798563047572"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m0_p2/final.json": {
+    "bytes": 343,
+    "sha256": "2d2499ec1c90c0eb91271362abf02acb634905c48a0dcedd750713f440fd65aa"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m0_p2/config.json": {
+    "bytes": 709,
+    "sha256": "5480df293d15492dbccd9f7536df156ba61cfba5e31541e65f8c4187b4e3a1e3"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m0_p2/ledger.jsonl": {
+    "bytes": 4562,
+    "sha256": "089304fdf27d912977c81cb90d12ee69b56e1c2fa53dcb0fbf28aa4461254aa7"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p1_12min/final.json": {
+    "bytes": 410,
+    "sha256": "46f658cf339dbc8593b965e32959647788bc1ea046c98712808d1be24bf11a71"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p1_12min/config.json": {
+    "bytes": 689,
+    "sha256": "f0cac82a576eadc6cc7a92ed4aa7b0acfb0398ffcf4064a4e0d5dfb9313386d2"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p1_12min/ledger.jsonl": {
+    "bytes": 2528,
+    "sha256": "421d413460916be0b1d092234486a55e894f847531eed7bf16053c461fff9215"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m1_p1/final.json": {
+    "bytes": 343,
+    "sha256": "e749047e8d86ecfc7f67e295eaba7d784a1ac96d36ed8f1af233bd6ddd814600"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m1_p1/config.json": {
+    "bytes": 736,
+    "sha256": "e6ed76012add7546015ad09013d4766b2be9dbcacd5ad00ca071f4884e940215"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m1_p1/ledger.jsonl": {
+    "bytes": 4695,
+    "sha256": "7777e2c22dac1406010861808df0047cae6045662201a83fca92b438427efc40"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_p2/final.json": {
+    "bytes": 343,
+    "sha256": "d67e4a46ac039eef5faff05b12b5927ebfd5e41db94a4a13193f7a3f45624b0e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_p2/config.json": {
+    "bytes": 634,
+    "sha256": "4bcc71756c44e9b9fa883a15860cb2b06417a0b7536801cd8e94feec3c5037b6"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_p2/ledger.jsonl": {
+    "bytes": 4542,
+    "sha256": "205790df0149280692ef3d4862edd792d387fd211284a5ae6dc6cddf228c17dd"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m0_p1/final.json": {
+    "bytes": 343,
+    "sha256": "2d4607e6ab064a230e2efaa421d2c8fdce1ca8d63d621fd322a709d7d6839739"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m0_p1/config.json": {
+    "bytes": 719,
+    "sha256": "edc405500950b8e3d78f870c70bd2f87af84867de1d65afb7099ab04e5ae7848"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m0_p1/ledger.jsonl": {
+    "bytes": 4665,
+    "sha256": "bc408dd46095e3e4dedec0a8e54ebf8d733644715dd18379c80919bc2892adb3"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_samp_p2/final.json": {
+    "bytes": 411,
+    "sha256": "6e472fcf1e67c7a2d6870a19b70c37c4699babfee52f8ef86246a5ffc8990686"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_samp_p2/config.json": {
+    "bytes": 743,
+    "sha256": "151bbc2fb301453808b1ce1f4706ed18f16ae976a6e002e5a180e5a2f00f4e50"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_samp_p2/ledger.jsonl": {
+    "bytes": 4951,
+    "sha256": "a8bcd0549b3abce8c838ad2e2fed7e7f11b7dc15da62ae4f92ef1f52e7029166"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_p0/final.json": {
+    "bytes": 341,
+    "sha256": "bac737a9429795c499790d2d05d3d9a2c93d7f5c2626189f551a0d070c2da7ab"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_p0/config.json": {
+    "bytes": 634,
+    "sha256": "45e8a1550d12d9602260d32de793b0343439c5f004e5f4ea37b93ef9d879cce9"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_p0/ledger.jsonl": {
+    "bytes": 4629,
+    "sha256": "b3bc7c0403509e4798f45b127bc9643ed673752dad1b80be3c3cd293d5a32f74"
+  },
+  "runs/stoch/gate/ppo_dream_latent_samp_p1/final.json": {
+    "bytes": 412,
+    "sha256": "59a098bef4d71166baa1a73b3787ff98879ecef9aacfba8bced496f87c74c6ba"
+  },
+  "runs/stoch/gate/ppo_dream_latent_samp_p1/config.json": {
+    "bytes": 688,
+    "sha256": "c36c9b2080a2251f0ef25de238b17eb0107ed53dd3474ae5b0e7404229b03109"
+  },
+  "runs/stoch/gate/ppo_dream_latent_samp_p1/ledger.jsonl": {
+    "bytes": 5019,
+    "sha256": "9099332e0c8eb0e6a3542eadc7326bb3bf30ed84dc2bba043bbef4ef72434ed6"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_mean8_p2/final.json": {
+    "bytes": 372,
+    "sha256": "cb79c3b26d17e94dda8ed00bab10114905c9242ee4de6b5c17bf8005d2103134"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_mean8_p2/config.json": {
+    "bytes": 738,
+    "sha256": "1b426ec6cf6bc5512eefc9b71429d1ef0ffa2099471c0086a11d7104ce67204b"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_mean8_p2/ledger.jsonl": {
+    "bytes": 4653,
+    "sha256": "ea870ea87fc2cfeb76f279a55ab217b8d41eee5ac417a0eebd482913bedbd4cb"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_det_p2/final.json": {
+    "bytes": 406,
+    "sha256": "7283748db4086fc019da18e0a9b623d6aa0662a25a8053dd3ec040494c95d745"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_det_p2/config.json": {
+    "bytes": 679,
+    "sha256": "252a80e3f5d1abd5be089e704b263303e5f9d11d2679d19718b338e340a36207"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_det_p2/ledger.jsonl": {
+    "bytes": 4785,
+    "sha256": "b81ef44941eb5459352f2f3dbb5e8934980153afafcd06fc3612eec24f448fcb"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_mean8_p2/final.json": {
+    "bytes": 406,
+    "sha256": "aa09e2a0521de502b99321004ef6b4703cc864c1df31c78e60600b2c0c8fb772"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_mean8_p2/config.json": {
+    "bytes": 744,
+    "sha256": "bb9649112d583ee200da4fd6311931e7e5da91394a581916a8e14f3885f0566f"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_mean8_p2/ledger.jsonl": {
+    "bytes": 4807,
+    "sha256": "15058797dd6db0827bfbc1ff2d91c5a09d2dec52654e26d50b50038a3131aade"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_samp_p0/final.json": {
+    "bytes": 412,
+    "sha256": "f768f0e0b4639a48444c22f5bbbdbf956e836856648430f0ecda3803fd6bb08e"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_samp_p0/config.json": {
+    "bytes": 743,
+    "sha256": "4a4b87890c624131c2882249852d6f832a863968cab8d3774ff995dd8ed55f5f"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_samp_p0/ledger.jsonl": {
+    "bytes": 4828,
+    "sha256": "5ae49ff79a265595dab8a25b9a9f155b2056b0f7b379b37865acd25469e92c31"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_mean8_p0/final.json": {
+    "bytes": 410,
+    "sha256": "62221af4b6dda2603f1ac6631e24e45ac3c911e9245218dc001b4c55611363ad"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_mean8_p0/config.json": {
+    "bytes": 744,
+    "sha256": "1a7ad19e680f7db0ea42238fa03b717fbbe84d29e9b050a2725fcf8c33893de3"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_mean8_p0/ledger.jsonl": {
+    "bytes": 4734,
+    "sha256": "674439415c28302f3597f909f0e6317d464b13b2fb437121706cc671c196221d"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_det_p1/final.json": {
+    "bytes": 412,
+    "sha256": "a83f3ce16fc03ffe70f86ccc2d78c7b2545f490700e5a56e342d9d1f607a55e1"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_det_p1/config.json": {
+    "bytes": 676,
+    "sha256": "bf0e3ac8f241c118d070e2764b973fd678465d4aadc806c7b40cb36cf78dd974"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_det_p1/ledger.jsonl": {
+    "bytes": 4780,
+    "sha256": "a281db0511355e187958d38195df6e4e5f892dd72b1d2098191bea9ff856d49a"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m0_p0/final.json": {
+    "bytes": 336,
+    "sha256": "acdfac5015b29feb1a8cb880c55320fdaa8a7958925153a1aa82f7c227b9f303"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m0_p0/config.json": {
+    "bytes": 709,
+    "sha256": "11c7d969cb2d473a4a95ea3951e562b1b4c7ea9bb948f421c83eb95f522eed0b"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m0_p0/ledger.jsonl": {
+    "bytes": 4514,
+    "sha256": "b90524790d69b85c027e5513f364bb0f5c381cc5c4dc2f6858b52d6fad9e44b8"
+  },
+  "runs/stoch/gate/ppo_dream_latent_samp_p2/final.json": {
+    "bytes": 406,
+    "sha256": "d3db71852d400c8785244100fe9cca8da6813ff1692ab1d2e95c3f6ef64ae900"
+  },
+  "runs/stoch/gate/ppo_dream_latent_samp_p2/config.json": {
+    "bytes": 688,
+    "sha256": "8400eeee982382891d7326ac52fd963b5d84d99ca0e87f053e6fa6224b798cd6"
+  },
+  "runs/stoch/gate/ppo_dream_latent_samp_p2/ledger.jsonl": {
+    "bytes": 5082,
+    "sha256": "1b654e31cad44599276081030024c753f644d7620cc95258cc732cee63413d88"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m0_p1/final.json": {
+    "bytes": 348,
+    "sha256": "1101cea55a7a71668ab9bc9bacae9f4015d5f6d4c3dce9f3d71879e6f2d64bde"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m0_p1/config.json": {
+    "bytes": 700,
+    "sha256": "8d3f38b47e6e7c4d4c0d4ce9117bb2a21b04c8ac267b0313e106d37ba527b79c"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m0_p1/ledger.jsonl": {
+    "bytes": 4592,
+    "sha256": "2e71f2967a69212406f1c524c0db9a660be62cc67cc6c111ae02226154feaa62"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p2_12min/final.json": {
+    "bytes": 408,
+    "sha256": "22f9512dd4d7dce544fc206285758aa791f72a79da1abfc905521d36844f64fe"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p2_12min/config.json": {
+    "bytes": 689,
+    "sha256": "c5545ee214275905cc86bdf93e3c7ebbfce7fdd3b1766dc003c3f41285db4c44"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p2_12min/ledger.jsonl": {
+    "bytes": 2497,
+    "sha256": "9894b6cd069ff7f3ed7466571f9b237cbd6f76f44020d10d2f62194691c4b61e"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_det_p1/final.json": {
+    "bytes": 396,
+    "sha256": "c222ceadbb2980465a1056f21d5e8d738a6bcb143985800479b60f0b6d0aab89"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_det_p1/config.json": {
+    "bytes": 679,
+    "sha256": "f576e4f5cf1930b5dfe04f5e920bcfe8bd4a7f195e038afec3730df32453e495"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m2_det_p1/ledger.jsonl": {
+    "bytes": 4802,
+    "sha256": "b4caaa42a38a563b994231446e1f44bd9faee57272ddfbffcda39d0b2ce65927"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m0_p1/final.json": {
+    "bytes": 345,
+    "sha256": "9caa68bd2b39024d2b9d7f2094d389f13862512eff66992ae9b19c81ca8f1b17"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m0_p1/config.json": {
+    "bytes": 733,
+    "sha256": "44f46bf47f8dda2928eb485e58d7c44f938a1b670f1252437d713c4a7ca1ad65"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m0_p1/ledger.jsonl": {
+    "bytes": 4695,
+    "sha256": "585c4b8dc5217d97e1268467ca94261a52e6a5adbf0ba28d849418e211e91435"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m0_p2/final.json": {
+    "bytes": 340,
+    "sha256": "bdab1660045283d520e90b035e70880af7b52f167f14bf8900a79d2e860d9cfa"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m0_p2/config.json": {
+    "bytes": 700,
+    "sha256": "c19ae19cb685ab5be5e33aa4b67a17a60753e752710b4ea4037165e6860d164e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m0_p2/ledger.jsonl": {
+    "bytes": 4542,
+    "sha256": "55497b851217f0f8807cc025739d95fa2e1ee8dc307c96b1361c2db9a9f895d4"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m0_p0/final.json": {
+    "bytes": 344,
+    "sha256": "7fa9c1ddf165b8484a614dc604bbbb014c934ec296521587becb467bcdde6ece"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m0_p0/config.json": {
+    "bytes": 639,
+    "sha256": "d46eadd42566741b3ddc3af79c1e29643c80d919dd3d3669ef24514682cf9b81"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m0_p0/ledger.jsonl": {
+    "bytes": 4669,
+    "sha256": "5c42e3955aca2e1f980119117c3c631d1f290427f1c512ee32b670420d14b043"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m0_p1/final.json": {
+    "bytes": 344,
+    "sha256": "61f28acac3ede54402b7d465399664c66fcd850d86109ed8b6c96be15ea3f433"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m0_p1/config.json": {
+    "bytes": 731,
+    "sha256": "ec36a082f9d18b3ad417bf3d704e84e33dbf1723dfa4e275e3076411ba15dec0"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_rand4_m0_p1/ledger.jsonl": {
+    "bytes": 4668,
+    "sha256": "977c2d8592fa63ebf617229d18271e3304f7883a513f754d7db1da7b70d51189"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m1_p1/final.json": {
+    "bytes": 342,
+    "sha256": "732b1b981612039437c625db3da3efbe0e638d56a84507cbc23a96ab574f7f54"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m1_p1/config.json": {
+    "bytes": 642,
+    "sha256": "f0e5e5005b68693158606df54051cf0397402c3b5d667701da8c4477b03b5896"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m1_p1/ledger.jsonl": {
+    "bytes": 4582,
+    "sha256": "d861800a12c0d986a48daa6ccbd06272385761d72c177eaadb8b78bf4e800912"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m1_p1/final.json": {
+    "bytes": 348,
+    "sha256": "cbc8ed81d0800c865c69fe02a9c8a1b77f62ee1bf5935fd502ee39ae5c55a075"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m1_p1/config.json": {
+    "bytes": 722,
+    "sha256": "7f696827ef4295b5872a18d55955526404ae246a522c46d92e4e464bd5040b1f"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m1_p1/ledger.jsonl": {
+    "bytes": 4590,
+    "sha256": "34cf00b16e6e1080facf4c606dab894d0700a93b6ac872f97b7244d340f11735"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m0_p2/final.json": {
+    "bytes": 338,
+    "sha256": "ac4acc10957dc048db60c26cab5b5b392d7bfab9e58746e96992f1ab0798aa0b"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m0_p2/config.json": {
+    "bytes": 750,
+    "sha256": "4b79cffac6191440db910f42a8b9e0da5936fd29b7904710f27dc80f5440093d"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m0_p2/ledger.jsonl": {
+    "bytes": 4546,
+    "sha256": "e24d135b32e1a4d445c7d7a8d5966f95b4c844e105fc7f3e025639ad714eac2a"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m1_p0/final.json": {
+    "bytes": 337,
+    "sha256": "c93e5e29bf0ff0960b1682d254e54bc493bb2b2c9eae28575b245a711b470634"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m1_p0/config.json": {
+    "bytes": 703,
+    "sha256": "cca3628d7d39c2986b41d5da292d3f2d9aed11c09e5d4999b2ccd1fbfb20e852"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m1_p0/ledger.jsonl": {
+    "bytes": 4667,
+    "sha256": "c1bb2f7bc5db66419e90c4a16fdf2826660a2f5a896f547403b3d3ac3e9d8332"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m1_p0/final.json": {
+    "bytes": 341,
+    "sha256": "1a9b9537dc36338cd96d0a9769b6855220fafef3675cec0db429212accd7d4da"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m1_p0/config.json": {
+    "bytes": 712,
+    "sha256": "c39d227e835563766b56c3c87bd0ab568211dd73c13dcc27ca996c2e95d9c4f7"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_wall4_m1_p0/ledger.jsonl": {
+    "bytes": 4579,
+    "sha256": "f90bf168350a2f7db058b09e6d3cd930af3f19caeae9b55d489411511de8a7cf"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m1_p1/final.json": {
+    "bytes": 343,
+    "sha256": "0c39288c7d457444ff432aacda7bf597a611f06327e20ac562c083eba96f1ab4"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m1_p1/config.json": {
+    "bytes": 640,
+    "sha256": "84941d82d766f1cdfe9b7787d0524e24092234280333e3decb8a1ef5c700f99c"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m1_p1/ledger.jsonl": {
+    "bytes": 4617,
+    "sha256": "82b6aebb23a92b6d79a2d62b7d613ed123745960c9e362932edbbd39894c9bf5"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p2/final.json": {
+    "bytes": 406,
+    "sha256": "9745531142c564ae0dcb216cfa4293f70754a70cbed0a24e38d1e4042cfc9c46"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p2/config.json": {
+    "bytes": 689,
+    "sha256": "7e2b0d5364ba2e0cc785f0624814afb20a7da6de3c29b1fc26ac465db60aa8a8"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p2/ledger.jsonl": {
+    "bytes": 4960,
+    "sha256": "46c1d3e3d5ca360aa91f7c209019208f5907eb29d5e2065fdce314ae26cbc0f8"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m0_p1/final.json": {
+    "bytes": 346,
+    "sha256": "1b8a44c3ae8800d9066475a5a86a9e8a589e08ec26f9bb60cd57ab65999e6992"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m0_p1/config.json": {
+    "bytes": 718,
+    "sha256": "3beb8cb747b8419870a04bf7e957d01c0f0579c8217e0abcb4650a310277d43c"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m0_p1/ledger.jsonl": {
+    "bytes": 4653,
+    "sha256": "8aad97b9fa2b11fa37f0c179b494038dffc9002afd1c5e3fe85aa5a228df1fa1"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m2_p1/final.json": {
+    "bytes": 347,
+    "sha256": "54356c5ef026b3fbdc362a27efa6d1c5a373ecb12a8d5a467c9134eace38e7bb"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m2_p1/config.json": {
+    "bytes": 642,
+    "sha256": "0b8f8b48c0f90038889f6782c2b61e50cc9f5103babd958da06b24abbf69803d"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m2_p1/ledger.jsonl": {
+    "bytes": 4691,
+    "sha256": "24e0cc974cec20d6cc8fe462d1d028d3097dc82096107fb3f8d36a8998067aed"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m0_p0/final.json": {
+    "bytes": 344,
+    "sha256": "7bce95821399d5de585a09a7ec7504c1507d07b5a19ae2096db6199e07e05300"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m0_p0/config.json": {
+    "bytes": 733,
+    "sha256": "00360781d0bd5f15b5b9b35995445bcdbaa4a9a7e34959f0498fd57351c46b6b"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m0_p0/ledger.jsonl": {
+    "bytes": 4625,
+    "sha256": "0716c1ee038b896a2df42838a98e1dad0fec23c374ee1c86a6d35d368765a0c1"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m1_p2/final.json": {
+    "bytes": 343,
+    "sha256": "892d1f8b9ec680ecb804434823ca0afde8ac5d326fa7d0a6c597a3f7e14a8106"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m1_p2/config.json": {
+    "bytes": 721,
+    "sha256": "2c14e21acb48104e22d96ef4c51e971e75001fd57732ed2927a4c91931a82f6d"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_mlp_m1_p2/ledger.jsonl": {
+    "bytes": 4437,
+    "sha256": "b0d067dafcd976ffbc554357ac658d7388746de345b6711031f95d9e04e54a2e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m0_p1/final.json": {
+    "bytes": 347,
+    "sha256": "9879f2e2084cf583fc4aaa6ec8ba6af0f274e6a9114e9a1310c316744518399d"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m0_p1/config.json": {
+    "bytes": 639,
+    "sha256": "cd030007bdad9ca569a0d8fe7f19e954d44875151fc33c92e3e3ddc32b2632ee"
+  },
+  "runs/stoch/gate/ppo_real_jepa_decoded_m0_p1/ledger.jsonl": {
+    "bytes": 4688,
+    "sha256": "a5f4d17556a1e7d247fd471890b4e6c9ac4a8aa98be75099a7ee9811c9b31d39"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m1_p2/final.json": {
+    "bytes": 343,
+    "sha256": "377723864fc8211b71351baa883b16f11c5a38187e2124a23a40a024955f3a16"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m1_p2/config.json": {
+    "bytes": 753,
+    "sha256": "f658a80bdf2264302249bf15c61de71f794e1e81e32e8bd8a1b87e6d1ad1bab8"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_drand4_m1_p2/ledger.jsonl": {
+    "bytes": 4400,
+    "sha256": "fe47b06c77dce2db14db381c27cb2d8865cdd6c35f004f880cc0cbf7d2c66a92"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m1_p2/final.json": {
+    "bytes": 345,
+    "sha256": "1427109eb08955a14558b355e9da8f4b20e40f8d964ed0bff071b83a7fca240b"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m1_p2/config.json": {
+    "bytes": 736,
+    "sha256": "0f7838fe0fff58a8bade9dbf8c6a816892f6f44659a481466b288eb0751ecf3e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m1_p2/ledger.jsonl": {
+    "bytes": 4617,
+    "sha256": "93e39c0426b099d489ac8995b9481f55f4fa871ea284055a40df797113378400"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m1_p2/final.json": {
+    "bytes": 342,
+    "sha256": "25a918194abf1ab9dcae3ffab1fea2d7aec2997afe75ea0d4266a6d090894fea"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m1_p2/config.json": {
+    "bytes": 703,
+    "sha256": "2a5f13afcf9e4917e308ea8bbba46d080c4a442855b85723728b59c03126c618"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m1_p2/ledger.jsonl": {
+    "bytes": 4526,
+    "sha256": "dfeaa6ca86fa59468aa0d1f3e164df99238e1b168e9ce2a9a6276c62d14edc38"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m1_p1/final.json": {
+    "bytes": 338,
+    "sha256": "487d053ee27eeb80ac3f7bf64dd8037946986783bf484b03c3fa09ad18aa7310"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m1_p1/config.json": {
+    "bytes": 703,
+    "sha256": "e2ff53492aa8ad1b8232d271954920f7a9af2047cb46f5d2e61c61a1293b08d5"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m1_p1/ledger.jsonl": {
+    "bytes": 4504,
+    "sha256": "6e35818b0a60ac9d2bb695bf718d74eeaec6d0f1afbe077a299abf77ec0199b0"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_samp_p2/final.json": {
+    "bytes": 371,
+    "sha256": "03170cc81fd098f083ac39246680502ca4acafb86b90bf389bf1230d232e0b95"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_samp_p2/config.json": {
+    "bytes": 743,
+    "sha256": "1fb544463595f710464c21e1603f3e16006793ed167f615a8a6da5483b8b8ed6"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m1_samp_p2/ledger.jsonl": {
+    "bytes": 4632,
+    "sha256": "f5887484b5106855c17ca910fa02ccfceaeab15c8652f704c9fbf6abeb22ac8e"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m0_p0/final.json": {
+    "bytes": 339,
+    "sha256": "61f8265d621a074dfd450c23e8979fa61a2636a7735cc376ee8c8a8526ffab2c"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m0_p0/config.json": {
+    "bytes": 700,
+    "sha256": "cd2274a9fe70e8c6fa3b6c8a8fa2243b19fffa89d52f4c24605a2174201718a5"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp4_m0_p0/ledger.jsonl": {
+    "bytes": 4521,
+    "sha256": "860e2a47ca519a26d5bd07140a5aa50b0261cef59c3ad31ccb082b18bb88fc13"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_mean8_p1/final.json": {
+    "bytes": 370,
+    "sha256": "76ff1684d8ab893f1b8eb210c8aec5cdce89d9c4251cad3d3f082a0980507c01"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_mean8_p1/config.json": {
+    "bytes": 738,
+    "sha256": "96646fb975fb029654575b1c4d67a03387b056694b55e700ccde5e9626b7ed8c"
+  },
+  "runs/stoch/gate/ppo_jepa_tf_m0_mean8_p1/ledger.jsonl": {
+    "bytes": 4720,
+    "sha256": "c1074bdeaa5c884eaf87f17d0ef288850f1e4a51ddded0600e7b6f1d61118578"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m0_p1/final.json": {
+    "bytes": 348,
+    "sha256": "ae889bc0cbe6d3fd2b69c35104502261b10c54f92343176da265a65e7ed92e10"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m0_p1/config.json": {
+    "bytes": 733,
+    "sha256": "2e752fdcdb9870e31e388e6d54214395fa69da3c7cb3c5fea429d1fd5221bdaf"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m0_p1/ledger.jsonl": {
+    "bytes": 4659,
+    "sha256": "b289c9c6ee5803587fad3b27b774173e68a2f7e9f5a21bef4de3f3c59d4075fd"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m0_p2/final.json": {
+    "bytes": 348,
+    "sha256": "660e83ca24b0fb22019f458403c3493bf677ce70bc609ca3fb625c58ef90fbad"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m0_p2/config.json": {
+    "bytes": 733,
+    "sha256": "d41ea10c27af84b14d2811fc0a5eb9cc2964c63c8737031eade75407315cc7b9"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_dwall4_m0_p2/ledger.jsonl": {
+    "bytes": 4609,
+    "sha256": "ddcb7da1bf5cbe07b381779e4fe8507ebbe13956dfd350ca7baf14c45766f310"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m2_p0/final.json": {
+    "bytes": 343,
+    "sha256": "a9aa0be26ca0a9afdb80efca45ecab024bd6002279c68716cb0e567a4642bce7"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m2_p0/config.json": {
+    "bytes": 640,
+    "sha256": "ac0c934b0fc2e2dc83f577165dabb71c9942ae860f185f38bb6651ee09ddacdc"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_m2_p0/ledger.jsonl": {
+    "bytes": 4666,
+    "sha256": "49a0f5cf557ce6a8fc57ba7ef6f0fd3b26676d2242c59877fc785fe63dfc72f1"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p0/final.json": {
+    "bytes": 415,
+    "sha256": "fbc7ed52455d6907830284d5ac63e99416551fc864a73db6cd76cebdbb7b540c"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p0/config.json": {
+    "bytes": 689,
+    "sha256": "54b5097f3e0858576c7dfbe997f3a8628fd62bf73b3b4c43bbe62452bde05a02"
+  },
+  "runs/stoch/gate/ppo_dream_latent_mean8_p0/ledger.jsonl": {
+    "bytes": 5078,
+    "sha256": "7a9b7192b25a31f4da2e1917391a32fa49153c3a9a02fa1639a344c17666e3a0"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m1_p0/final.json": {
+    "bytes": 346,
+    "sha256": "25dd0e882c9851fc856dec93f38b83e9604fa7350d442fb4f802c38d51a406f5"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m1_p0/config.json": {
+    "bytes": 722,
+    "sha256": "b2767071aea83849ff0ef082b04c889eb45b43d622c50aab7c3a9380f5aa24cc"
+  },
+  "runs/stoch/gate/ppo_real_jepa_latent_amp16_m1_p0/ledger.jsonl": {
+    "bytes": 4412,
+    "sha256": "cf6af4f18ab096a43c56ecdad751eadd65ad893e28cc4ffa4da6cdcd7834988e"
+  },
+  "runs/redcube/color_frame_wind/probe_scenes.json": {
+    "bytes": 13026,
+    "sha256": "53007f245c3b07b853d543c5a925cf50618de316d736bab4d1bdcffaafb837e5"
+  },
+  "runs/redcube/color_frame_wind/bench_allarms.json": {
+    "bytes": 20899,
+    "sha256": "eb3e9a58e4e2932468d00b2c27fa806db00c8d27a668cffeee150a047f592162"
+  },
+  "runs/redcube/color_frame_wind/oracle.json": {
+    "bytes": 1154,
+    "sha256": "a4c514772451b99364dd8a16934bdda53cc140f66e293f20f56363905e612452"
+  },
+  "runs/redcube/color_frame_wind/bench.json": {
+    "bytes": 14171,
+    "sha256": "628bab25ebb8cc5d14e777310630838bcdeef2f6e0979aa9a9eb1ee91f60666f"
+  },
+  "runs/redcube/color_frame_wind/allarms/bench.json": {
+    "bytes": 54303,
+    "sha256": "7e2bd51c150ca3e81b8774dd022e8d8b35fce57fb571fecb6264ff128d97909b"
+  },
+  "runs/redcube/gray_frame_still/probe_arms_scenes.json": {
+    "bytes": 19238,
+    "sha256": "e2777f6d737e105bdcca8f9ee63ef91192b0da8d62a652fe72eb0b7683198c08"
+  },
+  "runs/redcube/gray_frame_still/probe_scenes.json": {
+    "bytes": 13136,
+    "sha256": "e7c84abdcdb0bb7369092f82f801de58938ee2b4142139a919958bf98cf47d8d"
+  },
+  "runs/redcube/gray_frame_still/oracle.json": {
+    "bytes": 665,
+    "sha256": "8681d6013b9c8617c1fd66ed059bc6be99657c2116369e93a0b0e562b6fa56f3"
+  },
+  "runs/redcube/gray_frame_still/bench.json": {
+    "bytes": 13611,
+    "sha256": "685da163640b334b65109271c751a829e7e33d8745ee9ddd07d1bb8a78588f51"
+  },
+  "runs/redcube/gray_frame_still/allarms/bench.json": {
+    "bytes": 68466,
+    "sha256": "f76d71c75f7d164db1c16f0faacdc0bbced90f216ab1e02ed5f1b9e333a3ecc4"
+  },
+  "runs/redcube/gray_episode_wind/probe_arms_scenes.json": {
+    "bytes": 19111,
+    "sha256": "060fdca4e16d82f9c8429c1f2245e886e37797f4c2c9625688701159a88e6f86"
+  },
+  "runs/redcube/gray_episode_wind/probe_scenes.json": {
+    "bytes": 13007,
+    "sha256": "28fc586567e4c2d00fdcb99b3ccfef3650f4f86761b546a6758b3348f73600aa"
+  },
+  "runs/redcube/gray_episode_wind/oracle.json": {
+    "bytes": 1154,
+    "sha256": "a4c514772451b99364dd8a16934bdda53cc140f66e293f20f56363905e612452"
+  },
+  "runs/redcube/gray_episode_wind/bench.json": {
+    "bytes": 13871,
+    "sha256": "f5f7b6360ea99d0136edbe9dcaa5d9bb528bc71631d1bf2ac53f786c2e136c1b"
+  },
+  "runs/redcube/gray_episode_wind/allarms/bench.json": {
+    "bytes": 64160,
+    "sha256": "2979e57ff03c1e6d19160746525e58342546e619b5120bcc2f0beb982b17362d"
+  },
+  "runs/redcube/gray_episode_still/probe_arms_scenes.json": {
+    "bytes": 19197,
+    "sha256": "90f2be68b1124006e95c608c5c90504339a0779b4f4df4be0d8b242252fe337c"
+  },
+  "runs/redcube/gray_episode_still/probe_scenes.json": {
+    "bytes": 13146,
+    "sha256": "c516c00d7e9a621ff5c85867f6e92c8f22be45096c107dd93c8172a44b892801"
+  },
+  "runs/redcube/gray_episode_still/oracle.json": {
+    "bytes": 665,
+    "sha256": "8681d6013b9c8617c1fd66ed059bc6be99657c2116369e93a0b0e562b6fa56f3"
+  },
+  "runs/redcube/gray_episode_still/bench.json": {
+    "bytes": 13663,
+    "sha256": "bf2c512937d7bbdc91d43608def4483717224d8fb36469f68450741cb1656ef5"
+  },
+  "runs/redcube/gray_episode_still/allarms/bench.json": {
+    "bytes": 63463,
+    "sha256": "4a93e75e471b30a75be04179b421dd5280c457edc7970dd5bb1cecda200a575c"
+  },
+  "runs/redcube/color_episode_wind/probe_scenes.json": {
+    "bytes": 12981,
+    "sha256": "31b51ca89aec05dcce5ee8083dd3aa85e9e0562f521fdeee25ee447b887978c2"
+  },
+  "runs/redcube/color_episode_wind/bench_allarms.json": {
+    "bytes": 10318,
+    "sha256": "1648eb3a0f5f7a2184f3403be152438afb4d95a4adfdfdf48f20d16efb1040bf"
+  },
+  "runs/redcube/color_episode_wind/oracle.json": {
+    "bytes": 1154,
+    "sha256": "a4c514772451b99364dd8a16934bdda53cc140f66e293f20f56363905e612452"
+  },
+  "runs/redcube/color_episode_wind/bench.json": {
+    "bytes": 14158,
+    "sha256": "00f04cf3813758fc988b42ff21e1ee78e21878454a0d2754f93b8f29d7082ea7"
+  },
+  "runs/redcube/color_episode_wind/allarms/bench.json": {
+    "bytes": 54295,
+    "sha256": "795a2e252397178f40368c66220b7ffb1792fb14832fc8bbb87106c208a2ea04"
+  },
+  "runs/redcube/off_wind/probe_arms_scenes.json": {
+    "bytes": 19129,
+    "sha256": "0091a43f9b9e2c93c040d70d4a5e21a0e3ac1b4950d58c9e0d9646c6c281d295"
+  },
+  "runs/redcube/off_wind/probe_scenes.json": {
+    "bytes": 13039,
+    "sha256": "ab513aad1df95db3f386a77d384080b3333c9431a49127fbca8e2b4ecec17632"
+  },
+  "runs/redcube/off_wind/bench_allarms.json": {
+    "bytes": 9951,
+    "sha256": "591a76e06aad649961dc58da661cb452ca77b6a13a43dc00e8645bf130986b96"
+  },
+  "runs/redcube/off_wind/oracle.json": {
+    "bytes": 1154,
+    "sha256": "a4c514772451b99364dd8a16934bdda53cc140f66e293f20f56363905e612452"
+  },
+  "runs/redcube/off_wind/bench.json": {
+    "bytes": 13892,
+    "sha256": "c94e39b512c35fe96b0d4bf86509c345d7285824403ad25669f3d09247dcbf37"
+  },
+  "runs/redcube/off_wind/allarms/bench.json": {
+    "bytes": 53717,
+    "sha256": "47289e90ab5b5f26b045b62638e1c55b882fc6e0b7b4b1966e82219ff75b3ff1"
+  },
+  "runs/redcube/color_episode_still/probe_scenes.json": {
+    "bytes": 13088,
+    "sha256": "ea7bf2a269383fc970030b5fc6a94e3cc9416bfc79273a10b2227529c0507502"
+  },
+  "runs/redcube/color_episode_still/bench_allarms.json": {
+    "bytes": 10273,
+    "sha256": "8aa151ef9dafb62f827e714768a03656e6cf6a2849c40074096be45a419fb8b6"
+  },
+  "runs/redcube/color_episode_still/oracle.json": {
+    "bytes": 665,
+    "sha256": "8681d6013b9c8617c1fd66ed059bc6be99657c2116369e93a0b0e562b6fa56f3"
+  },
+  "runs/redcube/color_episode_still/bench.json": {
+    "bytes": 14105,
+    "sha256": "62847629ed02938910b1fe85d0d7a58bdbf4bc54ad5c156a1befc8760e5a6c07"
+  },
+  "runs/redcube/color_episode_still/allarms/bench.json": {
+    "bytes": 53941,
+    "sha256": "cdf8563d76a1b953cc0f5cceeefc6f034fb1f99c0aed5c3060959ddea34fb638"
+  },
+  "runs/redcube/off_still/probe_arms_scenes.json": {
+    "bytes": 19317,
+    "sha256": "e78c0ea025a2bc9376cd05059e97737be2d29a2da34a722bc39359c8e64ec220"
+  },
+  "runs/redcube/off_still/probe_scenes.json": {
+    "bytes": 13119,
+    "sha256": "5dea99ebebf409045e872d0770990267b044aef773d3af6395d578ab7731bf1b"
+  },
+  "runs/redcube/off_still/bench_allarms.json": {
+    "bytes": 9544,
+    "sha256": "adc022c5319377ea64317c176ce07d2f8b3f689d9ca3ead620555321dd6c8ce7"
+  },
+  "runs/redcube/off_still/oracle.json": {
+    "bytes": 665,
+    "sha256": "8681d6013b9c8617c1fd66ed059bc6be99657c2116369e93a0b0e562b6fa56f3"
+  },
+  "runs/redcube/off_still/bench.json": {
+    "bytes": 13612,
+    "sha256": "f6c9d1d82a51daf3fcfd878e5b60fd4b0bdb9fce11a9e4ce26ad4d22ed1d8d96"
+  },
+  "runs/redcube/off_still/allarms/bench.json": {
+    "bytes": 53636,
+    "sha256": "7e05f4e4f3e75438dda2f06a8b5311aaa2a53c338f4db457526210705e47ad83"
+  },
+  "runs/redcube/gray_frame_wind/probe_arms_scenes.json": {
+    "bytes": 19112,
+    "sha256": "7b0830434d875bfbbb4451cd3ce9b37abdaff8862a4bd48336279e397234119a"
+  },
+  "runs/redcube/gray_frame_wind/probe_scenes.json": {
+    "bytes": 13019,
+    "sha256": "152e87925b4371e5d8cbc0744fa64153733446c9d684fae78a3e3c5a68f523c5"
+  },
+  "runs/redcube/gray_frame_wind/oracle.json": {
+    "bytes": 1154,
+    "sha256": "a4c514772451b99364dd8a16934bdda53cc140f66e293f20f56363905e612452"
+  },
+  "runs/redcube/gray_frame_wind/bench.json": {
+    "bytes": 13912,
+    "sha256": "41813782eda7c6b9e7c91a642d1854ef34d0f23336c819ceda7fe71228a77160"
+  },
+  "runs/redcube/gray_frame_wind/allarms/bench.json": {
+    "bytes": 64530,
+    "sha256": "5eb51c600790a2f7e66d609d3038267229ef9005c1e044af63f46b6bf6f78e8d"
+  },
+  "runs/redcube/color_frame_still/probe_scenes.json": {
+    "bytes": 13108,
+    "sha256": "b1d07e59a825b497cca491ec674d14a6555e3e571d4ba6c1351c06a208955134"
+  },
+  "runs/redcube/color_frame_still/bench_allarms.json": {
+    "bytes": 10141,
+    "sha256": "aabba62ee64c7059f74cb393f117481ef95c77203cec47a73d9cddb155508130"
+  },
+  "runs/redcube/color_frame_still/oracle.json": {
+    "bytes": 665,
+    "sha256": "8681d6013b9c8617c1fd66ed059bc6be99657c2116369e93a0b0e562b6fa56f3"
+  },
+  "runs/redcube/color_frame_still/bench.json": {
+    "bytes": 13942,
+    "sha256": "216e0b37d5893a987606193c51a92cc9bfa00ee90bcb4d5d065bac73ee052faf"
+  },
+  "runs/redcube/color_frame_still/allarms/bench.json": {
+    "bytes": 53883,
+    "sha256": "e65be641fe5246dc7fb7fc33ee43e2b0aef43819dd7c889e0bd5d54c85dbbf30"
+  }
+}

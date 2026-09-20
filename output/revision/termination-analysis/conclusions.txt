@@ -1,0 +1,19 @@
+Termination sensitivity status: complete; 24/24 planned additional policies validated.
+mlp, model seed 0: oracle_reward − oracle_heads changes walls/episode by -0.0656 and survival by +0.00 percentage points.
+mlp, model seed 0: oracle_true − oracle_reward changes walls/episode by +0.2875 and survival by -0.16 percentage points.
+mlp, model seed 1: oracle_reward − oracle_heads changes walls/episode by +0.1484 and survival by +0.70 percentage points.
+mlp, model seed 1: oracle_true − oracle_reward changes walls/episode by +0.1242 and survival by -0.47 percentage points.
+mlp, model seed 2: oracle_reward − oracle_heads changes walls/episode by -0.0180 and survival by +0.16 percentage points.
+mlp, model seed 2: oracle_true − oracle_reward changes walls/episode by +0.4648 and survival by +1.25 percentage points.
+native_grid, model seed 0: oracle_reward − oracle_heads changes walls/episode by -0.3294 and survival by -1.43 percentage points.
+native_grid, model seed 0: oracle_true − oracle_reward changes walls/episode by +0.5143 and survival by +0.52 percentage points.
+native_grid, model seed 1: oracle_reward − oracle_heads changes walls/episode by -0.7383 and survival by -2.34 percentage points.
+native_grid, model seed 1: oracle_true − oracle_reward changes walls/episode by +0.3672 and survival by +0.52 percentage points.
+native_grid, model seed 2: oracle_reward − oracle_heads changes walls/episode by -0.0482 and survival by +0.26 percentage points.
+native_grid, model seed 2: oracle_true − oracle_reward changes walls/episode by +0.2708 and survival by +0.00 percentage points.
+This is an explicitly triggered sensitivity after inspecting primary terminal diagnostics; it is not an independently preplanned primary experiment.
+All contrasts condition on each saved encoder/head checkpoint, policy torso and training protocol. Three model fits do not establish a model-family effect.
+The termination contrast changes continuation, termination weighting and postterminal support together; it is not a reward-only intervention.
+The reward contrast keeps exact dynamics and true termination fixed, but policies trained under different rewards subsequently visit different states.
+Unadjusted percentile intervals describe paired policy-seed variation conditional on the fixed evaluation set; episode intervals condition on the fitted policies.
+MLP and native-grid policy results are separate strata and are never pooled as model replication.

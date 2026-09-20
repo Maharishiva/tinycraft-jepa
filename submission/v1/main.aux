@@ -1,0 +1,190 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand*\HyPL@Entry[1]{}
+\citation{lecun2022path,assran2023ijepa,bardes2024vjepa}
+\citation{assran2025vjepa2,sobal2025pldm,maes2026lewm}
+\citation{maes2026lewm,balestriero2025lejepa}
+\HyPL@Entry{0<</S/D>>}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\citation{sobal2022slow}
+\citation{balestriero2025lejepa}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {Simplify the environment to sharpen the question.} Craftax tests whether local visual-goal planning transfers to reward-driven behavior. The gate exposes a single control-relevant obstacle and separates encoded observations from imagined futures. Cube worlds isolate predictable nuisance. The environments supply complementary diagnostics, not a shared performance leaderboard.}}{2}{figure.1}\protected@file@percent }
+\newlabel{fig:staircase}{{1}{2}{\textbf {Simplify the environment to sharpen the question.} Craftax tests whether local visual-goal planning transfers to reward-driven behavior. The gate exposes a single control-relevant obstacle and separates encoded observations from imagined futures. Cube worlds isolate predictable nuisance. The environments supply complementary diagnostics, not a shared performance leaderboard}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}What is learned, and what is evaluated?}{2}{section.2}\protected@file@percent }
+\newlabel{sec:worlds}{{2}{2}{What is learned, and what is evaluated?}{section.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Joint representation and prediction.}{2}{section*.1}\protected@file@percent }
+\newlabel{eq:lewm}{{1}{2}{Joint representation and prediction}{equation.2.1}{}}
+\citation{lipman2023flowmatching,chen2024diffusionforcing,hafner2025dreamer4}
+\citation{matthews2024craftax}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \textbf  {Different tasks, one Craftax checkpoint.} Goal reaching uses 128 nearby goals and six open-loop actions. Reward control uses 128 starts and 100 steps; $\pm $ is the standard deviation across starts. These are exploratory single-model results, not the standard Craftax achievement benchmark.}}{3}{table.1}\protected@file@percent }
+\newlabel{tab:craftax}{{1}{3}{\textbf {Different tasks, one Craftax checkpoint.} Goal reaching uses 128 nearby goals and six open-loop actions. Reward control uses 128 starts and 100 steps; $\pm $ is the standard deviation across starts. These are exploratory single-model results, not the standard Craftax achievement benchmark}{table.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Three tests.}{3}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reference model.}{3}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Craftax: local goals and reward control ask different questions}{3}{section.3}\protected@file@percent }
+\newlabel{sec:craftax}{{3}{3}{Craftax: local goals and reward control ask different questions}{section.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Short-horizon goal reaching.}{3}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reward-driven planning.}{3}{section*.5}\protected@file@percent }
+\citation{schulman2017ppo}
+\@writefile{toc}{\contentsline {section}{\numberline {4}The gate: information in the encoder and in imagination}{4}{section.4}\protected@file@percent }
+\newlabel{sec:controllers}{{4}{4}{The gate: information in the encoder and in imagination}{section.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{A decision with a visible cause.}{4}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Comparisons and replication.}{4}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Useful wall information remains in the frozen representation}{4}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:results-wall}{{4.1}{4}{Useful wall information remains in the frozen representation}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The tested imagination pipeline does not discover the strategy}{4}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:results-ppo}{{4.2}{4}{The tested imagination pipeline does not discover the strategy}{subsection.4.2}{}}
+\newlabel{sec:results}{{4.2}{4}{The tested imagination pipeline does not discover the strategy}{subsection.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {A wall visible in real encodings disappears in predicted rollouts.} A pre-reveal context is followed by futures under recorded actions: the simulator, decoded real JEPA encodings, decoded original JEPA predictions, and one flow-model sample. The JEPA rows use encoder seed 0 and the same fitted decoder. The example is the first stored diagnostic context at wall position $x=45$ among 64 contexts whose recorded futures survive the horizon. The flow sample is a single-checkpoint feasibility reference. A decoding failure on predicted latents can reflect both prediction error and off-distribution read-out; it is not alone proof of information loss.}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:rollouts}{{2}{5}{\textbf {A wall visible in real encodings disappears in predicted rollouts.} A pre-reveal context is followed by futures under recorded actions: the simulator, decoded real JEPA encodings, decoded original JEPA predictions, and one flow-model sample. The JEPA rows use encoder seed 0 and the same fitted decoder. The example is the first stored diagnostic context at wall position $x=45$ among 64 contexts whose recorded futures survive the horizon. The flow sample is a single-checkpoint feasibility reference. A decoding failure on predicted latents can reflect both prediction error and off-distribution read-out; it is not alone proof of information loss}{figure.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textbf  {Final gate outcomes, with predictor variants kept separate.} Mean $\pm $ sample standard deviation across policy runs; discovery is final survival above $50\%$. JEPA imagination variants and real-latent conditions each contain $3$ models $\times $ $3$ policies; pixel controls have three policies. Real training changes rewards, terminations, and PPO protocol alongside dynamics. Flow is a single-model reference.}}{5}{table.2}\protected@file@percent }
+\newlabel{tab:gate-main}{{2}{5}{\textbf {Final gate outcomes, with predictor variants kept separate.} Mean $\pm $ sample standard deviation across policy runs; discovery is final survival above $50\%$. JEPA imagination variants and real-latent conditions each contain $3$ models $\times $ $3$ policies; pixel controls have three policies. Real training changes rewards, terminations, and PPO protocol alongside dynamics. Flow is a single-model reference}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Prediction and fitted heads provide distinct failure signals}{5}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:results-mean}{{4.3}{5}{Prediction and fitted heads provide distinct failure signals}{subsection.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {Recoverable information can support successful control.} Final real-gate survival for MLP policies on frozen latents or pixels (left), and CNN policies on decoded latents or pixels (right). Points are policy runs, grouped by encoder seed; the dashed line is the $50\%$ discovery criterion. Both decoded-latent discoveries use encoder 1. Reconstruction supervision and CNN training are additional to representation fitting.}}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:representation}{{3}{6}{\textbf {Recoverable information can support successful control.} Final real-gate survival for MLP policies on frozen latents or pixels (left), and CNN policies on decoded latents or pixels (right). Points are policy runs, grouped by encoder seed; the dashed line is the $50\%$ discovery criterion. Both decoded-latent discoveries use encoder 1. Reconstruction supervision and CNN training are additional to representation fitting}{figure.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Remove the wall: nuisance and dynamics interact}{6}{section.5}\protected@file@percent }
+\newlabel{sec:cubes}{{5}{6}{Remove the wall: nuisance and dynamics interact}{section.5}{}}
+\citation{sobal2022slow}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textbf  {The matched gray-noise cube comparison.} Position read-out from real encodings for three independently initialized grid JEPAs in each condition. Architecture, latent dimension, update count, and training dataset size are fixed. A high probe error is a failure of the tested read-out, not proof of absent information.}}{7}{figure.4}\protected@file@percent }
+\newlabel{fig:cube-readout}{{4}{7}{\textbf {The matched gray-noise cube comparison.} Position read-out from real encodings for three independently initialized grid JEPAs in each condition. Architecture, latent dimension, update count, and training dataset size are fixed. A high probe error is a failure of the tested read-out, not proof of absent information}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textbf  {A matched nuisance--dynamics interaction.} Grid-JEPA position L1 error in pixels, mean $\pm $ sample standard deviation across three model fits. The same supervised read-out is applied to real encodings and eight-step predictions; the latter can also reflect read-out extrapolation. Predicted-window evaluation excludes resets and uses overlapping windows.}}{7}{table.3}\protected@file@percent }
+\newlabel{tab:cube-main}{{3}{7}{\textbf {A matched nuisance--dynamics interaction.} Grid-JEPA position L1 error in pixels, mean $\pm $ sample standard deviation across three model fits. The same supervised read-out is applied to real encodings and eight-step predictions; the latter can also reflect read-out extrapolation. Predicted-window evaluation excludes resets and uses overlapping windows}{table.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}What the objective does not guarantee}{7}{section.6}\protected@file@percent }
+\newlabel{sec:theory}{{6}{7}{What the objective does not guarantee}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Non-collapse does not select the controlled state}{7}{subsection.6.1}\protected@file@percent }
+\newlabel{sec:theory-rep}{{6.1}{7}{Non-collapse does not select the controlled state}{subsection.6.1}{}}
+\newlabel{prop:representation}{{1}{7}{Gaussian nuisance optimum; extending \citet {sobal2022slow}}{proposition.1}{}}
+\citation{assran2023ijepa,bardes2024vjepa}
+\citation{zhou2024dinowm,assran2025vjepa2}
+\citation{sobal2025pldm}
+\citation{maes2026lewm,balestriero2025lejepa}
+\citation{sobal2022slow}
+\citation{gulati2026contrast}
+\citation{bai2026temporal}
+\citation{terver2026planning}
+\citation{tang2023selfpredictive,ni2024bridging}
+\citation{lambert2020objective}
+\citation{farahmand2017vaml,grimm2020value,grimm2021proper}
+\citation{wan2019expectation}
+\citation{hafner2020dreamer,alonso2024diamond,hafner2025dreamer4}
+\citation{hansen2026hallucination}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Decodability does not set a useful prediction scale}{8}{subsection.6.2}\protected@file@percent }
+\newlabel{sec:amplitude}{{6.2}{8}{Decodability does not set a useful prediction scale}{subsection.6.2}{}}
+\newlabel{prop:amplitude}{{2}{8}{Exact information at arbitrarily small scale}{proposition.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Why scale matters for a downstream read-out.}{8}{section*.8}\protected@file@percent }
+\newlabel{eq:readout}{{2}{8}{Why scale matters for a downstream read-out}{equation.6.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Related work}{8}{section.7}\protected@file@percent }
+\newlabel{sec:related}{{7}{8}{Related work}{section.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Which JEPA setting?}{8}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Predictability, geometry, and planning.}{8}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Models for decisions.}{9}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Discussion}{9}{section.8}\protected@file@percent }
+\newlabel{sec:limitations}{{8}{9}{Discussion}{section.8}{}}
+\bibdata{references}
+\bibcite{alonso2024diamond}{{1}{2024}{{Alonso et~al.}}{{Alonso, Jelley, Micheli, Kanervisto, Storkey, Pearce, and Fleuret}}}
+\bibcite{assran2023ijepa}{{2}{2023}{{Assran et~al.}}{{Assran, Duval, Misra, Bojanowski, Vincent, Rabbat, LeCun, and Ballas}}}
+\bibcite{assran2025vjepa2}{{3}{2025}{{Assran et~al.}}{{Assran, Bardes, Fan, Garrido, Howes, Komeili, Muckley, Rizvi, Roberts, Sinha, Zholus, and Ballas}}}
+\bibcite{bai2026temporal}{{4}{2026}{{Bai \& Xiong}}{{Bai and Xiong}}}
+\bibcite{balestriero2025lejepa}{{5}{2025}{{Balestriero \& LeCun}}{{Balestriero and LeCun}}}
+\bibcite{bardes2024vjepa}{{6}{2024}{{Bardes et~al.}}{{Bardes, Garrido, Ponce, Chen, Rabbat, LeCun, Assran, and Ballas}}}
+\bibcite{chen2024diffusionforcing}{{7}{2024}{{Chen et~al.}}{{Chen, Mons{\'o}, Du, Simchowitz, Tedrake, and Sitzmann}}}
+\bibcite{espeholt2018impala}{{8}{2018}{{Espeholt et~al.}}{{Espeholt, Soyer, Munos, Simonyan, Mnih, Ward, Doron, Firoiu, Harley, Dunning, Legg, and Kavukcuoglu}}}
+\bibcite{farahmand2017vaml}{{9}{2017}{{Farahmand et~al.}}{{Farahmand, Barreto, and Nikovski}}}
+\bibcite{farebrother2024stopregressing}{{10}{2024}{{Farebrother et~al.}}{{Farebrother, Orbay, Vuong, Taiga, Chebotar, Xiao, Irpan, Levine, Castro, Faust, Kumar, and Agarwal}}}
+\bibcite{grimm2020value}{{11}{2020}{{Grimm et~al.}}{{Grimm, Barreto, Singh, and Silver}}}
+\bibcite{grimm2021proper}{{12}{2021}{{Grimm et~al.}}{{Grimm, Barreto, Farquhar, Silver, and Singh}}}
+\bibcite{gulati2026contrast}{{13}{2026}{{Gulati \& Nemenman}}{{Gulati and Nemenman}}}
+\bibcite{hafner2020dreamer}{{14}{2020}{{Hafner et~al.}}{{Hafner, Lillicrap, Ba, and Norouzi}}}
+\bibcite{hafner2025dreamer4}{{15}{2025}{{Hafner et~al.}}{{Hafner, Yan, and Lillicrap}}}
+\bibcite{hansen2026hallucination}{{16}{2026}{{Hansen \& Wang}}{{Hansen and Wang}}}
+\bibcite{lambert2020objective}{{17}{2020}{{Lambert et~al.}}{{Lambert, Amos, Yadan, and Calandra}}}
+\bibcite{lecun2022path}{{18}{2022}{{LeCun}}{{}}}
+\bibcite{lipman2023flowmatching}{{19}{2023}{{Lipman et~al.}}{{Lipman, Chen, Ben-Hamu, Nickel, and Le}}}
+\bibcite{maes2026lewm}{{20}{2026}{{Maes et~al.}}{{Maes, Le~Lidec, Scieur, LeCun, and Balestriero}}}
+\bibcite{matthews2024craftax}{{21}{2024}{{Matthews et~al.}}{{Matthews, Beukman, Ellis, Samvelyan, Jackson, Coward, and Foerster}}}
+\bibcite{ni2024bridging}{{22}{2024}{{Ni et~al.}}{{Ni, Eysenbach, Seyedsalehi, Ma, Gehring, Mahajan, and Bacon}}}
+\bibcite{schulman2017ppo}{{23}{2017}{{Schulman et~al.}}{{Schulman, Wolski, Dhariwal, Radford, and Klimov}}}
+\bibcite{sobal2022slow}{{24}{2022}{{Sobal et~al.}}{{Sobal, {Jyothir S V}, Jalagam, Carion, Cho, and LeCun}}}
+\bibcite{sobal2025pldm}{{25}{2025}{{Sobal et~al.}}{{Sobal, Zhang, Cho, Balestriero, Rudner, and LeCun}}}
+\bibcite{tang2023selfpredictive}{{26}{2023}{{Tang et~al.}}{{Tang, Guo, Richemond, Avila~Pires, Chandak, Munos, Rowland, Gheshlaghi~Azar, Le~Lan, Lyle, Gy{\"o}rgy, Thakoor, Dabney, Piot, Calandriello, and Valko}}}
+\bibcite{terver2026planning}{{27}{2026}{{Terver et~al.}}{{Terver, Yang, Ponce, Bardes, and LeCun}}}
+\bibcite{wan2019expectation}{{28}{2019}{{Wan et~al.}}{{Wan, Zaheer, White, White, and Sutton}}}
+\bibcite{zhou2024dinowm}{{29}{2024}{{Zhou et~al.}}{{Zhou, Pan, LeCun, and Pinto}}}
+\bibstyle{iclr2027_conference}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Proofs}{12}{appendix.A}\protected@file@percent }
+\newlabel{app:proofs}{{A}{12}{Proofs}{appendix.A}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Empirical objective and population idealization}{12}{subsection.A.1}\protected@file@percent }
+\newlabel{eq:sigreg}{{4}{12}{Empirical objective and population idealization}{equation.A.4}{}}
+\newlabel{eq:popsigreg}{{5}{12}{Empirical objective and population idealization}{equation.A.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Nuisance optimum and the cost of innovations}{12}{subsection.A.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Proposition\nobreakspace  {}\ref  {prop:representation}.}{12}{section*.15}\protected@file@percent }
+\newlabel{cor:strict}{{1}{12}{Innovation cost for uniformly state-resolving encoders}{corollary.1}{}}
+\newlabel{eq:innovation}{{6}{12}{Innovation cost for uniformly state-resolving encoders}{equation.A.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Corollary\nobreakspace  {}\ref  {cor:strict}.}{13}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Conditional prediction and geometric scale}{13}{subsection.A.3}\protected@file@percent }
+\newlabel{lem:mean}{{1}{13}{Conditional mean}{lemma.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{The finite-sample regularizer.}{13}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Proposition\nobreakspace  {}\ref  {prop:amplitude}.}{13}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}The cube worlds}{14}{appendix.B}\protected@file@percent }
+\newlabel{app:cubes}{{B}{14}{The cube worlds}{appendix.B}{}}
+\@writefile{toc}{\contentsline {paragraph}{Environment.}{14}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Read-out fitting.}{14}{section*.20}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Seed-0 cube position L1 error (pixels) for the grid and class-token JEPAs. ``Real'' evaluates held-out encoded frames; ``Pred. 8'' evaluates the same read-out on eight-step predicted latents. Gray conditions use more training transitions than black and color conditions.}}{15}{table.4}\protected@file@percent }
+\newlabel{tab:cube-readouts}{{4}{15}{Seed-0 cube position L1 error (pixels) for the grid and class-token JEPAs. ``Real'' evaluates held-out encoded frames; ``Pred. 8'' evaluates the same read-out on eight-step predicted latents. Gray conditions use more training transitions than black and color conditions}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Seed-0 flow cube position L1 error (pixels). Latent and pixel columns use different supervised read-outs. The persistent-color failure is visible before dynamics: real encoded position has large error. These are model-recipe references rather than objective-only comparisons.}}{15}{table.5}\protected@file@percent }
+\newlabel{tab:cube-flow}{{5}{15}{Seed-0 flow cube position L1 error (pixels). Latent and pixel columns use different supervised read-outs. The persistent-color failure is visible before dynamics: real encoded position has large error. These are model-recipe references rather than objective-only comparisons}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Survival (percent) in the supplementary cube worlds. ``LeWM'' denotes the class-token JEPA; ``grid'' denotes the grid JEPA; ``goal'' and ``heads'' use latent-goal and learned-return search, respectively. PPO columns use the final saved policies; ``px'' and ``z'' identify pixel and latent observations. Still-world survival does not certify state feedback.}}{15}{table.6}\protected@file@percent }
+\newlabel{tab:cube}{{6}{15}{Survival (percent) in the supplementary cube worlds. ``LeWM'' denotes the class-token JEPA; ``grid'' denotes the grid JEPA; ``goal'' and ``heads'' use latent-goal and learned-return search, respectively. PPO columns use the final saved policies; ``px'' and ``z'' identify pixel and latent observations. Still-world survival does not certify state feedback}{table.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Hyperparameters and compute}{16}{appendix.C}\protected@file@percent }
+\newlabel{app:hparams}{{C}{16}{Hyperparameters and compute}{appendix.C}{}}
+\@writefile{toc}{\contentsline {paragraph}{JEPA settings.}{16}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Flow settings.}{16}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{JEPA read-outs.}{16}{section*.23}\protected@file@percent }
+\citation{espeholt2018impala}
+\citation{farebrother2024stopregressing}
+\@writefile{toc}{\contentsline {paragraph}{Policy optimisation.}{17}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Compute.}{17}{section*.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {D}Evaluation protocol}{17}{appendix.D}\protected@file@percent }
+\newlabel{app:protocol}{{D}{17}{Evaluation protocol}{appendix.D}{}}
+\@writefile{toc}{\contentsline {paragraph}{Gate specification.}{17}{section*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Latent diagnostic.}{17}{section*.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {E}Latent-policy torso controls}{17}{appendix.E}\protected@file@percent }
+\newlabel{app:latentctl}{{E}{17}{Latent-policy torso controls}{appendix.E}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textbf  {Control outcomes by model fit and predictor variant.} Each point is a final policy evaluated on 256 real episodes. Original prediction, residual sampling, and residual means are separate conditions; model and policy replication are distinct. Horizontal bars show within-model means, and the dashed line marks random actions. The flow reference uses one checkpoint.}}{18}{figure.5}\protected@file@percent }
+\newlabel{fig:control}{{5}{18}{\textbf {Control outcomes by model fit and predictor variant.} Each point is a final policy evaluated on 256 real episodes. Original prediction, residual sampling, and residual means are separate conditions; model and policy replication are distinct. Horizontal bars show within-model means, and the dashed line marks random actions. The flow reference uses one checkpoint}{figure.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Real-gate observation and torso controls: final walls per episode and survival, mean $\pm $ standard deviation over policies; discovery means final survival above $50\%$. All policies use $1{,}499{,}136$ real transitions.}}{18}{table.7}\protected@file@percent }
+\newlabel{tab:latentctl}{{7}{18}{Real-gate observation and torso controls: final walls per episode and survival, mean $\pm $ standard deviation over policies; discovery means final survival above $50\%$. All policies use $1{,}499{,}136$ real transitions}{table.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {F}Control outcomes and latent diagnostics}{18}{appendix.F}\protected@file@percent }
+\newlabel{app:round2}{{F}{18}{Control outcomes and latent diagnostics}{appendix.F}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Final control outcomes in the real gate, mean $\pm $ standard deviation over policy runs. Imagined training uses $1{,}228{,}800$ transitions per policy; real training uses $1{,}499{,}136$. Model-fit counts and policy-run counts identify distinct replication levels.}}{19}{table.8}\protected@file@percent }
+\newlabel{tab:paired}{{8}{19}{Final control outcomes in the real gate, mean $\pm $ standard deviation over policy runs. Imagined training uses $1{,}228{,}800$ transitions per policy; real training uses $1{,}499{,}136$. Model-fit counts and policy-run counts identify distinct replication levels}{table.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Every imagined JEPA policy at its final checkpoint: survival (percent) and walls per episode by encoder seed, predictor variant and PPO seed. Each cell uses $256$ real episodes.}}{19}{table.9}\protected@file@percent }
+\newlabel{tab:seeds}{{9}{19}{Every imagined JEPA policy at its final checkpoint: survival (percent) and walls per episode by encoder seed, predictor variant and PPO seed. Each cell uses $256$ real episodes}{table.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Grid-JEPA diagnostics by encoder seed. Wall amplitude and total teacher-forced residual are squared distances at future steps $1$ and $8$; decoded intensity uses steps $1$ and $2$. The wall coordinate has endpoints $0$ (wall absent) and $1$ (true encoding). Head AUC compares each death cause with alive transitions; PPO wall counts pool predictor variants.}}{19}{table.10}\protected@file@percent }
+\newlabel{tab:seeddiag}{{10}{19}{Grid-JEPA diagnostics by encoder seed. Wall amplitude and total teacher-forced residual are squared distances at future steps $1$ and $8$; decoded intensity uses steps $1$ and $2$. The wall coordinate has endpoints $0$ (wall absent) and $1$ (true encoding). Head AUC compares each death cause with alive transitions; PPO wall counts pool predictor variants}{table.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces JEPA geometry and decoded wall intensity for model seed $0$, averaged over $64$ pre-reveal contexts. Distances use matched actions and the same encoder; total residuals include all latent coordinates. Wall intensity is measured on shared wall pixels.}}{20}{table.11}\protected@file@percent }
+\newlabel{tab:latent}{{11}{20}{JEPA geometry and decoded wall intensity for model seed $0$, averaged over $64$ pre-reveal contexts. Distances use matched actions and the same encoder; total residuals include all latent coordinates. Wall intensity is measured on shared wall pixels}{table.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textbf  {Within-encoder scale diagnostics.} For each of the three gate encoders, wall-removal distance and teacher-forced total one-step residual are summed squared latent distances. Curves average 64 pre-reveal contexts whose recorded futures survive the diagnostic horizon. These are feature sensitivity and total prediction error, not commensurate measures of information content.}}{20}{figure.6}\protected@file@percent }
+\newlabel{fig:geometry}{{6}{20}{\textbf {Within-encoder scale diagnostics.} For each of the three gate encoders, wall-removal distance and teacher-forced total one-step residual are summed squared latent distances. Curves average 64 pre-reveal contexts whose recorded futures survive the diagnostic horizon. These are feature sensitivity and total prediction error, not commensurate measures of information content}{figure.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {G}Terminal rewards in the flow recipe}{21}{appendix.G}\protected@file@percent }
+\newlabel{app:rewardbug}{{G}{21}{Terminal rewards in the flow recipe}{appendix.G}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {H}Craftax protocols and single-checkpoint results}{21}{appendix.H}\protected@file@percent }
+\newlabel{app:craftax}{{H}{21}{Craftax protocols and single-checkpoint results}{appendix.H}{}}
+\@writefile{toc}{\contentsline {paragraph}{Goal generation and planning.}{21}{section*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reward control and head generalization.}{21}{section*.29}\protected@file@percent }
+\gdef \@abspage@last{21}

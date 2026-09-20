@@ -1,0 +1,232 @@
+{
+  "case_id": "gray_episode_wind",
+  "history": 8,
+  "horizon": 16,
+  "created_utc": "2026-09-19T23:06:40Z",
+  "selection_rule": "First lexicographic (start_time, environment_index) window from each distinct (environment_index, episode_id), with no reset across its 24 frames.",
+  "selection_caveat": "Continuity conditions on future survival. These are illustrations, not an unbiased estimate of model or policy quality. No image, movement amount, or model output is used for selection.",
+  "eligible_windows": 4827,
+  "scene_ids": [
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      6
+    ]
+  ],
+  "data_metadata": {
+    "env": "redcube",
+    "spec": {
+      "noise": "gray",
+      "per_episode": true,
+      "wind": true
+    },
+    "config": "gray_episode_wind",
+    "num_actions": 4,
+    "envs": 100,
+    "steps": 250,
+    "split": "eval",
+    "seed": 1000,
+    "policy": "uniform random",
+    "max_steps": 128,
+    "reward": "-1 on touching the border, else 0"
+  },
+  "source_files": {
+    "eval": {
+      "path": "/dev/shm/redcube/gray_episode_wind/eval.npz",
+      "sha256": "9c546741c1f875fbbb42f25bcccb919c88f28a31530dfc6aa5e2a9cf203cdddd"
+    },
+    "jepa_checkpoint": {
+      "path": "/dev/shm/redcube/gray_episode_wind/tile_factored/model_probe.npz",
+      "sha256": "55dbaa39693fbcfc5af0fe95f200949de954084c070496fc83f12e6b16a07798"
+    },
+    "flow_checkpoint": {
+      "path": "/home/rldoeswork/personal/stoch/gray_episode_wind/flow/model.npz",
+      "sha256": "761e7d539cba00a0bb423320da1d8e212eda3e279b5b572e6a0d318f98e4be15"
+    }
+  },
+  "input_packet_sha256": "b0b9734126c0d2790bf46a15ff226edb007037400f39feab679d2bd2c5b3f436",
+  "array_sha256": {
+    "context": "2acf5c5da652898d0aadc359412d71c72a53b661ca1029cad8c968a000da600d",
+    "real_future": "057da954c7ec05641212a0face55acfa5442c5f472750823933f1353e92eeb1f",
+    "jepa_context": "146aa51c0ad55334b3bf1f551ac5bd49407927ae17499b1d3bdd9b74e61668cd",
+    "jepa_encoded_real": "6e62ca2779c82a221085cd17b2164b16e89f39e7e5f555702eb272942f36b857",
+    "jepa_future": "0474748defbd2d0bfbeff8cbf2dbec5b165720fa8b80deeeb67f7b9fee849a29",
+    "flow_context": "242211cc8ede0a54d2ae3b8eba04597e8fd832c76a208548b46bd00926440690",
+    "flow_encoded_real": "9826692cc76ffb78b4c631866012a740e8e3fcb7fbf33469f0f5ab4484be7776",
+    "flow_future": "2cc940474c647a92537ea280a1e5f5179d4735cb516bbe61f510ad8ffaabc239",
+    "jepa_real_latents": "a1267a309836c2f6c1c0a583e79cf5cf28785ae233a57f93738ec77012cb4b24",
+    "jepa_predicted_latents": "0edc090e7f849ca6331a399517cea7205f3cf3015c66667a46ab80daed78dc08",
+    "flow_real_latents": "569a8b74a924bb302017ebf785f5bf0694c4deabd54864ab06fe421e166f5db4",
+    "flow_predicted_latents": "e4dbd8be7682dd1f75b6c98dfcad6a1079bf8b5f720131dc6c198e8be9beb368",
+    "flow_sample_key": "d2e0cb9342529cd701f59f016085b2c3e69cb270a1a9a11fba36b2cd0c8abc0b",
+    "flow_rollout_key": "955ba306755f4567152d9eca7d5f3df8145715dec60890288e6bd37e49c12dcf",
+    "ids": "f2f723f5d4097b26c06161b8b466b9f7eaa923999780f8794bbba5d15c76d9b9",
+    "frame_times": "223cf11c14e67df3a7ee5a07cc876a29596e80ca4545ab97d561ab0e90b893e9",
+    "outgoing_actions": "c014f035f392bf577febd78c149e9db61f55267894ae47afbda5f0a42f489fc9",
+    "incoming_actions": "c6ce2e856a72318d5ea116ea896cf07c3184af106ccd7c2f29e112ceeda49731",
+    "future_actions": "8cd178657de65a2ffa18bdeaf29e3ebf6d1b96dc184e27f73fbb79d8ad80a1fc",
+    "reset_before_frame": "834a709ba2534ebe3ee1397fd4f7bd288b2acc1d20a08d6c862dcd99b6f04400",
+    "reset_after_frame": "cd05c2283f62b7c74911008df6a66101d51ed5cb23e6b4b5c84af4bc60db0f3a",
+    "valid_mask": "5bf90435cd45d0475cbb0ace7e7e3a672ed2a3a4984ad3e8624d8878725a9c2e",
+    "pos": "0265fa0d56811b4302084e3da0167e58c9919586ec188c8b197de24d9c3dc191",
+    "wind": "56353f724d2fbb863f431618a6371e91ddfb831a04a100628e40f6c45a67ec3b",
+    "episode": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597"
+  },
+  "flow_sample_seed": 20260920,
+  "flow_nfe": 8,
+  "action_convention": "outgoing_actions[s,t] moves frames[s,t] to frames[s,t+1]. future_actions starts at t=7 and has 16 actions. incoming_actions is retained for the original flow API.",
+  "ground_truth_randomness": "The archive does not store every transition PRNG key. Its collection seed/metadata, archive hash, exact indices, actions, observations and state labels are retained. Flow sampling keys are stored separately; flow is not expected to reproduce the archive's particular noise realization.",
+  "source_sha256": "ef8134fb92cb7d23a853332ea7a12b974ffca7ffde9b9cc803bda023df4222b1",
+  "claim_status": "illustration_only",
+  "claim_text": "Recorded-action futures and reconstructions from fixed checkpoints; these images do not by themselves establish missing information or planning performance.",
+  "jepa_metadata": {
+    "cfg": {
+      "seed": 0,
+      "steps": 8500,
+      "batch": 128,
+      "lr": 0.001,
+      "weight_decay": 0.001,
+      "warmup": 0.1,
+      "encoder": "tile",
+      "predictor": "factored",
+      "emb_dim": 128,
+      "enc_depth": 6,
+      "enc_heads": 8,
+      "enc_mlp": 768,
+      "enc_res": 4,
+      "pred_depth": 6,
+      "pred_heads": 8,
+      "pred_dim_head": 64,
+      "pred_mlp": 2048,
+      "pred_width": 256,
+      "mlp_hidden": 2048,
+      "tokens": 16,
+      "token_dim": 32,
+      "token_hidden": 512,
+      "latent_dim": 0,
+      "history": 8,
+      "num_preds": 1,
+      "dropout": 0.1,
+      "sigreg_weight": 0.09,
+      "sigreg_knots": 17,
+      "sigreg_proj": 1024,
+      "action_bottleneck": 10,
+      "n_actions": 4,
+      "data_budget": 500000,
+      "chunk": 250
+    },
+    "params": 11121426,
+    "train_s": 582.9,
+    "loop_s": 570.9,
+    "data_sha256": "16d1c3a095f9d34b8cbd5235117af52b350bdc1bd5d077f91b142ec214ce6c19",
+    "source_sha256": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b",
+    "final_pred_loss": 0.0030582023318856955,
+    "final_sigreg": 1.065710425376892,
+    "decoder": {
+      "hidden": 256,
+      "depth": 6,
+      "steps": 8000,
+      "tokens": 16,
+      "batch": 256,
+      "lr": 0.001,
+      "frames": 80000,
+      "decoder_s": 94.9,
+      "final_mse": 0.017629891633987427
+    },
+    "heads": {
+      "hidden": 512,
+      "members": 1,
+      "steps": 6000,
+      "batch": 1024,
+      "lr": 0.001,
+      "gamma": 0.99,
+      "transitions": 80000,
+      "value_tail": 400,
+      "heads_s": 32.6,
+      "final": [
+        0.004637221805751324,
+        0.024370959028601646,
+        0.0005766985705122352
+      ],
+      "reward_corr": 0.9392618034357723,
+      "value_corr": 0.9692919850583356,
+      "reward_rmse": 0.06832491606473923,
+      "reward_event_recall": 1.0,
+      "value_mean": -0.8657712936401367,
+      "return_mean": -0.8640344738960266,
+      "heldout_reward_corr": 0.326991555010963,
+      "heldout_value_corr": 0.08026988652910153,
+      "heldout_reward_rmse": 0.2244618982076645,
+      "heldout_reward_event_recall": 0.830166270783848,
+      "heldout_value_mean": -0.8787333965301514,
+      "heldout_return_mean": -0.870154619216919
+    }
+  },
+  "flow_metadata": {
+    "cfg": {
+      "seed": 0,
+      "tok_steps": 9000,
+      "tok_batch": 256,
+      "wm_steps": 16000,
+      "wm_batch": 64,
+      "rollout": 32,
+      "lr": 0.0009,
+      "tok_lr": 0.0009,
+      "decay": 0.2,
+      "hardmine": 0.5,
+      "startsamp": 0.5,
+      "reward_weight": 0.1,
+      "done_weight": 0.1,
+      "data_budget": 500000,
+      "temporal_codec": 1,
+      "history_dropout": 0.25,
+      "shortcut_weight": 0.25,
+      "shortcut_every": 4,
+      "shortcut_warm": 0.25,
+      "resample_frames": 2,
+      "resample_every": 8,
+      "resample_warm": 0.5,
+      "resample_signal": 0.5,
+      "temporal_weight": 0.25,
+      "head_trunk": 0.1,
+      "head_warm": 0.5,
+      "num_actions": 4
+    },
+    "train_s": 550.6,
+    "tokenizer_train_s": 166.9,
+    "data_sha256": "16d1c3a095f9d34b8cbd5235117af52b350bdc1bd5d077f91b142ec214ce6c19",
+    "source_sha256": "86b7e687ab557ce1a8d7c9259b997d8a3489d9d004e324377f4949e01e5781e0"
+  },
+  "decoder_budget_note": "JEPA decoder fitted after world-model training on frozen real-frame latents; its stored configuration and frame/update count are in jepa_metadata.decoder. This diagnostic decoder is not a claim of an optimal inverse. Flow reconstruction uses the checkpoint's jointly trained codec.",
+  "encoder_context_batch": 64,
+  "encoder_history": 8,
+  "jepa_decoder_frame_batch": 512,
+  "encoder_context_max_abs_difference": 0.0,
+  "latent_units": "Unmodified checkpoint values, saved losslessly in float32 (BF16 values embed exactly). No normalization, amplification, subspace scaling, probe overlay, or manual recoloring.",
+  "flow_codec_real_frame_semantics": "Temporal codec sees the actual previous/current RGB pair; each displayed real future is encoded as the last frame of an 8-frame rolling history at batch64. No future frame enters a forecast.",
+  "flow_sampling": "One seed fixed before export, no selection among samples; batch64 padded with repeated last selected input; original flow rollout key split and one key per future step.",
+  "export_source_sha256": "7b33126b957b1ffc7ae213285b4649880bb17ece9bbec488326ac4a39cf20f2d",
+  "source_modules": {
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/train.py": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/redcube/flow.py": "37bb32813656893bf5f2bc083c3fa2dcac9207d4d4b9aac722681d4d570be8b5",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/train.py": "86b7e687ab557ce1a8d7c9259b997d8a3489d9d004e324377f4949e01e5781e0",
+    "studies/stoch/flow_recipe/eval.py": "fef2e14cf31d49ad7e71b9b73146813e3f789519861af9dbb01ff57fb1e8ae0a",
+    "probe.py": "110eff77f3dfb5fb3c7222caa58d85773b9bc8675cd95859d4f9705c171ea424"
+  },
+  "packet_sha256": "f7281531e8bb4ccccf833efa419ea5b0fc5d55adcba317c27cec9970afa0ee4c",
+  "versions": {
+    "jax": "0.10.1",
+    "numpy": "2.4.6",
+    "devices": [
+      "cuda:0"
+    ]
+  },
+  "seconds": 84.93
+}

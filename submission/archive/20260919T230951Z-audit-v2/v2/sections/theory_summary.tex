@@ -1,0 +1,17 @@
+\section{Non-collapse leaves feature choice open}
+\label{sec:theory-summary}
+
+A Gaussian marginal can describe either useful state or an episode-specific nuisance. The known
+static-nuisance construction of \citet{sobal2022slow} makes this explicit: an encoder can Gaussianize
+an irrelevant constant texture and a predictor can copy it, obtaining zero population prediction
+loss and zero Gaussian discrepancy. We state its control consequence and assumptions in
+Appendix~\ref{sec:theory}. This is a boundary of the objective's guarantees, not an identified
+explanation of the high-loss gray-frame/wind fits.
+
+A second construction separates information from geometric scale. An exactly Gaussian latent can
+encode a control-relevant bit invertibly while placing its two values arbitrarily close together.
+For an $L$-Lipschitz downstream score, latent root-mean-squared prediction error bounds score error
+only after multiplication by $L$; exact decodability supplies no bound on that sensitivity. The
+construction uses unrestricted measurable coding and a fresh unpredictable bit. Its full statement
+and proof clarify this narrow scope, without turning a failed neural read-out into a proof that
+information has been deleted.

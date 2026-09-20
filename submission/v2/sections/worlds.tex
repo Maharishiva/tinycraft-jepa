@@ -1,0 +1,42 @@
+\section{Minimal worlds and model comparison}
+\label{sec:worlds}
+
+\paragraph{One object, controlled changes.}
+A red $6\times6$ cube moves in a $63\times63$ RGB frame. Four native actions move it three pixels
+left, up, right, or down. Contact with the border terminates an episode with reward $-1$; other
+rewards are zero, and the cap is 128 steps. Background noise is either redrawn each frame or held
+fixed for the episode. Gray noise shares its sample across RGB channels. Optional wind is a hidden
+two-dimensional random walk: each coordinate increments by $-1,0,+1$ with probabilities
+$0.1,0.8,0.1$, clipped to $[-2,2]$, and is added to the action displacement. This produces fresh
+uncertainty even when previous motion is known.
+
+The gate variant adds an approaching wall with a top or bottom opening sampled at spawn and
+revealed only after a fixed delay. Retreating gives time to observe the opening and respond.
+The common solid part of the wall is present in both possible futures, so its disappearance from
+a decoded forecast is an observed model/interface error, not the exact pixel average of the two gaps.
+
+\paragraph{Joint-embedding prediction.}
+The grid encoder produces $z_t=f_\theta(x_t)\in\R^{512}$, arranged as $4\times4\times32$ features.
+An action-conditioned, factored spatial--temporal predictor uses an eight-frame history. Training
+jointly updates encoder and predictor with coordinate-mean squared prediction loss and SIGReg:
+\begin{equation}
+\label{eq:lewm}
+\Lcal=\frac1D\widehat{\E}\|g_\theta(z_{\le t},a_{\le t})-z_{t+1}\|^2
++\lambda\,\mathrm{SIGReg}(\{z_t\}),\qquad D=512.
+\end{equation}
+There is no reward or reconstruction target in this representation-learning objective. The gray
+conditions share 500,000 training transitions and 8,500 updates, with three independently fitted
+JEPA seeds in the matched nuisance study. Decoders and state read-outs are fitted afterward on
+frozen encodings; their supervision and compute are additional to the world-model fit.
+
+\paragraph{Distributional reference and behavior.}
+The flow recipe uses a reconstruction-trained tokenizer of the same latent shape and a causal
+flow-matching predictor \citep{lipman2023flowmatching,hafner2025dreamer4}. It samples future latent
+states rather than replacing them by one point. Flow matching itself may use squared vector-field
+error; its sampled output distribution is the relevant distinction from a next-state mean.
+The model recipes differ in representation supervision, context, and task-head fitting.
+Their behavioral comparison therefore uses a shared pixel CNN and GRU, matched policy-training
+budgets, native actions/rewards, paired evaluation keys, and final checkpoints. In real evaluation,
+each policy observes posterior reconstructions from its own frozen model. Exact-simulator controls
+with the same decoded interfaces qualify what each policy can learn before imagination is assessed.
+Complete settings, replication levels, and earlier controls are in the appendix.

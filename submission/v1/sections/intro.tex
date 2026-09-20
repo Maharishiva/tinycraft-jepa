@@ -1,0 +1,54 @@
+\section{Introduction}
+\label{sec:intro}
+
+A useful world model need not reproduce every pixel. It must preserve the distinctions that change
+what an agent should do. For a robot approaching a doorway, the texture of the wall may be irrelevant;
+the wall's position and the available opening are not. Learning this separation without specifying a
+particular downstream reward is a central attraction of joint-embedding predictive architectures
+(JEPAs): predict an informative representation of the future rather than reconstruct the future
+image \citep{lecun2022path,assran2023ijepa,bardes2024vjepa}.
+
+Recent systems make this approach increasingly practical. Pretrained video representations support
+action-conditioned planning, and end-to-end objectives jointly learn representations and dynamics
+\citep{assran2025vjepa2,sobal2025pldm,maes2026lewm}. These successes raise an evaluation question:
+\emph{when a learned world model supports one behavior, what has that established about its usefulness
+for another?} Nearby goal reaching, recognizable decoded rollouts, and reward-driven control measure
+different capabilities. A representation can encode a feature that its predictor does not preserve;
+a predictor can achieve low error on features that a controller cannot use.
+
+We study these distinctions in a squared-loss JEPA with Gaussian marginal regularization, following
+the end-to-end formulation of LeWorldModel \citep{maes2026lewm,balestriero2025lejepa}. The study moves
+from a complex environment to progressively simpler ones (Figure~\ref{fig:staircase}). Craftax first
+exposes a split between short-horizon goal reaching and reward control. A moving-wall task reduces
+the decision to one observable obstacle and an initially hidden gap. Cube worlds then remove the
+obstacle and vary only visual nuisance and dynamics. The simplification makes the question sharper:
+is relevant information absent from the encoding, lost during prediction, or ineffective in the
+complete control pipeline?
+
+The gate provides the clearest empirical separation. A decoder recovers the wall from frozen real
+encodings, and a convolutional policy trained on those decoded observations discovers the survival
+strategy in two of nine runs. The same decoder applied to predicted latents loses the wall within
+two steps for all three fitted encoders. None of the 27 policies trained in the tested JEPA
+imagination pipeline discovers the strategy. The decoder adds supervision, and imagined training
+also changes reward estimation and policy optimization; these distinctions are essential to what
+the experiment establishes.
+
+Our contributions are threefold. First, we organize the evidence around separate tests of
+\textbf{retention, prediction, and control}, making clear which transfers between these tests are
+supported. Second, we provide a controlled, replicated gate study showing useful information in a
+frozen representation alongside poor performance of its imagination pipeline, with predictor
+variants and model seeds reported separately. Third, we characterize two limits of the training
+objective: Gaussian non-collapse can coexist with nuisance-only encoding, and exact decodability
+can coexist with arbitrarily small prediction-loss scale. The predictable-nuisance mechanism is
+known \citep{sobal2022slow}; our theory specializes it to Gaussian regularization and separates it
+from the distinct question of how much loss is assigned to retained information.
+
+\begin{figure}[t]
+\centering
+\paperfig{evidence_staircase.pdf}{1.0}
+\caption{\textbf{Simplify the environment to sharpen the question.} Craftax tests whether local
+visual-goal planning transfers to reward-driven behavior. The gate exposes a single control-relevant
+obstacle and separates encoded observations from imagined futures. Cube worlds isolate predictable
+nuisance. The environments supply complementary diagnostics, not a shared performance leaderboard.}
+\label{fig:staircase}
+\end{figure}

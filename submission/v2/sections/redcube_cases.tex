@@ -1,0 +1,90 @@
+\section{Three cases in the redcube world}
+\label{sec:results}
+
+\subsection{Case 1: a learned latent model can guide nearby goals}
+\label{sec:case-one}
+
+With deterministic dynamics and per-frame gray noise, the grid JEPA exposes cube position with
+$0.115\pm0.012$ pixels of L1 error across three fits. We test whether its predictor and latent-goal
+cost can use that state. Horizon-three MPC enumerates all 64 native action sequences, minimizes
+summed squared distance to an encoded goal image, executes one action, and replans from the real
+observation. It uses no state coordinates, position head, decoder output, or transformed latent.
+
+The model guides nearby goals reliably (Figure~\ref{fig:goal-distance}). All three fits reach every
+one- and two-action-distance target, and $94.5$--$96.9\%$ of three-action-distance targets, within
+the common 24-action budget. Random actions reach $14.8\%$ of the latter; horizon-one latent MPC
+reaches $12.5$--$17.2\%$. This establishes elementary goal-directed control through the learned
+representation and predictor despite changing visual noise.
+
+The operating range is limited. Success falls to $19.5$--$26.6\%$ at distance six, $0.8$--$2.3\%$
+at distance nine, and zero at distance 12. The original mixed six-to-12-action test remains a weak
+result: $5$, $5$, and $9$ hits out of 128, with minimum-distance means worse than random. The full
+distance sweep was declared after that result and changes the goals, not the controller. It retains
+all six distances, all three models, and the same 128 valid histories. Thus the positive result is
+local goal-directed control, not long-horizon planning or a global guarantee about latent goal geometry.
+
+\begin{figure}[t]
+\centering
+\paperfig{goal_distance_response.pdf}{1.0}
+\caption{\textbf{The same frozen JEPA supports nearby goals and degrades beyond the short search
+range.} Exact first hit before death or 24 real actions, for each model and requested goal distance.
+Whiskers are per-cell Wilson 95\% intervals over 128 cases; the repeated prefixes and model results
+are not pooled. This post-outcome diagnostic preserves the original failed six-to-12-action primary.
+The physical-state reference is privileged.}
+\label{fig:goal-distance}
+\end{figure}
+
+The actual paths are selected by fixed case index, rather than success. Appendix~\ref{app:redcube-goals}
+retains the original goal distribution, failures and complete secondary outcomes; Appendix~\ref{app:redcube-distance}
+gives the follow-up counts and selection rules.
+
+\subsection{Case 2: nuisance and stochastic motion can hide the controlled object}
+\label{sec:case-two}
+
+Adding wind under the same per-frame gray background raises real-encoding position error to
+$21.33\pm0.06$ pixels across the three grid models. Keeping the background fixed for an episode
+instead gives $0.668\pm0.049$ pixels under wind (Table~\ref{tab:cube-main}). This reverses the deterministic comparison, where per-frame noise gives lower error than
+persistent noise ($0.115$ versus $0.764$ pixels). The observed boundary is therefore a
+noise-persistence $\times$ stochastic-motion interaction: persistent noise preserves accessible
+state under wind in the same recipe that fails with fresh noise.
+
+\begin{table}[t]
+\centering
+\caption{\textbf{The same spatial JEPA exposes state in three conditions and fails the same read-out
+in the fourth.} Position L1 error in pixels, mean $\pm$ sample standard deviation across three model
+fits; architecture, 512-dimensional latent, training data size, and update count are fixed. ``Real''
+uses encodings of held-out observations; predicted states use the same read-out eight steps ahead.}
+\label{tab:cube-main}
+\inputtable{cube_main.tex}
+\end{table}
+
+The failure already appears when reading real encoded observations, before recursive prediction
+is evaluated. Reconstructions of those real encodings provide a complementary visual test of the
+learned observation interface. A failed read-out does not prove that every possible decoder lacks
+the state; it establishes a practical failure to expose position under the fixed diagnostic.
+The per-frame/wind fits also retain high prediction loss, about $0.733$ per coordinate. They are
+not examples of the zero-loss static-nuisance optimum from Section~\ref{sec:nuisance-example}.
+
+\pendingresult{Case 2: insert the preselected true-frame / decoded-real / imagined-future panel and
+the completed shared-CNN behavioral results. Retain the persistent-noise comparison and all admitted policy seeds.}
+
+\subsection{Case 3: stochastic forecasts and imagined control}
+\label{sec:case-three}
+
+Persistent-gray wind is a candidate for separating representation from stochastic prediction:
+current position remains accessible, but future movement is uncertain. The delayed-reveal gate
+adds a decision that must wait for new information. In these settings, we compare policies trained
+inside JEPA and flow models through the same pixel-policy architecture, alongside real-simulator
+controls using the same posterior-decoded observations. This comparison tests the learned
+imagination packages; a claim that one model supports control requires the actual policy outcomes.
+
+\pendingresult{Case 3: insert the complete shared-CNN JEPA/flow comparison and decoded-real gate
+controls. State which interfaces qualify and which do not. Do not promote an unmatched historical
+flow success or attribute a gate gap specifically to conditional-mean averaging.}
+
+An exact nine-branch check on frozen encoders in black and persistent-gray wind worlds finds that
+discarding variance changes the
+optimal action for $2.65\%$ and $1.08\%$ of context--goal pairs under squared latent-goal cost,
+without a demonstrated improvement in physical goal cost when that variance is restored
+(Appendix~\ref{app:oracle-variance}); this is a small direct illustration of the scoring operator,
+not a native control-success result.

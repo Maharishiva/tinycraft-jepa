@@ -1,0 +1,19 @@
+Analysis status: complete. 27 validated final runs enter complete three-arm policy-seed blocks.
+Model seed 0, 3 paired policy seeds:
+  oracle_heads minus learned: +0.4310 walls/episode and +2.08 survival percentage points.
+  oracle_true minus oracle_heads: +0.1849 walls/episode and -0.91 survival percentage points.
+  oracle_true minus learned: +0.6159 walls/episode and +1.17 survival percentage points.
+Model seed 1, 3 paired policy seeds:
+  oracle_heads minus learned: +0.4544 walls/episode and +1.69 survival percentage points.
+  oracle_true minus oracle_heads: -0.3711 walls/episode and -1.82 survival percentage points.
+  oracle_true minus learned: +0.0833 walls/episode and -0.13 survival percentage points.
+Model seed 2, 3 paired policy seeds:
+  oracle_heads minus learned: +0.0273 walls/episode and +0.39 survival percentage points.
+  oracle_true minus oracle_heads: +0.2227 walls/episode and +0.26 survival percentage points.
+  oracle_true minus learned: +0.2500 walls/episode and +0.65 survival percentage points.
+These are effects within the saved checkpoints under this PPO protocol, not inference about a model family.
+Policy-seed bootstrap intervals condition on each fixed model checkpoint and the fixed evaluation set.
+Episode bootstrap intervals condition on the fitted policies; they do not represent training-seed uncertainty.
+Only three independently fitted encoders are planned. Cross-model summaries are descriptive means and ranges, without model-family confidence intervals.
+Intervals are unadjusted descriptive 95% percentile intervals for two endpoints and three contrasts; no significance-selected claims or best-policy selection.
+oracle_heads freezes true terminal simulator states but retains learned reward and continuation signals. Its contrast with learned includes this terminal-support change.

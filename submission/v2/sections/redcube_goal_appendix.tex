@@ -1,0 +1,109 @@
+\section{Visual-goal control in the deterministic gray-noise world}
+\label{app:redcube-goals}
+
+All three original \texttt{gray\_frame\_still} grid models use the same 128 freshly generated cases
+and unchanged planning settings. Evaluation seed 20260920 produces native resets followed by seven
+random actions; a history is admitted only if it survives this past prefix. No candidate is rejected
+according to a future model result. The goal is sampled uniformly from safe positions on the same
+three-pixel action lattice, with shortest Manhattan action distance between six and 12. Mean initial
+L1 distance is $26.883$ pixels, with range $18$--$36$. The goal image has independently drawn gray
+noise and remains fixed within its case.
+
+The planner sees genuine eight-frame histories and the RGB goal. Horizon-three MPC enumerates all
+64 native action sequences and minimizes summed squared latent-goal distance over the three
+predictions. It executes the first action, observes the true successor, and replans, for at most
+24 real steps. Horizon-one MPC is a predeclared comparison. No decoder, position probe, reward
+head, altered reward, latent rescaling, or privileged state enters either learned planner. History
+and goal encoding use a common fixed $[16,8,63,63,3]$ batch shape. Outgoing action alignment is
+$[a_0,\ldots,a_6,a_{\mathrm{candidate}}]$.
+
+The primary metric is a first exact goal hit before native death. Execution stops on the first hit
+or death, and all 128 cases remain in the denominator. Secondary metrics are minimum/final L1
+distance, entry within three pixels, deaths, and first-hit time. Random and blind-cycle references
+share execution noise with each model. The privileged exact-transition reference searches the same
+horizon with physical squared-distance costs and rejects plans with intermediate death. It reaches
+every goal in the shortest number of actions; this is a protocol check, not a learned competitor.
+
+Horizon-three exact-hit counts are $5$, $5$, and $9$ for models 0, 1, and 2. Their minimum-distance
+means are $22.242$, $22.945$, and $22.031$ pixels, against $19.406$ for random actions. Native-death
+counts are $9$, $8$, and $24$, against $20$ for random. Horizon-one hits no goal for any model,
+with minimum-distance means $23.906$, $24.797$, and $24.047$ pixels and death counts $4$, $6$, and
+$5$. The fixed cycle survives but reaches no goal. These outcomes establish failure of this
+short-horizon latent-cost recipe on the specified distant-goal distribution; they are not a
+positive planning control.
+
+Independent reconstruction checks all 1,024 prefix frames per model, every action and native
+transition, reachability, exact goal draws, first-hit/death absorption, summaries, visual episode
+selection, and recorded hashes. Across the three fits, all cohort arrays and reference trajectories
+are bit-identical. The three model evaluations do not create 384 independent cases. Visual episodes
+0, 1, and 2 were fixed before results, and decoded selected forecasts are marked invalid after
+terminal padding. The empty arena permits reactive goal movement; the task does not demonstrate
+a need for deep planning.
+
+\begin{table}[ht]
+\centering
+\caption{\textbf{The original distant-goal test remains a weak result.} Initial goals are six
+to 12 native actions away. The same 128 goals and histories are used for all three models and references.
+Distances are mean L1 pixels over all cases; lower is better. Random, blind-cycle, and privileged
+reference trajectories are shared across model evaluations.}
+\label{tab:redcube-goals}
+\inputtable{redcube_goals.tex}
+\end{table}
+
+\subsection{Separately declared distance-response follow-up}
+\label{app:redcube-distance}
+The distance-response experiment was declared after the failed 6--12-action primary result. It
+characterizes the same controller's operating range and does not replace that primary. All six
+exact goal-distance shells---one, two, three, six, nine, and 12 native actions---use the same 128
+original valid histories and all three existing model seeds. The H3 and H1 planners, 24-action
+budget, random/blind-cycle/privileged references, native dynamics, and encoder/predictor execution
+shapes remain fixed. No planner or representation parameter changes.
+
+A newly fixed goal seed, 20260921, samples uniformly among safe reachable positions on each exact
+Manhattan shell. The RGB goal background is shared across the six goals for a prefix, so only
+object position changes. Execution noise and random actions are paired by original candidate ID.
+The outcome is exact first hit before death. Every model--distance cell retains its own 128-case
+count and Wilson interval; the 768 correlated rows are never pooled into an inferential interval.
+The within-three-pixel secondary is already satisfied initially on the one-action shell and is
+not evidence of movement there.
+
+Case 0 at every shell is the predeclared visualization. Its full recorded native trajectory is
+re-rendered with the recorded actions and execution keys; padding freezes after first hit or death.
+The initial H12 CEM alternative was assessed but not launched. Thus any distance trend concerns
+the unchanged H3 controller over different requested goals, not a tuned-horizon comparison.
+
+
+All three models and the final independent audit completed. The H3 hit counts at distances
+$(1,2,3,6,9,12)$ are $(128,128,121,25,3,0)$, $(128,128,123,32,2,0)$, and
+$(128,128,124,34,1,0)$ for seeds 0, 1, and 2, respectively. Table~\ref{tab:goal-distance-counts}
+keeps the H1 comparison and paired references alongside these outcomes. The independent audit
+checks 8,179 conditions and reconstructs 176,334 executed native transitions from raw artifacts.
+
+\begin{table}[ht]
+\centering
+\caption{Distance-response exact-hit counts. Initial distance is measured in native three-pixel
+cardinal moves. Every cell has denominator 128. The same six shells,
+prefixes and controller settings are retained for all models; no pooled binomial interval is used.}
+\label{tab:goal-distance-counts}
+\inputtable{redcube_goal_distance.tex}
+\end{table}
+
+
+\begin{figure}[p]
+\centering
+\paperfig{goal_distance_paths_m0.pdf}{1.0}
+\caption{\textbf{Actual paths across the declared goal-distance shells.} Model seed 0, fixed case 0
+in every shell. Curves are executed simulator positions, annotated only for evaluation; the planner
+receives RGB history and an RGB goal. Paths stop at the first exact hit, native death, or 24 actions.
+The examples and all six shells were fixed before the distance-response outcomes.}
+\label{fig:goal-distance-paths}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\paperfig{goal_distance_rgb_m0.pdf}{1.0}
+\caption{Native-color RGB views of the same preselected goal-distance executions for model 0.
+These are exact keyed re-renderings of recorded real trajectories, with no model forecast or
+invented continuation. The full artifact includes the corresponding displays for models 1 and 2.}
+\label{fig:goal-distance-rgb}
+\end{figure}

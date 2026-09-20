@@ -1,0 +1,1662 @@
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+000
+001
+      L EARNING TO I GNORE W HAT M ATTERS :
+002   R EPRESENTATION , P REDICTION , AND C ONTROL
+003
+004   IN JEPA W ORLD M ODELS
+005
+006
+       Anonymous authors
+007
+       Paper under double-blind review
+008
+009
+010
+011                                              A BSTRACT
+012
+013            A world model should discard visual detail without discarding the distinctions an
+014            agent needs to act. Joint-embedding prediction makes this trade-off implicit: it
+015            learns both the representation and the prediction target. We examine three sepa-
+016            rate questions: what information remains encoded, what survives prediction, and
+017            what supports control. We begin with Craftax, where one 512-dimensional joint-
+018            embedding model reaches 121 of 128 nearby goals in a six-action open-loop test,
+019
+               yet its tested reward-planning pipeline underperforms random actions. A con-
+               trolled moving-wall task then separates representation from imagination: decoded
+020
+               real encodings retain the wall, and policies using them exceed 50% survival in
+021
+               two of nine runs; decoded predicted rollouts lose the wall, and none of 27 policies
+022            trained in the tested imagination pipeline reaches that threshold. These pipeline
+023            outcomes include ﬁtted heads and policy optimization and do not isolate dynam-
+024            ics as the cause. Finally, nuisance-texture worlds connect the observations to the
+025            objective. We formalize a known predictable-nuisance failure under Gaussian
+026            non-collapse, and construct an exactly Gaussian, fully decodable representation
+027            in which a control-relevant bit has arbitrarily small prediction-loss scale. The
+028            resulting lesson is a concrete evaluation requirement: retention, prediction, and
+029            control must be checked separately.
+030
+031
+032   1   I NTRODUCTION
+033
+034
+      A useful world model need not reproduce every pixel. It must preserve the distinctions that change
+035
+      what an agent should do. For a robot approaching a doorway, the texture of the wall may be ir-
+036   relevant; the wall’s position and the available opening are not. Learning this separation without
+037   specifying a particular downstream reward is a central attraction of joint-embedding predictive ar-
+038   chitectures (JEPAs): predict an informative representation of the future rather than reconstruct the
+039   future image (LeCun, 2022; Assran et al., 2023; Bardes et al., 2024).
+040
+      Recent systems make this approach increasingly practical. Pretrained video representations support
+041
+      action-conditioned planning, and end-to-end objectives jointly learn representations and dynamics
+042   (Assran et al., 2025; Sobal et al., 2025; Maes et al., 2026). These successes raise an evaluation
+043   question: when a learned world model supports one behavior, what has that established about its
+044   usefulness for another? Nearby goal reaching, recognizable decoded rollouts, and reward-driven
+045   control measure different capabilities. A representation can encode a feature that its predictor does
+046   not preserve; a predictor can achieve low error on features that a controller cannot use.
+047
+      We study these distinctions in a squared-loss JEPA with Gaussian marginal regularization, following
+048   the end-to-end formulation of LeWorldModel (Maes et al., 2026; Balestriero & LeCun, 2025). The
+049   study moves from a complex environment to progressively simpler ones (Figure 1). Craftax ﬁrst
+050   exposes a split between short-horizon goal reaching and reward control. A moving-wall task reduces
+051   the decision to one observable obstacle and an initially hidden gap. Cube worlds then remove
+052   the obstacle and vary only visual nuisance and dynamics. The simpliﬁcation makes the question
+053   sharper: is relevant information absent from the encoding, lost during prediction, or ineffective in
+      the complete control pipeline?
+
+
+                                                       1
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+054
+055       Reduce complexity; sharpen the diagnosis
+          Three complementary tests, from a rich environment to controlled nuisance factors
+056
+057
+058        01
+059
+           Craftax
+060                                             02
+           Goal reaching / reward control
+061
+           Does goal matching support
+                                                Gate
+062                                                                                 03
+           reward-based control?                Retain / predict / control
+063
+                                                Is a visible wall retained
+                                                                                    Nuisance cube
+064
+                                                before its gap is revealed?         3 backgrounds x 2 dynamics
+065
+066                                                                                 How do noise and dynamics
+067                                                                                 affect position readout?
+
+068
+069       Protocol schematic. Ordering denotes experimental scope, not measured difficulty.
+070
+071
+      Figure 1: Simplify the environment to sharpen the question. Craftax tests whether local visual-
+072
+      goal planning transfers to reward-driven behavior. The gate exposes a single control-relevant ob-
+073
+      stacle and separates encoded observations from imagined futures. Cube worlds isolate predictable
+074   nuisance. The environments supply complementary diagnostics, not a shared performance leader-
+075   board.
+076
+077
+078   The gate provides the clearest empirical separation. A decoder recovers the wall from frozen real
+079
+      encodings, and a convolutional policy trained on those decoded observations discovers the survival
+      strategy in two of nine runs. The same decoder applied to predicted latents loses the wall within two
+080
+      steps for all three ﬁtted encoders. None of the 27 policies trained in the tested JEPA imagination
+081
+      pipeline discovers the strategy. The decoder adds supervision, and imagined training also changes
+082   reward estimation and policy optimization; these distinctions are essential to what the experiment
+083   establishes.
+084
+085
+      Our contributions are threefold. First, we organize the evidence around separate tests of retention,
+      prediction, and control, making clear which transfers between these tests are supported. Second,
+086
+      we provide a controlled, replicated gate study showing useful information in a frozen representation
+087
+      alongside poor performance of its imagination pipeline, with predictor variants and model seeds re-
+088   ported separately. Third, we characterize two limits of the training objective: Gaussian non-collapse
+089   can coexist with nuisance-only encoding, and exact decodability can coexist with arbitrarily small
+090   prediction-loss scale. The predictable-nuisance mechanism is known (Sobal et al., 2022); our theory
+091   specializes it to Gaussian regularization and separates it from the distinct question of how much loss
+092   is assigned to retained information.
+093
+094
+      2    W HAT IS LEARNED , AND WHAT IS EVALUATED ?
+095
+096   Joint representation and prediction. An encoder maps an image to zt = fθ (xt ) ∈ RD . An
+097   action-conditioned predictor uses H latent frames and their actions to predict the next latent:
+098
+                              1b                                       2
+099                   L(θ) =     Et ∥gθ (zt−H+1:t , at−H+1:t ) − zt+1 ∥ + λ SIGReg({zt }).              (1)
+100                           D
+101   Gradients reach both the predictions and their targets; there is no stop-gradient or teacher. SIGReg
+102   compares the characteristic functions of random latent projections with those of a standard Gaussian
+103   (Balestriero & LeCun, 2025). It constrains the marginal distribution of features, not which physical
+104
+      variables they represent. The precise empirical and population expressions appear in Appendix A.
+105   The main grid model uses a 4 × 4 × 32 latent (D = 512), a tile-transformer encoder, and a factored
+106   spatial–temporal predictor with eight-frame history. Its representation training uses neither pixels
+107   as prediction targets nor rewards. Each model is ﬁtted on 500,000 transitions for approximately ten
+      minutes on an A100; post-hoc decoders, heads, and policies are ﬁtted separately. The Craftax and
+
+
+                                                              2
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+108
+109   Table 1: Different tasks, one Craftax checkpoint. Goal reaching uses 128 nearby goals and six
+110   open-loop actions. Reward control uses 128 starts and 100 steps; ± is the standard deviation across
+111   starts. These are exploratory single-model results, not the standard Craftax achievement benchmark.
+112                        Test       Controller                                Result
+113
+                           Goals     JEPA latent-goal planner        121/128 reached
+114                                  Random actions                   24/128 reached
+115
+116
+                           Return    Random actions                        1.45 ± 1.09
+                                     Myopic ﬁtted reward                   0.78 ± 1.11
+117
+                                     One-step prediction + value           0.94 ± 1.20
+118
+                                     Six-step CEM + value                  0.47 ± 1.10
+119
+120
+121
+      gate checkpoints use the same grid shape and training family but different data. Appendix C gives
+122
+      the complete settings and measured times.
+123
+124
+125
+      Three tests. A frozen decoder tests whether information is recoverable from an encoding under
+      additional supervision. Applying that same decoder to predicted latents tests whether it remains
+126
+      accessible in model-generated futures; because such latents can leave the encoder’s distribution, a
+127
+      bad rendering alone does not prove that the information is absent. Finally, a controller evaluated in
+128   the real environment tests the complete learned pipeline, including its observation interface, reward
+129   and termination estimates, optimizer, and training distribution. These tests become more informative
+130   when their shared components and changed components are explicit.
+131
+132   Reference model. For the gate, a reconstruction-trained tokenizer and causal ﬂow-matching pre-
+133   dictor provide a feasibility reference (Lipman et al., 2023; Chen et al., 2024; Hafner et al., 2025). It
+134   uses the same latent shape, data, and nominal model-training budget, with a 32-frame context and
+135   jointly ﬁtted reward and termination heads. Architecture, supervision, and history length differ from
+136   the JEPA. One dynamics checkpoint is evaluated, so its policy runs show variation conditional on
+137   that ﬁt rather than variation across ﬁtted ﬂow models.
+138
+139
+      3   C RAFTAX : LOCAL GOALS AND REWARD CONTROL ASK DIFFERENT
+140
+141
+          QUESTIONS
+142
+143   Craftax-Classic combines movement, resources, inventory, and survival (Matthews et al., 2024). It
+144
+      is a useful starting point because reaching a nearby visual target and selecting a rewarding sequence
+      of interactions can require different information. We evaluate one ﬁtted 512-dimensional grid JEPA
+145
+      in two protocols, both using real simulator outcomes.
+146
+147
+148   Short-horizon goal reaching. After seven random warm-up actions, six additional random ac-
+149
+      tions generate a reachable goal image. The planner minimizes distance between its predicted end-
+      point latent and the encoded goal. It then executes the selected six actions open loop, without
+150
+      replanning. Success means matching the goal’s ﬁnal player position; it does not require matching
+151
+      inventory or the entire scene. The planner reaches 121 of 128 goals, compared with 24 for random
+152   actions (Table 1). Goal generation and execution share simulator randomness. This is evidence for
+153   nearby goal reaching under the stated protocol, not long-horizon task completion.
+154
+155
+      Reward-driven planning. We separately ﬁt reward and value heads on frozen encodings and eval-
+156   uate 100-step behavior from 128 starts. The six-step CEM controller replans after every real obser-
+157   vation. Its mean return is 0.47, below 1.45 for uniform random actions. A myopic reward controller,
+158   which does not use predicted transitions, also underperforms random actions. The reward head’s
+159   correlation falls from 0.92 on its ﬁtting data to 0.35 on held-out time rows, and value correlation
+160   falls from 0.99 to 0.27. Poor performance therefore already appears in reward-based action selec-
+161   tion without predicted transitions; the multi-step result concerns the combined head, dynamics, and
+      planning pipeline.
+
+
+                                                         3
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+162
+      This split motivates the controlled studies that follow. Goal-reaching success shows that a model can
+163   guide some actions; it does not certify reward prediction or policy learning in that model. Conversely,
+164   a weak reward pipeline does not establish that its encoder discarded the relevant state. Appendix H
+165   records the planner and head-ﬁtting details.
+166
+167
+168
+      4     T HE GATE : INFORMATION IN THE ENCODER AND IN IMAGINATION
+169
+170
+      A decision with a visible cause. A red cube moves in a 63 × 63 image. A vertical wall approaches
+      from the right; its gap is at the top or bottom with equal probability, but remains hidden until the
+171
+      wall passes a ﬁxed reveal point. From the centre, the gap becomes visible only two steps before
+172
+      contact, while either gap requires ﬁve vertical moves. Retreating creates time to observe the gap and
+173   respond. Contact with a wall or border ends the episode with reward −1; all other rewards are zero.
+174   Episodes last at most 128 steps. The model-ﬁtting data contain 500,000 uniform-random transitions,
+175   with a separate 25,000-transition evaluation archive.
+176
+177   Comparisons and replication. We ﬁt three independent grid-JEPA encoders. For each, recurrent
+178   PPO (Schulman et al., 2017) is trained in the real gate on frozen latents, and inside the frozen world
+179   model on predicted latents. The latent policies use the same MLP torso design. In imagination,
+180   rewards and terminations come from ﬁtted heads; in the real gate they come from the simulator. Col-
+181   lection length, start states, update organization, and step budgets also differ (Appendix C), making
+182   this a comparison of complete training pipelines. Its real-versus-imagined contrast is not a dynamics-
+183
+      only intervention.
+184   Each original predictor has three policy seeds per encoder, giving nine policies. A ﬁtted conditional
+185   residual predictor is evaluated with one sample and with a mean of eight samples, adding nine
+186   policies per variant. Real-latent controls have nine policies; real-pixel controls have three per torso.
+187   Every reported policy is its ﬁnal checkpoint, evaluated on 256 real episodes. The primary metric
+188   is walls passed per episode. We call survival above 50% discovery of the survival strategy. Model
+189
+      ﬁts and policy seeds are separate replication levels; the real and imagined evaluations use different
+      random-key schedules and are not paired trials.
+190
+191
+192   4.1   U SEFUL WALL INFORMATION REMAINS IN THE FROZEN REPRESENTATION
+193
+      Decoded real encodings visibly retain the approaching wall (Figure 2). To test whether that infor-
+194
+      mation can support behavior, we train a convolutional policy in the real gate on the frozen decoder’s
+195   output. Two of nine runs discover the survival strategy, both using encoder seed 1; the corresponding
+196   real-pixel CNN discovers it in two of three runs (Figure 3). This establishes useful information in
+197   at least one ﬁtted encoder under the decoder-and-CNN read-out. The decoder adds reconstruction
+198   supervision outside the world-model budget, so this is a test of recoverable information rather than
+199   unsupervised control sufﬁciency.
+200
+      The policy interface matters. With an MLP torso, real pixels yield 0.91 walls per episode and frozen
+201   latents yield 0.94, with no discoveries in either group. An MLP on decoded latents similarly yields
+202   0.92 walls. Thus failure of this MLP training recipe is not evidence that the encoder has lost the
+203   obstacle. These comparisons do not set a capacity limit for all MLP policies; they locate a limitation
+204   of the tested read-out and optimization procedure.
+205
+206   4.2   T HE TESTED IMAGINATION PIPELINE DOES NOT DISCOVER THE STRATEGY
+207
+208   All three JEPA predictor variants produce poor downstream control (Table 2; per-seed outcomes
+209   in Appendix F). The original predictor yields 0.27 walls per episode; one residual sample and the
+210   mean of eight each yield 0.26. No policy among these 27 runs discovers the strategy; the highest
+211   ﬁnal survival is 3.1%. Real-transition PPO on the same frozen encoders yields 0.94 walls. The
+212
+      difference measures the combined effect of learned transitions, ﬁtted heads, and the changed PPO
+      protocol. Even the stronger real-latent MLP result falls far short of reliable survival.
+213
+214   The ﬂow reference supports feasibility at this task and nominal model budget: one of its nine policies
+215   discovers the strategy. The remaining eight pass 0.72–1.18 walls per episode. Since all nine use one
+      dynamics ﬁt with a different architecture and supervision, this reference does not establish a model-
+
+
+                                                         4
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+216
+                                                Recorded action sequence; future step
+217
+218                                Context         1       2           3    4         5       6    7    8
+                                   pre-reveal
+219
+220
+221               Simulator
+                recorded future
+222
+223
+         Encoded future
+224         decoded JEPA latent
+225
+226             JEPA rollout
+227           original predictor
+228
+229            Flow rollout
+230                one sample
+
+231
+232
+233   Figure 2: A wall visible in real encodings disappears in predicted rollouts. A pre-reveal context
+234
+      is followed by futures under recorded actions: the simulator, decoded real JEPA encodings, decoded
+      original JEPA predictions, and one ﬂow-model sample. The JEPA rows use encoder seed 0 and the
+235
+      same ﬁtted decoder. The example is the ﬁrst stored diagnostic context at wall position x = 45 among
+236
+      64 contexts whose recorded futures survive the horizon. The ﬂow sample is a single-checkpoint
+237   feasibility reference. A decoding failure on predicted latents can reﬂect both prediction error and
+238   off-distribution read-out; it is not alone proof of information loss.
+239
+240
+241   Table 2: Final gate outcomes, with predictor variants kept separate. Mean ± sample standard
+242   deviation across policy runs; discovery is ﬁnal survival above 50%. JEPA imagination variants and
+243
+      real-latent conditions each contain 3 models × 3 policies; pixel controls have three policies. Real
+      training changes rewards, terminations, and PPO protocol alongside dynamics. Flow is a single-
+244
+      model reference.
+245
+                    Training / observation Predictor or torso           Walls Discovery
+246
+247                    Imagined JEPA                   Original                 0.27 ± 0.22       0/9
+248                                                    Residual sample          0.26 ± 0.32       0/9
+249                                                    Residual mean of 8       0.26 ± 0.30       0/9
+250                    Real / frozen JEPA              MLP                      0.94 ± 0.04       0/9
+251                    Real / pixels                   MLP                      0.91 ± 0.08       0/3
+252                    Real / decoded JEPA             CNN                      1.57 ± 1.26       2/9
+253                    Real / pixels                   CNN                      2.91 ± 1.65       2/3
+254                    Imagined ﬂow                    Sample                   1.45 ± 1.23       1/6
+255                                                    Mean of 8                0.88 ± 0.14       0/3
+256
+257
+258   family ranking. Training the gate JEPA for twice and four times the steps also leaves imagined-policy
+259   survival at 0–3% in the tested extensions (encoder seed 0, policy seed 0, each predictor variant).
+260
+261   4.3     P REDICTION AND FITTED HEADS PROVIDE DISTINCT FAILURE SIGNALS
+262
+263   The same decoder that renders real encoded walls removes them from original predicted rollouts.
+264   Across all three encoder seeds, decoded shared-wall intensity is at most 0.02 by the second predicted
+265   step (Appendix F). The shared wall pixels occur in both possible gap futures, so a pixelwise mixture
+266
+      of those futures would retain them. This observation rules out that simple pixel-space picture; it
+      does not determine what averaging or distribution shift does in the learned latent space.
+267
+268   A within-encoder counterfactual diagnostic makes the scale of the feature explicit. On 64 pre-reveal
+269   contexts for seed 0, the ﬁrst-step squared distance between wall-present and wall-absent encodings
+      is 0.035, while total teacher-forced prediction error is 0.145. The same ordering holds for all three
+
+
+                                                                   5
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+270
+271                     A decodable observation can still be hard to control from
+                        Policies trained in the real simulator; frozen JEPA observation interfaces
+272
+273                                        MLP on latent vs. pixels                         CNN on decoded latent vs. pixels
+274
+275                            100
+
+276
+          Final survival (%)
+
+
+
+
+277                            75
+278
+279                            50
+280
+281                            25
+282
+283                             0
+284                                   Seed 0     Seed 1     Seed 2       Pixels              Seed 0   Seed 1   Seed 2         Pixels
+285
+                                     Each cell: 3 policy seeds. Horizontal bars: within-cell means.
+286
+                                     Dashed: descriptive 50% discovery threshold. Decoder trained outside the model budget.
+287
+288
+289
+      Figure 3: Recoverable information can support successful control. Final real-gate survival for
+290   MLP policies on frozen latents or pixels (left), and CNN policies on decoded latents or pixels (right).
+291   Points are policy runs, grouped by encoder seed; the dashed line is the 50% discovery criterion.
+292   Both decoded-latent discoveries use encoder 1. Reconstruction supervision and CNN training are
+293   additional to representation ﬁtting.
+294
+295
+296   seeds (Appendix F). This comparison concerns sensitivity to wall removal versus error in all features.
+297   It neither identiﬁes a causal mechanism nor permits comparing information content through raw
+298   distances across independently ﬁtted latent spaces.
+299
+      The ﬁtted heads expose another limitation. For encoder 0, termination AUC is 0.96 for border
+300   deaths but 0.65 for wall deaths. Predicted rewards for the two death causes are −0.89 and −0.05,
+301   respectively, against the true −1. An imagined policy therefore trains on a weak wall-collision
+302   signal. The residual-sampling variants retain these heads and the policy protocol. Their poor control
+303   outcomes therefore test this particular intervention, not distributional prediction in general.
+304
+305
+306   5                        R EMOVE THE WALL : NUISANCE AND DYNAMICS INTERACT
+307
+308   Cube worlds reduce the scene to one moving object. Random backgrounds either change indepen-
+309   dently each frame or remain ﬁxed for an episode; dynamics are deterministic or include hidden wind.
+310   A ﬁxed background is predictable but irrelevant to position. Per-frame noise is unpredictable and
+311   also irrelevant. These cases distinguish visual complexity from predictive usefulness.
+312   The strongest replicated comparison holds the 512-dimensional grid architecture, dataset size
+313   (500,000 transitions), and training length (8,500 updates) ﬁxed across four gray-noise conditions.
+314   A supervised nonlinear position read-out is ﬁtted on training encodings and evaluated on indepen-
+315   dent evaluation frames. It achieves subpixel error whenever either the background is persistent or
+316   dynamics are deterministic. Combining per-frame noise with wind raises error to 21.33 ± 0.06
+317   pixels across three model initializations (Table 3). This is a failure to expose position through the
+318   tested read-out. Its prediction loss remains high, about 0.73 per coordinate, so it is not evidence of
+319   a successfully optimized low-loss nuisance solution.
+320   Other ﬁtted models fail at different interfaces. On a black background without wind, the class-token
+321   JEPA permits 0.087-pixel position read-out from real encodings, but that read-out has 45.27-pixel
+322   error on eight-step predictions. A ﬂow model also fails on persistent color texture, with 18.56-pixel
+323   real-latent error. These are single-ﬁt observations with different dataset sizes, reported separately in
+      Appendix B; they preclude a uniform ranking of model families. Together, the cube results motivate
+
+
+                                                                                  6
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+324
+325         Position readout error rises with frame noise plus wind
+            Frozen 512-dimensional grid JEPA; identical schedules, three model seeds per condition
+326
+327                                                                          Model seed 0          Model seed 1          Model seed 2
+                                                            Per-frame gray noise                               Episode-fixed gray noise
+          Position readout error (L1 pixels)
+328
+329                                            25                                 21.33
+330
+                                               20
+331
+332                                            15
+333
+                                               10
+334
+335                                             5
+                                                            0.12                                                  0.76                   0.67
+336
+337                                             0
+                                                       Still dynamics       Wind dynamics                    Still dynamics       Wind dynamics
+338
+339                                                 Markers: individual models. Bars and labels: three-model means. Lower is better.
+340                                                 A failed tested readout does not prove that position information is absent.
+341
+342
+343   Figure 4: The matched gray-noise cube comparison. Position read-out from real encodings for
+344   three independently initialized grid JEPAs in each condition. Architecture, latent dimension, update
+345
+      count, and training dataset size are ﬁxed. A high probe error is a failure of the tested read-out, not
+      proof of absent information.
+346
+347
+348   Table 3: A matched nuisance–dynamics interaction. Grid-JEPA position L1 error in pixels, mean
+349   ± sample standard deviation across three model ﬁts. The same supervised read-out is applied to real
+350   encodings and eight-step predictions; the latter can also reﬂect read-out extrapolation. Predicted-
+351   window evaluation excludes resets and uses overlapping windows.
+352               Gray background / dynamics         Real encoding Eight-step prediction
+353
+                                                       Per-frame / deterministic             0.115 ± 0.012                 4.84 ± 1.13
+354
+                                                       Per-frame / wind                     21.330 ± 0.057                20.39 ± 0.92
+355                                                    Per-episode / deterministic           0.764 ± 0.068                 1.83 ± 0.22
+356                                                    Per-episode / wind                    0.668 ± 0.049                10.95 ± 0.53
+357
+358
+359   an objective-level question rather than a universal empirical mechanism: what does low prediction
+360   loss plus non-collapse actually guarantee?
+361
+362
+      6                       W HAT THE OBJECTIVE DOES NOT GUARANTEE
+363
+364
+      The experiments concern ﬁtted ﬁnite networks. The following population statements ask a narrower
+365
+      question: which guarantees follow from prediction error and a Gaussian latent marginal alone? They
+366   do not characterize optimization or identify the cause of the empirical failures.
+367
+368
+      6.1                                      N ON - COLLAPSE DOES NOT SELECT THE CONTROLLED STATE
+369
+370   Write observations as xt = R(pt , b), where pt is controlled state and b is an episode-constant nui-
+371   sance recoverable from the image. Assume that b is independent of states and actions in the training
+372   data. At deployment, assume it is independent of the initial state and transition randomness, and does
+373   not directly affect dynamics or reward. Let SIGReg∞ be the nonnegative population characteristic-
+374   function discrepancy, which vanishes for N (0, ID ) (Appendix A).
+375   Proposition 1 (Gaussian nuisance optimum; extending Sobal et al. (2022)). If the encoder class
+376   contains a map f (R(p, b)) = φ(b) with φ(b) ∼ N (0, ID ) and the predictor class contains the last-
+377   latent copy map, their population prediction loss and SIGReg∞ are both zero. This is a global opti-
+      mum with covariance ID and I(zt ; p1:T ) = 0 under the training distribution. A deployed controller
+
+
+                                                                                               7
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+378
+      observing only these latents, time, and its own actions has the value of a randomized state-blind
+379   policy.
+380
+381   The argument is simple: nuisance changes across episodes, satisfying the marginal constraint, but
+382   is constant within each episode, making prediction exact. Its deployment value follows by giving
+383   a state-blind policy the same private nuisance draw and controller randomness. The Gaussianiza-
+384   tion assumption requires a rich nuisance and a realizable measurable map; a ﬁnite texture does not
+385
+      literally instantiate it. The ﬁnite-batch regularizer also differs from the population functional. A com-
+      plementary innovation bound in Appendix A shows that an encoder preserving all state distances at
+386
+      a ﬁxed scale must incur prediction error for unpredictable state innovations.
+387
+388
+      6.2   D ECODABILITY DOES NOT SET A USEFUL PREDICTION SCALE
+389
+390   Even preserving all state information leaves its geometry unconstrained. For any ε > 0, we can
+391   place the two values of a relevant bit less than 2ε apart while keeping the entire latent distribution
+392   exactly standard Gaussian.
+393   Proposition 2 (Exact information at arbitrarily small scale). For every ε > 0 and D ≥ 1, there
+394   is a measurable observation process with episode-constant nuisance b and a fresh independent fair
+395   state bit pt , and an encoder fε , such that zt ∼ N (0, ID ) and both pt and b are exactly recoverable
+396   almost surely. For ﬁxed b, 0 < ∥fε (R(1, b)) − fε (R(0, b))∥ < 2ε. The optimal next-latent predictor
+397   is independent of the next bit and has coordinate-mean squared error in (0, ε2 /D]. With reward
+398   1{at = pt }, latent feedback attains value 1 per step, while every state-blind policy attains 1/2.
+399
+      The construction partitions one Gaussian coordinate into narrow intervals and uses the bit to select
+400   the lower or upper half of each interval’s conditional probability mass. The nuisance ﬁxes the
+401   interval and the within-half quantile. This preserves the Gaussian marginal and exact decoding while
+402   making the two states arbitrarily close. The full proof is in Appendix A. It uses inﬁnite-precision
+403   measurable coding; the next bit is intrinsically unpredictable. It therefore separates information from
+404   scale, without proving avoidable prediction error or explaining deletion of the predictable gate wall.
+405
+406   Why scale matters for a downstream read-out. For a ﬁxed L-Lipschitz value read-out V and
+407   any coupled real and predicted next latents,
+                                                            q
+                                   EV (Z ′ ) − EV (Zb′ ) ≤ L E∥Z ′ − Zb′ ∥2 .
+408
+                                                                                            (2)
+409
+410   This standard bound follows from Lipschitz continuity and Cauchy–Schwarz. Prediction error con-
+411   trols value error only relative to the read-out’s sensitivity. Exact decodability alone supplies no
+412   bound on that sensitivity. We do not estimate L or claim a control guarantee for the ﬁtted networks;
+413   the inequality makes explicit the missing bridge between a geometric loss and a decision.
+414
+415   7     R ELATED WORK
+416
+417   Which JEPA setting? Image and video JEPAs learn by predicting representations (Assran et al.,
+418   2023; Bardes et al., 2024). DINO-WM ﬁts dynamics on frozen visual features, and V-JEPA 2 freezes
+419   its encoder for action-conditioned prediction with an L1 objective (Zhou et al., 2024; Assran et al.,
+420   2025). PLDM instead jointly learns its encoder and dynamics with multiple regularizers (Sobal et al.,
+421
+      2025). Our direct setting is LeWorldModel’s jointly trained squared-loss predictor with SIGReg
+      (Maes et al., 2026; Balestriero & LeCun, 2025); the population statements do not automatically
+422
+      transfer to these other objectives.
+423
+424
+      Predictability, geometry, and planning. Predictable nuisance is an established limitation of joint
+425
+      embeddings (Sobal et al., 2022). Recent work studies how contrastive sampling changes slow-noise
+426   bias (Gulati & Nemenman, 2026), and how temporal-distance objectives improve planning-relevant
+427   geometry (Bai & Xiong, 2026). LeWorldModel already reports accurate probes alongside weaker
+428   planning, while Terver et al. (2026) examine architecture and planner choices and discuss multi-
+429   modal conditional means. Self-predictive abstraction analyses similarly distinguish predictive struc-
+430   ture from task sufﬁciency (Tang et al., 2023; Ni et al., 2024). Our contribution is a controlled set
+431   of representation, rollout, and policy diagnostics with explicit replication, together with a narrow
+      separation between Gaussianity, exact decodability, and loss scale.
+
+
+                                                         8
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+432
+      Models for decisions. Prediction–control mismatch predates JEPAs (Lambert et al., 2020). Value-
+433   aware model learning, value equivalence, and proper value equivalence ask which errors affect down-
+434   stream Bellman computations and policy values (Farahmand et al., 2017; Grimm et al., 2020; 2021).
+435   Expectation models can sufﬁce for suitable value-function classes (Wan et al., 2019); conditional-
+436   mean prediction is therefore not inherently incompatible with control. Stochastic imagination mod-
+437   els provide another route (Hafner et al., 2020; Alonso et al., 2024; Hafner et al., 2025), but they
+438   too can fail at encoding, action conditioning, or rollout stages (Hansen & Wang, 2026). The same
+439   interface-level scrutiny should apply to both families.
+440
+441   8   D ISCUSSION
+442
+443   The experiments separate capabilities that are often presented together. The Craftax checkpoint
+444   supports nearby visual-goal planning, while its reward-planning pipeline has weak held-out reward
+445   and value predictions. The gate encoders retain useful obstacle information under an added decoder
+446   and CNN, while their tested imagination pipelines fail to discover the strategy. Nuisance cubes and
+447   the population constructions show why a marginal non-collapse condition alone cannot settle either
+448   question.
+449   The practical consequence is to evaluate a world model at each interface: information recoverable
+450   from real encodings, prediction of controlled counterfactuals, head generalization, and behavior
+451   in the real environment. A controller’s failure should lead to this decomposition before it is used
+452   to judge the representation; a successful probe should be followed by prediction and control tests
+453   before it is used to certify imagination.
+454   Our empirical scope is one jointly trained squared-loss objective, small visual domains, and short
+455   training budgets. Craftax and the ﬂow reference each use one ﬁtted model. Gate predictors, heads,
+456   and PPO protocols have not been isolated by a fully matched intervention. The theory gives popu-
+457   lation existence results, with measurable constructions rather than a ﬁnite-network or optimization
+458   analysis. In particular, the fresh-bit example does not explain loss of a predictable wall. What the
+459   evidence does establish is that non-collapse, decodability, and useful imagined control are separate
+460   properties, requiring separate support.
+461
+462   R EPRODUCIBILITY STATEMENT
+463
+      Appendices C–H specify model ﬁtting, post-hoc supervision, evaluation protocols, and replication
+464   levels. The tables retain ﬁnal-checkpoint outcomes rather than selecting intermediate peaks. The
+465   accompanying evidence manifest identiﬁes the source artifacts used for each result; independent
+466   policy seeds are distinguished from independent model ﬁts. Claims based on a single checkpoint are
+467   labeled throughout.
+468
+469   S TATEMENT ON THE USE OF AI
+470
+471
+      Language models assisted with prose, code, plotting, proof checking, literature review, and adver-
+      sarial manuscript review. The authors are responsible for all claims, experiments, and veriﬁcation of
+472
+      the resulting text and artifacts.
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+
+
+
+                                                       9
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+486
+      R EFERENCES
+487
+488   Eloi Alonso, Adam Jelley, Vincent Micheli, Anssi Kanervisto, Amos Storkey, Tim Pearce, and
+489     François Fleuret. Diffusion for world modeling: Visual details matter in atari. In Advances in
+490     Neural Information Processing Systems (NeurIPS), 2024.
+491   Mahmoud Assran, Quentin Duval, Ishan Misra, Piotr Bojanowski, Pascal Vincent, Michael Rabbat,
+492    Yann LeCun, and Nicolas Ballas. Self-supervised learning from images with a joint-embedding
+493    predictive architecture. In IEEE/CVF Conference on Computer Vision and Pattern Recognition
+494    (CVPR), 2023.
+495
+496   Mahmoud Assran, Adrien Bardes, David Fan, Quentin Garrido, Russell Howes, Mojtaba Komeili,
+497
+       Matthew Muckley, Ammar Rizvi, Claire Roberts, Koustuv Sinha, Artem Zholus, and Nicolas
+       Ballas. V-JEPA 2: Self-supervised video models enable understanding, prediction and planning,
+498
+       2025.
+499
+500   Jiaxin Bai and Jiaxuan Xiong. Temporal-distance JEPA: Plan-aware representation learning for la-
+501      tent world model predictive control, 2026. URL https://arxiv.org/abs/2607.25337.
+502
+      Randall Balestriero and Yann LeCun. LeJEPA: Provable and scalable self-supervised learning with-
+503
+        out the heuristics, 2025.
+504
+505   Adrien Bardes, Quentin Garrido, Jean Ponce, Xinlei Chen, Michael Rabbat, Yann LeCun, Mahmoud
+506    Assran, and Nicolas Ballas. Revisiting feature prediction for learning visual representations from
+507     video, 2024.
+508
+      Boyuan Chen, Diego Martí Monsó, Yilun Du, Max Simchowitz, Russ Tedrake, and Vincent Sitz-
+509
+        mann. Diffusion forcing: Next-token prediction meets full-sequence diffusion. In Advances in
+510
+        Neural Information Processing Systems (NeurIPS), 2024.
+511
+512   Lasse Espeholt, Hubert Soyer, Remi Munos, Karen Simonyan, Volodymyr Mnih, Tom Ward, Yotam
+513     Doron, Vlad Firoiu, Tim Harley, Iain Dunning, Shane Legg, and Koray Kavukcuoglu. IMPALA:
+514     Scalable distributed deep-RL with importance weighted actor-learner architectures. In Interna-
+515     tional Conference on Machine Learning (ICML), 2018.
+516
+      Amir-massoud Farahmand, Andre Barreto, and Daniel Nikovski. Value-aware loss function for
+517    model-based reinforcement learning. In Proceedings of the 20th International Conference on
+518    Artiﬁcial Intelligence and Statistics (AISTATS), pp. 1486–1494, 2017.
+519
+520   Jesse Farebrother, Jordi Orbay, Quan Vuong, Adrien Ali Taiga, Yevgen Chebotar, Ted Xiao, Alexan-
+521     der Irpan, Sergey Levine, Pablo Samuel Castro, Aleksandra Faust, Aviral Kumar, and Rishabh
+522
+        Agarwal. Stop regressing: Training value functions via classiﬁcation for scalable deep reinforce-
+        ment learning. In International Conference on Machine Learning (ICML), 2024.
+523
+524   Christopher Grimm, André Barreto, Satinder Singh, and David Silver. The value equivalence prin-
+525     ciple for model-based reinforcement learning. In Advances in Neural Information Processing
+526     Systems (NeurIPS), 2020.
+527
+528
+      Christopher Grimm, André Barreto, Gregory Farquhar, David Silver, and Satinder Singh. Proper
+        value equivalence. In Advances in Neural Information Processing Systems, volume 34, pp.
+529
+        7773–7786, 2021. URL https://proceedings.neurips.cc/paper/2021/file/
+530
+        400e5e6a7ce0c754f281525fae75a873-Paper.pdf.
+531
+532   Paarth Gulati and Ilya Nemenman. Contrast encodes inductive bias: Separating slow noise from dy-
+533     namics in predictive representation learning, 2026. URL https://arxiv.org/abs/2606.
+534     07770.
+535
+      Danijar Hafner, Timothy Lillicrap, Jimmy Ba, and Mohammad Norouzi. Dream to control: Learn-
+536     ing behaviors by latent imagination. In International Conference on Learning Representations
+537    (ICLR), 2020.
+538
+539   Danijar Hafner, Wilson Yan, and Timothy Lillicrap. Training agents inside of scalable world models,
+        2025.
+
+
+                                                      10
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+540
+      Nicklas Hansen and Xiaolong Wang. Hallucination in world models is predictable and preventable,
+541     2026. URL https://arxiv.org/abs/2606.27326.
+542
+543   Nathan Lambert, Brandon Amos, Omry Yadan, and Roberto Calandra. Objective mismatch in
+544     model-based reinforcement learning. In Conference on Learning for Dynamics and Control
+545    (L4DC), 2020.
+546   Yann LeCun. A path towards autonomous machine intelligence, 2022. Version 0.9.2, OpenReview.
+547
+548   Yaron Lipman, Ricky T. Q. Chen, Heli Ben-Hamu, Maximilian Nickel, and Matt Le. Flow matching
+549     for generative modeling. In International Conference on Learning Representations (ICLR), 2023.
+550
+      Lucas Maes, Quentin Le Lidec, Damien Scieur, Yann LeCun, and Randall Balestriero. LeWorld-
+551     Model: Stable end-to-end joint-embedding predictive architecture from pixels, 2026.
+552
+553   Michael Matthews, Michael Beukman, Benjamin Ellis, Mikayel Samvelyan, Matthew Jackson,
+554    Samuel Coward, and Jakob Foerster. Craftax: A lightning-fast benchmark for open-ended re-
+555    inforcement learning. In International Conference on Machine Learning (ICML), 2024.
+556   Tianwei Ni, Benjamin Eysenbach, Erfan Seyedsalehi, Michel Ma, Clement Gehring, Aditya Ma-
+557     hajan, and Pierre-Luc Bacon. Bridging state and history representations: Understanding self-
+558     predictive RL. In International Conference on Learning Representations (ICLR), 2024. URL
+559     https://openreview.net/forum?id=ms0VgzSGF2.
+560
+561
+      John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov. Proximal policy
+        optimization algorithms, 2017.
+562
+563   Vlad Sobal, Jyothir S V, Siddhartha Jalagam, Nicolas Carion, Kyunghyun Cho, and Yann LeCun.
+564     Joint embedding predictive architectures focus on slow features, 2022. URL https://arxiv.
+565     org/abs/2211.10831.
+566
+      Vlad Sobal, Wancong Zhang, Kyunghyun Cho, Randall Balestriero, Tim G. J. Rudner, and Yann
+567
+        LeCun. Learning from reward-free ofﬂine data: A case for planning with latent dynamics models,
+568
+        2025.
+569
+570   Yunhao Tang, Zhaohan Daniel Guo, Pierre Harvey Richemond, Bernardo Avila Pires, Yash Chandak,
+571     Remi Munos, Mark Rowland, Mohammad Gheshlaghi Azar, Charline Le Lan, Clare Lyle, András
+572     György, Shantanu Thakoor, Will Dabney, Bilal Piot, Daniele Calandriello, and Michal Valko.
+573     Understanding self-predictive learning for reinforcement learning. In International Conference
+574
+        on Machine Learning (ICML), 2023. URL https://proceedings.mlr.press/v202/
+        tang23d.html.
+575
+576   Basile Terver, Tsung-Yen Yang, Jean Ponce, Adrien Bardes, and Yann LeCun. What drives success
+577     in physical planning with joint-embedding predictive world models? Transactions on Machine
+578     Learning Research, 2026. URL https://arxiv.org/abs/2512.24497.
+579
+      Yi Wan, Muhammad Zaheer, Adam White, Martha White, and Richard S. Sutton. Planning with
+580
+        expectation models. In Proceedings of the Twenty-Eighth International Joint Conference on Arti-
+581
+        ﬁcial Intelligence (IJCAI), pp. 3649–3655, 2019.
+582
+583   Gaoyue Zhou, Hengkai Pan, Yann LeCun, and Lerrel Pinto. DINO-WM: World models on pre-
+584     trained visual features enable zero-shot planning, 2024.
+585
+586
+587
+588
+589
+590
+591
+592
+593
+
+
+
+                                                    11
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+594
+      A     P ROOFS
+595
+596
+      A.1    E MPIRICAL OBJECTIVE AND POPULATION IDEALIZATION
+597
+598   For a training batch of B windows and H predicted time positions, the implemented loss is
+599
+                                             1 X
+600                                Lpred =           ∥bzb,h+1 − zb,h+1 ∥2 .                                (3)
+                                           BHD
+601                                                   b,h
+602   The notation in Equation 1 averages over time and uses this coordinate-mean convention. One-step
+603   targets are teacher-forced at every temporal position, with a shorter history near the start of a window.
+604   For encoded windows of T frames, P random unit projection directions up , K knots τk ∈ [0, 3], and
+      wk = e−τk /2 , the regularizer is
+                 2
+605
+606                                                               !2                               !2 
+607                 B X                1 X                                  1  X
+608          R=             qk w k          cos(τk u⊤
+                                                     p zb,t ) − wk    +            sin(τk u⊤
+                                                                                           p zb,t )
+                                                                                                        , (4)
+                    TP                 B                                    B
+609                    t,p,k              b                                     b
+
+610   where ∆ = 3/(K − 1), with qk = ∆ at the endpoints and 2∆ in the interior. The characteristic
+611   function is averaged across batch examples separately at each temporal position; the factor B is part
+612   of the implementation with λ = 0.09.
+613
+      The population statements use the nonnegative discrepancy
+614
+                           Z     Z 3       h
+615                                                                2                 2 i
+616
+       SIGReg∞ (L(z)) =               w(τ ) E cos(τ ⟨z, u⟩) − w(τ ) + E sin(τ ⟨z, u⟩)      dτ dσ(u),
+                               SD−1 0
+617                                                                                                    (5)
+      where w(τ ) = e−τ /2 and σ is uniform on the sphere. Only the fact that this functional vanishes for
+                        2
+618
+619   a standard Gaussian is needed. It is not a theorem about exact minima of the ﬁnite-batch objective.
+620
+621   A.2    N UISANCE OPTIMUM AND THE COST OF INNOVATIONS
+622
+623   Proposition 1.
+624
+625   Proof. Let β recover the nuisance from the observation, set f ⋆ = φ ◦ β, and let g ⋆ copy the last
+626   latent. Then zt = φ(b) = zt+1 , so every prediction residual vanishes. The Gaussian marginal gives
+627
+      covariance ID and zero population regularizer. Both objective terms are nonnegative, so their sum
+      is globally minimized at zero. Training-distribution independence gives I(φ(b); p1:T ) = 0.
+628
+629   For deployment, draw nuisance B and the controller’s random seed U at reset, independently of the
+630   initial state and transition randomness. Run the original controller in the environment with nuisance
+631   B. Let a state-blind policy with private seed (B, U ) feed constant latent history φ(B) to a copy
+632   of that controller and reproduce its actions with U . Coupled to the same initial state and transition
+633
+      randomness, the policies take the same ﬁrst action. If their actions agree through step t, their states,
+      supplied latent histories, and seeds agree, so the next actions agree as well. Induction gives identical
+634
+      trajectories, returns, and terminations. This does not assume independence between B and states
+635
+      subsequently inﬂuenced by its induced actions.
+636
+637   Corollary 1 (Innovation cost for uniformly state-resolving encoders). Let pt+1 = pt + µ(at ) + wt ,
+638   Ht = σ(p≤t , b, a≤t ), and Σt = Cov(wt | Ht ). Assume ﬁnite second moments of states and encoded
+639
+      observations, xt = R(pt , b), ﬁxed nuisance b, and ∥f (R(p, b)) − f (R(p′ , b))∥ ≥ κ∥p − p′ ∥ for all
+      admissible p, p′ , b, with κ > 0. Every predictor of latent and action history satisﬁes
+640
+641                                   1                      κ2
+                                        E∥g − f (xt+1 )∥2 ≥     EtrΣt .                             (6)
+642                                  D                       D
+643   When EtrΣt > 0, this exceeds the nuisance encoder’s zero prediction loss under the assumptions of
+644   Proposition 1.
+645
+646   The assumption is stronger than injectivity or task sufﬁciency: every state distance must be pre-
+647   served at a uniform scale. Innovation is measured after conditioning on state history and nuisance;
+      persistent wind is not automatically fresh innovation.
+
+
+                                                        12
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+648
+      Corollary 1.
+649
+650
+      Proof. Put Z = f (xt+1 ) and Ct = σ(z≤t , a≤t ). Because observations and latents are measur-
+651
+      able functions of state and nuisance, Ct ⊆ Ht . Any predictor using a shorter window is also Ct -
+652
+      measurable. Conditional least squares and the tower property give
+653
+654                    E∥g − Z∥2 ≥ E∥Z − E[Z | Ct ]∥2
+655                                = E∥Z − E[Z | Ht ]∥2 + E∥E[Z | Ht ] − E[Z | Ct ]∥2
+656
+                                   ≥ EtrCov(Z | Ht ).
+657
+658   The cross term vanishes because its ﬁrst factor has conditional mean zero given Ht . Take condi-
+659   tionally independent copies P, P ′ of pt+1 given Ht . Such copies exist for Euclidean state spaces,
+660   using their regular conditional distributions. The nuisance b and current state pt are ﬁxed under this
+661   conditioning. The conditional independent-copy variance identity yields
+662                        trCov(Z | Ht ) = 21 E[∥f (R(P, b)) − f (R(P ′ , b))∥2 | Ht ]
+663
+                                           ≥ κ2 E[∥P − P ′ ∥2 | Ht ]
+                                               2
+664
+665                                        = κ2 trCov(pt+1 | Ht ) = κ2 trΣt .
+666
+667   The ﬁnal equality follows because pt + µ(at ) is Ht -measurable. Taking expectations and dividing
+668
+      by D proves Equation 6. Averaging these inequalities gives the corresponding bound for a multi-
+      time prediction objective. Proposition 1 supplies the zero-loss comparator when its assumptions also
+669
+      hold.
+670
+671
+672
+      A.3   C ONDITIONAL PREDICTION AND GEOMETRIC SCALE
+673
+      Lemma 1 (Conditional mean). For a ﬁxed encoder and data law with E∥z ′ ∥2 < ∞, the unique
+674   squared-error minimizer over measurable square-integrable predictors from history c and action a
+675   is m(c, a) = E[z ′ | c, a], up to null sets.
+676
+677
+      Proof. Let m = E[z ′ | c, a]. For every square-integrable measurable g(c, a), expand g − z ′ =
+678   (g − m) + (m − z ′ ). The cross term has expectation zero since E[m − z ′ | c, a] = 0. Hence
+679
+680                             E∥g − z ′ ∥2 = E∥g − m∥2 + EtrCov(z ′ | c, a).
+681
+      The second term does not depend on g. The ﬁrst is nonnegative and vanishes exactly when g = m
+682
+      almost surely.
+683
+684
+685   The ﬁnite-sample regularizer. The ﬁnite-sample regularizer differs from Equation 5. For inde-
+686   pendent identically distributed samples with characteristic function ϕ and empirical estimate ϕbn ,
+687
+                                                                       1 − |ϕ(t)|2
+688                           E|ϕbn (t) − w(t)|2 = |ϕ(t) − w(t)|2 +                .                    (7)
+                                                                            n
+689
+690   Indeed, Eϕbn = ϕ and E|ϕbn − ϕ|2 = (1 − |ϕ|2 )/n, since each complex exponential has modulus one;
+      expanding around ϕ gives the identity. At a Gaussian law, the residual equals (1 − e−t )/n. This is
+                                                                                               2
+691
+692   estimator bias, not an optimization ﬂoor. Changing the law changes both terms; dependent temporal
+693   samples introduce additional covariance terms. The implementation multiplies this statistic by batch
+694   size B, so its Gaussian ﬁnite-batch bias does not shrink as 1/B after that scaling. Finite projections
+695   and knots also do not characterize Gaussianity.
+696
+697   Proposition 2.
+698
+699   Proof. Partition R into Ij = [2εj, 2ε(j + 1)), j ∈ Z. Let qj = Pr(G ∈ Ij ) for G ∼ N (0, 1).
+700   Every qj is positive and their sum is one. Let Fj be the conditional Gaussian distribution function
+701   on Ij , with inverse quantile function Qj on (0, 1). The conditional CDF is continuous and strictly
+      increasing on the interval interior, so its inverse is measurable and takes values in that interior.
+
+
+                                                       13
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+702
+      Draw J with probabilities qj , U ∼ Uniform(0, 1), and V ∼ N (0, ID−1 ), independently. Set
+703   b = (J, U, V ); for D = 1, omit V . Take R(p, b) = (p, b) and deﬁne
+704                                                                     
+705                                  fε (R(p, b)) = QJ ((U + p)/2), V .                      (8)
+706   The mixture (U + pt )/2 is uniform on (0, 1), since pt is an independent fair bit. Conditional on
+707   J = j, the ﬁrst coordinate therefore has the Gaussian law restricted to Ij . Mixing with weights qj
+708   recovers N (0, 1). Independence of V gives the joint law N (0, ID ) and zero population regularizer.
+709
+      Given the ﬁrst coordinate y, its interval determines J almost surely. Write v = FJ (y). Then
+710
+      pt = 1{v > 1/2} and U = 2v − pt almost surely; the other coordinates recover V . Thus the latent
+711
+      recovers both state and nuisance. For ﬁxed b, the two ﬁrst coordinates are distinct and lie inside the
+712   same interval of width 2ε. All remaining coordinates agree, proving the distance bound.
+713
+714   Latent history reveals b, while the next bit remains independent and fair. The next latent conse-
+715   quently has two equiprobable values, say z (0) (b) and z (1) (b). Lemma 1 gives m(b) = (z (0) (b) +
+716   z (1) (b))/2. Its conditional squared error is ∥z (1) (b) − z (0) (b)∥2 /4, strictly positive and bounded
+717   by ε2 . The midpoint is square-integrable by Jensen’s inequality, since both state encodings have
+718
+      ﬁnite second moments. Taking expectations and dividing by D proves the coordinate-mean loss
+      bound, including strict positivity since the conditional error is positive almost surely. The midpoint
+719
+      depends only on b, so it is independent of pt+1 . Finally, decoding the current bit permits at = pt . A
+720
+      state-blind action is independent of the current fair bit, giving success probability 1/2.
+721
+722
+723   B    T HE CUBE WORLDS
+724
+725   The position-readout study crosses black, per-frame random, and per-episode random backgrounds
+726
+      with deterministic or hidden-wind dynamics. Color-noise and black-background datasets contain
+      100,000 transitions; the gray-noise conditions contain 500,000. Only the four gray grid-JEPA con-
+727
+      ditions have three independent model initializations. Table 3 and Figure 4 report that replicated
+728
+      comparison. Tables 4 and 5 retain seed-0 outcomes for the broader conditions, using the same
+729   canonical benchmark ﬁles throughout. Differences across dataset sizes and model recipes are not
+730   isolated nuisance effects.
+731
+732   Environment. The scene contains a red 6 × 6 object in a 63 × 63 RGB image with a red boundary.
+733   Four cardinal actions move the object three pixels. Reset positions are uniformly sampled from
+734   integer coordinates in [16, 42]2 , and initial wind is zero. In wind conditions, each wind coordinate
+735   independently increments by −1, 0, or 1 with probabilities 0.1, 0.8, and 0.1, clipped to [−2, 2]; the
+736   updated wind is added to the action displacement. Background pixels are uniform integers from 0
+737   to 255; gray noise shares the same sample across RGB channels. Contact with the boundary gives
+738   reward −1 and terminates; other rewards are zero, with a 128-step cap.
+739
+740   Read-out ﬁtting. The nonlinear latent position probe is ﬁtted on training data and evaluated on
+741
+      independent eval.npz frames. Its spatial softmax-and-offset output is produced by two hidden
+      layers of width 128, trained for 10,000 updates with batch 2,048 and Adam at initial learning rate
+742
+      10−3 with cosine decay. Grid inputs are standardized using training statistics. For class-token inputs,
+743
+      standardization and PCA whitening are selected using the ﬁnal 10% of ﬁtting rows, then the chosen
+744   variant is reﬁtted on the full ﬁtting split. Whitening ﬂoors singular values at 1% of the largest.
+745   Applying this read-out to predicted latents tests both prediction and read-out extrapolation. The
+746   pixel read-out used for decoded ﬂow images is a separate supervised CNN trained with synthetic
+747   background replacement using ground-truth cube masks; it is a diagnostic, not a policy or a world-
+748   model training signal. Rollout windows are sampled with replacement and overlap, and exclude
+749   death or reset during the eight context and 16 forecast frames. The conﬁgured benchmark uses
+750   2,048 windows for video metrics and the ﬁrst 512 for position diagnostics; exact sampled indices
+751   were not retained in the archived result ﬁles. Surviving windows are a selected subset of wind
+752
+      trajectories, so these errors do not establish death prediction or closed-loop control.
+753   Earlier controller experiments use the three black/color background conditions. Their ﬁnal survival
+754   outcomes are retained below. The class-token JEPA’s near-zero loss on per-episode texture and
+755   poor reward-driven control are consistent with the known predictable-nuisance mechanism, without
+      exactly realizing Proposition 1. The replicated gray-frame/wind failure instead has high prediction
+
+
+                                                        14
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+756
+757   Table 4: Seed-0 cube position L1 error (pixels) for the grid and class-token JEPAs. “Real” evaluates
+758   held-out encoded frames; “Pred. 8” evaluates the same read-out on eight-step predicted latents. Gray
+759   conditions use more training transitions than black and color conditions.
+760                    Background        Wind        Grid JEPA         Class-token JEPA
+761                                                 Real Pred. 8          Real    Pred. 8
+762                    Black              Off     0.097        3.933         0.087   45.268
+763                                       On      0.126       11.732         0.049    8.957
+764                    Color, frame       Off     0.172        5.570        24.133   19.428
+765                                       On      0.253       11.823        25.185   19.317
+766                    Color, episode     Off     3.273        6.594        20.804   21.567
+767                                       On      1.451       13.342        23.431   21.807
+768                    Gray, frame        Off     0.115        4.269        23.954   20.286
+769                                       On     21.354       19.696        25.288   19.567
+770
+                       Gray, episode      Off     0.715        1.779        21.316   21.284
+                                          On      0.717       11.553        23.880   23.386
+771
+772
+773
+      Table 5: Seed-0 ﬂow cube position L1 error (pixels). Latent and pixel columns use different super-
+774   vised read-outs. The persistent-color failure is visible before dynamics: real encoded position has
+775   large error. These are model-recipe references rather than objective-only comparisons.
+776
+                     Background       Wind Real latent Pred. 8 latent Pred. 8 pixels
+777
+778                 Black               Off           0.140             0.126           0.242
+779                                     On            0.153            11.632          11.622
+780
+                    Color, frame        Off           1.088             1.059           0.395
+                                        On            1.344            12.311          11.985
+781
+                    Color, episode      Off          18.563            21.954          22.423
+782
+                                        On            7.010            18.960          16.937
+783                 Gray, frame         Off           3.114             2.667           0.382
+784                                     On            3.690            14.392          12.302
+785                 Gray, episode       Off           5.062             4.896           1.339
+786                                     On            3.066            15.150          13.583
+787
+788
+789   loss and should not be interpreted as the same mechanism. Still-world survival can be achieved by
+790   state-blind alternating actions, so it does not certify state feedback.
+791
+792
+      Table 6: Survival (percent) in the supplementary cube worlds. “LeWM” denotes the class-token
+793
+      JEPA; “grid” denotes the grid JEPA; “goal” and “heads” use latent-goal and learned-return search,
+794
+      respectively. PPO columns use the ﬁnal saved policies; “px” and “z” identify pixel and latent obser-
+795   vations. Still-world survival does not certify state feedback.
+796
+                      Background           Black        Per-frame noise Per-episode noise
+797
+                      Dynamics         Still Wind Still           Wind Still        Wind
+798
+799                  random              20      0      20              0      20          0
+800                  centre             100     99     100             99     100         99
+801
+                     LeWM goal           97     64       5              0      80          0
+                     LeWM heads         100     60       9              0       2          0
+802
+                     LeWM PPO           100     99       0              0       0          0
+803
+                     grid goal           88      1      92              0     100         77
+804                  grid heads         100      5     100              0      85          8
+805                  grid PPO           100     94     100              0       2          0
+806                  ﬂow PPO px         100     94      98             97      98         95
+807                  ﬂow PPO z          100     96      99              1      51          1
+808                  PPO real           100     98     100             96     100         78
+809
+
+
+
+                                                        15
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+810
+      C    H YPERPARAMETERS AND COMPUTE
+811
+812
+      The gate and gray-noise cube conditions supply 500,000 uniform-random transitions each. The
+813
+      earlier black and color-noise cube datasets contain 100,000 transitions. Craftax uses its separate
+814
+      500,000-transition archive. Model training uses bﬂoat16 compute, ﬂoat32 parameters, and one
+815   A100. A 500-step calibration estimates the training length ﬁtting 575 seconds including compi-
+816   lation; the grid gate model trains for 8,500 steps (17,000 and 34,000 in the budget sentence of
+817   Section 4.2), the class-token cube models for 23,750–24,000. Model seeds 0, 1, 2 of the grid JEPA
+818   differ only in the initialisation and data-order seed.
+819
+820   JEPA settings. Both JEPA architectures use batch 128 and AdamW with learning rate and weight
+821   decay 10−3 , 10% warm-up followed by cosine decay to zero, and gradient clipping at 1.0. SIGReg
+822   uses weight 0.09, 17 knots on [0, 3], and 1024 random projections. Neither architecture uses a stop-
+823   gradient, teacher, decoder, or reward during world-model ﬁtting. Linear–BatchNorm–GELU–linear
+824   projection heads ﬂatten batch, time, and spatial tokens for normalization. Training-mode statistics
+825   therefore couple examples and temporal positions; at inference, running statistics deﬁne a ﬁxed
+826   pointwise projection and the attention predictor is causal. The theoretical causal-map formulation is
+827   an inference/population idealization.
+828
+829                                            Class-token JEPA              Grid JEPA
+830
+             encoder                           ViT, 7 × 7 patches            tile transformer + conv
+831
+             width / depth / heads             192 / 6 / 3                   128 / 6 / 8
+832          encoder MLP                       768                           4× width
+833          read-out                          class token                   4 × 4 grid, 32 channels
+834          latent dimension                  192                           512
+835          projector                         BN projector, width 2048      same, hidden 512
+836          predictor                         AdaLN-zero AR                 spatial + causal temporal
+837          predictor depth / heads / dim     6 / 16 / 64                   6 / 8 / 32
+838          predictor MLP / width             2048 / latent                 2× width / 256
+839          history                           3 frames                      8 frames
+840
+             dropout                           0.1                           0
+             parameters                        15.3M                         2.6M + 8.3M
+841
+842
+843   Flow settings. The tokenizer uses 9,000 steps, batch 256, and learning rate 9 × 10−4 ; dynamics
+844   16,000 steps, batch 64, the same learning rate, width 256, six layers, eight spatial and temporal
+845   attention heads, a 32-frame context, independent per-frame noise levels, a shortcut loss of weight
+846   0.25 every fourth step after the ﬁrst quarter of training, history dropout 0.25, two history frames
+847   resampled every eight steps after half of training, and a temporal loss weight of 0.25. The symlog
+848   reward head has 255 bins over [−20, 20]; reward and termination losses have weight 0.1 and enter the
+849
+      trunk at full strength for half of training, then at factor 0.1. Inference uses four function evaluations
+      per frame. We corrected terminal-transition masking in the recipe’s reward loss (Appendix G).
+850
+851
+852   JEPA read-outs. Gate post-hoc heads use the frozen encoder and the ﬁrst 800 time rows (80,000
+853   frames) of the same archive used for world-model training. The following 200 time rows are held
+854   out from head ﬁtting only; the independent world-model evaluation archive is eval.npz. The
+855
+      pixel decoder uses 8,000 steps, batch 256, learning rate 10−3 , width 256, six residual blocks; it
+      supports the ﬁgures and the decoded-latent control, in which its frozen output, clipped to [0, 255],
+856
+      replaces the pixels of the real-gate PPO; no true pixel enters that policy after the encoder. Reward,
+857
+      termination, and behaviour-value heads are two-layer perceptrons of width 512 on the latent and the
+858   one-hot action, 6,000 steps, batch 1024, learning rate 10−3 , Monte Carlo value targets at discount
+859   0.99, value loss weight 0.1. The residual predictor models zt+1 − m with m = g(zt−7:t , at−7:t ) the
+860   original grid prediction, conditioned on m, zt , and the action: three residual blocks of width 1024,
+861   8,000 steps, and batch 2048. The ﬁnal 20,000 valid windows of the same world-model training
+862   archive are excluded from residual ﬁtting and used for its quality check. They are not independent
+863   world-model evaluation data. For encoder seed 0, coordinate-mean MSE is 3.07 × 10−4 for the
+      original predictor, 2.05 × 10−4 for one residual sample, and 1.32 × 10−4 for the mean of eight. This
+
+
+                                                         16
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+864
+      quality check uses eight function evaluations per sample; the reported PPO runs instead use four.
+865   Averaging eight learned samples is a random Monte Carlo average, not an exact conditional mean.
+866
+867
+      Policy optimisation. PPO uses discount 0.99, GAE parameter 0.9, clipping 0.2, value coefﬁcient
+868   0.5, entropy coefﬁcient 0.01, AdamW at 2.5 × 10−4 with weight decay 0.01, four epochs per batch,
+869   and gradient clipping at 1.0. Pixels pass through a three-block Impala torso (Espeholt et al., 2018),
+870   latents through a two-layer perceptron; a GRU receives that embedding and the previous action;
+871   the critic uses 64 categorical bins with histogram-Gaussian targets (Farebrother et al., 2024). Real-
+872   environment PPO uses 128 environments and 64 steps per iteration with four minibatch groups,
+873   truncated backpropagation over 16 steps, and 1.5M environment steps. In-model PPO uses 150
+874   updates of 512 trajectories of 16 steps (1.2M imagined steps) with minibatch size 128; half of the
+875   starts are resets, half dataset states with their real eight-frame context. All reported policy rows use
+876
+      ﬁnal checkpoints.
+877
+878   Compute. On a shared A100, the seed-0 grid-gate JEPA completes 8,500 updates in 573 seconds
+879   and has a logged total of 586.5 seconds. Probe and head ﬁtting takes approximately three minutes.
+880
+      The residual sampler’s optimization stage takes 74.3 seconds; model loading, latent extraction, ﬁt-
+      ting, and quality evaluation together take 275.2 seconds before the ﬁnal ﬁle write. Other logged
+881
+      stages are PPO inside the JEPA 2.0–4.3 min per run; PPO inside the ﬂow model 5–6 min per run at
+882
+      four function evaluations, 20–26 min with the mean of eight; PPO in the real environment 3.7–7.7
+883   min on pixels with the convolutional torso and 51–70 s with the MLP torso, 76–78 s on the frozen
+884   latent, 4.7–4.8 min on the decoded latent with the convolutional torso and 1.8–2.9 min with the MLP
+885   torso; the latent diagnostic: 2 min.
+886
+887
+888
+      D    E VALUATION PROTOCOL
+889
+890   Every gate-policy endpoint uses the ﬁnal checkpoint and 256 real episodes from reset, with the
+891
+      128-step cap. Survival is the fraction reaching the cap. Walls passed counts walls leaving the
+      frame while the agent remains alive. Discovery is ﬁnal survival strictly above 50%. Real-training
+892
+      and imagined-training runs advance their random keys under different iteration schedules; their
+893
+      ﬁnal evaluations are not paired episode trials. Policy seeds are separate runs conditional on a ﬁtted
+894   model; independently ﬁtted encoders provide a different replication level. The ﬂow model has only
+895   one checkpoint. Reported means weight policy runs equally; standard deviations describe variation
+896   across those runs, not uncertainty across model families.
+897
+898   Gate speciﬁcation. The gate uses the same image and object sizes and cardinal action displace-
+899   ment. A white vertical wall of width three pixels spawns at x = 60 every 22 steps and moves left
+900   three pixels per step. Its 16-pixel gap is sampled at spawn, top or bottom with equal probability, and
+901   becomes visible when the wall reaches x ≤ 40. The gap location is hidden state before that reveal.
+902   Border or wall contact produces reward −1 and termination; the time cap is 128 steps.
+903
+904   Latent diagnostic. For each encoder, the diagnostic uses 64 real contexts with the wall still solid
+905   at x ∈ {42, 45}. Reconstructed simulator states generate recorded futures and matched wall-free
+906   futures under the recorded actions. The recorded branch survives the diagnostic horizon by con-
+907   struction. At each step, wall amplitude is the squared Euclidean distance between encodings of the
+908
+      wall-present and wall-absent frames. The teacher-forced residual uses real encoded history and is a
+      total squared error, summed over latent coordinates. The wall coordinate of a prediction is its pro-
+909
+      jection onto the wall-present minus wall-absent latent difference, with endpoints 0 and 1. Decoded
+910
+      wall intensity averages the minimum colour channel on shared wall pixels, excluding either possible
+911   gap band. These measurements compare features within one encoder; raw distances across models
+912   are not an information metric.
+913
+914
+915   E    L ATENT- POLICY TORSO CONTROLS
+916
+917   The MLP on decoded latents passes 0.92 walls per episode with no discoveries in six runs (Table 7),
+      using encoders 0 and 1. The decoded CNN control instead uses all three encoders, with three
+
+
+                                                        17
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+918
+919           Control varies across policies and world models
+              Final real-gate outcomes after training each MLP policy in a frozen model
+920
+921                                      JEPA seed 0                JEPA seed 1                JEPA seed 2              Flow: 1 model
+922
+                                   4
+          Walls passed / episode
+
+923
+924
+                                   3
+925
+926
+                                   2
+927
+928
+                                   1
+929
+930
+                                   0
+931
+                                        Orig.   Draw Mean8        Orig.   Draw Mean8         Orig.   Draw Mean8              Draw   Mean8
+932
+                                       Dots: policy seeds. Bars: means within one model and operator.
+933
+                                       JEPA: 3 policies per cell. Flow: 6 draws, 3 mean8 policies. Dashed: random actions.
+934
+935
+936
+      Figure 5: Control outcomes by model ﬁt and predictor variant. Each point is a ﬁnal policy
+937
+      evaluated on 256 real episodes. Original prediction, residual sampling, and residual means are
+938   separate conditions; model and policy replication are distinct. Horizontal bars show within-model
+939   means, and the dashed line marks random actions. The ﬂow reference uses one checkpoint.
+940
+941
+942   policies per encoder. Both of its discoveries use encoder 1. The decoder is frozen and reconstruction-
+943   supervised; success therefore establishes useful encoded information under this added read-out, not
+944   sufﬁciency of the unsupervised training objective. Failure of the true-pixel MLP recipe establishes
+945
+      no upper bound on MLP capacity.
+946
+947   Table 7: Real-gate observation and torso controls: ﬁnal walls per episode and survival, mean ± stan-
+948   dard deviation over policies; discovery means ﬁnal survival above 50%. All policies use 1,499,136
+949   real transitions.
+950      observation of the real-gate PPO            runs walls passed survival (%) discovered
+951
+          pixels, convolutional torso                                                3      2.91±1.65             65±52               2/3
+952
+          pixels, MLP torso                                                          3      0.91±0.08               4±2               0/3
+953       frozen JEPA latent, MLP torso                                              9      0.94±0.04               4±1               0/9
+954       decoded JEPA latent, convolutional torso                                   9      1.57±1.26             22±37               2/9
+955       decoded JEPA latent, MLP torso                                             6      0.92±0.08               3±2               0/6
+956
+957
+958
+      F                    C ONTROL OUTCOMES AND LATENT DIAGNOSTICS
+959
+960   Table 8 gives aggregate ﬁnal outcomes; Table 9 lists every imagined JEPA policy. The pooled
+961   imagined JEPA mean weights all original, sampled-residual and mean-residual runs equally. The
+962   ﬂow rows distinguish six sampled policies from three policies using a mean of eight, all sharing the
+963   same model ﬁt. They do not estimate variation across independent ﬂow-model ﬁts. Tables 10 and
+964   11 retain the encoder and geometry diagnostics supporting the gate observations.
+965
+966
+967
+968
+969
+970
+971
+
+
+
+                                                                                    18
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+972
+973
+974    Table 8: Final control outcomes in the real gate, mean ± standard deviation over policy runs. Imag-
+975    ined training uses 1,228,800 transitions per policy; real training uses 1,499,136. Model-ﬁt counts
+976    and policy-run counts identify distinct replication levels.
+977           Controller             Models Policies               Walls Survival (%) Discovery
+978          JEPA: original                  3           9        0.27 ± 0.22           0±1        0/9
+979          JEPA: mean of 8                 3           9        0.26 ± 0.30           1±1        0/9
+980          JEPA: one sample                3           9        0.26 ± 0.32           1±1        0/9
+981
+             Flow: mean of 8                 1           3        0.88 ± 0.14         3±1          0/3
+982
+             Flow: one sample                1           6        1.45 ± 1.23       19 ± 39        1/6
+983
+984          Random                          –           –              0.06              0             –
+985          Alternating                     –           –              0.02              0             –
+986          Real pixels: CNN                –           3        2.91 ± 1.65       65 ± 52        2/3
+987          Real pixels: MLP                –           3        0.91 ± 0.08         4±2          0/3
+988          Real JEPA: MLP                  3           9        0.94 ± 0.04         4±1          0/9
+989          Real decoded: CNN               3           9        1.57 ± 1.26       22 ± 37        2/9
+990
+991
+992
+993    Table 9: Every imagined JEPA policy at its ﬁnal checkpoint: survival (percent) and walls per episode
+994    by encoder seed, predictor variant and PPO seed. Each cell uses 256 real episodes.
+995
+                                                  Survival (%)                 Walls passed
+996
+997            Predictor             Model    PPO 0      PPO 1        PPO 2     PPO 0   PPO 1   PPO 2
+998            Original              0               0            0        1     0.04    0.25    0.60
+999                                  1               0            0        1     0.00    0.26    0.59
+1000                                 2               0            1        0     0.10    0.34    0.27
+1001           Residual mean         0               3            0        0     0.91    0.02    0.00
+1002                                 1               2            1        0     0.43    0.25    0.00
+1003                                 2               0            0        1     0.17    0.13    0.46
+1004
+               Residual sample       0               2            1        0     0.66    0.17    0.00
+1005
+                                     1               0            0        0     0.02    0.02    0.00
+1006                                 2               0            3        1     0.20    0.89    0.38
+1007
+1008
+1009
+1010
+1011   Table 10: Grid-JEPA diagnostics by encoder seed. Wall amplitude and total teacher-forced residual
+1012
+       are squared distances at future steps 1 and 8; decoded intensity uses steps 1 and 2. The wall coor-
+       dinate has endpoints 0 (wall absent) and 1 (true encoding). Head AUC compares each death cause
+1013
+       with alive transitions; PPO wall counts pool predictor variants.
+1014
+1015                      JEPA encoder seed                 0            1             2
+1016                       Wall amplitude, step 1        0.035             0.028        0.088
+1017                       Wall amplitude, step 8        0.124             0.082        0.193
+1018                       Total residual, step 1        0.145             0.130        0.156
+1019                       Total residual, step 8        0.249             0.228        0.279
+1020                       Wall coordinate, step 1        0.39              0.45         0.66
+1021
+                           Decoded wall, step 1           0.00              0.00         0.68
+                           Decoded wall, step 2           0.00              0.00         0.02
+1022
+                           Border-death AUC               0.96              0.96         0.88
+1023
+                           Wall-death AUC                 0.65              0.65         0.76
+1024                       Imagined PPO, walls       0.29±0.34         0.17±0.22    0.33±0.24
+1025
+
+
+
+                                                             19
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1026
+1027
+1028
+1029
+1030
+1031
+       Table 11: JEPA geometry and decoded wall intensity for model seed 0, averaged over 64 pre-reveal
+1032
+       contexts. Distances use matched actions and the same encoder; total residuals include all latent
+1033
+       coordinates. Wall intensity is measured on shared wall pixels.
+1034
+1035
+                    Future step                                  1     3       5       8
+1036                                       Squared distance, summed over coordinates
+1037                                       Wall-present versus wall-absent       0.035               0.041    0.071     0.124
+1038                                       Total teacher-forced residual         0.145               0.152    0.200     0.249
+1039                                       Residual along wall direction         0.015               0.021    0.048     0.104
+1040
+                                           Residual orthogonal to wall direction 0.130               0.132    0.152     0.145
+1041                                       Predicted wall coordinate                        0.39      0.33     0.29        0.21
+1042                                       Decoded wall intensity
+1043                                       Encoded true future                              1.00      1.00     1.00        1.00
+1044                                       Original JEPA rollout                            0.00      0.00     0.00        0.00
+1045
+1046
+1047
+1048
+1049
+1050
+1051
+1052
+1053
+1054
+1055
+1056                   Prediction error exceeds the wall-removal latent contrast
+                       Teacher-forced error and wall-removal contrast, 64 survival-selected contexts per seed
+1057
+1058                                                                 Prediction error              Wall-removal contrast
+1059                                           JEPA seed 0                        JEPA seed 1                          JEPA seed 2
+       Squared latent distance
+
+
+
+
+                                 0.4
+       (sum over coordinates)
+
+
+
+
+1060
+1061
+                                 0.3
+1062
+1063
+                                 0.2
+1064
+1065                             0.1
+1066
+1067                             0.0
+                                       1   2       4      6      8        1   2         4      6         8     1   2        4     6   8
+1068
+                                                Future step                        Future step                          Future step
+1069
+                                       Lines connect recorded steps. This scale comparison does not establish a causal mechanism.
+1070
+1071
+1072   Figure 6: Within-encoder scale diagnostics. For each of the three gate encoders, wall-removal
+1073   distance and teacher-forced total one-step residual are summed squared latent distances. Curves
+1074   average 64 pre-reveal contexts whose recorded futures survive the diagnostic horizon. These are
+1075   feature sensitivity and total prediction error, not commensurate measures of information content.
+1076
+1077
+1078
+1079
+
+
+
+                                                                                  20
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1080
+       G    T ERMINAL REWARDS IN THE FLOW RECIPE
+1081
+1082
+       The original recipe masks transitions entering reset frames out of reward training. Here the only
+1083   nonzero reward occurs on terminal transitions, so that mask removes the reward signal. The cor-
+1084   rected head predicts the next reward from the current frame summary and action with terminal
+1085   transitions retained in its loss. The reported ﬂow-policy outcomes use this corrected convention.
+1086   The single-checkpoint reference therefore denotes the complete tokenizer, dynamics, reward and
+1087   termination package, rather than an isolated change in transition stochasticity.
+1088
+1089
+       H    C RAFTAX PROTOCOLS AND SINGLE - CHECKPOINT RESULTS
+1090
+1091
+       The grid checkpoint uses training seed 0, a tile encoder, 16×32 = 512 latent coordinates, a six-layer
+1092   factored predictor of width 256, history length eight, 17 actions, batch 128, and 8,500 updates. The
+1093   recorded parameter count is 11.12 million. Training takes 604.5 seconds from loading through the
+1094   logged end-to-end timer (578.5 seconds in the update loop); thus it is an approximately ten-minute
+1095   run, not a strict sub-600-second result. The frozen decoder and heads add 175.6 seconds. Results
+1096   are from one model ﬁt and evaluation seed 0.
+1097
+1098   Goal generation and planning. Reset states receive seven random warm-up actions. Six further
+1099   random actions generate a reachable goal image. CEM optimizes a length-six action sequence in
+1100   latent space, with population 512, 32 elites, and six iterations. The learned planner uses the goal
+1101
+       image, without privileged position coordinates or the generating actions in its cost. It executes the
+       entire selected sequence without observation feedback. Success is equality of ﬁnal player positions.
+1102
+       Goal generation, random actions, and the selected plan use the same future simulator random keys;
+1103
+       replaying the generating actions therefore reaches all goals and serves only as a protocol check. This
+1104   protocol samples nearby reachable goals, not arbitrary distant tasks.
+1105
+1106   The planned endpoint position L1 error is 0.0781, against 1.5313 for random actions. Pixel MSE on
+1107
+       the 0–255 scale is 104.00 versus 1477.92. These quantities use the same 128 starts as the reported
+       121/128 versus 24/128 reach counts. They do not quantify variation across ﬁtted models.
+1108
+1109
+       Reward control and head generalization. Reward and value heads use the ﬁrst 80,000 transitions
+1110
+       (320 time rows across 250 streams) from the world-model training archive. Held-out time rows are
+1111
+       excluded from head ﬁtting but not from encoder training. Value ﬁtting uses the ﬁrst 80 time rows
+1112   owing to truncated-return handling. Reward and value ﬁtting correlations are 0.922 and 0.995; held-
+1113   out correlations are 0.353 and 0.266. Held-out reward RMSE is 0.222. Mean predicted held-out
+1114   value is 2.356, versus mean empirical discounted return 1.348.
+1115
+       Reward evaluation uses 128 starts, 100 steps, no autoreset, and rewards accumulated while alive.
+1116
+       The CEM controller executes one action and replans from each real observation. Random actions,
+1117
+       myopic ﬁtted-reward argmax, one predicted step plus value, and CEM obtain returns 1.4453, 0.7813,
+1118   0.9438, and 0.4734, respectively; their across-start standard deviations are 1.0897, 1.1109, 1.2014,
+1119   and 1.1039. Fractions alive at the end are 0.6328, 0.7266, 0.6328, and 0.6719. Aggregate summaries
+1120   do not preserve the per-start covariance needed for paired conﬁdence intervals. The archive’s mean
+1121   reward multiplied by 100 is not an online behavior baseline and is excluded from the comparison.
+1122
+       Earlier Craftax experiments used a different 81 × 32 spatial latent and different horizons. They
+1123
+       are not merged with these 512-dimensional results. There is no matched online ﬂow-controller
+1124   comparison for this checkpoint.
+1125
+1126
+1127
+1128
+1129
+1130
+1131
+1132
+1133
+
+
+
+                                                        21
+

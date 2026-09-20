@@ -1,0 +1,54 @@
+{
+  "admitted_utc": "2026-09-19 23:10:51 UTC",
+  "condition": "gray_frame_still",
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "models": [
+    {
+      "seed": 0,
+      "path": "/dev/shm/redcube/gray_frame_still/tile_factored/model_probe.npz",
+      "sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd"
+    },
+    {
+      "seed": 1,
+      "path": "/dev/shm/redcube/gray_frame_still/tile_factored_s1/model_probe.npz",
+      "sha256": "fd1104514e1c99d3268f3132c99fe6a33980c755b93ca64fec91539644910970"
+    },
+    {
+      "seed": 2,
+      "path": "/dev/shm/redcube/gray_frame_still/tile_factored_s2/model_probe.npz",
+      "sha256": "494004b0afac36b7a1e9d1d6d0c591a5b741af7da863d55f27b6ac2e18ea81c1"
+    }
+  ],
+  "source_sha256": {
+    "studies/revision/redcube_goal_eval.py": "364088b184d2368522d79276724ceaa3ff1eae1610012855344fee0162129683",
+    "research/redcube_goal_protocol.md": "62393dd86396b514613b70822489edc94bfd0b9b948fe82d32d370acd6a8e109"
+  },
+  "evaluation_seed": 20260920,
+  "episodes_per_model": 128,
+  "steps": 24,
+  "MPC_horizon": 3,
+  "H1_ablation": true,
+  "preselected_visual_indices": [
+    0,
+    1,
+    2
+  ],
+  "host": "multigpu-vm",
+  "gpu": 1,
+  "scheduling_rule": "First seed0; if total three-model estimated runtime <=15min finish block, otherwise release after seed0 and schedule other two later. No result-dependent scheduling.",
+  "status": "all three prospectively admitted model seeds complete; GPU1 released to theory_review",
+  "prelaunch_change": "Added strict finite check over every candidate cost before any controller evaluation launched.",
+  "cpu_runtime_smoke": "PASS: selected action equals oracle, recursive states equal exact rollout, summed cost equals independent calculation.",
+  "launch_utc": "2026-09-19 23:14:51 UTC",
+  "pid": 469162,
+  "model_run_seconds": [
+    96.2725682258606,
+    95.99136304855347,
+    95.03977227210999
+  ],
+  "gpu_seconds_total": 287.30370354652405
+}

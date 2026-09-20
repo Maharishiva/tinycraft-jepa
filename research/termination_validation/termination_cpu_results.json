@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "platform": "[CpuDevice(id=0)]",
+  "jax": "0.10.1",
+  "parent_sha256": "6a3460b2db2e47713b7af604454a4b04066c96bfd7748b5c991cfbc433176269",
+  "sensitivity_sha256": "1c003dd4e019b2179981877310e131304d13a7150ac7da93e11d5164d011feb1",
+  "collector_checks": [
+    "finite",
+    "current_state_outgoing_action_reward",
+    "first_terminal_transition_keeps_reward",
+    "absorbing_reencoded_frames",
+    "true_death_and_cap_done",
+    "horizon_bootstrap",
+    "zero_postterminal_alive_mass",
+    "zero_postterminal_weighted_reward",
+    "positive_raw_postterminal_reward_unmodified",
+    "old_oracle_observation_action_parity"
+  ],
+  "true_done_indices": [
+    0,
+    2,
+    null,
+    1
+  ],
+  "new_diagnostics": [
+    0.7260178923606873,
+    0.625,
+    2.178053855895996,
+    0.5,
+    0.75,
+    0.0,
+    0.0
+  ],
+  "old_oracle_heads_diagnostics": [
+    0.7179480791091919,
+    0.04742587357759476,
+    3.828118085861206,
+    0.8886710405349731,
+    0.75,
+    0.4774700403213501,
+    1.8054808378219604
+  ],
+  "torsos": {
+    "mlp": {
+      "finite_loss": [
+        1.9155387878417969,
+        -0.15103140473365784,
+        4.1608662605285645,
+        1.3862919807434082
+      ],
+      "update_parameter_parity": "exact",
+      "save_load_parameter_parity": "exact",
+      "params": 659396
+    },
+    "native_grid": {
+      "finite_loss": [
+        2.404794931411743,
+        0.3403155207633972,
+        4.156684398651123,
+        1.3862923383712769
+      ],
+      "update_parameter_parity": "exact",
+      "save_load_parameter_parity": "exact",
+      "params": 583236
+    }
+  }
+}

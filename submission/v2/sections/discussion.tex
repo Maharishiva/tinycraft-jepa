@@ -1,0 +1,22 @@
+\section{Discussion}
+\label{sec:limitations}
+
+The minimal worlds separate two demands on an abstract world model. Its representation must retain
+the variables on which a decision depends. Its prediction must preserve the expectations that the
+planner will evaluate. A non-collapsed representation can fail the first demand by concentrating on
+predictable nuisance. A correct conditional-mean model can fail the second when a planner applies
+nonlinear costs or composes nonlinear dynamics at that mean.
+
+The redcube comparisons make these demands visible at different stages: requested-goal movement,
+position accessible in real observations, and behavior learned from imagined futures. The matched
+nuisance study already shows a reproducible change in accessible state under combined fresh noise
+and wind. Its high prediction loss separates the measured finite-budget failure from the idealized
+nuisance optimum. Likewise, a practical JEPA/flow control gap would compare complete learned
+packages; the exact variance calculation is the narrower test that isolates point compression.
+
+The empirical scope is small visual domains, specified models and training budgets, and the
+reported checkpoint and policy replications. The elementary examples establish limitations of
+mean-state planning, not a requirement that every useful world model generate samples. Expected-cost
+or value-equivalent models can preserve the needed decision quantities directly. General-purpose
+world models need a principle for choosing both the state to preserve and the predictive information
+that their intended decisions require.

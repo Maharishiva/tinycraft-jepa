@@ -1,0 +1,12 @@
+{
+  "iclr2027_conference.sty": {
+    "submission_sha256": "797deef41724e93761426ac0cbcca46279a91cc650dd1f0ce76a4f08d2098ea6",
+    "official_sha256": "797deef41724e93761426ac0cbcca46279a91cc650dd1f0ce76a4f08d2098ea6",
+    "matches": true
+  },
+  "iclr2027_conference.bst": {
+    "submission_sha256": "2d67552db7ed38ccfccb5957b52f95656e25c249724761d3cf5f7922ad1844c5",
+    "official_sha256": "2d67552db7ed38ccfccb5957b52f95656e25c249724761d3cf5f7922ad1844c5",
+    "matches": true
+  }
+}

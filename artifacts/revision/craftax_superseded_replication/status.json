@@ -1,0 +1,47 @@
+{
+  "phase": "complete",
+  "completed": [
+    {
+      "model_seed": 1,
+      "model_sha256": "c2d06a42b6504ef37c42f0cee2e422f1728eb837b4578ec2176a2f961bc30ddb",
+      "evaluation": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/craftax_seed_replication/seed1/goal_eval.json",
+      "evaluation_sha256": "600872e08c6644998713b91751cfb35d936001190158236a1d44a96288006243",
+      "matched_environment_episode_check": "passed"
+    },
+    {
+      "model_seed": 2,
+      "model_sha256": "6492f8cd3b6e422409f710b2beba13731d07c10f69ababc3568546a4d682ca3f",
+      "evaluation": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/craftax_seed_replication/seed2/goal_eval.json",
+      "evaluation_sha256": "3a0064bd026fa3620845839be384ecc00de15d080aa1a438c734127ab2f707a9",
+      "matched_environment_episode_check": "passed"
+    }
+  ],
+  "started_unix": 1789855493.7716808,
+  "model_seed": 2,
+  "phase_started_unix": 1789857509.1920161,
+  "command": [
+    "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/revision/craftax_eval.py",
+    "--model",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/craftax_seed_replication/seed2/model.npz",
+    "--out",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/craftax_seed_replication/seed2/goal_eval.json",
+    "--seeds",
+    "101",
+    "202",
+    "303",
+    "--envs",
+    "128",
+    "--horizon",
+    "6",
+    "--warmup",
+    "8",
+    "--pop",
+    "512",
+    "--elite",
+    "32",
+    "--iters",
+    "6"
+  ],
+  "finished_unix": 1789858322.553973
+}

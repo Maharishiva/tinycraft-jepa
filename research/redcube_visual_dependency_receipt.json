@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "verification_kind": "POSTHOC_CURRENT_DEPENDENCY_VERIFICATION_NOT_EXPORT_LAUNCH_PIN",
+  "created_utc": "2026-09-19T23:35:38.998676+00:00",
+  "dependency": "studies/stoch/flow_recipe/kernels.py",
+  "local_current_file": {
+    "path": "/private/tmp/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/kernels.py",
+    "size_bytes": 23477,
+    "sha256": "7358061ebaae220616196e8905a912270247a517c5315034e40d538781a511ef"
+  },
+  "remote_current_file": {
+    "verification_utc": "2026-09-19T23:35:09.959793+00:00",
+    "host": "multigpu-vm",
+    "path": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/kernels.py",
+    "resolved_path": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/kernels.py",
+    "size_bytes": 23477,
+    "sha256": "7358061ebaae220616196e8905a912270247a517c5315034e40d538781a511ef",
+    "pathfinder_kernel_origin_with_code_dir_first": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/kernels.py"
+  },
+  "initial_source_snapshot": {
+    "path": "/private/tmp/tinycraft-jepa-iclr-20260919/research/source_snapshot.json",
+    "file_sha256": "8cb7cd3baf9b88966374f1acf61f28b3ebbaab6a3b397a27f6f40cf6bc03887c",
+    "snapshot_utc": "2026-09-19T19:43:21.964962+00:00",
+    "entry": {
+      "path": "studies/stoch/flow_recipe/kernels.py",
+      "bytes": 23477,
+      "sha256": "7358061ebaae220616196e8905a912270247a517c5315034e40d538781a511ef"
+    }
+  },
+  "all_three_hashes_and_byte_counts_equal": true,
+  "import_path_evidence": [
+    "Frozen export_source.py calls F.load(args.flow_code,args.flow,4) at line150; the original manifests record ftrain.__file__ inside studies/stoch/flow_recipe.",
+    "Manifest-hashed studies/redcube/flow.py prepends code_dir to sys.path and removes cached kernels before loading flow train.py (lines24-29).",
+    "Manifest-hashed flow_recipe/train.py imports kernels at line9.",
+    "Read-only PathFinder.find_spec with the inferred code_dir resolves kernels to the remote file hashed above; the module itself was not imported."
+  ],
+  "original_cases": {
+    "gray_frame_still": {
+      "case_manifest_sha256_at_receipt": "7a2443143248624bd7f4e199aeed51a8a40b065355ada6ebe97f66e1a4a47269",
+      "manifest_recorded_flow_train_path": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/train.py",
+      "kernel_path_implied_by_loader": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/kernels.py",
+      "kernel_not_present_in_original_source_modules": true
+    },
+    "gray_frame_wind": {
+      "case_manifest_sha256_at_receipt": "ef1095734cc5f176ce6ffbecb863776c4b6d0b68419d6e4b1c142c4008d05465",
+      "manifest_recorded_flow_train_path": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/train.py",
+      "kernel_path_implied_by_loader": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/kernels.py",
+      "kernel_not_present_in_original_source_modules": true
+    },
+    "gray_episode_wind": {
+      "case_manifest_sha256_at_receipt": "84a3eee8ba83b6b51faf14b71dcfac0e94e50e0c659bac17f25fe6faf3bb5e9f",
+      "manifest_recorded_flow_train_path": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/train.py",
+      "kernel_path_implied_by_loader": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/kernels.py",
+      "kernel_not_present_in_original_source_modules": true
+    },
+    "gate": {
+      "case_manifest_sha256_at_receipt": "6f7c525277981548cee3d5e34961f654d2a41169088bfdb07799f4e73eda27d0",
+      "manifest_recorded_flow_train_path": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/train.py",
+      "kernel_path_implied_by_loader": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/stoch/flow_recipe/kernels.py",
+      "kernel_not_present_in_original_source_modules": true
+    }
+  },
+  "unchanged_artifacts": "No original export manifest, selection, packet, source snapshot, model, array or image was modified. Only this separate research receipt and its Markdown companion were written.",
+  "scope_limit": "This verifies current local and VM bytes against the initial source snapshot. It does not create a missing export-time runtime hash, prove historical in-memory module identity, or rerun inference. gate_s1 is outside the original four-packet audit."
+}

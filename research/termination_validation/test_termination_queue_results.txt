@@ -1,0 +1,11 @@
+Launcher SHA256: 72ff8b1af3e837b5ff3879c537d39079e4ddb55c6361b4f2f22c2bdfcddecf05
+Tests use only temporary synthetic files and mock jobs except one real Python sleep process to exercise the timeout. No GPU or scientific job was launched.
+PASS CLI dry run: exact 24-job ordering, budgets, protocol hash; no output creation
+PASS Refused existing roots, invalid GPU/deadline/runtime floor, and frozen-parent drift
+PASS complete: expected status, full denominator, preserved logs, no retry
+PASS failed: expected status, full denominator, preserved logs, no retry
+PASS incomplete: expected status, full denominator, preserved logs, no retry
+PASS timeout: expected status, full denominator, preserved logs, no retry
+PASS admission: expected status, full denominator, preserved logs, no retry
+PASS ledger_nonfinite: expected status, full denominator, preserved logs, no retry
+PASS terminal_mass: expected status, full denominator, preserved logs, no retry

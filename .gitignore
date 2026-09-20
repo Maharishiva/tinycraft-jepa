@@ -12,3 +12,7 @@ gifs/
 *.pth
 *.safetensors
 !artifacts/
+.playwright-cli/
+research/reading/*
+!research/reading/README.md
+!research/reading/manifest.json

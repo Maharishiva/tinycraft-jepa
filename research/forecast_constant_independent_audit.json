@@ -1,0 +1,139 @@
+{
+  "status": "PASS",
+  "scope": "Independent raw saved-label recomputation; no analyzer import, fitting or test-set parameter selection",
+  "n_rows_verified": 36,
+  "n_probe_mae_and_correlation_pairs_verified": 288,
+  "source_audit_sha256": "c0cf920c2c7098e9c75a3ac80a6579673d0f370f2bc54530cf144b731f979397",
+  "h8_unrevealed_rows": [
+    {
+      "model_seed": 0,
+      "train_n": 1509,
+      "eval_n": 716,
+      "train_mean": 29.433399602385688,
+      "train_median": 30.0,
+      "constant_mean_mae": 4.769072714550684,
+      "constant_median_mae": 4.64245810055866,
+      "probe_results": {
+        "common_h8_wall_position_real_to_real": {
+          "mae_px": 11.655184973353863,
+          "corr": 0.11118800830729178
+        },
+        "common_h8_wall_position_real_to_forecast": {
+          "mae_px": 13.791172498379256,
+          "corr": 0.10681507401252806
+        },
+        "common_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 13.989993962183512,
+          "corr": 0.07476043535248272
+        },
+        "common_h8_wall_position_copy_to_copy": {
+          "mae_px": 10.770533906868216,
+          "corr": 0.16458089794078837
+        },
+        "per_source_h8_wall_position_real_to_real": {
+          "mae_px": 11.372067651747825,
+          "corr": 0.11087357666907989
+        },
+        "per_source_h8_wall_position_real_to_forecast": {
+          "mae_px": 13.768459361296292,
+          "corr": 0.1060969050377715
+        },
+        "per_source_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 13.994275065399082,
+          "corr": 0.07435255564396462
+        },
+        "per_source_h8_wall_position_copy_to_copy": {
+          "mae_px": 10.770533906868216,
+          "corr": 0.16458089794078837
+        }
+      }
+    },
+    {
+      "model_seed": 1,
+      "train_n": 1509,
+      "eval_n": 716,
+      "train_mean": 29.433399602385688,
+      "train_median": 30.0,
+      "constant_mean_mae": 4.769072714550684,
+      "constant_median_mae": 4.64245810055866,
+      "probe_results": {
+        "common_h8_wall_position_real_to_real": {
+          "mae_px": 13.001675209311466,
+          "corr": 0.07844143152742447
+        },
+        "common_h8_wall_position_real_to_forecast": {
+          "mae_px": 14.213437866648482,
+          "corr": 0.04372896348824154
+        },
+        "common_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 13.932792703782379,
+          "corr": 0.0228022421179222
+        },
+        "common_h8_wall_position_copy_to_copy": {
+          "mae_px": 11.276636825239692,
+          "corr": 0.1751733917857148
+        },
+        "per_source_h8_wall_position_real_to_real": {
+          "mae_px": 12.815637518324,
+          "corr": 0.07652440417938712
+        },
+        "per_source_h8_wall_position_real_to_forecast": {
+          "mae_px": 14.436695380125965,
+          "corr": 0.03988440992543253
+        },
+        "per_source_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 13.931998074262834,
+          "corr": 0.02279544765033039
+        },
+        "per_source_h8_wall_position_copy_to_copy": {
+          "mae_px": 11.276636825239692,
+          "corr": 0.1751733917857148
+        }
+      }
+    },
+    {
+      "model_seed": 2,
+      "train_n": 1509,
+      "eval_n": 716,
+      "train_mean": 29.433399602385688,
+      "train_median": 30.0,
+      "constant_mean_mae": 4.769072714550684,
+      "constant_median_mae": 4.64245810055866,
+      "probe_results": {
+        "common_h8_wall_position_real_to_real": {
+          "mae_px": 6.617590418158297,
+          "corr": 0.10384326106366376
+        },
+        "common_h8_wall_position_real_to_forecast": {
+          "mae_px": 10.0525150109686,
+          "corr": -0.27415209136682545
+        },
+        "common_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 6.159496561358761,
+          "corr": -0.17785528744863977
+        },
+        "common_h8_wall_position_copy_to_copy": {
+          "mae_px": 6.794720843673668,
+          "corr": 0.2993170929607286
+        },
+        "per_source_h8_wall_position_real_to_real": {
+          "mae_px": 6.530858361979104,
+          "corr": 0.10377283278813924
+        },
+        "per_source_h8_wall_position_real_to_forecast": {
+          "mae_px": 10.01944600195525,
+          "corr": -0.2746309168363574
+        },
+        "per_source_h8_wall_position_forecast_to_forecast": {
+          "mae_px": 6.164489773024061,
+          "corr": -0.1746435231844008
+        },
+        "per_source_h8_wall_position_copy_to_copy": {
+          "mae_px": 6.794720843673668,
+          "corr": 0.2993170929607286
+        }
+      }
+    }
+  ],
+  "interpretation": "The train-slice constant mean and median outperform the seed2 adapted forecast readout in h8 unrevealed contexts. The adapted readout improvement over transferred real-latent probe does not establish detailed wall-position recovery. This is a post-hoc interpretation check, not a replacement of the prospectively fixed global-mean baseline."
+}

@@ -1,0 +1,36 @@
+\section{Related work}
+\label{sec:related}
+
+Joint-embedding prediction avoids reconstructing all observable detail
+\citep{assran2023ijepa,bardes2024vjepa}. LeWorldModel jointly learns its encoder and action-conditioned
+predictor with squared loss and Gaussian regularization \citep{maes2026lewm,balestriero2025lejepa};
+this is our direct learning setting. DINO-WM and V-JEPA~2 instead use frozen pretrained features for
+action-conditioned prediction, and PLDM jointly learns representations with additional regularizers
+\citep{zhou2024dinowm,assran2025vjepa2,sobal2025pldm}. Sobal et al. already study action-conditioned moving objects with fixed or changing distractors,
+encoded and predicted state probes, repeated fits, and a generative reference \citep{sobal2022slow}.
+Our distinct comparison adds fresh unobserved motion innovations to the matched spatial recipe:
+the effect of noise persistence reverses under wind. This is a boundary in a different recipe,
+not a contradiction of their findings. Recent contrastive work also examines slow-noise bias
+\citep{gulati2026contrast}.
+
+Prediction and planning need not favor the same geometry. LeWorldModel reports accurate probes
+alongside weaker planning; Temporal-Distance JEPA and RC-aux introduce temporal or reachability
+constraints, while physical-state grounding adds task-state supervision
+\citep{maes2026lewm,bai2026temporal,li2026rcaux,yan2026psgjepa,liu2026physicallygrounded}.
+\citet{terver2026planning} study architectural and planner choices and discuss multimodal
+conditional means. Our exact examples focus on the decision consequences of evaluating costs at a
+mean and recursively composing mean transitions.
+
+FlowWM learns stochastic feature-space futures and evaluates mode coverage and future perception
+with a frozen visual encoder \citep{porcher2026flowwm}. It is not action-conditioned and reports no
+control experiments. Our action-conditioned JEPA/flow comparison instead studies jointly learned
+state and real behavior. Generative imagination models have demonstrated useful control
+\citep{hafner2020dreamer,alonso2024diamond,hafner2025dreamer4}, while also exhibiting failures of
+perception, action conditioning, and rollout \citep{hansen2026hallucination}.
+
+The broader prediction--control mismatch is longstanding \citep{lambert2020objective}.
+Value-aware learning, expectation models, and value equivalence model the quantities needed by a
+particular decision class \citep{farahmand2017vaml,wan2019expectation,grimm2020value,grimm2021proper}.
+Temporal-difference JEPA predicts policy-conditioned successor features for value-based control
+\citep{bagatella2026tdjepa}. These approaches explain why our mean-state counterexamples are not
+impossibility results for all deterministic world models.

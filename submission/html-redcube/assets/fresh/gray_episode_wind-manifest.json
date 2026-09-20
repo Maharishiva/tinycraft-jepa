@@ -1,0 +1,62 @@
+{
+  "case_id": "gray_episode_wind",
+  "export_source": "artifacts/revision/redcube_story/gray_episode_wind",
+  "raw_frames_npz_sha256": "f7281531e8bb4ccccf833efa419ea5b0fc5d55adcba317c27cec9970afa0ee4c",
+  "selection_rule": "First lexicographic (start_time, environment_index) window from each distinct (environment_index, episode_id), with no reset across its 24 frames.",
+  "selection_caveat": "Continuity conditions on future survival. These are illustrations, not an unbiased estimate of model or policy quality. No image, movement amount, or model output is used for selection.",
+  "scene_ids": [
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      6
+    ]
+  ],
+  "checkpoint_and_data_sha256": {
+    "eval": "9c546741c1f875fbbb42f25bcccb919c88f28a31530dfc6aa5e2a9cf203cdddd",
+    "jepa_checkpoint": "55dbaa39693fbcfc5af0fe95f200949de954084c070496fc83f12e6b16a07798",
+    "flow_checkpoint": "761e7d539cba00a0bb423320da1d8e212eda3e279b5b572e6a0d318f98e4be15"
+  },
+  "array_sha256": {
+    "context": "2acf5c5da652898d0aadc359412d71c72a53b661ca1029cad8c968a000da600d",
+    "real_future": "057da954c7ec05641212a0face55acfa5442c5f472750823933f1353e92eeb1f",
+    "jepa_context": "146aa51c0ad55334b3bf1f551ac5bd49407927ae17499b1d3bdd9b74e61668cd",
+    "jepa_encoded_real": "6e62ca2779c82a221085cd17b2164b16e89f39e7e5f555702eb272942f36b857",
+    "jepa_future": "0474748defbd2d0bfbeff8cbf2dbec5b165720fa8b80deeeb67f7b9fee849a29",
+    "flow_context": "242211cc8ede0a54d2ae3b8eba04597e8fd832c76a208548b46bd00926440690",
+    "flow_encoded_real": "9826692cc76ffb78b4c631866012a740e8e3fcb7fbf33469f0f5ab4484be7776",
+    "flow_future": "2cc940474c647a92537ea280a1e5f5179d4735cb516bbe61f510ad8ffaabc239",
+    "jepa_real_latents": "a1267a309836c2f6c1c0a583e79cf5cf28785ae233a57f93738ec77012cb4b24",
+    "jepa_predicted_latents": "0edc090e7f849ca6331a399517cea7205f3cf3015c66667a46ab80daed78dc08",
+    "flow_real_latents": "569a8b74a924bb302017ebf785f5bf0694c4deabd54864ab06fe421e166f5db4",
+    "flow_predicted_latents": "e4dbd8be7682dd1f75b6c98dfcad6a1079bf8b5f720131dc6c198e8be9beb368",
+    "flow_sample_key": "d2e0cb9342529cd701f59f016085b2c3e69cb270a1a9a11fba36b2cd0c8abc0b",
+    "flow_rollout_key": "955ba306755f4567152d9eca7d5f3df8145715dec60890288e6bd37e49c12dcf",
+    "ids": "f2f723f5d4097b26c06161b8b466b9f7eaa923999780f8794bbba5d15c76d9b9",
+    "frame_times": "223cf11c14e67df3a7ee5a07cc876a29596e80ca4545ab97d561ab0e90b893e9",
+    "outgoing_actions": "c014f035f392bf577febd78c149e9db61f55267894ae47afbda5f0a42f489fc9",
+    "incoming_actions": "c6ce2e856a72318d5ea116ea896cf07c3184af106ccd7c2f29e112ceeda49731",
+    "future_actions": "8cd178657de65a2ffa18bdeaf29e3ebf6d1b96dc184e27f73fbb79d8ad80a1fc",
+    "reset_before_frame": "834a709ba2534ebe3ee1397fd4f7bd288b2acc1d20a08d6c862dcd99b6f04400",
+    "reset_after_frame": "cd05c2283f62b7c74911008df6a66101d51ed5cb23e6b4b5c84af4bc60db0f3a",
+    "valid_mask": "5bf90435cd45d0475cbb0ace7e7e3a672ed2a3a4984ad3e8624d8878725a9c2e",
+    "pos": "0265fa0d56811b4302084e3da0167e58c9919586ec188c8b197de24d9c3dc191",
+    "wind": "56353f724d2fbb863f431618a6371e91ddfb831a04a100628e40f6c45a67ec3b",
+    "episode": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597"
+  },
+  "display_sprite_sha256": {
+    "gt": "12fc1d73e3ce45a1442f769967ad34d8c1c8d41d318d50d7b1be7361b54bd78e",
+    "real_encoded": "1bcde4acd864f4c5ebd07db7575a1144d69eeae7af8ba88eaee5449e28e38bf5",
+    "jepa": "b2057e3cb3e7b66b86ed6cb0b53745ac351847bd34d3097e08cd8614ddfcd457",
+    "flow": "017463c6430c65cc60c4a61fb2486d45f77b6b08516bd8a6e54cc435f609b1af",
+    "flow_encoded": "bdda060f8f941c64aeb30101e65378e6c14a057da67ed844f2578975422fd3fc"
+  },
+  "display_transform": "none; concatenation only; native uint8 RGB preserved",
+  "note": "Flow uses the corrected PPO recipe checkpoint, not the older redcube benchmark flow checkpoint."
+}

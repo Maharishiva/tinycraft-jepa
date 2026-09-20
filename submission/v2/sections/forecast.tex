@@ -1,0 +1,26 @@
+\subsection{Read-out adaptation lowers MAE without reliable position tracking}
+\label{sec:forecast-result}
+
+The original decoder omits the wall from predicted latents within two steps for all three models,
+although it renders the wall from real encodings. To examine this transfer, we fit identical affine
+ridge read-outs on real future encodings, forecasts, or copied current encodings and evaluate their
+full cross-domain transfer. Training and evaluation use separate archives. Both predeclared
+train-only scaling schemes, four horizons, all models, and copied-current and constant baselines
+are retained in Appendix~\ref{app:forecast}.
+
+Refitting reduces model 2's eight-step wall-position MAE from $16.47$ to $9.11$ pixels on the
+wall-present cohort. However, the forecast-fitted probe has RMSE $18.65$ pixels, worse than $13.49$
+for the constant training-mean baseline. Its correlation with true position is only $0.246$.
+In the prespecified current-pre-reveal continuing slice ($n=716$), refitting reduces MAE from
+$10.02$ to $6.16$ pixels, a paired gain of $3.85$ $[3.48,4.22]$. Yet its within-slice correlation
+is negative ($-0.175$). A post-hoc check using only the matching training cohort gives constant
+mean and median baselines of $4.77$ and $4.64$ pixels, both better than the adapted probe. The
+predeclared global-mean baseline gives $14.24$ pixels on this slice, while the matching-cohort
+constants outperform the adapted probe. The adapted probe's advantage over a copied-current probe
+also has an interval containing zero. These measurements show changed read-out error, with a coarse
+association in one model; they do not demonstrate reliable position recovery. Models 0 and 1 have
+weaker real-latent controls and forecast-fitted errors near the constant baseline.
+
+The forecast test therefore leaves the representation question unresolved at the precision needed
+for control. A missing decoded wall establishes failure of that decoder on forecasts. Refitting a
+state probe, by itself, does not turn a favorable conditional MAE into evidence of accurate dynamics.

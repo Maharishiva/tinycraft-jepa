@@ -1,0 +1,32 @@
+\section{Model and study design}
+\label{sec:worlds}
+
+\paragraph{Joint representation and prediction.}
+An encoder maps an image to $z_t=f_\theta(x_t)\in\R^D$. An action-conditioned predictor uses
+$H$ latent frames and their actions to predict the next latent:
+\begin{equation}
+\label{eq:lewm}
+\Lcal(\theta)=\frac{1}{D}\widehat{\E}_t\left\|g_\theta(z_{t-H+1:t},a_{t-H+1:t})-z_{t+1}\right\|^2
++\lambda\,\mathrm{SIGReg}(\{z_t\}).
+\end{equation}
+Gradients reach both the predictions and their targets; there is no stop-gradient or teacher.
+SIGReg compares the characteristic functions of random latent projections with those of a standard
+Gaussian \citep{balestriero2025lejepa}. It constrains the marginal distribution of features, not which
+physical variables they represent. The precise empirical and population expressions appear in
+Appendix~\ref{app:proofs}.
+
+The main grid model uses a $4\times4\times32$ latent ($D=512$), a tile-transformer encoder, and a
+factored spatial--temporal predictor with eight-frame history. Its representation training uses
+neither pixels as prediction targets nor rewards. Each model is fitted on $500{,}000$ transitions
+for approximately ten minutes on an A100; post-hoc decoders, heads, and policies are fitted separately.
+The Craftax and gate checkpoints use the same grid shape and training family but different data.
+Appendix~\ref{app:hparams} gives the complete settings and measured times.
+
+\paragraph{Three tests.}
+A frozen decoder tests whether information is \emph{recoverable from an encoding} under additional
+supervision. Applying that same decoder to predicted latents tests whether it remains accessible in
+\emph{model-generated futures}; because such latents can leave the encoder's distribution, a bad
+rendering alone does not prove that the information is absent. Finally, a controller evaluated in
+the real environment tests the \emph{complete learned pipeline}, including its observation interface,
+reward and termination estimates, optimizer, and training distribution. These tests become more
+informative when their shared components and changed components are explicit.

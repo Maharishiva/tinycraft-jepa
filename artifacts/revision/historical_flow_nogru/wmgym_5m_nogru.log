@@ -1,0 +1,888 @@
+Loading Craftax-Classic textures from cache.
+Textures successfully loaded from cache.
+[init] params=6092177 devices=[CudaDevice(id=0)]
+[init] environment = world model /home/rldoeswork/personal/codex-wm-push-20260916/checkpoints/normuon_head_bridge_s0/model.npz (4 Euler steps, window 32, cap 1024); evaluation stays in real Craftax
+E0917 21:24:43.042621 1886852 cuda_timer.cc:87] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.
+[iter] {"iter": 1, "env_steps": 6400, "sec": 45.5, "real_r": 0.0168, "pg": -0.0725, "vf": 1.5412, "ent": 2.817}
+[iter] {"iter": 2, "env_steps": 12800, "sec": 3.1, "real_r": 0.003, "pg": -0.2325, "vf": 1.2527, "ent": 2.812}
+[iter] {"iter": 3, "env_steps": 19200, "sec": 3.1, "real_r": 0.0016, "pg": -0.0564, "vf": 1.2465, "ent": 2.802}
+[iter] {"iter": 4, "env_steps": 25600, "sec": 3.1, "real_r": 0.0027, "pg": -0.0368, "vf": 1.2467, "ent": 2.778}
+[iter] {"iter": 5, "env_steps": 32000, "sec": 3.1, "real_r": 0.0043, "pg": -0.0735, "vf": 1.256, "ent": 2.757}
+[iter] {"iter": 6, "env_steps": 38400, "sec": 3.2, "real_r": 0.0035, "pg": 0.0309, "vf": 1.3246, "ent": 2.731}
+[iter] {"iter": 7, "env_steps": 44800, "sec": 3.1, "real_r": 0.0019, "pg": -0.0777, "vf": 1.2377, "ent": 2.715}
+[iter] {"iter": 8, "env_steps": 51200, "sec": 3.2, "real_r": 0.0014, "pg": -0.0897, "vf": 1.2259, "ent": 2.71}
+[eval] {"phase": "ppo", "iter": 8, "env_steps": 51200, "return": 0.477, "ret_sem": 0.119, "ach": 1.414, "max_ach": 7, "score": 1.82, "len": 154.9, "n_ep": 128, "sec": 95.6}
+[iter] {"iter": 9, "env_steps": 57600, "sec": 3.2, "real_r": 0.0007, "pg": -0.1618, "vf": 1.1936, "ent": 2.701}
+[iter] {"iter": 10, "env_steps": 64000, "sec": 3.2, "real_r": 0.0003, "pg": -0.1022, "vf": 1.207, "ent": 2.681}
+[iter] {"iter": 11, "env_steps": 70400, "sec": 3.2, "real_r": 0.0001, "pg": -0.0447, "vf": 1.2661, "ent": 2.657}
+[iter] {"iter": 12, "env_steps": 76800, "sec": 3.2, "real_r": 0.0013, "pg": -0.1264, "vf": 1.2072, "ent": 2.618}
+[iter] {"iter": 13, "env_steps": 83200, "sec": 3.2, "real_r": 0.0011, "pg": -0.1002, "vf": 1.2314, "ent": 2.619}
+[iter] {"iter": 14, "env_steps": 89600, "sec": 3.2, "real_r": 0.0004, "pg": -0.137, "vf": 1.2147, "ent": 2.574}
+[iter] {"iter": 15, "env_steps": 96000, "sec": 3.2, "real_r": 0.0004, "pg": -0.1508, "vf": 1.2346, "ent": 2.522}
+[iter] {"iter": 16, "env_steps": 102400, "sec": 3.2, "real_r": 0.0005, "pg": -0.1963, "vf": 1.1949, "ent": 2.522}
+[eval] {"phase": "ppo", "iter": 16, "env_steps": 102400, "return": -0.138, "ret_sem": 0.085, "ach": 0.773, "max_ach": 4, "score": 0.94, "len": 153.0, "n_ep": 128, "sec": 122.6}
+[iter] {"iter": 17, "env_steps": 108800, "sec": 3.2, "real_r": 0.0001, "pg": -0.183, "vf": 1.2118, "ent": 2.495}
+[iter] {"iter": 18, "env_steps": 115200, "sec": 3.2, "real_r": 0.0006, "pg": -0.2315, "vf": 1.1722, "ent": 2.479}
+[iter] {"iter": 19, "env_steps": 121600, "sec": 3.2, "real_r": 0.0002, "pg": -0.1454, "vf": 1.2284, "ent": 2.5}
+[iter] {"iter": 20, "env_steps": 128000, "sec": 3.2, "real_r": -0.0001, "pg": -0.1765, "vf": 1.2605, "ent": 2.533}
+[iter] {"iter": 21, "env_steps": 134400, "sec": 3.2, "real_r": 0.0002, "pg": -0.0305, "vf": 1.254, "ent": 2.529}
+[iter] {"iter": 22, "env_steps": 140800, "sec": 3.2, "real_r": 0.0021, "pg": -0.0832, "vf": 1.2827, "ent": 2.499}
+[iter] {"iter": 23, "env_steps": 147200, "sec": 3.2, "real_r": 0.0028, "pg": -0.1452, "vf": 1.2257, "ent": 2.505}
+[iter] {"iter": 24, "env_steps": 153600, "sec": 3.2, "real_r": 0.0028, "pg": -0.1824, "vf": 1.2158, "ent": 2.499}
+[eval] {"phase": "ppo", "iter": 24, "env_steps": 153600, "return": 0.364, "ret_sem": 0.101, "ach": 1.305, "max_ach": 4, "score": 1.44, "len": 163.1, "n_ep": 128, "sec": 150.1}
+[iter] {"iter": 25, "env_steps": 160000, "sec": 3.2, "real_r": 0.0017, "pg": -0.1584, "vf": 1.2377, "ent": 2.462}
+[iter] {"iter": 26, "env_steps": 166400, "sec": 3.2, "real_r": 0.0016, "pg": -0.1226, "vf": 1.2789, "ent": 2.499}
+[iter] {"iter": 27, "env_steps": 172800, "sec": 3.2, "real_r": 0.0022, "pg": -0.1564, "vf": 1.3253, "ent": 2.486}
+[iter] {"iter": 28, "env_steps": 179200, "sec": 3.2, "real_r": 0.0012, "pg": -0.0415, "vf": 1.3005, "ent": 2.536}
+[iter] {"iter": 29, "env_steps": 185600, "sec": 3.2, "real_r": 0.003, "pg": -0.1529, "vf": 1.2444, "ent": 2.535}
+[iter] {"iter": 30, "env_steps": 192000, "sec": 3.2, "real_r": 0.0024, "pg": -0.1148, "vf": 1.2795, "ent": 2.518}
+[iter] {"iter": 31, "env_steps": 198400, "sec": 3.2, "real_r": 0.005, "pg": -0.1507, "vf": 1.2508, "ent": 2.496}
+[iter] {"iter": 32, "env_steps": 204800, "sec": 3.2, "real_r": 0.0015, "pg": -0.1287, "vf": 1.2531, "ent": 2.453}
+[eval] {"phase": "ppo", "iter": 32, "env_steps": 204800, "return": 0.364, "ret_sem": 0.093, "ach": 1.297, "max_ach": 5, "score": 1.36, "len": 156.2, "n_ep": 128, "sec": 177.4}
+[iter] {"iter": 33, "env_steps": 211200, "sec": 3.2, "real_r": 0.0011, "pg": -0.1004, "vf": 1.3127, "ent": 2.451}
+[iter] {"iter": 34, "env_steps": 217600, "sec": 3.2, "real_r": 0.0019, "pg": -0.1574, "vf": 1.2882, "ent": 2.429}
+[iter] {"iter": 35, "env_steps": 224000, "sec": 3.2, "real_r": 0.0026, "pg": -0.1198, "vf": 1.31, "ent": 2.439}
+[iter] {"iter": 36, "env_steps": 230400, "sec": 3.2, "real_r": 0.0031, "pg": -0.1074, "vf": 1.2884, "ent": 2.46}
+[iter] {"iter": 37, "env_steps": 236800, "sec": 3.2, "real_r": 0.0025, "pg": -0.1459, "vf": 1.2756, "ent": 2.454}
+[iter] {"iter": 38, "env_steps": 243200, "sec": 3.2, "real_r": 0.0024, "pg": -0.1944, "vf": 1.2284, "ent": 2.481}
+[iter] {"iter": 39, "env_steps": 249600, "sec": 3.2, "real_r": 0.0022, "pg": -0.1723, "vf": 1.3051, "ent": 2.505}
+[iter] {"iter": 40, "env_steps": 256000, "sec": 3.2, "real_r": 0.0026, "pg": -0.1126, "vf": 1.319, "ent": 2.489}
+[eval] {"phase": "ppo", "iter": 40, "env_steps": 256000, "return": 0.824, "ret_sem": 0.114, "ach": 1.742, "max_ach": 6, "score": 1.65, "len": 157.6, "n_ep": 128, "sec": 204.6}
+[iter] {"iter": 41, "env_steps": 262400, "sec": 3.2, "real_r": 0.0023, "pg": -0.1807, "vf": 1.3585, "ent": 2.501}
+[iter] {"iter": 42, "env_steps": 268800, "sec": 3.2, "real_r": 0.0015, "pg": -0.1441, "vf": 1.4497, "ent": 2.461}
+[iter] {"iter": 43, "env_steps": 275200, "sec": 3.2, "real_r": 0.002, "pg": -0.0286, "vf": 1.403, "ent": 2.461}
+[iter] {"iter": 44, "env_steps": 281600, "sec": 3.2, "real_r": 0.0038, "pg": -0.107, "vf": 1.2802, "ent": 2.488}
+[iter] {"iter": 45, "env_steps": 288000, "sec": 3.2, "real_r": 0.002, "pg": -0.0668, "vf": 1.3196, "ent": 2.458}
+[iter] {"iter": 46, "env_steps": 294400, "sec": 3.2, "real_r": 0.0027, "pg": -0.0823, "vf": 1.3592, "ent": 2.46}
+[iter] {"iter": 47, "env_steps": 300800, "sec": 3.2, "real_r": 0.0023, "pg": -0.1059, "vf": 1.309, "ent": 2.478}
+[iter] {"iter": 48, "env_steps": 307200, "sec": 3.2, "real_r": 0.004, "pg": -0.0889, "vf": 1.4316, "ent": 2.463}
+[eval] {"phase": "ppo", "iter": 48, "env_steps": 307200, "return": 1.164, "ret_sem": 0.128, "ach": 2.07, "max_ach": 8, "score": 2.37, "len": 148.3, "n_ep": 128, "sec": 232.0}
+[iter] {"iter": 49, "env_steps": 313600, "sec": 3.2, "real_r": 0.0041, "pg": -0.0537, "vf": 1.3891, "ent": 2.453}
+[iter] {"iter": 50, "env_steps": 320000, "sec": 3.2, "real_r": 0.0049, "pg": -0.0836, "vf": 1.367, "ent": 2.442}
+[iter] {"iter": 51, "env_steps": 326400, "sec": 3.6, "real_r": 0.002, "pg": -0.1444, "vf": 1.3726, "ent": 2.438}
+[iter] {"iter": 52, "env_steps": 332800, "sec": 3.2, "real_r": 0.0024, "pg": -0.1214, "vf": 1.3501, "ent": 2.43}
+[iter] {"iter": 53, "env_steps": 339200, "sec": 3.2, "real_r": 0.0027, "pg": -0.1919, "vf": 1.3494, "ent": 2.421}
+[iter] {"iter": 54, "env_steps": 345600, "sec": 3.2, "real_r": 0.0041, "pg": -0.1192, "vf": 1.321, "ent": 2.47}
+[iter] {"iter": 55, "env_steps": 352000, "sec": 3.2, "real_r": 0.0019, "pg": 0.0106, "vf": 1.3035, "ent": 2.389}
+[iter] {"iter": 56, "env_steps": 358400, "sec": 3.2, "real_r": 0.0024, "pg": -0.1224, "vf": 1.3671, "ent": 2.351}
+[eval] {"phase": "ppo", "iter": 56, "env_steps": 358400, "return": 1.201, "ret_sem": 0.133, "ach": 2.094, "max_ach": 8, "score": 2.38, "len": 150.8, "n_ep": 128, "sec": 259.7}
+[iter] {"iter": 57, "env_steps": 364800, "sec": 3.2, "real_r": 0.0021, "pg": -0.0596, "vf": 1.3641, "ent": 2.386}
+[iter] {"iter": 58, "env_steps": 371200, "sec": 3.2, "real_r": 0.0038, "pg": -0.1052, "vf": 1.3019, "ent": 2.334}
+[iter] {"iter": 59, "env_steps": 377600, "sec": 3.2, "real_r": 0.0021, "pg": -0.1403, "vf": 1.3244, "ent": 2.27}
+[iter] {"iter": 60, "env_steps": 384000, "sec": 3.2, "real_r": 0.0006, "pg": -0.0598, "vf": 1.3829, "ent": 2.29}
+[iter] {"iter": 61, "env_steps": 390400, "sec": 3.2, "real_r": 0.0031, "pg": -0.0742, "vf": 1.3587, "ent": 2.269}
+[iter] {"iter": 62, "env_steps": 396800, "sec": 3.2, "real_r": 0.0029, "pg": -0.1151, "vf": 1.3301, "ent": 2.286}
+[iter] {"iter": 63, "env_steps": 403200, "sec": 3.2, "real_r": 0.0022, "pg": -0.1309, "vf": 1.3133, "ent": 2.254}
+[iter] {"iter": 64, "env_steps": 409600, "sec": 3.2, "real_r": 0.0017, "pg": 0.0031, "vf": 1.4304, "ent": 2.176}
+[eval] {"phase": "ppo", "iter": 64, "env_steps": 409600, "return": 0.884, "ret_sem": 0.115, "ach": 1.773, "max_ach": 6, "score": 1.56, "len": 143.3, "n_ep": 128, "sec": 287.0}
+[iter] {"iter": 65, "env_steps": 416000, "sec": 3.2, "real_r": 0.0014, "pg": -0.0973, "vf": 1.4225, "ent": 2.302}
+[iter] {"iter": 66, "env_steps": 422400, "sec": 3.2, "real_r": 0.0034, "pg": -0.1543, "vf": 1.362, "ent": 2.316}
+[iter] {"iter": 67, "env_steps": 428800, "sec": 3.2, "real_r": 0.0017, "pg": -0.1661, "vf": 1.3686, "ent": 2.258}
+[iter] {"iter": 68, "env_steps": 435200, "sec": 3.2, "real_r": 0.0032, "pg": -0.1377, "vf": 1.306, "ent": 2.287}
+[iter] {"iter": 69, "env_steps": 441600, "sec": 3.2, "real_r": 0.0008, "pg": -0.1005, "vf": 1.3391, "ent": 2.182}
+[iter] {"iter": 70, "env_steps": 448000, "sec": 3.2, "real_r": 0.0007, "pg": -0.0193, "vf": 1.4102, "ent": 2.144}
+[iter] {"iter": 71, "env_steps": 454400, "sec": 3.2, "real_r": 0.0041, "pg": 0.063, "vf": 1.3124, "ent": 2.249}
+[iter] {"iter": 72, "env_steps": 460800, "sec": 3.2, "real_r": 0.0027, "pg": -0.1657, "vf": 1.2742, "ent": 2.22}
+[eval] {"phase": "ppo", "iter": 72, "env_steps": 460800, "return": 1.224, "ret_sem": 0.125, "ach": 2.133, "max_ach": 7, "score": 1.78, "len": 155.0, "n_ep": 128, "sec": 314.2}
+[iter] {"iter": 73, "env_steps": 467200, "sec": 3.2, "real_r": 0.0042, "pg": -0.0988, "vf": 1.297, "ent": 2.158}
+[iter] {"iter": 74, "env_steps": 473600, "sec": 3.2, "real_r": 0.0008, "pg": -0.0312, "vf": 1.4397, "ent": 2.06}
+[iter] {"iter": 75, "env_steps": 480000, "sec": 3.2, "real_r": 0.0013, "pg": -0.1091, "vf": 1.3861, "ent": 2.036}
+[iter] {"iter": 76, "env_steps": 486400, "sec": 3.2, "real_r": 0.0021, "pg": -0.1119, "vf": 1.3158, "ent": 2.018}
+[iter] {"iter": 77, "env_steps": 492800, "sec": 3.2, "real_r": 0.0018, "pg": -0.1578, "vf": 1.2861, "ent": 2.089}
+[iter] {"iter": 78, "env_steps": 499200, "sec": 3.2, "real_r": 0.0026, "pg": -0.0109, "vf": 1.353, "ent": 2.157}
+[iter] {"iter": 79, "env_steps": 505600, "sec": 3.2, "real_r": 0.0027, "pg": -0.0106, "vf": 1.3225, "ent": 2.127}
+[save] model_500k.pkl at 505600 steps
+[iter] {"iter": 80, "env_steps": 512000, "sec": 3.2, "real_r": 0.0028, "pg": -0.1185, "vf": 1.2887, "ent": 2.189}
+[eval] {"phase": "ppo", "iter": 80, "env_steps": 512000, "return": 0.848, "ret_sem": 0.118, "ach": 1.766, "max_ach": 6, "score": 1.56, "len": 150.9, "n_ep": 128, "sec": 341.2}
+[iter] {"iter": 81, "env_steps": 518400, "sec": 3.2, "real_r": 0.0021, "pg": -0.0636, "vf": 1.2965, "ent": 2.139}
+[iter] {"iter": 82, "env_steps": 524800, "sec": 3.2, "real_r": 0.0018, "pg": -0.1432, "vf": 1.4323, "ent": 2.071}
+[iter] {"iter": 83, "env_steps": 531200, "sec": 3.2, "real_r": 0.0023, "pg": -0.0714, "vf": 1.3658, "ent": 2.212}
+[iter] {"iter": 84, "env_steps": 537600, "sec": 3.2, "real_r": 0.0008, "pg": -0.1974, "vf": 1.3709, "ent": 2.135}
+[iter] {"iter": 85, "env_steps": 544000, "sec": 3.2, "real_r": 0.0028, "pg": -0.0083, "vf": 1.4106, "ent": 2.19}
+[iter] {"iter": 86, "env_steps": 550400, "sec": 3.2, "real_r": 0.0011, "pg": -0.1682, "vf": 1.3541, "ent": 1.997}
+[iter] {"iter": 87, "env_steps": 556800, "sec": 3.2, "real_r": 0.0035, "pg": -0.0848, "vf": 1.3469, "ent": 2.001}
+[iter] {"iter": 88, "env_steps": 563200, "sec": 3.2, "real_r": 0.0024, "pg": -0.1075, "vf": 1.4005, "ent": 1.948}
+[eval] {"phase": "ppo", "iter": 88, "env_steps": 563200, "return": 0.872, "ret_sem": 0.121, "ach": 1.805, "max_ach": 9, "score": 1.87, "len": 151.8, "n_ep": 128, "sec": 368.6}
+[iter] {"iter": 89, "env_steps": 569600, "sec": 3.2, "real_r": 0.0039, "pg": -0.0635, "vf": 1.3469, "ent": 2.125}
+[iter] {"iter": 90, "env_steps": 576000, "sec": 3.2, "real_r": 0.0028, "pg": -0.1679, "vf": 1.3843, "ent": 2.142}
+[iter] {"iter": 91, "env_steps": 582400, "sec": 3.2, "real_r": 0.0037, "pg": -0.1016, "vf": 1.2768, "ent": 2.16}
+[iter] {"iter": 92, "env_steps": 588800, "sec": 3.2, "real_r": 0.0025, "pg": -0.198, "vf": 1.3473, "ent": 2.084}
+[iter] {"iter": 93, "env_steps": 595200, "sec": 3.2, "real_r": 0.0035, "pg": -0.0501, "vf": 1.3192, "ent": 2.202}
+[iter] {"iter": 94, "env_steps": 601600, "sec": 3.2, "real_r": 0.003, "pg": -0.078, "vf": 1.4195, "ent": 2.083}
+[iter] {"iter": 95, "env_steps": 608000, "sec": 3.2, "real_r": 0.0042, "pg": -0.0065, "vf": 1.3595, "ent": 2.205}
+[iter] {"iter": 96, "env_steps": 614400, "sec": 3.2, "real_r": 0.0043, "pg": -0.0635, "vf": 1.2614, "ent": 2.219}
+[eval] {"phase": "ppo", "iter": 96, "env_steps": 614400, "return": 1.012, "ret_sem": 0.103, "ach": 1.938, "max_ach": 5, "score": 1.6, "len": 149.0, "n_ep": 128, "sec": 396.0}
+[iter] {"iter": 97, "env_steps": 620800, "sec": 3.2, "real_r": 0.0026, "pg": -0.2269, "vf": 1.2962, "ent": 2.08}
+[iter] {"iter": 98, "env_steps": 627200, "sec": 3.2, "real_r": 0.0025, "pg": -0.1368, "vf": 1.2801, "ent": 2.022}
+[iter] {"iter": 99, "env_steps": 633600, "sec": 3.2, "real_r": 0.0027, "pg": -0.1115, "vf": 1.3803, "ent": 1.924}
+[iter] {"iter": 100, "env_steps": 640000, "sec": 3.2, "real_r": 0.0026, "pg": -0.0788, "vf": 1.3333, "ent": 1.934}
+[iter] {"iter": 101, "env_steps": 646400, "sec": 3.2, "real_r": 0.0014, "pg": 0.0355, "vf": 1.4829, "ent": 1.952}
+[iter] {"iter": 102, "env_steps": 652800, "sec": 3.2, "real_r": 0.0031, "pg": 0.0056, "vf": 1.4805, "ent": 1.899}
+[iter] {"iter": 103, "env_steps": 659200, "sec": 3.2, "real_r": 0.0032, "pg": -0.1021, "vf": 1.367, "ent": 1.945}
+[iter] {"iter": 104, "env_steps": 665600, "sec": 3.2, "real_r": 0.0022, "pg": -0.1119, "vf": 1.3045, "ent": 1.957}
+[eval] {"phase": "ppo", "iter": 104, "env_steps": 665600, "return": 0.994, "ret_sem": 0.11, "ach": 1.906, "max_ach": 7, "score": 1.65, "len": 160.2, "n_ep": 128, "sec": 423.2}
+[iter] {"iter": 105, "env_steps": 672000, "sec": 3.2, "real_r": 0.0021, "pg": -0.1145, "vf": 1.3303, "ent": 2.008}
+[iter] {"iter": 106, "env_steps": 678400, "sec": 3.2, "real_r": 0.003, "pg": -0.0894, "vf": 1.274, "ent": 2.021}
+[iter] {"iter": 107, "env_steps": 684800, "sec": 3.2, "real_r": 0.0014, "pg": 0.0108, "vf": 1.3071, "ent": 2.018}
+[iter] {"iter": 108, "env_steps": 691200, "sec": 3.2, "real_r": 0.0015, "pg": -0.1385, "vf": 1.272, "ent": 1.985}
+[iter] {"iter": 109, "env_steps": 697600, "sec": 3.2, "real_r": 0.0017, "pg": -0.0503, "vf": 1.3197, "ent": 1.797}
+[iter] {"iter": 110, "env_steps": 704000, "sec": 3.2, "real_r": 0.0023, "pg": -0.0665, "vf": 1.4426, "ent": 1.765}
+[iter] {"iter": 111, "env_steps": 710400, "sec": 3.2, "real_r": 0.0044, "pg": -0.0856, "vf": 1.3503, "ent": 1.892}
+[iter] {"iter": 112, "env_steps": 716800, "sec": 3.2, "real_r": 0.0025, "pg": -0.0973, "vf": 1.3377, "ent": 1.818}
+[eval] {"phase": "ppo", "iter": 112, "env_steps": 716800, "return": 1.302, "ret_sem": 0.111, "ach": 2.227, "max_ach": 6, "score": 1.66, "len": 158.8, "n_ep": 128, "sec": 450.4}
+[iter] {"iter": 113, "env_steps": 723200, "sec": 3.2, "real_r": 0.0036, "pg": -0.1218, "vf": 1.3907, "ent": 1.792}
+[iter] {"iter": 114, "env_steps": 729600, "sec": 3.2, "real_r": 0.0033, "pg": -0.0585, "vf": 1.3192, "ent": 1.862}
+[iter] {"iter": 115, "env_steps": 736000, "sec": 3.2, "real_r": 0.0047, "pg": -0.1597, "vf": 1.3117, "ent": 1.941}
+[iter] {"iter": 116, "env_steps": 742400, "sec": 3.2, "real_r": 0.004, "pg": -0.0927, "vf": 1.275, "ent": 1.967}
+[iter] {"iter": 117, "env_steps": 748800, "sec": 3.2, "real_r": 0.002, "pg": -0.1151, "vf": 1.2996, "ent": 2.041}
+[iter] {"iter": 118, "env_steps": 755200, "sec": 3.2, "real_r": 0.0037, "pg": -0.0968, "vf": 1.3959, "ent": 2.06}
+[iter] {"iter": 119, "env_steps": 761600, "sec": 3.2, "real_r": 0.0023, "pg": -0.0742, "vf": 1.3724, "ent": 2.015}
+[iter] {"iter": 120, "env_steps": 768000, "sec": 3.2, "real_r": 0.0029, "pg": -0.0683, "vf": 1.3452, "ent": 1.999}
+[eval] {"phase": "ppo", "iter": 120, "env_steps": 768000, "return": 1.702, "ret_sem": 0.11, "ach": 2.625, "max_ach": 6, "score": 1.82, "len": 156.6, "n_ep": 128, "sec": 477.6}
+[iter] {"iter": 121, "env_steps": 774400, "sec": 3.2, "real_r": 0.0039, "pg": -0.1047, "vf": 1.3534, "ent": 1.925}
+[iter] {"iter": 122, "env_steps": 780800, "sec": 3.2, "real_r": 0.0059, "pg": -0.1452, "vf": 1.341, "ent": 1.937}
+[iter] {"iter": 123, "env_steps": 787200, "sec": 3.2, "real_r": 0.0046, "pg": -0.1224, "vf": 1.3076, "ent": 2.028}
+[iter] {"iter": 124, "env_steps": 793600, "sec": 3.2, "real_r": 0.0038, "pg": -0.1403, "vf": 1.307, "ent": 2.013}
+[iter] {"iter": 125, "env_steps": 800000, "sec": 3.2, "real_r": 0.0055, "pg": -0.1436, "vf": 1.3311, "ent": 1.894}
+[iter] {"iter": 126, "env_steps": 806400, "sec": 3.2, "real_r": 0.0029, "pg": -0.2167, "vf": 1.4271, "ent": 1.786}
+[iter] {"iter": 127, "env_steps": 812800, "sec": 3.2, "real_r": 0.0026, "pg": -0.081, "vf": 1.3413, "ent": 1.799}
+[iter] {"iter": 128, "env_steps": 819200, "sec": 3.2, "real_r": 0.0041, "pg": -0.0889, "vf": 1.3956, "ent": 1.726}
+[eval] {"phase": "ppo", "iter": 128, "env_steps": 819200, "return": 1.752, "ret_sem": 0.105, "ach": 2.672, "max_ach": 6, "score": 1.64, "len": 155.0, "n_ep": 128, "sec": 504.9}
+[iter] {"iter": 129, "env_steps": 825600, "sec": 3.2, "real_r": 0.0029, "pg": -0.1709, "vf": 1.4134, "ent": 1.541}
+[iter] {"iter": 130, "env_steps": 832000, "sec": 3.2, "real_r": 0.0036, "pg": -0.0556, "vf": 1.3049, "ent": 1.606}
+[iter] {"iter": 131, "env_steps": 838400, "sec": 3.2, "real_r": 0.0039, "pg": 0.0126, "vf": 1.6005, "ent": 1.44}
+[iter] {"iter": 132, "env_steps": 844800, "sec": 3.2, "real_r": 0.0055, "pg": -0.0569, "vf": 1.3662, "ent": 1.624}
+[iter] {"iter": 133, "env_steps": 851200, "sec": 3.2, "real_r": 0.0055, "pg": -0.0634, "vf": 1.3812, "ent": 1.71}
+[iter] {"iter": 134, "env_steps": 857600, "sec": 3.2, "real_r": 0.0024, "pg": 0.0432, "vf": 1.4468, "ent": 1.517}
+[iter] {"iter": 135, "env_steps": 864000, "sec": 3.2, "real_r": 0.004, "pg": -0.0332, "vf": 1.4576, "ent": 1.57}
+[iter] {"iter": 136, "env_steps": 870400, "sec": 3.2, "real_r": 0.0065, "pg": 0.0273, "vf": 1.4346, "ent": 1.746}
+[eval] {"phase": "ppo", "iter": 136, "env_steps": 870400, "return": 1.983, "ret_sem": 0.104, "ach": 2.922, "max_ach": 7, "score": 2.07, "len": 134.6, "n_ep": 128, "sec": 532.2}
+[iter] {"iter": 137, "env_steps": 876800, "sec": 3.2, "real_r": 0.0063, "pg": -0.0205, "vf": 1.5515, "ent": 1.597}
+[iter] {"iter": 138, "env_steps": 883200, "sec": 3.2, "real_r": 0.0031, "pg": -0.0337, "vf": 1.4444, "ent": 1.436}
+[iter] {"iter": 139, "env_steps": 889600, "sec": 3.2, "real_r": 0.0073, "pg": 0.014, "vf": 1.4083, "ent": 1.391}
+[iter] {"iter": 140, "env_steps": 896000, "sec": 3.2, "real_r": 0.003, "pg": -0.0249, "vf": 1.4595, "ent": 1.195}
+[iter] {"iter": 141, "env_steps": 902400, "sec": 3.2, "real_r": 0.0056, "pg": -0.0285, "vf": 1.4644, "ent": 1.322}
+[iter] {"iter": 142, "env_steps": 908800, "sec": 3.2, "real_r": 0.0055, "pg": -0.1134, "vf": 1.5144, "ent": 1.138}
+[iter] {"iter": 143, "env_steps": 915200, "sec": 3.2, "real_r": 0.0066, "pg": -0.0671, "vf": 1.4264, "ent": 1.247}
+[iter] {"iter": 144, "env_steps": 921600, "sec": 3.2, "real_r": 0.0043, "pg": 0.0019, "vf": 1.4552, "ent": 1.258}
+[eval] {"phase": "ppo", "iter": 144, "env_steps": 921600, "return": 2.214, "ret_sem": 0.103, "ach": 3.156, "max_ach": 6, "score": 2.09, "len": 162.7, "n_ep": 128, "sec": 559.7}
+[iter] {"iter": 145, "env_steps": 928000, "sec": 3.2, "real_r": 0.0052, "pg": 0.0026, "vf": 1.4794, "ent": 1.174}
+[iter] {"iter": 146, "env_steps": 934400, "sec": 3.2, "real_r": 0.0041, "pg": -0.0393, "vf": 1.4228, "ent": 1.351}
+[iter] {"iter": 147, "env_steps": 940800, "sec": 3.5, "real_r": 0.0046, "pg": 0.0178, "vf": 1.4235, "ent": 1.46}
+[iter] {"iter": 148, "env_steps": 947200, "sec": 3.2, "real_r": 0.004, "pg": -0.0012, "vf": 1.5572, "ent": 1.253}
+[iter] {"iter": 149, "env_steps": 953600, "sec": 3.2, "real_r": 0.005, "pg": -0.081, "vf": 1.4843, "ent": 1.256}
+[iter] {"iter": 150, "env_steps": 960000, "sec": 3.2, "real_r": 0.0046, "pg": -0.0985, "vf": 1.5461, "ent": 1.357}
+[iter] {"iter": 151, "env_steps": 966400, "sec": 3.2, "real_r": 0.0075, "pg": -0.0414, "vf": 1.4918, "ent": 1.455}
+[iter] {"iter": 152, "env_steps": 972800, "sec": 3.2, "real_r": 0.0031, "pg": -0.0714, "vf": 1.4268, "ent": 1.296}
+[eval] {"phase": "ppo", "iter": 152, "env_steps": 972800, "return": 2.723, "ret_sem": 0.126, "ach": 3.703, "max_ach": 7, "score": 2.67, "len": 132.7, "n_ep": 128, "sec": 587.5}
+[iter] {"iter": 153, "env_steps": 979200, "sec": 3.2, "real_r": 0.0048, "pg": -0.0513, "vf": 1.5332, "ent": 1.226}
+[iter] {"iter": 154, "env_steps": 985600, "sec": 3.2, "real_r": 0.0021, "pg": -0.0915, "vf": 1.6157, "ent": 1.087}
+[iter] {"iter": 155, "env_steps": 992000, "sec": 3.2, "real_r": 0.0058, "pg": -0.0808, "vf": 1.4423, "ent": 1.361}
+[iter] {"iter": 156, "env_steps": 998400, "sec": 3.2, "real_r": 0.0064, "pg": -0.0198, "vf": 1.5275, "ent": 1.379}
+[iter] {"iter": 157, "env_steps": 1004800, "sec": 3.2, "real_r": 0.0026, "pg": -0.1801, "vf": 1.4369, "ent": 1.229}
+[save] model_1000k.pkl at 1004800 steps
+[iter] {"iter": 158, "env_steps": 1011200, "sec": 3.2, "real_r": 0.0055, "pg": -0.027, "vf": 1.4548, "ent": 1.121}
+[iter] {"iter": 159, "env_steps": 1017600, "sec": 3.2, "real_r": 0.0034, "pg": -0.0555, "vf": 1.4462, "ent": 0.967}
+[iter] {"iter": 160, "env_steps": 1024000, "sec": 3.2, "real_r": 0.0032, "pg": -0.0498, "vf": 1.4131, "ent": 1.023}
+[eval] {"phase": "ppo", "iter": 160, "env_steps": 1024000, "return": 2.883, "ret_sem": 0.111, "ach": 3.859, "max_ach": 6, "score": 2.41, "len": 143.2, "n_ep": 128, "sec": 614.7}
+[iter] {"iter": 161, "env_steps": 1030400, "sec": 3.2, "real_r": 0.0045, "pg": -0.0207, "vf": 1.5719, "ent": 0.993}
+[iter] {"iter": 162, "env_steps": 1036800, "sec": 3.2, "real_r": 0.0057, "pg": -0.0713, "vf": 1.4104, "ent": 0.916}
+[iter] {"iter": 163, "env_steps": 1043200, "sec": 3.2, "real_r": 0.0073, "pg": -0.0424, "vf": 1.4405, "ent": 0.992}
+[iter] {"iter": 164, "env_steps": 1049600, "sec": 3.2, "real_r": 0.0054, "pg": -0.0568, "vf": 1.3964, "ent": 0.931}
+[iter] {"iter": 165, "env_steps": 1056000, "sec": 3.2, "real_r": 0.007, "pg": -0.0712, "vf": 1.4505, "ent": 0.886}
+[iter] {"iter": 166, "env_steps": 1062400, "sec": 3.2, "real_r": 0.0068, "pg": 0.0141, "vf": 1.4899, "ent": 1.031}
+[iter] {"iter": 167, "env_steps": 1068800, "sec": 3.2, "real_r": 0.0058, "pg": -0.0218, "vf": 1.5003, "ent": 0.956}
+[iter] {"iter": 168, "env_steps": 1075200, "sec": 3.2, "real_r": 0.0052, "pg": -0.0344, "vf": 1.3779, "ent": 1.009}
+[eval] {"phase": "ppo", "iter": 168, "env_steps": 1075200, "return": 3.415, "ret_sem": 0.104, "ach": 4.422, "max_ach": 7, "score": 2.76, "len": 152.0, "n_ep": 128, "sec": 642.1}
+[iter] {"iter": 169, "env_steps": 1081600, "sec": 3.2, "real_r": 0.0039, "pg": -0.0138, "vf": 1.4844, "ent": 0.889}
+[iter] {"iter": 170, "env_steps": 1088000, "sec": 3.2, "real_r": 0.0083, "pg": -0.0061, "vf": 1.6328, "ent": 1.013}
+[iter] {"iter": 171, "env_steps": 1094400, "sec": 3.2, "real_r": 0.0088, "pg": -0.0758, "vf": 1.7012, "ent": 1.094}
+[iter] {"iter": 172, "env_steps": 1100800, "sec": 3.2, "real_r": 0.0046, "pg": -0.0366, "vf": 1.5563, "ent": 1.186}
+[iter] {"iter": 173, "env_steps": 1107200, "sec": 3.2, "real_r": 0.0058, "pg": -0.0383, "vf": 1.5011, "ent": 1.263}
+[iter] {"iter": 174, "env_steps": 1113600, "sec": 3.2, "real_r": 0.0053, "pg": -0.0304, "vf": 1.5423, "ent": 1.304}
+[iter] {"iter": 175, "env_steps": 1120000, "sec": 3.2, "real_r": 0.0055, "pg": 0.005, "vf": 1.4912, "ent": 1.205}
+[iter] {"iter": 176, "env_steps": 1126400, "sec": 3.2, "real_r": 0.0065, "pg": -0.0844, "vf": 1.4855, "ent": 1.252}
+[eval] {"phase": "ppo", "iter": 176, "env_steps": 1126400, "return": 3.545, "ret_sem": 0.106, "ach": 4.594, "max_ach": 8, "score": 2.78, "len": 133.2, "n_ep": 128, "sec": 669.4}
+[iter] {"iter": 177, "env_steps": 1132800, "sec": 3.2, "real_r": 0.0056, "pg": -0.012, "vf": 1.623, "ent": 1.239}
+[iter] {"iter": 178, "env_steps": 1139200, "sec": 3.2, "real_r": 0.0059, "pg": 0.0096, "vf": 1.6588, "ent": 1.216}
+[iter] {"iter": 179, "env_steps": 1145600, "sec": 3.2, "real_r": 0.0079, "pg": 0.0756, "vf": 1.6583, "ent": 1.296}
+[iter] {"iter": 180, "env_steps": 1152000, "sec": 3.2, "real_r": 0.007, "pg": -0.0785, "vf": 1.8364, "ent": 1.286}
+[iter] {"iter": 181, "env_steps": 1158400, "sec": 3.2, "real_r": 0.0047, "pg": -0.0236, "vf": 1.5979, "ent": 1.134}
+[iter] {"iter": 182, "env_steps": 1164800, "sec": 3.2, "real_r": 0.0066, "pg": 0.013, "vf": 1.7999, "ent": 1.297}
+[iter] {"iter": 183, "env_steps": 1171200, "sec": 3.2, "real_r": 0.0056, "pg": 0.0374, "vf": 1.6689, "ent": 1.265}
+[iter] {"iter": 184, "env_steps": 1177600, "sec": 3.2, "real_r": 0.0053, "pg": 0.0137, "vf": 1.4689, "ent": 1.204}
+[eval] {"phase": "ppo", "iter": 184, "env_steps": 1177600, "return": 3.611, "ret_sem": 0.109, "ach": 4.633, "max_ach": 7, "score": 3.16, "len": 142.8, "n_ep": 128, "sec": 696.4}
+[iter] {"iter": 185, "env_steps": 1184000, "sec": 3.2, "real_r": 0.0097, "pg": -0.043, "vf": 1.7193, "ent": 1.379}
+[iter] {"iter": 186, "env_steps": 1190400, "sec": 3.2, "real_r": 0.0057, "pg": 0.0127, "vf": 1.6123, "ent": 1.371}
+[iter] {"iter": 187, "env_steps": 1196800, "sec": 3.2, "real_r": 0.0057, "pg": -0.0609, "vf": 1.5225, "ent": 1.406}
+[iter] {"iter": 188, "env_steps": 1203200, "sec": 3.2, "real_r": 0.0067, "pg": 0.0837, "vf": 1.5626, "ent": 1.46}
+[iter] {"iter": 189, "env_steps": 1209600, "sec": 3.2, "real_r": 0.0059, "pg": -0.0027, "vf": 1.5441, "ent": 1.48}
+[iter] {"iter": 190, "env_steps": 1216000, "sec": 3.2, "real_r": 0.0056, "pg": 0.0431, "vf": 1.6748, "ent": 1.417}
+[iter] {"iter": 191, "env_steps": 1222400, "sec": 3.2, "real_r": 0.0081, "pg": -0.0431, "vf": 1.5734, "ent": 1.379}
+[iter] {"iter": 192, "env_steps": 1228800, "sec": 3.2, "real_r": 0.0042, "pg": -0.0119, "vf": 1.7225, "ent": 1.388}
+[eval] {"phase": "ppo", "iter": 192, "env_steps": 1228800, "return": 3.7, "ret_sem": 0.114, "ach": 4.75, "max_ach": 7, "score": 3.18, "len": 147.5, "n_ep": 128, "sec": 723.7}
+[iter] {"iter": 193, "env_steps": 1235200, "sec": 3.2, "real_r": 0.0074, "pg": -0.0954, "vf": 1.7495, "ent": 1.353}
+[iter] {"iter": 194, "env_steps": 1241600, "sec": 3.2, "real_r": 0.0099, "pg": 0.0088, "vf": 1.6251, "ent": 1.473}
+[iter] {"iter": 195, "env_steps": 1248000, "sec": 3.2, "real_r": 0.0066, "pg": -0.0068, "vf": 1.7995, "ent": 1.353}
+[iter] {"iter": 196, "env_steps": 1254400, "sec": 3.2, "real_r": 0.0045, "pg": -0.0689, "vf": 1.7714, "ent": 1.275}
+[iter] {"iter": 197, "env_steps": 1260800, "sec": 3.2, "real_r": 0.0072, "pg": -0.026, "vf": 1.7674, "ent": 1.42}
+[iter] {"iter": 198, "env_steps": 1267200, "sec": 3.2, "real_r": 0.0073, "pg": -0.018, "vf": 1.6461, "ent": 1.433}
+[iter] {"iter": 199, "env_steps": 1273600, "sec": 3.2, "real_r": 0.0047, "pg": -0.0755, "vf": 1.6539, "ent": 1.386}
+[iter] {"iter": 200, "env_steps": 1280000, "sec": 3.2, "real_r": 0.0066, "pg": -0.0218, "vf": 1.7654, "ent": 1.496}
+[eval] {"phase": "ppo", "iter": 200, "env_steps": 1280000, "return": 3.629, "ret_sem": 0.109, "ach": 4.711, "max_ach": 8, "score": 3.17, "len": 139.6, "n_ep": 128, "sec": 751.0}
+[iter] {"iter": 201, "env_steps": 1286400, "sec": 3.2, "real_r": 0.0088, "pg": 0.0219, "vf": 1.7599, "ent": 1.532}
+[iter] {"iter": 202, "env_steps": 1292800, "sec": 3.2, "real_r": 0.0074, "pg": -0.0943, "vf": 1.8171, "ent": 1.502}
+[iter] {"iter": 203, "env_steps": 1299200, "sec": 3.2, "real_r": 0.0064, "pg": -0.0094, "vf": 1.6837, "ent": 1.428}
+[iter] {"iter": 204, "env_steps": 1305600, "sec": 3.2, "real_r": 0.0085, "pg": 0.069, "vf": 1.7231, "ent": 1.404}
+[iter] {"iter": 205, "env_steps": 1312000, "sec": 3.2, "real_r": 0.0084, "pg": 0.0079, "vf": 1.7788, "ent": 1.431}
+[iter] {"iter": 206, "env_steps": 1318400, "sec": 3.2, "real_r": 0.0072, "pg": -0.0796, "vf": 1.727, "ent": 1.329}
+[iter] {"iter": 207, "env_steps": 1324800, "sec": 3.2, "real_r": 0.0088, "pg": 0.006, "vf": 2.012, "ent": 1.288}
+[iter] {"iter": 208, "env_steps": 1331200, "sec": 3.2, "real_r": 0.0094, "pg": -0.0542, "vf": 1.8592, "ent": 1.313}
+[eval] {"phase": "ppo", "iter": 208, "env_steps": 1331200, "return": 3.865, "ret_sem": 0.12, "ach": 4.914, "max_ach": 8, "score": 3.61, "len": 140.2, "n_ep": 128, "sec": 778.2}
+[iter] {"iter": 209, "env_steps": 1337600, "sec": 3.2, "real_r": 0.007, "pg": -0.0715, "vf": 1.7916, "ent": 1.252}
+[iter] {"iter": 210, "env_steps": 1344000, "sec": 3.2, "real_r": 0.0057, "pg": -0.0684, "vf": 1.7991, "ent": 1.124}
+[iter] {"iter": 211, "env_steps": 1350400, "sec": 3.2, "real_r": 0.0053, "pg": -0.0034, "vf": 1.9041, "ent": 1.144}
+[iter] {"iter": 212, "env_steps": 1356800, "sec": 3.2, "real_r": 0.0079, "pg": 0.003, "vf": 1.8076, "ent": 1.283}
+[iter] {"iter": 213, "env_steps": 1363200, "sec": 3.2, "real_r": 0.008, "pg": -0.0536, "vf": 1.7734, "ent": 1.394}
+[iter] {"iter": 214, "env_steps": 1369600, "sec": 3.2, "real_r": 0.0073, "pg": -0.1231, "vf": 1.5834, "ent": 1.456}
+[iter] {"iter": 215, "env_steps": 1376000, "sec": 3.2, "real_r": 0.0087, "pg": -0.0998, "vf": 1.6658, "ent": 1.472}
+[iter] {"iter": 216, "env_steps": 1382400, "sec": 3.2, "real_r": 0.0075, "pg": 0.0232, "vf": 1.7823, "ent": 1.392}
+[eval] {"phase": "ppo", "iter": 216, "env_steps": 1382400, "return": 3.638, "ret_sem": 0.109, "ach": 4.711, "max_ach": 8, "score": 3.35, "len": 142.8, "n_ep": 128, "sec": 806.0}
+[iter] {"iter": 217, "env_steps": 1388800, "sec": 3.2, "real_r": 0.009, "pg": -0.0231, "vf": 1.5982, "ent": 1.542}
+[iter] {"iter": 218, "env_steps": 1395200, "sec": 3.2, "real_r": 0.007, "pg": -0.0205, "vf": 1.7096, "ent": 1.573}
+[iter] {"iter": 219, "env_steps": 1401600, "sec": 3.2, "real_r": 0.0051, "pg": 0.0258, "vf": 1.8097, "ent": 1.533}
+[iter] {"iter": 220, "env_steps": 1408000, "sec": 3.2, "real_r": 0.0092, "pg": 0.0076, "vf": 1.7618, "ent": 1.582}
+[iter] {"iter": 221, "env_steps": 1414400, "sec": 3.2, "real_r": 0.0086, "pg": -0.094, "vf": 1.7812, "ent": 1.614}
+[iter] {"iter": 222, "env_steps": 1420800, "sec": 3.2, "real_r": 0.0083, "pg": 0.0764, "vf": 1.8161, "ent": 1.661}
+[iter] {"iter": 223, "env_steps": 1427200, "sec": 3.2, "real_r": 0.0086, "pg": 0.0328, "vf": 1.9213, "ent": 1.629}
+[iter] {"iter": 224, "env_steps": 1433600, "sec": 3.2, "real_r": 0.0045, "pg": 0.0344, "vf": 1.9505, "ent": 1.527}
+[eval] {"phase": "ppo", "iter": 224, "env_steps": 1433600, "return": 3.355, "ret_sem": 0.116, "ach": 4.469, "max_ach": 7, "score": 3.41, "len": 126.0, "n_ep": 128, "sec": 833.0}
+[iter] {"iter": 225, "env_steps": 1440000, "sec": 3.2, "real_r": 0.0076, "pg": -0.0256, "vf": 1.7887, "ent": 1.572}
+[iter] {"iter": 226, "env_steps": 1446400, "sec": 3.2, "real_r": 0.0075, "pg": 0.0431, "vf": 1.8771, "ent": 1.586}
+[iter] {"iter": 227, "env_steps": 1452800, "sec": 3.2, "real_r": 0.0092, "pg": -0.0726, "vf": 1.7747, "ent": 1.531}
+[iter] {"iter": 228, "env_steps": 1459200, "sec": 3.2, "real_r": 0.0043, "pg": 0.0052, "vf": 1.7717, "ent": 1.561}
+[iter] {"iter": 229, "env_steps": 1465600, "sec": 3.2, "real_r": 0.0075, "pg": -0.013, "vf": 1.8113, "ent": 1.581}
+[iter] {"iter": 230, "env_steps": 1472000, "sec": 3.2, "real_r": 0.0074, "pg": 0.0813, "vf": 1.6965, "ent": 1.524}
+[iter] {"iter": 231, "env_steps": 1478400, "sec": 3.2, "real_r": 0.0117, "pg": -0.0323, "vf": 1.7113, "ent": 1.625}
+[iter] {"iter": 232, "env_steps": 1484800, "sec": 3.2, "real_r": 0.0099, "pg": -0.0313, "vf": 1.7592, "ent": 1.585}
+[eval] {"phase": "ppo", "iter": 232, "env_steps": 1484800, "return": 3.838, "ret_sem": 0.124, "ach": 4.93, "max_ach": 9, "score": 3.97, "len": 129.9, "n_ep": 128, "sec": 860.3}
+[iter] {"iter": 233, "env_steps": 1491200, "sec": 3.2, "real_r": 0.0051, "pg": -0.0209, "vf": 1.8078, "ent": 1.691}
+[iter] {"iter": 234, "env_steps": 1497600, "sec": 3.2, "real_r": 0.0035, "pg": -0.0225, "vf": 1.8624, "ent": 1.72}
+[iter] {"iter": 235, "env_steps": 1504000, "sec": 3.2, "real_r": 0.0063, "pg": 0.0074, "vf": 1.6021, "ent": 1.633}
+[iter] {"iter": 236, "env_steps": 1510400, "sec": 3.2, "real_r": 0.0122, "pg": -0.0553, "vf": 1.7937, "ent": 1.737}
+[iter] {"iter": 237, "env_steps": 1516800, "sec": 3.2, "real_r": 0.0096, "pg": -0.0983, "vf": 1.8638, "ent": 1.768}
+[iter] {"iter": 238, "env_steps": 1523200, "sec": 3.2, "real_r": 0.01, "pg": -0.0172, "vf": 1.6294, "ent": 1.78}
+[iter] {"iter": 239, "env_steps": 1529600, "sec": 3.2, "real_r": 0.01, "pg": -0.019, "vf": 1.7039, "ent": 1.777}
+[iter] {"iter": 240, "env_steps": 1536000, "sec": 3.2, "real_r": 0.0096, "pg": -0.0468, "vf": 1.6344, "ent": 1.78}
+[eval] {"phase": "ppo", "iter": 240, "env_steps": 1536000, "return": 4.153, "ret_sem": 0.123, "ach": 5.203, "max_ach": 9, "score": 4.59, "len": 137.6, "n_ep": 128, "sec": 887.5}
+[iter] {"iter": 241, "env_steps": 1542400, "sec": 3.2, "real_r": 0.0074, "pg": -0.0108, "vf": 1.6575, "ent": 1.777}
+[iter] {"iter": 242, "env_steps": 1548800, "sec": 3.4, "real_r": 0.0069, "pg": -0.0048, "vf": 1.7432, "ent": 1.868}
+[iter] {"iter": 243, "env_steps": 1555200, "sec": 3.2, "real_r": 0.0091, "pg": -0.0854, "vf": 1.9496, "ent": 1.833}
+[iter] {"iter": 244, "env_steps": 1561600, "sec": 3.2, "real_r": 0.0085, "pg": 0.0395, "vf": 1.899, "ent": 1.831}
+[iter] {"iter": 245, "env_steps": 1568000, "sec": 3.2, "real_r": 0.0101, "pg": 0.0156, "vf": 1.8502, "ent": 1.863}
+[iter] {"iter": 246, "env_steps": 1574400, "sec": 3.2, "real_r": 0.0101, "pg": -0.0235, "vf": 1.7499, "ent": 1.831}
+[iter] {"iter": 247, "env_steps": 1580800, "sec": 3.2, "real_r": 0.0087, "pg": -0.1113, "vf": 1.7472, "ent": 1.88}
+[iter] {"iter": 248, "env_steps": 1587200, "sec": 3.2, "real_r": 0.0113, "pg": -0.0341, "vf": 1.6956, "ent": 1.835}
+[eval] {"phase": "ppo", "iter": 248, "env_steps": 1587200, "return": 4.271, "ret_sem": 0.118, "ach": 5.32, "max_ach": 9, "score": 4.57, "len": 138.9, "n_ep": 128, "sec": 914.5}
+[iter] {"iter": 249, "env_steps": 1593600, "sec": 3.2, "real_r": 0.0086, "pg": -0.1386, "vf": 1.619, "ent": 1.815}
+[iter] {"iter": 250, "env_steps": 1600000, "sec": 3.2, "real_r": 0.0051, "pg": -0.0589, "vf": 1.7616, "ent": 1.98}
+[iter] {"iter": 251, "env_steps": 1606400, "sec": 3.2, "real_r": 0.0092, "pg": -0.1193, "vf": 1.6925, "ent": 1.926}
+[iter] {"iter": 252, "env_steps": 1612800, "sec": 3.2, "real_r": 0.0089, "pg": -0.0923, "vf": 1.837, "ent": 1.997}
+[iter] {"iter": 253, "env_steps": 1619200, "sec": 3.2, "real_r": 0.0081, "pg": -0.1029, "vf": 1.7811, "ent": 1.97}
+[iter] {"iter": 254, "env_steps": 1625600, "sec": 3.2, "real_r": 0.0093, "pg": -0.068, "vf": 1.7768, "ent": 1.936}
+[iter] {"iter": 255, "env_steps": 1632000, "sec": 3.2, "real_r": 0.0101, "pg": -0.0745, "vf": 1.836, "ent": 1.848}
+[iter] {"iter": 256, "env_steps": 1638400, "sec": 3.2, "real_r": 0.0089, "pg": -0.0865, "vf": 1.903, "ent": 1.923}
+[eval] {"phase": "ppo", "iter": 256, "env_steps": 1638400, "return": 3.866, "ret_sem": 0.115, "ach": 4.984, "max_ach": 9, "score": 4.6, "len": 141.5, "n_ep": 128, "sec": 941.8}
+[iter] {"iter": 257, "env_steps": 1644800, "sec": 3.2, "real_r": 0.0117, "pg": -0.0268, "vf": 1.7545, "ent": 1.902}
+[iter] {"iter": 258, "env_steps": 1651200, "sec": 3.2, "real_r": 0.0105, "pg": -0.0584, "vf": 1.6818, "ent": 1.911}
+[iter] {"iter": 259, "env_steps": 1657600, "sec": 3.2, "real_r": 0.0103, "pg": -0.0426, "vf": 1.7123, "ent": 1.941}
+[iter] {"iter": 260, "env_steps": 1664000, "sec": 3.2, "real_r": 0.0094, "pg": 0.0008, "vf": 1.7271, "ent": 1.968}
+[iter] {"iter": 261, "env_steps": 1670400, "sec": 3.2, "real_r": 0.013, "pg": -0.0018, "vf": 1.6975, "ent": 1.954}
+[iter] {"iter": 262, "env_steps": 1676800, "sec": 3.2, "real_r": 0.0121, "pg": 0.026, "vf": 1.56, "ent": 1.862}
+[iter] {"iter": 263, "env_steps": 1683200, "sec": 3.2, "real_r": 0.0097, "pg": 0.0827, "vf": 1.6376, "ent": 1.915}
+[iter] {"iter": 264, "env_steps": 1689600, "sec": 3.2, "real_r": 0.009, "pg": -0.0867, "vf": 1.7622, "ent": 1.949}
+[eval] {"phase": "ppo", "iter": 264, "env_steps": 1689600, "return": 4.11, "ret_sem": 0.142, "ach": 5.133, "max_ach": 9, "score": 5.09, "len": 135.4, "n_ep": 128, "sec": 968.5}
+[iter] {"iter": 265, "env_steps": 1696000, "sec": 3.2, "real_r": 0.0084, "pg": 0.0171, "vf": 1.6835, "ent": 1.965}
+[iter] {"iter": 266, "env_steps": 1702400, "sec": 3.2, "real_r": 0.009, "pg": 0.0827, "vf": 1.8527, "ent": 1.926}
+[iter] {"iter": 267, "env_steps": 1708800, "sec": 3.2, "real_r": 0.0107, "pg": 0.054, "vf": 1.7862, "ent": 1.887}
+[iter] {"iter": 268, "env_steps": 1715200, "sec": 3.2, "real_r": 0.0085, "pg": 0.0037, "vf": 1.8551, "ent": 1.915}
+[iter] {"iter": 269, "env_steps": 1721600, "sec": 3.2, "real_r": 0.0141, "pg": -0.0404, "vf": 1.8, "ent": 1.795}
+[iter] {"iter": 270, "env_steps": 1728000, "sec": 3.2, "real_r": 0.0107, "pg": -0.0112, "vf": 1.7999, "ent": 1.812}
+[iter] {"iter": 271, "env_steps": 1734400, "sec": 3.2, "real_r": 0.0142, "pg": -0.0879, "vf": 1.5825, "ent": 1.728}
+[iter] {"iter": 272, "env_steps": 1740800, "sec": 3.2, "real_r": 0.0099, "pg": -0.0413, "vf": 1.6377, "ent": 1.753}
+[eval] {"phase": "ppo", "iter": 272, "env_steps": 1740800, "return": 4.687, "ret_sem": 0.163, "ach": 5.719, "max_ach": 12, "score": 6.34, "len": 146.6, "n_ep": 128, "sec": 995.8}
+[iter] {"iter": 273, "env_steps": 1747200, "sec": 3.2, "real_r": 0.0078, "pg": 0.0223, "vf": 1.6935, "ent": 1.842}
+[iter] {"iter": 274, "env_steps": 1753600, "sec": 3.2, "real_r": 0.0065, "pg": 0.0094, "vf": 1.6526, "ent": 1.845}
+[iter] {"iter": 275, "env_steps": 1760000, "sec": 3.2, "real_r": 0.0129, "pg": -0.0386, "vf": 1.7694, "ent": 1.898}
+[iter] {"iter": 276, "env_steps": 1766400, "sec": 3.2, "real_r": 0.0098, "pg": -0.0547, "vf": 1.7198, "ent": 1.916}
+[iter] {"iter": 277, "env_steps": 1772800, "sec": 3.2, "real_r": 0.008, "pg": -0.0198, "vf": 1.6701, "ent": 1.943}
+[iter] {"iter": 278, "env_steps": 1779200, "sec": 3.2, "real_r": 0.0078, "pg": -0.0112, "vf": 1.7157, "ent": 1.917}
+[iter] {"iter": 279, "env_steps": 1785600, "sec": 3.2, "real_r": 0.0129, "pg": -0.0582, "vf": 1.7788, "ent": 1.95}
+[iter] {"iter": 280, "env_steps": 1792000, "sec": 3.2, "real_r": 0.0116, "pg": -0.0302, "vf": 1.7421, "ent": 1.886}
+[eval] {"phase": "ppo", "iter": 280, "env_steps": 1792000, "return": 4.312, "ret_sem": 0.158, "ach": 5.383, "max_ach": 11, "score": 6.13, "len": 141.3, "n_ep": 128, "sec": 1023.1}
+[iter] {"iter": 281, "env_steps": 1798400, "sec": 3.2, "real_r": 0.0102, "pg": -0.0412, "vf": 1.8072, "ent": 1.956}
+[iter] {"iter": 282, "env_steps": 1804800, "sec": 3.2, "real_r": 0.0118, "pg": -0.0121, "vf": 1.6644, "ent": 1.88}
+[iter] {"iter": 283, "env_steps": 1811200, "sec": 3.2, "real_r": 0.0128, "pg": -0.0444, "vf": 1.6579, "ent": 1.877}
+[iter] {"iter": 284, "env_steps": 1817600, "sec": 3.2, "real_r": 0.0092, "pg": -0.0025, "vf": 1.7125, "ent": 1.927}
+[iter] {"iter": 285, "env_steps": 1824000, "sec": 3.2, "real_r": 0.0078, "pg": 0.0264, "vf": 1.7232, "ent": 1.931}
+[iter] {"iter": 286, "env_steps": 1830400, "sec": 3.2, "real_r": 0.0084, "pg": 0.035, "vf": 1.7124, "ent": 1.968}
+[iter] {"iter": 287, "env_steps": 1836800, "sec": 3.2, "real_r": 0.0163, "pg": -0.1561, "vf": 1.7861, "ent": 1.942}
+[iter] {"iter": 288, "env_steps": 1843200, "sec": 3.2, "real_r": 0.0097, "pg": -0.0486, "vf": 1.6965, "ent": 1.967}
+[eval] {"phase": "ppo", "iter": 288, "env_steps": 1843200, "return": 4.438, "ret_sem": 0.151, "ach": 5.461, "max_ach": 10, "score": 6.01, "len": 143.2, "n_ep": 128, "sec": 1050.1}
+[iter] {"iter": 289, "env_steps": 1849600, "sec": 3.2, "real_r": 0.0111, "pg": -0.1029, "vf": 1.7475, "ent": 1.886}
+[iter] {"iter": 290, "env_steps": 1856000, "sec": 3.2, "real_r": 0.0128, "pg": -0.0601, "vf": 1.7539, "ent": 1.871}
+[iter] {"iter": 291, "env_steps": 1862400, "sec": 3.2, "real_r": 0.012, "pg": -0.0191, "vf": 1.7375, "ent": 1.823}
+[iter] {"iter": 292, "env_steps": 1868800, "sec": 3.2, "real_r": 0.0107, "pg": 0.0252, "vf": 1.5721, "ent": 1.937}
+[iter] {"iter": 293, "env_steps": 1875200, "sec": 3.2, "real_r": 0.008, "pg": 0.0473, "vf": 1.6954, "ent": 1.827}
+[iter] {"iter": 294, "env_steps": 1881600, "sec": 3.2, "real_r": 0.0114, "pg": -0.0498, "vf": 1.8267, "ent": 1.925}
+[iter] {"iter": 295, "env_steps": 1888000, "sec": 3.2, "real_r": 0.0109, "pg": -0.0888, "vf": 1.6211, "ent": 1.902}
+[iter] {"iter": 296, "env_steps": 1894400, "sec": 3.2, "real_r": 0.0082, "pg": 0.0109, "vf": 1.6684, "ent": 1.847}
+[eval] {"phase": "ppo", "iter": 296, "env_steps": 1894400, "return": 3.93, "ret_sem": 0.172, "ach": 4.984, "max_ach": 11, "score": 5.6, "len": 132.7, "n_ep": 128, "sec": 1077.6}
+[iter] {"iter": 297, "env_steps": 1900800, "sec": 3.2, "real_r": 0.0097, "pg": 0.0137, "vf": 1.6346, "ent": 1.866}
+[iter] {"iter": 298, "env_steps": 1907200, "sec": 3.2, "real_r": 0.0091, "pg": -0.0223, "vf": 1.5607, "ent": 1.846}
+[iter] {"iter": 299, "env_steps": 1913600, "sec": 3.2, "real_r": 0.0088, "pg": -0.0064, "vf": 1.6919, "ent": 1.901}
+[iter] {"iter": 300, "env_steps": 1920000, "sec": 3.2, "real_r": 0.0107, "pg": -0.0578, "vf": 1.5171, "ent": 1.862}
+[iter] {"iter": 301, "env_steps": 1926400, "sec": 3.2, "real_r": 0.0084, "pg": -0.0017, "vf": 1.5919, "ent": 1.823}
+[iter] {"iter": 302, "env_steps": 1932800, "sec": 3.2, "real_r": 0.0117, "pg": 0.0964, "vf": 1.5279, "ent": 1.818}
+[iter] {"iter": 303, "env_steps": 1939200, "sec": 3.2, "real_r": 0.0091, "pg": -0.0412, "vf": 1.7949, "ent": 1.872}
+[iter] {"iter": 304, "env_steps": 1945600, "sec": 3.2, "real_r": 0.0104, "pg": -0.0568, "vf": 1.632, "ent": 1.838}
+[eval] {"phase": "ppo", "iter": 304, "env_steps": 1945600, "return": 4.292, "ret_sem": 0.146, "ach": 5.344, "max_ach": 9, "score": 5.56, "len": 146.1, "n_ep": 128, "sec": 1105.2}
+[iter] {"iter": 305, "env_steps": 1952000, "sec": 3.2, "real_r": 0.0096, "pg": 0.0151, "vf": 1.566, "ent": 1.942}
+[iter] {"iter": 306, "env_steps": 1958400, "sec": 3.2, "real_r": 0.0083, "pg": -0.1018, "vf": 1.654, "ent": 1.903}
+[iter] {"iter": 307, "env_steps": 1964800, "sec": 3.2, "real_r": 0.0087, "pg": -0.0534, "vf": 1.5688, "ent": 1.86}
+[iter] {"iter": 308, "env_steps": 1971200, "sec": 3.2, "real_r": 0.0107, "pg": -0.0092, "vf": 1.5121, "ent": 1.914}
+[iter] {"iter": 309, "env_steps": 1977600, "sec": 3.2, "real_r": 0.0092, "pg": -0.109, "vf": 1.6499, "ent": 1.786}
+[iter] {"iter": 310, "env_steps": 1984000, "sec": 3.2, "real_r": 0.0124, "pg": -0.0048, "vf": 1.572, "ent": 1.86}
+[iter] {"iter": 311, "env_steps": 1990400, "sec": 3.2, "real_r": 0.0096, "pg": -0.0487, "vf": 1.62, "ent": 1.863}
+[iter] {"iter": 312, "env_steps": 1996800, "sec": 3.2, "real_r": 0.0086, "pg": -0.0017, "vf": 1.6942, "ent": 1.875}
+[eval] {"phase": "ppo", "iter": 312, "env_steps": 1996800, "return": 4.527, "ret_sem": 0.169, "ach": 5.555, "max_ach": 10, "score": 6.11, "len": 134.1, "n_ep": 128, "sec": 1131.8}
+[iter] {"iter": 313, "env_steps": 2003200, "sec": 3.2, "real_r": 0.0088, "pg": -0.1182, "vf": 1.6607, "ent": 1.892}
+[save] model_2000k.pkl at 2003200 steps
+[iter] {"iter": 314, "env_steps": 2009600, "sec": 3.2, "real_r": 0.0083, "pg": -0.013, "vf": 1.6019, "ent": 1.827}
+[iter] {"iter": 315, "env_steps": 2016000, "sec": 3.2, "real_r": 0.0099, "pg": 0.0205, "vf": 1.5212, "ent": 1.82}
+[iter] {"iter": 316, "env_steps": 2022400, "sec": 3.2, "real_r": 0.0097, "pg": -0.0539, "vf": 1.4955, "ent": 1.905}
+[iter] {"iter": 317, "env_steps": 2028800, "sec": 3.2, "real_r": 0.0122, "pg": -0.0481, "vf": 1.6812, "ent": 1.881}
+[iter] {"iter": 318, "env_steps": 2035200, "sec": 3.2, "real_r": 0.0108, "pg": -0.0226, "vf": 1.5262, "ent": 1.722}
+[iter] {"iter": 319, "env_steps": 2041600, "sec": 3.2, "real_r": 0.0067, "pg": 0.0036, "vf": 1.7094, "ent": 1.857}
+[iter] {"iter": 320, "env_steps": 2048000, "sec": 3.2, "real_r": 0.011, "pg": 0.0641, "vf": 1.5286, "ent": 1.763}
+[eval] {"phase": "ppo", "iter": 320, "env_steps": 2048000, "return": 3.734, "ret_sem": 0.158, "ach": 4.781, "max_ach": 10, "score": 5.13, "len": 130.0, "n_ep": 128, "sec": 1158.7}
+[iter] {"iter": 321, "env_steps": 2054400, "sec": 3.2, "real_r": 0.0132, "pg": -0.0543, "vf": 1.5005, "ent": 1.772}
+[iter] {"iter": 322, "env_steps": 2060800, "sec": 3.2, "real_r": 0.0095, "pg": -0.0483, "vf": 1.6515, "ent": 1.883}
+[iter] {"iter": 323, "env_steps": 2067200, "sec": 3.2, "real_r": 0.0114, "pg": 0.0357, "vf": 1.5475, "ent": 1.778}
+[iter] {"iter": 324, "env_steps": 2073600, "sec": 3.2, "real_r": 0.0128, "pg": -0.0142, "vf": 1.4508, "ent": 1.824}
+[iter] {"iter": 325, "env_steps": 2080000, "sec": 3.2, "real_r": 0.0123, "pg": 0.0215, "vf": 1.5256, "ent": 1.781}
+[iter] {"iter": 326, "env_steps": 2086400, "sec": 3.2, "real_r": 0.0105, "pg": -0.0939, "vf": 1.5426, "ent": 1.828}
+[iter] {"iter": 327, "env_steps": 2092800, "sec": 3.2, "real_r": 0.012, "pg": 0.0375, "vf": 1.5695, "ent": 1.861}
+[iter] {"iter": 328, "env_steps": 2099200, "sec": 3.2, "real_r": 0.0123, "pg": -0.0699, "vf": 1.4398, "ent": 1.85}
+[eval] {"phase": "ppo", "iter": 328, "env_steps": 2099200, "return": 4.266, "ret_sem": 0.164, "ach": 5.352, "max_ach": 9, "score": 5.39, "len": 130.8, "n_ep": 128, "sec": 1186.3}
+[iter] {"iter": 329, "env_steps": 2105600, "sec": 3.2, "real_r": 0.0086, "pg": 0.0288, "vf": 1.6132, "ent": 1.805}
+[iter] {"iter": 330, "env_steps": 2112000, "sec": 3.2, "real_r": 0.0121, "pg": 0.0172, "vf": 1.5788, "ent": 1.806}
+[iter] {"iter": 331, "env_steps": 2118400, "sec": 3.2, "real_r": 0.0126, "pg": -0.0281, "vf": 1.5217, "ent": 1.762}
+[iter] {"iter": 332, "env_steps": 2124800, "sec": 3.2, "real_r": 0.0104, "pg": -0.0649, "vf": 1.5552, "ent": 1.838}
+[iter] {"iter": 333, "env_steps": 2131200, "sec": 3.2, "real_r": 0.0076, "pg": -0.0668, "vf": 1.6617, "ent": 1.919}
+[iter] {"iter": 334, "env_steps": 2137600, "sec": 3.2, "real_r": 0.0126, "pg": -0.0579, "vf": 1.4697, "ent": 1.761}
+[iter] {"iter": 335, "env_steps": 2144000, "sec": 3.2, "real_r": 0.0103, "pg": -0.1075, "vf": 1.6099, "ent": 1.867}
+[iter] {"iter": 336, "env_steps": 2150400, "sec": 3.2, "real_r": 0.0105, "pg": 0.0063, "vf": 1.6098, "ent": 1.857}
+[eval] {"phase": "ppo", "iter": 336, "env_steps": 2150400, "return": 4.279, "ret_sem": 0.155, "ach": 5.375, "max_ach": 9, "score": 5.54, "len": 135.3, "n_ep": 128, "sec": 1214.8}
+[iter] {"iter": 337, "env_steps": 2156800, "sec": 3.2, "real_r": 0.0099, "pg": 0.0595, "vf": 1.423, "ent": 1.864}
+[iter] {"iter": 338, "env_steps": 2163200, "sec": 3.5, "real_r": 0.0116, "pg": -0.0348, "vf": 1.5245, "ent": 1.833}
+[iter] {"iter": 339, "env_steps": 2169600, "sec": 3.2, "real_r": 0.009, "pg": 0.0616, "vf": 1.4428, "ent": 1.925}
+[iter] {"iter": 340, "env_steps": 2176000, "sec": 3.2, "real_r": 0.0114, "pg": 0.0149, "vf": 1.5438, "ent": 1.85}
+[iter] {"iter": 341, "env_steps": 2182400, "sec": 3.2, "real_r": 0.0134, "pg": 0.0408, "vf": 1.5175, "ent": 1.804}
+[iter] {"iter": 342, "env_steps": 2188800, "sec": 3.2, "real_r": 0.0094, "pg": -0.1201, "vf": 1.4539, "ent": 1.922}
+[iter] {"iter": 343, "env_steps": 2195200, "sec": 3.2, "real_r": 0.009, "pg": -0.1075, "vf": 1.4922, "ent": 1.828}
+[iter] {"iter": 344, "env_steps": 2201600, "sec": 3.2, "real_r": 0.0131, "pg": -0.0833, "vf": 1.4248, "ent": 1.843}
+[eval] {"phase": "ppo", "iter": 344, "env_steps": 2201600, "return": 4.566, "ret_sem": 0.154, "ach": 5.641, "max_ach": 10, "score": 5.78, "len": 144.0, "n_ep": 128, "sec": 1243.3}
+[iter] {"iter": 345, "env_steps": 2208000, "sec": 3.2, "real_r": 0.0087, "pg": -0.0004, "vf": 1.3883, "ent": 1.906}
+[iter] {"iter": 346, "env_steps": 2214400, "sec": 3.2, "real_r": 0.0099, "pg": -0.0756, "vf": 1.3325, "ent": 1.936}
+[iter] {"iter": 347, "env_steps": 2220800, "sec": 3.2, "real_r": 0.0115, "pg": -0.0128, "vf": 1.4204, "ent": 1.934}
+[iter] {"iter": 348, "env_steps": 2227200, "sec": 3.2, "real_r": 0.0096, "pg": -0.0822, "vf": 1.393, "ent": 1.964}
+[iter] {"iter": 349, "env_steps": 2233600, "sec": 3.2, "real_r": 0.008, "pg": -0.1039, "vf": 1.5081, "ent": 1.981}
+[iter] {"iter": 350, "env_steps": 2240000, "sec": 3.2, "real_r": 0.0117, "pg": -0.0415, "vf": 1.4678, "ent": 1.917}
+[iter] {"iter": 351, "env_steps": 2246400, "sec": 3.2, "real_r": 0.0105, "pg": -0.0977, "vf": 1.5019, "ent": 1.909}
+[iter] {"iter": 352, "env_steps": 2252800, "sec": 3.2, "real_r": 0.0108, "pg": -0.0527, "vf": 1.4329, "ent": 1.887}
+[eval] {"phase": "ppo", "iter": 352, "env_steps": 2252800, "return": 4.895, "ret_sem": 0.168, "ach": 5.977, "max_ach": 11, "score": 6.62, "len": 137.6, "n_ep": 128, "sec": 1270.4}
+[iter] {"iter": 353, "env_steps": 2259200, "sec": 3.2, "real_r": 0.0122, "pg": -0.0888, "vf": 1.5319, "ent": 1.92}
+[iter] {"iter": 354, "env_steps": 2265600, "sec": 3.2, "real_r": 0.0112, "pg": -0.0605, "vf": 1.4542, "ent": 1.93}
+[iter] {"iter": 355, "env_steps": 2272000, "sec": 3.2, "real_r": 0.011, "pg": -0.0338, "vf": 1.4502, "ent": 1.964}
+[iter] {"iter": 356, "env_steps": 2278400, "sec": 3.2, "real_r": 0.0108, "pg": -0.0929, "vf": 1.3333, "ent": 1.904}
+[iter] {"iter": 357, "env_steps": 2284800, "sec": 3.2, "real_r": 0.0097, "pg": 0.0321, "vf": 1.4598, "ent": 1.977}
+[iter] {"iter": 358, "env_steps": 2291200, "sec": 3.2, "real_r": 0.0112, "pg": 0.0042, "vf": 1.4276, "ent": 1.853}
+[iter] {"iter": 359, "env_steps": 2297600, "sec": 3.2, "real_r": 0.0149, "pg": -0.0444, "vf": 1.4652, "ent": 1.784}
+[iter] {"iter": 360, "env_steps": 2304000, "sec": 3.2, "real_r": 0.0113, "pg": -0.0355, "vf": 1.3687, "ent": 1.877}
+[eval] {"phase": "ppo", "iter": 360, "env_steps": 2304000, "return": 4.79, "ret_sem": 0.173, "ach": 5.883, "max_ach": 11, "score": 6.1, "len": 130.0, "n_ep": 128, "sec": 1298.0}
+[iter] {"iter": 361, "env_steps": 2310400, "sec": 3.2, "real_r": 0.0092, "pg": -0.0443, "vf": 1.5449, "ent": 1.939}
+[iter] {"iter": 362, "env_steps": 2316800, "sec": 3.2, "real_r": 0.0122, "pg": 0.0589, "vf": 1.441, "ent": 1.845}
+[iter] {"iter": 363, "env_steps": 2323200, "sec": 3.2, "real_r": 0.013, "pg": -0.0072, "vf": 1.5556, "ent": 1.75}
+[iter] {"iter": 364, "env_steps": 2329600, "sec": 3.2, "real_r": 0.0086, "pg": 0.0122, "vf": 1.5852, "ent": 1.939}
+[iter] {"iter": 365, "env_steps": 2336000, "sec": 3.2, "real_r": 0.0137, "pg": 0.029, "vf": 1.5406, "ent": 1.828}
+[iter] {"iter": 366, "env_steps": 2342400, "sec": 3.2, "real_r": 0.0135, "pg": -0.0385, "vf": 1.4804, "ent": 1.764}
+[iter] {"iter": 367, "env_steps": 2348800, "sec": 3.2, "real_r": 0.0131, "pg": -0.0664, "vf": 1.5107, "ent": 1.79}
+[iter] {"iter": 368, "env_steps": 2355200, "sec": 3.2, "real_r": 0.0118, "pg": -0.0058, "vf": 1.4437, "ent": 1.873}
+[eval] {"phase": "ppo", "iter": 368, "env_steps": 2355200, "return": 4.791, "ret_sem": 0.15, "ach": 5.812, "max_ach": 10, "score": 6.42, "len": 147.7, "n_ep": 128, "sec": 1325.4}
+[iter] {"iter": 369, "env_steps": 2361600, "sec": 3.2, "real_r": 0.0102, "pg": -0.0415, "vf": 1.4638, "ent": 1.839}
+[iter] {"iter": 370, "env_steps": 2368000, "sec": 3.2, "real_r": 0.0109, "pg": 0.0421, "vf": 1.6081, "ent": 1.86}
+[iter] {"iter": 371, "env_steps": 2374400, "sec": 3.2, "real_r": 0.009, "pg": 0.0289, "vf": 1.4851, "ent": 1.889}
+[iter] {"iter": 372, "env_steps": 2380800, "sec": 3.2, "real_r": 0.0145, "pg": -0.0373, "vf": 1.4646, "ent": 1.769}
+[iter] {"iter": 373, "env_steps": 2387200, "sec": 3.2, "real_r": 0.0132, "pg": 0.0205, "vf": 1.459, "ent": 1.823}
+[iter] {"iter": 374, "env_steps": 2393600, "sec": 3.2, "real_r": 0.0143, "pg": 0.0201, "vf": 1.575, "ent": 1.885}
+[iter] {"iter": 375, "env_steps": 2400000, "sec": 3.2, "real_r": 0.0099, "pg": -0.0239, "vf": 1.4837, "ent": 1.896}
+[iter] {"iter": 376, "env_steps": 2406400, "sec": 3.2, "real_r": 0.0112, "pg": 0.0081, "vf": 1.5717, "ent": 1.848}
+[eval] {"phase": "ppo", "iter": 376, "env_steps": 2406400, "return": 5.359, "ret_sem": 0.194, "ach": 6.422, "max_ach": 12, "score": 8.39, "len": 148.1, "n_ep": 128, "sec": 1353.1}
+[iter] {"iter": 377, "env_steps": 2412800, "sec": 3.2, "real_r": 0.0106, "pg": 0.062, "vf": 1.5187, "ent": 1.793}
+[iter] {"iter": 378, "env_steps": 2419200, "sec": 3.2, "real_r": 0.0136, "pg": 0.0419, "vf": 1.6037, "ent": 1.861}
+[iter] {"iter": 379, "env_steps": 2425600, "sec": 3.2, "real_r": 0.0145, "pg": -0.0075, "vf": 1.6839, "ent": 1.794}
+[iter] {"iter": 380, "env_steps": 2432000, "sec": 3.2, "real_r": 0.0129, "pg": -0.002, "vf": 1.623, "ent": 1.824}
+[iter] {"iter": 381, "env_steps": 2438400, "sec": 3.2, "real_r": 0.0108, "pg": -0.0319, "vf": 1.5966, "ent": 1.879}
+[iter] {"iter": 382, "env_steps": 2444800, "sec": 3.2, "real_r": 0.0147, "pg": 0.0072, "vf": 1.6248, "ent": 1.807}
+[iter] {"iter": 383, "env_steps": 2451200, "sec": 3.2, "real_r": 0.0161, "pg": -0.076, "vf": 1.5752, "ent": 1.729}
+[iter] {"iter": 384, "env_steps": 2457600, "sec": 3.2, "real_r": 0.0123, "pg": -0.0247, "vf": 1.4974, "ent": 1.83}
+[eval] {"phase": "ppo", "iter": 384, "env_steps": 2457600, "return": 4.802, "ret_sem": 0.164, "ach": 5.844, "max_ach": 12, "score": 6.62, "len": 129.9, "n_ep": 128, "sec": 1380.1}
+[iter] {"iter": 385, "env_steps": 2464000, "sec": 3.2, "real_r": 0.018, "pg": 0.0214, "vf": 1.4552, "ent": 1.801}
+[iter] {"iter": 386, "env_steps": 2470400, "sec": 3.2, "real_r": 0.0109, "pg": -0.0, "vf": 1.5072, "ent": 1.859}
+[iter] {"iter": 387, "env_steps": 2476800, "sec": 3.2, "real_r": 0.0124, "pg": -0.0347, "vf": 1.4276, "ent": 1.842}
+[iter] {"iter": 388, "env_steps": 2483200, "sec": 3.2, "real_r": 0.0109, "pg": -0.0806, "vf": 1.5401, "ent": 1.786}
+[iter] {"iter": 389, "env_steps": 2489600, "sec": 3.2, "real_r": 0.012, "pg": 0.0508, "vf": 1.6375, "ent": 1.699}
+[iter] {"iter": 390, "env_steps": 2496000, "sec": 3.2, "real_r": 0.0133, "pg": -0.07, "vf": 1.6177, "ent": 1.773}
+[iter] {"iter": 391, "env_steps": 2502400, "sec": 3.2, "real_r": 0.014, "pg": -0.0913, "vf": 1.6372, "ent": 1.844}
+[iter] {"iter": 392, "env_steps": 2508800, "sec": 3.2, "real_r": 0.0186, "pg": -0.0903, "vf": 1.3891, "ent": 1.731}
+[eval] {"phase": "ppo", "iter": 392, "env_steps": 2508800, "return": 5.389, "ret_sem": 0.195, "ach": 6.391, "max_ach": 12, "score": 7.68, "len": 147.0, "n_ep": 128, "sec": 1407.5}
+[iter] {"iter": 393, "env_steps": 2515200, "sec": 3.2, "real_r": 0.0158, "pg": -0.0847, "vf": 1.4091, "ent": 1.727}
+[iter] {"iter": 394, "env_steps": 2521600, "sec": 3.2, "real_r": 0.0143, "pg": -0.105, "vf": 1.509, "ent": 1.602}
+[iter] {"iter": 395, "env_steps": 2528000, "sec": 3.2, "real_r": 0.0161, "pg": -0.0483, "vf": 1.4178, "ent": 1.676}
+[iter] {"iter": 396, "env_steps": 2534400, "sec": 3.2, "real_r": 0.0124, "pg": -0.0146, "vf": 1.5423, "ent": 1.703}
+[iter] {"iter": 397, "env_steps": 2540800, "sec": 3.2, "real_r": 0.0123, "pg": 0.0257, "vf": 1.4956, "ent": 1.728}
+[iter] {"iter": 398, "env_steps": 2547200, "sec": 3.2, "real_r": 0.0132, "pg": -0.0948, "vf": 1.5007, "ent": 1.621}
+[iter] {"iter": 399, "env_steps": 2553600, "sec": 3.2, "real_r": 0.013, "pg": 0.0235, "vf": 1.518, "ent": 1.549}
+[iter] {"iter": 400, "env_steps": 2560000, "sec": 3.2, "real_r": 0.0117, "pg": -0.0289, "vf": 1.5646, "ent": 1.696}
+[eval] {"phase": "ppo", "iter": 400, "env_steps": 2560000, "return": 5.279, "ret_sem": 0.191, "ach": 6.258, "max_ach": 12, "score": 7.29, "len": 133.7, "n_ep": 128, "sec": 1434.6}
+[iter] {"iter": 401, "env_steps": 2566400, "sec": 3.2, "real_r": 0.0158, "pg": -0.03, "vf": 1.4796, "ent": 1.653}
+[iter] {"iter": 402, "env_steps": 2572800, "sec": 3.2, "real_r": 0.0155, "pg": -0.0222, "vf": 1.4837, "ent": 1.651}
+[iter] {"iter": 403, "env_steps": 2579200, "sec": 3.2, "real_r": 0.0136, "pg": -0.0298, "vf": 1.476, "ent": 1.7}
+[iter] {"iter": 404, "env_steps": 2585600, "sec": 3.2, "real_r": 0.0088, "pg": -0.0237, "vf": 1.5304, "ent": 1.703}
+[iter] {"iter": 405, "env_steps": 2592000, "sec": 3.2, "real_r": 0.0138, "pg": -0.1221, "vf": 1.471, "ent": 1.751}
+[iter] {"iter": 406, "env_steps": 2598400, "sec": 3.2, "real_r": 0.0146, "pg": -0.1221, "vf": 1.5502, "ent": 1.68}
+[iter] {"iter": 407, "env_steps": 2604800, "sec": 3.2, "real_r": 0.0142, "pg": -0.0326, "vf": 1.4407, "ent": 1.702}
+[iter] {"iter": 408, "env_steps": 2611200, "sec": 3.2, "real_r": 0.0147, "pg": -0.0078, "vf": 1.3782, "ent": 1.652}
+[eval] {"phase": "ppo", "iter": 408, "env_steps": 2611200, "return": 5.905, "ret_sem": 0.183, "ach": 6.883, "max_ach": 11, "score": 8.46, "len": 161.3, "n_ep": 128, "sec": 1462.2}
+[iter] {"iter": 409, "env_steps": 2617600, "sec": 3.2, "real_r": 0.0128, "pg": -0.0304, "vf": 1.3865, "ent": 1.689}
+[iter] {"iter": 410, "env_steps": 2624000, "sec": 3.2, "real_r": 0.0146, "pg": 0.0163, "vf": 1.4574, "ent": 1.718}
+[iter] {"iter": 411, "env_steps": 2630400, "sec": 3.2, "real_r": 0.0179, "pg": -0.0684, "vf": 1.3669, "ent": 1.684}
+[iter] {"iter": 412, "env_steps": 2636800, "sec": 3.2, "real_r": 0.0198, "pg": -0.0941, "vf": 1.43, "ent": 1.739}
+[iter] {"iter": 413, "env_steps": 2643200, "sec": 3.2, "real_r": 0.0197, "pg": -0.0146, "vf": 1.4039, "ent": 1.664}
+[iter] {"iter": 414, "env_steps": 2649600, "sec": 3.2, "real_r": 0.0185, "pg": -0.0746, "vf": 1.4661, "ent": 1.567}
+[iter] {"iter": 415, "env_steps": 2656000, "sec": 3.2, "real_r": 0.0124, "pg": -0.0645, "vf": 1.4749, "ent": 1.523}
+[iter] {"iter": 416, "env_steps": 2662400, "sec": 3.2, "real_r": 0.0133, "pg": -0.0537, "vf": 1.5753, "ent": 1.51}
+[eval] {"phase": "ppo", "iter": 416, "env_steps": 2662400, "return": 5.858, "ret_sem": 0.209, "ach": 6.812, "max_ach": 12, "score": 8.62, "len": 160.4, "n_ep": 128, "sec": 1489.8}
+[iter] {"iter": 417, "env_steps": 2668800, "sec": 3.2, "real_r": 0.0113, "pg": -0.062, "vf": 1.3895, "ent": 1.47}
+[iter] {"iter": 418, "env_steps": 2675200, "sec": 3.2, "real_r": 0.0117, "pg": -0.0922, "vf": 1.4171, "ent": 1.535}
+[iter] {"iter": 419, "env_steps": 2681600, "sec": 3.2, "real_r": 0.0177, "pg": 0.0294, "vf": 1.355, "ent": 1.56}
+[iter] {"iter": 420, "env_steps": 2688000, "sec": 3.2, "real_r": 0.0146, "pg": -0.0826, "vf": 1.3874, "ent": 1.49}
+[iter] {"iter": 421, "env_steps": 2694400, "sec": 3.2, "real_r": 0.0167, "pg": -0.0465, "vf": 1.4551, "ent": 1.547}
+[iter] {"iter": 422, "env_steps": 2700800, "sec": 3.2, "real_r": 0.0135, "pg": -0.0093, "vf": 1.3909, "ent": 1.516}
+[iter] {"iter": 423, "env_steps": 2707200, "sec": 3.2, "real_r": 0.0168, "pg": -0.0935, "vf": 1.4464, "ent": 1.523}
+[iter] {"iter": 424, "env_steps": 2713600, "sec": 3.2, "real_r": 0.0169, "pg": 0.008, "vf": 1.3633, "ent": 1.511}
+[eval] {"phase": "ppo", "iter": 424, "env_steps": 2713600, "return": 6.101, "ret_sem": 0.219, "ach": 7.07, "max_ach": 12, "score": 9.09, "len": 149.7, "n_ep": 128, "sec": 1517.6}
+[iter] {"iter": 425, "env_steps": 2720000, "sec": 3.2, "real_r": 0.0209, "pg": -0.0981, "vf": 1.394, "ent": 1.499}
+[iter] {"iter": 426, "env_steps": 2726400, "sec": 3.2, "real_r": 0.0172, "pg": 0.0064, "vf": 1.4541, "ent": 1.504}
+[iter] {"iter": 427, "env_steps": 2732800, "sec": 3.2, "real_r": 0.0158, "pg": -0.0819, "vf": 1.3956, "ent": 1.507}
+[iter] {"iter": 428, "env_steps": 2739200, "sec": 3.2, "real_r": 0.0189, "pg": 0.0041, "vf": 1.4158, "ent": 1.529}
+[iter] {"iter": 429, "env_steps": 2745600, "sec": 3.2, "real_r": 0.02, "pg": -0.0609, "vf": 1.405, "ent": 1.529}
+[iter] {"iter": 430, "env_steps": 2752000, "sec": 3.2, "real_r": 0.0154, "pg": -0.0192, "vf": 1.4246, "ent": 1.562}
+[iter] {"iter": 431, "env_steps": 2758400, "sec": 3.2, "real_r": 0.0156, "pg": -0.0709, "vf": 1.4842, "ent": 1.577}
+[iter] {"iter": 432, "env_steps": 2764800, "sec": 3.2, "real_r": 0.0155, "pg": 0.0047, "vf": 1.423, "ent": 1.454}
+[eval] {"phase": "ppo", "iter": 432, "env_steps": 2764800, "return": 5.09, "ret_sem": 0.196, "ach": 6.07, "max_ach": 11, "score": 7.06, "len": 146.7, "n_ep": 128, "sec": 1544.8}
+[iter] {"iter": 433, "env_steps": 2771200, "sec": 3.4, "real_r": 0.0136, "pg": -0.0402, "vf": 1.4199, "ent": 1.637}
+[iter] {"iter": 434, "env_steps": 2777600, "sec": 3.2, "real_r": 0.017, "pg": -0.0691, "vf": 1.3935, "ent": 1.458}
+[iter] {"iter": 435, "env_steps": 2784000, "sec": 3.2, "real_r": 0.0222, "pg": 0.0135, "vf": 1.4006, "ent": 1.451}
+[iter] {"iter": 436, "env_steps": 2790400, "sec": 3.2, "real_r": 0.0214, "pg": 0.0444, "vf": 1.4189, "ent": 1.425}
+[iter] {"iter": 437, "env_steps": 2796800, "sec": 3.2, "real_r": 0.0217, "pg": 0.103, "vf": 1.3973, "ent": 1.434}
+[iter] {"iter": 438, "env_steps": 2803200, "sec": 3.2, "real_r": 0.0193, "pg": 0.0479, "vf": 1.3666, "ent": 1.407}
+[iter] {"iter": 439, "env_steps": 2809600, "sec": 3.2, "real_r": 0.0214, "pg": 0.1031, "vf": 1.4896, "ent": 1.448}
+[iter] {"iter": 440, "env_steps": 2816000, "sec": 3.2, "real_r": 0.0167, "pg": 0.004, "vf": 1.3616, "ent": 1.451}
+[eval] {"phase": "ppo", "iter": 440, "env_steps": 2816000, "return": 4.579, "ret_sem": 0.194, "ach": 5.57, "max_ach": 11, "score": 7.05, "len": 137.5, "n_ep": 128, "sec": 1572.7}
+[iter] {"iter": 441, "env_steps": 2822400, "sec": 3.2, "real_r": 0.0187, "pg": -0.0725, "vf": 1.3844, "ent": 1.387}
+[iter] {"iter": 442, "env_steps": 2828800, "sec": 3.2, "real_r": 0.0148, "pg": 0.0086, "vf": 1.497, "ent": 1.447}
+[iter] {"iter": 443, "env_steps": 2835200, "sec": 3.2, "real_r": 0.0179, "pg": -0.1057, "vf": 1.3673, "ent": 1.405}
+[iter] {"iter": 444, "env_steps": 2841600, "sec": 3.2, "real_r": 0.0191, "pg": -0.1298, "vf": 1.3567, "ent": 1.443}
+[iter] {"iter": 445, "env_steps": 2848000, "sec": 3.2, "real_r": 0.0228, "pg": 0.0058, "vf": 1.3954, "ent": 1.457}
+[iter] {"iter": 446, "env_steps": 2854400, "sec": 3.2, "real_r": 0.0237, "pg": -0.0656, "vf": 1.3102, "ent": 1.487}
+[iter] {"iter": 447, "env_steps": 2860800, "sec": 3.2, "real_r": 0.019, "pg": -0.0203, "vf": 1.3713, "ent": 1.46}
+[iter] {"iter": 448, "env_steps": 2867200, "sec": 3.2, "real_r": 0.0195, "pg": -0.06, "vf": 1.4553, "ent": 1.357}
+[eval] {"phase": "ppo", "iter": 448, "env_steps": 2867200, "return": 5.37, "ret_sem": 0.212, "ach": 6.312, "max_ach": 11, "score": 7.52, "len": 140.4, "n_ep": 128, "sec": 1599.6}
+[iter] {"iter": 449, "env_steps": 2873600, "sec": 3.2, "real_r": 0.0184, "pg": -0.1233, "vf": 1.3901, "ent": 1.481}
+[iter] {"iter": 450, "env_steps": 2880000, "sec": 3.2, "real_r": 0.019, "pg": -0.0409, "vf": 1.3415, "ent": 1.446}
+[iter] {"iter": 451, "env_steps": 2886400, "sec": 3.2, "real_r": 0.0208, "pg": -0.0926, "vf": 1.3796, "ent": 1.367}
+[iter] {"iter": 452, "env_steps": 2892800, "sec": 3.2, "real_r": 0.0236, "pg": 0.03, "vf": 1.3806, "ent": 1.262}
+[iter] {"iter": 453, "env_steps": 2899200, "sec": 3.2, "real_r": 0.023, "pg": -0.041, "vf": 1.3353, "ent": 1.258}
+[iter] {"iter": 454, "env_steps": 2905600, "sec": 3.2, "real_r": 0.0283, "pg": -0.0921, "vf": 1.3887, "ent": 1.249}
+[iter] {"iter": 455, "env_steps": 2912000, "sec": 3.2, "real_r": 0.0271, "pg": -0.0948, "vf": 1.3974, "ent": 1.318}
+[iter] {"iter": 456, "env_steps": 2918400, "sec": 3.2, "real_r": 0.0307, "pg": 0.043, "vf": 1.3419, "ent": 1.181}
+[eval] {"phase": "ppo", "iter": 456, "env_steps": 2918400, "return": 6.464, "ret_sem": 0.173, "ach": 7.398, "max_ach": 12, "score": 8.58, "len": 168.0, "n_ep": 128, "sec": 1626.9}
+[iter] {"iter": 457, "env_steps": 2924800, "sec": 3.2, "real_r": 0.0286, "pg": -0.0606, "vf": 1.4127, "ent": 1.157}
+[iter] {"iter": 458, "env_steps": 2931200, "sec": 3.2, "real_r": 0.0212, "pg": -0.0224, "vf": 1.461, "ent": 1.269}
+[iter] {"iter": 459, "env_steps": 2937600, "sec": 3.2, "real_r": 0.0312, "pg": 0.0277, "vf": 1.3366, "ent": 1.105}
+[iter] {"iter": 460, "env_steps": 2944000, "sec": 3.2, "real_r": 0.0312, "pg": 0.018, "vf": 1.3778, "ent": 1.077}
+[iter] {"iter": 461, "env_steps": 2950400, "sec": 3.2, "real_r": 0.0324, "pg": 0.0106, "vf": 1.3117, "ent": 0.982}
+[iter] {"iter": 462, "env_steps": 2956800, "sec": 3.2, "real_r": 0.0286, "pg": -0.0176, "vf": 1.3324, "ent": 0.994}
+[iter] {"iter": 463, "env_steps": 2963200, "sec": 3.2, "real_r": 0.0269, "pg": 0.0048, "vf": 1.368, "ent": 1.043}
+[iter] {"iter": 464, "env_steps": 2969600, "sec": 3.2, "real_r": 0.0314, "pg": -0.0367, "vf": 1.3378, "ent": 0.883}
+[eval] {"phase": "ppo", "iter": 464, "env_steps": 2969600, "return": 5.738, "ret_sem": 0.185, "ach": 6.711, "max_ach": 11, "score": 7.2, "len": 152.1, "n_ep": 128, "sec": 1654.6}
+[iter] {"iter": 465, "env_steps": 2976000, "sec": 3.2, "real_r": 0.0319, "pg": -0.0937, "vf": 1.3792, "ent": 0.964}
+[iter] {"iter": 466, "env_steps": 2982400, "sec": 3.2, "real_r": 0.0353, "pg": 0.021, "vf": 1.4196, "ent": 0.993}
+[iter] {"iter": 467, "env_steps": 2988800, "sec": 3.2, "real_r": 0.0379, "pg": -0.0751, "vf": 1.3712, "ent": 1.017}
+[iter] {"iter": 468, "env_steps": 2995200, "sec": 3.2, "real_r": 0.0345, "pg": 0.0367, "vf": 1.3002, "ent": 0.995}
+[iter] {"iter": 469, "env_steps": 3001600, "sec": 3.2, "real_r": 0.0321, "pg": -0.0357, "vf": 1.3554, "ent": 1.028}
+[iter] {"iter": 470, "env_steps": 3008000, "sec": 3.2, "real_r": 0.0343, "pg": 0.0367, "vf": 1.3067, "ent": 0.954}
+[iter] {"iter": 471, "env_steps": 3014400, "sec": 3.2, "real_r": 0.0339, "pg": 0.0079, "vf": 1.3079, "ent": 0.982}
+[iter] {"iter": 472, "env_steps": 3020800, "sec": 3.2, "real_r": 0.0283, "pg": -0.1413, "vf": 1.3779, "ent": 1.054}
+[eval] {"phase": "ppo", "iter": 472, "env_steps": 3020800, "return": 5.811, "ret_sem": 0.186, "ach": 6.766, "max_ach": 12, "score": 8.0, "len": 155.0, "n_ep": 128, "sec": 1681.6}
+[iter] {"iter": 473, "env_steps": 3027200, "sec": 3.2, "real_r": 0.0351, "pg": -0.0254, "vf": 1.375, "ent": 0.978}
+[iter] {"iter": 474, "env_steps": 3033600, "sec": 3.2, "real_r": 0.0388, "pg": 0.0048, "vf": 1.3288, "ent": 0.956}
+[iter] {"iter": 475, "env_steps": 3040000, "sec": 3.2, "real_r": 0.0301, "pg": -0.0006, "vf": 1.2988, "ent": 1.011}
+[iter] {"iter": 476, "env_steps": 3046400, "sec": 3.2, "real_r": 0.0404, "pg": -0.1403, "vf": 1.2968, "ent": 0.842}
+[iter] {"iter": 477, "env_steps": 3052800, "sec": 3.2, "real_r": 0.0389, "pg": -0.0989, "vf": 1.3357, "ent": 0.868}
+[iter] {"iter": 478, "env_steps": 3059200, "sec": 3.2, "real_r": 0.0356, "pg": -0.0289, "vf": 1.3116, "ent": 0.913}
+[iter] {"iter": 479, "env_steps": 3065600, "sec": 3.2, "real_r": 0.0371, "pg": -0.0444, "vf": 1.3071, "ent": 0.863}
+[iter] {"iter": 480, "env_steps": 3072000, "sec": 3.2, "real_r": 0.0367, "pg": 0.0001, "vf": 1.3678, "ent": 0.864}
+[eval] {"phase": "ppo", "iter": 480, "env_steps": 3072000, "return": 5.37, "ret_sem": 0.21, "ach": 6.336, "max_ach": 11, "score": 7.92, "len": 161.1, "n_ep": 128, "sec": 1710.4}
+[iter] {"iter": 481, "env_steps": 3078400, "sec": 3.2, "real_r": 0.0374, "pg": 0.0038, "vf": 1.3087, "ent": 0.806}
+[iter] {"iter": 482, "env_steps": 3084800, "sec": 3.2, "real_r": 0.0364, "pg": -0.0114, "vf": 1.311, "ent": 0.884}
+[iter] {"iter": 483, "env_steps": 3091200, "sec": 3.2, "real_r": 0.0384, "pg": 0.0015, "vf": 1.3625, "ent": 0.902}
+[iter] {"iter": 484, "env_steps": 3097600, "sec": 3.2, "real_r": 0.0382, "pg": -0.0585, "vf": 1.309, "ent": 0.855}
+[iter] {"iter": 485, "env_steps": 3104000, "sec": 3.2, "real_r": 0.0404, "pg": -0.0239, "vf": 1.2174, "ent": 0.826}
+[iter] {"iter": 486, "env_steps": 3110400, "sec": 3.2, "real_r": 0.0358, "pg": -0.0959, "vf": 1.3096, "ent": 0.877}
+[iter] {"iter": 487, "env_steps": 3116800, "sec": 3.2, "real_r": 0.0352, "pg": -0.0955, "vf": 1.3025, "ent": 0.896}
+[iter] {"iter": 488, "env_steps": 3123200, "sec": 3.2, "real_r": 0.04, "pg": -0.011, "vf": 1.3547, "ent": 0.913}
+[eval] {"phase": "ppo", "iter": 488, "env_steps": 3123200, "return": 5.725, "ret_sem": 0.178, "ach": 6.711, "max_ach": 11, "score": 7.55, "len": 156.6, "n_ep": 128, "sec": 1737.8}
+[iter] {"iter": 489, "env_steps": 3129600, "sec": 3.2, "real_r": 0.038, "pg": -0.1029, "vf": 1.2932, "ent": 0.901}
+[iter] {"iter": 490, "env_steps": 3136000, "sec": 3.2, "real_r": 0.0343, "pg": -0.0824, "vf": 1.3438, "ent": 1.032}
+[iter] {"iter": 491, "env_steps": 3142400, "sec": 3.2, "real_r": 0.0355, "pg": -0.0767, "vf": 1.3525, "ent": 0.949}
+[iter] {"iter": 492, "env_steps": 3148800, "sec": 3.2, "real_r": 0.0347, "pg": -0.0875, "vf": 1.3252, "ent": 0.996}
+[iter] {"iter": 493, "env_steps": 3155200, "sec": 3.2, "real_r": 0.0341, "pg": -0.0636, "vf": 1.3395, "ent": 1.005}
+[iter] {"iter": 494, "env_steps": 3161600, "sec": 3.2, "real_r": 0.038, "pg": -0.0158, "vf": 1.3439, "ent": 0.925}
+[iter] {"iter": 495, "env_steps": 3168000, "sec": 3.2, "real_r": 0.0377, "pg": -0.0043, "vf": 1.3529, "ent": 0.941}
+[iter] {"iter": 496, "env_steps": 3174400, "sec": 3.2, "real_r": 0.0373, "pg": -0.0041, "vf": 1.3073, "ent": 0.919}
+[eval] {"phase": "ppo", "iter": 496, "env_steps": 3174400, "return": 5.73, "ret_sem": 0.183, "ach": 6.703, "max_ach": 11, "score": 7.99, "len": 150.5, "n_ep": 128, "sec": 1765.3}
+[iter] {"iter": 497, "env_steps": 3180800, "sec": 3.2, "real_r": 0.0421, "pg": -0.0633, "vf": 1.3419, "ent": 0.969}
+[iter] {"iter": 498, "env_steps": 3187200, "sec": 3.2, "real_r": 0.0431, "pg": -0.0518, "vf": 1.2946, "ent": 0.82}
+[iter] {"iter": 499, "env_steps": 3193600, "sec": 3.2, "real_r": 0.0456, "pg": -0.0736, "vf": 1.3229, "ent": 0.792}
+[iter] {"iter": 500, "env_steps": 3200000, "sec": 3.2, "real_r": 0.0467, "pg": 0.0097, "vf": 1.2916, "ent": 0.672}
+[iter] {"iter": 501, "env_steps": 3206400, "sec": 3.2, "real_r": 0.0425, "pg": 0.0062, "vf": 1.3498, "ent": 0.749}
+[iter] {"iter": 502, "env_steps": 3212800, "sec": 3.2, "real_r": 0.0417, "pg": 0.033, "vf": 1.3453, "ent": 0.843}
+[iter] {"iter": 503, "env_steps": 3219200, "sec": 3.2, "real_r": 0.047, "pg": -0.0431, "vf": 1.3037, "ent": 0.854}
+[iter] {"iter": 504, "env_steps": 3225600, "sec": 3.2, "real_r": 0.0392, "pg": -0.0075, "vf": 1.3521, "ent": 0.853}
+[eval] {"phase": "ppo", "iter": 504, "env_steps": 3225600, "return": 5.638, "ret_sem": 0.172, "ach": 6.586, "max_ach": 10, "score": 7.73, "len": 152.3, "n_ep": 128, "sec": 1792.2}
+[iter] {"iter": 505, "env_steps": 3232000, "sec": 3.2, "real_r": 0.0505, "pg": -0.126, "vf": 1.354, "ent": 0.766}
+[iter] {"iter": 506, "env_steps": 3238400, "sec": 3.2, "real_r": 0.0499, "pg": 0.0843, "vf": 1.3227, "ent": 0.763}
+[iter] {"iter": 507, "env_steps": 3244800, "sec": 3.2, "real_r": 0.0478, "pg": -0.0439, "vf": 1.2794, "ent": 0.736}
+[iter] {"iter": 508, "env_steps": 3251200, "sec": 3.2, "real_r": 0.0455, "pg": -0.1824, "vf": 1.2788, "ent": 0.78}
+[iter] {"iter": 509, "env_steps": 3257600, "sec": 3.2, "real_r": 0.0475, "pg": -0.0383, "vf": 1.3147, "ent": 0.717}
+[iter] {"iter": 510, "env_steps": 3264000, "sec": 3.2, "real_r": 0.0484, "pg": -0.1014, "vf": 1.2526, "ent": 0.701}
+[iter] {"iter": 511, "env_steps": 3270400, "sec": 3.2, "real_r": 0.0517, "pg": 0.0643, "vf": 1.3304, "ent": 0.671}
+[iter] {"iter": 512, "env_steps": 3276800, "sec": 3.2, "real_r": 0.0496, "pg": -0.0328, "vf": 1.2707, "ent": 0.605}
+[eval] {"phase": "ppo", "iter": 512, "env_steps": 3276800, "return": 5.892, "ret_sem": 0.145, "ach": 6.844, "max_ach": 11, "score": 6.99, "len": 169.2, "n_ep": 128, "sec": 1819.4}
+[iter] {"iter": 513, "env_steps": 3283200, "sec": 3.2, "real_r": 0.0475, "pg": 0.0719, "vf": 1.4075, "ent": 0.709}
+[iter] {"iter": 514, "env_steps": 3289600, "sec": 3.2, "real_r": 0.0487, "pg": -0.0262, "vf": 1.295, "ent": 0.767}
+[iter] {"iter": 515, "env_steps": 3296000, "sec": 3.2, "real_r": 0.0464, "pg": -0.1391, "vf": 1.3326, "ent": 0.792}
+[iter] {"iter": 516, "env_steps": 3302400, "sec": 3.2, "real_r": 0.0473, "pg": -0.0222, "vf": 1.3327, "ent": 0.811}
+[iter] {"iter": 517, "env_steps": 3308800, "sec": 3.2, "real_r": 0.0416, "pg": -0.0105, "vf": 1.368, "ent": 0.748}
+[iter] {"iter": 518, "env_steps": 3315200, "sec": 3.2, "real_r": 0.0495, "pg": -0.0545, "vf": 1.3298, "ent": 0.722}
+[iter] {"iter": 519, "env_steps": 3321600, "sec": 3.2, "real_r": 0.0494, "pg": -0.0096, "vf": 1.3118, "ent": 0.715}
+[iter] {"iter": 520, "env_steps": 3328000, "sec": 3.2, "real_r": 0.0465, "pg": -0.0169, "vf": 1.3445, "ent": 0.738}
+[eval] {"phase": "ppo", "iter": 520, "env_steps": 3328000, "return": 5.689, "ret_sem": 0.178, "ach": 6.641, "max_ach": 11, "score": 7.8, "len": 166.3, "n_ep": 128, "sec": 1846.6}
+[iter] {"iter": 521, "env_steps": 3334400, "sec": 3.2, "real_r": 0.0474, "pg": -0.0888, "vf": 1.3219, "ent": 0.812}
+[iter] {"iter": 522, "env_steps": 3340800, "sec": 3.2, "real_r": 0.0466, "pg": 0.0018, "vf": 1.2391, "ent": 0.708}
+[iter] {"iter": 523, "env_steps": 3347200, "sec": 3.2, "real_r": 0.0444, "pg": -0.095, "vf": 1.3084, "ent": 0.774}
+[iter] {"iter": 524, "env_steps": 3353600, "sec": 3.2, "real_r": 0.0525, "pg": -0.0025, "vf": 1.3024, "ent": 0.721}
+[iter] {"iter": 525, "env_steps": 3360000, "sec": 3.2, "real_r": 0.0541, "pg": 0.036, "vf": 1.2788, "ent": 0.779}
+[iter] {"iter": 526, "env_steps": 3366400, "sec": 3.2, "real_r": 0.047, "pg": -0.096, "vf": 1.3093, "ent": 0.712}
+[iter] {"iter": 527, "env_steps": 3372800, "sec": 3.2, "real_r": 0.0477, "pg": -0.0456, "vf": 1.2773, "ent": 0.736}
+[iter] {"iter": 528, "env_steps": 3379200, "sec": 3.2, "real_r": 0.0477, "pg": -0.0826, "vf": 1.3173, "ent": 0.807}
+[eval] {"phase": "ppo", "iter": 528, "env_steps": 3379200, "return": 5.161, "ret_sem": 0.169, "ach": 6.086, "max_ach": 10, "score": 6.93, "len": 161.6, "n_ep": 128, "sec": 1874.0}
+[iter] {"iter": 529, "env_steps": 3385600, "sec": 3.5, "real_r": 0.0465, "pg": -0.0492, "vf": 1.2616, "ent": 0.734}
+[iter] {"iter": 530, "env_steps": 3392000, "sec": 3.2, "real_r": 0.0442, "pg": -0.0104, "vf": 1.3161, "ent": 0.807}
+[iter] {"iter": 531, "env_steps": 3398400, "sec": 3.2, "real_r": 0.0472, "pg": -0.0117, "vf": 1.3113, "ent": 0.69}
+[iter] {"iter": 532, "env_steps": 3404800, "sec": 3.2, "real_r": 0.0484, "pg": -0.0913, "vf": 1.3087, "ent": 0.788}
+[iter] {"iter": 533, "env_steps": 3411200, "sec": 3.2, "real_r": 0.0431, "pg": -0.0399, "vf": 1.3421, "ent": 0.744}
+[iter] {"iter": 534, "env_steps": 3417600, "sec": 3.2, "real_r": 0.0544, "pg": -0.0486, "vf": 1.2641, "ent": 0.677}
+[iter] {"iter": 535, "env_steps": 3424000, "sec": 3.2, "real_r": 0.057, "pg": 0.0086, "vf": 1.2792, "ent": 0.713}
+[iter] {"iter": 536, "env_steps": 3430400, "sec": 3.2, "real_r": 0.0507, "pg": -0.103, "vf": 1.2915, "ent": 0.626}
+[eval] {"phase": "ppo", "iter": 536, "env_steps": 3430400, "return": 5.735, "ret_sem": 0.163, "ach": 6.648, "max_ach": 11, "score": 7.28, "len": 165.0, "n_ep": 128, "sec": 1901.3}
+[iter] {"iter": 537, "env_steps": 3436800, "sec": 3.2, "real_r": 0.0546, "pg": -0.078, "vf": 1.3128, "ent": 0.623}
+[iter] {"iter": 538, "env_steps": 3443200, "sec": 3.2, "real_r": 0.0501, "pg": -0.0348, "vf": 1.3253, "ent": 0.759}
+[iter] {"iter": 539, "env_steps": 3449600, "sec": 3.2, "real_r": 0.0479, "pg": -0.047, "vf": 1.254, "ent": 0.667}
+[iter] {"iter": 540, "env_steps": 3456000, "sec": 3.2, "real_r": 0.0498, "pg": -0.1357, "vf": 1.2418, "ent": 0.694}
+[iter] {"iter": 541, "env_steps": 3462400, "sec": 3.2, "real_r": 0.0442, "pg": -0.0867, "vf": 1.2559, "ent": 0.75}
+[iter] {"iter": 542, "env_steps": 3468800, "sec": 3.2, "real_r": 0.0441, "pg": -0.0549, "vf": 1.2692, "ent": 0.736}
+[iter] {"iter": 543, "env_steps": 3475200, "sec": 3.2, "real_r": 0.0478, "pg": 0.0006, "vf": 1.3255, "ent": 0.617}
+[iter] {"iter": 544, "env_steps": 3481600, "sec": 3.2, "real_r": 0.0498, "pg": -0.0736, "vf": 1.2842, "ent": 0.729}
+[eval] {"phase": "ppo", "iter": 544, "env_steps": 3481600, "return": 5.568, "ret_sem": 0.174, "ach": 6.516, "max_ach": 11, "score": 6.63, "len": 168.4, "n_ep": 128, "sec": 1928.5}
+[iter] {"iter": 545, "env_steps": 3488000, "sec": 3.2, "real_r": 0.0524, "pg": -0.1044, "vf": 1.2676, "ent": 0.747}
+[iter] {"iter": 546, "env_steps": 3494400, "sec": 3.2, "real_r": 0.0465, "pg": -0.0452, "vf": 1.3106, "ent": 0.681}
+[iter] {"iter": 547, "env_steps": 3500800, "sec": 3.2, "real_r": 0.0429, "pg": -0.103, "vf": 1.3552, "ent": 0.86}
+[iter] {"iter": 548, "env_steps": 3507200, "sec": 3.2, "real_r": 0.0474, "pg": -0.0725, "vf": 1.2757, "ent": 0.804}
+[iter] {"iter": 549, "env_steps": 3513600, "sec": 3.2, "real_r": 0.0468, "pg": 0.038, "vf": 1.2512, "ent": 0.648}
+[iter] {"iter": 550, "env_steps": 3520000, "sec": 3.2, "real_r": 0.046, "pg": 0.0065, "vf": 1.3103, "ent": 0.777}
+[iter] {"iter": 551, "env_steps": 3526400, "sec": 3.2, "real_r": 0.0517, "pg": -0.1006, "vf": 1.2638, "ent": 0.744}
+[iter] {"iter": 552, "env_steps": 3532800, "sec": 3.2, "real_r": 0.0485, "pg": -0.0911, "vf": 1.2934, "ent": 0.79}
+[eval] {"phase": "ppo", "iter": 552, "env_steps": 3532800, "return": 5.32, "ret_sem": 0.156, "ach": 6.25, "max_ach": 10, "score": 6.4, "len": 165.2, "n_ep": 128, "sec": 1955.8}
+[iter] {"iter": 553, "env_steps": 3539200, "sec": 3.2, "real_r": 0.0462, "pg": -0.0756, "vf": 1.2243, "ent": 0.722}
+[iter] {"iter": 554, "env_steps": 3545600, "sec": 3.2, "real_r": 0.0458, "pg": -0.0828, "vf": 1.2867, "ent": 0.831}
+[iter] {"iter": 555, "env_steps": 3552000, "sec": 3.2, "real_r": 0.0501, "pg": 0.0819, "vf": 1.2811, "ent": 0.696}
+[iter] {"iter": 556, "env_steps": 3558400, "sec": 3.2, "real_r": 0.0485, "pg": -0.0118, "vf": 1.3217, "ent": 0.777}
+[iter] {"iter": 557, "env_steps": 3564800, "sec": 3.2, "real_r": 0.0539, "pg": -0.0018, "vf": 1.311, "ent": 0.696}
+[iter] {"iter": 558, "env_steps": 3571200, "sec": 3.2, "real_r": 0.0555, "pg": -0.0074, "vf": 1.2326, "ent": 0.663}
+[iter] {"iter": 559, "env_steps": 3577600, "sec": 3.2, "real_r": 0.0453, "pg": -0.1239, "vf": 1.299, "ent": 0.79}
+[iter] {"iter": 560, "env_steps": 3584000, "sec": 3.2, "real_r": 0.0536, "pg": -0.0412, "vf": 1.2655, "ent": 0.619}
+[eval] {"phase": "ppo", "iter": 560, "env_steps": 3584000, "return": 5.108, "ret_sem": 0.148, "ach": 6.047, "max_ach": 10, "score": 6.25, "len": 167.2, "n_ep": 128, "sec": 1982.9}
+[iter] {"iter": 561, "env_steps": 3590400, "sec": 3.2, "real_r": 0.0564, "pg": -0.0774, "vf": 1.2541, "ent": 0.653}
+[iter] {"iter": 562, "env_steps": 3596800, "sec": 3.2, "real_r": 0.0553, "pg": -0.0767, "vf": 1.2301, "ent": 0.664}
+[iter] {"iter": 563, "env_steps": 3603200, "sec": 3.2, "real_r": 0.0499, "pg": -0.0309, "vf": 1.2591, "ent": 0.71}
+[iter] {"iter": 564, "env_steps": 3609600, "sec": 3.2, "real_r": 0.0509, "pg": -0.1225, "vf": 1.3129, "ent": 0.722}
+[iter] {"iter": 565, "env_steps": 3616000, "sec": 3.2, "real_r": 0.0574, "pg": -0.0335, "vf": 1.2655, "ent": 0.721}
+[iter] {"iter": 566, "env_steps": 3622400, "sec": 3.2, "real_r": 0.0541, "pg": -0.1666, "vf": 1.2509, "ent": 0.675}
+[iter] {"iter": 567, "env_steps": 3628800, "sec": 3.2, "real_r": 0.0514, "pg": -0.0047, "vf": 1.3017, "ent": 0.704}
+[iter] {"iter": 568, "env_steps": 3635200, "sec": 3.2, "real_r": 0.0618, "pg": -0.0644, "vf": 1.2134, "ent": 0.608}
+[eval] {"phase": "ppo", "iter": 568, "env_steps": 3635200, "return": 4.949, "ret_sem": 0.158, "ach": 5.852, "max_ach": 10, "score": 6.27, "len": 172.8, "n_ep": 128, "sec": 2010.9}
+[iter] {"iter": 569, "env_steps": 3641600, "sec": 3.2, "real_r": 0.0543, "pg": -0.0882, "vf": 1.3316, "ent": 0.675}
+[iter] {"iter": 570, "env_steps": 3648000, "sec": 3.2, "real_r": 0.0584, "pg": -0.1187, "vf": 1.2502, "ent": 0.626}
+[iter] {"iter": 571, "env_steps": 3654400, "sec": 3.2, "real_r": 0.0557, "pg": 0.0384, "vf": 1.3569, "ent": 0.741}
+[iter] {"iter": 572, "env_steps": 3660800, "sec": 3.2, "real_r": 0.0573, "pg": -0.0719, "vf": 1.2987, "ent": 0.678}
+[iter] {"iter": 573, "env_steps": 3667200, "sec": 3.2, "real_r": 0.057, "pg": -0.1343, "vf": 1.2689, "ent": 0.638}
+[iter] {"iter": 574, "env_steps": 3673600, "sec": 3.2, "real_r": 0.0529, "pg": -0.1087, "vf": 1.3122, "ent": 0.645}
+[iter] {"iter": 575, "env_steps": 3680000, "sec": 3.2, "real_r": 0.0574, "pg": -0.117, "vf": 1.236, "ent": 0.533}
+[iter] {"iter": 576, "env_steps": 3686400, "sec": 3.2, "real_r": 0.0578, "pg": 0.0811, "vf": 1.3167, "ent": 0.539}
+[eval] {"phase": "ppo", "iter": 576, "env_steps": 3686400, "return": 5.255, "ret_sem": 0.133, "ach": 6.211, "max_ach": 10, "score": 6.18, "len": 185.2, "n_ep": 128, "sec": 2038.0}
+[iter] {"iter": 577, "env_steps": 3692800, "sec": 3.2, "real_r": 0.0579, "pg": -0.1126, "vf": 1.2666, "ent": 0.6}
+[iter] {"iter": 578, "env_steps": 3699200, "sec": 3.2, "real_r": 0.0576, "pg": -0.0189, "vf": 1.2454, "ent": 0.62}
+[iter] {"iter": 579, "env_steps": 3705600, "sec": 3.2, "real_r": 0.0541, "pg": -0.0335, "vf": 1.2242, "ent": 0.536}
+[iter] {"iter": 580, "env_steps": 3712000, "sec": 3.2, "real_r": 0.0624, "pg": 0.0524, "vf": 1.2522, "ent": 0.593}
+[iter] {"iter": 581, "env_steps": 3718400, "sec": 3.2, "real_r": 0.0543, "pg": -0.0125, "vf": 1.2764, "ent": 0.564}
+[iter] {"iter": 582, "env_steps": 3724800, "sec": 3.2, "real_r": 0.0572, "pg": 0.0586, "vf": 1.3106, "ent": 0.644}
+[iter] {"iter": 583, "env_steps": 3731200, "sec": 3.2, "real_r": 0.0555, "pg": -0.0142, "vf": 1.2697, "ent": 0.681}
+[iter] {"iter": 584, "env_steps": 3737600, "sec": 3.2, "real_r": 0.0537, "pg": -0.0151, "vf": 1.2465, "ent": 0.613}
+[eval] {"phase": "ppo", "iter": 584, "env_steps": 3737600, "return": 5.353, "ret_sem": 0.168, "ach": 6.258, "max_ach": 11, "score": 7.48, "len": 172.8, "n_ep": 128, "sec": 2065.5}
+[iter] {"iter": 585, "env_steps": 3744000, "sec": 3.2, "real_r": 0.0523, "pg": -0.1639, "vf": 1.2563, "ent": 0.66}
+[iter] {"iter": 586, "env_steps": 3750400, "sec": 3.2, "real_r": 0.0563, "pg": -0.0152, "vf": 1.2532, "ent": 0.66}
+[iter] {"iter": 587, "env_steps": 3756800, "sec": 3.2, "real_r": 0.0534, "pg": -0.1352, "vf": 1.241, "ent": 0.747}
+[iter] {"iter": 588, "env_steps": 3763200, "sec": 3.2, "real_r": 0.0487, "pg": -0.0657, "vf": 1.288, "ent": 0.864}
+[iter] {"iter": 589, "env_steps": 3769600, "sec": 3.2, "real_r": 0.0445, "pg": -0.0039, "vf": 1.2883, "ent": 0.701}
+[iter] {"iter": 590, "env_steps": 3776000, "sec": 3.2, "real_r": 0.0482, "pg": -0.0968, "vf": 1.2738, "ent": 0.675}
+[iter] {"iter": 591, "env_steps": 3782400, "sec": 3.2, "real_r": 0.0531, "pg": -0.0685, "vf": 1.2577, "ent": 0.715}
+[iter] {"iter": 592, "env_steps": 3788800, "sec": 3.2, "real_r": 0.0493, "pg": -0.0653, "vf": 1.2378, "ent": 0.621}
+[eval] {"phase": "ppo", "iter": 592, "env_steps": 3788800, "return": 5.643, "ret_sem": 0.144, "ach": 6.555, "max_ach": 11, "score": 8.0, "len": 167.5, "n_ep": 128, "sec": 2092.9}
+[iter] {"iter": 593, "env_steps": 3795200, "sec": 3.2, "real_r": 0.0452, "pg": -0.0761, "vf": 1.2303, "ent": 0.61}
+[iter] {"iter": 594, "env_steps": 3801600, "sec": 3.2, "real_r": 0.0542, "pg": -0.0582, "vf": 1.2563, "ent": 0.528}
+[iter] {"iter": 595, "env_steps": 3808000, "sec": 3.2, "real_r": 0.0565, "pg": -0.0236, "vf": 1.2767, "ent": 0.535}
+[iter] {"iter": 596, "env_steps": 3814400, "sec": 3.2, "real_r": 0.0567, "pg": -0.1062, "vf": 1.2117, "ent": 0.528}
+[iter] {"iter": 597, "env_steps": 3820800, "sec": 3.2, "real_r": 0.0568, "pg": -0.0722, "vf": 1.2756, "ent": 0.556}
+[iter] {"iter": 598, "env_steps": 3827200, "sec": 3.2, "real_r": 0.0641, "pg": -0.04, "vf": 1.2869, "ent": 0.561}
+[iter] {"iter": 599, "env_steps": 3833600, "sec": 3.2, "real_r": 0.0634, "pg": -0.0818, "vf": 1.2228, "ent": 0.486}
+[iter] {"iter": 600, "env_steps": 3840000, "sec": 3.2, "real_r": 0.0586, "pg": -0.0452, "vf": 1.2697, "ent": 0.544}
+[eval] {"phase": "ppo", "iter": 600, "env_steps": 3840000, "return": 5.848, "ret_sem": 0.154, "ach": 6.758, "max_ach": 11, "score": 8.69, "len": 172.5, "n_ep": 128, "sec": 2120.1}
+[iter] {"iter": 601, "env_steps": 3846400, "sec": 3.2, "real_r": 0.0517, "pg": -0.0332, "vf": 1.2688, "ent": 0.611}
+[iter] {"iter": 602, "env_steps": 3852800, "sec": 3.2, "real_r": 0.0545, "pg": -0.0515, "vf": 1.2346, "ent": 0.61}
+[iter] {"iter": 603, "env_steps": 3859200, "sec": 3.2, "real_r": 0.0585, "pg": -0.0698, "vf": 1.3062, "ent": 0.676}
+[iter] {"iter": 604, "env_steps": 3865600, "sec": 3.2, "real_r": 0.0573, "pg": -0.0136, "vf": 1.2482, "ent": 0.594}
+[iter] {"iter": 605, "env_steps": 3872000, "sec": 3.2, "real_r": 0.0557, "pg": -0.0684, "vf": 1.3109, "ent": 0.612}
+[iter] {"iter": 606, "env_steps": 3878400, "sec": 3.2, "real_r": 0.0611, "pg": 0.0202, "vf": 1.2989, "ent": 0.607}
+[iter] {"iter": 607, "env_steps": 3884800, "sec": 3.2, "real_r": 0.0626, "pg": 0.0186, "vf": 1.248, "ent": 0.62}
+[iter] {"iter": 608, "env_steps": 3891200, "sec": 3.2, "real_r": 0.0615, "pg": -0.0809, "vf": 1.2803, "ent": 0.579}
+[eval] {"phase": "ppo", "iter": 608, "env_steps": 3891200, "return": 5.634, "ret_sem": 0.158, "ach": 6.57, "max_ach": 10, "score": 7.89, "len": 176.6, "n_ep": 128, "sec": 2147.7}
+[iter] {"iter": 609, "env_steps": 3897600, "sec": 3.2, "real_r": 0.0534, "pg": -0.1564, "vf": 1.2557, "ent": 0.61}
+[iter] {"iter": 610, "env_steps": 3904000, "sec": 3.2, "real_r": 0.0559, "pg": -0.1197, "vf": 1.2672, "ent": 0.62}
+[iter] {"iter": 611, "env_steps": 3910400, "sec": 3.2, "real_r": 0.0595, "pg": 0.0335, "vf": 1.3155, "ent": 0.626}
+[iter] {"iter": 612, "env_steps": 3916800, "sec": 3.2, "real_r": 0.0603, "pg": -0.0412, "vf": 1.2938, "ent": 0.572}
+[iter] {"iter": 613, "env_steps": 3923200, "sec": 3.2, "real_r": 0.0592, "pg": -0.0492, "vf": 1.2532, "ent": 0.608}
+[iter] {"iter": 614, "env_steps": 3929600, "sec": 3.2, "real_r": 0.0562, "pg": -0.0597, "vf": 1.2835, "ent": 0.623}
+[iter] {"iter": 615, "env_steps": 3936000, "sec": 3.2, "real_r": 0.0511, "pg": -0.0587, "vf": 1.2937, "ent": 0.676}
+[iter] {"iter": 616, "env_steps": 3942400, "sec": 3.2, "real_r": 0.0594, "pg": -0.0528, "vf": 1.2661, "ent": 0.634}
+[eval] {"phase": "ppo", "iter": 616, "env_steps": 3942400, "return": 6.122, "ret_sem": 0.144, "ach": 7.055, "max_ach": 11, "score": 8.18, "len": 180.6, "n_ep": 128, "sec": 2174.6}
+[iter] {"iter": 617, "env_steps": 3948800, "sec": 3.2, "real_r": 0.0571, "pg": -0.1112, "vf": 1.2509, "ent": 0.595}
+[iter] {"iter": 618, "env_steps": 3955200, "sec": 3.2, "real_r": 0.0505, "pg": -0.1398, "vf": 1.2286, "ent": 0.578}
+[iter] {"iter": 619, "env_steps": 3961600, "sec": 3.2, "real_r": 0.0579, "pg": 0.0547, "vf": 1.3321, "ent": 0.67}
+[iter] {"iter": 620, "env_steps": 3968000, "sec": 3.2, "real_r": 0.0595, "pg": -0.0733, "vf": 1.2964, "ent": 0.633}
+[iter] {"iter": 621, "env_steps": 3974400, "sec": 3.2, "real_r": 0.0562, "pg": -0.0423, "vf": 1.2812, "ent": 0.661}
+[iter] {"iter": 622, "env_steps": 3980800, "sec": 3.2, "real_r": 0.0563, "pg": -0.0694, "vf": 1.25, "ent": 0.634}
+[iter] {"iter": 623, "env_steps": 3987200, "sec": 3.2, "real_r": 0.0552, "pg": -0.0939, "vf": 1.2714, "ent": 0.688}
+[iter] {"iter": 624, "env_steps": 3993600, "sec": 3.4, "real_r": 0.0559, "pg": -0.0003, "vf": 1.3059, "ent": 0.629}
+[eval] {"phase": "ppo", "iter": 624, "env_steps": 3993600, "return": 6.048, "ret_sem": 0.14, "ach": 6.961, "max_ach": 10, "score": 7.26, "len": 187.1, "n_ep": 128, "sec": 2202.0}
+[iter] {"iter": 625, "env_steps": 4000000, "sec": 3.2, "real_r": 0.0538, "pg": -0.0041, "vf": 1.2653, "ent": 0.745}
+[iter] {"iter": 626, "env_steps": 4006400, "sec": 3.2, "real_r": 0.0589, "pg": -0.0594, "vf": 1.2844, "ent": 0.661}
+[iter] {"iter": 627, "env_steps": 4012800, "sec": 3.2, "real_r": 0.0553, "pg": -0.0612, "vf": 1.2784, "ent": 0.539}
+[iter] {"iter": 628, "env_steps": 4019200, "sec": 3.2, "real_r": 0.0596, "pg": -0.0954, "vf": 1.2577, "ent": 0.625}
+[iter] {"iter": 629, "env_steps": 4025600, "sec": 3.2, "real_r": 0.0685, "pg": 0.0296, "vf": 1.2291, "ent": 0.552}
+[iter] {"iter": 630, "env_steps": 4032000, "sec": 3.2, "real_r": 0.0661, "pg": -0.0955, "vf": 1.2358, "ent": 0.546}
+[iter] {"iter": 631, "env_steps": 4038400, "sec": 3.2, "real_r": 0.0641, "pg": 0.0492, "vf": 1.2598, "ent": 0.5}
+[iter] {"iter": 632, "env_steps": 4044800, "sec": 3.2, "real_r": 0.0627, "pg": -0.037, "vf": 1.2432, "ent": 0.516}
+[eval] {"phase": "ppo", "iter": 632, "env_steps": 4044800, "return": 5.526, "ret_sem": 0.154, "ach": 6.445, "max_ach": 10, "score": 6.59, "len": 184.8, "n_ep": 128, "sec": 2229.2}
+[iter] {"iter": 633, "env_steps": 4051200, "sec": 3.2, "real_r": 0.0622, "pg": -0.0656, "vf": 1.2722, "ent": 0.643}
+[iter] {"iter": 634, "env_steps": 4057600, "sec": 3.2, "real_r": 0.0549, "pg": -0.0212, "vf": 1.2468, "ent": 0.668}
+[iter] {"iter": 635, "env_steps": 4064000, "sec": 3.2, "real_r": 0.0575, "pg": 0.0374, "vf": 1.2974, "ent": 0.591}
+[iter] {"iter": 636, "env_steps": 4070400, "sec": 3.2, "real_r": 0.0578, "pg": -0.1128, "vf": 1.3232, "ent": 0.615}
+[iter] {"iter": 637, "env_steps": 4076800, "sec": 3.2, "real_r": 0.0692, "pg": -0.0081, "vf": 1.2364, "ent": 0.573}
+[iter] {"iter": 638, "env_steps": 4083200, "sec": 3.2, "real_r": 0.0592, "pg": 0.0045, "vf": 1.2701, "ent": 0.599}
+[iter] {"iter": 639, "env_steps": 4089600, "sec": 3.2, "real_r": 0.0577, "pg": -0.0344, "vf": 1.2503, "ent": 0.582}
+[iter] {"iter": 640, "env_steps": 4096000, "sec": 3.2, "real_r": 0.062, "pg": 0.0073, "vf": 1.2245, "ent": 0.643}
+[eval] {"phase": "ppo", "iter": 640, "env_steps": 4096000, "return": 5.614, "ret_sem": 0.14, "ach": 6.531, "max_ach": 11, "score": 6.69, "len": 173.9, "n_ep": 128, "sec": 2256.2}
+[iter] {"iter": 641, "env_steps": 4102400, "sec": 3.2, "real_r": 0.0561, "pg": -0.0307, "vf": 1.2521, "ent": 0.554}
+[iter] {"iter": 642, "env_steps": 4108800, "sec": 3.2, "real_r": 0.0568, "pg": 0.0403, "vf": 1.283, "ent": 0.62}
+[iter] {"iter": 643, "env_steps": 4115200, "sec": 3.2, "real_r": 0.0627, "pg": -0.0659, "vf": 1.2775, "ent": 0.633}
+[iter] {"iter": 644, "env_steps": 4121600, "sec": 3.2, "real_r": 0.0631, "pg": -0.1148, "vf": 1.2601, "ent": 0.637}
+[iter] {"iter": 645, "env_steps": 4128000, "sec": 3.2, "real_r": 0.0588, "pg": -0.0916, "vf": 1.2743, "ent": 0.583}
+[iter] {"iter": 646, "env_steps": 4134400, "sec": 3.2, "real_r": 0.0628, "pg": -0.0297, "vf": 1.2067, "ent": 0.507}
+[iter] {"iter": 647, "env_steps": 4140800, "sec": 3.2, "real_r": 0.0627, "pg": -0.1139, "vf": 1.2487, "ent": 0.555}
+[iter] {"iter": 648, "env_steps": 4147200, "sec": 3.2, "real_r": 0.0656, "pg": 0.0007, "vf": 1.2622, "ent": 0.547}
+[eval] {"phase": "ppo", "iter": 648, "env_steps": 4147200, "return": 5.735, "ret_sem": 0.132, "ach": 6.617, "max_ach": 10, "score": 7.05, "len": 181.9, "n_ep": 128, "sec": 2283.2}
+[iter] {"iter": 649, "env_steps": 4153600, "sec": 3.2, "real_r": 0.0605, "pg": -0.0461, "vf": 1.3193, "ent": 0.635}
+[iter] {"iter": 650, "env_steps": 4160000, "sec": 3.2, "real_r": 0.0656, "pg": -0.074, "vf": 1.2225, "ent": 0.5}
+[iter] {"iter": 651, "env_steps": 4166400, "sec": 3.2, "real_r": 0.0607, "pg": 0.019, "vf": 1.2506, "ent": 0.54}
+[iter] {"iter": 652, "env_steps": 4172800, "sec": 3.2, "real_r": 0.0594, "pg": 0.0564, "vf": 1.3186, "ent": 0.566}
+[iter] {"iter": 653, "env_steps": 4179200, "sec": 3.2, "real_r": 0.0645, "pg": -0.0762, "vf": 1.2502, "ent": 0.557}
+[iter] {"iter": 654, "env_steps": 4185600, "sec": 3.2, "real_r": 0.063, "pg": -0.0756, "vf": 1.3008, "ent": 0.635}
+[iter] {"iter": 655, "env_steps": 4192000, "sec": 3.2, "real_r": 0.0613, "pg": -0.0945, "vf": 1.2903, "ent": 0.597}
+[iter] {"iter": 656, "env_steps": 4198400, "sec": 3.2, "real_r": 0.0667, "pg": -0.0888, "vf": 1.2558, "ent": 0.576}
+[eval] {"phase": "ppo", "iter": 656, "env_steps": 4198400, "return": 5.863, "ret_sem": 0.158, "ach": 6.812, "max_ach": 10, "score": 7.77, "len": 187.3, "n_ep": 128, "sec": 2311.5}
+[iter] {"iter": 657, "env_steps": 4204800, "sec": 3.2, "real_r": 0.0553, "pg": -0.0264, "vf": 1.2659, "ent": 0.603}
+[iter] {"iter": 658, "env_steps": 4211200, "sec": 3.2, "real_r": 0.0602, "pg": -0.125, "vf": 1.2738, "ent": 0.554}
+[iter] {"iter": 659, "env_steps": 4217600, "sec": 3.2, "real_r": 0.0681, "pg": -0.0307, "vf": 1.2511, "ent": 0.575}
+[iter] {"iter": 660, "env_steps": 4224000, "sec": 3.2, "real_r": 0.0637, "pg": -0.0993, "vf": 1.2474, "ent": 0.473}
+[iter] {"iter": 661, "env_steps": 4230400, "sec": 3.2, "real_r": 0.0582, "pg": -0.1093, "vf": 1.3001, "ent": 0.574}
+[iter] {"iter": 662, "env_steps": 4236800, "sec": 3.2, "real_r": 0.0675, "pg": -0.0641, "vf": 1.2277, "ent": 0.531}
+[iter] {"iter": 663, "env_steps": 4243200, "sec": 3.2, "real_r": 0.0651, "pg": -0.0946, "vf": 1.2512, "ent": 0.581}
+[iter] {"iter": 664, "env_steps": 4249600, "sec": 3.2, "real_r": 0.0685, "pg": -0.0978, "vf": 1.2616, "ent": 0.487}
+[eval] {"phase": "ppo", "iter": 664, "env_steps": 4249600, "return": 5.568, "ret_sem": 0.138, "ach": 6.484, "max_ach": 11, "score": 6.92, "len": 185.5, "n_ep": 128, "sec": 2338.8}
+[iter] {"iter": 665, "env_steps": 4256000, "sec": 3.2, "real_r": 0.0717, "pg": -0.0273, "vf": 1.2396, "ent": 0.587}
+[iter] {"iter": 666, "env_steps": 4262400, "sec": 3.2, "real_r": 0.0649, "pg": -0.1809, "vf": 1.2583, "ent": 0.572}
+[iter] {"iter": 667, "env_steps": 4268800, "sec": 3.2, "real_r": 0.061, "pg": -0.0376, "vf": 1.2803, "ent": 0.529}
+[iter] {"iter": 668, "env_steps": 4275200, "sec": 3.2, "real_r": 0.0616, "pg": -0.0673, "vf": 1.2075, "ent": 0.536}
+[iter] {"iter": 669, "env_steps": 4281600, "sec": 3.2, "real_r": 0.0618, "pg": -0.0424, "vf": 1.2901, "ent": 0.539}
+[iter] {"iter": 670, "env_steps": 4288000, "sec": 3.2, "real_r": 0.0654, "pg": 0.0151, "vf": 1.2802, "ent": 0.549}
+[iter] {"iter": 671, "env_steps": 4294400, "sec": 3.2, "real_r": 0.0672, "pg": -0.0605, "vf": 1.2327, "ent": 0.535}
+[iter] {"iter": 672, "env_steps": 4300800, "sec": 3.2, "real_r": 0.0583, "pg": -0.1808, "vf": 1.2362, "ent": 0.525}
+[eval] {"phase": "ppo", "iter": 672, "env_steps": 4300800, "return": 5.918, "ret_sem": 0.139, "ach": 6.844, "max_ach": 11, "score": 7.77, "len": 194.8, "n_ep": 128, "sec": 2366.2}
+[iter] {"iter": 673, "env_steps": 4307200, "sec": 3.2, "real_r": 0.0636, "pg": -0.0899, "vf": 1.2014, "ent": 0.509}
+[iter] {"iter": 674, "env_steps": 4313600, "sec": 3.2, "real_r": 0.056, "pg": -0.0842, "vf": 1.3417, "ent": 0.666}
+[iter] {"iter": 675, "env_steps": 4320000, "sec": 3.2, "real_r": 0.0677, "pg": -0.1032, "vf": 1.2585, "ent": 0.583}
+[iter] {"iter": 676, "env_steps": 4326400, "sec": 3.2, "real_r": 0.0629, "pg": -0.0784, "vf": 1.258, "ent": 0.511}
+[iter] {"iter": 677, "env_steps": 4332800, "sec": 3.2, "real_r": 0.0625, "pg": -0.0609, "vf": 1.2461, "ent": 0.535}
+[iter] {"iter": 678, "env_steps": 4339200, "sec": 3.2, "real_r": 0.0669, "pg": 0.0282, "vf": 1.2726, "ent": 0.564}
+[iter] {"iter": 679, "env_steps": 4345600, "sec": 3.2, "real_r": 0.0587, "pg": -0.1409, "vf": 1.2469, "ent": 0.531}
+[iter] {"iter": 680, "env_steps": 4352000, "sec": 3.2, "real_r": 0.0647, "pg": -0.0906, "vf": 1.2729, "ent": 0.611}
+[eval] {"phase": "ppo", "iter": 680, "env_steps": 4352000, "return": 6.248, "ret_sem": 0.139, "ach": 7.188, "max_ach": 11, "score": 8.5, "len": 181.3, "n_ep": 128, "sec": 2393.0}
+[iter] {"iter": 681, "env_steps": 4358400, "sec": 3.2, "real_r": 0.063, "pg": 0.0025, "vf": 1.2373, "ent": 0.604}
+[iter] {"iter": 682, "env_steps": 4364800, "sec": 3.2, "real_r": 0.057, "pg": -0.1506, "vf": 1.2228, "ent": 0.607}
+[iter] {"iter": 683, "env_steps": 4371200, "sec": 3.2, "real_r": 0.0646, "pg": -0.1434, "vf": 1.2176, "ent": 0.581}
+[iter] {"iter": 684, "env_steps": 4377600, "sec": 3.2, "real_r": 0.062, "pg": -0.0107, "vf": 1.2964, "ent": 0.63}
+[iter] {"iter": 685, "env_steps": 4384000, "sec": 3.2, "real_r": 0.0606, "pg": -0.1536, "vf": 1.2067, "ent": 0.607}
+[iter] {"iter": 686, "env_steps": 4390400, "sec": 3.2, "real_r": 0.0609, "pg": -0.0028, "vf": 1.2846, "ent": 0.565}
+[iter] {"iter": 687, "env_steps": 4396800, "sec": 3.2, "real_r": 0.0678, "pg": -0.0892, "vf": 1.2552, "ent": 0.563}
+[iter] {"iter": 688, "env_steps": 4403200, "sec": 3.2, "real_r": 0.0671, "pg": -0.1151, "vf": 1.2822, "ent": 0.507}
+[eval] {"phase": "ppo", "iter": 688, "env_steps": 4403200, "return": 6.045, "ret_sem": 0.124, "ach": 6.922, "max_ach": 10, "score": 7.32, "len": 181.9, "n_ep": 128, "sec": 2420.1}
+[iter] {"iter": 689, "env_steps": 4409600, "sec": 3.2, "real_r": 0.0629, "pg": 0.0478, "vf": 1.2644, "ent": 0.507}
+[iter] {"iter": 690, "env_steps": 4416000, "sec": 3.2, "real_r": 0.0645, "pg": -0.0344, "vf": 1.282, "ent": 0.5}
+[iter] {"iter": 691, "env_steps": 4422400, "sec": 3.2, "real_r": 0.0706, "pg": -0.0654, "vf": 1.2288, "ent": 0.508}
+[iter] {"iter": 692, "env_steps": 4428800, "sec": 3.2, "real_r": 0.0691, "pg": 0.0705, "vf": 1.2624, "ent": 0.564}
+[iter] {"iter": 693, "env_steps": 4435200, "sec": 3.2, "real_r": 0.0653, "pg": -0.1158, "vf": 1.2368, "ent": 0.559}
+[iter] {"iter": 694, "env_steps": 4441600, "sec": 3.2, "real_r": 0.0639, "pg": 0.0055, "vf": 1.2399, "ent": 0.574}
+[iter] {"iter": 695, "env_steps": 4448000, "sec": 3.2, "real_r": 0.061, "pg": -0.0234, "vf": 1.3039, "ent": 0.66}
+[iter] {"iter": 696, "env_steps": 4454400, "sec": 3.2, "real_r": 0.0633, "pg": -0.0957, "vf": 1.2382, "ent": 0.523}
+[eval] {"phase": "ppo", "iter": 696, "env_steps": 4454400, "return": 5.875, "ret_sem": 0.15, "ach": 6.797, "max_ach": 11, "score": 7.07, "len": 186.0, "n_ep": 128, "sec": 2447.3}
+[iter] {"iter": 697, "env_steps": 4460800, "sec": 3.2, "real_r": 0.0633, "pg": -0.0472, "vf": 1.2699, "ent": 0.534}
+[iter] {"iter": 698, "env_steps": 4467200, "sec": 3.2, "real_r": 0.0649, "pg": -0.0756, "vf": 1.2336, "ent": 0.521}
+[iter] {"iter": 699, "env_steps": 4473600, "sec": 3.2, "real_r": 0.0602, "pg": -0.0591, "vf": 1.2554, "ent": 0.58}
+[iter] {"iter": 700, "env_steps": 4480000, "sec": 3.2, "real_r": 0.0591, "pg": -0.1558, "vf": 1.2342, "ent": 0.602}
+[iter] {"iter": 701, "env_steps": 4486400, "sec": 3.2, "real_r": 0.0663, "pg": -0.0108, "vf": 1.2499, "ent": 0.533}
+[iter] {"iter": 702, "env_steps": 4492800, "sec": 3.2, "real_r": 0.0571, "pg": -0.0959, "vf": 1.2418, "ent": 0.54}
+[iter] {"iter": 703, "env_steps": 4499200, "sec": 3.2, "real_r": 0.0674, "pg": 0.0009, "vf": 1.2688, "ent": 0.54}
+[iter] {"iter": 704, "env_steps": 4505600, "sec": 3.2, "real_r": 0.0629, "pg": -0.1402, "vf": 1.2467, "ent": 0.48}
+[eval] {"phase": "ppo", "iter": 704, "env_steps": 4505600, "return": 5.552, "ret_sem": 0.132, "ach": 6.492, "max_ach": 11, "score": 6.55, "len": 189.9, "n_ep": 128, "sec": 2474.6}
+[iter] {"iter": 705, "env_steps": 4512000, "sec": 3.2, "real_r": 0.0591, "pg": -0.0727, "vf": 1.3063, "ent": 0.533}
+[iter] {"iter": 706, "env_steps": 4518400, "sec": 3.2, "real_r": 0.0641, "pg": -0.1684, "vf": 1.2698, "ent": 0.633}
+[iter] {"iter": 707, "env_steps": 4524800, "sec": 3.2, "real_r": 0.0651, "pg": -0.0253, "vf": 1.3325, "ent": 0.6}
+[iter] {"iter": 708, "env_steps": 4531200, "sec": 3.2, "real_r": 0.0701, "pg": -0.0035, "vf": 1.2316, "ent": 0.485}
+[iter] {"iter": 709, "env_steps": 4537600, "sec": 3.2, "real_r": 0.063, "pg": -0.1993, "vf": 1.2363, "ent": 0.48}
+[iter] {"iter": 710, "env_steps": 4544000, "sec": 3.2, "real_r": 0.0641, "pg": -0.0052, "vf": 1.2539, "ent": 0.508}
+[iter] {"iter": 711, "env_steps": 4550400, "sec": 3.2, "real_r": 0.0719, "pg": -0.0736, "vf": 1.2746, "ent": 0.553}
+[iter] {"iter": 712, "env_steps": 4556800, "sec": 3.2, "real_r": 0.0733, "pg": -0.0594, "vf": 1.2302, "ent": 0.52}
+[eval] {"phase": "ppo", "iter": 712, "env_steps": 4556800, "return": 5.797, "ret_sem": 0.126, "ach": 6.695, "max_ach": 11, "score": 7.67, "len": 176.2, "n_ep": 128, "sec": 2501.4}
+[iter] {"iter": 713, "env_steps": 4563200, "sec": 3.2, "real_r": 0.068, "pg": -0.0129, "vf": 1.214, "ent": 0.522}
+[iter] {"iter": 714, "env_steps": 4569600, "sec": 3.2, "real_r": 0.0615, "pg": -0.0857, "vf": 1.2918, "ent": 0.552}
+[iter] {"iter": 715, "env_steps": 4576000, "sec": 3.2, "real_r": 0.0694, "pg": 0.0148, "vf": 1.2722, "ent": 0.554}
+[iter] {"iter": 716, "env_steps": 4582400, "sec": 3.2, "real_r": 0.0687, "pg": -0.073, "vf": 1.2458, "ent": 0.492}
+[iter] {"iter": 717, "env_steps": 4588800, "sec": 3.2, "real_r": 0.0629, "pg": -0.046, "vf": 1.2881, "ent": 0.572}
+[iter] {"iter": 718, "env_steps": 4595200, "sec": 3.2, "real_r": 0.0621, "pg": -0.0064, "vf": 1.2547, "ent": 0.536}
+[iter] {"iter": 719, "env_steps": 4601600, "sec": 3.5, "real_r": 0.0623, "pg": -0.0334, "vf": 1.2351, "ent": 0.518}
+[iter] {"iter": 720, "env_steps": 4608000, "sec": 3.2, "real_r": 0.0644, "pg": -0.0293, "vf": 1.2408, "ent": 0.529}
+[eval] {"phase": "ppo", "iter": 720, "env_steps": 4608000, "return": 5.409, "ret_sem": 0.152, "ach": 6.344, "max_ach": 10, "score": 7.11, "len": 184.5, "n_ep": 128, "sec": 2528.7}
+[iter] {"iter": 721, "env_steps": 4614400, "sec": 3.2, "real_r": 0.068, "pg": -0.0786, "vf": 1.2423, "ent": 0.533}
+[iter] {"iter": 722, "env_steps": 4620800, "sec": 3.2, "real_r": 0.0656, "pg": -0.099, "vf": 1.2367, "ent": 0.593}
+[iter] {"iter": 723, "env_steps": 4627200, "sec": 3.2, "real_r": 0.0653, "pg": -0.0107, "vf": 1.2684, "ent": 0.536}
+[iter] {"iter": 724, "env_steps": 4633600, "sec": 3.2, "real_r": 0.0665, "pg": -0.0613, "vf": 1.2367, "ent": 0.551}
+[iter] {"iter": 725, "env_steps": 4640000, "sec": 3.2, "real_r": 0.0632, "pg": -0.0924, "vf": 1.258, "ent": 0.559}
+[iter] {"iter": 726, "env_steps": 4646400, "sec": 3.2, "real_r": 0.0681, "pg": -0.1517, "vf": 1.2637, "ent": 0.475}
+[iter] {"iter": 727, "env_steps": 4652800, "sec": 3.2, "real_r": 0.0737, "pg": -0.0545, "vf": 1.2256, "ent": 0.454}
+[iter] {"iter": 728, "env_steps": 4659200, "sec": 3.2, "real_r": 0.0669, "pg": -0.0071, "vf": 1.2609, "ent": 0.484}
+[eval] {"phase": "ppo", "iter": 728, "env_steps": 4659200, "return": 5.32, "ret_sem": 0.158, "ach": 6.227, "max_ach": 10, "score": 6.38, "len": 188.7, "n_ep": 128, "sec": 2555.6}
+[iter] {"iter": 729, "env_steps": 4665600, "sec": 3.2, "real_r": 0.0656, "pg": -0.0738, "vf": 1.268, "ent": 0.477}
+[iter] {"iter": 730, "env_steps": 4672000, "sec": 3.2, "real_r": 0.0685, "pg": -0.031, "vf": 1.2475, "ent": 0.535}
+[iter] {"iter": 731, "env_steps": 4678400, "sec": 3.2, "real_r": 0.0668, "pg": -0.1004, "vf": 1.2221, "ent": 0.456}
+[iter] {"iter": 732, "env_steps": 4684800, "sec": 3.2, "real_r": 0.0696, "pg": -0.0677, "vf": 1.2238, "ent": 0.446}
+[iter] {"iter": 733, "env_steps": 4691200, "sec": 3.2, "real_r": 0.0612, "pg": -0.1129, "vf": 1.3255, "ent": 0.518}
+[iter] {"iter": 734, "env_steps": 4697600, "sec": 3.2, "real_r": 0.0689, "pg": -0.0291, "vf": 1.2548, "ent": 0.587}
+[iter] {"iter": 735, "env_steps": 4704000, "sec": 3.2, "real_r": 0.0656, "pg": 0.0221, "vf": 1.2756, "ent": 0.525}
+[iter] {"iter": 736, "env_steps": 4710400, "sec": 3.2, "real_r": 0.0651, "pg": -0.0592, "vf": 1.2775, "ent": 0.531}
+[eval] {"phase": "ppo", "iter": 736, "env_steps": 4710400, "return": 6.033, "ret_sem": 0.133, "ach": 6.977, "max_ach": 11, "score": 7.91, "len": 186.5, "n_ep": 128, "sec": 2582.8}
+[iter] {"iter": 737, "env_steps": 4716800, "sec": 3.2, "real_r": 0.0706, "pg": -0.045, "vf": 1.2523, "ent": 0.534}
+[iter] {"iter": 738, "env_steps": 4723200, "sec": 3.2, "real_r": 0.0606, "pg": -0.0167, "vf": 1.2827, "ent": 0.554}
+[iter] {"iter": 739, "env_steps": 4729600, "sec": 3.2, "real_r": 0.0636, "pg": 0.0211, "vf": 1.2623, "ent": 0.603}
+[iter] {"iter": 740, "env_steps": 4736000, "sec": 3.2, "real_r": 0.0656, "pg": -0.1292, "vf": 1.3007, "ent": 0.625}
+[iter] {"iter": 741, "env_steps": 4742400, "sec": 3.2, "real_r": 0.0623, "pg": -0.0914, "vf": 1.2369, "ent": 0.56}
+[iter] {"iter": 742, "env_steps": 4748800, "sec": 3.2, "real_r": 0.0584, "pg": -0.1372, "vf": 1.2345, "ent": 0.527}
+[iter] {"iter": 743, "env_steps": 4755200, "sec": 3.2, "real_r": 0.0611, "pg": -0.0174, "vf": 1.2567, "ent": 0.575}
+[iter] {"iter": 744, "env_steps": 4761600, "sec": 3.2, "real_r": 0.0628, "pg": -0.0964, "vf": 1.3114, "ent": 0.587}
+[eval] {"phase": "ppo", "iter": 744, "env_steps": 4761600, "return": 6.14, "ret_sem": 0.123, "ach": 7.07, "max_ach": 10, "score": 7.08, "len": 198.6, "n_ep": 128, "sec": 2609.8}
+[iter] {"iter": 745, "env_steps": 4768000, "sec": 3.2, "real_r": 0.0682, "pg": -0.0981, "vf": 1.2468, "ent": 0.528}
+[iter] {"iter": 746, "env_steps": 4774400, "sec": 3.2, "real_r": 0.0698, "pg": -0.1211, "vf": 1.2355, "ent": 0.492}
+[iter] {"iter": 747, "env_steps": 4780800, "sec": 3.2, "real_r": 0.0627, "pg": -0.0698, "vf": 1.2957, "ent": 0.616}
+[iter] {"iter": 748, "env_steps": 4787200, "sec": 3.2, "real_r": 0.0717, "pg": -0.0758, "vf": 1.2667, "ent": 0.501}
+[iter] {"iter": 749, "env_steps": 4793600, "sec": 3.2, "real_r": 0.0669, "pg": -0.0962, "vf": 1.2183, "ent": 0.481}
+[iter] {"iter": 750, "env_steps": 4800000, "sec": 3.2, "real_r": 0.0638, "pg": -0.107, "vf": 1.2359, "ent": 0.54}
+[iter] {"iter": 751, "env_steps": 4806400, "sec": 3.2, "real_r": 0.0664, "pg": -0.0403, "vf": 1.2866, "ent": 0.536}
+[iter] {"iter": 752, "env_steps": 4812800, "sec": 3.2, "real_r": 0.0702, "pg": -0.0196, "vf": 1.2565, "ent": 0.494}
+[eval] {"phase": "ppo", "iter": 752, "env_steps": 4812800, "return": 6.034, "ret_sem": 0.151, "ach": 6.961, "max_ach": 11, "score": 7.84, "len": 179.4, "n_ep": 128, "sec": 2637.0}
+[iter] {"iter": 753, "env_steps": 4819200, "sec": 3.2, "real_r": 0.0654, "pg": -0.0162, "vf": 1.2634, "ent": 0.476}
+[iter] {"iter": 754, "env_steps": 4825600, "sec": 3.2, "real_r": 0.0695, "pg": -0.0653, "vf": 1.2339, "ent": 0.466}
+[iter] {"iter": 755, "env_steps": 4832000, "sec": 3.2, "real_r": 0.0749, "pg": -0.0906, "vf": 1.241, "ent": 0.418}
+[iter] {"iter": 756, "env_steps": 4838400, "sec": 3.2, "real_r": 0.069, "pg": -0.0028, "vf": 1.2537, "ent": 0.498}
+[iter] {"iter": 757, "env_steps": 4844800, "sec": 3.2, "real_r": 0.068, "pg": -0.0111, "vf": 1.2486, "ent": 0.44}
+[iter] {"iter": 758, "env_steps": 4851200, "sec": 3.2, "real_r": 0.0649, "pg": -0.0168, "vf": 1.2173, "ent": 0.468}
+[iter] {"iter": 759, "env_steps": 4857600, "sec": 3.2, "real_r": 0.075, "pg": -0.0483, "vf": 1.277, "ent": 0.456}
+[iter] {"iter": 760, "env_steps": 4864000, "sec": 3.2, "real_r": 0.0642, "pg": -0.008, "vf": 1.218, "ent": 0.561}
+[eval] {"phase": "ppo", "iter": 760, "env_steps": 4864000, "return": 6.343, "ret_sem": 0.135, "ach": 7.297, "max_ach": 11, "score": 8.81, "len": 181.5, "n_ep": 128, "sec": 2663.9}
+[iter] {"iter": 761, "env_steps": 4870400, "sec": 3.2, "real_r": 0.0569, "pg": -0.0563, "vf": 1.2365, "ent": 0.492}
+[iter] {"iter": 762, "env_steps": 4876800, "sec": 3.2, "real_r": 0.0637, "pg": 0.0452, "vf": 1.2514, "ent": 0.472}
+[iter] {"iter": 763, "env_steps": 4883200, "sec": 3.2, "real_r": 0.0669, "pg": -0.0024, "vf": 1.3162, "ent": 0.478}
+[iter] {"iter": 764, "env_steps": 4889600, "sec": 3.2, "real_r": 0.0704, "pg": -0.139, "vf": 1.2313, "ent": 0.494}
+[iter] {"iter": 765, "env_steps": 4896000, "sec": 3.2, "real_r": 0.0595, "pg": -0.1158, "vf": 1.2735, "ent": 0.538}
+[iter] {"iter": 766, "env_steps": 4902400, "sec": 3.2, "real_r": 0.057, "pg": -0.1041, "vf": 1.2305, "ent": 0.503}
+[iter] {"iter": 767, "env_steps": 4908800, "sec": 3.2, "real_r": 0.0667, "pg": -0.0251, "vf": 1.2747, "ent": 0.478}
+[iter] {"iter": 768, "env_steps": 4915200, "sec": 3.2, "real_r": 0.0672, "pg": -0.0663, "vf": 1.2579, "ent": 0.487}
+[eval] {"phase": "ppo", "iter": 768, "env_steps": 4915200, "return": 6.334, "ret_sem": 0.138, "ach": 7.273, "max_ach": 11, "score": 8.46, "len": 192.0, "n_ep": 128, "sec": 2691.3}
+[iter] {"iter": 769, "env_steps": 4921600, "sec": 3.2, "real_r": 0.0645, "pg": -0.0972, "vf": 1.276, "ent": 0.54}
+[iter] {"iter": 770, "env_steps": 4928000, "sec": 3.2, "real_r": 0.0663, "pg": -0.0917, "vf": 1.2399, "ent": 0.523}
+[iter] {"iter": 771, "env_steps": 4934400, "sec": 3.2, "real_r": 0.0652, "pg": -0.0071, "vf": 1.2769, "ent": 0.533}
+[iter] {"iter": 772, "env_steps": 4940800, "sec": 3.2, "real_r": 0.0595, "pg": -0.1172, "vf": 1.2355, "ent": 0.549}
+[iter] {"iter": 773, "env_steps": 4947200, "sec": 3.2, "real_r": 0.0641, "pg": -0.0126, "vf": 1.2228, "ent": 0.522}
+[iter] {"iter": 774, "env_steps": 4953600, "sec": 3.2, "real_r": 0.064, "pg": -0.0608, "vf": 1.2637, "ent": 0.517}
+[iter] {"iter": 775, "env_steps": 4960000, "sec": 3.2, "real_r": 0.0663, "pg": -0.0012, "vf": 1.2282, "ent": 0.457}
+[iter] {"iter": 776, "env_steps": 4966400, "sec": 3.2, "real_r": 0.0658, "pg": -0.0543, "vf": 1.2231, "ent": 0.472}
+[eval] {"phase": "ppo", "iter": 776, "env_steps": 4966400, "return": 5.929, "ret_sem": 0.18, "ach": 6.859, "max_ach": 11, "score": 7.3, "len": 175.9, "n_ep": 128, "sec": 2718.7}
+[iter] {"iter": 777, "env_steps": 4972800, "sec": 3.2, "real_r": 0.0604, "pg": -0.0963, "vf": 1.2494, "ent": 0.56}
+[iter] {"iter": 778, "env_steps": 4979200, "sec": 3.2, "real_r": 0.0632, "pg": -0.1457, "vf": 1.2219, "ent": 0.553}
+[iter] {"iter": 779, "env_steps": 4985600, "sec": 3.2, "real_r": 0.0626, "pg": -0.0726, "vf": 1.2301, "ent": 0.533}
+[iter] {"iter": 780, "env_steps": 4992000, "sec": 3.2, "real_r": 0.0586, "pg": -0.0094, "vf": 1.2824, "ent": 0.559}
+[iter] {"iter": 781, "env_steps": 4998400, "sec": 3.2, "real_r": 0.061, "pg": -0.0211, "vf": 1.2395, "ent": 0.593}
+[eval] {"phase": "ppo", "iter": 781, "env_steps": 4998400, "return": 6.199, "ret_sem": 0.148, "ach": 7.125, "max_ach": 10, "score": 8.11, "len": 197.4, "n_ep": 128, "sec": 2736.4}
+[done] iters=781 env_steps=4998400 elapsed=2736s

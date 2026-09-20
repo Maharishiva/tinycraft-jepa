@@ -1,0 +1,79 @@
+\section{Exact variance omission in two frozen encoders}
+\label{app:oracle-variance}
+
+This calculation uses the existing seed-0 grid JEPA in black-background wind as its declared primary
+condition and persistent-gray wind as its declared secondary condition. Their independently measured
+real-encoding position L1 errors are $0.126$ and $0.717$ pixels, respectively. Those diagnostics motivate
+an encoder with accessible state; no probe, learned transition model, task head, or policy is used
+in the variance calculation.
+
+\paragraph{Fixed transition law and goals.}
+A fresh collection uses 128 streams and 512 transitions per stream, with environment seed 20260923.
+From 46,136 past-valid eight-frame contexts, 1,024 are sampled without replacement using seed
+20260924. Eligibility for the final calculation requires every action/innovation branch to remain
+inside the safe region and before the time cap. This admits the same 843 contexts in both worlds;
+181 are excluded for border risk and none for the cap. Every admitted context is crossed with all
+25 goals in $\{8,18,28,38,48\}^2$, giving 21,075 pairs per checkpoint. Goal images use the context's
+episode texture. No goal or context is selected according to model costs.
+
+Each coordinate of the wind increment takes $-1,0,+1$ with probabilities $0.1,0.8,0.1$.
+All nine joint labels retain their original product probabilities, including duplicate clipped
+wind outcomes. The simulator state and texture are used to enumerate the exact next images.
+Thus the resulting mean is conditioned on the full physical state and texture, not assumed equal
+to the mean available from a learned latent history. Current wind is independently verified from
+the preceding two positions and action.
+
+\paragraph{Cost decomposition and action comparison.}
+For a fixed encoder $f$, goal $z_g$, and action $a$, compute the nine encoded successors $z'_{a\delta}$,
+their exact weighted mean $\mu_a$, and
+\begin{equation}
+\label{eq:oracle-variance}
+M_a=\frac{\|\mu_a-z_g\|^2}{D},\qquad
+J_a=\frac{\sum_\delta q_\delta\|z'_{a\delta}-z_g\|^2}{D}
+=M_a+\frac{\tr\Cov(Z'\mid s,a)}{D},\qquad D=512.
+\end{equation}
+All arithmetic after encoding uses float64. The independent direct-versus-decomposed calculation
+has maximum residual $1.33\times10^{-15}$ and $1.67\times10^{-16}$ in the two checkpoints.
+Tolerance-optimal action sets use the fixed threshold
+$10^{-10}\max(1,\max_a|M_a|,\max_a|J_a|)$.
+The primary disagreement requires disjoint optimal sets. Regret is the minimum exact-cost excess
+among mean-cost minimizers, so arbitrary tie breaking cannot produce the finding. All pairs,
+including zero-regret pairs, enter the averages.
+
+\begin{table}[ht]
+\centering
+\caption{Exact mean-only versus expected squared latent-goal scoring. Intervals resample complete
+collection streams, conditional on the frozen checkpoint. Latent regret uses coordinate-mean squared
+units and is not comparable as a physical error across independently fitted encoders.}
+\label{tab:oracle-variance}
+\begin{tabular}{lrr}
+\toprule
+Condition & Action disagreement (\%) & Mean latent regret \\
+\midrule
+Black background + wind & $2.65\ [2.19,3.15]$ & $7.50\times10^{-5}$ \\
+Persistent gray + wind & $1.08\ [0.83,1.36]$ & $3.80\times10^{-6}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Regret intervals are $[5.77,9.63]\times10^{-5}$ and $[2.02,6.86]\times10^{-6}$, respectively.
+Mean-minus-exact-latent selected actions change expected physical squared-goal cost by
+$-0.169$ pixels squared with interval $[-1.107,0.666]$ and $+0.200$ with interval
+$[-0.433,0.961]$. Both include zero; no physical-control benefit is established. The discrepancy
+is a modest but direct consequence of omitting variance under the specified latent metric.
+For this one-step quadratic objective, a mean plus the scalar covariance trace is sufficient;
+a full generative model is not logically necessary.
+
+\paragraph{Controls and uncertainty.}
+Identity-position, fixed affine-position, and deterministic-branch controls all have zero robust
+action disagreements. For physical position, conditional wind covariance is action independent,
+so its variance term cannot change the one-step squared-goal ranking. The learned nonlinear encoder
+can make latent variance action dependent. Canonical padded inference uses 2,048 frames, with
+bit-exact context and permutation parity and unchanged parameters/BatchNorm statistics. The simulator
+checks all sampled transitions lie in enumerated support and that all safe one-step rewards are zero.
+
+Goals are averaged within context, then 2,000 bootstrap samples resample full collection streams;
+127 streams contain admitted contexts. The intervals quantify context sampling for each fixed
+encoder, not training-seed uncertainty. All-branch safety selects an interior cohort and excludes
+terminal decisions. This experiment isolates mean-only latent-goal scoring, not survival,
+representation sufficiency for arbitrary tasks, learned-predictor accuracy, or recursive mean error.

@@ -1,0 +1,44 @@
+\section{Remove the wall: nuisance and dynamics interact}
+\label{sec:cubes}
+
+Cube worlds reduce the scene to one moving object. Random backgrounds either change independently
+each frame or remain fixed for an episode; dynamics are deterministic or include hidden wind.
+A fixed background is predictable but irrelevant to position. Per-frame noise is unpredictable and
+also irrelevant. These cases distinguish visual complexity from predictive usefulness.
+
+The strongest replicated comparison holds the 512-dimensional grid architecture, dataset size
+($500{,}000$ transitions), and training length ($8{,}500$ updates) fixed across four gray-noise
+conditions. A supervised nonlinear position read-out is fitted on training encodings and evaluated
+on independent evaluation frames. It achieves subpixel error whenever either the background is
+persistent or dynamics are deterministic. Combining per-frame noise with wind raises error to
+$21.33\pm0.06$ pixels across three model initializations (Table~\ref{tab:cube-main}). This is a
+failure to expose position through the tested read-out. Its prediction loss remains high, about
+$0.73$ per coordinate, so it is not evidence of a successfully optimized low-loss nuisance solution.
+
+\begin{figure}[t]
+\centering
+\paperfig{readout_by_seed.pdf}{1.0}
+\caption{\textbf{The matched gray-noise cube comparison.} Position read-out from real encodings
+for three independently initialized grid JEPAs in each condition. Architecture,
+latent dimension, update count, and training dataset size are fixed. A high probe error is a failure
+of the tested read-out, not proof of absent information.}
+\label{fig:cube-readout}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{\textbf{A matched nuisance--dynamics interaction.} Grid-JEPA position L1 error in pixels,
+mean $\pm$ sample standard deviation across three model fits. The same supervised read-out is
+applied to real encodings and eight-step predictions; the latter can also reflect read-out
+extrapolation. Predicted-window evaluation excludes resets and uses overlapping windows.}
+\label{tab:cube-main}
+\inputtable{cube_main.tex}
+\end{table}
+
+Other fitted models fail at different interfaces. On a black background without wind, the
+class-token JEPA permits $0.087$-pixel position read-out from real encodings, but that read-out has
+$45.27$-pixel error on eight-step predictions. A flow model also fails on persistent color texture,
+with $18.56$-pixel real-latent error. These are single-fit observations with different dataset sizes,
+reported separately in Appendix~\ref{app:cubes}; they preclude a uniform ranking of model families.
+Together, the cube results motivate an objective-level question rather than a universal empirical
+mechanism: what does low prediction loss plus non-collapse actually guarantee?

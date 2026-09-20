@@ -1,0 +1,78 @@
+\section{Two ways prediction can miss what a decision needs}
+\label{sec:mechanisms}
+
+\subsection{An exact mean can rank actions incorrectly}
+\label{sec:variance-example}
+
+For a fixed encoder, squared prediction loss is minimized by the conditional mean
+$m(c,a)=\E[Z'\mid c,a]$, where $c$ is the available history. A goal planner instead needs to compare
+outcome costs. For a fixed latent goal $z_g$,
+\begin{equation}
+\label{eq:variance-cost}
+\E\!\left[\|Z'-z_g\|^2\mid c,a\right]
+=\|m(c,a)-z_g\|^2+\tr\Cov(Z'\mid c,a).
+\end{equation}
+The first term scores the mean; the second records the spread around it. An action-dependent spread
+can change which action minimizes expected cost.
+
+Consider the exact scalar example in Figure~\ref{fig:concepts}. The goal is zero. Action A produces
+$X'=-1$ or $+1$, each with probability $1/2$; action B produces $X'=0.1$ deterministically. The two
+means are $0$ and $0.1$, so their squared distances to the goal are $0$ and $0.01$: a mean-goal
+planner chooses A. The correct expected costs are $1$ and $0.01$: B is better. No improved estimate
+of the same mean repairs this ranking. The omitted variance is exactly the missing quantity.
+
+\begin{figure}[t]
+\centering
+\paperfig{redcube_concepts_paper.pdf}{1.0}
+\caption{\textbf{Correct one-step means can still give wrong decisions and wrong rollouts.}
+Left: the exact mean of action A lies at the goal, although every outcome is farther from it than
+action B's deterministic outcome. Right: for $X_{t+1}=X_t^2+\xi_t$, with independent fair
+$\xi_t\in\{-1,+1\}$ and $X_0=0$, repeated conditional-mean prediction stays at zero while the true
+two-step mean is $1$. These are analytical examples, not outputs of trained image models.}
+\label{fig:concepts}
+\end{figure}
+
+\subsection{An exact one-step mean need not compose into a later mean}
+\label{sec:recursive-example}
+
+Let $X_{t+1}=X_t^2+\xi_t$, with independent fair noise $\xi_t\in\{-1,+1\}$ and $X_0=0$.
+The exact conditional mean is $m(x)=x^2$, so repeated mean prediction remains zero. In the real
+process, $X_1$ is $-1$ or $1$ and $X_2$ is $0$ or $2$, each fairly. Consequently,
+$\E X_2=1\ne m(m(0))=0$. More generally,
+\begin{equation}
+\label{eq:mean-recursion}
+\E[X_{t+1}]=(\E X_t)^2+\Var(X_t),
+\end{equation}
+while recursive mean substitution retains only the first term. This discrepancy occurs with an
+exact one-step predictor and finite-support noise.
+
+These examples concern mean-state rollout and goal evaluation. A model that predicts expected
+costs or suitable value functions directly can preserve the needed expectations without generating
+samples \citep{wan2019expectation,grimm2021proper}. A distributional world model offers another route:
+it can retain distinct outcomes and average their costs. For the single quadratic goal cost in
+Equation~\ref{eq:variance-cost}, the mean plus one scalar variance trace per action already suffices. Whether a fitted model achieves that
+benefit is an empirical question.
+
+\subsection{Non-collapse does not determine which feature is retained}
+\label{sec:nuisance-example}
+
+With finite second moments, a fixed encoder, and an unrestricted predictor, the minimum squared prediction risk is the expected
+conditional latent variance:
+\[
+\inf_g\E\|g(C,A)-Z'\|^2=\E\tr\Cov(Z'\mid C,A).
+\]
+Joint representation learning changes both the target and the conditioning features in this
+expression. It can make prediction easy by retaining a feature that barely changes.
+Write an observation as $X_t=R(P_t,B)$,
+where $P_t$ is controlled state and $B$ is an irrelevant nuisance fixed for the episode. If the
+nuisance is recoverable and can be mapped to $\phi(B)\sim\Nrm(0,I)$, an encoder that returns only
+$\phi(B)$ is fully non-collapsed. Copying its last latent predicts the next one with zero error.
+A Gaussian marginal regularizer is also zero at the population level. Thus a global optimum can
+ignore the controlled state entirely.
+
+This is the predictable-nuisance mechanism of \citet{sobal2022slow}, specialized here to the
+Gaussian-regularized objective. The construction assumes a sufficiently rich nuisance and a
+realizable encoder; it is not an assertion that a finite trained network reaches that optimum.
+It explains why non-collapse alone cannot choose the feature that matters. The empirical test is
+whether the learned representation continues to expose cube state when nuisance and dynamics change.
+Full assumptions and proofs are in Appendix~\ref{app:proofs}.

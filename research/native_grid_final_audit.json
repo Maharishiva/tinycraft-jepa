@@ -1,0 +1,245 @@
+{
+  "status": "PASS",
+  "n_runs": 27,
+  "n_checkpoint_hashes_verified": 27,
+  "n_paired_start_blocks": 9,
+  "model_hashes": {
+    "0": "f81ef20ab6d6f032a85310fe9233e32749924839eb8bb55e4c0e6b1db2b880d2",
+    "1": "7190a8c231596043b62b6750f807e1c9fa542287dc161b7ca72182f2e68e625a",
+    "2": "8ab666aa5838fb81b11af99c5f700f8dd33373f757ef6109a07116df70f9f716"
+  },
+  "contrast_check": {
+    "0": {
+      "exact_transitions_with_learned_heads": {
+        "walls_passed": {
+          "independent_mean": 0.4309895833333333,
+          "exact_bootstrap_27_resamples_95": [
+            0.0,
+            0.87109375
+          ],
+          "declared_monte_carlo_10000_95": [
+            0.0,
+            0.87109375
+          ]
+        },
+        "survival": {
+          "independent_mean": 0.020833333333333332,
+          "exact_bootstrap_27_resamples_95": [
+            0.0,
+            0.03515625
+          ],
+          "declared_monte_carlo_10000_95": [
+            0.0,
+            0.03515625
+          ]
+        }
+      },
+      "true_signals_with_exact_transitions": {
+        "walls_passed": {
+          "independent_mean": 0.18489583333333334,
+          "exact_bootstrap_27_resamples_95": [
+            -0.1796875,
+            0.515625
+          ],
+          "declared_monte_carlo_10000_95": [
+            -0.1796875,
+            0.515625
+          ]
+        },
+        "survival": {
+          "independent_mean": -0.009114583333333334,
+          "exact_bootstrap_27_resamples_95": [
+            -0.02734375,
+            0.01171875
+          ],
+          "declared_monte_carlo_10000_95": [
+            -0.02734375,
+            0.01171875
+          ]
+        }
+      },
+      "complete_oracle_pipeline": {
+        "walls_passed": {
+          "independent_mean": 0.6158854166666666,
+          "exact_bootstrap_27_resamples_95": [
+            0.515625,
+            0.69140625
+          ],
+          "declared_monte_carlo_10000_95": [
+            0.515625,
+            0.69140625
+          ]
+        },
+        "survival": {
+          "independent_mean": 0.01171875,
+          "exact_bootstrap_27_resamples_95": [
+            0.0078125,
+            0.015625
+          ],
+          "declared_monte_carlo_10000_95": [
+            0.0078125,
+            0.015625
+          ]
+        }
+      }
+    },
+    "1": {
+      "exact_transitions_with_learned_heads": {
+        "walls_passed": {
+          "independent_mean": 0.4544270833333333,
+          "exact_bootstrap_27_resamples_95": [
+            0.2421875,
+            0.7578125
+          ],
+          "declared_monte_carlo_10000_95": [
+            0.2421875,
+            0.7578125
+          ]
+        },
+        "survival": {
+          "independent_mean": 0.016927083333333332,
+          "exact_bootstrap_27_resamples_95": [
+            0.01171875,
+            0.01953125
+          ],
+          "declared_monte_carlo_10000_95": [
+            0.01171875,
+            0.01953125
+          ]
+        }
+      },
+      "true_signals_with_exact_transitions": {
+        "walls_passed": {
+          "independent_mean": -0.37109375,
+          "exact_bootstrap_27_resamples_95": [
+            -0.67578125,
+            -0.07421875
+          ],
+          "declared_monte_carlo_10000_95": [
+            -0.67578125,
+            -0.07421875
+          ]
+        },
+        "survival": {
+          "independent_mean": -0.018229166666666668,
+          "exact_bootstrap_27_resamples_95": [
+            -0.03125,
+            -0.01171875
+          ],
+          "declared_monte_carlo_10000_95": [
+            -0.03125,
+            -0.01171875
+          ]
+        }
+      },
+      "complete_oracle_pipeline": {
+        "walls_passed": {
+          "independent_mean": 0.08333333333333333,
+          "exact_bootstrap_27_resamples_95": [
+            -0.3125,
+            0.39453125
+          ],
+          "declared_monte_carlo_10000_95": [
+            -0.3125,
+            0.39453125
+          ]
+        },
+        "survival": {
+          "independent_mean": -0.0013020833333333333,
+          "exact_bootstrap_27_resamples_95": [
+            -0.01171875,
+            0.0078125
+          ],
+          "declared_monte_carlo_10000_95": [
+            -0.01171875,
+            0.0078125
+          ]
+        }
+      }
+    },
+    "2": {
+      "exact_transitions_with_learned_heads": {
+        "walls_passed": {
+          "independent_mean": 0.02734375,
+          "exact_bootstrap_27_resamples_95": [
+            -0.23046875,
+            0.3125
+          ],
+          "declared_monte_carlo_10000_95": [
+            -0.23046875,
+            0.3125
+          ]
+        },
+        "survival": {
+          "independent_mean": 0.00390625,
+          "exact_bootstrap_27_resamples_95": [
+            0.0,
+            0.01171875
+          ],
+          "declared_monte_carlo_10000_95": [
+            0.0,
+            0.01171875
+          ]
+        }
+      },
+      "true_signals_with_exact_transitions": {
+        "walls_passed": {
+          "independent_mean": 0.22265625,
+          "exact_bootstrap_27_resamples_95": [
+            -0.4609375,
+            0.70703125
+          ],
+          "declared_monte_carlo_10000_95": [
+            -0.4609375,
+            0.70703125
+          ]
+        },
+        "survival": {
+          "independent_mean": 0.0026041666666666665,
+          "exact_bootstrap_27_resamples_95": [
+            -0.0078125,
+            0.015625
+          ],
+          "declared_monte_carlo_10000_95": [
+            -0.0078125,
+            0.015625
+          ]
+        }
+      },
+      "complete_oracle_pipeline": {
+        "walls_passed": {
+          "independent_mean": 0.25,
+          "exact_bootstrap_27_resamples_95": [
+            -0.1484375,
+            0.4765625
+          ],
+          "declared_monte_carlo_10000_95": [
+            -0.1484375,
+            0.4765625
+          ]
+        },
+        "survival": {
+          "independent_mean": 0.006510416666666667,
+          "exact_bootstrap_27_resamples_95": [
+            0.0,
+            0.015625
+          ],
+          "declared_monte_carlo_10000_95": [
+            0.0,
+            0.015625
+          ]
+        }
+      }
+    }
+  },
+  "scope": "Direct raw files; no import of analyzer",
+  "publication_sha256": "5fe798798b64fbdbf2ea735bb6a8ae1613d8669ca8fdf2592dd43869f5c42809",
+  "eval_seed": 20260919,
+  "eval_episodes_per_policy": 256,
+  "torso": "native_grid",
+  "actor_critic_params": 583236,
+  "harness_sha256": "6a3460b2db2e47713b7af604454a4b04066c96bfd7748b5c991cfbc433176269",
+  "policy_source_sha256": "df66c5f29a359851b84cadfbc9c99d23797b4286fd0a61a2e47ac2eb15438dbd",
+  "bootstrap_check": "Exact finite probability distribution, inverse-CDF quantiles over all27 equally likely ordered resamples; all18 intervals match predeclared10000-draw Monte Carlo endpoints.",
+  "interpretation": "No discovery in0/27 policies; exact transitions and true signals do not produce reliable survival with this native-grid policy and16-step training protocol. Native-grid and MLP results remain separate strata."
+}

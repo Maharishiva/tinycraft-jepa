@@ -1,0 +1,36 @@
+% Optional V2 appendix note; independently checked, not a claimed new theorem.
+\section{Target detachment need not remove a predictable-nuisance preference}
+\label{app:linear-gradient}
+A linear calculation separates changing an optimization path from removing an undesirable optimum.
+Let $x_t=(s_t,b)$, where $b\sim\Nrm(0,1)$ is constant over time and independent of the stationary
+process $s_{t+1}=\rho s_t+\sqrt{1-\rho^2}\,\xi_t$, with $\xi_t\sim\Nrm(0,1)$ independent and
+$0\le\rho<1$. Then $\Cov(x_t)=I$ and $C=\E[x_t x_{t+1}^{\top}]=\operatorname{diag}(\rho,1)$.
+For encoder $z_t=w^\top x_t$ and predictor $\widehat z_{t+1}=a z_t$, squared prediction loss is
+\[
+L(a,w)=(a^2+1)\|w\|^2-2a\,w^\top Cw.
+\]
+The ordinary encoder gradient and the semi-gradient obtained by detaching the target are
+\[
+\nabla_w L_{\rm joint}=2(a^2+1)w-4aCw,
+\qquad
+\widetilde\nabla_w L_{\rm detach}=2a^2w-2aCw.
+\]
+On the unit sphere, write $c=w^\top Cw$ and $P_w=I-ww^\top$. Their tangent projections are
+\[
+P_w\nabla_w L_{\rm joint}=-4a(C-cI)w,
+\qquad
+P_w\widetilde\nabla_w L_{\rm detach}=-2a(C-cI)w.
+\]
+Consequently, at the same $(a,w)$ with $a>0$, gradient descent favors the same slower subspace.
+If the predictor remains optimal, $a=c$, the encoder trajectories agree up to a factor-two
+rescaling of time; the profiled loss $1-c^2$ is minimized by the nuisance-only encoding.
+Every unit encoder here has an exactly standard Gaussian marginal.
+At $a=c$, the joint radial gradient is $2(1-c^2)w$, while the detached radial gradient is zero.
+This isolates a shrinkage pressure that an explicit marginal regularizer must balance.
+
+The tangent time-rescaling statement does not describe arbitrary simultaneous predictor/encoder
+optimization: the predictor gradient is unchanged by target detachment, so their relative learning
+timescales differ. Nor does the hard unit-norm constraint reproduce finite-batch SIGReg or a nonlinear
+network. The calculation supplies an interpretive boundary: a successful detachment intervention
+can change optimization and its balance with regularization without eliminating the familiar
+predictable-nuisance solution.

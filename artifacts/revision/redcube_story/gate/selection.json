@@ -1,0 +1,77 @@
+{
+  "case_id": "gate",
+  "history": 8,
+  "horizon": 16,
+  "created_utc": "2026-09-19T23:06:41Z",
+  "selection_rule": "First lexicographic (start_time, environment_index) window from each distinct (environment_index, episode_id), with no reset across its 24 frames and a wall already present in the last context frame.",
+  "selection_caveat": "Continuity conditions on future survival. These are illustrations, not an unbiased estimate of model or policy quality. No image, movement amount, or model output is used for selection.",
+  "eligible_windows": 738,
+  "scene_ids": [
+    [
+      15,
+      12
+    ],
+    [
+      15,
+      21
+    ],
+    [
+      15,
+      24
+    ]
+  ],
+  "data_metadata": {
+    "env": "stoch",
+    "spec": {
+      "noise": "off",
+      "per_episode": false,
+      "wind": false,
+      "gate": true
+    },
+    "config": "gate_off_still",
+    "num_actions": 4,
+    "envs": 100,
+    "steps": 250,
+    "split": "eval",
+    "seed": 1000,
+    "policy": "uniform random",
+    "max_steps": 128,
+    "reward": "-1 on touching the border or the wall, else 0"
+  },
+  "source_files": {
+    "eval": {
+      "path": "/home/rldoeswork/personal/stoch/gate/eval.npz",
+      "sha256": "0c7ea5ac34008ce690faf5b85d9becd7cd72fbe47095d862c79d53ad0ddc956e"
+    },
+    "jepa_checkpoint": {
+      "path": "/home/rldoeswork/personal/stoch/gate/tile_factored/model_probe.npz",
+      "sha256": "f81ef20ab6d6f032a85310fe9233e32749924839eb8bb55e4c0e6b1db2b880d2"
+    },
+    "flow_checkpoint": {
+      "path": "/home/rldoeswork/personal/stoch/gate/flow/model.npz",
+      "sha256": "72b829ea8cfb5f4bf21f3b8c0ce8ffe53f34dd5aa67bad001bb8d4cd0bab27e9"
+    }
+  },
+  "input_packet_sha256": "8ce0a4f5c0397617a7832d5a4a0db79ee656d64787485cc12dd51f5a582a6d89",
+  "array_sha256": {
+    "ids": "b3a3f7dab669d7bddc26f3198fcfeea6f546e711e55b029c79f5386f10d08182",
+    "frame_times": "de43e681e449e25668cfa193a90560b59e766d632e4c4e18ca6cbd61d673f836",
+    "frames": "3caec0e40b6d9b053069fc2b28ad4d88de7003d706ee988b2f2e81b3af2f6c68",
+    "outgoing_actions": "315a7f7998af9332cb4cffc2794159364cf2985c9b20605392d44c4084eb2e68",
+    "incoming_actions": "17ee3f108482c1f8fcd8895ab6058567c196098f5a3f4c8d144e728c3245d9d5",
+    "future_actions": "a22bb47e40dfde7aa02f4e053136545f073cb561cfbd5a5bf999adfe559b2bd1",
+    "reset_before_frame": "834a709ba2534ebe3ee1397fd4f7bd288b2acc1d20a08d6c862dcd99b6f04400",
+    "reset_after_frame": "cd05c2283f62b7c74911008df6a66101d51ed5cb23e6b4b5c84af4bc60db0f3a",
+    "valid_mask": "5bf90435cd45d0475cbb0ace7e7e3a672ed2a3a4984ad3e8624d8878725a9c2e",
+    "pos": "c1946db87c5a6f68c04ab1fcb4bce7e0e892136945b340255e92641fef9e270c",
+    "wind": "81c611f35bff79491538b2f7cf201c7597a661a5c549633541c62bdc8af1613f",
+    "episode": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+    "wall_x": "7d596599d45fdbac407284a5ca57899ebc7f4c4cb9779c8354b1df6bcda1d370",
+    "gap": "42221c395cf1b991b96f447701b1ffd44638d331d815cbf7cdb8ac14de87fcc1"
+  },
+  "flow_sample_seed": 20260920,
+  "flow_nfe": 8,
+  "action_convention": "outgoing_actions[s,t] moves frames[s,t] to frames[s,t+1]. future_actions starts at t=7 and has 16 actions. incoming_actions is retained for the original flow API.",
+  "ground_truth_randomness": "The archive does not store every transition PRNG key. Its collection seed/metadata, archive hash, exact indices, actions, observations and state labels are retained. Flow sampling keys are stored separately; flow is not expected to reproduce the archive's particular noise realization.",
+  "source_sha256": "ef8134fb92cb7d23a853332ea7a12b974ffca7ffde9b9cc803bda023df4222b1"
+}

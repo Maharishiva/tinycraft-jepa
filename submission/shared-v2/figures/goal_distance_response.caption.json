@@ -1,0 +1,1218 @@
+{
+  "source_directory": "output/revision/redcube-goal-distance-publication-horizons",
+  "publication_manifest": {
+    "contract": {
+      "protocol": "redcube_goal_distance_v1",
+      "classification": "post-outcome operating-range diagnostic",
+      "required_model_seeds": [
+        0,
+        1,
+        2
+      ],
+      "distance_actions": [
+        1,
+        2,
+        3,
+        6,
+        9,
+        12
+      ],
+      "n_unique_prefixes": 128,
+      "n_per_model_distance": 128,
+      "correlated_rows_per_model": 768,
+      "policies": [
+        "random",
+        "fixed_cycle",
+        "jepa_h1",
+        "jepa_h3",
+        "oracle"
+      ],
+      "visual_rows": [
+        0,
+        128,
+        256,
+        384,
+        512,
+        640
+      ],
+      "visual_selection": "predeclared case 0 within every distance shell",
+      "stopping_rule": "first exact goal hit, native death, or the 24-action limit",
+      "uncertainty": "Wilson 95% intervals separately per checkpoint and distance; no pooled interval",
+      "rgb_source": "exact keyed simulator re-rendering of recorded executions; unchanged uint8 RGB",
+      "forecast_images": "none",
+      "annotation_palette": {
+        "jepa": "#CD663E",
+        "privileged_simulator": "#087E83",
+        "flow_if_present": "#7860A5",
+        "text": "#17324D",
+        "random": "#637583",
+        "cycle": "#b9bfc5"
+      },
+      "prior_primary": "original 6-12-action hard-goal evaluation remains unchanged and separately reported",
+      "independent_audit": "JSON report with top-level status, verdict, or overall equal to PASS"
+    },
+    "publication_only": true,
+    "independent_audit": {
+      "path": "research/redcube_goal_distance_independent_audit.json",
+      "sha256": "973d930d560ebec5fc40316ebe9763eac69950a309e1941da77d35c6bc351cb8",
+      "status": "PASS"
+    },
+    "renderer_sha256": {
+      "studies/revision/render_redcube_goal_distance.py": "fdde18d08a9b7d335153dc04679f440c27c882f902fc9c47cd01c73cde0d091d",
+      "studies/revision/render_redcube_goals.py": "9364a7594c64c1903b2d57bb7496be13f8fc3975bb3ff0b34a04a068111958a9"
+    },
+    "runs": [
+      {
+        "model_seed": 0,
+        "directory": "runs/revision/redcube_goal_distance/m0",
+        "model_sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd",
+        "source_hashes": {
+          "summary.json": "9b7e25be7dfa97bee878c3085e3e9667ff0c829af524e1f2ab1ce6370422ae71",
+          "manifest.json": "8710df52f4e182778f0449cf83d5f292640591c4d3d294207e16cd1b557b32b2",
+          "episodes.npz": "84271f9f419d988ea7c887db00cb6e282b7874e7df4b39c162d1458de5e6ce8f",
+          "cohort.npz": "c84e1754e1e29014562fd7bc1df879d00290d405fb67be0970f3011e7da51ed6",
+          "visual_packet.npz": "30ca2f525adf2b905e1299fa5e667fe848b7c6d4ef52b20a07a20971e8fbc170",
+          "range_visual_packet.npz": "2d2917797c1b858bd51a31018f287a082ebd4aaea68d9047e824987aab712c62"
+        }
+      },
+      {
+        "model_seed": 1,
+        "directory": "runs/revision/redcube_goal_distance/m1",
+        "model_sha256": "fd1104514e1c99d3268f3132c99fe6a33980c755b93ca64fec91539644910970",
+        "source_hashes": {
+          "summary.json": "ca44d41b93acb61bd4bbe98d09e7ca3fdaccfda6028e854cff43f30cbfb226de",
+          "manifest.json": "72c0d1bd79b1c85e9c06c0897dab4cbf063d06db94e885800e7674d6b754ef31",
+          "episodes.npz": "ff2a8b51d1f3d539eade1ced17b046db035c826cd2abf76cffd99601bb7dd1af",
+          "cohort.npz": "c84e1754e1e29014562fd7bc1df879d00290d405fb67be0970f3011e7da51ed6",
+          "visual_packet.npz": "dfda63ae148242df7d849c66f04a89c5fb125fe6fb8fcd2f7286417128273ac4",
+          "range_visual_packet.npz": "3ac325bc3967465d580c1c2da547d227ae0100bbe1ec81a8bb68764d3445c633"
+        }
+      },
+      {
+        "model_seed": 2,
+        "directory": "runs/revision/redcube_goal_distance/m2",
+        "model_sha256": "494004b0afac36b7a1e9d1d6d0c591a5b741af7da863d55f27b6ac2e18ea81c1",
+        "source_hashes": {
+          "summary.json": "be182aaa32015c7dbc165ddb9ededfbe18728f34ac90779a449325a3b842b1ce",
+          "manifest.json": "c1323e420d33da11c1e0e7f00fc2415deaed2c34a16752d930fe05b5ebc95f40",
+          "episodes.npz": "7efc2c6b9e6465549e77e6d6302f6202026dede190421da5f5b77a0b3e257be7",
+          "cohort.npz": "c84e1754e1e29014562fd7bc1df879d00290d405fb67be0970f3011e7da51ed6",
+          "visual_packet.npz": "6a3dce99148effbe9c522f945887e83d358a7d7095b3b996bca19d2547e88546",
+          "range_visual_packet.npz": "283136e061f9d930187320c87a9065ef1afee242ec7de1ff1c4bde6aa9582ba7"
+        }
+      }
+    ],
+    "figures": [
+      {
+        "caption": "Post-outcome operating-range diagnostic of the unchanged frozen visual-goal controllers, conducted after the unsuccessful 6\u201312-action hard-goal primary. All six goal-distance shells and all three existing model seeds were admitted before the follow-up. Every point is exact goal hits out of 128 starts before native death or the 24-action limit; whiskers are Wilson 95% intervals for that model and shell only. The same 128 valid prefixes are reused across shells, so neither shells nor model-seed results are pooled into an IID binomial interval. JEPA receives RGB history, outgoing actions and an RGB goal. The H1/H3 controllers retain exhaustive latent-distance search and the H3 summed stage cost; the state oracle uses privileged physical coordinates. The follow-up changes goal distance only and does not replace the original harder-goal result or establish long-horizon planning.",
+        "files": {
+          "svg": {
+            "path": "goal_distance_response_publication.svg",
+            "sha256": "f990689b6c74562d708986f5c29854a4dee5b138a3cd27d3f659df448aa46ada"
+          },
+          "pdf": {
+            "path": "goal_distance_response_publication.pdf",
+            "sha256": "65289878fe8c2b891a75773c89cd6982b45745dc6845fa73dd74d9546b16cade"
+          },
+          "png": {
+            "path": "goal_distance_response_publication.png",
+            "sha256": "c53066a2b3322274d49a4788af80a65aa916f4b7557a3f87fcb94477c0957b8e"
+          }
+        },
+        "size_inches": [
+          5.5,
+          3.4
+        ],
+        "cells": [
+          {
+            "model_seed": 0,
+            "distance_actions": 1,
+            "policy": "fixed_cycle",
+            "count": 67,
+            "n": 128,
+            "fraction": 0.5234375,
+            "wilson_95": [
+              0.43749793124049374,
+              0.6080112739341855
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 2,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 3,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 6,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 9,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 12,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 1,
+            "policy": "random",
+            "count": 65,
+            "n": 128,
+            "fraction": 0.5078125,
+            "wilson_95": [
+              0.422247229254785,
+              0.5929225058034415
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 2,
+            "policy": "random",
+            "count": 46,
+            "n": 128,
+            "fraction": 0.359375,
+            "wilson_95": [
+              0.2814673057552586,
+              0.4454774631966657
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 3,
+            "policy": "random",
+            "count": 19,
+            "n": 128,
+            "fraction": 0.1484375,
+            "wilson_95": [
+              0.09713463115350009,
+              0.22022729122631057
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 6,
+            "policy": "random",
+            "count": 5,
+            "n": 128,
+            "fraction": 0.0390625,
+            "wilson_95": [
+              0.016798610797803704,
+              0.08818702076683686
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 9,
+            "policy": "random",
+            "count": 1,
+            "n": 128,
+            "fraction": 0.0078125,
+            "wilson_95": [
+              0.0013804318928742412,
+              0.04292625943886061
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 12,
+            "policy": "random",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 1,
+            "policy": "jepa_h1",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 2,
+            "policy": "jepa_h1",
+            "count": 39,
+            "n": 128,
+            "fraction": 0.3046875,
+            "wilson_95": [
+              0.2316056151523922,
+              0.38915100839194705
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 3,
+            "policy": "jepa_h1",
+            "count": 22,
+            "n": 128,
+            "fraction": 0.171875,
+            "wilson_95": [
+              0.11633115948147267,
+              0.24653996807301726
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 6,
+            "policy": "jepa_h1",
+            "count": 4,
+            "n": 128,
+            "fraction": 0.03125,
+            "wilson_95": [
+              0.01221826524505338,
+              0.07759763126136077
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 9,
+            "policy": "jepa_h1",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 12,
+            "policy": "jepa_h1",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 1,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 2,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 3,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 6,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 9,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 12,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 1,
+            "policy": "jepa_h3",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 2,
+            "policy": "jepa_h3",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 3,
+            "policy": "jepa_h3",
+            "count": 121,
+            "n": 128,
+            "fraction": 0.9453125,
+            "wilson_95": [
+              0.8914150997002529,
+              0.9732597986186536
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 6,
+            "policy": "jepa_h3",
+            "count": 25,
+            "n": 128,
+            "fraction": 0.1953125,
+            "wilson_95": [
+              0.1359396128283779,
+              0.2724407199007913
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 9,
+            "policy": "jepa_h3",
+            "count": 3,
+            "n": 128,
+            "fraction": 0.0234375,
+            "wilson_95": [
+              0.008002416396755481,
+              0.06664374505143222
+            ]
+          },
+          {
+            "model_seed": 0,
+            "distance_actions": 12,
+            "policy": "jepa_h3",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 1,
+            "policy": "fixed_cycle",
+            "count": 67,
+            "n": 128,
+            "fraction": 0.5234375,
+            "wilson_95": [
+              0.43749793124049374,
+              0.6080112739341855
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 2,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 3,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 6,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 9,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 12,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 1,
+            "policy": "random",
+            "count": 65,
+            "n": 128,
+            "fraction": 0.5078125,
+            "wilson_95": [
+              0.422247229254785,
+              0.5929225058034415
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 2,
+            "policy": "random",
+            "count": 46,
+            "n": 128,
+            "fraction": 0.359375,
+            "wilson_95": [
+              0.2814673057552586,
+              0.4454774631966657
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 3,
+            "policy": "random",
+            "count": 19,
+            "n": 128,
+            "fraction": 0.1484375,
+            "wilson_95": [
+              0.09713463115350009,
+              0.22022729122631057
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 6,
+            "policy": "random",
+            "count": 5,
+            "n": 128,
+            "fraction": 0.0390625,
+            "wilson_95": [
+              0.016798610797803704,
+              0.08818702076683686
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 9,
+            "policy": "random",
+            "count": 1,
+            "n": 128,
+            "fraction": 0.0078125,
+            "wilson_95": [
+              0.0013804318928742412,
+              0.04292625943886061
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 12,
+            "policy": "random",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 1,
+            "policy": "jepa_h1",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 2,
+            "policy": "jepa_h1",
+            "count": 36,
+            "n": 128,
+            "fraction": 0.28125,
+            "wilson_95": [
+              0.2106132270868173,
+              0.3646341912828427
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 3,
+            "policy": "jepa_h1",
+            "count": 16,
+            "n": 128,
+            "fraction": 0.125,
+            "wilson_95": [
+              0.07842644638761664,
+              0.19342627081751468
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 6,
+            "policy": "jepa_h1",
+            "count": 4,
+            "n": 128,
+            "fraction": 0.03125,
+            "wilson_95": [
+              0.01221826524505338,
+              0.07759763126136077
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 9,
+            "policy": "jepa_h1",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 12,
+            "policy": "jepa_h1",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 1,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 2,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 3,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 6,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 9,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 12,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 1,
+            "policy": "jepa_h3",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 2,
+            "policy": "jepa_h3",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 3,
+            "policy": "jepa_h3",
+            "count": 123,
+            "n": 128,
+            "fraction": 0.9609375,
+            "wilson_95": [
+              0.9118129792331631,
+              0.9832013892021962
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 6,
+            "policy": "jepa_h3",
+            "count": 32,
+            "n": 128,
+            "fraction": 0.25,
+            "wilson_95": [
+              0.18301284861358558,
+              0.33155562952316864
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 9,
+            "policy": "jepa_h3",
+            "count": 2,
+            "n": 128,
+            "fraction": 0.015625,
+            "wilson_95": [
+              0.004295449710144082,
+              0.055180976679817195
+            ]
+          },
+          {
+            "model_seed": 1,
+            "distance_actions": 12,
+            "policy": "jepa_h3",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 1,
+            "policy": "fixed_cycle",
+            "count": 67,
+            "n": 128,
+            "fraction": 0.5234375,
+            "wilson_95": [
+              0.43749793124049374,
+              0.6080112739341855
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 2,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 3,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 6,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 9,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 12,
+            "policy": "fixed_cycle",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 1,
+            "policy": "random",
+            "count": 65,
+            "n": 128,
+            "fraction": 0.5078125,
+            "wilson_95": [
+              0.422247229254785,
+              0.5929225058034415
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 2,
+            "policy": "random",
+            "count": 46,
+            "n": 128,
+            "fraction": 0.359375,
+            "wilson_95": [
+              0.2814673057552586,
+              0.4454774631966657
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 3,
+            "policy": "random",
+            "count": 19,
+            "n": 128,
+            "fraction": 0.1484375,
+            "wilson_95": [
+              0.09713463115350009,
+              0.22022729122631057
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 6,
+            "policy": "random",
+            "count": 5,
+            "n": 128,
+            "fraction": 0.0390625,
+            "wilson_95": [
+              0.016798610797803704,
+              0.08818702076683686
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 9,
+            "policy": "random",
+            "count": 1,
+            "n": 128,
+            "fraction": 0.0078125,
+            "wilson_95": [
+              0.0013804318928742412,
+              0.04292625943886061
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 12,
+            "policy": "random",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 1,
+            "policy": "jepa_h1",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 2,
+            "policy": "jepa_h1",
+            "count": 46,
+            "n": 128,
+            "fraction": 0.359375,
+            "wilson_95": [
+              0.2814673057552586,
+              0.4454774631966657
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 3,
+            "policy": "jepa_h1",
+            "count": 21,
+            "n": 128,
+            "fraction": 0.1640625,
+            "wilson_95": [
+              0.1098833164591933,
+              0.23781807603707017
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 6,
+            "policy": "jepa_h1",
+            "count": 1,
+            "n": 128,
+            "fraction": 0.0078125,
+            "wilson_95": [
+              0.0013804318928742412,
+              0.04292625943886061
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 9,
+            "policy": "jepa_h1",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 12,
+            "policy": "jepa_h1",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 1,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 2,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 3,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 6,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 9,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 12,
+            "policy": "oracle",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 1,
+            "policy": "jepa_h3",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 2,
+            "policy": "jepa_h3",
+            "count": 128,
+            "n": 128,
+            "fraction": 1.0,
+            "wilson_95": [
+              0.9708630437264916,
+              1.0
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 3,
+            "policy": "jepa_h3",
+            "count": 124,
+            "n": 128,
+            "fraction": 0.96875,
+            "wilson_95": [
+              0.9224023687386392,
+              0.9877817347549466
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 6,
+            "policy": "jepa_h3",
+            "count": 34,
+            "n": 128,
+            "fraction": 0.265625,
+            "wilson_95": [
+              0.19675501016357286,
+              0.3481529380896342
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 9,
+            "policy": "jepa_h3",
+            "count": 1,
+            "n": 128,
+            "fraction": 0.0078125,
+            "wilson_95": [
+              0.0013804318928742412,
+              0.04292625943886061
+            ]
+          },
+          {
+            "model_seed": 2,
+            "distance_actions": 12,
+            "policy": "jepa_h3",
+            "count": 0,
+            "n": 128,
+            "fraction": 0.0,
+            "wilson_95": [
+              0.0,
+              0.029136956273508416
+            ]
+          }
+        ],
+        "publication_variant": true
+      }
+    ],
+    "raw_assets": {}
+  },
+  "copied_files_sha256": {
+    "pdf": "65289878fe8c2b891a75773c89cd6982b45745dc6845fa73dd74d9546b16cade",
+    "svg": "f990689b6c74562d708986f5c29854a4dee5b138a3cd27d3f659df448aa46ada",
+    "png": "c53066a2b3322274d49a4788af80a65aa916f4b7557a3f87fcb94477c0957b8e"
+  }
+}

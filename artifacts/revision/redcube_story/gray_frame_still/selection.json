@@ -1,0 +1,74 @@
+{
+  "case_id": "gray_frame_still",
+  "history": 8,
+  "horizon": 16,
+  "created_utc": "2026-09-19T23:06:38Z",
+  "selection_rule": "First lexicographic (start_time, environment_index) window from each distinct (environment_index, episode_id), with no reset across its 24 frames.",
+  "selection_caveat": "Continuity conditions on future survival. These are illustrations, not an unbiased estimate of model or policy quality. No image, movement amount, or model output is used for selection.",
+  "eligible_windows": 16287,
+  "scene_ids": [
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ]
+  ],
+  "data_metadata": {
+    "env": "redcube",
+    "spec": {
+      "noise": "gray",
+      "per_episode": false,
+      "wind": false
+    },
+    "config": "gray_frame_still",
+    "num_actions": 4,
+    "envs": 100,
+    "steps": 250,
+    "split": "eval",
+    "seed": 1000,
+    "policy": "uniform random",
+    "max_steps": 128,
+    "reward": "-1 on touching the border, else 0"
+  },
+  "source_files": {
+    "eval": {
+      "path": "/dev/shm/redcube/gray_frame_still/eval.npz",
+      "sha256": "397c96e130f662e52f8be537eac09b0a32ce014e10ba9454432ba34bedb25e3d"
+    },
+    "jepa_checkpoint": {
+      "path": "/dev/shm/redcube/gray_frame_still/tile_factored/model_probe.npz",
+      "sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd"
+    },
+    "flow_checkpoint": {
+      "path": "/home/rldoeswork/personal/stoch/gray_frame_still/flow/model.npz",
+      "sha256": "c831e5d68fe0a2201495133ea318acea9db0ec5c5a7239771aeeb10b60cffbee"
+    }
+  },
+  "input_packet_sha256": "735c8ba113eb60c5c9dfa9a9dd9c291fcc8a63040b89f6773ca965c13e3dd343",
+  "array_sha256": {
+    "ids": "e30500d47c97c403e6685a4e0d782befbb403076eae445ddf7580b663390d229",
+    "frame_times": "223cf11c14e67df3a7ee5a07cc876a29596e80ca4545ab97d561ab0e90b893e9",
+    "frames": "5f5fb7a48e919e60afc2ac0eea80ba8e1892f45e32e815596ad9ef01cf9281ae",
+    "outgoing_actions": "a39e91f09fef0dc21cdb1d686119a5d3379563215d46fcd1f091b58307f04080",
+    "incoming_actions": "99b24f7052d31c9efd691123f265013179918a61a7dbf0901fc1aa8ad56b32a7",
+    "future_actions": "516433625e8e4e5f12926b642bb38e20c1067cedd613c2bf4fda0be696be3894",
+    "reset_before_frame": "834a709ba2534ebe3ee1397fd4f7bd288b2acc1d20a08d6c862dcd99b6f04400",
+    "reset_after_frame": "cd05c2283f62b7c74911008df6a66101d51ed5cb23e6b4b5c84af4bc60db0f3a",
+    "valid_mask": "5bf90435cd45d0475cbb0ace7e7e3a672ed2a3a4984ad3e8624d8878725a9c2e",
+    "pos": "7ffbc558f2b7eae09f6c54b2cc20db2bce5f68244f70ad7a47680b4b31468731",
+    "wind": "81c611f35bff79491538b2f7cf201c7597a661a5c549633541c62bdc8af1613f",
+    "episode": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597"
+  },
+  "flow_sample_seed": 20260920,
+  "flow_nfe": 8,
+  "action_convention": "outgoing_actions[s,t] moves frames[s,t] to frames[s,t+1]. future_actions starts at t=7 and has 16 actions. incoming_actions is retained for the original flow API.",
+  "ground_truth_randomness": "The archive does not store every transition PRNG key. Its collection seed/metadata, archive hash, exact indices, actions, observations and state labels are retained. Flow sampling keys are stored separately; flow is not expected to reproduce the archive's particular noise realization.",
+  "source_sha256": "ef8134fb92cb7d23a853332ea7a12b974ffca7ffde9b9cc803bda023df4222b1"
+}

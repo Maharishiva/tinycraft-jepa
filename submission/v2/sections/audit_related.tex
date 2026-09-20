@@ -1,0 +1,37 @@
+\section{Related work}
+\label{sec:related}
+
+\paragraph{Which JEPA setting?}
+Image and video JEPAs learn by predicting representations
+\citep{assran2023ijepa,bardes2024vjepa}. DINO-WM fits dynamics on frozen visual features, and V-JEPA~2
+freezes its encoder for action-conditioned prediction with an L1 objective
+\citep{zhou2024dinowm,assran2025vjepa2}. PLDM instead jointly learns its encoder and dynamics with
+multiple regularizers \citep{sobal2025pldm}. Our direct setting is LeWorldModel's jointly trained
+squared-loss predictor with SIGReg \citep{maes2026lewm,balestriero2025lejepa}; the population statements
+do not automatically transfer to these other objectives.
+
+\paragraph{Predictability, geometry, and planning.}
+Predictable nuisance is an established limitation of joint embeddings \citep{sobal2022slow}.
+Recent work studies how contrastive sampling changes slow-noise bias
+\citep{gulati2026contrast}, and how temporal-distance objectives improve planning-relevant geometry
+\citep{bai2026temporal}. LeWorldModel already reports accurate probes alongside weaker planning,
+while \citet{terver2026planning} examine architecture and planner choices and discuss multimodal
+conditional means. Self-predictive abstraction analyses similarly distinguish predictive structure
+from task sufficiency \citep{tang2023selfpredictive,ni2024bridging}. Physical-state grounding also directly tests recoverability and goal-conditioned control, using
+privileged state or proprioceptive supervision beyond a prediction-only objective
+\citep{yan2026psgjepa,liu2026physicallygrounded}. These precedents motivate a controlled intervention
+in a specified learning recipe, rather than a first claim that prediction and control can disagree.
+
+\paragraph{Models for decisions.}
+Prediction--control mismatch predates JEPAs \citep{lambert2020objective}. Value-aware model learning,
+value equivalence, and proper value equivalence ask which errors affect downstream Bellman
+computations and policy values \citep{farahmand2017vaml,grimm2020value,grimm2021proper}.
+Expectation models can suffice for suitable value-function classes \citep{wan2019expectation};
+conditional-mean prediction is therefore not inherently incompatible with control. Stochastic
+imagination models provide another route \citep{hafner2020dreamer,alonso2024diamond,hafner2025dreamer4},
+but they too can fail at encoding, action conditioning, or rollout stages
+\citep{hansen2026hallucination}. Temporal-difference JEPA instead predicts policy-conditioned successor features with detached TD
+targets and EMA target networks, allowing value-based control in stochastic MDPs
+\citep{bagatella2026tdjepa}. RC-aux retains target gradients and adds multi-horizon prediction and
+reachability supervision in a deterministic-dynamics analysis \citep{li2026rcaux}. These objectives
+provide stronger or different constraints than one-step squared prediction with a marginal prior.

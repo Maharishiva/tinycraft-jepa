@@ -1,0 +1,70 @@
+{
+  "schema": "flow_native_batch_numerical_review_v1",
+  "decision": "admit_native_batch_recipe",
+  "world_model_sha256": "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+  "production_flow_sha256": "86790ce2dac999e4900c21993d2fcb058209b975559719623a24d065562bd402",
+  "failed_receipt": {
+    "path": "/private/tmp/tinycraft-jepa-iclr-20260919/artifacts/revision/inventory_flow_parity_failed/result.json",
+    "sha256": "5a8afe2aba9fb7cd567488a18178f5b43d31cf6fc5d75721fd003e761fab3f63"
+  },
+  "canonical_receipt": {
+    "path": "/private/tmp/tinycraft-jepa-iclr-20260919/artifacts/revision/inventory_flow_diagnose_canonical/result.json",
+    "sha256": "afe3e5f20e9a4e38ecdb617765255aa079ffd488665de21eb29886f6d6ca9f3a"
+  },
+  "canonical_arrays": {
+    "path": "/private/tmp/tinycraft-jepa-iclr-20260919/artifacts/revision/inventory_flow_diagnose_canonical/outputs.npz",
+    "sha256": "294abd7495784b09f57b64c34c352ec009132af197ff7cfd0aff32074620ac61"
+  },
+  "diagnostic_source": {
+    "path": "/private/tmp/tinycraft-jepa-iclr-20260919/artifacts/revision/inventory_flow_diagnose_source_d91.py",
+    "sha256": "d91efa0fe61a580915aed3332b9178f9e97728a2b52748ccc51e4ca7b283ef19"
+  },
+  "independent_approval": {
+    "path": "/private/tmp/tinycraft-jepa-iclr-20260919/research/craftax_flow_numerical_approval.json",
+    "sha256": "d65f4e1fe7af9c2d301c014730ca64e1b241bc3695a9ee3dbd03f9c0d22ee990"
+  },
+  "measured_batch_control": {
+    "vmap": {
+      "max_abs": [
+        0.015625,
+        0.056640625,
+        0.015625,
+        0.015625
+      ],
+      "mae": [
+        0.0027980096710962243,
+        0.0042035728765768,
+        0.002448376253596507,
+        0.002639848564285785
+      ],
+      "rmse": [
+        0.004163854894718786,
+        0.00837835364779649,
+        0.003776493662487253,
+        0.0038842208335379863
+      ]
+    },
+    "native_scalar": {
+      "max_abs": [
+        0.015625,
+        0.0625,
+        0.015625,
+        0.015625
+      ],
+      "mae": [
+        0.0032272972239297815,
+        0.0045418776498991065,
+        0.0029682517051696777,
+        0.003200385715899756
+      ],
+      "rmse": [
+        0.004670211058152276,
+        0.008904827197590972,
+        0.004394057491713308,
+        0.004650601050518351
+      ]
+    },
+    "criterion": "Each row: vmap maximum/MAE/RMSE no greater than native batch4-versus-batch1 control; no tolerance added",
+    "scope": "Identified frozen seed-0 checkpoint and archived mixed-age/canonical GPU fixtures; not universal bitwise equivalence"
+  }
+}

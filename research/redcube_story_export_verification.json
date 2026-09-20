@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "gray_frame_still",
+      "packet_sha256": "853ef31c946524d2026c6261472e7f3dce8aa7ba3fff9fae444d9b9b4964189b",
+      "hashed_arrays": 25,
+      "exact_pngs": 264,
+      "positions_match_recorded_actions_and_wind": true,
+      "context_parity": 0.0,
+      "seconds": 87.49,
+      "jepa_checkpoint_sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd",
+      "flow_checkpoint_sha256": "c831e5d68fe0a2201495133ea318acea9db0ec5c5a7239771aeeb10b60cffbee",
+      "model_seeds": {
+        "jepa": 0,
+        "flow": 0
+      }
+    },
+    {
+      "case": "gray_frame_wind",
+      "packet_sha256": "d7f7724a9ce166f3f305b2dd2f1f89aaeaebbf374fc6ba49f2ed58217d50c46a",
+      "hashed_arrays": 25,
+      "exact_pngs": 264,
+      "positions_match_recorded_actions_and_wind": true,
+      "context_parity": 0.0,
+      "seconds": 87.87,
+      "jepa_checkpoint_sha256": "07e38c69afb6c5581685053043154ec029a5eae8b6e0365878c45728161cff2a",
+      "flow_checkpoint_sha256": "511f57bec9478ebbf664ff3e9b030bf4c3fed027b215938f2778e3fbf179023f",
+      "model_seeds": {
+        "jepa": 0,
+        "flow": 0
+      }
+    },
+    {
+      "case": "gray_episode_wind",
+      "packet_sha256": "f7281531e8bb4ccccf833efa419ea5b0fc5d55adcba317c27cec9970afa0ee4c",
+      "hashed_arrays": 25,
+      "exact_pngs": 264,
+      "positions_match_recorded_actions_and_wind": true,
+      "context_parity": 0.0,
+      "seconds": 84.93,
+      "jepa_checkpoint_sha256": "55dbaa39693fbcfc5af0fe95f200949de954084c070496fc83f12e6b16a07798",
+      "flow_checkpoint_sha256": "761e7d539cba00a0bb423320da1d8e212eda3e279b5b572e6a0d318f98e4be15",
+      "model_seeds": {
+        "jepa": 0,
+        "flow": 0
+      }
+    },
+    {
+      "case": "gate",
+      "packet_sha256": "c03661048a6a1d107a6c1c02faf05fcf6ce78536d45e4ac8d56d642330eb01d1",
+      "hashed_arrays": 27,
+      "exact_pngs": 264,
+      "positions_match_recorded_actions_and_wind": true,
+      "context_parity": 0.0,
+      "seconds": 83.86,
+      "jepa_checkpoint_sha256": "f81ef20ab6d6f032a85310fe9233e32749924839eb8bb55e4c0e6b1db2b880d2",
+      "flow_checkpoint_sha256": "72b829ea8cfb5f4bf21f3b8c0ce8ffe53f34dd5aa67bad001bb8d4cd0bab27e9",
+      "model_seeds": {
+        "jepa": 0,
+        "flow": 0
+      }
+    }
+  ],
+  "total_exact_pngs": 1056,
+  "note": "Internal mechanical verification; independent source audit requested separately. Raw packets and image arrays unchanged by annotation-only palette update."
+}

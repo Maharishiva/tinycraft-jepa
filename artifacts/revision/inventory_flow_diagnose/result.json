@@ -1,0 +1,257 @@
+{
+  "reportable": false,
+  "world_model_sha256": "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+  "source_sha256": "19e5191c7300f2816a9ef0c02c0f902344ce090cf683c3dfbb687e0ddddfa0e9",
+  "failed_receipt_sha256": "5a8afe2aba9fb7cd567488a18178f5b43d31cf6fc5d75721fd003e761fab3f63",
+  "flow_source_sha256": "86790ce2dac999e4900c21993d2fcb058209b975559719623a24d065562bd402",
+  "jax_config": {
+    "jax_default_matmul_precision": "tensorfloat32",
+    "jax_default_prng_impl": "threefry2x32",
+    "jax_enable_x64": false,
+    "jax_threefry_partitionable": true
+  },
+  "comparisons": {
+    "prepared_seq": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "prepared_tau": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "prepared_aseq": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "prepared_slot": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "prepared_real": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "prepared_keys": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "vmap_vs_scalar": {
+      "exact": false,
+      "max_abs": 0.078125,
+      "per_row_max_abs": [
+        0.078125,
+        0.015625,
+        0.015625,
+        0.015625
+      ]
+    },
+    "lax_map_vs_scalar": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "vmap_size1_vs_scalar": {
+      "exact": false,
+      "max_abs": 0.015625,
+      "per_row_max_abs": [
+        0.015625,
+        0.015625,
+        0.015625,
+        0.015625
+      ]
+    },
+    "transition_dynamic_vs_direct_vmap": {
+      "exact": false,
+      "max_abs": 0.0703125,
+      "per_row_max_abs": [
+        0.0703125,
+        0.015625,
+        0.015625,
+        0.015625
+      ]
+    },
+    "transition_closed_vs_dynamic": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "noise_0_vmap_vs_scalar": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "noise_1_vmap_vs_scalar": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "noise_2_vmap_vs_scalar": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "cache_0_vmap_vs_scalar": {
+      "exact": false,
+      "max_abs": 0.046875,
+      "per_row_max_abs": [
+        0.046875,
+        0.03125,
+        0.03125,
+        0.03125
+      ]
+    },
+    "cache_1_vmap_vs_scalar": {
+      "exact": false,
+      "max_abs": 0.1875,
+      "per_row_max_abs": [
+        0.125,
+        0.1875,
+        0.125,
+        0.125
+      ]
+    },
+    "cache_2_vmap_vs_scalar": {
+      "exact": false,
+      "max_abs": 0.125,
+      "per_row_max_abs": [
+        0.0625,
+        0.0625,
+        0.125,
+        0.125
+      ]
+    },
+    "cache_3_vmap_vs_scalar": {
+      "exact": false,
+      "max_abs": 0.125,
+      "per_row_max_abs": [
+        0.09375,
+        0.0625,
+        0.125,
+        0.09375
+      ]
+    },
+    "cache_4_vmap_vs_scalar": {
+      "exact": false,
+      "max_abs": 0.109375,
+      "per_row_max_abs": [
+        0.109375,
+        0.078125,
+        0.0625,
+        0.0859375
+      ]
+    },
+    "cache_5_vmap_vs_scalar": {
+      "exact": false,
+      "max_abs": 0.3203125,
+      "per_row_max_abs": [
+        0.3203125,
+        0.125,
+        0.125,
+        0.125
+      ]
+    },
+    "equal_slot_native_vs_injected_same_full_batch_noise": {
+      "exact": true,
+      "max_abs": 0.0,
+      "per_row_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "equal_slot_full_batch_vs_scalar_same_noise_arrays": {
+      "exact": false,
+      "max_abs": 0.0625,
+      "per_row_max_abs": [
+        0.015625,
+        0.0625,
+        0.015625,
+        0.015625
+      ]
+    },
+    "decode_same_latent_batch_vs_scalar": {
+      "exact": false,
+      "max_abs": 2.0,
+      "per_row_max_abs": [
+        2.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "timings_seconds": {
+    "scalar_compile_and_call": 8.836952647077851,
+    "scalar_warm_call": 0.01899485697504133,
+    "vmap_compile_and_call": 10.804920581984334,
+    "vmap_warm_call": 0.005250414949841797,
+    "lax_map_compile_and_call": 6.973781425040215,
+    "lax_map_warm_call": 0.016229098080657423,
+    "vmap_size1_compile_and_call": 7.617307458072901,
+    "vmap_size1_warm_call": 0.017734160996042192
+  },
+  "elapsed_seconds": 111.53538888902403,
+  "outputs_sha256": "1fb88935379c62491348bf87242a8c1b1063c006e8d0fe7a91376e88f457c688"
+}

@@ -1,0 +1,245 @@
+{
+  "status": "PASS",
+  "scope": "Independent direct raw-file recomputation; does not call the analysis module",
+  "n_full_budget_final_runs": 45,
+  "n_final_policy_hashes_verified": 45,
+  "n_unique_policy_files": 45,
+  "n_fixed_model_checkpoints": 3,
+  "model_hashes": {
+    "0": "f81ef20ab6d6f032a85310fe9233e32749924839eb8bb55e4c0e6b1db2b880d2",
+    "1": "7190a8c231596043b62b6750f807e1c9fa542287dc161b7ca72182f2e68e625a",
+    "2": "8ab666aa5838fb81b11af99c5f700f8dd33373f757ef6109a07116df70f9f716"
+  },
+  "eval_seed": 20260919,
+  "eval_episodes_per_policy": 256,
+  "n_start_array_matched_three_arm_blocks": 15,
+  "source_harness_sha256": "6a3460b2db2e47713b7af604454a4b04066c96bfd7748b5c991cfbc433176269",
+  "publication_sha256": "d7675e2a35ce80ee81dedc3d1cb7b610493fba933abc82c6e2ca35c9d53acfe5",
+  "contrast_check": {
+    "0": {
+      "exact_transitions_with_learned_heads": {
+        "walls_passed": {
+          "independent_mean": -0.05546875,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.36796875,
+            0.25
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.36796875,
+            0.25859375
+          ]
+        },
+        "survival": {
+          "independent_mean": -0.003125,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.01328125,
+            0.003125
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.01328125,
+            0.003125
+          ]
+        }
+      },
+      "true_signals_with_exact_transitions": {
+        "walls_passed": {
+          "independent_mean": 0.221875,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.10859375,
+            0.45234375
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.10859375,
+            0.45234375
+          ]
+        },
+        "survival": {
+          "independent_mean": -0.0015625,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.00859375,
+            0.003125
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.00859375,
+            0.003125
+          ]
+        }
+      },
+      "complete_oracle_pipeline": {
+        "walls_passed": {
+          "independent_mean": 0.16640625,
+          "exact_bootstrap_3125_resamples_95": [
+            0.01484375,
+            0.34296875
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            0.01484375,
+            0.34765625
+          ]
+        },
+        "survival": {
+          "independent_mean": -0.0046875,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.0140625,
+            0.0046875
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.0140625,
+            0.0046875
+          ]
+        }
+      }
+    },
+    "1": {
+      "exact_transitions_with_learned_heads": {
+        "walls_passed": {
+          "independent_mean": -0.14921875,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.4921875,
+            0.04453125
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.4921875,
+            0.04453125
+          ]
+        },
+        "survival": {
+          "independent_mean": -0.00625,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.01875,
+            0.0
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.01875,
+            0.0
+          ]
+        }
+      },
+      "true_signals_with_exact_transitions": {
+        "walls_passed": {
+          "independent_mean": 0.27265625,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.02734375,
+            0.49765625
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.02734375,
+            0.49765625
+          ]
+        },
+        "survival": {
+          "independent_mean": 0.00234375,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.003125,
+            0.00703125
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.003125,
+            0.00703125
+          ]
+        }
+      },
+      "complete_oracle_pipeline": {
+        "walls_passed": {
+          "independent_mean": 0.1234375,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.19453125,
+            0.43671875
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.19453125,
+            0.43671875
+          ]
+        },
+        "survival": {
+          "independent_mean": -0.00390625,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.0140625,
+            0.0046875
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.0140625,
+            0.0046875
+          ]
+        }
+      }
+    },
+    "2": {
+      "exact_transitions_with_learned_heads": {
+        "walls_passed": {
+          "independent_mean": -0.2234375,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.42890625,
+            0.04609375
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.42890625,
+            0.04609375
+          ]
+        },
+        "survival": {
+          "independent_mean": -0.00390625,
+          "exact_bootstrap_3125_resamples_95": [
+            -0.00625,
+            -0.0015625
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            -0.00625,
+            -0.0015625
+          ]
+        }
+      },
+      "true_signals_with_exact_transitions": {
+        "walls_passed": {
+          "independent_mean": 0.446875,
+          "exact_bootstrap_3125_resamples_95": [
+            0.32890625,
+            0.59921875
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            0.32890625,
+            0.59765625
+          ]
+        },
+        "survival": {
+          "independent_mean": 0.0140625,
+          "exact_bootstrap_3125_resamples_95": [
+            0.01015625,
+            0.0171875
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            0.0109375,
+            0.0171875
+          ]
+        }
+      },
+      "complete_oracle_pipeline": {
+        "walls_passed": {
+          "independent_mean": 0.2234375,
+          "exact_bootstrap_3125_resamples_95": [
+            0.03515625,
+            0.41484375
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            0.03359375,
+            0.4203125
+          ]
+        },
+        "survival": {
+          "independent_mean": 0.01015625,
+          "exact_bootstrap_3125_resamples_95": [
+            0.00625,
+            0.0140625
+          ],
+          "predeclared_monte_carlo_10000_95": [
+            0.00625,
+            0.0140625
+          ]
+        }
+      }
+    }
+  },
+  "interpretation": "No discovery in any arm (0/45). Exact transitions and true task signals improve mean walls modestly in each model, but do not solve the gate under this MLP/short-rollout optimizer. Dynamics-only causal attribution is unsupported.",
+  "interval_note": "Exact enumeration is an independent numerical check; publication retains prospectively declared 10000-draw paired-policy bootstrap intervals. Minor Monte Carlo endpoint differences do not change the conclusion.",
+  "exact_bootstrap_quantile_definition": "inverse CDF of the finite equally weighted ordered-resample distribution"
+}

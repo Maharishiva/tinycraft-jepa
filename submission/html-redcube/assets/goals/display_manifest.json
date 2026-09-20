@@ -1,0 +1,161 @@
+{
+  "source_manifest": "output/revision/redcube-goal-analysis/figure_manifest.json",
+  "source_manifest_sha256": "0665ef6a623b6b49ea1e14b501582a50a59fdbeba1db038b2811e740332fd5db",
+  "contract": {
+    "protocol": "redcube_goal_control_v1",
+    "required_files": [
+      "summary.json",
+      "manifest.json",
+      "cohort.npz",
+      "episodes.npz",
+      "visual_packet.npz"
+    ],
+    "visual_episode_indices": [
+      0,
+      1,
+      2
+    ],
+    "display_policies": [
+      "random",
+      "jepa_h3",
+      "oracle"
+    ],
+    "success_policies": [
+      "random",
+      "fixed_cycle",
+      "jepa_h1",
+      "jepa_h3",
+      "oracle"
+    ],
+    "stopping_rule": "first exact goal hit or native death; otherwise 24 controlled actions",
+    "rgb_transform": "none for strips and raw assets; faded initial frame only in explicitly annotated path diagrams",
+    "forecast_rule": "first decision only, and only if forecast_valid is true; decoder visualization is not observation",
+    "uncertainty": "Wilson 95% interval across 128 evaluation starts, separately per world-model checkpoint",
+    "coordinate_annotation": "simulator cube upper-left position plus 2.5 pixels; diagnostic only",
+    "selection_rule": "episodes 0, 1, 2 declared by evaluation protocol before policy outcomes",
+    "annotation_palette": {
+      "jepa": "#CD663E",
+      "privileged_simulator": "#087E83",
+      "flow_if_present": "#7860A5",
+      "text": "#17324D",
+      "random": "#637583",
+      "cycle": "#b9bfc5"
+    }
+  },
+  "runs": [
+    {
+      "label": "Model seed 0",
+      "directory": "runs/revision/redcube_goal/gray_frame_still/m0",
+      "model_sha256": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd",
+      "source_hashes": {
+        "summary.json": "23dbe46da7cfbea1b835615f99cd2c656a030fa7e5983622182a569e720407bc",
+        "manifest.json": "46d8ce31fd6842a680b3a0a5c4c7b3d0794c7ff842550e1f48b045d554efa110",
+        "cohort.npz": "b125d48895c7052ce4991ee73821a859ed79bb6482c8d5b4ce38fba13a7f46fb",
+        "episodes.npz": "0f16b340d379c7ec4dadc30b3481b866e8acb351c8d1f8386079d2c1fb17274c",
+        "visual_packet.npz": "ef901a4623630d5fc3008b62ab28d3ab85d4b77ba77c104bc5e9dde2a1bcb1d6"
+      }
+    },
+    {
+      "label": "Model seed 1",
+      "directory": "runs/revision/redcube_goal/gray_frame_still/m1",
+      "model_sha256": "fd1104514e1c99d3268f3132c99fe6a33980c755b93ca64fec91539644910970",
+      "source_hashes": {
+        "summary.json": "ddf9e991c1a06500f2f85c5d220efb2a9ca69305ca45b7f6d9b637931dacb142",
+        "manifest.json": "d03174c4b78330374b126873f06dfde722378fd172c2211de925e6e59dedb237",
+        "cohort.npz": "b125d48895c7052ce4991ee73821a859ed79bb6482c8d5b4ce38fba13a7f46fb",
+        "episodes.npz": "c0cd48215d668c5654fa5a72cc30bc916634ecb8b15a2751123c8abd88710ccc",
+        "visual_packet.npz": "996fbdaf6c62a0905fceedeadd71f93585142ccc3e77af0ead9beb484f329f60"
+      }
+    },
+    {
+      "label": "Model seed 2",
+      "directory": "runs/revision/redcube_goal/gray_frame_still/m2",
+      "model_sha256": "494004b0afac36b7a1e9d1d6d0c591a5b741af7da863d55f27b6ac2e18ea81c1",
+      "source_hashes": {
+        "summary.json": "d08888a68f5f485864f551e3b32ec3e5d874a748bfdb0e494df99e79c8ccff83",
+        "manifest.json": "3ebc362d822e27ca3b30a503b450b147851931d967dc640278ef4fa47f5b30e7",
+        "cohort.npz": "b125d48895c7052ce4991ee73821a859ed79bb6482c8d5b4ce38fba13a7f46fb",
+        "episodes.npz": "9e4bd1c7da6eefa8de0072da266bdacd3599896622e109ea035d11db701529fb",
+        "visual_packet.npz": "8e21e61fac872169baff48a4afdd8be0af5e1e7f85a3247a7f30c163c705e60e"
+      }
+    }
+  ],
+  "counts": {
+    "jepa_h3": [
+      5,
+      5,
+      9
+    ],
+    "jepa_h1": [
+      0,
+      0,
+      0
+    ],
+    "random": 3,
+    "fixed_cycle": 0,
+    "privileged_state_reference": 128,
+    "episodes_per_model": 128
+  },
+  "files": {
+    "goal_rgb_checkpoint2_episode2.svg": {
+      "source_sha256": "b5e9832b0a98e019015b85d3b47a335573079bf988c983d48e72c814836a5adc",
+      "display_sha256": "b5e9832b0a98e019015b85d3b47a335573079bf988c983d48e72c814836a5adc",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    },
+    "goal_rgb_checkpoint2_episode1.svg": {
+      "source_sha256": "bf0de3437e8c9c7ceadfd891608fbc9173c2ffa6ab0dc3e02d92c0b64dfadbe2",
+      "display_sha256": "bf0de3437e8c9c7ceadfd891608fbc9173c2ffa6ab0dc3e02d92c0b64dfadbe2",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    },
+    "goal_rgb_checkpoint2_episode0.svg": {
+      "source_sha256": "4e601f7fade54b7352eaf89580b1539dccec00a130bc002469d7b50c8d8c8e64",
+      "display_sha256": "4e601f7fade54b7352eaf89580b1539dccec00a130bc002469d7b50c8d8c8e64",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    },
+    "goal_paths_checkpoint2.svg": {
+      "source_sha256": "bc6fc4c6a634a4ca741896638784305b8a6e7664ab8640e78e3d68064b1ee893",
+      "display_sha256": "bc6fc4c6a634a4ca741896638784305b8a6e7664ab8640e78e3d68064b1ee893",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    },
+    "goal_paths_checkpoint1.svg": {
+      "source_sha256": "4592d60ef55ed5bb9812efc52881eb6316950ec3a185587a8d10545b17fe41eb",
+      "display_sha256": "4592d60ef55ed5bb9812efc52881eb6316950ec3a185587a8d10545b17fe41eb",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    },
+    "goal_paths_checkpoint0.svg": {
+      "source_sha256": "ec66d853ed28c380b09359c811a5c28f1c51c4d3e1df9e45268def772d8b1a6b",
+      "display_sha256": "ec66d853ed28c380b09359c811a5c28f1c51c4d3e1df9e45268def772d8b1a6b",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    },
+    "goal_rgb_checkpoint0_episode2.svg": {
+      "source_sha256": "bddd9432d1975edb229a819582d20065887546e2f34f39963f8d01b0f868aa9d",
+      "display_sha256": "bddd9432d1975edb229a819582d20065887546e2f34f39963f8d01b0f868aa9d",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    },
+    "goal_rgb_checkpoint0_episode1.svg": {
+      "source_sha256": "999c20c988de3c552b60a383a9255c929225682584d30ee36f878822e2f9708e",
+      "display_sha256": "999c20c988de3c552b60a383a9255c929225682584d30ee36f878822e2f9708e",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    },
+    "goal_rgb_checkpoint0_episode0.svg": {
+      "source_sha256": "8d0f021f93d7e2b2a0e0d5eee0312021ae383a802d38d0643f811ca6f0b37b50",
+      "display_sha256": "8d0f021f93d7e2b2a0e0d5eee0312021ae383a802d38d0643f811ca6f0b37b50",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    },
+    "goal_rgb_checkpoint1_episode2.svg": {
+      "source_sha256": "fa5bf6fb17b258826ad09363797ff1fbf6fad583c19fcc6a71f231067bfe830b",
+      "display_sha256": "fa5bf6fb17b258826ad09363797ff1fbf6fad583c19fcc6a71f231067bfe830b",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    },
+    "goal_rgb_checkpoint1_episode0.svg": {
+      "source_sha256": "0b32aeed00f032bf59281a426992ca11cff3a844656dca32472af6e600cc0ce5",
+      "display_sha256": "0b32aeed00f032bf59281a426992ca11cff3a844656dca32472af6e600cc0ce5",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    },
+    "goal_rgb_checkpoint1_episode1.svg": {
+      "source_sha256": "224268478c0fa8651e6a953773dd28a57ac60a4e1c82643ccb3e7496b1708c90",
+      "display_sha256": "224268478c0fa8651e6a953773dd28a57ac60a4e1c82643ccb3e7496b1708c90",
+      "style_transform": "none; exact copy of final shared figure, with native RGB unchanged"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+\section{Introduction}
+\label{sec:intro}
+
+A world model can ignore texture while preserving a doorway's position, available opening, and
+response to action. Learning such abstractions without a downstream reward is a central attraction
+of joint-embedding predictive architectures (JEPAs): their targets are representations of future
+observations rather than future pixels \citep{lecun2022path,assran2023ijepa,bardes2024vjepa}.
+Recent systems demonstrate useful goal-conditioned planning from both pretrained and jointly
+learned representations \citep{assran2025vjepa2,sobal2025pldm,maes2026lewm}. The difficult question
+is what a particular success or failure establishes about the learned model.
+
+We study this question through interventions on a jointly trained squared-loss JEPA. The model has
+a fixed 512-dimensional latent and a Gaussian marginal regularizer. The environments progress from
+Craftax to a moving-wall task and then a single cube with controlled nuisance and dynamics. Each
+step removes complexity to make a narrower question testable: can the model guide local actions,
+can its training environment support a competent controller, and under which conditions does its
+representation expose object position?
+
+Craftax supplies a positive result with useful controls. On 384 fresh episodes, nearby position
+planning succeeds in $93.2\%$ of open-loop trials and $96.1\%$ with replanning. No-op succeeds in
+$35.7\%$, because some targets share the starting position; on the 247 displaced targets, planned
+success remains $89.9\%$ and $93.9\%$. Goal generation and execution use independent randomness.
+These measurements establish local action-selection capability for the existing checkpoint.
+
+The gate gives a different result. Earlier policies trained in imagination performed worse than
+policies trained on real transitions, and decoded predictions lost a visible wall. Those observations
+suggested a model limitation, but also changed the task heads and PPO protocol. We therefore train
+45 policies under one matched protocol, crossing three frozen models and five policy seeds with
+learned transitions, exact transitions with fitted heads, and exact transitions with true signals.
+Even the fully exact training environment yields mean survival below $1.5\%$ for every model and
+no policy above $50\%$. Exact transitions and signals improve partial progress by $0.12$--$0.22$
+walls per episode, but the controller remains unsuccessful. This failure to qualify the common
+controller materially changes the interpretation of the original imagination result.
+
+A separate replicated cube study exposes a representation-accessibility boundary. The same grid
+recipe supports subpixel position read-out when either noise is persistent or dynamics are
+deterministic, while per-frame noise with wind produces large error. Its training loss remains high,
+so the empirical failure is distinct from the known low-loss predictable-nuisance construction
+\citep{sobal2022slow}. We retain that construction and an exact-Gaussian small-scale counterexample
+to state the objective's missing guarantees, rather than use them as explanations of the fitted
+networks.
+
+The contribution is the measured scope of these comparisons: a positive local-planning capability,
+a matched intervention that prevents a stronger model-failure attribution, and a controlled
+nuisance--dynamics interaction in accessible state. Shared protocols, all final outcomes, and model
+versus policy replication make the evidence inspectable. The conclusions concern this learning
+recipe and its tested interfaces; closely related predictive-learning methods are discussed in
+Section~\ref{sec:related}.

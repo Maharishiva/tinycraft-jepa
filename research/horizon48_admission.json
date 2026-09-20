@@ -1,0 +1,104 @@
+{
+  "status": "scientifically_admitted_pending_execution_validation",
+  "recorded_utc": "2026-09-19T21:21:34.395564+00:00",
+  "authorized_by": "root via experiment_design",
+  "authorization": "Root NOW EXPLICITLY ADMITS single36 H48 matrix: full27 native-grid independentlyPASS, oracle_true0/9discoveries confirmed.",
+  "native_grid_audit": {
+    "path": "research/native_grid_final_audit.json",
+    "sha256": "7001e8670a9b6c51ca7bb742184b8d4f61ca5841ec101a42cf1879f910e19633",
+    "status": "PASS",
+    "n_runs": 27
+  },
+  "native_grid_publication": {
+    "path": "output/revision/native-grid-analysis/publication.json",
+    "sha256": "5fe798798b64fbdbf2ea735bb6a8ae1613d8669ca8fdf2592dd43869f5c42809",
+    "status": "complete"
+  },
+  "oracle_true_discovery": {
+    "criterion": "survival strictly above 0.5 at final 256-episode evaluation",
+    "count": 0,
+    "denominator": 9,
+    "policies": [
+      {
+        "model_seed": 0,
+        "policy_seed": 0,
+        "survival": 0.0078125,
+        "discovery": false
+      },
+      {
+        "model_seed": 0,
+        "policy_seed": 1,
+        "survival": 0.01171875,
+        "discovery": false
+      },
+      {
+        "model_seed": 0,
+        "policy_seed": 2,
+        "survival": 0.015625,
+        "discovery": false
+      },
+      {
+        "model_seed": 1,
+        "policy_seed": 0,
+        "survival": 0.0078125,
+        "discovery": false
+      },
+      {
+        "model_seed": 1,
+        "policy_seed": 1,
+        "survival": 0.0,
+        "discovery": false
+      },
+      {
+        "model_seed": 1,
+        "policy_seed": 2,
+        "survival": 0.0078125,
+        "discovery": false
+      },
+      {
+        "model_seed": 2,
+        "policy_seed": 0,
+        "survival": 0.00390625,
+        "discovery": false
+      },
+      {
+        "model_seed": 2,
+        "policy_seed": 1,
+        "survival": 0.0,
+        "discovery": false
+      },
+      {
+        "model_seed": 2,
+        "policy_seed": 2,
+        "survival": 0.015625,
+        "discovery": false
+      }
+    ]
+  },
+  "matrix": {
+    "arms": [
+      "learned",
+      "oracle_heads",
+      "oracle_reward",
+      "oracle_true"
+    ],
+    "model_seeds": [
+      0,
+      1,
+      2
+    ],
+    "policy_seeds": [
+      0,
+      1,
+      2
+    ],
+    "n_runs": 36,
+    "torso": "native_grid",
+    "horizon": 48,
+    "updates": 50
+  },
+  "allocation": "MG physical GPU1 only after all24 termination jobs and queue process complete; target-gradient MG0 unaffected",
+  "deadline_utc": "2026-09-20T07:41:00+00:00",
+  "execution_status": "not launched; requires source/CPU review, fullsize two-update computational smoke, deadline feasibility and exclusive idle GPU1",
+  "selection": "all36 final outcomes; no retries, other horizons or endpoint selection"
+}

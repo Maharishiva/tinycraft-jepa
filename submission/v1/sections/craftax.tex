@@ -1,0 +1,40 @@
+\section{Craftax: local goals and reward control ask different questions}
+\label{sec:craftax}
+
+Craftax-Classic combines movement, resources, inventory, and survival
+\citep{matthews2024craftax}. It is a useful starting point because reaching a nearby visual target
+and selecting a rewarding sequence of interactions can require different information. We evaluate
+one fitted 512-dimensional grid JEPA in two protocols, both using real simulator outcomes.
+
+\paragraph{Short-horizon goal reaching.}
+After seven random warm-up actions, six additional random actions generate a reachable goal image.
+The planner minimizes distance between its predicted endpoint latent and the encoded goal. It then
+executes the selected six actions \emph{open loop}, without replanning. Success means matching the
+goal's final player position; it does not require matching inventory or the entire scene. The planner
+reaches 121 of 128 goals, compared with 24 for random actions (Table~\ref{tab:craftax}). Goal generation
+and execution share simulator randomness. This is evidence for nearby goal reaching under the stated
+protocol, not long-horizon task completion.
+
+\paragraph{Reward-driven planning.}
+We separately fit reward and value heads on frozen encodings and evaluate 100-step behavior from
+128 starts. The six-step CEM controller replans after every real observation. Its mean return is
+$0.47$, below $1.45$ for uniform random actions. A myopic reward controller, which does not use
+predicted transitions, also underperforms random actions. The reward head's correlation falls from
+$0.92$ on its fitting data to $0.35$ on held-out time rows, and value correlation falls from $0.99$
+to $0.27$. Poor performance therefore already appears in reward-based action selection without predicted
+transitions; the multi-step result concerns the combined head, dynamics, and planning pipeline.
+
+\begin{table}[t]
+\centering
+\caption{\textbf{Different tasks, one Craftax checkpoint.} Goal reaching uses 128 nearby goals and
+six open-loop actions. Reward control uses 128 starts and 100 steps; $\pm$ is the standard deviation
+across starts. These are exploratory single-model results, not the standard Craftax achievement
+benchmark.}
+\label{tab:craftax}
+\inputtable{craftax.tex}
+\end{table}
+
+This split motivates the controlled studies that follow. Goal-reaching success shows that a model
+can guide some actions; it does not certify reward prediction or policy learning in that model.
+Conversely, a weak reward pipeline does not establish that its encoder discarded the relevant
+state. Appendix~\ref{app:craftax} records the planner and head-fitting details.

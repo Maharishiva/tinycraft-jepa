@@ -1,0 +1,4 @@
+{
+  "exited_leader_descendant_stopped": false,
+  "observed_failure": "Descendant heartbeat advanced after terminate_child returned"
+}

@@ -1,0 +1,23 @@
+\section{Discussion}
+\label{sec:limitations}
+
+The experiments separate capabilities that are often presented together. The Craftax checkpoint
+supports nearby visual-goal planning, while its reward-planning pipeline has weak held-out reward and value
+predictions. The gate encoders retain useful obstacle information under an added decoder and CNN,
+while their tested imagination pipelines fail to discover the strategy. Nuisance cubes and the
+population constructions show why a marginal non-collapse condition alone cannot settle either
+question.
+
+The practical consequence is to evaluate a world model at each interface: information recoverable
+from real encodings, prediction of controlled counterfactuals, head generalization, and behavior in
+the real environment. A controller's failure should lead to this decomposition before it is used to
+judge the representation; a successful probe should be followed by prediction and control tests
+before it is used to certify imagination.
+
+Our empirical scope is one jointly trained squared-loss objective, small visual domains, and short
+training budgets. Craftax and the flow reference each use one fitted model. Gate predictors, heads,
+and PPO protocols have not been isolated by a fully matched intervention. The theory gives
+population existence results, with measurable constructions rather than a finite-network or
+optimization analysis. In particular, the fresh-bit example does not explain loss of a predictable
+wall. What the evidence does establish is that non-collapse, decodability, and useful imagined
+control are separate properties, requiring separate support.

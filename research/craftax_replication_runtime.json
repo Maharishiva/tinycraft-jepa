@@ -1,0 +1,22 @@
+{
+  "packages": {
+    "numpy": "2.4.6",
+    "jax": "0.10.1",
+    "jaxlib": "0.10.1",
+    "flax": "0.12.7",
+    "optax": "0.2.8",
+    "craftax": "1.5.0"
+  },
+  "inherited_flags": {
+    "XLA_FLAGS": null,
+    "JAX_DEFAULT_MATMUL_PRECISION": null,
+    "JAX_ENABLE_X64": null,
+    "JAX_PLATFORMS": null
+  },
+  "gpu": "NVIDIA A100-PCIE-40GB, GPU-c6d6c4f1-60be-2cad-ea13-49f8f8617a0e, 580.159.03",
+  "child_overrides": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "scope": "Observed for model seeds 1 and 2; seed-0 report did not record optax/jaxlib/driver/flags, so no claim of full bitwise historical runtime identity."
+}

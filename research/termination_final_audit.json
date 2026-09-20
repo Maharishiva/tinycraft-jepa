@@ -1,0 +1,767 @@
+{
+  "status": "PASS",
+  "n_new_policy_binaries_verified": 24,
+  "n_new_ledger_updates_verified": 3600,
+  "n_three_arm_paired_start_blocks": 24,
+  "strata": {
+    "mlp": {
+      "models": {
+        "0": {
+          "arms": {
+            "oracle_heads": {
+              "walls": [
+                0.1640625,
+                0.0,
+                0.11328125,
+                0.87109375,
+                0.0
+              ],
+              "survival": [
+                0.00390625,
+                0.0,
+                0.00390625,
+                0.0234375,
+                0.0
+              ],
+              "walls_mean": 0.2296875,
+              "survival_mean": 0.00625
+            },
+            "oracle_reward": {
+              "walls": [
+                0.53125,
+                0.28515625,
+                0.0,
+                0.00390625,
+                0.0
+              ],
+              "survival": [
+                0.01953125,
+                0.01171875,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "walls_mean": 0.1640625,
+              "survival_mean": 0.00625
+            },
+            "oracle_true": {
+              "walls": [
+                0.29296875,
+                0.453125,
+                0.5625,
+                0.49609375,
+                0.453125
+              ],
+              "survival": [
+                0.00390625,
+                0.00390625,
+                0.0078125,
+                0.0078125,
+                0.0
+              ],
+              "walls_mean": 0.4515625,
+              "survival_mean": 0.0046875
+            }
+          },
+          "contrasts": {
+            "true_termination_under_learned_reward": {
+              "walls_passed": {
+                "mean": -0.065625,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.4859375,
+                  0.2609375
+                ],
+                "declared_monte_carlo95": [
+                  -0.4859375,
+                  0.2609375
+                ]
+              },
+              "survival": {
+                "mean": 0.0,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.0125,
+                  0.0109375
+                ],
+                "declared_monte_carlo95": [
+                  -0.01171875,
+                  0.0109375
+                ]
+              }
+            },
+            "true_reward_under_true_termination": {
+              "walls_passed": {
+                "mean": 0.2875,
+                "exact_inversecdf_paired_bootstrap95": [
+                  0.003125,
+                  0.5125
+                ],
+                "declared_monte_carlo95": [
+                  0.003125,
+                  0.5125
+                ]
+              },
+              "survival": {
+                "mean": -0.0015625,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.009375,
+                  0.00625
+                ],
+                "declared_monte_carlo95": [
+                  -0.009375,
+                  0.00625
+                ]
+              }
+            }
+          }
+        },
+        "1": {
+          "arms": {
+            "oracle_heads": {
+              "walls": [
+                0.0,
+                0.33984375,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "survival": [
+                0.0,
+                0.0078125,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "walls_mean": 0.06796875,
+              "survival_mean": 0.0015625
+            },
+            "oracle_reward": {
+              "walls": [
+                0.515625,
+                0.1328125,
+                0.0,
+                0.43359375,
+                0.0
+              ],
+              "survival": [
+                0.0234375,
+                0.00390625,
+                0.0,
+                0.015625,
+                0.0
+              ],
+              "walls_mean": 0.21640625,
+              "survival_mean": 0.00859375
+            },
+            "oracle_true": {
+              "walls": [
+                0.4453125,
+                0.046875,
+                0.6015625,
+                0.37109375,
+                0.23828125
+              ],
+              "survival": [
+                0.0078125,
+                0.0,
+                0.0078125,
+                0.0,
+                0.00390625
+              ],
+              "walls_mean": 0.340625,
+              "survival_mean": 0.00390625
+            }
+          },
+          "contrasts": {
+            "true_termination_under_learned_reward": {
+              "walls_passed": {
+                "mean": 0.1484375,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.0828125,
+                  0.39609375
+                ],
+                "declared_monte_carlo95": [
+                  -0.0828125,
+                  0.3796875
+                ]
+              },
+              "survival": {
+                "mean": 0.00703125,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.0015625,
+                  0.0171875
+                ],
+                "declared_monte_carlo95": [
+                  -0.0015625,
+                  0.0171875
+                ]
+              }
+            },
+            "true_reward_under_true_termination": {
+              "walls_passed": {
+                "mean": 0.12421875,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.075,
+                  0.39140625
+                ],
+                "declared_monte_carlo95": [
+                  -0.075,
+                  0.39140625
+                ]
+              },
+              "survival": {
+                "mean": -0.0046875,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.01328125,
+                  0.00390625
+                ],
+                "declared_monte_carlo95": [
+                  -0.01328125,
+                  0.00390625
+                ]
+              }
+            }
+          }
+        },
+        "2": {
+          "arms": {
+            "oracle_heads": {
+              "walls": [
+                0.04296875,
+                0.0234375,
+                0.0,
+                0.12109375,
+                0.29296875
+              ],
+              "survival": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "walls_mean": 0.09609375,
+              "survival_mean": 0.0
+            },
+            "oracle_reward": {
+              "walls": [
+                0.19921875,
+                0.0,
+                0.0,
+                0.19140625,
+                0.0
+              ],
+              "survival": [
+                0.00390625,
+                0.0,
+                0.0,
+                0.00390625,
+                0.0
+              ],
+              "walls_mean": 0.078125,
+              "survival_mean": 0.0015625
+            },
+            "oracle_true": {
+              "walls": [
+                0.42578125,
+                0.48046875,
+                0.73828125,
+                0.51171875,
+                0.55859375
+              ],
+              "survival": [
+                0.01953125,
+                0.0078125,
+                0.015625,
+                0.01171875,
+                0.015625
+              ],
+              "walls_mean": 0.54296875,
+              "survival_mean": 0.0140625
+            }
+          },
+          "contrasts": {
+            "true_termination_under_learned_reward": {
+              "walls_passed": {
+                "mean": -0.01796875,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.16640625,
+                  0.09375
+                ],
+                "declared_monte_carlo95": [
+                  -0.16171875,
+                  0.09375
+                ]
+              },
+              "survival": {
+                "mean": 0.0015625,
+                "exact_inversecdf_paired_bootstrap95": [
+                  0.0,
+                  0.003125
+                ],
+                "declared_monte_carlo95": [
+                  0.0,
+                  0.003125
+                ]
+              }
+            },
+            "true_reward_under_true_termination": {
+              "walls_passed": {
+                "mean": 0.46484375,
+                "exact_inversecdf_paired_bootstrap95": [
+                  0.31171875,
+                  0.61875
+                ],
+                "declared_monte_carlo95": [
+                  0.31171875,
+                  0.61875
+                ]
+              },
+              "survival": {
+                "mean": 0.0125,
+                "exact_inversecdf_paired_bootstrap95": [
+                  0.009375,
+                  0.015625
+                ],
+                "declared_monte_carlo95": [
+                  0.009375,
+                  0.015625
+                ]
+              }
+            }
+          }
+        }
+      },
+      "terminal_fraction": [
+        {
+          "model_seed": 0,
+          "policy_seed": 0,
+          "mean_actual_terminal_fraction": 0.35434895833333335
+        },
+        {
+          "model_seed": 0,
+          "policy_seed": 1,
+          "mean_actual_terminal_fraction": 0.6205078125
+        },
+        {
+          "model_seed": 0,
+          "policy_seed": 2,
+          "mean_actual_terminal_fraction": 0.8352083333333333
+        },
+        {
+          "model_seed": 0,
+          "policy_seed": 3,
+          "mean_actual_terminal_fraction": 0.5944401041666667
+        },
+        {
+          "model_seed": 0,
+          "policy_seed": 4,
+          "mean_actual_terminal_fraction": 0.8393619791666667
+        },
+        {
+          "model_seed": 1,
+          "policy_seed": 0,
+          "mean_actual_terminal_fraction": 0.278203125
+        },
+        {
+          "model_seed": 1,
+          "policy_seed": 1,
+          "mean_actual_terminal_fraction": 0.4366015625
+        },
+        {
+          "model_seed": 1,
+          "policy_seed": 2,
+          "mean_actual_terminal_fraction": 0.8234244791666666
+        },
+        {
+          "model_seed": 1,
+          "policy_seed": 3,
+          "mean_actual_terminal_fraction": 0.5202213541666667
+        },
+        {
+          "model_seed": 1,
+          "policy_seed": 4,
+          "mean_actual_terminal_fraction": 0.8665234375
+        },
+        {
+          "model_seed": 2,
+          "policy_seed": 0,
+          "mean_actual_terminal_fraction": 0.42029947916666666
+        },
+        {
+          "model_seed": 2,
+          "policy_seed": 1,
+          "mean_actual_terminal_fraction": 0.8250520833333334
+        },
+        {
+          "model_seed": 2,
+          "policy_seed": 2,
+          "mean_actual_terminal_fraction": 0.9690885416666667
+        },
+        {
+          "model_seed": 2,
+          "policy_seed": 3,
+          "mean_actual_terminal_fraction": 0.6296744791666666
+        },
+        {
+          "model_seed": 2,
+          "policy_seed": 4,
+          "mean_actual_terminal_fraction": 0.9573697916666667
+        }
+      ],
+      "model_hashes": {
+        "0": "f81ef20ab6d6f032a85310fe9233e32749924839eb8bb55e4c0e6b1db2b880d2",
+        "1": "7190a8c231596043b62b6750f807e1c9fa542287dc161b7ca72182f2e68e625a",
+        "2": "8ab666aa5838fb81b11af99c5f700f8dd33373f757ef6109a07116df70f9f716"
+      }
+    },
+    "native_grid": {
+      "models": {
+        "0": {
+          "arms": {
+            "oracle_heads": {
+              "walls": [
+                0.87109375,
+                0.0,
+                0.421875
+              ],
+              "survival": [
+                0.03515625,
+                0.0,
+                0.02734375
+              ],
+              "walls_mean": 0.4309895833333333,
+              "survival_mean": 0.020833333333333332
+            },
+            "oracle_reward": {
+              "walls": [
+                0.0859375,
+                0.0,
+                0.21875
+              ],
+              "survival": [
+                0.0,
+                0.0,
+                0.01953125
+              ],
+              "walls_mean": 0.1015625,
+              "survival_mean": 0.006510416666666667
+            },
+            "oracle_true": {
+              "walls": [
+                0.69140625,
+                0.515625,
+                0.640625
+              ],
+              "survival": [
+                0.0078125,
+                0.01171875,
+                0.015625
+              ],
+              "walls_mean": 0.6158854166666666,
+              "survival_mean": 0.01171875
+            }
+          },
+          "contrasts": {
+            "true_termination_under_learned_reward": {
+              "walls_passed": {
+                "mean": -0.3294270833333333,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.78515625,
+                  0.0
+                ],
+                "declared_monte_carlo95": [
+                  -0.78515625,
+                  0.0
+                ]
+              },
+              "survival": {
+                "mean": -0.014322916666666666,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.03515625,
+                  0.0
+                ],
+                "declared_monte_carlo95": [
+                  -0.03515625,
+                  0.0
+                ]
+              }
+            },
+            "true_reward_under_true_termination": {
+              "walls_passed": {
+                "mean": 0.5143229166666666,
+                "exact_inversecdf_paired_bootstrap95": [
+                  0.421875,
+                  0.60546875
+                ],
+                "declared_monte_carlo95": [
+                  0.421875,
+                  0.60546875
+                ]
+              },
+              "survival": {
+                "mean": 0.005208333333333333,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.00390625,
+                  0.01171875
+                ],
+                "declared_monte_carlo95": [
+                  -0.00390625,
+                  0.01171875
+                ]
+              }
+            }
+          }
+        },
+        "1": {
+          "arms": {
+            "oracle_heads": {
+              "walls": [
+                0.7578125,
+                0.79296875,
+                0.6640625
+              ],
+              "survival": [
+                0.01953125,
+                0.03125,
+                0.01953125
+              ],
+              "walls_mean": 0.73828125,
+              "survival_mean": 0.0234375
+            },
+            "oracle_reward": {
+              "walls": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "survival": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "walls_mean": 0.0,
+              "survival_mean": 0.0
+            },
+            "oracle_true": {
+              "walls": [
+                0.39453125,
+                0.1171875,
+                0.58984375
+              ],
+              "survival": [
+                0.0078125,
+                0.0,
+                0.0078125
+              ],
+              "walls_mean": 0.3671875,
+              "survival_mean": 0.005208333333333333
+            }
+          },
+          "contrasts": {
+            "true_termination_under_learned_reward": {
+              "walls_passed": {
+                "mean": -0.73828125,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.79296875,
+                  -0.6640625
+                ],
+                "declared_monte_carlo95": [
+                  -0.79296875,
+                  -0.6640625
+                ]
+              },
+              "survival": {
+                "mean": -0.0234375,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.03125,
+                  -0.01953125
+                ],
+                "declared_monte_carlo95": [
+                  -0.03125,
+                  -0.01953125
+                ]
+              }
+            },
+            "true_reward_under_true_termination": {
+              "walls_passed": {
+                "mean": 0.3671875,
+                "exact_inversecdf_paired_bootstrap95": [
+                  0.1171875,
+                  0.58984375
+                ],
+                "declared_monte_carlo95": [
+                  0.1171875,
+                  0.58984375
+                ]
+              },
+              "survival": {
+                "mean": 0.005208333333333333,
+                "exact_inversecdf_paired_bootstrap95": [
+                  0.0,
+                  0.0078125
+                ],
+                "declared_monte_carlo95": [
+                  0.0,
+                  0.0078125
+                ]
+              }
+            }
+          }
+        },
+        "2": {
+          "arms": {
+            "oracle_heads": {
+              "walls": [
+                0.65625,
+                0.03125,
+                0.0
+              ],
+              "survival": [
+                0.01171875,
+                0.0,
+                0.0
+              ],
+              "walls_mean": 0.22916666666666666,
+              "survival_mean": 0.00390625
+            },
+            "oracle_reward": {
+              "walls": [
+                0.0,
+                0.0,
+                0.54296875
+              ],
+              "survival": [
+                0.0,
+                0.0,
+                0.01953125
+              ],
+              "walls_mean": 0.18098958333333334,
+              "survival_mean": 0.006510416666666667
+            },
+            "oracle_true": {
+              "walls": [
+                0.1953125,
+                0.453125,
+                0.70703125
+              ],
+              "survival": [
+                0.00390625,
+                0.0,
+                0.015625
+              ],
+              "walls_mean": 0.4518229166666667,
+              "survival_mean": 0.006510416666666667
+            }
+          },
+          "contrasts": {
+            "true_termination_under_learned_reward": {
+              "walls_passed": {
+                "mean": -0.048177083333333336,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.65625,
+                  0.54296875
+                ],
+                "declared_monte_carlo95": [
+                  -0.65625,
+                  0.54296875
+                ]
+              },
+              "survival": {
+                "mean": 0.0026041666666666665,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.01171875,
+                  0.01953125
+                ],
+                "declared_monte_carlo95": [
+                  -0.01171875,
+                  0.01953125
+                ]
+              }
+            },
+            "true_reward_under_true_termination": {
+              "walls_passed": {
+                "mean": 0.2708333333333333,
+                "exact_inversecdf_paired_bootstrap95": [
+                  0.1640625,
+                  0.453125
+                ],
+                "declared_monte_carlo95": [
+                  0.1640625,
+                  0.453125
+                ]
+              },
+              "survival": {
+                "mean": 0.0,
+                "exact_inversecdf_paired_bootstrap95": [
+                  -0.00390625,
+                  0.00390625
+                ],
+                "declared_monte_carlo95": [
+                  -0.00390625,
+                  0.00390625
+                ]
+              }
+            }
+          }
+        }
+      },
+      "terminal_fraction": [
+        {
+          "model_seed": 0,
+          "policy_seed": 0,
+          "mean_actual_terminal_fraction": 0.5374869791666667
+        },
+        {
+          "model_seed": 0,
+          "policy_seed": 1,
+          "mean_actual_terminal_fraction": 0.5791145833333333
+        },
+        {
+          "model_seed": 0,
+          "policy_seed": 2,
+          "mean_actual_terminal_fraction": 0.4226432291666667
+        },
+        {
+          "model_seed": 1,
+          "policy_seed": 0,
+          "mean_actual_terminal_fraction": 0.8207942708333333
+        },
+        {
+          "model_seed": 1,
+          "policy_seed": 1,
+          "mean_actual_terminal_fraction": 0.6387109375
+        },
+        {
+          "model_seed": 1,
+          "policy_seed": 2,
+          "mean_actual_terminal_fraction": 0.22029947916666667
+        },
+        {
+          "model_seed": 2,
+          "policy_seed": 0,
+          "mean_actual_terminal_fraction": 0.8126302083333333
+        },
+        {
+          "model_seed": 2,
+          "policy_seed": 1,
+          "mean_actual_terminal_fraction": 0.4207942708333333
+        },
+        {
+          "model_seed": 2,
+          "policy_seed": 2,
+          "mean_actual_terminal_fraction": 0.18924479166666666
+        }
+      ],
+      "model_hashes": {
+        "0": "f81ef20ab6d6f032a85310fe9233e32749924839eb8bb55e4c0e6b1db2b880d2",
+        "1": "7190a8c231596043b62b6750f807e1c9fa542287dc161b7ca72182f2e68e625a",
+        "2": "8ab666aa5838fb81b11af99c5f700f8dd33373f757ef6109a07116df70f9f716"
+      }
+    }
+  },
+  "publication_sha256": "7ee8d8b24c57c1fbf0458801815a321d2baba0262dfd643b2e7f89cde33c86a6",
+  "scope": "Independent direct read of new24 and paired reference starts/episodes/configs; does not re-audit the72 historical policy binaries or import the analyzer.",
+  "approved_parent_harness_sha256": "6a3460b2db2e47713b7af604454a4b04066c96bfd7748b5c991cfbc433176269",
+  "approved_sensitivity_harness_sha256": "1c003dd4e019b2179981877310e131304d13a7150ac7da93e11d5164d011feb1",
+  "interpretation": "No additional policy discovers reliable survival. Under exact transitions and true termination, true reward increases mean walls in all six fixed model/torso cells, with heterogeneous survival effects and no task mastery. Replacing learned continuation alone is not a reliable rescue. The triggered sensitivity does not replace the primary estimand."
+}

@@ -1,0 +1,22 @@
+{
+  "main_pages": 9,
+  "references_start_page": 10,
+  "total_pages": 21,
+  "pdf_sha256": "7aeb87b8ce80836f598bc51a3b91fd703fb9071fb29bcf03ca5a62c6887dea79",
+  "official_style_sha256": "797deef41724e93761426ac0cbcca46279a91cc650dd1f0ce76a4f08d2098ea6",
+  "official_bst_sha256": "2d67552db7ed38ccfccb5957b52f95656e25c249724761d3cf5f7922ad1844c5",
+  "overfull_boxes": 0,
+  "undefined_references": false,
+  "format_geometry_overrides": false,
+  "table_font_size_overrides": false,
+  "figure_assets": [
+    "evidence_staircase.pdf",
+    "readout_by_seed.pdf",
+    "rollouts.pdf",
+    "representation_by_seed.pdf",
+    "control_by_seed.pdf",
+    "geometry_by_seed.pdf"
+  ],
+  "independent_audit": "Scientific claim check: all five remaining protocol details corrected; no new theorem defect or major empirical overclaim reported.",
+  "visual_qa": "Main pages and appendix pages rendered and inspected. Vector figures clipped to declared boxes. No clipped content or overflowing tables. A benign underfull-vbox warning remains."
+}

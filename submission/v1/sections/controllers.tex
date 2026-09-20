@@ -1,0 +1,27 @@
+\section{The gate: information in the encoder and in imagination}
+\label{sec:controllers}
+
+\paragraph{A decision with a visible cause.}
+A red cube moves in a $63\times63$ image. A vertical wall approaches from the right; its gap is at
+the top or bottom with equal probability, but remains hidden until the wall passes a fixed reveal
+point. From the centre, the gap becomes visible only two steps before contact, while either gap
+requires five vertical moves. Retreating creates time to observe the gap and respond. Contact with
+a wall or border ends the episode with reward $-1$; all other rewards are zero. Episodes last at
+most 128 steps. The model-fitting data contain $500{,}000$ uniform-random transitions, with a separate
+$25{,}000$-transition evaluation archive.
+
+\paragraph{Comparisons and replication.}
+We fit three independent grid-JEPA encoders. For each, recurrent PPO \citep{schulman2017ppo} is trained in the real gate
+on frozen latents, and inside the frozen world model on predicted latents. The latent policies use
+the same MLP torso design. In imagination, rewards and terminations come from fitted heads; in the
+real gate they come from the simulator. Collection length, start states, update organization, and
+step budgets also differ (Appendix~\ref{app:hparams}), making this a comparison of complete training
+pipelines. Its real-versus-imagined contrast is not a dynamics-only intervention.
+
+Each original predictor has three policy seeds per encoder, giving nine policies. A fitted
+conditional residual predictor is evaluated with one sample and with a mean of eight samples,
+adding nine policies per variant. Real-latent controls have nine policies; real-pixel controls have
+three per torso. Every reported policy is its final checkpoint, evaluated on 256 real episodes.
+The primary metric is walls passed per episode. We call survival above $50\%$ \emph{discovery} of
+the survival strategy. Model fits and policy seeds are separate replication levels; the real and
+imagined evaluations use different random-key schedules and are not paired trials.
