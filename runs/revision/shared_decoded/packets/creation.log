@@ -1,0 +1,29 @@
+{
+  "path": "runs/revision/shared_decoded/packets/gray_episode_wind.npz",
+  "fingerprint": "0a24fb7642c59273237bb3c4d03521e05744656f381582603f5bc3237294ceb9",
+  "format": "native_warm_context_v1",
+  "config": "gray_episode_wind",
+  "spec": {
+    "noise": "gray",
+    "per_episode": true,
+    "wind": true,
+    "gate": false
+  },
+  "seed": 20260919,
+  "episodes": 256,
+  "total_attempts": 258,
+  "excluded_prefix_deaths": 2,
+  "prefix_steps": 7,
+  "native_max_steps": 128,
+  "control_steps": 121,
+  "admission": "first candidates surviving seven uniform random actions; no future filtering",
+  "reset_distribution": "original S.make(spec), uniform; fresh simulator texture key retained",
+  "evaluation_rng": "all stored keys shared across families and training policy seeds",
+  "key_domains": {
+    "reset": 11,
+    "prefix_action": 21,
+    "prefix_transition": 41,
+    "control_action": 61,
+    "control_transition": 81
+  }
+}

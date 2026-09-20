@@ -1,0 +1,5 @@
+Loading Craftax-Classic textures from cache.
+Textures successfully loaded from cache.
+{"native_eval_step": 64, "active_episodes": 214, "elapsed_s": 10.7}
+{"native_eval_step": 448, "active_episodes": 0, "elapsed_s": 19.0}
+{"primary": {"n": 256, "successes": 1, "rate": 0.00390625, "wilson_95": [0.0006898821669617927, 0.021790975380582514]}, "achievement_count": {"n": 256, "mean": 2.3359375, "sd": 1.2728066485943113, "sem": 0.07955041553714445}, "native_return": {"n": 256, "mean": 1.2839843679394107, "sd": 1.2784247931168016, "sem": 0.0799015495698001}, "executed_steps": {"n": 256, "mean": 140.37109375, "sd": 69.8829763020883, "sem": 4.367686018880518}}

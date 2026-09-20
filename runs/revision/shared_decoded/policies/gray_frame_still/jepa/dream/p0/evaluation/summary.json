@@ -1,0 +1,57 @@
+{
+  "control_deaths_per_100": 0.029318825943903313,
+  "control_length": 119.91015625,
+  "deaths_per_100": 0.027701683646772755,
+  "length": 126.91015625,
+  "length_definition": "total_length includes prefix; control_length excludes it",
+  "n_ep": 256,
+  "packet_fingerprint": "83fa00cc3db6df3b597d0f638b02da9f13b7687998b3f13c1020cf537f2dfe06",
+  "protocol": {
+    "admission": "first candidates surviving seven uniform random actions; no future filtering",
+    "config": "gray_frame_still",
+    "control_steps": 121,
+    "episodes": 256,
+    "evaluation_rng": "all stored keys shared across families and training policy seeds",
+    "excluded_prefix_deaths": 1,
+    "format": "native_warm_context_v1",
+    "key_domains": {
+      "control_action": 61,
+      "control_transition": 81,
+      "prefix_action": 21,
+      "prefix_transition": 41,
+      "reset": 11
+    },
+    "native_max_steps": 128,
+    "prefix_steps": 7,
+    "reset_distribution": "original S.make(spec), uniform; fresh simulator texture key retained",
+    "seed": 20260919,
+    "spec": {
+      "gate": false,
+      "noise": "gray",
+      "per_episode": false,
+      "wind": false
+    },
+    "total_attempts": 257
+  },
+  "provenance": {
+    "family": "jepa",
+    "model_sha256": {
+      "heads": "36595c86cb2404e5ebf8e8c533f316adb076bda65445ee6b9d9ef0d60f29f5cd",
+      "model": "0cffb81c4483d930b2b80bd82d6093968808dc222e58a7d26b4d421fec1eadbd"
+    },
+    "train_source": "dream"
+  },
+  "return": -0.03515625,
+  "score_scope": "conditional on survival of the seven random prefix actions",
+  "survival": 0.96484375,
+  "survival_sem": 0.01151091331457645,
+  "total_length": 126.91015625,
+  "trace_episode_indices": [
+    0,
+    1,
+    2
+  ],
+  "trace_selection": "first three admitted episodes, irrespective of outcome",
+  "training_policy_seed": 0,
+  "walls_passed": 0.0
+}

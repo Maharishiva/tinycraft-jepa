@@ -1,0 +1,56 @@
+{
+  "control_deaths_per_100": 0.46665663104019267,
+  "control_length": 103.796875,
+  "deaths_per_100": 0.43717388238612326,
+  "length": 110.796875,
+  "length_definition": "total_length includes prefix; control_length excludes it",
+  "n_ep": 256,
+  "packet_fingerprint": "1893ab57b148b4f76afedf0530ce464873b88a9c2dea8580f5bc8034f7d724e9",
+  "protocol": {
+    "admission": "first candidates surviving seven uniform random actions; no future filtering",
+    "config": "gate",
+    "control_steps": 121,
+    "episodes": 256,
+    "evaluation_rng": "all stored keys shared across families and training policy seeds",
+    "excluded_prefix_deaths": 1,
+    "format": "native_warm_context_v1",
+    "key_domains": {
+      "control_action": 61,
+      "control_transition": 81,
+      "prefix_action": 21,
+      "prefix_transition": 41,
+      "reset": 11
+    },
+    "native_max_steps": 128,
+    "prefix_steps": 7,
+    "reset_distribution": "original S.make(spec), uniform; fresh simulator texture key retained",
+    "seed": 20260919,
+    "spec": {
+      "gate": true,
+      "noise": "off",
+      "per_episode": false,
+      "wind": false
+    },
+    "total_attempts": 257
+  },
+  "provenance": {
+    "family": "flow",
+    "model_sha256": {
+      "model": "72b829ea8cfb5f4bf21f3b8c0ce8ffe53f34dd5aa67bad001bb8d4cd0bab27e9"
+    },
+    "train_source": "real"
+  },
+  "return": -0.484375,
+  "score_scope": "conditional on survival of the seven random prefix actions",
+  "survival": 0.515625,
+  "survival_sem": 0.031234737483827102,
+  "total_length": 110.796875,
+  "trace_episode_indices": [
+    0,
+    1,
+    2
+  ],
+  "trace_selection": "first three admitted episodes, irrespective of outcome",
+  "training_policy_seed": 1,
+  "walls_passed": 3.359375
+}

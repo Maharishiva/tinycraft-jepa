@@ -1,0 +1,26 @@
+{
+  "family": "flow",
+  "world": "gate",
+  "train_source": "real",
+  "policy_seed": 0,
+  "smoke": false,
+  "updates": 150,
+  "budget_complete": true,
+  "nominal_positions": 3686400,
+  "optimizer_steps": 7200,
+  "training_seconds": 518.7696716785431,
+  "total_seconds": 553.1397292613983,
+  "metrics": {
+    "return": -0.04296875,
+    "survival": 0.95703125,
+    "total_length": 125.15234375,
+    "control_length": 118.15234375,
+    "walls_passed": 3.875,
+    "n_ep": 256
+  },
+  "eval_packet_fingerprint": "1893ab57b148b4f76afedf0530ce464873b88a9c2dea8580f5bc8034f7d724e9",
+  "model_sha256": {
+    "model": "72b829ea8cfb5f4bf21f3b8c0ce8ffe53f34dd5aa67bad001bb8d4cd0bab27e9"
+  },
+  "policy_sha256": "2d0b61f22d26ff470567e7eaf5cc0dd491d1bc1ec412542d5092bbef1e6fc173"
+}

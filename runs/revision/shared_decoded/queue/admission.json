@@ -1,0 +1,47 @@
+{
+  "admitted": true,
+  "basis": "runtime_only",
+  "decided_utc": "2026-09-20T00:32:00Z",
+  "decided_by": "Fred, relayed by the assistant after Codex usage ended; runtime only, no smoke score used",
+  "scope": "all 30 registered shared-CNN decoded-RGB policies; the hand-finished gate_jepa_real_p0 is adopted from its own records",
+  "measured_timings_seconds": {
+    "gate_jepa_real_p0_completed": {
+      "training": 549.75,
+      "total": 586.64,
+      "updates": 150,
+      "warm_per_update": 3.495
+    },
+    "smoke_gate_jepa_real": {
+      "total": 66.73,
+      "warm_per_update": 3.548
+    },
+    "smoke_gate_jepa_dream": {
+      "total": 75.63,
+      "warm_per_update": 3.924
+    },
+    "smoke_gate_flow_real": {
+      "total": 64.35,
+      "warm_per_update": 3.326
+    },
+    "smoke_gate_flow_dream": {
+      "total": 76.75,
+      "warm_per_update": 7.339
+    },
+    "smoke_gray_frame_still_flow_dream": {
+      "warm_per_update": 7.397
+    }
+  },
+  "projection": {
+    "remaining_jobs": 29,
+    "serial_hours": 3.1,
+    "two_gpu_hours": 1.6,
+    "note": "gate jobs run 150 updates, the three gray worlds 50; flow dream is about twice the per-update cost of jepa"
+  },
+  "preconditions_verified": {
+    "frozen_source_hashes": "queue campaign.json records them; worker rechecks before every claim",
+    "codec_parity": "all four worlds x both families exact at batches 256 and 512, plus the JEPA head-cache path",
+    "full_label_head_refits": "gate plus the three gray worlds, 500000 transitions, 6000 updates each",
+    "evaluation_packets": "four native_warm_context_v1 packets, fingerprints pinned as queue dependencies"
+  },
+  "stopping": "shared UTC deadline in the queue manifest only; fixed budgets; failures retained; no retries and no reward-based decisions"
+}

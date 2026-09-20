@@ -1,0 +1,26 @@
+{
+  "family": "flow",
+  "world": "gate",
+  "train_source": "dream",
+  "policy_seed": 0,
+  "smoke": true,
+  "updates": 2,
+  "budget_complete": true,
+  "nominal_positions": 49152,
+  "optimizer_steps": 96,
+  "training_seconds": 42.7219660282135,
+  "total_seconds": 76.75378489494324,
+  "metrics": {
+    "return": -1.0,
+    "survival": 0.0,
+    "total_length": 29.15234375,
+    "control_length": 22.15234375,
+    "walls_passed": 0.0546875,
+    "n_ep": 256
+  },
+  "eval_packet_fingerprint": "1893ab57b148b4f76afedf0530ce464873b88a9c2dea8580f5bc8034f7d724e9",
+  "model_sha256": {
+    "model": "72b829ea8cfb5f4bf21f3b8c0ce8ffe53f34dd5aa67bad001bb8d4cd0bab27e9"
+  },
+  "policy_sha256": "a6c155ebf541ad12b69c5baf6932c8221d595d46217c5496315bace77e26d5a6"
+}

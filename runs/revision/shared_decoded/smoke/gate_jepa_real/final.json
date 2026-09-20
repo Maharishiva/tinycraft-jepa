@@ -1,0 +1,26 @@
+{
+  "family": "jepa",
+  "world": "gate",
+  "train_source": "real",
+  "policy_seed": 0,
+  "smoke": true,
+  "updates": 2,
+  "budget_complete": true,
+  "nominal_positions": 49152,
+  "optimizer_steps": 96,
+  "training_seconds": 31.361454486846924,
+  "total_seconds": 66.73216009140015,
+  "metrics": {
+    "return": -1.0,
+    "survival": 0.0,
+    "total_length": 30.66015625,
+    "control_length": 23.66015625,
+    "walls_passed": 0.0625,
+    "n_ep": 256
+  },
+  "eval_packet_fingerprint": "1893ab57b148b4f76afedf0530ce464873b88a9c2dea8580f5bc8034f7d724e9",
+  "model_sha256": {
+    "model": "7190a8c231596043b62b6750f807e1c9fa542287dc161b7ca72182f2e68e625a"
+  },
+  "policy_sha256": "8dc9cf21fd6c02009d8f51747d3c8496ef2a95ec10a61d22973b6b9a5986eb0f"
+}

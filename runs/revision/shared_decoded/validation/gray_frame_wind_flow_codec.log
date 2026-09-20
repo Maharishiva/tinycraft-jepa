@@ -1,0 +1,1 @@
+{"passed": true, "cases": [{"batch": 256, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 512, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}]}

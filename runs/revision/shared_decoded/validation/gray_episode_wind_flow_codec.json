@@ -1,0 +1,88 @@
+{
+  "family": "flow",
+  "config": "gray_episode_wind",
+  "packet_fingerprint": "0a24fb7642c59273237bb3c4d03521e05744656f381582603f5bc3237294ceb9",
+  "adapter": {
+    "family": "flow",
+    "latent_shape": [
+      4,
+      4,
+      32
+    ],
+    "actor_observation": "own decoded uint8 RGB in context, real steps and imagination",
+    "checkpoint_paths": {
+      "model": "/home/rldoeswork/personal/stoch/gray_episode_wind/flow/model.npz"
+    },
+    "checkpoint_sha256": {
+      "model": "761e7d539cba00a0bb423320da1d8e212eda3e279b5b572e6a0d318f98e4be15"
+    },
+    "frozen_state_sha256": {
+      "encoder": "b9ca967646db4d1b460f0d216288b54d3bab7fed6a14fe3eb5cae4962c9ed418",
+      "decoder": "d5df45983c9e7d1aba6bf5cf5bd60803a422c3ad3f18c248c9c8cc5cfb39adab",
+      "dynamics_and_heads": "b5915ed9cd94654a18dc9677928e1bb64f5f171dd0eb8ae025c22884dcb61f08"
+    },
+    "metadata": {
+      "cfg": {
+        "seed": 0,
+        "tok_steps": 9000,
+        "tok_batch": 256,
+        "wm_steps": 16000,
+        "wm_batch": 64,
+        "rollout": 32,
+        "lr": 0.0009,
+        "tok_lr": 0.0009,
+        "decay": 0.2,
+        "hardmine": 0.5,
+        "startsamp": 0.5,
+        "reward_weight": 0.1,
+        "done_weight": 0.1,
+        "data_budget": 500000,
+        "temporal_codec": 1,
+        "history_dropout": 0.25,
+        "shortcut_weight": 0.25,
+        "shortcut_every": 4,
+        "shortcut_warm": 0.25,
+        "resample_frames": 2,
+        "resample_every": 8,
+        "resample_warm": 0.5,
+        "resample_signal": 0.5,
+        "temporal_weight": 0.25,
+        "head_trunk": 0.1,
+        "head_warm": 0.5,
+        "num_actions": 4
+      },
+      "train_s": 550.6,
+      "tokenizer_train_s": 166.9,
+      "data_sha256": "16d1c3a095f9d34b8cbd5235117af52b350bdc1bd5d077f91b142ec214ce6c19",
+      "source_sha256": "86b7e687ab557ce1a8d7c9259b997d8a3489d9d004e324377f4949e01e5781e0"
+    },
+    "quantization": "clip(native_decoder(z) * 255, 0, 255).astype(uint8), native Flow",
+    "codec_batch": 512,
+    "codec_batching": "framewise fixed-512 chunks; zero pad final chunk, discard before dynamics",
+    "nfe": 4,
+    "window": 32,
+    "temporal_codec": true,
+    "reward_done": "original jointly fitted native Flow heads"
+  },
+  "cases": [
+    {
+      "batch": 256,
+      "latent_max_abs": 0.0,
+      "pixel_max_abs": 0,
+      "exact": true
+    },
+    {
+      "batch": 512,
+      "latent_max_abs": 0.0,
+      "pixel_max_abs": 0,
+      "exact": true
+    }
+  ],
+  "passed": true,
+  "source_sha256": {
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/revision/check_shared_decoded.py": "a9091ab37220909996834e3236bf9ea2dfe8a882f5d80440cc249e496dfbaaff",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/revision/decoded_models.py": "eaa82058406ff3131386bf1b9c49e9c14b09a605a8102c3bbc84f53c5cd64fd4",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/revision/warm_context_eval.py": "a8224ef2daf46b6fc949d8ab123e289b3c0b4a275dfd66304191aa841d0a3368",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/revision/refit_full_label_heads.py": "b87daae06537ae1f86758c82d776e812460e23b7659032d155f0022216b1e13f"
+  }
+}

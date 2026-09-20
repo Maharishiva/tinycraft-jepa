@@ -1,0 +1,27 @@
+[2026-09-20T00:18:18Z] refit heads gray_frame_still
+{"saved": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/shared_decoded/heads/gray_frame_still/model_probe_fullheads.npz", "manifest": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/shared_decoded/heads/gray_frame_still/model_probe_fullheads.manifest.jso
+[2026-09-20T00:19:15Z] codec jepa gray_frame_still
+{"passed": true, "cases": [{"batch": 256, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 256, "path": "head-cache-versus-adapter", "latent_max_abs": 0.0, "exact": true}, {"batch": 512, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 512, "path": "head-cache
+[2026-09-20T00:19:46Z] codec flow gray_frame_still
+{"passed": true, "cases": [{"batch": 256, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 512, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}]}
+[2026-09-20T00:20:05Z] refit heads gray_frame_wind
+{"saved": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/shared_decoded/heads/gray_frame_wind/model_probe_fullheads.npz", "manifest": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/shared_decoded/heads/gray_frame_wind/model_probe_fullheads.manifest.json"
+[2026-09-20T00:21:05Z] codec jepa gray_frame_wind
+{"passed": true, "cases": [{"batch": 256, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 256, "path": "head-cache-versus-adapter", "latent_max_abs": 0.0, "exact": true}, {"batch": 512, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 512, "path": "head-cache
+[2026-09-20T00:21:35Z] codec flow gray_frame_wind
+{"passed": true, "cases": [{"batch": 256, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 512, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}]}
+[2026-09-20T00:21:54Z] refit heads gray_episode_wind
+{"saved": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/shared_decoded/heads/gray_episode_wind/model_probe_fullheads.npz", "manifest": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/shared_decoded/heads/gray_episode_wind/model_probe_fullheads.manifest.j
+[2026-09-20T00:22:55Z] codec jepa gray_episode_wind
+{"passed": true, "cases": [{"batch": 256, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 256, "path": "head-cache-versus-adapter", "latent_max_abs": 0.0, "exact": true}, {"batch": 512, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 512, "path": "head-cache
+[2026-09-20T00:23:25Z] codec flow gray_episode_wind
+{"passed": true, "cases": [{"batch": 256, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 512, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}]}
+[2026-09-20T00:23:45Z] smoke gate_jepa_dream
+[final] {"family": "jepa", "world": "gate", "train_source": "dream", "policy_seed": 0, "smoke": true, "updates": 2, "budget_complete": true, "nominal_positions": 49152, "optimizer_steps": 96, "training_seconds": 39.79239082336426, "total_seconds": 75.63341617584229, "metrics": {"return": -1.0, "survival": 0.0, "total_length": 27.95703125, "control_length": 20.95703125, "walls_passed": 0.05859375, "n_ep": 256}, "eval_
+[2026-09-20T00:25:02Z] smoke gate_flow_dream
+[final] {"family": "flow", "world": "gate", "train_source": "dream", "policy_seed": 0, "smoke": true, "updates": 2, "budget_complete": true, "nominal_positions": 49152, "optimizer_steps": 96, "training_seconds": 42.7219660282135, "total_seconds": 76.75378489494324, "metrics": {"return": -1.0, "survival": 0.0, "total_length": 29.15234375, "control_length": 22.15234375, "walls_passed": 0.0546875, "n_ep": 256}, "eval_pa
+[2026-09-20T00:26:21Z] smoke gate_flow_real
+[final] {"family": "flow", "world": "gate", "train_source": "real", "policy_seed": 0, "smoke": true, "updates": 2, "budget_complete": true, "nominal_positions": 49152, "optimizer_steps": 96, "training_seconds": 29.06607460975647, "total_seconds": 64.34924006462097, "metrics": {"return": -1.0, "survival": 0.0, "total_length": 29.77734375, "control_length": 22.77734375, "walls_passed": 0.05078125, "n_ep": 256}, "eval_p
+[2026-09-20T00:27:28Z] smoke gray_frame_still_flow_dream
+[final] {"family": "flow", "world": "gray_frame_still", "train_source": "dream", "policy_seed": 0, "smoke": true, "updates": 2, "budget_complete": true, "nominal_positions": 49152, "optimizer_steps": 96, "training_seconds": 43.23124361038208, "total_seconds": 78.15231657028198, "metrics": {"return": -0.98828125, "survival": 0.01171875, "total_length": 47.86328125, "control_length": 40.86328125, "walls_passed": 0.0, "
+[2026-09-20T00:28:48Z] PREP DONE

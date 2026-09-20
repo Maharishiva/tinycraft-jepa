@@ -1,0 +1,1 @@
+{"passed": true, "cases": [{"batch": 256, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 256, "path": "head-cache-versus-adapter", "latent_max_abs": 0.0, "exact": true}, {"batch": 512, "latent_max_abs": 0.0, "pixel_max_abs": 0, "exact": true}, {"batch": 512, "path": "head-cache-versus-adapter", "latent_max_abs": 0.0, "exact": true}]}

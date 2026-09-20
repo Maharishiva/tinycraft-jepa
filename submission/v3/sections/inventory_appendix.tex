@@ -1,0 +1,46 @@
+\section{Craftax inventory comparison: protocol}
+\label{app:inventory}
+
+The protocol behind Section~\ref{sec:craftax}; fixed before the policies were trained
+(\texttt{research/craftax\_native\_inventory\_protocol.md} and
+\texttt{research/craftax\_inventory\_protocol.md}).
+
+\paragraph{Environment.}
+Craftax-Classic-Pixels version 1.5.0 with unchanged defaults: 17 actions, $64\times64$
+procedurally generated maps, a 10,000-step native episode limit, 22 achievements. The native reward
+is the change in the achievement count plus $0.1$ times the change in health; the evaluator checks
+the telescoping identity between summed rewards and terminal achievements and health on every
+episode. Termination occurs at the step limit, on lava, or at non-positive health. The evaluator
+uses the no-auto-reset environment, stops each episode at its first native termination and freezes
+its metrics.
+
+\paragraph{World models.}
+Both models are trained on the same 500,000-transition archive of uniformly random play under the
+same ten-minute budget with the same $4\times4\times32$ latent shape. The JEPA is the 512-d grid
+model with one-step factored predictor and eight-frame history; its pixel decoder and its reward
+and termination heads are refitted afterwards on the frozen latent with a fixed recipe (decoder:
+8,000 steps, batch 256; heads: 6,000 steps, batch 1,024, hidden 512) whose arguments and resulting
+hashes are checked at load time. The flow model is the native recipe with jointly fitted heads.
+The frozen model weights of the JEPA are hash-verified to be byte-identical before and after head
+fitting.
+
+\paragraph{Policy training in imagination.}
+The same pixel CNN and GRU policy as in the cube worlds, with the original Craftax pixel-PPO
+settings, is trained for a nominal five million imagined steps (4,998,400 executed) inside each
+model from a shared bank of genuine eight-frame episode-start contexts. The JEPA adapter reads
+reward and termination from $(z_t,a_t)$, predicts once per action and samples termination from the
+head's probability; the flow adapter runs its native expanding-window rollout with four function
+evaluations. Imagined episodes are capped at 1,024 steps. No behavior cloning, action masking,
+reward alteration, resource injection or checkpoint selection is used; a non-finite loss fails the
+run rather than being skipped. Three policy seeds per family, one model seed.
+
+\paragraph{Evaluation.}
+Each final policy is evaluated on 256 native episodes with evaluation seed 123. Environment keys
+derive from episode identity and step only, action-sampling keys from a separate stream; the
+construction is stored with the results. The policy observes native RGB and its previous action.
+Primary endpoint: the fraction of episodes in which the wooden-pickaxe achievement is true at the
+end of the episode. Retained: all 22 achievement rates with Wilson intervals, achievement count,
+native return, executed steps, survival, termination causes, first-acquisition steps, final
+inventory, and the terminal native score where a native termination occurred. Uncertainty
+intervals are across evaluation episodes for one fixed policy and do not estimate variation
+across model fits.

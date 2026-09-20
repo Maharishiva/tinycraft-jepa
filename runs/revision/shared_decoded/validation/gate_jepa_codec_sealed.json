@@ -1,0 +1,144 @@
+{
+  "family": "jepa",
+  "config": "gate",
+  "packet_fingerprint": "1893ab57b148b4f76afedf0530ce464873b88a9c2dea8580f5bc8034f7d724e9",
+  "adapter": {
+    "family": "jepa",
+    "latent_shape": [
+      4,
+      4,
+      32
+    ],
+    "actor_observation": "own decoded uint8 RGB in context, real steps and imagination",
+    "checkpoint_paths": {
+      "model": "/home/rldoeswork/personal/stoch/gate/tile_factored_s1/model_probe.npz"
+    },
+    "checkpoint_sha256": {
+      "model": "7190a8c231596043b62b6750f807e1c9fa542287dc161b7ca72182f2e68e625a"
+    },
+    "frozen_state_sha256": {
+      "model": "a5d6c5e2ee7d09c0e5e7ee95f005aa4293f36165cbda42a8d8ce7d4b8daf35cc",
+      "decoder": "09f6c90d64e31eaf9193cad9d7f15ee59219f9178e9a7d1efc7a6a0a5b4bee9c",
+      "heads": "e03ff88542c218851e131015173247196412c80d95bd0eb44a7127777528af3d"
+    },
+    "metadata": {
+      "cfg": {
+        "seed": 1,
+        "steps": 8500,
+        "batch": 128,
+        "lr": 0.001,
+        "weight_decay": 0.001,
+        "warmup": 0.1,
+        "encoder": "tile",
+        "predictor": "factored",
+        "emb_dim": 128,
+        "enc_depth": 6,
+        "enc_heads": 8,
+        "enc_mlp": 768,
+        "enc_res": 4,
+        "pred_depth": 6,
+        "pred_heads": 8,
+        "pred_dim_head": 64,
+        "pred_mlp": 2048,
+        "pred_width": 256,
+        "mlp_hidden": 2048,
+        "tokens": 16,
+        "token_dim": 32,
+        "token_hidden": 512,
+        "latent_dim": 0,
+        "history": 8,
+        "num_preds": 1,
+        "dropout": 0.1,
+        "sigreg_weight": 0.09,
+        "sigreg_knots": 17,
+        "sigreg_proj": 1024,
+        "action_bottleneck": 10,
+        "n_actions": 4,
+        "data_budget": 500000,
+        "chunk": 250
+      },
+      "params": 11121426,
+      "train_s": 576.3,
+      "loop_s": 567.4,
+      "data_sha256": "c347aa2db1726bceadbc6a16fc2b4a7559343f988c4c2074e90c914b05354b55",
+      "source_sha256": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b",
+      "final_pred_loss": 0.00044073682511225343,
+      "final_sigreg": 1.20205557346344,
+      "decoder": {
+        "hidden": 256,
+        "depth": 6,
+        "steps": 8000,
+        "tokens": 16,
+        "batch": 256,
+        "lr": 0.001,
+        "frames": 80000,
+        "decoder_s": 95.4,
+        "final_mse": 0.0001903439697343856
+      },
+      "heads": {
+        "hidden": 512,
+        "members": 1,
+        "steps": 6000,
+        "batch": 1024,
+        "lr": 0.001,
+        "gamma": 0.99,
+        "transitions": 80000,
+        "value_tail": 400,
+        "heads_s": 34.9,
+        "final": [
+          0.022817885503172874,
+          0.0899227038025856,
+          0.0065429555252194405
+        ],
+        "reward_corr": 0.5698483394846716,
+        "value_corr": 0.45786203218949606,
+        "reward_rmse": 0.14525631070137024,
+        "reward_event_recall": 0.9214092140921409,
+        "value_mean": -0.85471111536026,
+        "return_mean": -0.855583906173706,
+        "heldout_reward_corr": 0.32834365747033006,
+        "heldout_value_corr": 0.25337236859745565,
+        "heldout_reward_rmse": 0.17230427265167236,
+        "heldout_reward_event_recall": 0.42442748091603055,
+        "heldout_value_mean": -0.8522669672966003,
+        "heldout_return_mean": -0.858051061630249
+      }
+    },
+    "quantization": "clip(decoder(z) * 255 + 0.5, 0, 255).astype(uint8), native JEPA",
+    "codec_batch": 512,
+    "codec_batching": "framewise fixed-512 chunks; zero pad final chunk, discard before dynamics"
+  },
+  "cases": [
+    {
+      "batch": 256,
+      "latent_max_abs": 0.0,
+      "pixel_max_abs": 0,
+      "exact": true
+    },
+    {
+      "batch": 256,
+      "path": "head-cache-versus-adapter",
+      "latent_max_abs": 0.0,
+      "exact": true
+    },
+    {
+      "batch": 512,
+      "latent_max_abs": 0.0,
+      "pixel_max_abs": 0,
+      "exact": true
+    },
+    {
+      "batch": 512,
+      "path": "head-cache-versus-adapter",
+      "latent_max_abs": 0.0,
+      "exact": true
+    }
+  ],
+  "passed": true,
+  "source_sha256": {
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/revision/check_shared_decoded.py": "026edb7c81a1c241fba3dcbcba4bdeed65a0711a71323950b065c25e1600a5cc",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/revision/decoded_models.py": "eaa82058406ff3131386bf1b9c49e9c14b09a605a8102c3bbc84f53c5cd64fd4",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/revision/warm_context_eval.py": "a8224ef2daf46b6fc949d8ab123e289b3c0b4a275dfd66304191aa841d0a3368",
+    "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/studies/revision/refit_full_label_heads.py": "b87daae06537ae1f86758c82d776e812460e23b7659032d155f0022216b1e13f"
+  }
+}

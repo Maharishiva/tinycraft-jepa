@@ -1,0 +1,54 @@
+[encode] 512/500000 current frames
+[encode] 13312/500000 current frames
+[encode] 26112/500000 current frames
+[encode] 38912/500000 current frames
+[encode] 51712/500000 current frames
+[encode] 64512/500000 current frames
+[encode] 77312/500000 current frames
+[encode] 90112/500000 current frames
+[encode] 102912/500000 current frames
+[encode] 115712/500000 current frames
+[encode] 128512/500000 current frames
+[encode] 141312/500000 current frames
+[encode] 154112/500000 current frames
+[encode] 166912/500000 current frames
+[encode] 179712/500000 current frames
+[encode] 192512/500000 current frames
+[encode] 205312/500000 current frames
+[encode] 218112/500000 current frames
+[encode] 230912/500000 current frames
+[encode] 243712/500000 current frames
+[encode] 256512/500000 current frames
+[encode] 269312/500000 current frames
+[encode] 282112/500000 current frames
+[encode] 294912/500000 current frames
+[encode] 307712/500000 current frames
+[encode] 320512/500000 current frames
+[encode] 333312/500000 current frames
+[encode] 346112/500000 current frames
+[encode] 358912/500000 current frames
+[encode] 371712/500000 current frames
+[encode] 384512/500000 current frames
+[encode] 397312/500000 current frames
+[encode] 410112/500000 current frames
+[encode] 422912/500000 current frames
+[encode] 435712/500000 current frames
+[encode] 448512/500000 current frames
+[encode] 461312/500000 current frames
+[encode] 474112/500000 current frames
+[encode] 486912/500000 current frames
+[encode] 499712/500000 current frames
+[encode] 500000/500000 current frames
+[heads] 500/6000 reward 0.0338 done 0.1308 value 0.0053
+[heads] 1000/6000 reward 0.0362 done 0.1242 value 0.0032
+[heads] 1500/6000 reward 0.0390 done 0.1263 value 0.0029
+[heads] 2000/6000 reward 0.0273 done 0.0888 value 0.0025
+[heads] 2500/6000 reward 0.0310 done 0.0894 value 0.0022
+[heads] 3000/6000 reward 0.0246 done 0.0727 value 0.0018
+[heads] 3500/6000 reward 0.0230 done 0.0640 value 0.0019
+[heads] 4000/6000 reward 0.0261 done 0.0770 value 0.0017
+[heads] 4500/6000 reward 0.0232 done 0.0678 value 0.0016
+[heads] 5000/6000 reward 0.0234 done 0.0755 value 0.0012
+[heads] 5500/6000 reward 0.0186 done 0.0553 value 0.0013
+[heads] 6000/6000 reward 0.0186 done 0.0554 value 0.0013
+{"saved": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/shared_decoded/heads/gray_episode_wind/model_probe_fullheads.npz", "manifest": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/shared_decoded/heads/gray_episode_wind/model_probe_fullheads.manifest.json", "encode_s": 12.232899259775877, "fit_s": 20.756292263045907, "seconds_total": 59.095689645037055}

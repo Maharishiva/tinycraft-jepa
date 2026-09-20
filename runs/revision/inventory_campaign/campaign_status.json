@@ -1,0 +1,27 @@
+[
+  {
+    "name": "flow_p0",
+    "start_unix": 1789862098.7517056,
+    "status": "complete",
+    "train_returncode": 0,
+    "final_policy_sha256": "b77bb730eb54fbac6cc00c031db35fca1315f8a7aa134e8cf7da693e43143fd7",
+    "eval_returncode": 0,
+    "native_summary_sha256": "417967d71a6bb57fc229d2427cbbb1226332e3061ef5ba81eea82b763f498710",
+    "finish_unix": 1789864670.207776
+  },
+  {
+    "name": "jepa_p0",
+    "start_unix": 1789864670.209353,
+    "status": "complete",
+    "train_returncode": 0,
+    "final_policy_sha256": "38562e545be441978580748647572a90690c424263da2ec27845bf5268236d75",
+    "eval_returncode": 0,
+    "native_summary_sha256": "f86577008524933c9510fc39bba73ec5ac4af672241cd3528bd210bc7592414c",
+    "finish_unix": 1789866336.1526585
+  },
+  {
+    "name": "flow_p1",
+    "start_unix": 1789866336.1541507,
+    "status": "training"
+  }
+]

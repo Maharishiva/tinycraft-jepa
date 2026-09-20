@@ -1,0 +1,7 @@
+{
+  "pid": 2701221,
+  "gpu_uuid": "GPU-c6d6c4f1-60be-2cad-ea13-49f8f8617a0e",
+  "lock": "/tmp/tinycraft-inventory-gpu-0.lock",
+  "start_unix": 1789862098.7501936,
+  "deadline_unix": 1789880098.6677177
+}

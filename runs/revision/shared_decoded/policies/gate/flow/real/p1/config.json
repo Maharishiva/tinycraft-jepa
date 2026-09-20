@@ -1,0 +1,187 @@
+{
+  "protocol": "shared_decoded_cnn_v1",
+  "args": {
+    "config": "gate",
+    "family": "flow",
+    "train_source": "real",
+    "model": "/home/rldoeswork/personal/stoch/gate/flow/model.npz",
+    "heads": null,
+    "data": "/home/rldoeswork/personal/stoch/gate/train.npz",
+    "flow_code": "studies/stoch/flow_recipe",
+    "eval_packet": "runs/revision/shared_decoded/packets/gate.npz",
+    "out": "runs/revision/shared_decoded/policies/gate/flow/real/p1",
+    "policy_seed": 1,
+    "smoke": false,
+    "updates": 150,
+    "batch": 512,
+    "hor": 48,
+    "chunk": 16,
+    "mb": 128,
+    "epochs": 4,
+    "lr": 0.00025,
+    "gamma": 0.99,
+    "lam": 0.9,
+    "clip": 0.2,
+    "vf": 0.5,
+    "ent": 0.01
+  },
+  "model": {
+    "family": "flow",
+    "latent_shape": [
+      4,
+      4,
+      32
+    ],
+    "actor_observation": "own decoded uint8 RGB in context, real steps and imagination",
+    "checkpoint_paths": {
+      "model": "/home/rldoeswork/personal/stoch/gate/flow/model.npz"
+    },
+    "checkpoint_sha256": {
+      "model": "72b829ea8cfb5f4bf21f3b8c0ce8ffe53f34dd5aa67bad001bb8d4cd0bab27e9"
+    },
+    "frozen_state_sha256": {
+      "encoder": "965e408f867ee9d528290f8de418499a0da700948bac7078f3e1301dc01985f7",
+      "decoder": "2087ba7090715e3c90a061e6f6399397758d2096012ece4938c7d27060b0d257",
+      "dynamics_and_heads": "ed4043ed35f23bff2bd6509f7f27700b8417544dd962f6d973feb91e1859e436"
+    },
+    "metadata": {
+      "cfg": {
+        "seed": 0,
+        "tok_steps": 9000,
+        "tok_batch": 256,
+        "wm_steps": 16000,
+        "wm_batch": 64,
+        "rollout": 32,
+        "lr": 0.0009,
+        "tok_lr": 0.0009,
+        "decay": 0.2,
+        "hardmine": 0.5,
+        "startsamp": 0.5,
+        "reward_weight": 0.1,
+        "done_weight": 0.1,
+        "data_budget": 500000,
+        "temporal_codec": 1,
+        "history_dropout": 0.25,
+        "shortcut_weight": 0.25,
+        "shortcut_every": 4,
+        "shortcut_warm": 0.25,
+        "resample_frames": 2,
+        "resample_every": 8,
+        "resample_warm": 0.5,
+        "resample_signal": 0.5,
+        "temporal_weight": 0.25,
+        "head_trunk": 0.1,
+        "head_warm": 0.5,
+        "num_actions": 4
+      },
+      "train_s": 563.4,
+      "tokenizer_train_s": 167.3,
+      "data_sha256": "c347aa2db1726bceadbc6a16fc2b4a7559343f988c4c2074e90c914b05354b55",
+      "source_sha256": "86b7e687ab557ce1a8d7c9259b997d8a3489d9d004e324377f4949e01e5781e0"
+    },
+    "quantization": "clip(native_decoder(z) * 255, 0, 255).astype(uint8), native Flow",
+    "codec_batch": 512,
+    "codec_batching": "framewise fixed-512 chunks; zero pad final chunk, discard before dynamics",
+    "nfe": 4,
+    "window": 32,
+    "temporal_codec": true,
+    "reward_done": "original jointly fitted native Flow heads"
+  },
+  "data_sha256": "c347aa2db1726bceadbc6a16fc2b4a7559343f988c4c2074e90c914b05354b55",
+  "data_metadata": {
+    "env": "stoch",
+    "spec": {
+      "noise": "off",
+      "per_episode": false,
+      "wind": false,
+      "gate": true
+    },
+    "config": "gate_off_still",
+    "num_actions": 4,
+    "envs": 100,
+    "steps": 5000,
+    "split": "train",
+    "seed": 0,
+    "policy": "uniform random",
+    "max_steps": 128,
+    "reward": "-1 on touching the border or the wall, else 0"
+  },
+  "source_sha256": {
+    "studies/revision/shared_decoded_ppo.py": "3d7292848d3aff45301af1c9c8d8349ce753794509ea5d7eab1191208c7305f5",
+    "studies/revision/decoded_models.py": "eaa82058406ff3131386bf1b9c49e9c14b09a605a8102c3bbc84f53c5cd64fd4",
+    "studies/revision/decoded_dream.py": "003df220ea69148befb19eaa15e8d78ef58465950dbdea8fd51cfec9907181be",
+    "studies/revision/warm_context_eval.py": "a8224ef2daf46b6fc949d8ab123e289b3c0b4a275dfd66304191aa841d0a3368",
+    "studies/revision/matched_ppo.py": "6a3460b2db2e47713b7af604454a4b04066c96bfd7748b5c991cfbc433176269",
+    "studies/stoch/rl.py": "76a163a3135bcc6a39bd4b3e9f7881123f72e2ad6e48bf5dd21c003eea9fd0fb",
+    "studies/stoch/env.py": "bcceb9d5c660664ed2b0aab9ef30b9368b8a3db7a4fc9196bf5a5d6dc1d2bb69",
+    "studies/redcube/env.py": "468212e57824968bbabb5363c897ea30492ce7dd53099add309af40ffe5e7b4e",
+    "studies/redcube/flow.py": "37bb32813656893bf5f2bc083c3fa2dcac9207d4d4b9aac722681d4d570be8b5",
+    "train.py": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b",
+    "probe.py": "110eff77f3dfb5fb3c7222caa58d85773b9bc8675cd95859d4f9705c171ea424",
+    "studies/stoch/flow_recipe/train.py": "86b7e687ab557ce1a8d7c9259b997d8a3489d9d004e324377f4949e01e5781e0",
+    "studies/stoch/flow_recipe/eval.py": "fef2e14cf31d49ad7e71b9b73146813e3f789519861af9dbb01ff57fb1e8ae0a",
+    "studies/stoch/flow_recipe/kernels.py": "7358061ebaae220616196e8905a912270247a517c5315034e40d538781a511ef"
+  },
+  "policy_params": 1702980,
+  "policy_observation": "own posterior/predicted uint8 RGB",
+  "input_shape": [
+    63,
+    63,
+    3
+  ],
+  "world_model_coordinates": 512,
+  "real_state_reconstruction": {
+    "frames_checked": 1024,
+    "exact_frames": 1024,
+    "seed": 173
+  },
+  "start_protocol": "uniform actual8-frame contexts; no reset-padding starts",
+  "context_table_sha256": "2ce67b608a36b5c1550cc1049dbf93577f39998c4d2ac852b9e9716fde67c633",
+  "eval_packet_fingerprint": "1893ab57b148b4f76afedf0530ce464873b88a9c2dea8580f5bc8034f7d724e9",
+  "warm_eval_protocol": {
+    "admission": "first candidates surviving seven uniform random actions; no future filtering",
+    "config": "gate",
+    "control_steps": 121,
+    "episodes": 256,
+    "evaluation_rng": "all stored keys shared across families and training policy seeds",
+    "excluded_prefix_deaths": 1,
+    "format": "native_warm_context_v1",
+    "key_domains": {
+      "control_action": 61,
+      "control_transition": 81,
+      "prefix_action": 21,
+      "prefix_transition": 41,
+      "reset": 11
+    },
+    "native_max_steps": 128,
+    "prefix_steps": 7,
+    "reset_distribution": "original S.make(spec), uniform; fresh simulator texture key retained",
+    "seed": 20260919,
+    "spec": {
+      "gate": true,
+      "noise": "off",
+      "per_episode": false,
+      "wind": false
+    },
+    "total_attempts": 257
+  },
+  "jax_version": "0.10.1",
+  "matmul_precision": "tensorfloat32",
+  "xla_flags": "--xla_gpu_enable_triton_gemm=false",
+  "devices": [
+    "cuda:0"
+  ],
+  "checkpoint_selection": "fixed final update; no intermediate score selection",
+  "supervision_stages": {
+    "tokenizer": "pixel reconstruction; frozen during dynamics fitting",
+    "dynamics": "joint native denoising, reward and termination losses",
+    "reward_weight": 0.1,
+    "done_weight": 0.1,
+    "head_warm_fraction": 0.5,
+    "later_head_trunk_gradient_scale": 0.1,
+    "initial_head_trunk_gradient_scale": 1.0,
+    "dynamics_steps": 16000,
+    "label_opportunity": 500000,
+    "scope": "same label opportunity does not isolate sampling or prediction loss"
+  }
+}

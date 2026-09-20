@@ -1,0 +1,429 @@
+{
+  "protocol": "native-inventory-v1",
+  "created_utc": "2026-09-19T23:54:58.709815+00:00",
+  "model_seeds": [
+    0
+  ],
+  "policy_seeds": [
+    0,
+    1,
+    2
+  ],
+  "families": [
+    "flow",
+    "jepa"
+  ],
+  "actual_training_transitions": 4998400,
+  "nominal_training_transitions": 5000000,
+  "evaluation_episodes": 256,
+  "evaluation_seed": 123,
+  "native_time_limit": 10000,
+  "imagined_time_limit": 1024,
+  "reset_bank_sha256": "f0d20ddb488a21a309a01db72efbd99360d304e38d98c972fc843571fd3073f5",
+  "sources": {
+    "probe.py": "110eff77f3dfb5fb3c7222caa58d85773b9bc8675cd95859d4f9705c171ea424",
+    "research/craftax_inventory_protocol.md": "a1f5c33f3bfb4936be667c6a34b763837f91556f631c019eab19b440d89dc80a",
+    "research/craftax_native_inventory_protocol.md": "e95ff15bff583e046f040edf503b913c7495fe04d9246a28156703be885ec80a",
+    "studies/revision/inventory_common.py": "6caa710209dcafbffd008eb7bad2fb0f34e7dbdee9faa6263b3c7f8aa5765ce7",
+    "studies/revision/inventory_eval.py": "f2cb6333623847488d91463a7871603ecd5adebce54dd9527fd7081e341e8c9d",
+    "studies/revision/inventory_flow.py": "86790ce2dac999e4900c21993d2fcb058209b975559719623a24d065562bd402",
+    "studies/revision/inventory_jepa.py": "44e1678d213a6b007b05a0f52273cef93b19721531479d116c511bf99ca9cc06",
+    "studies/revision/inventory_jepa_probe.py": "1cf3d28cb1c075e43fe75afbfc97b6697f79784981d563c1b0a2be1203326195",
+    "studies/revision/inventory_numerical_review.py": "462c66bbc20c740ec01b09cc907fe1871d2f34279cd2435faa60d15b8dc51a52",
+    "studies/revision/inventory_ppo.py": "7ce9c327e054f7020c2c545369acbd7451b55b7bbc8b2de0443c54c136c39228",
+    "studies/revision/inventory_source/SOURCE_MANIFEST.json": "1d06d6d320382461aa9b05eaae306e32648a1ab5615c1a57ca2429a5bd9bc3ae",
+    "studies/revision/inventory_source/agent.py": "1bfeb69f0a6098959a409c4601e8a92219b1967f297b1e35beb96440edceb132",
+    "studies/revision/inventory_source/kernels.py": "7358061ebaae220616196e8905a912270247a517c5315034e40d538781a511ef",
+    "studies/revision/inventory_source/tinywm_module.py": "522d3d0c48ef80de87cd74409a9d46501edd854d598be1dc70db8bb7821ce0a1",
+    "studies/revision/inventory_source/train_ppo_real.py": "fe11deb02d014a69b8f5a31b6ac025266ed03ac6ff37a44dc568ad50decea9f6",
+    "studies/revision/inventory_source/wm_env2.py": "ee369385583d7cb3eab49e0899fc791632608c51a709c83df45844ba9017bc63",
+    "studies/revision/inventory_source/wm_generic.py": "0cee51a6007fe8b3e732e9cfedf9c241693e2caf5df194da91b78c2e9822f9f9",
+    "studies/revision/inventory_source/wm_gym.py": "a9c787d1ca02463e8c7df7ec35cc55e1a7a31e5ce93eedf2184b8bda58623dcd",
+    "studies/revision/run_inventory_queue.py": "f79fc26d6332b5405c88e0fc23d1544eee219a6cb1bf86eae553b868b26eebec",
+    "train.py": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b"
+  },
+  "deadline_unix": 1789880098.6677177,
+  "max_hours": 5.0,
+  "gpu": 0,
+  "jobs": [
+    {
+      "family": "flow",
+      "model_seed": 0,
+      "policy_seed": 0,
+      "name": "flow_p0",
+      "out": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p0",
+      "world_model_sha256": "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+      "train_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_ppo",
+        "--family",
+        "flow",
+        "--wm",
+        "/home/rldoeswork/personal/wm_rl_eval/wm/sota2_headbridge_s0.npz",
+        "--wm-sha256",
+        "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+        "--reset-bank",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_reset_bank_prefix8.npz",
+        "--reset-bank-sha256",
+        "f0d20ddb488a21a309a01db72efbd99360d304e38d98c972fc843571fd3073f5",
+        "--seed",
+        "0",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p0",
+        "--max-seconds",
+        "18000.0"
+      ],
+      "eval_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_eval",
+        "--checkpoint",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p0/model.pkl",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p0/native",
+        "--eval-seed",
+        "123"
+      ]
+    },
+    {
+      "family": "jepa",
+      "model_seed": 0,
+      "policy_seed": 0,
+      "name": "jepa_p0",
+      "out": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p0",
+      "world_model_sha256": "e9294399fba70c5914d14f39b1fcb97857ae7cab0ebf41de481cc2f8baddcb4c",
+      "train_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_ppo",
+        "--family",
+        "jepa",
+        "--wm",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_readouts/jepa_seed0_all500k.npz",
+        "--wm-sha256",
+        "e9294399fba70c5914d14f39b1fcb97857ae7cab0ebf41de481cc2f8baddcb4c",
+        "--reset-bank",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_reset_bank_prefix8.npz",
+        "--reset-bank-sha256",
+        "f0d20ddb488a21a309a01db72efbd99360d304e38d98c972fc843571fd3073f5",
+        "--seed",
+        "0",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p0",
+        "--max-seconds",
+        "18000.0"
+      ],
+      "eval_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_eval",
+        "--checkpoint",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p0/model.pkl",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p0/native",
+        "--eval-seed",
+        "123"
+      ]
+    },
+    {
+      "family": "flow",
+      "model_seed": 0,
+      "policy_seed": 1,
+      "name": "flow_p1",
+      "out": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p1",
+      "world_model_sha256": "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+      "train_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_ppo",
+        "--family",
+        "flow",
+        "--wm",
+        "/home/rldoeswork/personal/wm_rl_eval/wm/sota2_headbridge_s0.npz",
+        "--wm-sha256",
+        "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+        "--reset-bank",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_reset_bank_prefix8.npz",
+        "--reset-bank-sha256",
+        "f0d20ddb488a21a309a01db72efbd99360d304e38d98c972fc843571fd3073f5",
+        "--seed",
+        "1",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p1",
+        "--max-seconds",
+        "18000.0"
+      ],
+      "eval_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_eval",
+        "--checkpoint",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p1/model.pkl",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p1/native",
+        "--eval-seed",
+        "123"
+      ]
+    },
+    {
+      "family": "jepa",
+      "model_seed": 0,
+      "policy_seed": 1,
+      "name": "jepa_p1",
+      "out": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p1",
+      "world_model_sha256": "e9294399fba70c5914d14f39b1fcb97857ae7cab0ebf41de481cc2f8baddcb4c",
+      "train_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_ppo",
+        "--family",
+        "jepa",
+        "--wm",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_readouts/jepa_seed0_all500k.npz",
+        "--wm-sha256",
+        "e9294399fba70c5914d14f39b1fcb97857ae7cab0ebf41de481cc2f8baddcb4c",
+        "--reset-bank",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_reset_bank_prefix8.npz",
+        "--reset-bank-sha256",
+        "f0d20ddb488a21a309a01db72efbd99360d304e38d98c972fc843571fd3073f5",
+        "--seed",
+        "1",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p1",
+        "--max-seconds",
+        "18000.0"
+      ],
+      "eval_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_eval",
+        "--checkpoint",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p1/model.pkl",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p1/native",
+        "--eval-seed",
+        "123"
+      ]
+    },
+    {
+      "family": "flow",
+      "model_seed": 0,
+      "policy_seed": 2,
+      "name": "flow_p2",
+      "out": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p2",
+      "world_model_sha256": "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+      "train_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_ppo",
+        "--family",
+        "flow",
+        "--wm",
+        "/home/rldoeswork/personal/wm_rl_eval/wm/sota2_headbridge_s0.npz",
+        "--wm-sha256",
+        "b4d7b82ba698f1b7aeaab7383c324523bf27bde1aba2fe817745fce38efa0aef",
+        "--reset-bank",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_reset_bank_prefix8.npz",
+        "--reset-bank-sha256",
+        "f0d20ddb488a21a309a01db72efbd99360d304e38d98c972fc843571fd3073f5",
+        "--seed",
+        "2",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p2",
+        "--max-seconds",
+        "18000.0"
+      ],
+      "eval_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_eval",
+        "--checkpoint",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p2/model.pkl",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/flow_p2/native",
+        "--eval-seed",
+        "123"
+      ]
+    },
+    {
+      "family": "jepa",
+      "model_seed": 0,
+      "policy_seed": 2,
+      "name": "jepa_p2",
+      "out": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p2",
+      "world_model_sha256": "e9294399fba70c5914d14f39b1fcb97857ae7cab0ebf41de481cc2f8baddcb4c",
+      "train_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_ppo",
+        "--family",
+        "jepa",
+        "--wm",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_readouts/jepa_seed0_all500k.npz",
+        "--wm-sha256",
+        "e9294399fba70c5914d14f39b1fcb97857ae7cab0ebf41de481cc2f8baddcb4c",
+        "--reset-bank",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_reset_bank_prefix8.npz",
+        "--reset-bank-sha256",
+        "f0d20ddb488a21a309a01db72efbd99360d304e38d98c972fc843571fd3073f5",
+        "--seed",
+        "2",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p2",
+        "--max-seconds",
+        "18000.0"
+      ],
+      "eval_command": [
+        "/home/rldoeswork/personal/tinywmcraft-e2e/.venv/bin/python",
+        "-u",
+        "-m",
+        "studies.revision.inventory_eval",
+        "--checkpoint",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p2/model.pkl",
+        "--out",
+        "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_campaign/jepa_p2/native",
+        "--eval-seed",
+        "123"
+      ]
+    }
+  ],
+  "admission": {
+    "source_review_approved": true,
+    "reviewer": "/root/craftax_audit/replication_review",
+    "source_hashes": {
+      "probe.py": "110eff77f3dfb5fb3c7222caa58d85773b9bc8675cd95859d4f9705c171ea424",
+      "research/craftax_inventory_protocol.md": "a1f5c33f3bfb4936be667c6a34b763837f91556f631c019eab19b440d89dc80a",
+      "research/craftax_native_inventory_protocol.md": "e95ff15bff583e046f040edf503b913c7495fe04d9246a28156703be885ec80a",
+      "studies/revision/inventory_common.py": "6caa710209dcafbffd008eb7bad2fb0f34e7dbdee9faa6263b3c7f8aa5765ce7",
+      "studies/revision/inventory_eval.py": "f2cb6333623847488d91463a7871603ecd5adebce54dd9527fd7081e341e8c9d",
+      "studies/revision/inventory_flow.py": "86790ce2dac999e4900c21993d2fcb058209b975559719623a24d065562bd402",
+      "studies/revision/inventory_jepa.py": "44e1678d213a6b007b05a0f52273cef93b19721531479d116c511bf99ca9cc06",
+      "studies/revision/inventory_jepa_probe.py": "1cf3d28cb1c075e43fe75afbfc97b6697f79784981d563c1b0a2be1203326195",
+      "studies/revision/inventory_numerical_review.py": "462c66bbc20c740ec01b09cc907fe1871d2f34279cd2435faa60d15b8dc51a52",
+      "studies/revision/inventory_ppo.py": "7ce9c327e054f7020c2c545369acbd7451b55b7bbc8b2de0443c54c136c39228",
+      "studies/revision/inventory_source/SOURCE_MANIFEST.json": "1d06d6d320382461aa9b05eaae306e32648a1ab5615c1a57ca2429a5bd9bc3ae",
+      "studies/revision/inventory_source/agent.py": "1bfeb69f0a6098959a409c4601e8a92219b1967f297b1e35beb96440edceb132",
+      "studies/revision/inventory_source/kernels.py": "7358061ebaae220616196e8905a912270247a517c5315034e40d538781a511ef",
+      "studies/revision/inventory_source/tinywm_module.py": "522d3d0c48ef80de87cd74409a9d46501edd854d598be1dc70db8bb7821ce0a1",
+      "studies/revision/inventory_source/train_ppo_real.py": "fe11deb02d014a69b8f5a31b6ac025266ed03ac6ff37a44dc568ad50decea9f6",
+      "studies/revision/inventory_source/wm_env2.py": "ee369385583d7cb3eab49e0899fc791632608c51a709c83df45844ba9017bc63",
+      "studies/revision/inventory_source/wm_generic.py": "0cee51a6007fe8b3e732e9cfedf9c241693e2caf5df194da91b78c2e9822f9f9",
+      "studies/revision/inventory_source/wm_gym.py": "a9c787d1ca02463e8c7df7ec35cc55e1a7a31e5ce93eedf2184b8bda58623dcd",
+      "studies/revision/run_inventory_queue.py": "f79fc26d6332b5405c88e0fc23d1544eee219a6cb1bf86eae553b868b26eebec",
+      "train.py": "72cd5c463b4ac2fe7e289f7032e91d88ffac2e59ebb15534524fafe4804e9d0b"
+    },
+    "source_manifest_digest": "30027731e2c9fe94926c81a2ac5a9ef7b8ec060aea71802ac11b96f321dc753b",
+    "smoke_results": {
+      "flow": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_admission/flow_smoke_final/final.json",
+      "jepa": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_admission/jepa_smoke_final/final.json"
+    },
+    "flow_numerical_review": "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_admission/flow_numerical_review.json",
+    "native_smoke_results": [
+      "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_admission/native_chunk4/summary.json",
+      "/home/rldoeswork/personal/tinycraft-jepa-iclr-20260919/runs/revision/inventory_admission/native_chunk8/summary.json"
+    ],
+    "estimated_campaign_seconds": 14768,
+    "timing_recipe": {
+      "training_projection_seconds": 12121.65990936826,
+      "per_native_evaluation_reserve_seconds": 90,
+      "per_initialization_reserve_seconds": 30,
+      "additional_safety_factor": 1.15,
+      "steady_iteration_seconds": {
+        "flow": 3.0986146829091012,
+        "jepa": 1.9622055419022217
+      }
+    },
+    "scientific_scope": "One frozen WM per recipe; three paired policy seeds; exactly4998400 imagined transitions; native256-episode fixed-key final evaluation; no endpoint/checkpoint selection",
+    "created_utc": "2026-09-19T23:54:57.636906+00:00",
+    "verified_flow_numerical_review": {
+      "schema": "flow_native_batch_numerical_review_v1",
+      "review_sha256": "d945cc05c5b0aff3af3c1baa6731e44fda8159b1ff6b8dfcca0d4411e3adec3d",
+      "independent_approval_sha256": "d65f4e1fe7af9c2d301c014730ca64e1b241bc3695a9ee3dbd03f9c0d22ee990",
+      "reviewer": "/root/craftax_audit/replication_review",
+      "original_strict_parity_passed": false,
+      "decision": "admit_native_batch_recipe",
+      "jax_config": {
+        "jax_default_matmul_precision": "tensorfloat32",
+        "jax_default_prng_impl": "threefry2x32",
+        "jax_enable_x64": false,
+        "jax_threefry_partitionable": true
+      },
+      "measured_batch_control": {
+        "vmap": {
+          "max_abs": [
+            0.015625,
+            0.056640625,
+            0.015625,
+            0.015625
+          ],
+          "mae": [
+            0.0027980096710962243,
+            0.0042035728765768,
+            0.002448376253596507,
+            0.002639848564285785
+          ],
+          "rmse": [
+            0.004163854894718786,
+            0.00837835364779649,
+            0.003776493662487253,
+            0.0038842208335379863
+          ]
+        },
+        "native_scalar": {
+          "max_abs": [
+            0.015625,
+            0.0625,
+            0.015625,
+            0.015625
+          ],
+          "mae": [
+            0.0032272972239297815,
+            0.0045418776498991065,
+            0.0029682517051696777,
+            0.003200385715899756
+          ],
+          "rmse": [
+            0.004670211058152276,
+            0.008904827197590972,
+            0.004394057491713308,
+            0.004650601050518351
+          ]
+        },
+        "criterion": "Each row: vmap maximum/MAE/RMSE no greater than native batch4-versus-batch1 control; no tolerance added",
+        "scope": "Identified frozen seed-0 checkpoint and archived mixed-age/canonical GPU fixtures; not universal bitwise equivalence"
+      }
+    }
+  },
+  "jepa_probe_admission": {
+    "manifest_sha256": "77de195aefac82fe66c349e2fa82f78700ecb972b1eadd251e1a75afe3c893ec",
+    "original_sha256": "59cc282c9bd7a49ab1c272342220bc8e0d8ca0f1aa77bbcb4c23ae31dfd6835d",
+    "frozen_model_arrays_compared": 198,
+    "frozen_model_arrays_unchanged": true,
+    "config": {
+      "seed": 0,
+      "steps": 8000,
+      "batch": 256,
+      "lr": 0.001,
+      "hidden": 256,
+      "depth": 6,
+      "head_steps": 6000,
+      "head_batch": 1024,
+      "head_hidden": 512,
+      "head_lr": 0.001
+    }
+  },
+  "selection": "All six fixed final policies retained, no checkpoint or outcome selection",
+  "reset_pairing": "Candidate contexts paired at absolute training positions; accepted resets may differ"
+}

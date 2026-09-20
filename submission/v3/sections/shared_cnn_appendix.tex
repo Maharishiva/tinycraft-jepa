@@ -1,0 +1,58 @@
+\section{Shared-policy comparison: protocol}
+\label{app:shared-cnn}
+
+This is the protocol behind Section~\ref{sec:planning} and the behavioral rows of
+Section~\ref{sec:representation}. It was fixed before any of its policy outcomes existed
+(\texttt{research/shared\_decoded\_cnn\_protocol.md} in the repository).
+
+\paragraph{Matrix.}
+Four worlds: per-frame gray noise without wind, per-frame gray noise with wind, persistent gray
+noise with wind, and the gate. For each world, the grid JEPA and the flow model each train three
+policy seeds (0, 1, 2) inside imagination: 24 policies. The gate additionally receives three
+decoded-real control policies per family: 6 policies. All 30 outcomes are reported. Gray-world JEPA
+checkpoints are model seed 0; the gate JEPA is model seed 1, preselected on prior development
+evidence that its decoded-real CNN could discover the strategy. Every flow checkpoint is the seed-0
+fit. Policy seeds are not independent world-model fits.
+
+\paragraph{Policy and optimizer.}
+The policy is the unmodified pixel actor-critic of the original study: a three-block Impala CNN
+on native $63\times63$ RGB, a GRU that also receives the previous action, a categorical actor and
+a 64-bin histogram critic; 1,702,980 parameters. Both families use the same recurrent PPO: AdamW at
+$2.5\times10^{-4}$ with weight decay $0.01$, four epochs, minibatch 128, 16-step truncated
+backpropagation, $\gamma=0.99$, GAE $\lambda=0.9$, value coefficient $0.5$, entropy coefficient
+$0.01$, clipping $0.2$, global gradient clipping $1.0$, batch 512 and horizon 48. The three non-gate
+worlds use 50 updates (1,228,800 positions, 2,400 optimizer steps); every gate policy, imagined or
+decoded-real, uses 150 updates (3,686,400 positions, 7,200 optimizer steps). The training script
+refuses any other budget unless run as an explicitly non-scientific two-update smoke.
+
+\paragraph{Observations.}
+Each policy sees only its own model's decoded RGB: decoded posterior encodings of real frames
+during burn-in and evaluation, decoded model predictions in imagination. No raw pixel reaches the
+actor after the encoder. Training starts are sampled uniformly from valid eight-frame archive
+histories with no reset in the history; burn-in processes the first seven decoded frames with
+their real incoming actions. Latents keep the native $4\times4\times32$ interface without
+resizing, whitening or amplification; decoder quantization is retained.
+
+\paragraph{Task signals.}
+Flow uses its native sampled dynamics at four function evaluations and its jointly fitted reward
+and termination heads. The JEPA uses its deterministic predictor, the existing 80,000-frame
+decoder, and reward and termination heads of the original architecture refitted on all 500,000
+training transition labels with the original 6,000-update recipe. The refit never updates encoder,
+predictor or decoder. Equal label counts do not equalize supervision stage: the flow heads send
+full-strength gradients into the dynamics trunk for the first half of its training and
+$0.1$-scaled gradients afterwards, while JEPA world-model fitting is reward-free.
+
+\paragraph{Evaluation.}
+256 fresh reset episodes are admitted by surviving seven uniformly random actions; the admission
+never looks at the policy. The same accepted prefix identities and all environment and action keys
+are reused across families and policy seeds, so every contrast is paired. The actor then controls
+121 steps under the 128-step cap. Survival is return above $-0.5$; walls passed counts wall exits
+before or on the terminal transition. Every policy is its final checkpoint. Native-RGB trajectories
+of the first three accepted episodes are stored for each policy regardless of outcome.
+
+\paragraph{Validation before the runs.}
+Independent CPU checks of the training and evaluation code; GPU codec parity between the
+imagination path and the evaluation path for every checkpoint (context versus single-step
+encoding, 256- and 512-frame batches, head-cache encoding); unchanged frozen-state hashes; exact
+gate-state reconstruction; shared initial-context and evaluation-packet fingerprints. Two-update
+smokes per family and path supplied wall-clock estimates used only for scheduling.
