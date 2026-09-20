@@ -112,7 +112,25 @@ Also worth knowing:
   that read-out, not about the unsupervised model alone.
 - **Still-world survival is not a control certificate.** A state-blind alternating policy survives
   the still worlds at 100 %, so survival there is reported only alongside walls passed or position
-  error.
+  error. `studies/revision/reference_policies_eval.py` runs two state-blind rules (uniform random,
+  left-right alternation) through the exact paired evaluator on the same packets; their rows sit
+  under `runs/revision/shared_decoded/reference/` and in the shared-CNN table. Both rules score 0 %
+  on the wind worlds and the gate.
+- **Gate codec parity was red once.** The first gate parity files
+  (`runs/revision/shared_decoded/validation/gate_{jepa,flow}_codec.json`, 23:47-23:58 UTC on
+  2026-09-19) report `passed: false` (JEPA head-cache latents off by 0.0625; flow batch-256 pixels
+  off by one level). Both were precision-convention mismatches between callers; the sealed
+  re-checks written minutes later (`gate_jepa_codec_sealed.json`, `gate_flow_codec_actualpath.json`)
+  are exact, and every scientific gate policy started after them (first at 00:31 UTC). The gray
+  worlds passed on the first run (`prep_20260920.log`).
+- **Imagined termination is a model property, not a harness one.**
+  `studies/revision/imagined_termination_probe.py` rolls each frozen model forward under the recorded
+  actions and reads its own termination head on the predicted latent and on the encoder latent of
+  the real frame. In the per-frame-noise wind world the JEPA head reads 0.91 on every predicted
+  latent from the first imagined step (0.03-0.06 on encoder latents, matching the label rate), so
+  PPO inside that model sees death independent of action. The still world tracks the data; the
+  persistent-noise wind world is over-optimistic (imagined survival 0.40 after 48 steps against
+  0.008 recorded). Outputs in `runs/revision/shared_decoded/termination_probe/`.
 
 ## 5. Provenance limits
 
