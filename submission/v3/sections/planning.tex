@@ -48,17 +48,26 @@ qualifies but is less stable; an imagination result for flow below its best deco
 not automatically a model failure.
 
 \paragraph{Imagination.}
-\pendingresult{Insert the paired JEPA-versus-flow imagination outcomes (three policy seeds each):
-survival, walls passed, control length. Read them against the qualification row. Do not attribute a
-gap specifically to conditional-mean averaging; the recipes differ in supervision stage.}
+The same policy trained inside the JEPA's imagination, with the same budget and evaluated on the
+same 256 episodes, survives $0.027$, $0.008$ and $0.027$ of them and passes $0.55\pm0.28$ walls
+per episode (Table~\ref{tab:shared-cnn}). It is not a random policy: it controls for $42$ steps
+where the blind rules last $24$, and it passes the first wall eight times as often as chance. It is
+a policy that has learned to avoid the border in a world without walls. Inside the JEPA's rollouts
+the fraction of imagined positions still alive rose from $0.34$ to at most $0.45$ over training
+while the policy's entropy fell to $0.03$--$0.14$: PPO converged, confidently, on a strategy that the
+model rewarded and the simulator does not. Inside the flow model's imagination the same policy
+survives $0.988$, $0.941$ and $0.977$ of the paired episodes and passes $3.92\pm0.06$ walls,
+matching its own decoded-real controls. Two facts bound the reading. The JEPA latent fed to the
+policy in imagination is the latent that supported $0.97$ survival from real transitions, so the
+deficit is in the predictor's rollout, not the encoder or the interface; and the flow recipe differs
+from the JEPA in supervision stage as well as in sampling, so the gap is a recipe gap
+(Section~\ref{sec:worlds}). What the comparison establishes is the ordering the paper is about: the
+state was kept, and a mean-trained predictor applied to its own outputs did not carry it forward.
 
 \paragraph{What the historical record adds.}
 Across the earlier, unmatched protocols, none of 27 policies trained inside the JEPA's imagination
 discovered the gate strategy, including nine that used a sampling head fitted on the predictor's
 residual and nine that averaged eight of its samples, while policies trained on real transitions
-through the same frozen encoders did (Table~\ref{tab:gate-main}, Appendix~\ref{app:historical-gate}).
-The flow reference's historical success was a single policy of six. Both facts are why this section
-rests on the matched comparison above rather than on those tables. An exact nine-branch calculation
-on frozen encoders shows the scoring operator of Equation~\ref{eq:variance-cost} changing the
-optimal action for $1$--$3\%$ of context--goal pairs (Appendix~\ref{app:oracle-variance}); it is a
-small direct illustration, not a control result.
+through the same frozen encoders did; the flow reference's historical success was a single policy
+of six (Appendix~\ref{app:historical-gate}). Both facts are why this section rests on the matched
+comparison rather than on those tables.

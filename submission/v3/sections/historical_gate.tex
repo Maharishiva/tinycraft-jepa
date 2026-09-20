@@ -1,5 +1,16 @@
 \section{Earlier unmatched gate experiments}
 \label{app:historical-gate}
+
+The experiments in this appendix predate the matched shared-policy protocol of
+Appendix~\ref{app:shared-cnn}: real and imagined policies did not share evaluation keys, latent-MLP
+and decoded-CNN policies are mixed, and the summary tables (Table~\ref{tab:gate-main}) are
+regenerated from the last evaluation of each run. None of 27 policies trained inside the JEPA's
+imagination discovered the gate strategy, including nine that used a sampling head fitted on the
+predictor's residual and nine that averaged eight of its samples. An exact nine-branch calculation
+on frozen encoders shows the scoring operator of Equation~\ref{eq:variance-cost} changing the
+optimal action for $1$--$3\%$ of context--goal pairs (Appendix~\ref{app:oracle-variance}); it is a
+small direct illustration, not a control result.
+
 \paragraph{Reference model.}
 For the gate, a reconstruction-trained tokenizer and causal flow-matching predictor provide a
 feasibility reference \citep{lipman2023flowmatching,chen2024diffusionforcing,hafner2025dreamer4}.

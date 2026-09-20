@@ -40,11 +40,11 @@ evaluation episode, sooner than a blind random walk, because the model's own ter
 reads death on every latent its predictor produces; the same policy inside a flow model trained on
 the same data survives $0.13$ to $0.95$ of the episodes (Section~\ref{sec:representation}).
 \item \textbf{A latent that holds the state can still fail imagination.} In the gate world the
-frozen JEPA latent, read through its own decoder, supports survival when the policy is trained on
-real transitions; policies trained inside the JEPA's imagination with the same network, budget and
-evaluation keys \pendingresult{state the shared-CNN outcome}. A flow-matching model trained on the
-same data is the distributional reference, and decoded-real controls qualify both interfaces before
-any imagination result is read (Section~\ref{sec:planning}).
+frozen JEPA latent, read through its own decoder, supports $0.97$ survival when the policy is
+trained on real transitions; the same network, budget and evaluation keys inside the JEPA's
+imagination give $0.02$, and inside a flow-matching model trained on the same data $0.97$. The
+flow model is the distributional reference, and decoded-real controls qualify both interfaces
+before any imagination result is read (Section~\ref{sec:planning}).
 \item \textbf{The consequence survives outside the toy.} In Craftax, under matched data and
 training budgets and a shared pixel policy, \pendingresult{state the inventory-campaign outcome}
 (Section~\ref{sec:craftax}).
