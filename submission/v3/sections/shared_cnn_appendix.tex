@@ -60,11 +60,18 @@ smokes per family and path supplied wall-clock estimates used only for schedulin
 \paragraph{State-blind reference rows.}
 Two rules that never read an observation are run through the same paired evaluator on the same
 packets: uniform random actions, and strict left--right alternation, which is the trivial survival
-strategy of the still worlds. They calibrate the survival numbers of Table~\ref{tab:shared-cnn}.
-Alternation survives the per-frame still world in every episode; both rules survive no episode of
-either wind world or of the gate, with control lengths of 17--18 steps in the wind worlds and about
-24 in the gate. A trained policy whose control length falls below these values is steering into the
-boundary faster than chance.
+strategy of the still worlds (Table~\ref{tab:shared-cnn-reference}). They calibrate the survival
+numbers of Table~\ref{tab:shared-cnn}. Alternation survives the per-frame still world in every
+episode; both rules survive no episode of either wind world or of the gate. A trained policy whose
+control length falls below these values is steering into the boundary faster than chance.
+
+\begin{table}[h]
+\centering
+\caption{State-blind rules on the shared evaluation packets: survival, control length and, for the
+gate, walls passed, over the same 256 paired episodes as Table~\ref{tab:shared-cnn}.}
+\label{tab:shared-cnn-reference}
+\inputtable{shared_cnn_reference.tex}
+\end{table}
 
 \paragraph{Imagined termination probe.}
 To separate what the policy learns from what its training environment shows it, each frozen model

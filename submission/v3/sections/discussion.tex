@@ -5,28 +5,25 @@
 The representation mechanism shows up before any rollout: a position read-out on \emph{real}
 encodings fails, decoded real frames lose the cube, and no change to the predictor or planner can
 bring it back. The planning mechanism shows up only after the state has been kept: the gate latent
-supports control from real transitions but its imagination does not. A practitioner who sees a
-failed imagination policy should first check which of the two they are looking at, because the
-remedies are disjoint. Detaching the target, adding decoders, or changing what the encoder is asked
-to keep addresses the first; distributional or value-aware prediction addresses the second.
+supports control from real transitions but its imagination does not. A failed imagination policy
+should first be assigned to one of the two, because the remedies are disjoint: changing what the
+encoder is asked to keep addresses the first; distributional or value-aware prediction addresses the
+second.
 
 \paragraph{What the flow reference does and does not show.}
-The flow model differs from the JEPA in supervision stage, not only in sampling versus point
-prediction, so its advantage where it has one is a recipe-level result. The ordering claim survives
-this caveat: a sampled predictor cannot restore a state that the encoder never kept, and where the
-JEPA representation held the state, the remaining gap is the kind that sampling addresses. We do
-not claim that generative modeling is necessary; for a quadratic goal cost a mean and a variance
-suffice, and value-equivalent models can carry the needed expectations directly.
+The flow model differs from the JEPA in supervision stage as well as in sampling, so its advantage
+is a recipe-level result. The ordering claim survives the caveat: a sampled predictor cannot restore
+a state the encoder never kept, and where the JEPA held the state the remaining gap is the kind
+sampling addresses. Generative modeling is not claimed to be necessary; for a quadratic goal cost a
+mean and a variance suffice, and value-equivalent models can carry the needed expectations directly.
 
-\paragraph{Honest boundaries.}
-The empirical per-frame-noise-plus-wind failure has high prediction loss and is not an instance of
-the zero-loss nuisance optimum of Proposition~\ref{prop:representation}; the proposition explains
-why non-collapse cannot protect the state, not which finite-budget model drops it. The gate JEPA
-encoder used for the behavioral comparison is model seed 1, chosen because it was the only seed on
-which decoded controls had succeeded in development, and every flow gate policy shares one dynamics
-checkpoint. Decoded-latent results are statements about information recoverable by a supervised
-decoder, not about the unsupervised model alone. The worlds are small by design; Craftax shows the
-consequence at the scale of a real game but under a fixed ten-minute budget.
+\paragraph{Boundaries.}
+The per-frame-noise-plus-wind failure has high prediction loss and is not the zero-loss nuisance
+optimum of Proposition~\ref{prop:representation}, which explains why non-collapse cannot protect
+the state, not which finite-budget model drops it. Every behavioral result rests on one fitted model
+per family and world, the gate JEPA on a preselected seed, and every decoded-latent result on a
+supervised decoder. The worlds are small by design; Craftax shows the consequence at the scale of a
+game under a fixed ten-minute budget, not at scale.
 
 \paragraph{Outlook.}
 General world models need a principle for choosing what to keep, and predictability is not it.

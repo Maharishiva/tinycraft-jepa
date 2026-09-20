@@ -3,13 +3,11 @@
 
 \paragraph{Design.}
 Four gray-noise conditions cross background persistence (per-frame versus persistent) with
-dynamics (deterministic versus hidden wind). Each condition receives three independently
-initialized grid JEPAs with identical architecture, 512-dimensional latent, 500,000 transitions
-and 8,500 updates. After training, a nonlinear position read-out is fitted on frozen encodings of
-training frames and scored on held-out frames as L1 error in pixels; the same read-out is then
-applied to eight-step predicted latents (Appendix~\ref{app:cubes}). Nothing about the read-out
-depends on the condition, so a difference between cells is a difference in what the encoder
-exposes.
+dynamics (deterministic versus hidden wind); each receives three independently initialized grid
+JEPAs with identical architecture, data and updates. A nonlinear position read-out is fitted on
+frozen encodings of training frames, scored on held-out frames as L1 error in pixels, and applied
+unchanged to eight-step predicted latents (Appendix~\ref{app:cubes}); a difference between cells is
+a difference in what the encoder exposes.
 
 \begin{table}[t]
 \centering
@@ -37,7 +35,7 @@ accumulates; where it was dropped, prediction has nothing left to lose.
 
 \begin{figure}[t]
 \centering
-\paperfig{gray_frame_wind_filmstrip.png}{1.0}
+\paperfig{gray_frame_wind_filmstrip.png}{0.76}
 \caption{\textbf{Per-frame noise plus wind: the JEPA no longer encodes the cube.} Recorded future
 under the recorded actions; the JEPA's decoded encodings of those real frames; the JEPA's decoded
 rollout; the flow model's decoded encodings and one sampled future. First eligible episode of the
@@ -64,35 +62,26 @@ and its deterministic rollout is optimistic instead: the hidden wind's excursion
 \end{figure}
 
 \paragraph{Why this is mechanism 1.}
-Under deterministic motion the next position is a function of the history and the action, so
-keeping it makes the target predictable and lowers the loss. Wind removes that incentive: the
-position's innovations cost prediction loss no matter how the encoder represents them
-(Corollary~\ref{cor:strict}). The failing cell is not the zero-loss nuisance optimum of
-Proposition~\ref{prop:representation}: its prediction loss stays high, about $0.733$ per
-coordinate, SIGReg is satisfied and the latent is far from degenerate. The objective did not find a
-cheap substitute for the state; it simply stopped paying for the state once paying no longer bought
-predictability. Why persistent noise protects the cube under the same wind is not something the
-theory decides. The matched design establishes only that it does, in all three seeds, and that
-the protection is an interaction between nuisance and dynamics rather than a property of either.
+Under deterministic motion the next position is a function of history and action, so keeping it
+makes the target predictable and lowers the loss. Wind removes that incentive: the position's
+innovations cost prediction loss however the encoder represents them (Corollary~\ref{cor:strict}).
+The failing cell is not the zero-loss optimum of Proposition~\ref{prop:representation}: its
+prediction loss stays high, about $0.733$ per coordinate, SIGReg is satisfied and the latent is far
+from degenerate. The objective found no cheap substitute for the state; it stopped paying for the
+state once paying no longer bought predictability. Why persistent noise protects the cube under the
+same wind the theory does not decide; the matched design establishes that it does, in all three
+seeds, and that the protection is an interaction between nuisance and dynamics.
 
 \paragraph{The state is encoded through the target.}
 A second intervention isolates where the incentive acts. In the per-frame conditions we refit
 three seeds per world with the prediction target detached from the encoder's gradient, changing
 nothing else (the predictor-input and SIGReg gradients remain). With deterministic motion the
-detached models lose most of the position information that the joint models keep; with wind, both
-variants fail identically (Table~\ref{tab:target-gradient}). The encoder keeps the cube only when
-the joint gradient can make the cube's future predictable, and the wind failure is not a side
+detached models lose most of the position information that the joint models keep: mean absolute
+read-out error per coordinate $0.37\pm0.05$ pixels joint against $10.93\pm4.90$ detached. With
+wind both variants fail identically, $14.51\pm0.12$ against $14.51\pm0.07$ (three seeds each,
+paired initialization and data order; Appendix~\ref{app:cubes}). The encoder keeps the cube only
+when the joint gradient can make the cube's future predictable, and the wind failure is not a side
 effect of that gradient path. Detaching the target, the natural first repair, does nothing here.
-
-\begin{table}[t]
-\centering
-\caption{\textbf{Detaching the target does not rescue the wind cell and costs the deterministic
-one.} Position read-out error (mean absolute pixel error per coordinate, read-out fitted on
-50,000 frames; a different read-out protocol from Table~\ref{tab:cube-main}), mean $\pm$ sample
-standard deviation over three model seeds; each seed pair shares initialization and data order.}
-\label{tab:target-gradient}
-\inputtable{target_gradient.tex}
-\end{table}
 
 \begin{table}[t]
 \centering
@@ -101,8 +90,9 @@ standard deviation over three model seeds; each seed pair shares initialization 
 episodes, mean $\pm$ sample standard deviation over three policy seeds. ``Imagined $r$'' is the
 reward per step that the model paid the policy at its last training update; the true reward is
 never positive. ``Real'' rows train on real transitions seen through each model's decoder. Two
-state-blind rules run through the same evaluator give the scale
-(Appendix~\ref{app:shared-cnn}).}
+state-blind rules run through the same evaluator give the scale: left--right alternation survives
+the still world in every episode, and both rules survive no episode of the wind worlds or the gate,
+lasting 17--18 and 24 control steps (Appendix~\ref{app:shared-cnn}).}
 \label{tab:shared-cnn}
 \small
 \inputtable{shared_cnn.tex}
@@ -112,22 +102,22 @@ state-blind rules run through the same evaluator give the scale
 A policy that cannot see the cube cannot steer it, and a policy trained inside a model that cannot
 see the cube fares worse than one that does not look. Table~\ref{tab:shared-cnn} trains one stock
 pixel policy by PPO inside each model's imagination, fed by the model's own decoder, for 50 updates
-and three policy seeds, and evaluates it on 256 paired episodes (protocol in
-Section~\ref{sec:worlds}). In the per-frame still world both imaginations produce policies near
-the ceiling set by blind alternation, so survival there certifies nothing. In the per-frame wind
-world every JEPA policy dies in every episode after $12.5\pm3.1$ steps of control, fewer than a
-uniformly random walk (17.4) or blind alternation (18.2) last; the flow policies trained on the same
-data survive $0.945$, $0.129$ and $0.652$ of the episodes, better than their paired JEPA seed each
-time, with a seed spread that the 50-update budget does not close. Figure~\ref{fig:imagined-termination}
-shows what the JEPA policy was trained on: its termination head, which tracks the recorded rate on
-encoder latents, reads $0.91$ on every latent the predictor produces, so an imagined episode ends
-within two steps whatever the policy does and the gradient carries no information about actions.
-The trained policy is arbitrary, and an arbitrary but consistent action bias reaches the boundary
-faster than chance. Under persistent noise the encoder keeps the cube and the failure changes
-character: JEPA policies now outlast the blind rules ($26.8\pm8.7$ steps) but still survive only
-$0.02\pm0.01$ of episodes, against $0.891$, $0.207$ and $0.137$ for the flow, and the deterministic
-rollout that trained them is optimistic rather than dead, keeping $0.40$ of imagined episodes alive at
-48 steps where $0.008$ of recorded ones are. That is the averaging of the hidden wind, the subject
-of the next section. One more column deserves notice: in the still world the JEPA's imagined reward
-climbs to $+0.15$ per step although the true reward is never positive. The policy is farming the
-refitted reward head while it survives; the same signature returns, much larger, in Craftax.
+and three policy seeds, and evaluates it on 256 paired episodes (Section~\ref{sec:worlds}). In the
+per-frame still world both imaginations produce policies near the ceiling set by blind alternation,
+so survival there certifies nothing. In the per-frame wind world every JEPA policy dies in every
+episode after $12.5\pm3.1$ steps of control, fewer than a blind random walk lasts; the flow
+policies survive $0.945$, $0.129$ and $0.652$ of the episodes, better than their paired JEPA seed
+each time, with a seed spread the 50-update budget does not close.
+Figure~\ref{fig:imagined-termination} shows what the JEPA policy was trained on: its termination
+head, which tracks the recorded rate on encoder latents, reads $0.91$ on every latent the
+predictor produces, so an imagined episode ends within two steps whatever the policy does and the
+gradient carries no information about actions. The trained policy is arbitrary, and a consistent
+arbitrary bias reaches the boundary faster than chance. Under persistent noise the encoder keeps
+the cube and the failure changes character: JEPA policies outlast the blind rules ($26.8\pm8.7$
+steps) but survive only $0.02\pm0.01$ of episodes, against $0.891$, $0.207$ and $0.137$ for the
+flow, and the deterministic rollout that trained them is optimistic rather than dead, keeping $0.40$
+of imagined episodes alive at 48 steps where $0.008$ of recorded ones are: the hidden wind averaged
+away, the subject of the next section. One column deserves notice: in the still world the JEPA's
+imagined reward climbs to $+0.15$ per step although the true reward is never positive. The policy
+is farming the refitted reward head while it survives; the signature returns, much larger, in
+Craftax.

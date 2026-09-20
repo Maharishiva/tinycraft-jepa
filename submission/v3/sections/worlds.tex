@@ -29,28 +29,20 @@ labels and compute are additional and are reported as such.
 \paragraph{The distributional reference.}
 The flow recipe uses a reconstruction-trained tokenizer with the same $4\times4\times32$ latent
 shape and a causal flow-matching predictor that \emph{samples} the next latent
-\citep{lipman2023flowmatching,hafner2025dreamer4}. It is trained on the same transitions under the
-same wall-clock budget, with reward and termination heads fitted jointly. The two recipes differ in
-more than deterministic versus sampled prediction: the flow tokenizer is supervised by
-reconstruction, and its task heads send gradients into its dynamics trunk, whereas the JEPA is
-reward-free with post-hoc heads. Every JEPA-versus-flow gap in this paper is therefore a
-\emph{recipe} gap. We narrow it where we can, by refitting the JEPA heads on all 500,000 training
-labels, and we say so where we cannot.
+\citep{lipman2023flowmatching,hafner2025dreamer4}, trained on the same transitions under the same
+wall-clock budget with jointly fitted reward and termination heads. The recipes differ in more than
+deterministic versus sampled prediction: the flow tokenizer is supervised by reconstruction and its
+task heads send gradients into its dynamics trunk, whereas the JEPA is reward-free with post-hoc
+heads. Every JEPA-versus-flow gap in this paper is therefore a \emph{recipe} gap; we narrow it by
+refitting the JEPA heads on all 500,000 training labels and say so where we cannot.
 
 \paragraph{Behavioral comparison contract.}
-Policies are compared through one interface only. Both families expose decoded RGB frames from
-their own frozen decoders to the same pixel CNN and GRU policy, trained by the same PPO
-implementation with the same optimizer, updates, batch and horizon, and evaluated with the final
-checkpoint on 256 stored episodes whose reset, texture and action keys are shared across families
-and seeds. Episodes are admitted by surviving a seven-step random prefix, never by policy outcome.
-Before any imagination result is read, the same policy is trained on \emph{real} transitions
-observed through each model's decoder; a family whose decoded-real control fails has an interface
-problem, not an imagination problem. Rewards and terminations inside imagination come from each
-model's own heads; no simulator quantity enters training.
-
-\paragraph{Craftax.}
-Craftax-Classic \citep{matthews2024craftax} is the consequence outside the toy: 17 actions,
-procedurally generated maps, sparse rewards for 22 achievements. Both world models are trained on
-the same 500,000-transition archive under the same ten-minute budget, and the same pixel policy is
-trained inside each for the same number of imagined steps before native evaluation
-(Section~\ref{sec:craftax}). Complete settings are in Appendix~\ref{app:hparams}.
+Policies are compared through one interface: each family's frozen decoder renders its latents as
+RGB for the same pixel CNN and GRU policy, trained by the same PPO with the same budget and
+evaluated with its final checkpoint on 256 stored episodes whose reset, texture and action keys
+are shared across families and seeds; an episode is admitted by surviving a seven-step random
+prefix, never by policy outcome. Before any imagination result is read, the same policy is trained
+on \emph{real} transitions seen through each decoder, so an interface failure cannot be mistaken
+for an imagination failure. Rewards and terminations in imagination come from each model's own
+heads; no simulator quantity enters training (Appendix~\ref{app:shared-cnn}). Complete settings
+for every world, including Craftax, are in Appendix~\ref{app:hparams}.

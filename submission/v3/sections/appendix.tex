@@ -209,6 +209,27 @@ and the first 512 for position diagnostics; exact sampled indices were not retai
 result files. Surviving windows are a selected subset of wind trajectories, so these errors do not
 establish death prediction or closed-loop control.
 
+\paragraph{Detached-target refits.}
+For the two per-frame gray conditions, three model seeds per world are refitted with the
+prediction target detached from the encoder's gradient (\texttt{stop\_gradient} on $z_{t+1}$ in
+Equation~\ref{eq:lewm}); the predictor-input and SIGReg gradients, architecture, data order and
+initialization are unchanged, and the joint control of each seed is retrained by the same script so
+that the pair differs only in the target gradient (a bit-exact equivalence test against the original
+trainer is part of the test suite). A GELU read-out with two hidden layers of width 256 on the
+raw 512 latent coordinates is fitted on 50,000 training encodings per model and scored on 10,000
+frames of an independently collected archive as mean absolute pixel error per coordinate
+(Table~\ref{tab:target-gradient}); this protocol differs from the L1-in-pixels read-out of
+Table~\ref{tab:cube-main}, so the two tables are not numerically comparable.
+
+\begin{table}[t]
+\centering
+\caption{\textbf{Detaching the target does not rescue the wind cell and costs the deterministic
+one.} Position read-out error (mean absolute pixel error per coordinate), mean $\pm$ sample
+standard deviation over three model seeds; each seed pair shares initialization and data order.}
+\label{tab:target-gradient}
+\inputtable{target_gradient.tex}
+\end{table}
+
 \begin{figure}[t]
 \centering
 \paperfig{readout_by_seed.pdf}{1.0}

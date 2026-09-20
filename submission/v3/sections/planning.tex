@@ -13,7 +13,7 @@ there, and the mean-trained predictor did not carry it forward.
 
 \begin{figure}[t]
 \centering
-\paperfig{gate_s1_filmstrip.png}{1.0}
+\paperfig{gate_s1_filmstrip.png}{0.76}
 \caption{\textbf{The wall survives encoding and dies in prediction.} From one pre-reveal context
 and the recorded actions: the simulator; the JEPA's decoded encodings of the real future; the
 JEPA's decoded rollout; the flow model's decoded encodings and one sampled future. JEPA model
@@ -25,44 +25,40 @@ picture into a claim.}
 \end{figure}
 
 \paragraph{Why a shared pixel policy.}
-Earlier attempts to compare the two models through latent-input policies were uninformative in a
-specific way: a latent-MLP policy trained by PPO fails the gate even on the \emph{exact} simulator
-with true rewards (0 of 45 policies above $50\%$ survival; Appendix~\ref{app:matched}), so its
-failure inside imagination says nothing about the model. The comparison in this section therefore
-uses one pixel CNN and GRU policy for both families, fed by each model's own decoder, with the same
-PPO, 150 updates of 512 rollouts of 48 steps, three policy seeds, final checkpoints, and 256
-evaluation episodes on shared keys (Section~\ref{sec:worlds}). The JEPA encoder is model seed 1,
-the seed on which decoded-latent control had succeeded during development; the flow model is one
-dynamics checkpoint. Both facts limit the claim to these fitted models. The JEPA's reward and
-termination heads are refitted on all 500,000 training labels so that head supervision is
-count-matched to the flow recipe.
+Latent-input policies were uninformative in a specific way: a latent-MLP policy trained by PPO
+fails the gate even on the \emph{exact} simulator with true rewards (0 of 45 policies above $50\%$
+survival; Appendix~\ref{app:matched}), so its failure inside imagination says nothing about the
+model. This section therefore uses one pixel CNN and GRU policy for both families, fed by each
+model's own decoder, with the same PPO, 150 updates of 512 rollouts of 48 steps, three policy
+seeds, final checkpoints and 256 evaluation episodes on shared keys (Section~\ref{sec:worlds}).
+The JEPA encoder is model seed 1, the seed on which decoded-latent control had succeeded during
+development, and the flow model is one dynamics checkpoint; both facts limit the claim to these
+fitted models. The JEPA's reward and termination heads are refitted on all 500,000 training labels
+so that head supervision is count-matched to the flow recipe.
 
 \paragraph{Interface qualification.}
-Before imagination is read, the same policy is trained on real transitions seen through each
-decoder (Table~\ref{tab:shared-cnn}, ``real'' rows). Through the JEPA's decoder all three policy
-seeds solve the gate: survival $0.977$, $0.980$ and $0.945$, passing $3.9$ of a possible four walls
-per episode. The JEPA latent, read by a supervised decoder, therefore carries everything the task
-needs, and the policy and optimizer can learn the wait-and-commit strategy from it. Through the
-flow decoder two seeds solve it ($0.957$, $0.953$) and one does not ($0.516$), so the flow interface
-qualifies but is less stable; an imagination result for flow below its best decoded-real seed is
-not automatically a model failure.
+Trained on real transitions seen through the JEPA's decoder, all three policy seeds solve the gate:
+survival $0.977$, $0.980$ and $0.945$, passing $3.9$ of a possible four walls per episode
+(Table~\ref{tab:shared-cnn}, ``real'' rows). The JEPA latent, read by a supervised decoder, carries
+everything the task needs, and the policy and optimizer can learn the wait-and-commit strategy from
+it. Through the flow decoder two seeds solve it ($0.957$, $0.953$) and one does not ($0.516$): the
+flow interface qualifies but is less stable.
 
 \paragraph{Imagination.}
 The same policy trained inside the JEPA's imagination, with the same budget and evaluated on the
 same 256 episodes, survives $0.027$, $0.008$ and $0.027$ of them and passes $0.55\pm0.28$ walls
-per episode (Table~\ref{tab:shared-cnn}). It is not a random policy: it controls for $42$ steps
-where the blind rules last $24$, and it passes the first wall eight times as often as chance. It is
-a policy that has learned to avoid the border in a world without walls. Inside the JEPA's rollouts
-the fraction of imagined positions still alive rose from $0.34$ to at most $0.45$ over training
-while the policy's entropy fell to $0.03$--$0.14$: PPO converged, confidently, on a strategy that the
-model rewarded and the simulator does not. Inside the flow model's imagination the same policy
-survives $0.988$, $0.941$ and $0.977$ of the paired episodes and passes $3.92\pm0.06$ walls,
-matching its own decoded-real controls. Two facts bound the reading. The JEPA latent fed to the
-policy in imagination is the latent that supported $0.97$ survival from real transitions, so the
-deficit is in the predictor's rollout, not the encoder or the interface; and the flow recipe differs
-from the JEPA in supervision stage as well as in sampling, so the gap is a recipe gap
-(Section~\ref{sec:worlds}). What the comparison establishes is the ordering the paper is about: the
-state was kept, and a mean-trained predictor applied to its own outputs did not carry it forward.
+per episode. It is not a random policy: it controls for $42$ steps where the blind rules last $24$
+and passes the first wall eight times as often as chance. It has learned to avoid the border in a
+world without walls. Inside the JEPA's rollouts the fraction of imagined positions still alive rose
+from $0.34$ to at most $0.45$ over training while the policy's entropy fell to $0.03$--$0.14$: PPO
+converged, confidently, on a strategy the model rewarded and the simulator does not. Inside the
+flow model's imagination the same policy survives $0.988$, $0.941$ and $0.977$ of the paired
+episodes and passes $3.92\pm0.06$ walls, matching its decoded-real controls. Two facts bound the
+reading: the latent fed to the policy in imagination is the one that supported $0.97$ survival from
+real transitions, so the deficit is in the predictor's rollout, not the encoder or the interface;
+and the flow recipe differs in supervision stage as well as in sampling, so the gap is a recipe gap.
+What the comparison establishes is the ordering the paper is about: the state was kept, and a
+mean-trained predictor applied to its own outputs did not carry it forward.
 
 \paragraph{What the historical record adds.}
 Across the earlier, unmatched protocols, none of 27 policies trained inside the JEPA's imagination

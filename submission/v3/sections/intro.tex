@@ -26,25 +26,23 @@ recursively, need not equal the multi-step mean whenever the dynamics are nonlin
 failure is an optimization failure, and no better estimate of the same mean repairs it.
 
 We make both mechanisms measurable in a deliberately small visual world: one red cube, four
-movement actions, a background that is either redrawn every frame or held for the episode, and
-optional stochastic wind or an approaching wall whose opening is revealed late. Position, goal and
-executed path are directly visible, so representation and planning can be separated without
-leaning on an aggregate game score. The main empirical findings are:
+movement actions, a background redrawn every frame or held for the episode, and optional hidden
+wind or an approaching wall whose opening is revealed late. Position and executed path are directly
+visible, so representation and planning can be separated without an aggregate game score. The main
+empirical findings are:
 \begin{enumerate}
 \item \textbf{Nuisance persistence reverses under stochastic dynamics.} With deterministic motion,
 per-frame background noise gives the more accurate position read-out ($0.115$ versus $0.764$
-pixels). With hidden wind the ordering flips and the per-frame model loses the cube altogether
-($21.33$ versus $0.668$ pixels). Architecture, latent dimension, data, updates and three model
-seeds are matched. A pixel policy trained inside the failing model's imagination dies in every
-evaluation episode, sooner than a blind random walk, because the model's own termination head
-reads death on every latent its predictor produces; the same policy inside a flow model trained on
-the same data survives $0.13$ to $0.95$ of the episodes (Section~\ref{sec:representation}).
+pixels); with hidden wind the ordering flips and the per-frame model loses the cube altogether
+($21.33$ versus $0.668$ pixels), with architecture, latent size, data, updates and three model seeds
+matched. A pixel policy trained inside the failing model's imagination dies in every evaluation
+episode, sooner than a blind random walk, because the model's own termination head reads death on
+every latent its predictor produces (Section~\ref{sec:representation}).
 \item \textbf{A latent that holds the state can still fail imagination.} In the gate world the
 frozen JEPA latent, read through its own decoder, supports $0.97$ survival when the policy is
 trained on real transitions; the same network, budget and evaluation keys inside the JEPA's
-imagination give $0.02$, and inside a flow-matching model trained on the same data $0.97$. The
-flow model is the distributional reference, and decoded-real controls qualify both interfaces
-before any imagination result is read (Section~\ref{sec:planning}).
+imagination give $0.02$, and inside a flow-matching model trained on the same data $0.97$
+(Section~\ref{sec:planning}).
 \item \textbf{The consequence survives outside the toy.} In Craftax, under matched data and
 training budgets and a shared pixel policy, \pendingresult{state the inventory-campaign outcome}
 (Section~\ref{sec:craftax}).
