@@ -1,0 +1,89 @@
+\section{Two ways a predictive objective can ignore what matters}
+\label{sec:mechanisms}
+
+\paragraph{The objective.}
+An encoder $f_\theta$ maps an observation $x_t$ to $z_t\in\R^D$; a predictor $g_\theta$ maps the
+recent latents and actions to a forecast of $z_{t+1}$. LeWorldModel \citep{maes2026lewm}, the
+recipe studied here, trains both jointly with
+\begin{equation}
+\label{eq:lewm}
+\Lcal=\frac1D\,\widehat{\E}\,\|g_\theta(z_{\le t},a_{\le t})-z_{t+1}\|^2
++\lambda\,\mathrm{SIGReg}(\{z_t\}),
+\end{equation}
+where SIGReg is a sketched test that the latent marginals are standard Gaussian, and there is no
+stop-gradient, teacher network, decoder or reward. Two choices are hidden in this one line: the
+target $z_{t+1}$ is chosen by the encoder, and the loss is a squared error.
+
+\subsection{Mechanism 1: the encoder chooses predictability over state}
+\label{sec:nuisance-example}
+
+For a fixed encoder and an unrestricted predictor, the minimum squared prediction risk is the
+expected conditional variance of the target,
+\[
+\inf_g\E\|g(C,A)-Z'\|^2=\E\,\tr\Cov(Z'\mid C,A).
+\]
+Joint training lets the encoder shrink this quantity by choosing \emph{what} $Z'$ is. Write the
+observation as $x_t=R(p_t,b)$, where $p_t$ is the controlled state and $b$ a nuisance fixed for the
+episode. If $b$ is recoverable and rich enough to be mapped to $\varphi(b)\sim\Nrm(0,I_D)$, an
+encoder that returns only $\varphi(b)$ is fully non-collapsed, satisfies the Gaussian regularizer
+exactly, and lets the copy-last predictor reach zero loss. It is a global optimum of
+Equation~\ref{eq:lewm} that carries no information about $p_t$
+(Proposition~\ref{prop:representation}, extending \citealp{sobal2022slow}; proofs in
+Appendix~\ref{app:proofs}).
+
+The construction needs a constant nuisance. What carries over to stochastic worlds is the cost
+side: the innovations of the state are paid for in prediction loss, and an encoder that keeps the
+state at a fixed geometric scale must pay them (Corollary~\ref{cor:strict}). Fresh unobservable
+noise in the dynamics therefore makes the controlled state the \emph{expensive} part of the
+latent. Non-collapse says nothing about whether the encoder pays that price or quietly stops
+encoding the state. Section~\ref{sec:representation} measures whether it pays, and finds that the
+answer depends on the background in a way the zero-loss construction alone does not predict.
+
+\subsection{Mechanism 2: the squared loss chooses the mean over the distribution}
+\label{sec:variance-example}
+
+Even with the state preserved, a squared loss learns $m(c,a)=\E[Z'\mid c,a]$. A goal planner needs
+expected costs. For a latent goal $z_g$,
+\begin{equation}
+\label{eq:variance-cost}
+\E\!\left[\|Z'-z_g\|^2\mid c,a\right]=\|m(c,a)-z_g\|^2+\tr\Cov(Z'\mid c,a),
+\end{equation}
+and an action-dependent second term can change the argmin. Figure~\ref{fig:concepts} (left) is the
+smallest exact instance: the goal is $0$, action A yields $\pm1$ with equal probability, action B
+yields $0.1$ deterministically. The means are $0$ and $0.1$, so a planner scoring means picks A;
+the expected costs are $1$ and $0.01$, so B is right. No better estimate of the same mean repairs
+this; the omitted variance is exactly the missing quantity.
+
+\begin{figure}[t]
+\centering
+\paperfig{redcube_concepts_paper.pdf}{1.0}
+\caption{\textbf{A correct one-step mean can still give a wrong decision and a wrong rollout.}
+Left: the mean of action A sits on the goal although every outcome of A is farther from it than
+B's deterministic outcome. Right: for $X_{t+1}=X_t^2+\xi_t$ with fair $\xi_t\in\{-1,+1\}$ and
+$X_0=0$, recursive conditional-mean prediction stays at $0$ while the true two-step mean is $1$.
+Both are exact calculations, not outputs of trained models.}
+\label{fig:concepts}
+\end{figure}
+
+\paragraph{The mean does not compose.}
+Let $X_{t+1}=X_t^2+\xi_t$ with independent fair $\xi_t\in\{-1,+1\}$ and $X_0=0$. The exact
+conditional mean is $m(x)=x^2$, so recursive mean prediction gives $0,0,0,\dots$ In the real
+process $X_1\in\{-1,1\}$ and $X_2\in\{0,2\}$, each with probability $1/2$, so $\E X_2=1$
+(Figure~\ref{fig:concepts}, right). In general
+\begin{equation}
+\label{eq:mean-recursion}
+\E[X_{t+1}]=(\E X_t)^2+\Var(X_t),
+\end{equation}
+and recursive substitution keeps only the first term. A JEPA rolled forward on its own mean
+predictions is doing exactly this substitution.
+
+\paragraph{What repairs mechanism 2, and what does not.}
+A model that predicts expected costs or values directly can keep the needed expectations without
+samples \citep{wan2019expectation,grimm2021proper}; for the quadratic cost in
+Equation~\ref{eq:variance-cost} a mean plus one scalar variance per action suffices. A
+distributional world model, such as a flow-matching predictor that samples $Z'$, is the more general
+repair: it keeps distinct outcomes and averages their costs. Neither repair touches mechanism 1. If
+the encoder has already dropped the state, a perfect distribution over the remaining features is a
+perfect distribution over nothing useful. This ordering is the paper's central prediction, and
+Sections~\ref{sec:planning} and~\ref{sec:craftax} test it with a flow model trained on the same
+data and budget as the JEPA.

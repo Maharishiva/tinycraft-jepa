@@ -1,0 +1,23 @@
+\begin{tabular}{llrr}
+\toprule
+\rowcolor{Navy!8}
+Training / observation & Predictor or torso & Walls & Discovery \\
+\midrule
+\rowcolor{JEPA!7}
+Imagined JEPA & Original & $0.27\pm0.22$ & $0/9$ \\
+ & Residual sample & $0.26\pm0.32$ & $0/9$ \\
+\rowcolor{JEPA!7}
+ & Residual mean of 8 & $0.26\pm0.30$ & $0/9$ \\
+\midrule
+\rowcolor{Real!7}
+Real / frozen JEPA & MLP & $0.94\pm0.04$ & $0/9$ \\
+Real / pixels & MLP & $0.91\pm0.08$ & $0/3$ \\
+\rowcolor{Real!7}
+Real / decoded JEPA & CNN & $1.57\pm1.26$ & $2/9$ \\
+Real / pixels & CNN & $2.91\pm1.65$ & $2/3$ \\
+\midrule
+\rowcolor{Flow!7}
+Imagined flow & Sample & $1.45\pm1.23$ & $1/6$ \\
+ & Mean of 8 & $0.88\pm0.14$ & $0/3$ \\
+\bottomrule
+\end{tabular}

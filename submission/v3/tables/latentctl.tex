@@ -1,0 +1,11 @@
+\begin{tabular}{lrrrr}
+\toprule
+observation of the real-gate PPO & runs & walls passed & survival (\%) & discovered \\
+\midrule
+pixels, convolutional torso & 3 & 2.91$\pm$1.65 & 65$\pm$52 & 2/3 \\
+pixels, MLP torso & 3 & 0.91$\pm$0.08 & 4$\pm$2 & 0/3 \\
+frozen JEPA latent, MLP torso & 9 & 0.94$\pm$0.04 & 4$\pm$1 & 0/9 \\
+decoded JEPA latent, convolutional torso & 9 & 1.57$\pm$1.26 & 22$\pm$37 & 2/9 \\
+decoded JEPA latent, MLP torso & 6 & 0.92$\pm$0.08 & 3$\pm$2 & 0/6 \\
+\bottomrule
+\end{tabular}

@@ -1,0 +1,96 @@
+\section{Mechanism 1 in the cube worlds: the state is kept only while it is predictable}
+\label{sec:representation}
+
+\paragraph{Design.}
+Four gray-noise conditions cross background persistence (per-frame versus persistent) with
+dynamics (deterministic versus hidden wind). Each condition receives three independently
+initialized grid JEPAs with identical architecture, 512-dimensional latent, 500,000 transitions
+and 8,500 updates. After training, a nonlinear position read-out is fitted on frozen encodings of
+training frames and scored on held-out frames as L1 error in pixels; the same read-out is then
+applied to eight-step predicted latents (Appendix~\ref{app:cubes}). Nothing about the read-out
+depends on the condition, so a difference between cells is a difference in what the encoder
+exposes.
+
+\begin{table}[t]
+\centering
+\caption{\textbf{The effect of nuisance persistence reverses under stochastic dynamics.} Cube
+position L1 error in pixels, mean $\pm$ sample standard deviation over three model fits. ``Real''
+reads encodings of held-out observations; the right column applies the same read-out eight
+predicted steps ahead. Architecture, latent size, data and updates are fixed across cells.}
+\label{tab:cube-main}
+\inputtable{cube_main.tex}
+\end{table}
+
+\paragraph{The reversal.}
+With deterministic motion the objective keeps the cube in every condition, and per-frame noise is
+the \emph{easier} background: $0.115\pm0.012$ pixels against $0.764\pm0.068$ for persistent noise
+(Table~\ref{tab:cube-main}, Figure~\ref{fig:cube-readout}). Adding wind flips the ordering and
+breaks one cell outright. Under persistent noise the read-out still localizes the cube to
+$0.668\pm0.049$ pixels; under per-frame noise it fails at $21.33\pm0.06$ pixels, an error larger
+than the cube is wide in every seed, with almost no seed-to-seed spread. The failure is already
+present in the encodings of real frames, before any prediction is made: decoded real encodings from
+a failing model show a gray field with at most a faint trace of the cube, and its predicted future
+is not a scene at all, while the flow model trained on the same data keeps the cube in both
+(Figure~\ref{fig:wind-filmstrip}). The eight-step prediction column tells the same story one step
+later: where the state was kept, prediction error grows with the horizon as the wind's uncertainty
+accumulates; where it was dropped, prediction has nothing left to lose.
+
+\begin{figure}[t]
+\centering
+\paperfig{gray_frame_wind_filmstrip.png}{1.0}
+\caption{\textbf{Per-frame noise plus wind: the JEPA no longer encodes the cube.} Recorded future
+under the recorded actions; the JEPA's decoded encodings of those real frames; the JEPA's decoded
+rollout; the flow model's decoded encodings and one sampled future. First eligible episode of the
+held-out set, chosen without looking at any model output; JEPA model seed 0, flow seed 0. The
+decoders are supervised reconstruction probes fitted after training, so the middle rows show what
+is recoverable from the frozen latent, not what the model was trained to produce.}
+\label{fig:wind-filmstrip}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\paperfig{readout_by_seed.pdf}{1.0}
+\caption{\textbf{Same objective, same architecture, same data: the cube is kept or lost depending
+on how the nuisance and the dynamics interact.} Each marker is one fitted model; bars are
+three-model means. A failed read-out does not prove that no decoder could recover the position;
+it shows that the fixed diagnostic that succeeds in three cells fails in the fourth.}
+\label{fig:cube-readout}
+\end{figure}
+
+\paragraph{Why this is mechanism 1.}
+Under deterministic motion the next position is a function of the history and the action, so
+keeping it makes the target predictable and lowers the loss. Wind removes that incentive: the
+position's innovations cost prediction loss no matter how the encoder represents them
+(Corollary~\ref{cor:strict}). The failing cell is not the zero-loss nuisance optimum of
+Proposition~\ref{prop:representation}: its prediction loss stays high, about $0.733$ per
+coordinate, SIGReg is satisfied and the latent is far from degenerate. The objective did not find a
+cheap substitute for the state; it simply stopped paying for the state once paying no longer bought
+predictability. Why persistent noise protects the cube under the same wind is not something the
+theory decides. The matched design establishes only that it does, in all three seeds, and that
+the protection is an interaction between nuisance and dynamics rather than a property of either.
+
+\paragraph{The state is encoded through the target.}
+A second intervention isolates where the incentive acts. In the per-frame conditions we refit
+three seeds per world with the prediction target detached from the encoder's gradient, changing
+nothing else (the predictor-input and SIGReg gradients remain). With deterministic motion the
+detached models lose most of the position information that the joint models keep; with wind, both
+variants fail identically (Table~\ref{tab:target-gradient}). The encoder keeps the cube only when
+the joint gradient can make the cube's future predictable, and the wind failure is not a side
+effect of that gradient path. Detaching the target, the natural first repair, does nothing here.
+
+\begin{table}[t]
+\centering
+\caption{\textbf{Detaching the target does not rescue the wind cell and costs the deterministic
+one.} Position read-out error (mean absolute pixel error per coordinate, read-out fitted on
+50,000 frames; a different read-out protocol from Table~\ref{tab:cube-main}), mean $\pm$ sample
+standard deviation over three model seeds; each seed pair shares initialization and data order.}
+\label{tab:target-gradient}
+\inputtable{target_gradient.tex}
+\end{table}
+
+\paragraph{Behavioral consequence.}
+A policy that cannot see the cube cannot steer it. \pendingresult{Insert the shared-CNN outcomes
+for the three cube worlds (per-frame still, per-frame wind, persistent wind) from the running
+campaign: survival and control length for JEPA and flow imagination, three policy seeds each,
+paired keys. State the interface qualification. Appendix~\ref{app:cubes} keeps the single-run
+survival audit across all six cube worlds.}

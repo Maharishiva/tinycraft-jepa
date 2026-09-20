@@ -1,0 +1,19 @@
+Joint-embedding predictive architectures (JEPAs) learn world models by predicting future
+representations rather than future pixels, and the objective alone decides what those
+representations keep. We show that in stochastic worlds this freedom works against the controller
+through two independent mechanisms. The first is representational: the squared next-embedding loss
+rewards whatever is predictable, so when the controlled state carries fresh unobservable innovations
+and a nuisance does not, the objective learns to ignore the state. In a matched three-seed study on
+a minimal red-cube world, the same spatial JEPA that localizes the cube to $0.12$ pixels under
+per-frame background noise loses it entirely ($21.3$ pixels) once hidden wind is added, while
+persistent noise under the same wind keeps it at $0.67$ pixels: the effect of nuisance persistence
+reverses with the dynamics. The second mechanism is predictive: a squared loss yields the
+conditional mean, and two exact examples show that a correct mean can misrank actions and that a
+correct one-step mean need not compose into a multi-step mean. In a gate world whose safe passage
+is revealed late, the JEPA's frozen latent supports near-perfect survival when a policy is trained
+on real transitions through its own decoder, yet policies trained inside its imagination
+\pendingresult{gate imagination outcome, from the shared-CNN campaign}. In Craftax under matched
+data and training budgets, \pendingresult{tool-acquisition outcome, from the inventory campaign}.
+These results establish that avoiding representation collapse and accurately predicting latent
+states are insufficient for successful stochastic control: distributional dynamics repair the
+second mechanism only when the representation has survived the first.

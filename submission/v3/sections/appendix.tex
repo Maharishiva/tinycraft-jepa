@@ -1,0 +1,559 @@
+\section{Proofs}
+\label{app:proofs}
+
+\subsection{Empirical objective and population idealization}
+For a training batch of $B$ windows and $H$ predicted time positions, the implemented loss is
+\begin{equation}
+\Lcal_{\mathrm{pred}}=\frac{1}{BHD}\sum_{b,h}\|\widehat z_{b,h+1}-z_{b,h+1}\|^2.
+\end{equation}
+The notation in Equation~\ref{eq:lewm} averages over time and uses this coordinate-mean convention.
+One-step targets are teacher-forced at every temporal position, with a shorter history near the
+start of a window. For encoded windows of $T$ frames, $P$ random unit projection directions $u_p$,
+$K$ knots $\tau_k\in[0,3]$, and $w_k=e^{-\tau_k^2/2}$, the regularizer is
+\begin{equation}
+\label{eq:sigreg}
+R=\frac{B}{TP}\sum_{t,p,k}q_k w_k
+\left[\left(\frac1B\sum_b\cos(\tau_k u_p^\top z_{b,t})-w_k\right)^2
++\left(\frac1B\sum_b\sin(\tau_k u_p^\top z_{b,t})\right)^2\right],
+\end{equation}
+where $\Delta=3/(K-1)$, with $q_k=\Delta$ at the endpoints and $2\Delta$ in the interior.
+The characteristic function is averaged across batch examples separately at each temporal position;
+the factor $B$ is part of the implementation with $\lambda=0.09$.
+
+The population statements use the nonnegative discrepancy
+\begin{equation}
+\label{eq:popsigreg}
+\mathrm{SIGReg}_\infty(\mathcal L(z))=
+\int_{\mathbb S^{D-1}}\!\int_0^3 w(\tau)
+\left[\big(\E\cos(\tau\langle z,u\rangle)-w(\tau)\big)^2
++\big(\E\sin(\tau\langle z,u\rangle)\big)^2\right]d\tau\,d\sigma(u),
+\end{equation}
+where $w(\tau)=e^{-\tau^2/2}$ and $\sigma$ is uniform on the sphere.
+Only the fact that this functional vanishes for a standard Gaussian is needed. It is not a theorem
+about exact minima of the finite-batch objective.
+
+\subsection{Nuisance optimum and the cost of innovations}
+\paragraph{Proposition~\ref{prop:representation}.}
+\begin{proof}
+Let $\beta$ recover the nuisance from the observation, set $f^\star=\varphi\circ\beta$, and let
+$g^\star$ copy the last latent. Then $z_t=\varphi(b)=z_{t+1}$, so every prediction residual vanishes.
+The Gaussian marginal gives covariance $I_D$ and zero population regularizer. Both objective terms
+are nonnegative, so their sum is globally minimized at zero. Training-distribution independence
+gives $I(\varphi(b);p_{1:T})=0$.
+
+For deployment, draw nuisance $B$ and the controller's random seed $U$ at reset, independently of
+the initial state and transition randomness. Run the original controller in the environment with
+nuisance $B$. Let a state-blind policy with private seed $(B,U)$ feed constant latent history
+$\varphi(B)$ to a copy of that controller and reproduce its actions with $U$. Coupled to the same
+initial state and transition randomness, the policies take the same first action. If their actions
+agree through step $t$, their states, supplied latent histories, and seeds agree, so the next actions
+agree as well. Induction gives identical trajectories, returns, and terminations. This does not
+assume independence between $B$ and states subsequently influenced by its induced actions.
+\end{proof}
+
+\begin{corollary}[Innovation cost for uniformly state-resolving encoders]
+\label{cor:strict}
+Let $p_{t+1}=p_t+\mu(a_t)+w_t$, $\mathcal H_t=\sigma(p_{\le t},b,a_{\le t})$, and
+$\Sigma_t=\Cov(w_t\mid\mathcal H_t)$. Assume finite second moments of states and encoded observations,
+$x_t=R(p_t,b)$, fixed nuisance $b$, and
+$\|f(R(p,b))-f(R(p',b))\|\ge\kappa\|p-p'\|$ for all admissible $p,p',b$, with $\kappa>0$.
+Every predictor of latent and action history satisfies
+\begin{equation}
+\label{eq:innovation}
+\frac1D\E\|g-f(x_{t+1})\|^2\ge\frac{\kappa^2}{D}\E\tr\Sigma_t.
+\end{equation}
+When $\E\tr\Sigma_t>0$, this exceeds the nuisance encoder's zero prediction loss under the
+assumptions of Proposition~\ref{prop:representation}.
+\end{corollary}
+The assumption is stronger than injectivity or task sufficiency: every state distance must be
+preserved at a uniform scale. Innovation is measured after conditioning on state history and nuisance;
+persistent wind is not automatically fresh innovation.
+
+\paragraph{Corollary~\ref{cor:strict}.}
+\begin{proof}
+Put $Z=f(x_{t+1})$ and $\mathcal C_t=\sigma(z_{\le t},a_{\le t})$.
+Because observations and latents are measurable functions of state and nuisance, $\mathcal C_t\subseteq\mathcal H_t$.
+Any predictor using a shorter window is also $\mathcal C_t$-measurable.
+Conditional least squares and the tower property give
+\begin{align*}
+\E\|g-Z\|^2
+&\ge\E\|Z-\E[Z\mid\mathcal C_t]\|^2\\
+&=\E\|Z-\E[Z\mid\mathcal H_t]\|^2
+ +\E\|\E[Z\mid\mathcal H_t]-\E[Z\mid\mathcal C_t]\|^2\\
+&\ge\E\tr\Cov(Z\mid\mathcal H_t).
+\end{align*}
+The cross term vanishes because its first factor has conditional mean zero given $\mathcal H_t$.
+Take conditionally independent copies $P,P'$ of $p_{t+1}$ given $\mathcal H_t$.
+Such copies exist for Euclidean state spaces, using their regular conditional distributions.
+The nuisance $b$ and current state $p_t$ are fixed under this conditioning.
+The conditional independent-copy variance identity yields
+\begin{align*}
+\tr\Cov(Z\mid\mathcal H_t)
+&=\tfrac12\E[\|f(R(P,b))-f(R(P',b))\|^2\mid\mathcal H_t]\\
+&\ge\tfrac{\kappa^2}{2}\E[\|P-P'\|^2\mid\mathcal H_t]\\
+&=\kappa^2\tr\Cov(p_{t+1}\mid\mathcal H_t)
+=\kappa^2\tr\Sigma_t.
+\end{align*}
+The final equality follows because $p_t+\mu(a_t)$ is $\mathcal H_t$-measurable.
+Taking expectations and dividing by $D$ proves Equation~\ref{eq:innovation}.
+Averaging these inequalities gives the corresponding bound for a multi-time prediction objective.
+Proposition~\ref{prop:representation} supplies the zero-loss comparator when its assumptions also hold.
+\end{proof}
+
+\subsection{Conditional prediction and geometric scale}
+\begin{lemma}[Conditional mean]
+\label{lem:mean}
+For a fixed encoder and data law with $\E\|z'\|^2<\infty$, the unique squared-error minimizer
+over measurable square-integrable predictors from history $c$ and action $a$ is
+$m(c,a)=\E[z'\mid c,a]$, up to null sets.
+\end{lemma}
+\begin{proof}
+Let $m=\E[z'\mid c,a]$.
+For every square-integrable measurable $g(c,a)$, expand $g-z'=(g-m)+(m-z')$.
+The cross term has expectation zero since $\E[m-z'\mid c,a]=0$.
+Hence
+\[
+\E\|g-z'\|^2=\E\|g-m\|^2+\E\tr\Cov(z'\mid c,a).
+\]
+The second term does not depend on $g$.
+The first is nonnegative and vanishes exactly when $g=m$ almost surely.
+\end{proof}
+
+\paragraph{The finite-sample regularizer.}
+The finite-sample regularizer differs from Equation~\ref{eq:popsigreg}.
+For independent identically distributed samples with characteristic function $\phi$ and empirical estimate $\widehat\phi_n$,
+\begin{equation}
+\E|\widehat\phi_n(t)-w(t)|^2
+=|\phi(t)-w(t)|^2+\frac{1-|\phi(t)|^2}{n}.
+\end{equation}
+Indeed, $\E\widehat\phi_n=\phi$ and $\E|\widehat\phi_n-\phi|^2=(1-|\phi|^2)/n$, since each complex exponential has modulus one; expanding around $\phi$ gives the identity.
+At a Gaussian law, the residual equals $(1-e^{-t^2})/n$.
+This is estimator bias, not an optimization floor.
+Changing the law changes both terms; dependent temporal samples introduce additional covariance terms. The implementation multiplies this statistic by batch size $B$, so its Gaussian finite-batch bias does not shrink as $1/B$ after that scaling.
+Finite projections and knots also do not characterize Gaussianity.
+
+
+\paragraph{Proposition~\ref{prop:amplitude}.}
+\begin{proof}
+Partition $\R$ into $I_j=[2\varepsilon j,2\varepsilon(j+1))$, $j\in\mathbb Z$.
+Let $q_j=\Pr(G\in I_j)$ for $G\sim\Nrm(0,1)$.
+Every $q_j$ is positive and their sum is one.
+Let $F_j$ be the conditional Gaussian distribution function on $I_j$, with inverse quantile function $Q_j$ on $(0,1)$.
+The conditional CDF is continuous and strictly increasing on the interval interior, so its inverse is measurable and takes values in that interior.
+
+Draw $J$ with probabilities $q_j$, $U\sim\mathrm{Uniform}(0,1)$, and $V\sim\Nrm(0,I_{D-1})$, independently.
+Set $b=(J,U,V)$; for $D=1$, omit $V$.
+Take $R(p,b)=(p,b)$ and define
+\begin{equation}
+f_\varepsilon(R(p,b))=\big(Q_J((U+p)/2),V\big).
+\end{equation}
+The mixture $(U+p_t)/2$ is uniform on $(0,1)$, since $p_t$ is an independent fair bit.
+Conditional on $J=j$, the first coordinate therefore has the Gaussian law restricted to $I_j$.
+Mixing with weights $q_j$ recovers $\Nrm(0,1)$.
+Independence of $V$ gives the joint law $\Nrm(0,I_D)$ and zero population regularizer.
+
+Given the first coordinate $y$, its interval determines $J$ almost surely.
+Write $v=F_J(y)$.
+Then $p_t=\mathbf1\{v>1/2\}$ and $U=2v-p_t$ almost surely; the other coordinates recover $V$.
+Thus the latent recovers both state and nuisance.
+For fixed $b$, the two first coordinates are distinct and lie inside the same interval of width $2\varepsilon$.
+All remaining coordinates agree, proving the distance bound.
+
+Latent history reveals $b$, while the next bit remains independent and fair.
+The next latent consequently has two equiprobable values, say $z^{(0)}(b)$ and $z^{(1)}(b)$.
+Lemma~\ref{lem:mean} gives $m(b)=(z^{(0)}(b)+z^{(1)}(b))/2$.
+Its conditional squared error is $\|z^{(1)}(b)-z^{(0)}(b)\|^2/4$, strictly positive and bounded by $\varepsilon^2$.
+The midpoint is square-integrable by Jensen's inequality, since both state encodings have finite second moments.
+Taking expectations and dividing by $D$ proves the coordinate-mean loss bound, including strict positivity since the conditional error is positive almost surely.
+The midpoint depends only on $b$, so it is independent of $p_{t+1}$.
+Finally, decoding the current bit permits $a_t=p_t$.
+A state-blind action is independent of the current fair bit, giving success probability $1/2$.
+\end{proof}
+
+
+\section{The cube worlds}
+\label{app:cubes}
+
+The position-readout study crosses black, per-frame random, and per-episode random backgrounds
+with deterministic or hidden-wind dynamics. Color-noise and black-background datasets contain
+100,000 transitions; the gray-noise conditions contain 500,000. Only the four gray grid-JEPA
+conditions have three independent model initializations. Table~\ref{tab:cube-main} and
+Figure~\ref{fig:cube-readout} report that replicated comparison. Tables~\ref{tab:cube-readouts}
+and~\ref{tab:cube-flow} retain seed-0 outcomes for the broader conditions, using the same canonical
+benchmark files throughout. Differences across dataset sizes and model recipes are not isolated
+nuisance effects.
+
+\paragraph{Environment.}
+The scene contains a red $6\times6$ object in a $63\times63$ RGB image with a red boundary. Four
+cardinal actions move the object three pixels. Reset positions are uniformly sampled from integer
+coordinates in $[16,42]^2$, and initial wind is zero. In wind conditions, each wind coordinate
+independently increments by $-1$, $0$, or $1$ with probabilities $0.1$, $0.8$, and $0.1$, clipped
+to $[-2,2]$; the updated wind is added to the action displacement. Background pixels are uniform
+integers from 0 to 255; gray noise shares the same sample across RGB channels. Contact with the
+boundary gives reward $-1$ and terminates; other rewards are zero, with a 128-step cap.
+
+\paragraph{Read-out fitting.}
+The nonlinear latent position probe is fitted on training data and evaluated on independent
+\texttt{eval.npz} frames. Its spatial softmax-and-offset output is produced by two hidden layers of width 128, trained for
+10,000 updates with batch 2,048 and Adam at initial learning rate $10^{-3}$ with cosine decay.
+Grid inputs are standardized using training statistics. For class-token inputs, standardization and
+PCA whitening are selected using the final 10\% of fitting rows, then the chosen variant is refitted
+on the full fitting split. Whitening floors singular values at 1\% of the largest.
+Applying this read-out
+to predicted latents tests both prediction and read-out extrapolation. The pixel read-out used for
+decoded flow images is a separate supervised CNN trained with synthetic background replacement
+using ground-truth cube masks; it is a diagnostic, not a policy or a world-model training signal.
+Rollout windows are sampled with replacement and overlap, and exclude death or reset during the
+eight context and 16 forecast frames. The configured benchmark uses 2,048 windows for video metrics
+and the first 512 for position diagnostics; exact sampled indices were not retained in the archived
+result files. Surviving windows are a selected subset of wind trajectories, so these errors do not
+establish death prediction or closed-loop control.
+
+
+
+\begin{table}[t]
+\centering
+\caption{Seed-0 cube position L1 error (pixels) for the grid and class-token JEPAs. ``Real'' evaluates
+held-out encoded frames; ``Pred. 8'' evaluates the same read-out on eight-step predicted latents.
+Gray conditions use more training transitions than black and color conditions.}
+\label{tab:cube-readouts}
+\inputtable{cube_readouts.tex}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Seed-0 flow cube position L1 error (pixels). Latent and pixel columns use different
+supervised read-outs. The persistent-color failure is visible before dynamics: real encoded position
+has large error. These are model-recipe references rather than objective-only comparisons.}
+\label{tab:cube-flow}
+\inputtable{cube_flow.tex}
+\end{table}
+
+Earlier controller experiments use the three black/color background conditions. Their final
+survival outcomes are retained below. The class-token JEPA's near-zero loss on per-episode texture
+and poor reward-driven control are consistent with the known predictable-nuisance mechanism,
+without exactly realizing Proposition~\ref{prop:representation}. The replicated gray-frame/wind
+failure instead has high prediction loss and should not be interpreted as the same mechanism.
+Still-world survival can be achieved by state-blind alternating actions, so it does not certify
+state feedback.
+
+\begin{table}[ht]
+\centering
+\caption{Survival (percent) in the supplementary cube worlds. ``LeWM'' denotes the class-token JEPA;
+``grid'' denotes the grid JEPA; ``goal'' and ``heads'' use latent-goal and learned-return search,
+respectively. PPO columns use the final saved policies; ``px'' and ``z'' identify pixel and latent
+observations. Still-world survival does not certify state feedback.}
+\label{tab:cube}
+\inputtable{cube.tex}
+\end{table}
+
+\clearpage
+\section{Hyperparameters and compute}
+\label{app:hparams}
+
+The gate and gray-noise cube conditions supply $500{,}000$ uniform-random transitions each. The earlier black and color-noise cube datasets contain $100{,}000$ transitions. Craftax uses its separate $500{,}000$-transition archive. Model training uses bfloat16 compute,
+float32 parameters, and one A100. A $500$-step calibration estimates the training length fitting
+$575$ seconds including compilation; the grid gate model trains for $8{,}500$ steps ($17{,}000$ and $34{,}000$ in the earlier budget extensions of Appendix~\ref{app:historical-gate}), the class-token cube models for $23{,}750$--$24{,}000$.
+Model seeds $0$, $1$, $2$ of the grid JEPA differ only in the initialisation and data-order seed.
+
+\paragraph{JEPA settings.}
+Both JEPA architectures use batch $128$ and AdamW with learning rate and weight decay $10^{-3}$, $10\%$ warm-up
+followed by cosine decay to zero, and gradient clipping at $1.0$. SIGReg uses weight $0.09$, $17$
+knots on $[0,3]$, and $1024$ random projections. Neither architecture uses a stop-gradient, teacher, decoder, or
+reward during world-model fitting. Linear--BatchNorm--GELU--linear projection heads flatten batch, time, and spatial tokens for normalization. Training-mode statistics therefore couple examples and temporal positions; at inference, running statistics define a fixed pointwise projection and the attention predictor is causal. The theoretical causal-map formulation is an inference/population idealization.
+
+\begin{center}
+{
+\begin{tabular}{lll}
+\toprule
+& Class-token JEPA & Grid JEPA \\
+\midrule
+encoder            & ViT, $7\times7$ patches           & tile transformer $+$ conv \\
+width / depth / heads & $192$ / $6$ / $3$              & $128$ / $6$ / $8$ \\
+encoder MLP        & $768$                              & $4\times$ width \\
+read-out           & class token                        & $4\times4$ grid, $32$ channels \\
+latent dimension   & $192$                              & $512$ \\
+projector          & BN projector, width $2048$      & same, hidden $512$ \\
+predictor          & AdaLN-zero AR          & spatial + causal temporal \\
+predictor depth / heads / dim & $6$ / $16$ / $64$  & $6$ / $8$ / $32$ \\
+predictor MLP / width & $2048$ / latent                 & $2\times$ width / $256$ \\
+history            & $3$ frames                         & $8$ frames \\
+dropout            & $0.1$                              & $0$ \\
+parameters         & $15.3$M                            & $2.6$M $+$ $8.3$M \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\paragraph{Flow settings.}
+The tokenizer uses $9{,}000$ steps, batch $256$, and learning rate $9\times10^{-4}$; dynamics
+$16{,}000$ steps, batch $64$, the same learning rate, width $256$, six layers, eight spatial and
+temporal attention heads, a $32$-frame context, independent per-frame noise levels, a shortcut loss of
+weight $0.25$ every fourth step after the first quarter of training, history dropout $0.25$, two
+history frames resampled every eight steps after half of training, and a temporal loss weight of
+$0.25$. The symlog reward head has $255$ bins over $[-20,20]$; reward and termination losses have
+weight $0.1$ and enter the trunk at full strength for half of training, then at factor $0.1$.
+Inference uses four function evaluations per frame. We corrected terminal-transition masking in the
+recipe's reward loss (Appendix~\ref{app:rewardbug}).
+
+\paragraph{JEPA read-outs.}
+Gate post-hoc heads use the frozen encoder and the first $800$ time rows ($80{,}000$ frames) of the same archive used for world-model training. The following $200$ time rows are held out from head fitting only; the independent world-model evaluation archive is \texttt{eval.npz}. The pixel decoder uses $8{,}000$ steps, batch $256$, learning
+rate $10^{-3}$, width $256$, six residual blocks; it supports the figures and the decoded-latent control, in which its frozen output, clipped to $[0,255]$, replaces the pixels of the real-gate PPO; no true pixel enters that policy after the encoder. Reward,
+termination, and behaviour-value heads are two-layer perceptrons of width $512$ on the latent and the
+one-hot action, $6{,}000$ steps, batch $1024$, learning rate $10^{-3}$, Monte Carlo value targets at
+discount $0.99$, value loss weight $0.1$. The residual predictor models $z_{t+1}-m$ with
+$m=g(z_{t-7:t},a_{t-7:t})$ the original grid prediction, conditioned on $m$, $z_t$, and the action:
+three residual blocks of width $1024$, $8{,}000$ steps, and batch $2048$. The final 20,000 valid
+windows of the same world-model training archive are excluded from residual fitting and used for
+its quality check. They are not independent world-model evaluation data. For encoder seed 0,
+coordinate-mean MSE is $3.07\times10^{-4}$ for the original predictor, $2.05\times10^{-4}$ for one
+residual sample, and $1.32\times10^{-4}$ for the mean of eight. This quality check uses eight function
+evaluations per sample; the reported PPO runs instead use four. Averaging eight learned samples is
+a random Monte Carlo average, not an exact conditional mean.
+
+\paragraph{Policy optimisation.}
+PPO uses discount $0.99$, GAE parameter $0.9$, clipping $0.2$, value coefficient $0.5$, entropy
+coefficient $0.01$, AdamW at $2.5\times10^{-4}$ with weight decay $0.01$, four epochs per batch, and
+gradient clipping at $1.0$. Pixels pass through a three-block Impala torso \citep{espeholt2018impala}, latents through a two-layer
+perceptron; a GRU receives that embedding and the previous action; the critic uses $64$ categorical
+bins with histogram-Gaussian targets \citep{farebrother2024stopregressing}. Real-environment PPO uses $128$ environments and $64$ steps per
+iteration with four minibatch groups, truncated backpropagation over $16$ steps, and $1.5$M
+environment steps. In-model PPO uses $150$ updates of $512$ trajectories of $16$ steps ($1.2$M
+imagined steps) with minibatch size $128$; half of the starts are resets, half dataset states with
+their real eight-frame context. All reported policy rows use final checkpoints.
+
+\paragraph{Compute.} On a shared A100, the seed-0 grid-gate JEPA completes 8,500 updates in
+573 seconds and has a logged total of 586.5 seconds. Probe and head fitting takes approximately
+three minutes. The residual sampler's optimization stage takes 74.3 seconds; model loading, latent
+extraction, fitting, and quality evaluation together take 275.2 seconds before the final file write.
+Other logged stages are PPO inside the JEPA $2.0$--$4.3$ min per run; PPO inside the flow model
+$5$--$6$ min per run at four function evaluations, $20$--$26$ min with the mean of eight; PPO in the real environment $3.7$--$7.7$ min on pixels with the convolutional torso and $51$--$70$ s with the MLP torso, $76$--$78$ s on the frozen latent, $4.7$--$4.8$ min on the decoded latent with the convolutional torso and $1.8$--$2.9$ min with the MLP torso; the latent diagnostic: $2$ min.
+
+\section{Evaluation protocol}
+\label{app:protocol}
+
+Every gate-policy endpoint uses the final checkpoint and $256$ real episodes from reset, with the
+$128$-step cap. Survival is the fraction still alive after step 128; death on that step is not
+survival. Walls passed counts wall exits before or on the terminal transition, including an exit
+on the same step as death. Discovery is final survival strictly above $50\%$.
+Real-training and imagined-training runs advance their random keys under different iteration schedules; their final evaluations are not paired episode trials. Policy seeds are separate
+runs conditional on a fitted model; independently fitted encoders provide a different replication
+level. The flow model has only one checkpoint. Reported means weight policy runs equally;
+standard deviations describe variation across those runs, not uncertainty across model families.
+
+\paragraph{Gate specification.}
+The gate uses the same image and object sizes and cardinal action displacement. A white vertical
+wall of width three pixels spawns at $x=60$ every 22 steps and moves left three pixels per step.
+Its 16-pixel gap is sampled at spawn, top or bottom with equal probability, and becomes visible
+when the wall reaches $x\le40$. The gap location is hidden state before that reveal. Border or wall
+contact produces reward $-1$ and termination; the time cap is 128 steps.
+
+\paragraph{Latent diagnostic.} For each encoder, the diagnostic uses $64$ real contexts with the
+wall still solid at $x\in\{42,45\}$. Reconstructed simulator states generate recorded futures and
+matched wall-free futures under the recorded actions. The recorded branch survives the diagnostic
+horizon by construction. At each step, wall amplitude is the squared Euclidean distance between
+encodings of the wall-present and wall-absent frames. The teacher-forced residual uses real encoded
+history and is a total squared error, summed over latent coordinates.
+The wall coordinate of a prediction is its projection onto the wall-present minus wall-absent
+latent difference, with endpoints $0$ and $1$. Decoded wall intensity averages the minimum colour
+channel on shared wall pixels, excluding either possible gap band. These measurements compare
+features within one encoder; raw distances across models are not an information metric.
+
+\section{Latent-policy torso controls}
+\label{app:latentctl}
+
+The MLP on decoded latents passes $0.92$ walls per episode with no discoveries in six runs
+(Table~\ref{tab:latentctl}), using encoders $0$ and $1$. The decoded CNN control instead uses all
+three encoders, with three policies per encoder. Both of its discoveries use encoder $1$.
+The decoder is frozen and reconstruction-supervised; success therefore establishes useful encoded
+information under this added read-out, not sufficiency of the unsupervised training objective.
+Failure of the true-pixel MLP recipe establishes no upper bound on MLP capacity.
+
+\begin{table}[ht]
+\centering
+\caption{Real-gate observation and torso controls: final walls per episode and survival, mean
+$\pm$ standard deviation over policies; discovery means final survival above $50\%$.
+All policies use $1{,}499{,}136$ real transitions.}
+\label{tab:latentctl}
+\inputtable{latentctl.tex}
+\end{table}
+
+\section{Control outcomes and latent diagnostics}
+\label{app:round2}
+
+Table~\ref{tab:paired} gives aggregate final outcomes; Table~\ref{tab:seeds} lists every
+imagined JEPA policy. The pooled imagined JEPA mean weights all original, sampled-residual and
+mean-residual runs equally. The flow rows distinguish six sampled policies from three policies
+using a mean of eight, all sharing the same model fit. They do not estimate variation across
+independent flow-model fits. Tables~\ref{tab:seeddiag} and \ref{tab:latent} retain the encoder
+and geometry diagnostics supporting the gate observations.
+
+\begin{figure}[t]
+\centering
+\paperfig{control_by_seed.pdf}{1.0}
+\caption{\textbf{Control outcomes by model fit and predictor variant.} Each point is a final policy
+evaluated on 256 real episodes. Original prediction, residual sampling, and residual means are
+separate conditions; model and policy replication are distinct. Horizontal bars show within-model means,
+and the dashed line marks random actions. The flow reference uses one checkpoint.}
+\label{fig:control}
+\end{figure}
+
+\begin{table}[ht]
+\centering
+\caption{Final control outcomes in the real gate, mean $\pm$ standard deviation over policy runs.
+Imagined training uses $1{,}228{,}800$ transitions per policy; real training uses $1{,}499{,}136$.
+Model-fit counts and policy-run counts identify distinct replication levels.}
+\label{tab:paired}
+\inputtable{paired.tex}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Every imagined JEPA policy at its final checkpoint: survival (percent) and walls per
+episode by encoder seed, predictor variant and PPO seed. Each cell uses $256$ real episodes.}
+\label{tab:seeds}
+\inputtable{seeds.tex}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Grid-JEPA diagnostics by encoder seed. Wall amplitude and total teacher-forced residual
+are squared distances at future steps $1$ and $8$; decoded intensity uses steps $1$ and $2$.
+The wall coordinate has endpoints $0$ (wall absent) and $1$ (true encoding).
+Head AUC compares each death cause with alive transitions; PPO wall counts pool predictor variants.}
+\label{tab:seeddiag}
+\inputtable{seeddiag.tex}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{JEPA geometry and decoded wall intensity for model seed $0$, averaged over $64$
+pre-reveal contexts. Distances use matched actions and the same encoder; total residuals include
+all latent coordinates. Wall intensity is measured on shared wall pixels.}
+\label{tab:latent}
+\inputtable{latent.tex}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\paperfig{geometry_by_seed.pdf}{1.0}
+\caption{\textbf{Within-encoder scale diagnostics.} For each of the three gate encoders, wall-removal
+distance and teacher-forced total one-step residual are summed squared latent distances. Curves
+average 64 pre-reveal contexts whose recorded futures survive the diagnostic horizon. These are
+feature sensitivity and total prediction error, not commensurate measures of information content.}
+\label{fig:geometry}
+\end{figure}
+
+\clearpage
+\section{Terminal rewards in the flow recipe}
+\label{app:rewardbug}
+
+The original recipe masks transitions entering reset frames out of reward training. Here the only
+nonzero reward occurs on terminal transitions, so that mask removes the reward signal.
+The corrected head predicts the next reward from the current frame summary and action with
+terminal transitions retained in its loss. The reported flow-policy outcomes use this corrected
+convention. The single-checkpoint reference therefore denotes the complete tokenizer, dynamics,
+reward and termination package, rather than an isolated change in transition stochasticity.
+
+
+\section{Craftax protocols and single-checkpoint results}
+\label{app:craftax}
+
+
+\subsection{Fresh local-goal evaluation}
+The new evaluation uses the same existing 512-dimensional checkpoint, model seed 0, with 128 starts
+for each evaluation seed 101, 202, and 303. Goal generation and real execution have separate
+pseudorandom streams; all controllers share initial states and the execution stream. The target is
+the endpoint after six random actions, following seven warm-up actions from reset. The objective is
+final player-position equality with survival throughout the six executed actions. Every evaluated
+trajectory survives, so the survival requirement does not alter the measured rates. The target
+position displacements are zero, one, two, or three grid cells in 137, 148, 84, and 15 cases,
+respectively.
+
+The open-loop planner solves once at horizon six. Receding-horizon planning receives each real
+observation, executes the first selected action, and replans over the remaining horizons
+$6,5,4,3,2,1$. Every CEM solve uses 512 candidate sequences, 32 elites, and six iterations. Thus
+receding planning uses six times as many candidate-sequence searches and 3.5 times as many predicted
+latent transitions as one-shot planning, excluding additional encoding. It is not a compute-matched
+feedback intervention. Both controllers use terminal latent MSE and the native 17 actions, without
+reward heads, decoder use, latent rescaling, or privileged coordinates in the planning cost.
+
+\begin{table}[ht]
+\centering
+\caption{Craftax goal-success counts and Wilson 95\% intervals, conditional on one fitted model.
+The reference replays the privileged sequence used to generate the goal under independent execution
+noise; it is a protocol check, not an oracle or a guaranteed upper bound.}
+\label{tab:craftax-counts}
+\begin{tabular}{lrrr}
+\toprule
+Controller & Success / total & Rate (\%) & Wilson interval (\%) \\
+\midrule
+No-op & $137/384$ & $35.68$ & $[31.05,40.59]$ \\
+Random & $65/384$ & $16.93$ & $[13.51,21.00]$ \\
+JEPA open loop & $358/384$ & $93.23$ & $[90.26,95.34]$ \\
+JEPA receding horizon & $369/384$ & $96.09$ & $[93.66,97.62]$ \\
+Reference-action replay & $382/384$ & $99.48$ & $[98.12,99.86]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Open-loop and receding-horizon success on displaced targets is $222/247$ and $232/247$; for
+displacements of at least two cells it is $80/99$ and $87/99$. Random actions reach $19/247$ and
+$1/99$ in these strata, while no-op reaches neither. Mean endpoint position L1 errors are $0.1068$
+open loop, $0.0781$ receding horizon, $1.5599$ random, and $0.9401$ no-op, in grid-cell units.
+Receding-horizon success exceeds open loop by 2.86 percentage points; a paired episode bootstrap
+with 10,000 resamples gives $[0.78,4.95]$ percentage points. All intervals quantify evaluation
+variation for this fixed checkpoint. The three evaluation seeds are not training replications.
+
+\begin{table}[ht]
+\centering
+\caption{Craftax success by target displacement. The first column includes all 384 starts; the
+others retain 247 displaced targets and 99 targets at least two grid cells away.}
+\label{tab:craftax}
+\inputtable{craftax.tex}
+\end{table}
+
+\subsection{Earlier exploratory goal and reward protocols}
+The earlier results below use different evaluation episodes and a shared goal-generation/execution
+noise protocol. They are not pooled with the fresh independent-noise evaluation above.
+
+The grid checkpoint uses training seed 0, a tile encoder, $16\times32=512$ latent coordinates,
+a six-layer factored predictor of width 256, history length eight, 17 actions, batch 128, and
+8,500 updates. The recorded parameter count is 11.12 million. Training takes 604.5 seconds from
+loading through the logged end-to-end timer (578.5 seconds in the update loop); thus it is an
+approximately ten-minute run, not a strict sub-600-second result. The frozen decoder and heads add
+175.6 seconds. Results are from one model fit and evaluation seed 0.
+
+\paragraph{Goal generation and planning.}
+Reset states receive seven random warm-up actions. Six further random actions generate a reachable
+goal image. CEM optimizes a length-six action sequence in latent space, with population 512,
+32 elites, and six iterations. The learned planner uses the goal image, without privileged position
+coordinates or the generating actions in its cost. It executes the entire selected sequence without
+observation feedback. Success is equality of final player positions. Goal generation, random actions,
+and the selected plan use the same future simulator random keys; replaying the generating actions
+therefore reaches all goals and serves only as a protocol check. This protocol samples nearby
+reachable goals, not arbitrary distant tasks.
+
+The planned endpoint position L1 error is $0.0781$, against $1.5313$ for random actions. Pixel MSE
+on the 0--255 scale is $104.00$ versus $1477.92$. These quantities use the same 128 starts as the
+reported $121/128$ versus $24/128$ reach counts. They do not quantify variation across fitted models.
+
+\paragraph{Reward control and head generalization.}
+Reward and value heads use the first 80,000 transitions (320 time rows across 250 streams) from the
+world-model training archive. Held-out time rows are excluded from head fitting but not from encoder
+training. Value fitting uses the first 80 time rows owing to truncated-return handling. Reward and
+value fitting correlations are $0.922$ and $0.995$; held-out correlations are $0.353$ and $0.266$.
+Held-out reward RMSE is $0.222$. Mean predicted held-out value is $2.356$, versus mean empirical
+discounted return $1.348$.
+
+Reward evaluation uses 128 starts, 100 steps, no autoreset, and rewards accumulated while alive.
+The CEM controller executes one action and replans from each real observation. Random actions,
+myopic fitted-reward argmax, one predicted step plus value, and CEM obtain returns
+$1.4453$, $0.7813$, $0.9438$, and $0.4734$, respectively; their across-start standard deviations
+are $1.0897$, $1.1109$, $1.2014$, and $1.1039$. Fractions alive at the end are $0.6328$, $0.7266$,
+$0.6328$, and $0.6719$. Aggregate summaries do not preserve the per-start covariance needed for
+paired confidence intervals. The archive's mean reward multiplied by 100 is not an online behavior
+baseline and is excluded from the comparison.
+
+Earlier Craftax experiments used a different $81\times32$ spatial latent and different horizons.
+They are not merged with these 512-dimensional results. There is no matched online flow-controller
+comparison for this checkpoint.

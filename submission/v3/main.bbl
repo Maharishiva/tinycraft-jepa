@@ -1,0 +1,231 @@
+\begin{thebibliography}{31}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Alonso et~al.(2024)Alonso, Jelley, Micheli, Kanervisto, Storkey,
+  Pearce, and Fleuret]{alonso2024diamond}
+Eloi Alonso, Adam Jelley, Vincent Micheli, Anssi Kanervisto, Amos Storkey, Tim
+  Pearce, and Fran{\c c}ois Fleuret.
+\newblock Diffusion for world modeling: Visual details matter in atari.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2024.
+
+\bibitem[Assran et~al.(2023)Assran, Duval, Misra, Bojanowski, Vincent, Rabbat,
+  LeCun, and Ballas]{assran2023ijepa}
+Mahmoud Assran, Quentin Duval, Ishan Misra, Piotr Bojanowski, Pascal Vincent,
+  Michael Rabbat, Yann LeCun, and Nicolas Ballas.
+\newblock Self-supervised learning from images with a joint-embedding
+  predictive architecture.
+\newblock In \emph{IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, 2023.
+
+\bibitem[Assran et~al.(2025)Assran, Bardes, Fan, Garrido, Howes, Komeili,
+  Muckley, Rizvi, Roberts, Sinha, Zholus, and Ballas]{assran2025vjepa2}
+Mahmoud Assran, Adrien Bardes, David Fan, Quentin Garrido, Russell Howes,
+  Mojtaba Komeili, Matthew Muckley, Ammar Rizvi, Claire Roberts, Koustuv Sinha,
+  Artem Zholus, and Nicolas Ballas.
+\newblock {V-JEPA} 2: Self-supervised video models enable understanding,
+  prediction and planning, 2025.
+
+\bibitem[Bagatella et~al.(2026)Bagatella, Pirotta, Touati, Lazaric, and
+  Tirinzoni]{bagatella2026tdjepa}
+Marco Bagatella, Matteo Pirotta, Ahmed Touati, Alessandro Lazaric, and Andrea
+  Tirinzoni.
+\newblock {TD-JEPA}: Latent-predictive representations for zero-shot
+  reinforcement learning.
+\newblock In \emph{International Conference on Learning Representations}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2510.00739}.
+
+\bibitem[Bai \& Xiong(2026)Bai and Xiong]{bai2026temporal}
+Jiaxin Bai and Jiaxuan Xiong.
+\newblock Temporal-distance {JEPA}: Plan-aware representation learning for
+  latent world model predictive control, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.25337}.
+
+\bibitem[Balestriero \& LeCun(2025)Balestriero and
+  LeCun]{balestriero2025lejepa}
+Randall Balestriero and Yann LeCun.
+\newblock {LeJEPA}: Provable and scalable self-supervised learning without the
+  heuristics, 2025.
+
+\bibitem[Bardes et~al.(2024)Bardes, Garrido, Ponce, Chen, Rabbat, LeCun,
+  Assran, and Ballas]{bardes2024vjepa}
+Adrien Bardes, Quentin Garrido, Jean Ponce, Xinlei Chen, Michael Rabbat, Yann
+  LeCun, Mahmoud Assran, and Nicolas Ballas.
+\newblock Revisiting feature prediction for learning visual representations
+  from video, 2024.
+
+\bibitem[Chen et~al.(2024)Chen, Mons{\'o}, Du, Simchowitz, Tedrake, and
+  Sitzmann]{chen2024diffusionforcing}
+Boyuan Chen, Diego~Mart{\'i} Mons{\'o}, Yilun Du, Max Simchowitz, Russ Tedrake,
+  and Vincent Sitzmann.
+\newblock Diffusion forcing: Next-token prediction meets full-sequence
+  diffusion.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2024.
+
+\bibitem[Espeholt et~al.(2018)Espeholt, Soyer, Munos, Simonyan, Mnih, Ward,
+  Doron, Firoiu, Harley, Dunning, Legg, and Kavukcuoglu]{espeholt2018impala}
+Lasse Espeholt, Hubert Soyer, Remi Munos, Karen Simonyan, Volodymyr Mnih, Tom
+  Ward, Yotam Doron, Vlad Firoiu, Tim Harley, Iain Dunning, Shane Legg, and
+  Koray Kavukcuoglu.
+\newblock {IMPALA}: Scalable distributed deep-{RL} with importance weighted
+  actor-learner architectures.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2018.
+
+\bibitem[Farahmand et~al.(2017)Farahmand, Barreto, and
+  Nikovski]{farahmand2017vaml}
+Amir-massoud Farahmand, Andre Barreto, and Daniel Nikovski.
+\newblock Value-aware loss function for model-based reinforcement learning.
+\newblock In \emph{Proceedings of the 20th International Conference on
+  Artificial Intelligence and Statistics (AISTATS)}, pp.\  1486--1494, 2017.
+
+\bibitem[Farebrother et~al.(2024)Farebrother, Orbay, Vuong, Taiga, Chebotar,
+  Xiao, Irpan, Levine, Castro, Faust, Kumar, and
+  Agarwal]{farebrother2024stopregressing}
+Jesse Farebrother, Jordi Orbay, Quan Vuong, Adrien~Ali Taiga, Yevgen Chebotar,
+  Ted Xiao, Alexander Irpan, Sergey Levine, Pablo~Samuel Castro, Aleksandra
+  Faust, Aviral Kumar, and Rishabh Agarwal.
+\newblock Stop regressing: Training value functions via classification for
+  scalable deep reinforcement learning.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
+
+\bibitem[Grimm et~al.(2020)Grimm, Barreto, Singh, and Silver]{grimm2020value}
+Christopher Grimm, Andr{\'e} Barreto, Satinder Singh, and David Silver.
+\newblock The value equivalence principle for model-based reinforcement
+  learning.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2020.
+
+\bibitem[Grimm et~al.(2021)Grimm, Barreto, Farquhar, Silver, and
+  Singh]{grimm2021proper}
+Christopher Grimm, Andr{\'e} Barreto, Gregory Farquhar, David Silver, and
+  Satinder Singh.
+\newblock Proper value equivalence.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~34, pp.\  7773--7786, 2021.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2021/file/400e5e6a7ce0c754f281525fae75a873-Paper.pdf}.
+
+\bibitem[Gulati \& Nemenman(2026)Gulati and Nemenman]{gulati2026contrast}
+Paarth Gulati and Ilya Nemenman.
+\newblock Contrast encodes inductive bias: Separating slow noise from dynamics
+  in predictive representation learning, 2026.
+\newblock URL \url{https://arxiv.org/abs/2606.07770}.
+
+\bibitem[Hafner et~al.(2020)Hafner, Lillicrap, Ba, and
+  Norouzi]{hafner2020dreamer}
+Danijar Hafner, Timothy Lillicrap, Jimmy Ba, and Mohammad Norouzi.
+\newblock Dream to control: Learning behaviors by latent imagination.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2020.
+
+\bibitem[Hafner et~al.(2025)Hafner, Yan, and Lillicrap]{hafner2025dreamer4}
+Danijar Hafner, Wilson Yan, and Timothy Lillicrap.
+\newblock Training agents inside of scalable world models, 2025.
+
+\bibitem[Hansen \& Wang(2026)Hansen and Wang]{hansen2026hallucination}
+Nicklas Hansen and Xiaolong Wang.
+\newblock Hallucination in world models is predictable and preventable, 2026.
+\newblock URL \url{https://arxiv.org/abs/2606.27326}.
+
+\bibitem[Lambert et~al.(2020)Lambert, Amos, Yadan, and
+  Calandra]{lambert2020objective}
+Nathan Lambert, Brandon Amos, Omry Yadan, and Roberto Calandra.
+\newblock Objective mismatch in model-based reinforcement learning.
+\newblock In \emph{Conference on Learning for Dynamics and Control (L4DC)},
+  2020.
+
+\bibitem[LeCun(2022)]{lecun2022path}
+Yann LeCun.
+\newblock A path towards autonomous machine intelligence, 2022.
+\newblock Version 0.9.2, OpenReview.
+
+\bibitem[Li et~al.(2026)Li, Li, Maeda, Ogawa, and Haseyama]{li2026rcaux}
+Wenyuan Li, Guang Li, Keisuke Maeda, Takahiro Ogawa, and Miki Haseyama.
+\newblock Predictive but not plannable: {RC-aux} for latent world models, 2026.
+\newblock URL \url{https://arxiv.org/abs/2605.07278}.
+
+\bibitem[Lipman et~al.(2023)Lipman, Chen, Ben-Hamu, Nickel, and
+  Le]{lipman2023flowmatching}
+Yaron Lipman, Ricky T.~Q. Chen, Heli Ben-Hamu, Maximilian Nickel, and Matt Le.
+\newblock Flow matching for generative modeling.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2023.
+
+\bibitem[Liu et~al.(2026)Liu, Huang, Liang, and Gao]{liu2026physicallygrounded}
+Muyuan Liu, Yue Huang, Zheng Liang, and Xiang Gao.
+\newblock Toward physically grounded {JEPA} world models for goal-conditioned
+  robotic planning, 2026.
+\newblock URL \url{https://arxiv.org/abs/2609.03565}.
+\newblock IROS 2026 Workshop on Physical World Models for Scaling Embodied AI.
+
+\bibitem[Maes et~al.(2026)Maes, Le~Lidec, Scieur, LeCun, and
+  Balestriero]{maes2026lewm}
+Lucas Maes, Quentin Le~Lidec, Damien Scieur, Yann LeCun, and Randall
+  Balestriero.
+\newblock {LeWorldModel}: Stable end-to-end joint-embedding predictive
+  architecture from pixels, 2026.
+
+\bibitem[Matthews et~al.(2024)Matthews, Beukman, Ellis, Samvelyan, Jackson,
+  Coward, and Foerster]{matthews2024craftax}
+Michael Matthews, Michael Beukman, Benjamin Ellis, Mikayel Samvelyan, Matthew
+  Jackson, Samuel Coward, and Jakob Foerster.
+\newblock Craftax: A lightning-fast benchmark for open-ended reinforcement
+  learning.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
+
+\bibitem[Porcher et~al.(2026)Porcher, Carion, Alahari, and
+  Chen]{porcher2026flowwm}
+Fran{\c{c}}ois Porcher, Nicolas Carion, Karteek Alahari, and Shizhe Chen.
+\newblock Flow matching in feature space for stochastic world modeling, 2026.
+\newblock URL \url{https://arxiv.org/pdf/2606.29059v2}.
+
+\bibitem[Sobal et~al.(2022)Sobal, {Jyothir S V}, Jalagam, Carion, Cho, and
+  LeCun]{sobal2022slow}
+Vlad Sobal, {Jyothir S V}, Siddhartha Jalagam, Nicolas Carion, Kyunghyun Cho,
+  and Yann LeCun.
+\newblock Joint embedding predictive architectures focus on slow features,
+  2022.
+\newblock URL \url{https://arxiv.org/abs/2211.10831}.
+
+\bibitem[Sobal et~al.(2025)Sobal, Zhang, Cho, Balestriero, Rudner, and
+  LeCun]{sobal2025pldm}
+Vlad Sobal, Wancong Zhang, Kyunghyun Cho, Randall Balestriero, Tim G.~J.
+  Rudner, and Yann LeCun.
+\newblock Learning from reward-free offline data: A case for planning with
+  latent dynamics models, 2025.
+
+\bibitem[Terver et~al.(2026)Terver, Yang, Ponce, Bardes, and
+  LeCun]{terver2026planning}
+Basile Terver, Tsung-Yen Yang, Jean Ponce, Adrien Bardes, and Yann LeCun.
+\newblock What drives success in physical planning with joint-embedding
+  predictive world models?
+\newblock \emph{Transactions on Machine Learning Research}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2512.24497}.
+
+\bibitem[Wan et~al.(2019)Wan, Zaheer, White, White, and
+  Sutton]{wan2019expectation}
+Yi~Wan, Muhammad Zaheer, Adam White, Martha White, and Richard~S. Sutton.
+\newblock Planning with expectation models.
+\newblock In \emph{Proceedings of the Twenty-Eighth International Joint
+  Conference on Artificial Intelligence (IJCAI)}, pp.\  3649--3655, 2019.
+
+\bibitem[Yan et~al.(2026)Yan, Zhu, Jia, Yin, He, Zhong, Li, Lu, Li, Zhang,
+  Chen, Song, Chen, Gao, and Li]{yan2026psgjepa}
+Haodong Yan, Jiaguan Zhu, Mingyuan Jia, Ruiqing Yin, Junjie He, Zhide Zhong,
+  Junfeng Li, Jinxuan Lu, Hengtao Li, Tianran Zhang, Jiayi Chen, Wenxuan Song,
+  Wen Chen, Yuxiang Gao, and Haoang Li.
+\newblock Is forward prediction enough? physical state grounding for {JEPA}
+  world models, 2026.
+\newblock URL \url{https://arxiv.org/abs/2608.06799}.
+
+\bibitem[Zhou et~al.(2024)Zhou, Pan, LeCun, and Pinto]{zhou2024dinowm}
+Gaoyue Zhou, Hengkai Pan, Yann LeCun, and Lerrel Pinto.
+\newblock {DINO-WM}: World models on pre-trained visual features enable
+  zero-shot planning, 2024.
+
+\end{thebibliography}

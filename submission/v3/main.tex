@@ -1,0 +1,79 @@
+% V3: narrative rewrite of the V2 working draft. See ../../NARRATIVE.md for the claim this text serves.
+\documentclass{article}
+\usepackage{iclr2027_conference,times}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,multirow,array}
+\usepackage{graphicx,placeins}
+\usepackage{xcolor,colortbl}
+\usepackage{url,microtype,hyperref}
+\hypersetup{hidelinks}
+
+\definecolor{Navy}{HTML}{17324D}
+\definecolor{JEPA}{HTML}{CD663E}
+\definecolor{Real}{HTML}{087E83}
+\definecolor{Flow}{HTML}{7860A5}
+\newcommand{\inputtable}[1]{\input{tables/#1}}
+% New figures live in figures/; figures inherited from V2 stay in ../shared-v2/figures/.
+\newcommand{\paperfig}[2]{\IfFileExists{figures/#1}{\includegraphics[width=#2\linewidth,clip]{figures/#1}}{\IfFileExists{../shared-v2/figures/#1}{\includegraphics[width=#2\linewidth,clip]{../shared-v2/figures/#1}}{\fbox{\parbox[c][1.4in][c]{0.95\linewidth}{\centering Figure asset: #1}}}}}
+\newif\ifpendingresults
+\pendingresultstrue
+\newcommand{\pendingresult}[1]{\ifpendingresults\par\noindent\fcolorbox{Navy!30}{Navy!4}{\parbox{0.94\linewidth}{\textbf{Internal draft: result pending.} #1}}\par\fi}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Nrm}{\mathcal{N}}
+\newcommand{\Lcal}{\mathcal{L}}
+
+\title{Learning to Ignore What Matters:\\JEPAs in Stochastic Worlds}
+\author{Anonymous authors\\Paper under double-blind review}
+
+\begin{document}
+\maketitle
+\lhead{Under review as a conference paper at ICLR 2027}
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/mechanisms}
+\input{sections/worlds}
+\input{sections/representation}
+\input{sections/planning}
+\input{sections/craftax}
+\input{sections/related}
+\input{sections/discussion}
+
+\subsubsection*{Reproducibility statement}
+All environments, models, policies and evaluators are released with the code. Every reported
+policy number is a final checkpoint evaluated on stored keys; the budgets are enforced by the
+training scripts, which refuse other values. Model, data and source hashes are written next to
+every run. \texttt{AUDIT.md} in the repository lists, with file and line references, where each
+safeguard lives and which historical numbers it does not cover.
+
+\subsubsection*{Use of large language models}
+Language-model coding agents wrote most of the experiment harness and earlier drafts of this
+text under the authors' direction; the authors specified the protocols, audited the code and
+results, and are responsible for every claim.
+
+\bibliography{references}
+\bibliographystyle{iclr2027_conference}
+
+\appendix
+\input{sections/theory}
+\input{sections/appendix}
+\input{sections/historical_gate}
+\input{sections/matched_appendix}
+\input{sections/forecast_appendix}
+\input{sections/termination_appendix}
+\input{sections/redcube_goal_appendix}
+\input{sections/oracle_variance_appendix}
+\end{document}

@@ -1,0 +1,61 @@
+\section{Mechanism 2 in the gate world: a kept state that imagination cannot use}
+\label{sec:planning}
+
+The gate world is built so that mechanism 1 is off the table. The background is black, the wall is
+large and slow, and the only uncertainty is which opening will be revealed. A model that keeps the
+state must show the approaching wall; a model that averages over the two openings should still show
+the shared solid part. Figure~\ref{fig:gate-filmstrip} shows what the grid JEPA does with a pre-reveal
+context: decoded encodings of the \emph{real} future keep the wall and its opening at every step,
+and the predictor's own rollout deletes the wall from the first predicted step, in all three
+encoder seeds (Appendix~\ref{app:historical-gate}). The flow model's sampled rollout keeps the wall
+and commits to one opening. This is the visible signature of the second mechanism: the state was
+there, and the mean-trained predictor did not carry it forward.
+
+\begin{figure}[t]
+\centering
+\paperfig{gate_s1_filmstrip.png}{1.0}
+\caption{\textbf{The wall survives encoding and dies in prediction.} From one pre-reveal context
+and the recorded actions: the simulator; the JEPA's decoded encodings of the real future; the
+JEPA's decoded rollout; the flow model's decoded encodings and one sampled future. JEPA model
+seed 1, the encoder used in the behavioral comparison below; flow seed 0; first eligible held-out
+episode, chosen without looking at model outputs. A decoding failure on predicted latents mixes
+prediction error with off-distribution read-out; the behavioral comparison is what turns this
+picture into a claim.}
+\label{fig:gate-filmstrip}
+\end{figure}
+
+\paragraph{Why a shared pixel policy.}
+Earlier attempts to compare the two models through latent-input policies were uninformative in a
+specific way: a latent-MLP policy trained by PPO fails the gate even on the \emph{exact} simulator
+with true rewards (0 of 45 policies above $50\%$ survival; Appendix~\ref{app:matched}), so its
+failure inside imagination says nothing about the model. The comparison in this section therefore
+uses one pixel CNN and GRU policy for both families, fed by each model's own decoder, with the same
+PPO, 150 updates of 512 rollouts of 48 steps, three policy seeds, final checkpoints, and 256
+evaluation episodes on shared keys (Section~\ref{sec:worlds}). The JEPA encoder is model seed 1,
+the seed on which decoded-latent control had succeeded during development; the flow model is one
+dynamics checkpoint. Both facts limit the claim to these fitted models. The JEPA's reward and
+termination heads are refitted on all 500,000 training labels so that head supervision is
+count-matched to the flow recipe.
+
+\paragraph{Interface qualification.}
+Before imagination is read, the same policy is trained on real transitions seen through each
+decoder. \pendingresult{Decoded-real controls: JEPA seeds 0/1 at 0.977/0.980 survival so far; flow
+seeds 0/1 at 0.957/0.516. Insert all three seeds per family with walls passed, and state which
+interface qualifies. If flow's decoded interface is unstable across seeds, say so here and carry it
+into the imagination reading.}
+
+\paragraph{Imagination.}
+\pendingresult{Insert the paired JEPA-versus-flow imagination outcomes (three policy seeds each):
+survival, walls passed, control length. Read them against the qualification row. Do not attribute a
+gap specifically to conditional-mean averaging; the recipes differ in supervision stage.}
+
+\paragraph{What the historical record adds.}
+Across the earlier, unmatched protocols, none of 27 policies trained inside the JEPA's imagination
+discovered the gate strategy, including nine that used a sampling head fitted on the predictor's
+residual and nine that averaged eight of its samples, while policies trained on real transitions
+through the same frozen encoders did (Table~\ref{tab:gate-main}, Appendix~\ref{app:historical-gate}).
+The flow reference's historical success was a single policy of six. Both facts are why this section
+rests on the matched comparison above rather than on those tables. An exact nine-branch calculation
+on frozen encoders shows the scoring operator of Equation~\ref{eq:variance-cost} changing the
+optimal action for $1$--$3\%$ of context--goal pairs (Appendix~\ref{app:oracle-variance}); it is a
+small direct illustration, not a control result.

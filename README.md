@@ -1,9 +1,107 @@
 # tinycraft-jepa
 
+Two things live here.
+
+1. **A JAX port of LeWorldModel** (JEPA world model: next-embedding MSE + SIGReg, no decoder in the
+   loss) trained on Craftax-Classic pixels under a 10-minute / 500k-transition budget, plus the
+   off-budget analysis tools. This is the original project; its results are kept in
+   [Part 2](#part-2-the-lewm-port) below.
+2. **The paper "Learning to Ignore What Matters: JEPAs in Stochastic Worlds"** and every experiment
+   behind it: minimal red-cube worlds with controllable nuisance and stochastic dynamics, a gate
+   world with a late-revealed opening, a flow-matching reference model trained on the same data and
+   budget, and Craftax under matched budgets. Everything for the paper is under `studies/` and
+   `submission/`.
+
+If you are here to check whether the numbers can be trusted, start with [AUDIT.md](AUDIT.md). If
+you are here to rerun something, start with [Part 1](#part-1-reproducing-the-paper).
+
+## Map
+
+| path | what |
+|---|---|
+| `train.py`, `probe.py`, `viz.py`, `plan.py`, `eval.py` | the LeWM port: model, objective, budgeted training, decoder probe, diagnostics, CEM planning, frozen benchmark |
+| `studies/redcube/` | the six cube worlds (`env.py`), flow + JEPA training per world (`train_config.sh`, `train_arms.sh`), position read-outs (`diag_jepa.py`, `bench.py`) |
+| `studies/stoch/` | the gate world and the stochastic study: `env.py`, `rl.py` (PPO real / dream / inside-JEPA), `control.py`, `sampler.py` (residual sampling head), `summarize.py`, `flow_recipe/` (the flow model) |
+| `studies/revision/` | the revision harness behind every number in the paper's main text; see the table in Part 1 |
+| `research/` | protocols, audits, decision logs and evidence ledgers written by the coding agents during the revision; supporting material, not the paper |
+| `submission/v1`, `submission/v2` | frozen earlier drafts; `submission/v3` is the current manuscript (`bash build.sh`, needs Tectonic) |
+| `runs/`, `artifacts/`, `output/` | results: run ledgers and `final.json` files, exported figures and packets, analysis outputs with hashes |
+| `NARRATIVE.md` | the claim the paper is written to serve |
+| `AUDIT.md` | harness audit: what each safeguard is, where it lives, what it does not cover |
+
+## Part 1: reproducing the paper
+
+### Environment
+
+Python 3.11, JAX 0.10.1, Flax 0.12.7, Optax 0.2.8, NumPy 2.4, Craftax 1.5.0, one A100-40GB.
+
+```bash
+uv venv --python 3.11 && uv pip install -r pyproject.toml --extra cuda && source .venv/bin/activate
+```
+
+The shell scripts take the interpreter from `PY` (default `~/personal/tinywmcraft-slim/.venv/bin/python`,
+the VM the study ran on) and the GPU from `GPU`. Python entry points take paths as flags. The remaining
+machine-specific defaults are listed at the end of this section.
+
+### Data
+
+| world | how to make it | size used in the paper |
+|---|---|---|
+| cube worlds | `python -m studies.redcube.env --config <world> --out <dir> --train-steps 5000` | 100 envs x 5000 steps = 500k transitions (gray worlds); 100k for black/color |
+| gate | `python -m studies.stoch.env --config gate --out <dir> --train-steps 5000` | 500k transitions, seed 0, uniform random policy |
+| Craftax | `python eval.py --download` (tinywmcraft_500k from Hugging Face) | 500k transitions |
+
+Worlds: `gray_frame_still`, `gray_frame_wind`, `gray_episode_still`, `gray_episode_wind`, plus the
+`black_*` and `color_*` variants; `gate`. `studies/redcube/env.py --preview` renders a strip.
+
+Checkpoints used in the paper are identified by SHA-256 in `research/gpu_inventory.md`; the VM
+copies have no git history, so the hash is the identity.
+
+### Models
+
+```bash
+# JEPA (grid latent 4x4x32, factored predictor, 8500 updates) + off-budget decoder and heads
+ROOT=<dir with train.npz> GPU=0 FIXED_STEPS=8500 bash studies/stoch/train_arms.sh gate tile_factored
+# flow reference (same data, same budget)
+(cd studies/stoch/flow_recipe && python train.py --data <dir>/train.npz --out <dir>/flow/model.npz --seed 0)
+# both for one cube world, data included
+GPU=1 TRAIN_STEPS=5000 bash studies/redcube/train_config.sh gray_frame_wind
+```
+
+### Experiments in the main text
+
+| section | script(s) | notes |
+|---|---|---|
+| cube position read-outs (Table 1) | `studies/redcube/diag_jepa.py`, `studies/redcube/bench.py`; table `research/redcube_table.md` | three model seeds per gray world |
+| detached-target intervention | `studies/revision/target_gradient.py`, `run_target_gradient_queue.py`, `analyze_target_gradient.py` | protocol `research/target_gradient_protocol.md`; result `output/revision/target_gradient_strict_analysis_20260920/` |
+| filmstrips (real, decoded-real, predicted, flow) | `studies/revision/export_redcube_story.py` | packets and manifests in `artifacts/revision/redcube_story/<world>/` |
+| matched latent-MLP PPO (appendix) | `studies/revision/matched_ppo.py`, `run_matched_queue.py`, `analyze_matched.py` | exact-simulator arms require byte-exact re-rendering first |
+| shared-CNN comparison (gate + cube worlds) | `studies/revision/prep_shared_decoded.sh` -> `queue_shared_decoded.py` -> `analyze_shared_decoded.py` | protocol `research/shared_decoded_cnn_protocol.md`; budgets are enforced by `shared_decoded_ppo.py` |
+| Craftax inventory | `studies/revision/run_inventory_queue.py` (wraps `inventory_ppo.py` and `inventory_eval.py`) | protocol `research/craftax_native_inventory_protocol.md`; evaluation contract frozen at 256 episodes, seed 123 |
+| historical gate study (appendix) | `studies/stoch/rl.py`, tables from `studies/stoch/summarize.py` | use the last ledger row, not `final.json` (see AUDIT.md) |
+
+Every training script in `studies/revision/` refuses budgets other than the registered ones unless
+`--smoke` is passed, writes `config.json` with model, data and source hashes, and evaluates only the
+final checkpoint.
+
+### Machine-specific defaults
+
+These are defaults, all overridable:
+
+- `studies/revision/queue_shared_decoded.py`: `--gray-root` (`/dev/shm/redcube`), `--stoch-root`
+  (`~/personal/stoch`), `--python`.
+- `studies/revision/prep_shared_decoded.sh`: `PY`, `STOCH`, `GRAY`, `OUT` environment variables.
+- `studies/redcube/train_config.sh`, `studies/stoch/train_arms.sh`: `ROOT`, `DATA`, `PY`, `GPU`,
+  `FLOW`, and a `cd ~/personal/tinycraft-jepa` that assumes the VM layout.
+- `studies/stoch/lane_*.sh`, `studies/redcube/lane.sh`: one-off overnight queues from the original
+  study, kept as a record of what was run; not maintained entry points.
+
+## Part 2: the LeWM port
+
 **LeWorldModel (LeWM) on Craftax-Classic pixels, in JAX.** A joint-embedding predictive world
-model trained under exactly the budget our generative pixel world model uses — **500k
-transitions, 10 minutes on one A100** — and then taken apart off-budget: what does a JEPA
-rollout actually contain, does it blur, mean-regress or go noisy, and can you plan in it?
+model trained under exactly the budget our generative pixel world model uses, 500k transitions and
+10 minutes on one A100, and then taken apart off-budget: what does a JEPA rollout actually contain,
+does it blur, mean-regress or go noisy, and can you plan in it?
 
 Port of [lucas-maes/le-wm](https://github.com/lucas-maes/le-wm) (Maes\*, Le Lidec\*, Scieur,
 LeCun, Balestriero, *LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture
@@ -14,18 +112,15 @@ loss = mean((predict(z_t, a_t) - z_{t+1})^2) + 0.09 * SIGReg(z)
 ```
 
 No stop-gradient on the target, no EMA teacher, no pretrained encoder, **no pixel decoder in the
-loss**, no auxiliary supervision. Collapse is held off by SIGReg alone — the sketched
-isotropic-Gaussian regularizer — which is checked numerically against a transcription of the
-reference implementation in [tests/test_port.py](tests/test_port.py).
+loss**, no auxiliary supervision. Collapse is held off by SIGReg alone, which is checked numerically
+against a transcription of the reference implementation in [tests/test_port.py](tests/test_port.py).
 
 ![what the latent keeps and how the rollout drifts](artifacts/comparison.png)
 
-## Quickstart
+### Quickstart
 
 ```bash
-uv venv --python 3.11 && uv pip install -r pyproject.toml --extra cuda && source .venv/bin/activate
 python eval.py --download
-
 python train.py --out runs/lewm/model.npz --lr 1e-3 --steps 12250     # the 10-minute budget
 python viz.py  --model runs/lewm/model.npz --tag lewm --windows 2048  # latent diagnostics
 python probe.py --model runs/lewm/model.npz                           # off-budget pixel decoder
@@ -36,7 +131,7 @@ python plan.py --model runs/lewm/model.npz --tag lewm --closed-loop   # CEM plan
 `run_all.sh` chains all of it. Only `train.py` is inside the budget; everything after it is
 analysis on a frozen model.
 
-## Model
+### Model
 
 | part | what it is |
 |---|---|
@@ -47,14 +142,13 @@ analysis on a frozen model.
 | predictor | 6 causal AdaLN-zero blocks over the last 3 latents, conditioned on the action |
 | regularizer | SIGReg: 17 knots, 1024 random projections, weight 0.09 |
 
-17.9M parameters with the class-token read-out, 36.8M with the grid latent.
+17.9M parameters with the class-token read-out, 36.8M with the grid latent. The paper's grid JEPA
+(`--encoder tile`, 4x4x32 latent, factored predictor) is a smaller variant defined in
+`studies/stoch/train_arms.sh`.
 
-## Results
+### Results of the port
 
 Single seed per configuration; 2048 held-out windows (8 context frames, 16 imagined steps).
-
-### Inside the 10-minute budget
-
 Wall-clock includes loading the 500k dataset and XLA compilation.
 
 | run | latent | lr | wall | R² step 1 | R² step 16 | R² step 16, copy-last | spread ratio step 16 | action id top-1 | effective rank |
@@ -69,25 +163,11 @@ so it compares a model to *itself*, not across rows; "copy-last" is the same num
 that repeats the last context latent. Action id top-1 is 17-way action recovery from one observed
 transition (chance 0.059).
 
-The learning rate matters more than anything else: the paper's 5e-5 is tuned for 100 epochs on a
-small robotics dataset, and under ten minutes it is simply undertrained.
+**Does it collapse?** No. Class-token model: per-dimension std 1.03, kurtosis 2.99, standard-normal
+marginals as claimed, but effective rank 51 of 192. The 2592-d grid latent is further off: kurtosis
+16.1, effective rank 64.
 
-### Does it collapse?
-
-No, and the diagnostics say precisely how far the regularizer gets.
-
-* Class-token model: per-dimension std **1.03**, kurtosis **2.99**, mean |mean| **0.12** —
-  standard-normal marginals, exactly as claimed.
-* But the effective rank of that 192-d latent is **51**. Gaussian marginals do not make the
-  covariance isotropic; a 1024-direction sketch over a 128-sample batch leaves plenty of
-  anisotropy.
-* The 2592-d grid latent is much further off: kurtosis **16.1**, per-dimension std between 0.35
-  and 2.38, effective rank **64**. The same sketch size is far too small for that space. This is
-  the part of the paper's stability story that thins out as the latent grows.
-
-### Does the rollout blur, mean-regress or go noisy?
-
-**None of the three, and the reason is the representation rather than the predictor.**
+**Does the rollout blur, mean-regress or go noisy?** None of the three.
 
 | | gFVD ↓ | AF ↑ | salient MSE ↓ | decoder MSE |
 |---|---|---|---|---|
@@ -98,96 +178,32 @@ No, and the diagnostics say precisely how far the regularizer gets.
 | `s0_grid` decoder ceiling | **0.00160** | – | 0.016 | |
 | tinywmcraft generative pixel WM | 0.00123 | 0.928 | – | – |
 
-The *ceiling* rows decode the encoder's latents of the **real** future frames: that is the best
-any rollout could look. For the class-token model the ceiling alone costs gFVD 0.0259, i.e.
-**70% of its pixel error is the 192-d bottleneck, not the prediction** — the second row of the
-figure above has already lost the trees before any imagination happens. Give the same objective a
-spatial latent and the ceiling drops 16x to 0.0016 (on par with the generative world model's full
-rollout), the benchmark's action-following jumps 0.67 → 0.85, and essentially all remaining pixel
-error becomes prediction error.
-
-Per-step diagnostics ([drift plot](artifacts/s0_lr1e-3_drift.png),
-[grid version](artifacts/s0_grid_drift.png)):
-
-* **No mean regression.** The batch spread of the predicted latents stays at 1.01 (class token)
-  and 0.94 (grid) of the true spread through all 16 imagined steps; a mean-regressing model
-  collapses towards 0. The latent heat maps ([gif](artifacts/s0_lr1e-3_latents.gif)) keep their
-  contrast to the last step.
-* **No progressive blurring either.** High-frequency energy of the decoded frames stays at
-  0.79 → 0.74 of real (class token) and 0.90 → 0.87 (grid) from step 1 to step 16: the loss of
-  detail is set by the encoder at step 0 and barely accumulates. What accumulates is *wrong
-  content* — sharp tiles in the wrong places — not mush.
-* **No noise.** Rollouts stay in-distribution: scenes remain coherent Craftax scenes, the player
-  stays centred, the inventory bar keeps rendering.
-* Action sensitivity grows with the horizon, reaching 6x (class token) and 3x (grid) the true
-  frame-to-frame latent change by step 16, so rollouts are driven by the actions rather than
-  drifting on their own.
+The *ceiling* rows decode the encoder's latents of the **real** future frames. For the class-token
+model the ceiling alone costs gFVD 0.0259, i.e. 70% of its pixel error is the 192-d bottleneck, not
+the prediction. A spatial latent drops the ceiling 16x. Per-step diagnostics
+([drift plot](artifacts/s0_lr1e-3_drift.png), [grid version](artifacts/s0_grid_drift.png)): batch
+spread stays at 1.01 / 0.94 of the true spread through 16 steps, high-frequency energy barely
+decays, rollouts stay in-distribution.
 
 ![ground truth beside the imagined rollout](artifacts/s0_grid_demo.gif)
 
-*Grid model: eight real priming frames, then sixteen imagined ones from the same actions
-(`viz.py --demo 4`). The class-token version is [here](artifacts/s0_lr1e-3_demo.gif), and
-[this gif](artifacts/s0_grid_rollout.gif) adds the decoded-latent and error columns.*
+**Can we plan in it?** With the grid latent, yes at short horizons: CEM over LeWM's own latent-goal
+criterion reaches the exact goal tile in 85% of 256 closed-loop Craftax episodes at h=4 (random
+25%); the class-token model barely beats random (37.5%). Both share one defect: the CEM plan always
+reaches a lower model cost than the true action sequence. Per-run detail in `artifacts/*_reward.json`
+and `ledger.jsonl`.
 
-### Can we plan in it?
-
-Yes with the grid latent, weakly with the class token. The cost is LeWM's own control criterion
-(`JEPA.criterion`): squared latent distance to the latent of a goal image, optimized by CEM over
-discrete action sequences (512 candidates, 6 iterations, 32 elites). Closed loop means: 256 fresh
-Craftax episodes, a goal produced by a random action sequence, plan in the model, execute in the
-real environment, and check the agent's tile.
-
-| | class token, h=4 | grid, h=4 | class token, h=8 | grid, h=8 |
-|---|---|---|---|---|
-| first action recovered (chance 0.059) | 0.195 | 0.254 | 0.156 | 0.168 |
-| whole sequence recovered | 0.201 | 0.271 | 0.160 | 0.166 |
-| true sequence's percentile among random ones | 0.350 | 0.215 | 0.337 | 0.202 |
-| **goal tile reached, planned** | 0.375 | **0.852** | 0.219 | **0.672** |
-| goal tile reached, random actions | 0.254 | 0.254 | 0.129 | 0.129 |
-| goal position L1, planned / random | 1.22 / 1.20 | **0.23** / 1.20 | 1.79 / 1.86 | **0.59** / 1.86 |
-
-The grid model plans genuinely well at short horizons — 85% of episodes land on the exact goal
-tile against 25% for random actions — while the class-token model, whose latent cannot see where
-anything is, barely beats random. Both share one defect: the CEM plan always reaches a *lower*
-model cost than the action sequence that actually happened (0.138 vs 0.247 for the grid at h=4),
-and a fifth of purely random sequences also look better to the model than the truth. The cost
-landscape is exploitable; planning works in spite of that, not because the cost is calibrated.
-
-### Summary
-
-The JEPA objective trains stably here with no tricks, produces action-conditioned rollouts that
-neither collapse nor blur away, and supports real planning once the latent is spatial. What it
-does **not** do is model the game: even the grid variant's imagined frames are 25x worse on gFVD
-than a generative pixel world model trained on the same data in the same ten minutes, and its
-16-step latent R² is 0.14. Choosing *what* the latent keeps is the whole game — with a single
-global vector the representation throws the world away before the predictor ever runs.
-
-## Files
-
-| file | |
-|---|---|
-| [train.py](train.py) | the port: model, SIGReg objective, budgeted training loop, rollout |
-| [probe.py](probe.py) | off-budget pixel decoder on frozen latents (stop-gradient) |
-| [viz.py](viz.py) | latent diagnostics, gFVD split into rollout and ceiling, videos, heat maps |
-| [plan.py](plan.py) | CEM in latent space, offline and closed-loop in Craftax |
-| [eval.py](eval.py) | the frozen benchmark, byte-identical to the task starter |
-| [tests/test_port.py](tests/test_port.py) | SIGReg against the reference, causality, action alignment |
-| [ledger.jsonl](ledger.jsonl) | benchmark rows; per-run detail in `artifacts/*_latent.json` |
-
-## Deviations from the reference implementation
-
-Structural and budget-related only; the loss is untouched.
+### Deviations from the reference implementation
 
 1. 63x63 frames with patch size 7 (81 patches) instead of 224x224 with patch size 14 (256).
-2. Discrete actions: one-hot(17) into the reference `Embedder`, which expects continuous vectors.
-3. One warmup+cosine cycle over the step budget instead of 100 epochs at 5e-5, and the learning
-   rate is swept. The objective's only hyperparameter, the SIGReg weight, stays at 0.09.
-4. Attention-matrix dropout is dropped (the module dropouts around it are kept):
-   `jax.nn.dot_product_attention` has no dropout argument.
-5. The grid read-out (`--tokens 81`) uses the input/condition/output projections that the
-   reference `Transformer` already provides for a latent wider than the predictor.
+2. Discrete actions: one-hot(17) into the reference `Embedder`.
+3. One warmup+cosine cycle over the step budget instead of 100 epochs at 5e-5; the learning rate is
+   swept. The SIGReg weight stays at 0.09.
+4. Attention-matrix dropout is dropped (`jax.nn.dot_product_attention` has no dropout argument).
+5. The grid read-out uses the input/condition/output projections the reference `Transformer`
+   already provides for a latent wider than the predictor.
 
-## Citation
+### Citation
 
 ```bibtex
 @article{maes_lelidec2026lewm,

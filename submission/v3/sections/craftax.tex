@@ -1,0 +1,23 @@
+\section{Craftax under matched data and budget}
+\label{sec:craftax}
+
+Craftax-Classic asks the same question at the scale of a game. Both world models are trained on
+the same 500,000-transition archive of uniformly random play under the same ten-minute budget, with
+the same $4\times4\times32$ latent shape. The same pixel CNN and GRU policy is then trained by PPO
+inside each model for five million imagined steps, from the same bank of real episode-start
+contexts, with rewards and terminations from each model's own heads and no behavior cloning,
+action masking or reward shaping. Each policy is evaluated in the real game on 256 episodes from a
+fixed seed. The primary endpoint is acquisition of a wooden pickaxe, a goal that needs a
+multi-step plan (collect wood, place a table, craft) and cannot be reached by staying alive or
+wandering; all 22 achievements, return and episode length are retained
+(Appendix~\ref{app:craftax}).
+
+\pendingresult{Insert the paired inventory-campaign outcomes: wood-pickaxe rate per policy seed for
+JEPA and flow, achievement count, return and length. Flow seed 0 so far: 242/256 pickaxes,
+6.04 achievements per episode. Then read the result against the two mechanisms: does the JEPA's
+imagination support the crafting sequence at all, and where does it fall short?}
+
+The same 512-dimensional JEPA supports short-horizon goal-directed movement in Craftax when the
+goal is an image a few actions away (open-loop latent planning reaches $93\%$ of nearby targets
+against $17\%$ for random actions; Appendix~\ref{app:craftax}). Local state is there. What the
+inventory task measures is whether imagination from that state can carry a plan.
