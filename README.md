@@ -128,11 +128,10 @@ Per-step diagnostics ([drift plot](artifacts/s0_lr1e-3_drift.png),
   frame-to-frame latent change by step 16, so rollouts are driven by the actions rather than
   drifting on their own.
 
-![ground truth beside the imagined rollout](artifacts/s0_grid_demo.gif)
+![Flow model and JEPAs imagining the same Craftax episode](paper/fig_craftax_imagination.png)
 
-*Grid model: eight real priming frames, then sixteen imagined ones from the same actions
-(`viz.py --demo 4`). The class-token version is [here](artifacts/s0_lr1e-3_demo.gif), and
-[this gif](artifacts/s0_grid_rollout.gif) adds the decoded-latent and error columns.*
+*From the paper: every model gets the same eight recorded frames and the next sixteen recorded
+actions, in which the agent places a crafting table at step 14. Only the flow model imagines the table.*
 
 ### Can we plan in it?
 
