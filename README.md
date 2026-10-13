@@ -1,5 +1,7 @@
 # tinycraft-jepa
 
+**Paper:** [tinycraft-jepa.pdf](paper/tinycraft-jepa.pdf), submitted to ICLR 2027, under review.
+
 **LeWorldModel (LeWM) on Craftax-Classic pixels, in JAX.** A joint-embedding predictive world
 model trained under exactly the budget our generative pixel world model uses — **500k
 transitions, 10 minutes on one A100** — and then taken apart off-budget: what does a JEPA
