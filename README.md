@@ -2,6 +2,10 @@
 
 **Paper:** [tinycraft-jepa.pdf](paper/tinycraft-jepa.pdf), submitted to ICLR 2027, under review.
 
+![Figure 1 of the paper](paper/fig1.png)
+
+*In the black-gate world only the flow model imagines the wall and its opening, and only agents trained inside it survive.*
+
 **LeWorldModel (LeWM) on Craftax-Classic pixels, in JAX.** A joint-embedding predictive world
 model trained under exactly the budget our generative pixel world model uses — **500k
 transitions, 10 minutes on one A100** — and then taken apart off-budget: what does a JEPA
@@ -20,7 +24,6 @@ loss**, no auxiliary supervision. Collapse is held off by SIGReg alone — the s
 isotropic-Gaussian regularizer — which is checked numerically against a transcription of the
 reference implementation in [tests/test_port.py](tests/test_port.py).
 
-![what the latent keeps and how the rollout drifts](artifacts/comparison.png)
 
 ## Quickstart
 
